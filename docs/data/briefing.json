@@ -1,85 +1,247 @@
 {
  "agents": {
   "reporter": {
-   "briefing": "Here is what the allowlisted feeds carried on energy-sector cyber in the last 72 hours. Electric utilities join industries urging renewal of cybersecurity information-sharing law (Utility Dive). Cyberattack on French plasma stores is enough to make your blood boil (The Register Security). Dispel joins White House-backed Project Lifeline 250 to secure remote access at rural hospitals (Industrial Cyber). Industrial AI adoption outpaces security readiness, leaving OT environments exposed to emerging threats (Industrial Cyber). Attackers Exploit Critical Siemens IoT2050 Flaw to Plant Remote Command Backdoors (The Hacker News). I have not yet had a model run over these, so this is headlines only, not analysis.",
+   "briefing": "Four threads this week, US first. One: electric utilities joined other industries asking Congress to renew the 2015 Cybersecurity Information Sharing Act, which gives liability cover for sharing threat indicators and expires next month (Utility Dive). Two: CISA opened its 2026 Critical Infrastructure Security and Resilience campaign, telling owners to prioritize OT security, operational continuity and recovery planning (Industrial Cyber). Three, abroad but directly relevant to OT operators: attackers remotely changed refrigeration controls at supermarkets in Belgium, Sweden, Estonia and elsewhere overnight into November 2, and France's national blood service confirmed a separate attack on a refrigeration equipment provider raised temperature and defrost settings at three facilities (The Hacker News; BleepingComputer). Four: a maximum-severity Siemens SIMATIC IoT2050 flaw, CVE-2026-58115, is under active exploitation per VulnCheck (The Hacker News), and Zyxel patched a GS1900 switch zero-day used to compromise nearly 1,000 devices and steal configs and credentials (BleepingComputer). No confirmed intrusion at a US energy utility appeared in any allowlisted source this week.",
    "answers": {
-    "What happened in energy-sector cyber today?": "Electric utilities join industries urging renewal of cybersecurity information-sharing law (Utility Dive). Cyberattack on French plasma stores is enough to make your blood boil (The Register Security). Dispel joins White House-backed Project Lifeline 250 to secure remote access at rural hospitals (Industrial Cyber). Industrial AI adoption outpaces security readiness, leaving OT environments exposed to emerging threats (Industrial Cyber). Attackers Exploit Critical Siemens IoT2050 Flaw to Plant Remote Command Backdoors (The Hacker News).",
-    "Which US utilities or operators were affected?": "Electric utilities join industries urging renewal of cybersecurity information-sharing law (Utility Dive).",
-    "What is confirmed and what is still only claimed?": "In headlines-only mode I cannot separate confirmed from claimed. Treat every line above as a claim by the outlet until the full agent run happens."
+    "What happened in energy-sector cyber today?": "Nothing confirmed at a US utility. The energy-relevant news is policy and adjacent OT: the push to renew the information-sharing law before it lapses next month (Utility Dive), CISA's new resilience campaign pointing owners at OT security and recovery planning (Industrial Cyber), and a cluster of attacks on connected refrigeration controls across Europe (The Hacker News; BleepingComputer; Dark Reading). On the vulnerability side, the Siemens IoT2050 flaw is being exploited in the wild (The Hacker News) and the Zyxel switch zero-day hit nearly 1,000 devices (BleepingComputer).",
+    "Which US utilities or operators were affected?": "None named. No allowlisted source reported a US utility, pipeline or generator being breached this week. The US items are about law and guidance: the CISA 2015 renewal push from utilities (Utility Dive), CISA's 2026 campaign (Industrial Cyber), and vendor announcements aimed at the US public sector such as Crytica's Carahsoft deal and Dispel joining Project Lifeline 250 for rural hospitals (Industrial Cyber).",
+    "What is confirmed and what is still only claimed?": "Confirmed by the victim: France's blood service said an attack on its refrigeration provider changed temperature settings at three sites (BleepingComputer). Confirmed by the vendor: Zyxel patched the GS1900 zero-day and the roughly 1,000-device count comes from the reporting (BleepingComputer). Vendor-reported, not independently confirmed: active exploitation of the Siemens IoT2050 flaw comes from VulnCheck (The Hacker News). The '110°C' detail in the French case is reported, not officially stated (The Register). The supermarket wave is attributed to attackers changing settings remotely, with no named actor (The Hacker News)."
    },
-   "bubble": "Electric utilities join industries urging renewal of cyberse"
+   "bubble": "No US utility breach confirmed this week. Fridges, yes."
   },
   "analyst": {
-   "briefing": "I only have headlines until the model run, so no attribution from me today. Worth a deeper look: Electric utilities join industries urging renewal of cybersecurity information-sharing law (Utility Dive). Worth a deeper look: Cyberattack on French plasma stores is enough to make your blood boil (The Register Security). Worth a deeper look: Dispel joins White House-backed Project Lifeline 250 to secure remote access at rural hospitals (Industrial Cyber).",
+   "briefing": "The pattern I care about is the refrigeration cluster. Supermarkets in at least three EU countries and France's blood service saw setpoints changed remotely in the same 48-hour window (The Hacker News; BleepingComputer), and Dark Reading's read is the right one: internet-exposed controllers, remote access, weak practices. That is the exact architecture of a small substation, a pump station or a battery site. No attribution yet; I would put it at low confidence that this is a single actor, since copycat attacks on exposed building-management interfaces are cheap. The Siemens IoT2050 flaw is more serious for energy: CVSS 10, missing authentication on an edge gateway that sits between field devices and IT, and VulnCheck reports exploitation (The Hacker News). The Zyxel GS1900 campaign stole configuration files and credentials from nearly 1,000 switches (BleepingComputer), which is reconnaissance material, not impact. Nothing this week reached a US OT process.",
    "answers": {
-    "Who is likely behind the main incident and how confident are you?": "I will not attribute from a headline. Ask again after the daily agent run, or paste a key in Settings for a live answer.",
-    "Did any attack actually reach operational technology?": "I will not attribute from a headline. Ask again after the daily agent run, or paste a key in Settings for a live answer.",
-    "What should a utility security team do this week?": "I will not attribute from a headline. Ask again after the daily agent run, or paste a key in Settings for a live answer."
+    "Who is likely behind the main incident and how confident are you?": "For the European refrigeration attacks, nobody credible has named an actor, so I will not either. The technique, changing setpoints on internet-reachable controllers, needs no sophistication and no shared infrastructure, so my confidence that it is one coordinated group is low (The Hacker News; Dark Reading). The Ukraine and Russia alert-app attacks are wartime information operations and sit in a different category (The Register). For the Siemens and Zyxel exploitation, the reporting names no actor and I have no basis to.",
+    "Did any attack actually reach operational technology?": "Yes, twice, outside energy. Refrigeration controllers are OT, and attackers changed their physical setpoints in European supermarkets and at three French blood-storage facilities (The Hacker News; BleepingComputer). Safeguards reportedly prevented stock loss in the French case (The Register), which is the detail energy operators should study: the control was reached, the process was protected. In the US, nothing reached OT in any allowlisted source this week.",
+    "What should a utility security team do this week?": "Three things from this week's wire. Inventory and patch SIMATIC IoT2050 Advanced devices now, since CVE-2026-58115 is unauthenticated remote code execution under active exploitation (The Hacker News). Check whether any Zyxel GS1900 switches sit on your networks, patch, and rotate the credentials in any config that may have been pulled (BleepingComputer). Then walk your remote-access paths to HVAC, refrigeration and building-management controllers, because that is what was hit in Europe (Dark Reading), and read CISA's 2026 campaign material on continuity and recovery planning (Industrial Cyber)."
    },
-   "bubble": "Headlines are not evidence."
+   "bubble": "Setpoints changed remotely. That is OT, not IT."
   },
   "critic": {
-   "briefing": "Sources in play today and what to keep in mind about each: Utility Dive: Utility-industry trade outlet; frames security through regulation, cost and reliability; sympathetic to utilities. The Hacker News: High volume, sponsored content mixed with news; good for the wide-angle view of what else is happening. Industrial Cyber: ICS/OT-only trade outlet; vendor-advertising supported, relays vendor reports and regulator notices with little pushback. The Register Security: Irreverent UK tech press; sceptical of vendors and governments alike, headline tone can trivialise.",
+   "briefing": "Most of this week's energy-cyber coverage comes from two kinds of outlet, and you should read each with its incentive in mind. Industrial Cyber supplied six of the sixteen stories; it is an OT trade outlet funded by vendor advertising, and three of its six are vendor announcements dressed as news: Crytica with Carahsoft, Dispel with Project Lifeline 250, and an AI-readiness feature (Industrial Cyber). The Siemens exploitation story originates with VulnCheck, a vulnerability-intelligence vendor, relayed by The Hacker News, which mixes sponsored content with news (The Hacker News). The UK angle is a government press cycle: NCSC's own newsroom, The Register and Industrial Cyber all ran the same 'AI-powered attacks by 2028' message within a day, which is the agency's annual review being amplified, not three independent findings (UK NCSC News; The Register; Industrial Cyber). Utility Dive's piece on renewing the information-sharing law is sympathetic to utilities by design; it is their trade press (Utility Dive). BleepingComputer and The Register were first and fastest on the fridge attacks, and The Register's '110°C' detail is the kind of vivid claim that travels faster than confirmation (BleepingComputer; The Register).",
    "answers": {
-    "What is the bias of each source covering today's news?": "Utility Dive: Utility-industry trade outlet; frames security through regulation, cost and reliability; sympathetic to utilities. The Hacker News: High volume, sponsored content mixed with news; good for the wide-angle view of what else is happening. Industrial Cyber: ICS/OT-only trade outlet; vendor-advertising supported, relays vendor reports and regulator notices with little pushback. The Register Security: Irreverent UK tech press; sceptical of vendors and governments alike, headline tone can trivialise.",
-    "Is any story being driven by a vendor's own research?": "Check whether any headline names a vendor report; vendor research sells the solution to the problem it describes.",
-    "How does the US coverage differ from international coverage?": "1 US-sourced versus 5 internationally sourced energy stories in this window."
+    "What is the bias of each source covering today's news?": "Industrial Cyber: OT-only trade press, vendor-advertising funded, relays vendor and regulator notices with little pushback. The Hacker News: high volume, sponsored content mixed with news, good for breadth. BleepingComputer: fast and incident-driven, headlines can run ahead of confirmation. The Register: sceptical of vendors and governments, but the tone can trivialise, as in the blood-storage headline. Dark Reading: analysis-led, heavy vendor sponsorship. Utility Dive: utility-industry trade outlet, frames security through regulation and cost. UK NCSC: a government agency promoting its own annual review. Those are the bias notes attached to each feed, and this week's coverage behaved exactly as they predict.",
+    "Is any story being driven by a vendor's own research?": "Yes. The Siemens IoT2050 exploitation claim is VulnCheck's (The Hacker News). The 'industrial AI outpaces security' feature rests on vendor survey material (Industrial Cyber). Crytica and Dispel are straightforward company announcements (Industrial Cyber). That does not make them false, but the party reporting the problem sells the fix, so look for a second source before acting on severity language.",
+    "How does the US coverage differ from international coverage?": "US-sourced coverage this week is about law, guidance and procurement: the CISA 2015 renewal (Utility Dive), CISA's resilience campaign and vendor deals for the public sector (Industrial Cyber). International coverage is about things that actually happened: fridges in Belgium, Sweden and Estonia, blood storage in France, alert apps in Ukraine and Russia (The Hacker News; BleepingComputer; The Register). Either US operators had a quiet week or the US incidents are not being reported, and the expiring information-sharing law is relevant to which of those it is."
    },
-   "bubble": "Who owns the outlet that wrote that?"
+   "bubble": "Three outlets, one NCSC press release."
   },
   "wideangle": {
-   "briefing": "Elsewhere in cyberspace at the same time: Apple turns iCloud into spy cloud, will start looking at public share links (The Register Security). Critical Rails Bug Threatens to Derail Vulnerable Servers (Dark Reading). Vercel rolls out new protection against stolen session cookie attacks (BleepingComputer). More Asian airlines announce data breaches after attack on Spanish IT provider Amadeus (The Record (Recorded Future News)). Zyxel fixes zero-day exploited to hack nearly 1,000 network switches (BleepingComputer).",
+   "briefing": "Outside energy, the week was dominated by money and supply chains. Binance disclosed a roughly $6.3 billion theft that began with a fake job interview, attributed in coverage to North Korea (BleepingComputer; The Register), and a French bank confirmed a heist estimated at $133 million (The Record). On the supply-chain side, a malicious update was pushed through cPGuard's autoupdate in what SecurityWeek calls the OpsShield attack (SecurityWeek; BleepingComputer), Asian airlines kept disclosing breaches traced to IT provider Amadeus (The Record), and a China-aligned group hijacked Sogou input-method DNS to deploy a backdoor (The Hacker News). CISA flagged a WordPress core flaw exploited during upgrades (The Hacker News), Rails and Xen shipped critical fixes (Dark Reading; The Hacker News), and Google disrupted a 1.3-million-device botnet (Dark Reading). Why it matters for energy: the cPGuard and Amadeus cases are the same trust-the-vendor-update problem that reached France's blood service through its refrigeration provider, and the Trump administration's ban on foreign grid components has the industry worried about practicality and cost (Utility Dive).",
    "answers": {
-    "What else happened in cyberspace today that could affect energy?": "Apple turns iCloud into spy cloud, will start looking at public share links (The Register Security). Critical Rails Bug Threatens to Derail Vulnerable Servers (Dark Reading). Vercel rolls out new protection against stolen session cookie attacks (BleepingComputer). More Asian airlines announce data breaches after attack on Spanish IT provider Amadeus (The Record (Recorded Future News)). Zyxel fixes zero-day exploited to hack nearly 1,000 network switches (BleepingComputer). Officials extradite Canadian man to US for alleged cryptomining spree (CyberScoop).",
-    "Any new zero-days or ransomware waves energy operators should watch?": "Apple turns iCloud into spy cloud, will start looking at public share links (The Register Security). Critical Rails Bug Threatens to Derail Vulnerable Servers (Dark Reading). Vercel rolls out new protection against stolen session cookie attacks (BleepingComputer). More Asian airlines announce data breaches after attack on Spanish IT provider Amadeus (The Record (Recorded Future News)). Zyxel fixes zero-day exploited to hack nearly 1,000 network switches (BleepingComputer). Officials extradite Canadian man to US for alleged cryptomining spree (CyberScoop).",
-    "Is there a geopolitical angle this week?": "Apple turns iCloud into spy cloud, will start looking at public share links (The Register Security). Critical Rails Bug Threatens to Derail Vulnerable Servers (Dark Reading). Vercel rolls out new protection against stolen session cookie attacks (BleepingComputer). More Asian airlines announce data breaches after attack on Spanish IT provider Amadeus (The Record (Recorded Future News)). Zyxel fixes zero-day exploited to hack nearly 1,000 network switches (BleepingComputer). Officials extradite Canadian man to US for alleged cryptomining spree (CyberScoop)."
+    "What else happened in cyberspace today that could affect energy?": "Supply-chain compromises are the theme: the cPGuard autoupdate backdoor (SecurityWeek), the Amadeus provider breach spreading across airlines (The Record), and the refrigeration-provider path into France's blood service (BleepingComputer). Energy operators depend on the same pattern of third-party remote access to field equipment. Add the Zyxel switch zero-day and the Siemens gateway flaw, both exploited (BleepingComputer; The Hacker News), and the foreign grid-component ban that will change who supplies hardware (Utility Dive).",
+    "Any new zero-days or ransomware waves energy operators should watch?": "Zyxel GS1900 switches, zero-day, nearly 1,000 compromised (BleepingComputer). Siemens SIMATIC IoT2050 Advanced, CVE-2026-58115, CVSS 10, exploited (The Hacker News). A critical Android flaw allowing remote code execution without user interaction (The Hacker News), plus n-day zero-click exploits on iOS and Android (BleepingComputer), which matter for anyone whose operators use phones for remote access. Chrome 157 fixed 213 issues, seven critical (SecurityWeek). No new ransomware wave against energy was reported, though the UK NCSC is warning of AI-assisted ransomware against critical infrastructure by 2028 (UK NCSC News).",
+    "Is there a geopolitical angle this week?": "Yes. North Korea is linked to the Binance theft and responded with missile launches and denials (SecurityWeek; The Register). Russia and Ukraine each reported attacks on their emergency alert apps during a ceasefire in Kherson (The Register), and the Kyiv Independent was hit by a suspected Russian attack (The Record). ESET reported a Gorbag espionage campaign against Ukrainian administrations, defense and transport (Industrial Cyber). A China-aligned group hijacked Sogou DNS (The Hacker News). For US energy, the policy-side geopolitics is the foreign grid-component ban (Utility Dive)."
    },
-   "bubble": "Apple turns iCloud into spy cloud, will start looking at pub"
+   "bubble": "Binance lost billions. Your vendor's updater is the real story."
   },
   "contrarian": {
-   "briefing": "Before anyone says 'the grid was attacked': the headlines above do not tell us who was spared, and silence in coverage is not evidence of impact. Ask who is missing from each story.",
+   "briefing": "Start with who was not affected: every US electric utility, pipeline and generator, as far as sixteen stories from fourteen credible feeds can tell. The headline-grabbing OT incidents this week were refrigeration in European supermarkets and a French blood service, and even there the body text is modest: no chain reported more than several dozen stores (The Hacker News), and safeguards prevented stock losses at the blood facilities (The Register). The '110°C' figure is reported, not confirmed. The Siemens flaw is real but affects one product line, IoT2050 Advanced, and 'active exploitation' is one vendor's telemetry (The Hacker News). The UK 'AI-powered attacks by 2028' warning is a forecast from an agency arguing for budget, not an incident (UK NCSC News). What the coverage is not telling you: whether the European refrigeration victims had any vendor in common, whether any US cold-chain or energy site was probed in the same window, and what happens to indicator sharing if the 2015 law lapses next month (Utility Dive).",
    "answers": {
-    "Who was not affected by today's main incident, and why?": "Headlines-only mode. The honest answer is that nobody has checked who was not affected yet.",
-    "Is the impact being overstated anywhere?": "Headlines-only mode. The honest answer is that nobody has checked who was not affected yet.",
-    "What is the coverage not telling us?": "Headlines-only mode. The honest answer is that nobody has checked who was not affected yet."
+    "Who was not affected by today's main incident, and why?": "Taking the refrigeration cluster as the main incident: no US site was reported hit, no energy operator anywhere was named, and most European supermarkets were untouched, since no chain had more than several dozen affected stores (The Hacker News). The French blood service reached its controls but kept its stock because safeguards held (The Register). The plausible reason the spared were spared is boring: their controllers were not reachable from the internet, or their remote-access vendor was not the one compromised. Nobody has published that analysis yet.",
+    "Is the impact being overstated anywhere?": "The blood-storage headlines, yes: 'enough to make your blood boil' describes an attack where no stock was lost (The Register). The UK coverage, yes: three outlets ran one agency's forecast about 2028 as if it were news (UK NCSC News; The Register; Industrial Cyber). The Siemens story is severe but narrow, one device family, with exploitation reported by a single vendor (The Hacker News). The Zyxel campaign is the opposite case, possibly understated: nearly 1,000 switches had configs and credentials stolen, and nobody has said what those credentials unlock (BleepingComputer).",
+    "What is the coverage not telling us?": "Whether the European refrigeration victims shared a vendor or remote-access product, which would turn a scattered story into a supply-chain one. Whether any US critical-infrastructure site saw the same setpoint tampering and did not disclose. What the Zyxel credential theft was for. And the biggest silence: the information-sharing law expires next month (Utility Dive), and if it lapses, the quiet US week you are looking at could become structurally quieter, because fewer operators will share what they see."
    },
-   "bubble": "And who was NOT affected?"
+   "bubble": "And who was NOT affected? Every US utility, this week."
   }
  },
  "conversations": [
   {
    "between": [
     "reporter",
-    "contrarian"
+    "analyst"
    ],
    "lines": [
     {
      "who": "reporter",
-     "line": "Top of the wire: Electric utilities join industries urging renewal of cybersecurity inf (Utility Dive)."
+     "line": "No confirmed US utility breach this week. The OT news is European fridges (BleepingComputer)."
     },
     {
-     "who": "contrarian",
-     "line": "Headline says affected. Does the body say who wasn't?"
+     "who": "analyst",
+     "line": "Fridges are controllers with setpoints. Same architecture as a pump station. That is the energy story."
     },
     {
      "who": "reporter",
-     "line": "Not yet. That's the agent run's job, not mine."
+     "line": "Reported, not attributed. Nobody has named an actor."
+    },
+    {
+     "who": "analyst",
+     "line": "Agreed, and I would not. Changing an exposed setpoint takes no skill, so one actor is a low-confidence guess."
+    },
+    {
+     "who": "reporter",
+     "line": "Then what do I lead with?"
+    },
+    {
+     "who": "analyst",
+     "line": "The Siemens IoT2050 flaw, CVSS 10, exploited per VulnCheck (The Hacker News). That one sits in energy networks."
+    }
+   ]
+  },
+  {
+   "between": [
+    "critic",
+    "reporter"
+   ],
+   "lines": [
+    {
+     "who": "critic",
+     "line": "Three outlets ran 'AI attacks on UK infrastructure by 2028' in a day. That is one NCSC press release."
+    },
+    {
+     "who": "reporter",
+     "line": "It is the agency's annual review. It is still news."
+    },
+    {
+     "who": "critic",
+     "line": "It is a forecast from a body asking for investment (UK NCSC News). Label it as such."
+    },
+    {
+     "who": "reporter",
+     "line": "Fine. And the Siemens exploitation claim?"
+    },
+    {
+     "who": "critic",
+     "line": "VulnCheck's telemetry, relayed by The Hacker News. Vendor finds problem, vendor sells intelligence."
+    },
+    {
+     "who": "reporter",
+     "line": "Noted, but a CVSS 10 with missing authentication is worth a patch either way."
+    }
+   ]
+  },
+  {
+   "between": [
+    "contrarian",
+    "analyst"
+   ],
+   "lines": [
+    {
+     "who": "contrarian",
+     "line": "Who was not affected? Every US utility. Sixteen stories, zero US energy victims."
+    },
+    {
+     "who": "analyst",
+     "line": "Zero reported. The Zyxel campaign pulled configs and credentials from a thousand switches (BleepingComputer)."
     },
     {
      "who": "contrarian",
-     "line": "Then it's a claim, not a finding."
+     "line": "Stolen configs are not an outage."
+    },
+    {
+     "who": "analyst",
+     "line": "They are the step before one. Nobody has said what those credentials unlock."
+    },
+    {
+     "who": "contrarian",
+     "line": "Then say that, instead of letting 'nearly 1,000 devices' sound like impact."
+    },
+    {
+     "who": "analyst",
+     "line": "Fair. Reconnaissance, not impact. Still worth rotating credentials this week."
+    }
+   ]
+  },
+  {
+   "between": [
+    "wideangle",
+    "contrarian"
+   ],
+   "lines": [
+    {
+     "who": "wideangle",
+     "line": "Binance lost six billion to a fake job interview (BleepingComputer). The week's real lesson is supply chain."
+    },
+    {
+     "who": "contrarian",
+     "line": "A crypto exchange is not a substation."
+    },
+    {
+     "who": "wideangle",
+     "line": "France's blood service was reached through its refrigeration provider (BleepingComputer). That is a substation's vendor path."
+    },
+    {
+     "who": "contrarian",
+     "line": "And safeguards held, no stock lost (The Register). The coverage buries that."
+    },
+    {
+     "who": "wideangle",
+     "line": "Both true. Vendor path reached the controls; process protection worked."
+    },
+    {
+     "who": "contrarian",
+     "line": "Then the headline should be the safeguard, not the temperature."
+    }
+   ]
+  },
+  {
+   "between": [
+    "critic",
+    "wideangle"
+   ],
+   "lines": [
+    {
+     "who": "critic",
+     "line": "Industrial Cyber gave us six stories. Three were vendor announcements."
+    },
+    {
+     "who": "wideangle",
+     "line": "Crytica, Dispel, and the AI-readiness feature. I read them for who is selling to whom."
+    },
+    {
+     "who": "critic",
+     "line": "Project Lifeline 250 is White House-backed, which is the part that makes it news (Industrial Cyber)."
+    },
+    {
+     "who": "wideangle",
+     "line": "And the foreign grid-component ban is the policy story nobody in cyber press picked up (Utility Dive)."
+    },
+    {
+     "who": "critic",
+     "line": "Because Utility Dive is utility trade press, and it frames the ban as cost."
+    },
+    {
+     "who": "wideangle",
+     "line": "It is also supply-chain security by another name. Both framings are true."
     }
    ]
   }
  ],
- "generated_at": "2026-11-04T22:53:44.125171+00:00",
- "news_generated_at": "2026-11-04T22:50:48.455104+00:00",
- "model": "fallback-headlines",
+ "generated_at": "2026-11-04T23:07:43.271471+00:00",
+ "news_generated_at": "2026-11-04T23:06:01.498260+00:00",
+ "model": "curated-by-claude-fable-5.1 (session run)",
  "counts": {
-  "energy": 6,
+  "energy": 16,
   "wide": 60
  },
  "top_stories": [
+  {
+   "title": "Zyxel fixes zero-day exploited to hack nearly 1,000 network switches",
+   "summary": "Zyxel has patched a zero-day vulnerability in its GS1900 series network switches that hackers exploited to compromise nearly 1,000 devices worldwide and steal configuration files and credentials. [...]",
+   "link": "https://www.bleepingcomputer.com/news/security/zyxel-fixes-zero-day-exploited-to-hack-nearly-1-000-network-switches/",
+   "published": "2026-11-05T01:58:19+00:00",
+   "source": "bleeping",
+   "source_name": "BleepingComputer",
+   "source_type": "tech press",
+   "source_country": "US",
+   "matched": [
+    "network switch"
+   ]
+  },
+  {
+   "title": "Cyberattack disrupts blood storage refrigeration systems in France",
+   "summary": "France's national blood service has confirmed that a cyberattack targeting a refrigeration equipment provider raised temperature and defrost settings at three of its facilities, threatening stored blood products. [...]",
+   "link": "https://www.bleepingcomputer.com/news/security/cyberattack-disrupts-blood-storage-refrigeration-systems-in-france/",
+   "published": "2026-11-04T23:02:56+00:00",
+   "source": "bleeping",
+   "source_name": "BleepingComputer",
+   "source_type": "tech press",
+   "source_country": "US",
+   "matched": [
+    "refrigeration"
+   ]
+  },
   {
    "title": "Electric utilities join industries urging renewal of cybersecurity information-sharing law",
    "summary": "CISA 2015, as the law is often called, provides liability protections for companies sharing cyber threat indicators amongst themselves and with federal agencies. It is set to expire next month.",
@@ -108,6 +270,45 @@
    ]
   },
   {
+   "title": "NCSC Annual Review 2026 warns AI-powered malware could target UK critical infrastructure by 2028",
+   "summary": "The U.K.’s critical national infrastructure should prepare for ransomware attacks involving artificial intelligence-powered malware by 2028, according to... The post NCSC Annual Review 2026 warns AI-powered malware could target UK critical infrastructure by 2028 appeared first on Industrial Cyber .",
+   "link": "https://industrialcyber.co/critical-infrastructure/ncsc-annual-review-2026-warns-ai-powered-malware-could-target-uk-critical-infrastructure-by-2028/",
+   "published": "2026-11-04T15:43:51+00:00",
+   "source": "industrialcyber",
+   "source_name": "Industrial Cyber",
+   "source_type": "trade press",
+   "source_country": "international",
+   "matched": [
+    "critical infrastructure"
+   ]
+  },
+  {
+   "title": "Australia’s CISC sharpens critical infrastructure risk guidance, urges stronger cyber and supply chain controls",
+   "summary": "Australia’s Critical Infrastructure Security Centre (CISC) recently announced that it has published updated Critical Infrastructure Risk Management Program... The post Australia’s CISC sharpens critical infrastructure risk guidance, urges stronger cyber and supply chain controls appeared first on Industrial Cyber .",
+   "link": "https://industrialcyber.co/critical-infrastructure/australias-cisc-sharpens-critical-infrastructure-risk-guidance-urges-stronger-cyber-and-supply-chain-controls/",
+   "published": "2026-11-04T14:12:12+00:00",
+   "source": "industrialcyber",
+   "source_name": "Industrial Cyber",
+   "source_type": "trade press",
+   "source_country": "international",
+   "matched": [
+    "critical infrastructure"
+   ]
+  },
+  {
+   "title": "Crytica Security partners with Carahsoft to expand device-level OT threat detection across US public sector",
+   "summary": "Crytica Security, developer of Rapid Detection, Alert and isolation (RDAi) solution, and Carahsoft Technology Corp. announced a distribution... The post Crytica Security partners with Carahsoft to expand device-level OT threat detection across US public sector appeared first on Industrial Cyber .",
+   "link": "https://industrialcyber.co/news/crytica-security-partners-with-carahsoft-to-expand-device-level-ot-threat-detection-across-us-public-sector/",
+   "published": "2026-11-04T14:00:14+00:00",
+   "source": "industrialcyber",
+   "source_name": "Industrial Cyber",
+   "source_type": "trade press",
+   "source_country": "international",
+   "matched": [
+    "ot threat"
+   ]
+  },
+  {
    "title": "Dispel joins White House-backed Project Lifeline 250 to secure remote access at rural hospitals",
    "summary": "Dispel, a vendor of Secure Remote Access (SRA) for Operational Technology (OT), announced its participation in Project Lifeline... The post Dispel joins White House-backed Project Lifeline 250 to secure remote access at rural hospitals appeared first on Industrial Cyber .",
    "link": "https://industrialcyber.co/news/dispel-joins-white-house-backed-project-lifeline-250-to-secure-remote-access-at-rural-hospitals/",
@@ -118,45 +319,6 @@
    "source_country": "international",
    "matched": [
     "operational technology"
-   ]
-  },
-  {
-   "title": "Industrial AI adoption outpaces security readiness, leaving OT environments exposed to emerging threats",
-   "summary": "AI implementation across OT (operational technology) and ICS (industrial control systems) environments is outpacing security measures that organizations... The post Industrial AI adoption outpaces security readiness, leaving OT environments exposed to emerging threats appeared first on Industrial Cyber .",
-   "link": "https://industrialcyber.co/features/industrial-ai-adoption-outpaces-security-readiness-leaving-ot-environments-exposed-to-emerging-threats/",
-   "published": "2026-11-03T18:39:12+00:00",
-   "source": "industrialcyber",
-   "source_name": "Industrial Cyber",
-   "source_type": "trade press",
-   "source_country": "international",
-   "matched": [
-    "operational technology"
-   ]
-  },
-  {
-   "title": "Attackers Exploit Critical Siemens IoT2050 Flaw to Plant Remote Command Backdoors",
-   "summary": "A maximum-severity security flaw impacting Siemens SIMATIC IoT2050 Advanced devices has come under active exploitation, VulnCheck has revealed. The vulnerability, tracked as CVE-2026-58115 (CVSS score: 10.0), is a case of missing authentication for a critical function that could be exploited by an unauthenticated remote attacker to run arbitrary code. \"SIMATIC IoT2050 Advanced devices running",
-   "link": "https://thehackernews.com/2026/11/attackers-exploit-critical-siemens.html",
-   "published": "2026-11-03T10:34:41+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international",
-   "matched": [
-    "siemens"
-   ]
-  },
-  {
-   "title": "Nuclear threats and street brawls: Russia, Ukraine report attacks on their emergency alert apps",
-   "summary": "Within minutes of a ceasefire lifting in Kherson, Ukraine’s citizens were pummelled with threatening notifications",
-   "link": "https://www.theregister.com/security/2026/11/02/nuclear-threats-and-street-brawls-russia-ukraine-report-attacks-on-their-emergency-alert-apps/5306901",
-   "published": "2026-11-02T19:45:00+00:00",
-   "source": "register",
-   "source_name": "The Register Security",
-   "source_type": "tech press",
-   "source_country": "UK",
-   "matched": [
-    "nuclear"
    ]
   }
  ]

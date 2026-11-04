@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-04T22:50:48.455104+00:00",
- "window_hours": 72,
+ "generated_at": "2026-11-04T23:06:01.498260+00:00",
+ "window_hours": 168,
  "sources": [
   {
    "id": "cisa",
@@ -113,6 +113,32 @@
  ],
  "energy": [
   {
+   "title": "Zyxel fixes zero-day exploited to hack nearly 1,000 network switches",
+   "summary": "Zyxel has patched a zero-day vulnerability in its GS1900 series network switches that hackers exploited to compromise nearly 1,000 devices worldwide and steal configuration files and credentials. [...]",
+   "link": "https://www.bleepingcomputer.com/news/security/zyxel-fixes-zero-day-exploited-to-hack-nearly-1-000-network-switches/",
+   "published": "2026-11-05T01:58:19+00:00",
+   "source": "bleeping",
+   "source_name": "BleepingComputer",
+   "source_type": "tech press",
+   "source_country": "US",
+   "matched": [
+    "network switch"
+   ]
+  },
+  {
+   "title": "Cyberattack disrupts blood storage refrigeration systems in France",
+   "summary": "France's national blood service has confirmed that a cyberattack targeting a refrigeration equipment provider raised temperature and defrost settings at three of its facilities, threatening stored blood products. [...]",
+   "link": "https://www.bleepingcomputer.com/news/security/cyberattack-disrupts-blood-storage-refrigeration-systems-in-france/",
+   "published": "2026-11-04T23:02:56+00:00",
+   "source": "bleeping",
+   "source_name": "BleepingComputer",
+   "source_type": "tech press",
+   "source_country": "US",
+   "matched": [
+    "refrigeration"
+   ]
+  },
+  {
    "title": "Electric utilities join industries urging renewal of cybersecurity information-sharing law",
    "summary": "CISA 2015, as the law is often called, provides liability protections for companies sharing cyber threat indicators amongst themselves and with federal agencies. It is set to expire next month.",
    "link": "https://www.utilitydive.com/news/electric-utilities-join-industries-urging-renewal-of-cybersecurity-informat/873703/",
@@ -140,6 +166,45 @@
    ]
   },
   {
+   "title": "NCSC Annual Review 2026 warns AI-powered malware could target UK critical infrastructure by 2028",
+   "summary": "The U.K.’s critical national infrastructure should prepare for ransomware attacks involving artificial intelligence-powered malware by 2028, according to... The post NCSC Annual Review 2026 warns AI-powered malware could target UK critical infrastructure by 2028 appeared first on Industrial Cyber .",
+   "link": "https://industrialcyber.co/critical-infrastructure/ncsc-annual-review-2026-warns-ai-powered-malware-could-target-uk-critical-infrastructure-by-2028/",
+   "published": "2026-11-04T15:43:51+00:00",
+   "source": "industrialcyber",
+   "source_name": "Industrial Cyber",
+   "source_type": "trade press",
+   "source_country": "international",
+   "matched": [
+    "critical infrastructure"
+   ]
+  },
+  {
+   "title": "Australia’s CISC sharpens critical infrastructure risk guidance, urges stronger cyber and supply chain controls",
+   "summary": "Australia’s Critical Infrastructure Security Centre (CISC) recently announced that it has published updated Critical Infrastructure Risk Management Program... The post Australia’s CISC sharpens critical infrastructure risk guidance, urges stronger cyber and supply chain controls appeared first on Industrial Cyber .",
+   "link": "https://industrialcyber.co/critical-infrastructure/australias-cisc-sharpens-critical-infrastructure-risk-guidance-urges-stronger-cyber-and-supply-chain-controls/",
+   "published": "2026-11-04T14:12:12+00:00",
+   "source": "industrialcyber",
+   "source_name": "Industrial Cyber",
+   "source_type": "trade press",
+   "source_country": "international",
+   "matched": [
+    "critical infrastructure"
+   ]
+  },
+  {
+   "title": "Crytica Security partners with Carahsoft to expand device-level OT threat detection across US public sector",
+   "summary": "Crytica Security, developer of Rapid Detection, Alert and isolation (RDAi) solution, and Carahsoft Technology Corp. announced a distribution... The post Crytica Security partners with Carahsoft to expand device-level OT threat detection across US public sector appeared first on Industrial Cyber .",
+   "link": "https://industrialcyber.co/news/crytica-security-partners-with-carahsoft-to-expand-device-level-ot-threat-detection-across-us-public-sector/",
+   "published": "2026-11-04T14:00:14+00:00",
+   "source": "industrialcyber",
+   "source_name": "Industrial Cyber",
+   "source_type": "trade press",
+   "source_country": "international",
+   "matched": [
+    "ot threat"
+   ]
+  },
+  {
    "title": "Dispel joins White House-backed Project Lifeline 250 to secure remote access at rural hospitals",
    "summary": "Dispel, a vendor of Secure Remote Access (SRA) for Operational Technology (OT), announced its participation in Project Lifeline... The post Dispel joins White House-backed Project Lifeline 250 to secure remote access at rural hospitals appeared first on Industrial Cyber .",
    "link": "https://industrialcyber.co/news/dispel-joins-white-house-backed-project-lifeline-250-to-secure-remote-access-at-rural-hospitals/",
@@ -153,6 +218,19 @@
    ]
   },
   {
+   "title": "Fresh European Fridge Attacks Put Cold-Chain Security in Focus",
+   "summary": "Beyond food storage, the same combination of Internet connectivity, remote access, and inadequate security practices can put temperature-controlled infrastructure across other critical sectors at risk.",
+   "link": "https://www.darkreading.com/ics-ot-security/fresh-european-fridge-attacks-cold-chain-security",
+   "published": "2026-11-04T03:16:49+00:00",
+   "source": "darkreading",
+   "source_name": "Dark Reading",
+   "source_type": "trade press",
+   "source_country": "US",
+   "matched": [
+    "cold-chain"
+   ]
+  },
+  {
    "title": "Industrial AI adoption outpaces security readiness, leaving OT environments exposed to emerging threats",
    "summary": "AI implementation across OT (operational technology) and ICS (industrial control systems) environments is outpacing security measures that organizations... The post Industrial AI adoption outpaces security readiness, leaving OT environments exposed to emerging threats appeared first on Industrial Cyber .",
    "link": "https://industrialcyber.co/features/industrial-ai-adoption-outpaces-security-readiness-leaving-ot-environments-exposed-to-emerging-threats/",
@@ -162,7 +240,62 @@
    "source_type": "trade press",
    "source_country": "international",
    "matched": [
-    "operational technology"
+    "operational technology",
+    "industrial control",
+    "ot environment"
+   ]
+  },
+  {
+   "title": "CISA urges critical infrastructure owners to prioritize OT security, operational continuity, recovery planning in 2026 campaign",
+   "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) launched on Monday its 2026 Critical Infrastructure Security and Resilience... The post CISA urges critical infrastructure owners to prioritize OT security, operational continuity, recovery planning in 2026 campaign appeared first on Industrial Cyber .",
+   "link": "https://industrialcyber.co/cisa/cisa-urges-critical-infrastructure-owners-to-prioritize-ot-security-operational-continuity-recovery-planning-in-2026-campaign/",
+   "published": "2026-11-03T18:09:58+00:00",
+   "source": "industrialcyber",
+   "source_name": "Industrial Cyber",
+   "source_type": "trade press",
+   "source_country": "international",
+   "matched": [
+    "critical infrastructure",
+    "ot security"
+   ]
+  },
+  {
+   "title": "Britain on notice: AI-powered ransomware attacks to arrive by 2028",
+   "summary": "Cyber agency warns critical infrastructure is a likely target as chief urges bosses to stop doing 'tech on the cheap'",
+   "link": "https://www.theregister.com/security/2026/11/03/britain-on-notice-ai-powered-ransomware-attacks-to-arrive-by-2028/5307200",
+   "published": "2026-11-03T17:39:25+00:00",
+   "source": "register",
+   "source_name": "The Register Security",
+   "source_type": "tech press",
+   "source_country": "UK",
+   "matched": [
+    "critical infrastructure"
+   ]
+  },
+  {
+   "title": "Cyber chief: UK facing AI-powered attacks on critical infrastructure within two years",
+   "summary": "The NCSC warns that ‘tech on the cheap’ has left UK organisations exposed to AI uncovering and exploiting longstanding cyber security weaknesses and calls for urgent investment in resilience.",
+   "link": "https://www.ncsc.gov.uk/news/cyber-chief-uk-facing-ai-powered-attacks-on-critical-infrastructure-in-two-years",
+   "published": "2026-11-03T17:00:00+00:00",
+   "source": "ncsc-uk",
+   "source_name": "UK NCSC News",
+   "source_type": "government",
+   "source_country": "UK",
+   "matched": [
+    "critical infrastructure"
+   ]
+  },
+  {
+   "title": "New Wave of Refrigeration Cyberattacks Hits Supermarkets Across Europe, Forcing Stores to Pull Food",
+   "summary": "Attackers remotely changed the settings on refrigeration controls at supermarkets in Belgium, Sweden, Estonia and other European countries overnight into Monday, November 2, warming fridges and freezers. No chain reported more than several dozen affected stores, and some had to throw away chilled and frozen food or take it off the shelf. Danfoss, a Danish maker of refrigeration controls,",
+   "link": "https://thehackernews.com/2026/11/second-wave-of-cyberattacks-hits.html",
+   "published": "2026-11-03T12:27:07+00:00",
+   "source": "hackernews",
+   "source_name": "The Hacker News",
+   "source_type": "tech press",
+   "source_country": "international",
+   "matched": [
+    "refrigeration"
    ]
   },
   {
@@ -234,16 +367,6 @@
    "source_country": "US"
   },
   {
-   "title": "Zyxel fixes zero-day exploited to hack nearly 1,000 network switches",
-   "summary": "Zyxel has patched a zero-day vulnerability in its GS1900 series network switches that hackers exploited to compromise nearly 1,000 devices worldwide and steal configuration files and credentials. [...]",
-   "link": "https://www.bleepingcomputer.com/news/security/zyxel-fixes-zero-day-exploited-to-hack-nearly-1-000-network-switches/",
-   "published": "2026-11-05T01:58:19+00:00",
-   "source": "bleeping",
-   "source_name": "BleepingComputer",
-   "source_type": "tech press",
-   "source_country": "US"
-  },
-  {
    "title": "Officials extradite Canadian man to US for alleged cryptomining spree",
    "summary": "Ryan Roach and his alleged co-conspirator, Mathiew Stubbings, are accused of compromising U.S. universities’ computers and taking over processing power to mine for cryptocurrency. The post Officials extradite Canadian man to US for alleged cryptomining spree appeared first on CyberScoop .",
    "link": "https://cyberscoop.com/canadian-extradited-cryptomining-universities/",
@@ -281,16 +404,6 @@
    "source": "therecord",
    "source_name": "The Record (Recorded Future News)",
    "source_type": "vendor-owned press",
-   "source_country": "US"
-  },
-  {
-   "title": "Cyberattack disrupts blood storage refrigeration systems in France",
-   "summary": "France's national blood service has confirmed that a cyberattack targeting a refrigeration equipment provider raised temperature and defrost settings at three of its facilities, threatening stored blood products. [...]",
-   "link": "https://www.bleepingcomputer.com/news/security/cyberattack-disrupts-blood-storage-refrigeration-systems-in-france/",
-   "published": "2026-11-04T23:02:56+00:00",
-   "source": "bleeping",
-   "source_name": "BleepingComputer",
-   "source_type": "tech press",
    "source_country": "US"
   },
   {
@@ -564,16 +677,6 @@
    "source_country": "US"
   },
   {
-   "title": "NCSC Annual Review 2026 warns AI-powered malware could target UK critical infrastructure by 2028",
-   "summary": "The U.K.’s critical national infrastructure should prepare for ransomware attacks involving artificial intelligence-powered malware by 2028, according to... The post NCSC Annual Review 2026 warns AI-powered malware could target UK critical infrastructure by 2028 appeared first on Industrial Cyber .",
-   "link": "https://industrialcyber.co/critical-infrastructure/ncsc-annual-review-2026-warns-ai-powered-malware-could-target-uk-critical-infrastructure-by-2028/",
-   "published": "2026-11-04T15:43:51+00:00",
-   "source": "industrialcyber",
-   "source_name": "Industrial Cyber",
-   "source_type": "trade press",
-   "source_country": "international"
-  },
-  {
    "title": "Chrome 157 Rolls Out With 213 Security Fixes, Seven Rated Critical",
    "summary": "The browser update resolves dozens of memory safety bugs and incorrect/missing authorization issues. The post Chrome 157 Rolls Out With 213 Security Fixes, Seven Rated Critical appeared first on SecurityWeek .",
    "link": "https://www.securityweek.com/chrome-157-rolls-out-with-213-security-fixes-seven-rated-critical/",
@@ -614,30 +717,10 @@
    "source_country": "US"
   },
   {
-   "title": "Australia’s CISC sharpens critical infrastructure risk guidance, urges stronger cyber and supply chain controls",
-   "summary": "Australia’s Critical Infrastructure Security Centre (CISC) recently announced that it has published updated Critical Infrastructure Risk Management Program... The post Australia’s CISC sharpens critical infrastructure risk guidance, urges stronger cyber and supply chain controls appeared first on Industrial Cyber .",
-   "link": "https://industrialcyber.co/critical-infrastructure/australias-cisc-sharpens-critical-infrastructure-risk-guidance-urges-stronger-cyber-and-supply-chain-controls/",
-   "published": "2026-11-04T14:12:12+00:00",
-   "source": "industrialcyber",
-   "source_name": "Industrial Cyber",
-   "source_type": "trade press",
-   "source_country": "international"
-  },
-  {
    "title": "ESET uncovers Gorbag cyberespionage campaign targeting Ukraine’s administrations, defense sector, transportation hub",
    "summary": "New research from ESET identified a previously underreported Russia-aligned threat actor, tracked as Gorbag, conducting targeted cyberespionage operations... The post ESET uncovers Gorbag cyberespionage campaign targeting Ukraine’s administrations, defense sector, transportation hub appeared first on Industrial Cyber .",
    "link": "https://industrialcyber.co/ransomware/eset-uncovers-gorbag-cyberespionage-campaign-targeting-ukraines-administrations-defense-sector-transportation-hub/",
    "published": "2026-11-04T14:04:05+00:00",
-   "source": "industrialcyber",
-   "source_name": "Industrial Cyber",
-   "source_type": "trade press",
-   "source_country": "international"
-  },
-  {
-   "title": "Crytica Security partners with Carahsoft to expand device-level OT threat detection across US public sector",
-   "summary": "Crytica Security, developer of Rapid Detection, Alert and isolation (RDAi) solution, and Carahsoft Technology Corp. announced a distribution... The post Crytica Security partners with Carahsoft to expand device-level OT threat detection across US public sector appeared first on Industrial Cyber .",
-   "link": "https://industrialcyber.co/news/crytica-security-partners-with-carahsoft-to-expand-device-level-ot-threat-detection-across-us-public-sector/",
-   "published": "2026-11-04T14:00:14+00:00",
    "source": "industrialcyber",
    "source_name": "Industrial Cyber",
    "source_type": "trade press",
@@ -714,16 +797,6 @@
    "source_country": "US"
   },
   {
-   "title": "Fresh European Fridge Attacks Put Cold-Chain Security in Focus",
-   "summary": "Beyond food storage, the same combination of Internet connectivity, remote access, and inadequate security practices can put temperature-controlled infrastructure across other critical sectors at risk.",
-   "link": "https://www.darkreading.com/ics-ot-security/fresh-european-fridge-attacks-cold-chain-security",
-   "published": "2026-11-04T03:16:49+00:00",
-   "source": "darkreading",
-   "source_name": "Dark Reading",
-   "source_type": "trade press",
-   "source_country": "US"
-  },
-  {
    "title": "North Korean fake job interview led to $6.3B Binance heist",
    "summary": "'It was not a single isolated breach or a simple phishing incident,' exchange says",
    "link": "https://www.theregister.com/security/2026/11/03/north-korean-fake-job-interview-led-to-63b-binance-heist/5307398",
@@ -792,6 +865,66 @@
    "source_name": "CyberScoop",
    "source_type": "trade press",
    "source_country": "US"
+  },
+  {
+   "title": "Google: LLMjacking attacks rack up $1 million in cloud AI charges",
+   "summary": "Large language model hijacking attacks, also known as LLMjacking, are generating large fraudulent cloud charges, with some organizations losing more than $100,000 per day. [...]",
+   "link": "https://www.bleepingcomputer.com/news/security/google-llmjacking-attacks-rack-up-1-million-in-cloud-ai-charges/",
+   "published": "2026-11-03T23:51:04+00:00",
+   "source": "bleeping",
+   "source_name": "BleepingComputer",
+   "source_type": "tech press",
+   "source_country": "US"
+  },
+  {
+   "title": "mSecure Warns Users to Change Passwords, Reset 2FA and Passkeys After Suspicious Activity",
+   "summary": "Customers of the mSecure password manager are being urged to act now to protect the confidential information they store in it, possibly by changing passwords, resetting two-factor authentication (2FA), and removing passkeys. The warning came in an email sent on November 3 in the name of developer mSeven Software. It says the company recently learned of suspicious activity linked to the app but",
+   "link": "https://thehackernews.com/2026/11/msecure-warns-users-to-change-passwords.html",
+   "published": "2026-11-03T23:46:38+00:00",
+   "source": "hackernews",
+   "source_name": "The Hacker News",
+   "source_type": "tech press",
+   "source_country": "international"
+  },
+  {
+   "title": "Chainstack Reports Production Systems Breach Exposing Customer Data and Password Hashes",
+   "summary": "Blockchain infrastructure provider Chainstack on Tuesday disclosed that it was targeted in a cyber attack that allowed an unauthorized party to gain access to some parts of its infrastructure. The incident is assessed to be part of a large-scale, artificial intelligence (AI)-powered attack campaign that came to light last week. \"An external attacker gained unauthorized access to part of",
+   "link": "https://thehackernews.com/2026/11/chainstack-reports-production-systems.html",
+   "published": "2026-11-03T23:16:19+00:00",
+   "source": "hackernews",
+   "source_name": "The Hacker News",
+   "source_type": "tech press",
+   "source_country": "international"
+  },
+  {
+   "title": "Europol dismantles investment scheme that impacted potential victims in 50 countries",
+   "summary": "Authorities seized more than 100 servers and searched locations linked to the alleged operation across 17 countries. The post Europol dismantles investment scheme that impacted potential victims in 50 countries appeared first on CyberScoop .",
+   "link": "https://cyberscoop.com/europol-investment-scam-takedown/",
+   "published": "2026-11-03T22:02:27+00:00",
+   "source": "cyberscoop",
+   "source_name": "CyberScoop",
+   "source_type": "trade press",
+   "source_country": "US"
+  },
+  {
+   "title": "The Senate permitting bill holds promise but needs amendments",
+   "summary": "Targeted changes can minimize the most negative consequences of the permitting bill’s overreaching provisions, writes former FERC Chairman Mark Christie.",
+   "link": "https://www.utilitydive.com/news/senate-permitting-bill-holds-promise-needs-amendments/873419/",
+   "published": "2026-11-03T22:00:00+00:00",
+   "source": "utilitydive",
+   "source_name": "Utility Dive",
+   "source_type": "industry press",
+   "source_country": "US"
+  },
+  {
+   "title": "Binance Reveals How Fake Job Interviews and AI Tool Abuse Led to $6.43 Billion Theft",
+   "summary": "Binance on Tuesday said the record-setting theft of $6.43 billion in assets from the world's largest cryptocurrency exchange was the culmination of a \"sophisticated, multi-stage campaign\" that involved the use of a tampered Homebrew installation and recruitment-themed social engineering attack targeting two of its engineers. \"It was not a single isolated breach or a simple phishing incident,\"",
+   "link": "https://thehackernews.com/2026/11/binance-reveals-how-fake-job-interviews.html",
+   "published": "2026-11-03T21:55:58+00:00",
+   "source": "hackernews",
+   "source_name": "The Hacker News",
+   "source_type": "tech press",
+   "source_country": "international"
   }
  ]
 }
