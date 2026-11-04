@@ -13,6 +13,8 @@ let selected = null;
 let bubbles = [];                      // {agent, text, until}
 let convo = null;                      // running overheard conversation
 let t0 = performance.now();
+let chatter = true, convoIdx = -1, nextConvoAt = 1500;
+const MEETING_SPOTS = [{ x: 480, y: 330 }, { x: 300, y: 250 }, { x: 660, y: 250 }, { x: 200, y: 300 }, { x: 760, y: 300 }, { x: 480, y: 240 }];
 
 // ---------------------------------------------------------------- buildings
 const BUILDINGS = [
@@ -120,34 +122,38 @@ function update(dt) {
     a.x += dx / d * v; a.y += dy / d * v; a.facing = dx >= 0 ? 1 : -1;
     a.frame += dt / 180;
   }
-  // overheard conversations: when a pair is close, play their dialogue
+  // overheard conversations: continuous. When one ends, the next pair meets somewhere else.
   const now = performance.now();
   bubbles = bubbles.filter(b => b.until > now);
-  if (!convo && briefing && briefing.conversations.length && Math.random() < 0.004) {
-    const c = briefing.conversations[Math.floor(Math.random() * briefing.conversations.length)];
+  if (chatter && !convo && briefing && briefing.conversations.length && now >= nextConvoAt) {
+    const pool = briefing.conversations;
+    convoIdx = (convoIdx + 1) % pool.length;
+    const c = pool[convoIdx];
     const A = agents.find(a => a.p.id === c.between[0]), B = agents.find(a => a.p.id === c.between[1]);
     if (A && B && A !== selected && B !== selected) {
-      // walk them toward each other in the plaza
-      const mx = PLAZA.x + PLAZA.w / 2, my = PLAZA.y + 30;
-      A.tx = mx - 40; A.ty = my; A.state = 'walk'; B.tx = mx + 20; B.ty = my; B.state = 'walk';
+      const spot = MEETING_SPOTS[Math.floor(Math.random() * MEETING_SPOTS.length)];
+      A.tx = spot.x - 40; A.ty = spot.y; A.state = 'walk'; B.tx = spot.x + 20; B.ty = spot.y; B.state = 'walk';
       convo = { c, A, B, i: 0, next: now + 2500 };
-    }
+    } else nextConvoAt = now + 1500;
   }
   if (convo) {
     if (now >= convo.next) {
       const line = convo.c.lines[convo.i];
-      if (!line) { convo = null; }
+      if (!line) { convo = null; nextConvoAt = now + 2500; maybeGenerateLive(); }
       else {
         const who = agents.find(a => a.p.id === line.who) || convo.A;
-        bubbles.push({ agent: who, text: line.line, until: now + 4200 });
-        convo.i++; convo.next = now + 4400;
+        who.facing = who === convo.A ? 1 : -1;
+        bubbles = bubbles.filter(b => b.agent !== who);
+        bubbles.push({ agent: who, text: line.line, until: now + 4600 });
+        logLine(who.p, line.line);
+        convo.i++; convo.next = now + 4800;
       }
     }
   } else if (Math.random() < 0.0015 && briefing) {
     // solitary mutterings from the daily briefing
     const a = agents[Math.floor(Math.random() * agents.length)];
     const b = briefing.agents[a.p.id];
-    if (b && b.bubble && !bubbles.some(x => x.agent === a)) bubbles.push({ agent: a, text: b.bubble, until: now + 3500 });
+    if (b && b.bubble && !bubbles.some(x => x.agent === a)) { bubbles.push({ agent: a, text: b.bubble, until: now + 3500 }); logLine(a.p, b.bubble); }
   }
 }
 
@@ -188,6 +194,34 @@ function render() {
 let last = performance.now();
 function loop(now) { const dt = Math.min(50, now - last); last = now; update(dt); render(); requestAnimationFrame(loop); }
 
+// ---------------------------------------------------------------- transcript + live chatter
+const logEl = document.getElementById('log');
+function logLine(p, text) {
+  const d = document.createElement('div'); d.className = 'logline';
+  const n = document.createElement('b'); n.style.color = p.color; n.textContent = p.name.split(' ')[0] + ' ';
+  d.appendChild(n); d.appendChild(document.createTextNode(text)); logEl.appendChild(d);
+  while (logEl.children.length > 300) logEl.removeChild(logEl.firstChild);
+  logEl.scrollTop = logEl.scrollHeight;
+}
+let generating = false;
+async function maybeGenerateLive() {
+  if (!isLive() || generating || !personas) return;
+  generating = true;
+  try {
+    const ids = personas.agents.map(a => a.id);
+    const x = ids[Math.floor(Math.random() * ids.length)]; let y = ids[Math.floor(Math.random() * ids.length)]; if (y === x) y = ids[(ids.indexOf(x) + 1) % ids.length];
+    const ax = personas.agents.find(a => a.id === x), ay = personas.agents.find(a => a.id === y);
+    const recent = [...logEl.children].slice(-12).map(e => e.textContent).join('\n');
+    const sys = `You write a short dialogue between two residents of a town about today's energy-cyber news. Resident A: ${ax.name}, ${ax.role}. ${ax.job} Voice: ${ax.voice}\nResident B: ${ay.name}, ${ay.role}. ${ay.job} Voice: ${ay.voice}\n${personas.shared_rules} They should disagree or sharpen each other and NOT repeat what was already said. Output ONLY a JSON array of 6 objects {"who": "${x}" or "${y}", "line": "..."}, each line under 30 words, alternating speakers starting with ${x}.`;
+    const user = `TODAY'S NEWS BUNDLE:\n${newsContext()}\n\nRECENTLY SAID IN TOWN:\n${recent}`;
+    const txt = await callRaw(sys, user, 900);
+    const m = txt.match(/\[[\s\S]*\]/); const lines = m ? JSON.parse(m[0]) : [];
+    if (lines.length) { briefing.conversations.push({ between: [x, y], lines, live: true }); if (briefing.conversations.length > 24) briefing.conversations.splice(0, 1); }
+  } catch (e) { console.warn('live chatter failed', e.message); }
+  finally { generating = false; }
+}
+document.getElementById('btn-chatter').onclick = ev => { chatter = !chatter; ev.target.textContent = chatter ? 'Chatter: on' : 'Chatter: off'; };
+
 // ---------------------------------------------------------------- interaction
 cv.addEventListener('click', ev => {
   const r = cv.getBoundingClientRect();
@@ -202,6 +236,7 @@ function addMsg(text, cls) { const d = document.createElement('div'); d.classNam
 
 function select(a) {
   selected = a; a.state = 'idle'; a.wait = 99999;
+  if (convo && (convo.A === a || convo.B === a)) { convo = null; nextConvoAt = performance.now() + 2000; }
   panel.hidden = false;
   $('p-name').textContent = a.p.name; $('p-role').textContent = a.p.role + ' · ' + a.p.building;
   $('p-job').textContent = a.p.job;
@@ -238,17 +273,19 @@ function newsContext() {
 function systemFor(p) { return `You are ${p.name}, ${p.role} of the town. ${p.job} Voice: ${p.voice}\n${personas.shared_rules}`; }
 
 async function callModel(p, question) {
+  return callRaw(systemFor(p), `TODAY'S NEWS BUNDLE:\n${newsContext()}\n\nA visitor asks you: "${question}" Answer in your voice, 3 to 7 sentences, naming sources.`, 600);
+}
+async function callRaw(system, user, max_tokens) {
   const c = cfg.get(), model = c.model || 'claude-sonnet-5-5';
-  const user = `TODAY'S NEWS BUNDLE:\n${newsContext()}\n\nA visitor asks you: "${question}" Answer in your voice, 3 to 7 sentences, naming sources.`;
   if (c.proxy) {
     const r = await fetch(c.proxy, { method: 'POST', headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ model, messages: [{ role: 'system', content: systemFor(p) }, { role: 'user', content: user }], max_tokens: 600 }) });
+      body: JSON.stringify({ model, messages: [{ role: 'system', content: system }, { role: 'user', content: user }], max_tokens }) });
     if (!r.ok) throw new Error('proxy ' + r.status + ': ' + (await r.text()).slice(0, 200));
     const j = await r.json(); return j.choices[0].message.content;
   }
   const r = await fetch('https://api.anthropic.com/v1/messages', { method: 'POST',
     headers: { 'content-type': 'application/json', 'x-api-key': c.key, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
-    body: JSON.stringify({ model, max_tokens: 600, system: systemFor(p), messages: [{ role: 'user', content: user }] }) });
+    body: JSON.stringify({ model, max_tokens, system, messages: [{ role: 'user', content: user }] }) });
   if (!r.ok) throw new Error('anthropic ' + r.status + ': ' + (await r.text()).slice(0, 200));
   const j = await r.json(); return j.content.filter(b => b.type === 'text').map(b => b.text).join('');
 }
