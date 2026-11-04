@@ -24,5 +24,15 @@ You do not need an Anthropic API key: you are the model. Follow these steps exac
 4. Rules that override everything: never invent incidents, numbers, victims or attributions;
    legal claims need a primary document or get labelled [unverified]; vendor intel is
    attributed by name and flagged; say "I cannot verify this" instead of guessing.
-5. `python scripts/validate.py` must pass. Then commit `docs/data` with message
+5. `python scripts/pull_sources.py` pulls the direct source behind every item plus any
+   primary document (government, regulator, vendor advisory, victim statement) linked from
+   it, into `docs/data/sources.json`. Read the excerpts. Then do the second verification:
+   for each item, copy what the outlet says next to what the primary says and record
+   `verification.crosschecks[<headline>] = {compared, agree, differ, verdict}`. Correct the
+   item where the primary disagrees with the outlet (CVE ids, counts, named vendors,
+   hedged language such as "highly likely" that a headline dropped). If a page is blocked
+   (HTTP 403) say "I cannot verify this" in the cross-check.
+6. Keep `rubric` in the briefing: importance (severity) and correctness (trust +
+   Verifier) are separate columns; never let one stand in for the other.
+7. `python scripts/validate.py` must pass. Then commit `docs/data` with message
    `briefing: <UTC date and hour>` and push to main.

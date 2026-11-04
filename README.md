@@ -69,6 +69,16 @@ Two companion files for using the same rigor in a Claude Project:
 `docs/claude-project-instructions.md` (paste as Project instructions) and
 `docs/energy-cyber-source-registry.md` (tiered registry, upload to Project knowledge).
 
+## Pull the direct source, then verify one against the other
+
+`scripts/pull_sources.py` fetches every source URL behind every board item, keeps the
+sentences that match the item, and follows links to primary documents (CISA, FERC, NERC,
+TSA, vendor advisories, victim statements). The board shows the pulled excerpts under
+"Direct source" and the Verifier's cross-check ("Agree / Differ / verdict") next to each
+item. The board's rubric keeps **importance** (severity) and **correctness** (source tier,
+corroboration, Verifier verdict) as separate columns, so a critical-but-single-source item
+and a confirmed-but-minor one are never confused.
+
 ## Adding a source
 
 Add it to `sources.json` with a `bias_note`. The Media Critic reads those notes; a source

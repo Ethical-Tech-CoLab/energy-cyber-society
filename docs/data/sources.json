@@ -1,0 +1,290 @@
+{
+ "pulled_at": "2026-11-04T23:49:48.209229+00:00",
+ "items": {
+  "Siemens SIMATIC IoT2050 Advanced: CVSS 10 missing-authentication flaw exploited in the wild": {
+   "sources": [
+    {
+     "name": "The Hacker News (relaying VulnCheck)",
+     "url": "https://thehackernews.com/2026/11/attackers-exploit-critical-siemens.html",
+     "status": 200,
+     "chars": 7320,
+     "excerpts": [
+      "Attackers Exploit Critical Siemens IoT2050 Flaw to Plant Remote Command Backdoors --> Attackers Exploit Critical Siemens IoT2050 Flaw to Plant Remote Command Backdoors  Ravie Lakshmanan  Nov 03, 2026 Vulnerability / Cyber Attack A maximum-severity security flaw impacting Siemens SIMATIC IoT2050 Advanced devices has come under active exploitation, VulnCheck has revealed .",
+      "\"SIMATIC IoT2050 Advanced devices running Industrial OS with Node-RED installed contain a missing authentication vulnerability in the Node-RED HTTP interface that could allow an unauthenticated remote attacker to create malicious flows and execute arbitrary code on the underlying server with maximum privileges,\" Siemens said in an advisory released back in August 2026.",
+      "The vulnerability, tracked as CVE-2026-58115 (CVSS score: 10.0), is a case of missing authentication for a critical function that could be exploited by an unauthenticated remote attacker to run arbitrary code."
+     ]
+    }
+   ],
+   "primary": [
+    {
+     "url": "https://www.vulncheck.com/blog/exploitation-targeting-node-red",
+     "status": 200,
+     "chars": 11788,
+     "excerpts": [
+      "This CVE was assigned by Siemens and affects the SIMATIC IoT2050 Advance, which shows the software is embedded in commercial ICS/OT products.",
+      "CVE-2026-58115 allows unauthenticated access to programming nodes that are capable of executing system commands on the server.",
+      "We’re going to continue to deliver key insights on vulnerability management, exploitation and major trends we can extrapolate from our dataset to continuously support practitioners.",
+      "If so, VulnCheck's Exploit & Vulnerability Intelligence has broad threat actor coverage.",
+      "Explore VulnCheck, a next-generation Cyber Threat Intelligence platform, which provides exploit and vulnerability intelligence to help you prioritize and remediate vulnerabilities that matter."
+     ],
+     "found_in": "The Hacker News (relaying VulnCheck)"
+    }
+   ]
+  },
+  "Zyxel GS1900 switch zero-day used to compromise nearly 1,000 devices and steal configs and credentials": {
+   "sources": [
+    {
+     "name": "BleepingComputer",
+     "url": "https://www.bleepingcomputer.com/news/security/zyxel-fixes-zero-day-exploited-to-hack-nearly-1-000-network-switches/",
+     "status": 200,
+     "chars": 6358,
+     "excerpts": [
+      "Administrators of affected Zyxel GS1900 switches are advised to install the latest firmware updates to protect against CVE-2026-107441.",
+      "The flaw affects ten GS1900 switch models, and Zyxel released security updates on October 22 and published a security advisory on November 3.",
+      "Attacks linked to zero-day flaw On June 16, 2026, Zyxel released security updates addressing CVE-2026-7273, a pre-authentication buffer overflow vulnerability affecting the same GS1900 switches.",
+      "However, the vulnerability was initially mistaken for an older flaw that Zyxel had already patched months before the attacks began.",
+      "Starting around August 17, cybersecurity company GreyNoise observed a suspected Chinese-speaking threat actor tracked as Kapibala exploiting Zyxel switches, reporting that the attackers compromised 996 devices across 48 countries."
+     ]
+    },
+    {
+     "name": "Zyxel security advisory (vendor, primary)",
+     "url": "https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-out-of-bound",
+     "status": 200,
+     "chars": 2028,
+     "excerpts": []
+    }
+   ],
+   "primary": [
+    {
+     "url": "https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-out-of-bounds-write-vulnerability-in-gs1900-series-switches-11-03-2026",
+     "status": 200,
+     "chars": 2074,
+     "excerpts": [
+      "The out-of-bounds write vulnerability in the CGI program of the Zyxel GS1900 series switch firmware could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request."
+     ],
+     "found_in": "BleepingComputer"
+    },
+    {
+     "url": "https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-stack-based-buffer-overflow-vulnerability-in-gs1900-series-switches-06-16-2026",
+     "status": 200,
+     "chars": 2151,
+     "excerpts": [
+      "A stack-based buffer overflow vulnerability in the CGI program of the Zyxel GS1900 series switch firmware could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request."
+     ],
+     "found_in": "BleepingComputer"
+    },
+    {
+     "url": "https://www.zyxel.com/global/en/support/security-advisories",
+     "status": 200,
+     "chars": 2028,
+     "excerpts": [],
+     "found_in": "Zyxel security advisory (vendor, primary)"
+    },
+    {
+     "url": "https://www.zyxel.com/tw/zh/support/security-advisories",
+     "status": 200,
+     "chars": 1171,
+     "excerpts": [],
+     "found_in": "Zyxel security advisory (vendor, primary)"
+    }
+   ]
+  },
+  "Cyberattack via refrigeration-equipment provider changed temperature settings at three French blood-service facilities": {
+   "sources": [
+    {
+     "name": "BleepingComputer",
+     "url": "https://www.bleepingcomputer.com/news/security/cyberattack-disrupts-blood-storage-refrigeration-systems-in-france/",
+     "status": 200,
+     "chars": 6923,
+     "excerpts": [
+      "Some refrigeration systems were shut down entirely, while others had their temperature settings changed remotely.",
+      "EFS says its monitoring and alarm systems quickly detected the temperature change, allowing staff to fix impacted equipment or transfer products to other refrigeration facilities.",
+      "The incident follows a wave of cyberattacks targeting refrigeration systems across Europe, where attackers remotely manipulate temperature settings or activate defrost functions that turn off cooling.",
+      "Belgian refrigeration company Sabcobel previously said that attackers behind the November incidents exploited the same vulnerability used in October's attacks against French supermarkets."
+     ]
+    },
+    {
+     "name": "The Register",
+     "url": "https://www.theregister.com/security/2026/11/04/cyberattack-on-french-plasma-stores-is-enough-to-make-your-blood-boil/5307519",
+     "status": 200,
+     "chars": 8220,
+     "excerpts": [
+      "According to reports, attackers changed cold-room temperature settings from -30°C to 110°C.",
+      "REG AD \"Thus, depending on the circumstances, as soon as the incident occurred, the affected equipment was either brought under control without impacting the products and samples, or neutralized; the products stored in these cold rooms were preventively transferred to other facilities.\" The EFS did not name the supplier publicly.",
+      "That does not mean the equipment or its contents reached the higher temperature."
+     ]
+    },
+    {
+     "name": "EFS press statement (victim, primary, French)",
+     "url": "http://presse.efs.sante.fr/actualites/l-efs-confirme-l-incident-de-cybersecurite-impactant-un-de-ces",
+     "status": 200,
+     "chars": 44,
+     "excerpts": []
+    }
+   ],
+   "primary": [
+    {
+     "url": "http://presse.efs.sante.fr/actualites/l-efs-confirme-l-incident-de-cybersecurite-impactant-un-de-ces-prestataires-d-equipement-frigorifique-2c07c-08a0a.html",
+     "status": 200,
+     "chars": 44,
+     "excerpts": [],
+     "found_in": "BleepingComputer"
+    },
+    {
+     "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-25-140-03",
+     "status": "error",
+     "error": "HTTP Error 403: Forbidden",
+     "found_in": "BleepingComputer"
+    }
+   ]
+  },
+  "Overnight wave of refrigeration setpoint attacks on supermarkets in Belgium, Sweden, Estonia and elsewhere": {
+   "sources": [
+    {
+     "name": "The Hacker News",
+     "url": "https://thehackernews.com/2026/11/second-wave-of-cyberattacks-hits.html",
+     "status": 200,
+     "chars": 13509,
+     "excerpts": [
+      "Danfoss, a Danish maker of refrigeration controls,  said its products were involved , as they were three weeks earlier when  attackers hit hundreds of French supermarkets .",
+      "Who Is Behind It Danfoss said the Dutch attacks were the same kind as the one in France, Sabcobel said the same method was used in Belgium, and Kitman said the method in Estonia was similar.",
+      "In Belgium, attackers switched cooling units into defrost mode, Stephan Moelans, chief executive of the refrigeration contractor Sabcobel,  told Belgian media .",
+      "All of ICA's affected stores were connected to an outside refrigeration control system supplied by Danfoss, an ICA spokesperson  told AFP .",
+      "In Estonia, attackers reached the control computer of an older Danfoss system, Mutso said."
+     ]
+    }
+   ],
+   "primary": []
+  },
+  "Electric utilities urge Congress to renew the Cybersecurity Information Sharing Act of 2015 before it expires next month": {
+   "sources": [
+    {
+     "name": "Utility Dive",
+     "url": "https://www.utilitydive.com/news/electric-utilities-join-industries-urging-renewal-of-cybersecurity-informat/873703/",
+     "status": "error",
+     "error": "HTTP Error 403: Forbidden",
+     "excerpts": []
+    }
+   ],
+   "primary": []
+  },
+  "CISA launches 2026 Critical Infrastructure Security and Resilience campaign: OT security, continuity, recovery planning": {
+   "sources": [
+    {
+     "name": "Industrial Cyber",
+     "url": "https://industrialcyber.co/cisa/cisa-urges-critical-infrastructure-owners-to-prioritize-ot-security-operational-continuity-recovery-planning-in-2026-campaign/",
+     "status": 200,
+     "chars": 11184,
+     "excerpts": [
+      "Cybersecurity and Infrastructure Security Agency (CISA) launched on Monday its 2026 Critical Infrastructure Security and Resilience Month campaign, urging infrastructure owners and operators to strengthen preparedness and improve their ability to withstand and recover from disruptions.",
+      "Critical Infrastructure Security and Resilience Month empowers American industry, state and local governments, and the Federal Government to each do their part to protect U.S.",
+      "Organizations can participate in Critical Infrastructure Security and Resilience Month with CISA’s toolkit , which includes graphics and plain language text that organizations can use to show the steps they are taking this November to be more resilient.",
+      "The Interagency Security Committee offers a wide range of resources to enhance the security of federal government facilities, and CISA’s infrastructure Resilience capabilities, tools, and services are available for exploration.",
+      "Critical infrastructure owners and operators can review and monitor the CISA CI Fortify page for information and updates on defending against disruptive cyberattacks through proactive isolation and recovery planning."
+     ]
+    }
+   ],
+   "primary": [
+    {
+     "url": "https://www.cisa.gov/news-events/news/cisa-kicks-critical-infrastructure-security-and-resilience-month-2026",
+     "status": "error",
+     "error": "HTTP Error 403: Forbidden",
+     "found_in": "Industrial Cyber"
+    },
+    {
+     "url": "https://www.cisa.gov/resources-tools/resources/critical-infrastructure-security-and-resilience-month-toolkit",
+     "status": "error",
+     "error": "HTTP Error 403: Forbidden",
+     "found_in": "Industrial Cyber"
+    },
+    {
+     "url": "https://www.cisa.gov/topics/critical-infrastructure-security-and-resilience/resilience-services",
+     "status": "error",
+     "error": "HTTP Error 403: Forbidden",
+     "found_in": "Industrial Cyber"
+    },
+    {
+     "url": "https://www.cisa.gov/topics/cybersecurity-best-practices/cybergrants",
+     "status": "error",
+     "error": "HTTP Error 403: Forbidden",
+     "found_in": "Industrial Cyber"
+    }
+   ]
+  },
+  "UK NCSC Annual Review warns of AI-assisted ransomware against critical national infrastructure by 2028": {
+   "sources": [
+    {
+     "name": "UK NCSC News",
+     "url": "https://www.ncsc.gov.uk/news/cyber-chief-uk-facing-ai-powered-attacks-on-critical-infrastructure-in-two-years",
+     "status": 200,
+     "chars": 6705,
+     "excerpts": [
+      "AI-powered malware highly likely to be used in ransomware attack on Britain’s critical national infrastructure by 2028, new report warns.",
+      "The UK’s critical national infrastructure should be braced for a ransomware attack involving AI-powered malware by 2028, a new report published today [Tuesday 3 November] by the National Cyber Security Centre (NCSC) – a part of the UK’s signals intelligence agency GCHQ says.",
+      "News Download & print article PDF Download & print article PDF Cyber chief: UK facing AI-powered attacks on critical infrastructure within two years The NCSC warns that ‘tech on the cheap’ has left UK organisations exposed to AI uncovering and exploiting longstanding cyber security weaknesses and calls for urgent investment in resilience.",
+      "Security Minister Dan Jarvis   NCSC Annual Review 2026 Looking back at the National Cyber Security Centre's tenth year and its key developments and highlights, between 1 September 2025 and 31 August 2026.",
+      "Cyber chief: UK facing AI-powered attacks on critical infrastructure within two years | National Cyber Security Centre icons/chevron/16px/black Skip to main content Please enable JavaScript in your web browser to get the best experience."
+     ]
+    },
+    {
+     "name": "Industrial Cyber",
+     "url": "https://industrialcyber.co/critical-infrastructure/ncsc-annual-review-2026-warns-ai-powered-malware-could-target-uk-critical-infrastructure-by-2028/",
+     "status": 200,
+     "chars": 21207,
+     "excerpts": [
+      "In July 2026, the NCSC and 18 partners from 12 countries warned that FSB Centre 16 actors were exploiting vulnerable routers to target critical national infrastructure worldwide.",
+      "China is highly likely to have the intent and be best positioned to use AI against critical national infrastructure and other strategic targets, with its frontier AI programmes almost certainly improving its vulnerability identification, targeting efficiency and access operations.",
+      "In its ‘NCSC Annual Review 2026’, the agency warned that AI could enable attackers to identify and exploit longstanding cybersecurity weaknesses at unprecedented speed and scale.",
+      "But they are also reshaping the cyber threat landscape,” Anne Keast-Butler, director of the GCHQ, said in the NCSC Annual Review 2026.",
+      "Not only to protect their customers, services and livelihoods, but because cyber security is now part of the frontline defence of our nation.” The NCSC Annual Review 2026 said that Russian hacking groups engage in offensive cyber operations in Ukraine, including disrupting power generation."
+     ]
+    }
+   ],
+   "primary": [
+    {
+     "url": "https://www.ncsc.gov.uk/collection/annual-review-2026",
+     "status": 200,
+     "chars": 1640,
+     "excerpts": [
+      "NCSC Annual Review 2026 | National Cyber Security Centre icons/chevron/16px/black Skip to main content Please enable JavaScript in your web browser to get the best experience.",
+      "Annual Review NCSC Annual Review 2026 Looking back at the National Cyber Security Centre's tenth year and its key developments and highlights, between 1 September 2025 and 31 August 2026.",
+      "Downloads Pdf 11.81 MB NCSC Annual Review 2026 - The State of the Cyber Nation Looking back at the National Cyber Security Centre's tenth year and its key developments and highlights, between 1 September 2025 and 31 August 2026.",
+      "Pages Page 1 of 29 The National Cyber Security Centre (NCSC), a part of GCHQ, is the UK’s technical authority for cyber security.",
+      "As part of a national security agency, not all its work can be disclosed publicly, but the review seeks to describe the year with insights and facts from colleagues inside and out of the organisation."
+     ],
+     "found_in": "Industrial Cyber"
+    }
+   ]
+  },
+  "Trump administration ban on foreign grid components raises industry concern over practicality and cost": {
+   "sources": [
+    {
+     "name": "Utility Dive",
+     "url": "https://www.utilitydive.com/news/trump-ban-on-foreign-grid-components-sparks-industry-concern-over-practical/873752/",
+     "status": "error",
+     "error": "HTTP Error 403: Forbidden",
+     "excerpts": []
+    }
+   ],
+   "primary": []
+  },
+  "Russia and Ukraine report attacks on emergency alert apps during Kherson ceasefire": {
+   "sources": [
+    {
+     "name": "The Register",
+     "url": "https://www.theregister.com/security/2026/11/02/nuclear-threats-and-street-brawls-russia-ukraine-report-attacks-on-their-emergency-alert-apps/5306901",
+     "status": 200,
+     "chars": 8634,
+     "excerpts": [
+      "Ukraine's announcement of the alert app cyberattack came almost simultaneously with the official conclusion of a six-day ceasefire in Kherson.",
+      "\"Citizens are alerted through primary channels: regional and municipal alert systems (sirens, loudspeakers), communication networks (SMS messaging), and television and radio broadcasts.",
+      "According to the messages sent to devices after the compromise of Ukraine's alert app, the fake warnings pertained to various threats, such as street fights in Kyiv, chemical attacks, and radiation hazards.",
+      "According to public statements and messages sent via social media, Ukraine’s alert app was hit first, with the country’s Air Force quick to dispel nuclear fears.",
+      "Stay calm, follow our messages on our channel!\" REG AD At around 0030 UTC on Monday, Russia's Ministry of Emergency Situations confirmed the country’s app had also been abused, with fake messages sent to citizens' devices."
+     ]
+    }
+   ],
+   "primary": []
+  }
+ }
+}

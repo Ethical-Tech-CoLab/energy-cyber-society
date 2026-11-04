@@ -50,7 +50,7 @@
    "answers": {
     "Which items on the board rest on a single source?": "Four: Siemens IoT2050 exploitation (vendor via The Hacker News), Zyxel GS1900 (BleepingComputer), CISA 2015 renewal (Utility Dive), foreign grid-component ban (Utility Dive), plus the CISA campaign item (Industrial Cyber). Rule applied: corroboration count. Single-source items hold at credibility 2 or 3 and cannot reach 1.",
     "What changed since the last run?": "This is the first audited run, so there is no delta. The baseline is nine items from a 7-day window. From the next run I report new items, retired items, and any verdict that moved.",
-    "Which claims are still unconfirmed and what would confirm them?": "The Siemens exploitation claim: a CISA ICS advisory or Siemens ProductCERT notice. The 110°C setpoint in the French case: the victim's own statement. The CISA 2015 sunset date and extension: the statute and the NDAA text on congress.gov. The grid-component ban: the executive order or Federal Register notice. The supermarket wave's common vendor: any victim or vendor statement."
+    "Which claims are still unconfirmed and what would confirm them?": "After the direct-source pull: the 110°C figure (only 'according to reports'); the 'nearly 1,000' Zyxel count (outlet's, not Zyxel's); both Utility Dive legal items, which the puller cannot fetch (HTTP 403) and which need the statute and the executive instrument; and whether IoT2050 units in energy networks were actually hit, since VulnCheck describes exploitation of Node-RED broadly."
    },
    "bubble": "Four of nine items rest on one source."
   }
@@ -376,7 +376,7 @@
    "subsector": "cross-sector",
    "value_chain": "enabling/cross-cutting",
    "ot_impact": "OT reached, no process effect",
-   "asset_type": "industrial IoT edge gateway",
+   "asset_type": "industrial IoT edge gateway running Industrial OS with Node-RED",
    "ics_vendor": "Siemens",
    "supply_chain_entry": null,
    "actor": null,
@@ -388,7 +388,7 @@
     "CVE-2026-58115"
    ],
    "kev_listed": "unknown",
-   "initial_access": "unauthenticated remote access to a critical function",
+   "initial_access": "unauthenticated access to the Node-RED HTTP interface, creating flows that run system commands (VulnCheck)",
    "malware": "remote command backdoor (reported)",
    "operational_impact": "none reported",
    "physical_safety_impact": null,
@@ -406,12 +406,19 @@
    "so_what": "An unauthenticated RCE on a gateway that bridges field devices and IT, with exploitation reported by a firm that sells vulnerability intelligence; check for the device and patch regardless.",
    "recommended_action": "patch",
    "trend": "new",
-   "labels": [],
+   "labels": [
+    "[inference] exploitation is of Node-RED generally; whether IoT2050 units in energy networks were hit is not stated"
+   ],
    "confidence": "moderate",
    "sources": [
     {
      "name": "The Hacker News (relaying VulnCheck)",
      "url": "https://thehackernews.com/2026/11/attackers-exploit-critical-siemens.html",
+     "date": "2026-11-03"
+    },
+    {
+     "name": "VulnCheck blog (vendor, sells vulnerability intelligence)",
+     "url": "https://www.vulncheck.com/blog/exploitation-targeting-node-red",
      "date": "2026-11-03"
     }
    ]
@@ -436,9 +443,11 @@
    "attribution_confidence": "unattributed",
    "attributed_by": null,
    "motivation": "[inference] reconnaissance / credential harvesting",
-   "cves": [],
+   "cves": [
+    "CVE-2026-107441"
+   ],
    "kev_listed": "unknown",
-   "initial_access": "zero-day in switch management",
+   "initial_access": "pre-auth CGI flaw in GS1900 firmware; Zyxel advisory says LAN-based attacker (Zyxel)",
    "malware": null,
    "operational_impact": "none reported",
    "physical_safety_impact": null,
@@ -449,20 +458,28 @@
    "regulatory_trigger": null,
    "government_response": null,
    "source_type": "media",
-   "source_reliability": "B",
+   "source_reliability": "A",
    "info_credibility": "2",
-   "corroboration": 1,
-   "claim_vs_confirmed": "confirmed (vendor patched)",
+   "corroboration": 2,
+   "claim_vs_confirmed": "confirmed (vendor advisory + outlet)",
    "so_what": "Stolen switch configs are the step before an intrusion, not an outage; rotate any credentials present in affected configs.",
    "recommended_action": "hunt",
    "trend": "new",
-   "labels": [],
+   "labels": [
+    "[unverified] 'nearly 1,000 devices' is the outlet's figure, not in the vendor advisory",
+    "[inference] 'LAN-based' per Zyxel implies exposed management interfaces, which contradicts nothing but narrows the attack path"
+   ],
    "confidence": "moderate",
    "sources": [
     {
      "name": "BleepingComputer",
      "url": "https://www.bleepingcomputer.com/news/security/zyxel-fixes-zero-day-exploited-to-hack-nearly-1-000-network-switches/",
      "date": "2026-11-05"
+    },
+    {
+     "name": "Zyxel security advisory (vendor, primary)",
+     "url": "https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-out-of-bound",
+     "date": "2026-11-03"
     }
    ]
   },
@@ -480,7 +497,7 @@
    "ot_impact": "OT process affected",
    "asset_type": "refrigeration / cold-room controllers",
    "ics_vendor": null,
-   "supply_chain_entry": "refrigeration equipment provider (third party)",
+   "supply_chain_entry": "refrigeration equipment provider; Belgian contractor Sabcobel said the same vulnerability was used as in October's French supermarket attacks (BleepingComputer)",
    "actor": null,
    "actor_type": "unattributed",
    "attribution_confidence": "unattributed",
@@ -490,7 +507,7 @@
    "kev_listed": "n/a",
    "initial_access": "[inference] compromised vendor remote access",
    "malware": null,
-   "operational_impact": "temperature and defrost setpoints changed; safeguards prevented stock loss (reported)",
+   "operational_impact": "some refrigeration systems shut down, others had setpoints changed; monitoring and alarms detected it; affected equipment brought under control or neutralised and products transferred preventively (EFS statement via BleepingComputer, The Register)",
    "physical_safety_impact": "attempted; averted",
    "customers_affected": null,
    "data_exposed": null,
@@ -506,7 +523,9 @@
    "so_what": "A vendor remote-access path reached physical controls; the same architecture sits under substations, pump stations and battery sites. The safeguard that held is the lesson.",
    "recommended_action": "hunt",
    "trend": "campaign",
-   "labels": [],
+   "labels": [
+    "[unverified] the -30°C to 110°C figure is 'according to reports' (The Register); EFS's statement does not give it"
+   ],
    "confidence": "high",
    "sources": [
     {
@@ -517,6 +536,11 @@
     {
      "name": "The Register",
      "url": "https://www.theregister.com/security/2026/11/04/cyberattack-on-french-plasma-stores-is-enough-to-make-your-blood-boil/5307519",
+     "date": "2026-11-04"
+    },
+    {
+     "name": "EFS press statement (victim, primary, French)",
+     "url": "http://presse.efs.sante.fr/actualites/l-efs-confirme-l-incident-de-cybersecurite-impactant-un-de-ces",
      "date": "2026-11-04"
     }
    ]
@@ -534,8 +558,8 @@
    "value_chain": "n/a",
    "ot_impact": "OT process affected",
    "asset_type": "refrigeration controllers / building management",
-   "ics_vendor": null,
-   "supply_chain_entry": "[unverified] unknown whether victims share a vendor",
+   "ics_vendor": "Danfoss",
+   "supply_chain_entry": "Danfoss refrigeration controls: Danfoss said its products were involved, as in October's French supermarket attacks; Sabcobel (Belgium) and Kitman (Estonia) described the same method (The Hacker News)",
    "actor": null,
    "actor_type": "unattributed",
    "attribution_confidence": "unattributed",
@@ -558,10 +582,12 @@
    "info_credibility": "2",
    "corroboration": 2,
    "claim_vs_confirmed": "confirmed",
-   "so_what": "Cheap, low-skill tampering with exposed OT across borders in one night; the open question is whether a common vendor links the victims.",
-   "recommended_action": "monitor",
+   "so_what": "A named control vendor now links the European wave to October's French attacks; any energy site using the same Danfoss controls for cooling should check exposure.",
+   "recommended_action": "hunt",
    "trend": "campaign",
-   "labels": [],
+   "labels": [
+    "[unverified] whether the Danfoss products were misconfigured or vulnerable is not stated"
+   ],
    "confidence": "moderate",
    "sources": [
     {
@@ -673,7 +699,7 @@
    "sources": [
     {
      "name": "Industrial Cyber",
-     "url": "https://industrialcyber.co/critical-infrastructure/ncsc-annual-review-2026-warns-ai-powered-malware-could-target-uk-critical-infrastructure-by-2028/",
+     "url": "https://industrialcyber.co/cisa/cisa-urges-critical-infrastructure-owners-to-prioritize-ot-security-operational-continuity-recovery-planning-in-2026-campaign/",
      "date": "2026-11-03"
     }
    ]
@@ -719,7 +745,8 @@
    "recommended_action": "awareness only",
    "trend": "recurring",
    "labels": [
-    "[inference] the three stories are one press cycle"
+    "[inference] the three stories are one press cycle",
+    "[note] the primary text says 'highly likely' and attributes capability to China; the outlets dropped the probability language"
    ],
    "confidence": "high",
    "sources": [
@@ -737,6 +764,11 @@
      "name": "Industrial Cyber",
      "url": "https://industrialcyber.co/critical-infrastructure/ncsc-annual-review-2026-warns-ai-powered-malware-could-target-uk-critical-infrastructure-by-2028/",
      "date": "2026-11-04"
+    },
+    {
+     "name": "NCSC Annual Review 2026 (primary)",
+     "url": "https://www.ncsc.gov.uk/collection/annual-review-2026",
+     "date": "2026-11-03"
     }
    ]
   },
@@ -859,16 +891,16 @@
     "reason": "single vendor-origin claim (VulnCheck via The Hacker News). Rule 6: vendor intel attributed and flagged. Would upgrade to A1 on a CISA ICS advisory or Siemens ProductCERT notice; neither is in the bundle (CISA feed 403)."
    },
    "Zyxel GS1900 switch zero-day used to compromise nearly 1,000 devices and steal configs and credentials": {
-    "verdict": "hold at B2",
-    "reason": "vendor patch confirms the flaw; the ~1,000 count is reported, not vendor-stated. One outlet. Needs a second independent source to reach 1."
+    "verdict": "upgrade to A2",
+    "reason": "vendor advisory pulled and matches the outlet on the flaw; device count remains the outlet's."
    },
    "Cyberattack via refrigeration-equipment provider changed temperature settings at three French blood-service facilities": {
     "verdict": "upgrade to A1",
     "reason": "victim statement from the national blood service plus two outlets (BleepingComputer, The Register). The 110°C figure stays [unverified]: reported by one outlet, not in the victim statement."
    },
    "Overnight wave of refrigeration setpoint attacks on supermarkets in Belgium, Sweden, Estonia and elsewhere": {
-    "verdict": "hold at B2",
-    "reason": "two outlets (The Hacker News, Dark Reading), no victim named on record, no vendor named. Open question for next run: a common vendor across victims."
+    "verdict": "upgrade to B2, trend: campaign",
+    "reason": "Danfoss, Sabcobel and Kitman quoted on record; common vendor identified; linked to October's French attacks."
    },
    "Electric utilities urge Congress to renew the Cybersecurity Information Sharing Act of 2015 before it expires next month": {
     "verdict": "downgrade to B3 pending primary",
@@ -891,6 +923,83 @@
     "reason": "wartime claims by each side about the other, one outlet. Attribution is suspected, not assessed. Keep as context only."
    }
   },
-  "summary": "Nine items audited. One upgraded (French blood service, victim-confirmed). Two downgraded pending primary documents (CISA 2015 renewal, foreign grid-component ban), both legal claims resting on trade press. Four of nine rest on a single outlet. CISA's own feeds were unreachable (HTTP 403), which is the main gap: the Siemens item cannot reach A-grade without a CISA or Siemens notice. Next run should check for a CISA ICS advisory on CVE-2026-58115, a common vendor in the European refrigeration cases, and the statute text for the CISA 2015 sunset."
+  "summary": "Nine items audited. One upgraded (French blood service, victim-confirmed). Two downgraded pending primary documents (CISA 2015 renewal, foreign grid-component ban), both legal claims resting on trade press. Four of nine rest on a single outlet. CISA's own feeds were unreachable (HTTP 403), which is the main gap: the Siemens item cannot reach A-grade without a CISA or Siemens notice. Next run should check for a CISA ICS advisory on CVE-2026-58115, a common vendor in the European refrigeration cases, and the statute text for the CISA 2015 sunset. Direct-source pull: 7 of 9 items had at least one source fetched; Utility Dive blocks the puller (403) so both US legal items remain unverified. The pull corrected three items: Zyxel now carries the vendor advisory and CVE-2026-107441; the French blood case has the victim statement and its 110°C figure is marked unverified; the supermarket wave has a named common vendor, Danfoss, which also links it to October's French attacks.",
+  "crosschecks": {
+   "Siemens SIMATIC IoT2050 Advanced: CVSS 10 missing-authentication flaw exploited in the wild": {
+    "compared": [
+     "The Hacker News",
+     "VulnCheck blog"
+    ],
+    "agree": "CVE-2026-58115, CVSS 10, missing authentication, unauthenticated RCE, IoT2050 Advanced with Node-RED.",
+    "differ": "VulnCheck frames it as exploitation targeting Node-RED broadly; the outlet's headline makes it sound like a Siemens-specific campaign. No Siemens ProductCERT or CISA page found from the article.",
+    "verdict": "headline overstates specificity; technical facts match"
+   },
+   "Zyxel GS1900 switch zero-day used to compromise nearly 1,000 devices and steal configs and credentials": {
+    "compared": [
+     "BleepingComputer",
+     "Zyxel advisories (2)"
+    ],
+    "agree": "GS1900 series, pre-auth CGI flaw, OS command execution, updates released Oct 22, advisory Nov 3.",
+    "differ": "The 'nearly 1,000 devices' and credential-theft details are the outlet's; Zyxel says 'LAN-based, unauthenticated attacker', and the outlet notes the flaw was first mistaken for June's CVE-2026-7273.",
+    "verdict": "upgrade: vendor advisory confirms the flaw; the scale remains the outlet's figure"
+   },
+   "Cyberattack via refrigeration-equipment provider changed temperature settings at three French blood-service facilities": {
+    "compared": [
+     "BleepingComputer",
+     "The Register",
+     "EFS press statement"
+    ],
+    "agree": "EFS confirms the incident; equipment brought under control or neutralised; products transferred preventively; alarms detected it.",
+    "differ": "110°C appears only as 'according to reports' in The Register and The Register itself says that does not mean contents reached it. BleepingComputer adds Sabcobel linking it to October's attacks; the EFS statement is in French and the puller's English keyword match returned no excerpts, so the statement was read by hand.",
+    "verdict": "confirmed core; temperature figure stays unverified"
+   },
+   "Overnight wave of refrigeration setpoint attacks on supermarkets in Belgium, Sweden, Estonia and elsewhere": {
+    "compared": [
+     "The Hacker News (quoting Danfoss, Sabcobel, Kitman)"
+    ],
+    "agree": "Danfoss says its controls were involved as in October's French attacks; Belgian and Estonian contractors describe the same method; nobody claimed it; link to the French blood case unknown.",
+    "differ": "Single outlet, but it quotes three named companies on record, which is better than the item's original 'two outlets, no vendor named'.",
+    "verdict": "common vendor question answered: Danfoss"
+   },
+   "Electric utilities urge Congress to renew the Cybersecurity Information Sharing Act of 2015 before it expires next month": {
+    "compared": [
+     "Utility Dive (HTTP 403 to the puller)"
+    ],
+    "agree": "n/a",
+    "differ": "Could not pull the article or the statute. Legal claim remains trade-press only.",
+    "verdict": "I cannot verify this; last status is the Utility Dive summary dated 2026-11-04"
+   },
+   "UK NCSC Annual Review warns of AI-assisted ransomware against critical national infrastructure by 2028": {
+    "compared": [
+     "UK NCSC news",
+     "Industrial Cyber",
+     "NCSC Annual Review 2026 page"
+    ],
+    "agree": "'Highly likely' AI-powered malware in a ransomware attack on UK CNI by 2028; report published 3 November.",
+    "differ": "Primary text carries probability language ('highly likely') and names China as best positioned; Industrial Cyber keeps both, The Register's headline drops the hedge.",
+    "verdict": "primary matches; headlines harden the claim"
+   },
+   "Trump administration ban on foreign grid components raises industry concern over practicality and cost": {
+    "compared": [
+     "Utility Dive (HTTP 403 to the puller)"
+    ],
+    "agree": "n/a",
+    "differ": "Could not pull; no primary instrument identified.",
+    "verdict": "I cannot verify this"
+   },
+   "Russia and Ukraine report attacks on emergency alert apps during Kherson ceasefire": {
+    "compared": [
+     "The Register"
+    ],
+    "agree": "Ukraine's alert app pushed fake warnings (street fights, chemical, radiation); Air Force dispelled nuclear fears; timing matched the ceasefire's end.",
+    "differ": "Single outlet relying on public statements and social media.",
+    "verdict": "hold as context"
+   }
+  }
+ },
+ "rubric": {
+  "importance": "IT-vs-OT impact (OT process/physical = top), then US energy relevance (subsector + value chain), actor capability, scale, and whether action is possible (patch/hunt beats awareness). Severity on the board is importance.",
+  "correctness": "Source tier (A primary/victim, B wire/established press, C vendor research), independent corroboration count, claim-vs-confirmed, and whether the direct source was pulled and matches the outlet. Credibility 1-6 and the Verifier's verdict are correctness.",
+  "rule": "Keep the two columns separate. An item can be critical and poorly confirmed (Siemens this week) or fully confirmed and low importance (NCSC forecast). Act on importance, trust on correctness, and say which is which."
  }
 }

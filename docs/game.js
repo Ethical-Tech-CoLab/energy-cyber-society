@@ -7,7 +7,7 @@ const cv = document.getElementById('town');
 const ctx = cv.getContext('2d');
 ctx.imageSmoothingEnabled = false;
 
-let personas, briefing, news;
+let personas, briefing, news, sources;
 let agents = [];
 let selected = null;
 let bubbles = [];                      // {agent, text, until}
@@ -327,6 +327,7 @@ function esc(t) { return String(t == null ? '' : t).replace(/[&<>"]/g, c => ({ '
 $('btn-board').onclick = () => {
   const items = (briefing && briefing.items) || [];
   $('us-status').textContent = (briefing && briefing.us_status) || '';
+  const rb = $('rubric'); if (rb) rb.innerHTML = briefing && briefing.rubric ? `<b>How to read the board:</b> ${esc(briefing.rubric.rule)}<br><b>Importance</b> (severity badge): ${esc(briefing.rubric.importance)}<br><b>Correctness</b> (trust line + Verifier): ${esc(briefing.rubric.correctness)}` : '';
   $('board-meta').textContent = items.length ? `${items.length} items, ranked by severity · schema: what happened / why it matters to energy / how much to trust it` : 'No structured items yet (headlines-only mode).';
   const order = { critical: 0, high: 1, medium: 2, low: 3, info: 4 };
   const bd = $('board'); bd.innerHTML = '';
@@ -343,6 +344,8 @@ $('btn-board').onclick = () => {
       <div class="sowhat"><b>So what:</b> ${esc(it.so_what)}</div>
       ${(it.labels || []).length ? `<div class="lbl">${it.labels.map(esc).join(' · ')}</div>` : ''}
       ${(() => { const v = briefing.verification && briefing.verification.verdicts && briefing.verification.verdicts[it.headline]; return v ? `<div class="verdict"><b>Verifier:</b> ${esc(v.verdict)} — ${esc(v.reason)}</div>` : ''; })()}
+      ${(() => { const c = briefing.verification && briefing.verification.crosschecks && briefing.verification.crosschecks[it.headline]; return c ? `<details class="xcheck"><summary>Cross-check: ${esc((c.compared || []).join(' vs '))} — ${esc(c.verdict)}</summary><div><b>Agree:</b> ${esc(c.agree)}</div><div><b>Differ:</b> ${esc(c.differ)}</div></details>` : ''; })()}
+      ${(() => { const r = sources && sources.items && sources.items[it.headline]; if (!r) return ''; const blocks = [...(r.sources || []).map(x => ({ ...x, kind: 'outlet' })), ...(r.primary || []).filter(x => x.excerpts && x.excerpts.length).map(x => ({ ...x, kind: 'primary', name: x.url.replace(/^https?:\/\//, '').slice(0, 60) }))]; if (!blocks.length) return ''; return `<details class="direct"><summary>Direct source: ${blocks.length} page${blocks.length > 1 ? 's' : ''} pulled ${esc((sources.pulled_at || '').slice(0, 10))}</summary>${blocks.map(x => `<div class="pulled ${x.kind}"><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a> <span class="k">${x.kind}${x.status !== 200 ? ' · ' + esc(x.status) : ''}</span>${(x.excerpts || []).slice(0, 3).map(e => `<blockquote>${esc(e)}</blockquote>`).join('')}${x.error ? `<div class="k">${esc(x.error)}</div>` : ''}</div>`).join('')}</details>`; })()}
       <div class="src">${(it.sources || []).map(s => s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a> ${esc(s.date || '')}` : `${esc(s.name)} ${esc(s.date || '')}`).join(' · ')}</div>`;
     bd.appendChild(d);
   });
@@ -351,12 +354,13 @@ $('btn-board').onclick = () => {
 
 // ---------------------------------------------------------------- boot
 async function boot() {
-  const [p, b, n] = await Promise.all([
+  const [p, b, n, src] = await Promise.all([
     fetch('data/personas.json').then(r => r.json()),
     fetch('data/briefing.json').then(r => r.json()).catch(() => null),
     fetch('data/news.json').then(r => r.json()).catch(() => null),
+    fetch('data/sources.json').then(r => r.json()).catch(() => null),
   ]);
-  personas = p; briefing = b; news = n;
+  personas = p; briefing = b; news = n; sources = src;
   $('hud-meta').textContent = briefing
     ? `briefing ${briefing.generated_at.slice(0, 10)} · ${briefing.counts.energy} energy-cyber stories · ${briefing.counts.wide} wider cyber · model ${briefing.model}`
     : 'no briefing yet';

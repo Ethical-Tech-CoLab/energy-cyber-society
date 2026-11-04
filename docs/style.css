@@ -76,3 +76,13 @@ canvas#town{width:100%;height:auto;display:block;image-rendering:pixelated;image
 .log-head{font-family:var(--font-pix);font-size:9px;padding:8px 12px;border-bottom:2px solid var(--line);color:var(--mute)}
 .log{height:170px;overflow:auto;padding:8px 12px;font-size:12px}
 .logline{padding:2px 0;border-bottom:1px dashed #1e2634}
+
+.rubric{font-size:12px;color:var(--mute);border:2px dashed var(--line);padding:8px 10px}
+.rubric b{color:var(--warn)}
+.xcheck,.direct{margin-top:6px;font-size:12px}
+.xcheck summary,.direct summary{cursor:pointer;color:var(--accent)}
+.xcheck div{margin:4px 0 0 10px;color:var(--mute)}.xcheck b{color:var(--ink)}
+.pulled{margin:6px 0 0 10px;padding-left:8px;border-left:2px solid var(--line)}
+.pulled.primary{border-left-color:var(--warn)}
+.pulled .k{color:var(--mute);font-size:11px}
+.pulled blockquote{margin:4px 0;padding:4px 8px;background:#0b0e14;color:var(--mute);font-size:11px;border-left:2px solid #2a4a3a}
