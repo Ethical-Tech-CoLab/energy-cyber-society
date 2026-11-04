@@ -28,8 +28,13 @@ which is why they disagree.
    API: a briefing each, canned answers to their suggested questions, a speech-bubble line,
    and five pairwise conversations. Output: `docs/data/briefing.json`.
    Without `ANTHROPIC_API_KEY` it writes an honest headlines-only fallback.
-3. `.github/workflows/daily.yml` runs both every morning at 11:00 UTC and commits the result.
-   It needs an `ANTHROPIC_API_KEY` repository secret.
+3. Unattended runs, twice a day (06:00 and 18:00 US East), either way:
+   - `.github/workflows/daily.yml` runs both scripts on the Claude API (needs an
+     `ANTHROPIC_API_KEY` secret), or
+   - a claude.ai scheduled routine (`scripts/routine.json`) clones the repo and does the
+     curation itself following `CURATION.md`; no API key needed, the agent is the model.
+   The sixth resident, the Verifier, audits every item on each run: source tier,
+   corroboration, claim-versus-confirmed, staleness, and what changed since last time.
 4. `docs/` is the GitHub Pages site: a canvas pixel town, no framework, no build step.
 
 ### Live chat
