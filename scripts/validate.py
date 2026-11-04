@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+"""Fail if the briefing is malformed: every resident present, every item on-taxonomy, every item sourced."""
+import json, sys
+from pathlib import Path
+ROOT = Path(__file__).resolve().parent.parent
+b = json.loads((ROOT / "docs/data/briefing.json").read_text())
+p = json.loads((ROOT / "agents/personas.json").read_text())
+sch = json.loads((ROOT / "agents/schema.json").read_text())["taxonomy"]
+errs = []
+for a in p["agents"]:
+    ag = b.get("agents", {}).get(a["id"])
+    if not ag: errs.append(f"missing agent {a['id']}"); continue
+    for k in ("briefing", "answers", "bubble"):
+        if not ag.get(k): errs.append(f"{a['id']} missing {k}")
+    for q in a["questions"]:
+        if q not in ag.get("answers", {}): errs.append(f"{a['id']} missing answer: {q[:40]}")
+for it in b.get("items", []):
+    h = it.get("headline", "?")[:50]
+    for f in ("subsector", "value_chain", "event_type", "ot_impact", "actor_type", "attribution_confidence", "severity", "recommended_action"):
+        if it.get(f) not in sch[f]: errs.append(f"item '{h}': {f}={it.get(f)!r} not in taxonomy")
+    if not it.get("sources"): errs.append(f"item '{h}': no sources")
+    if not it.get("so_what"): errs.append(f"item '{h}': no so_what")
+if "us_status" not in b: errs.append("missing us_status")
+if (ROOT / "docs/data/personas.json").read_text() != json.dumps(p, indent=1, ensure_ascii=False):
+    errs.append("docs/data/personas.json differs from agents/personas.json (run: python3 -c \"import json;json.dump(json.load(open('agents/personas.json')),open('docs/data/personas.json','w'),indent=1,ensure_ascii=False)\")")
+if errs:
+    print("\n".join("FAIL " + e for e in errs)); sys.exit(1)
+print(f"ok: {len(b['agents'])} agents, {len(b.get('items', []))} items, {len(b.get('conversations', []))} conversations")

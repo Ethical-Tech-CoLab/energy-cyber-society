@@ -2,7 +2,7 @@
    Data: data/briefing.json (daily agent run) + data/news.json (raw wire) + ../agents/personas.json (voices). */
 (() => {
 const S = 3;                           // pixel scale
-const W = 960, H = 540;
+const W = 960, H = 560;
 const cv = document.getElementById('town');
 const ctx = cv.getContext('2d');
 ctx.imageSmoothingEnabled = false;
@@ -21,6 +21,7 @@ const BUILDINGS = [
   { key: 'Press Review',      x: 720, y: 110, w: 150, h: 110, color: '#4a2c5a', roof: '#c94be8' },
   { key: 'Observatory',       x: 130, y: 340, w: 150, h: 120, color: '#2c5a3e', roof: '#4be89a' },
   { key: "Devil's Advocate",  x: 700, y: 340, w: 160, h: 115, color: '#5a2c2c', roof: '#e85a4b' },
+  { key: 'Verification Office', x: 400, y: 440, w: 160, h: 80, color: '#3a3f4a', roof: '#e6e9ef' },
 ];
 const PLAZA = { x: 380, y: 300, w: 200, h: 120 };
 
@@ -38,7 +39,7 @@ function drawGround() {
   rect(0, 262, W, 26, '#6b5f4a');                 // main street
   rect(165, 220, 26, 50, '#6b5f4a'); rect(485, 200, 26, 70, '#6b5f4a'); rect(795, 220, 26, 50, '#6b5f4a');
   rect(205, 288, 26, 60, '#6b5f4a'); rect(775, 288, 26, 60, '#6b5f4a');
-  rect(PLAZA.x, PLAZA.y, PLAZA.w, PLAZA.h, '#7a6c55');
+  rect(PLAZA.x, PLAZA.y, PLAZA.w, PLAZA.h, '#7a6c55'); rect(PLAZA.x + PLAZA.w/2 - 13, PLAZA.y + PLAZA.h, 26, 30, '#6b5f4a');
   for (let i = 0; i < 30; i++) rect(PLAZA.x + (i * 37) % PLAZA.w, PLAZA.y + (i * 53) % PLAZA.h, S, S, '#8a7b62');
   // the substation in the plaza: the town's reason to exist
   rect(455, 330, 50, 40, '#3a3f4a'); rect(460, 318, 6, 12, '#9aa3b5'); rect(494, 318, 6, 12, '#9aa3b5');
@@ -210,6 +211,7 @@ function select(a) {
   const b = briefing && briefing.agents[a.p.id];
   addMsg(b ? b.briefing : 'No briefing yet today.', 'them');
   if (briefing && briefing.us_status && a.p.id === 'contrarian') addMsg('US status: ' + briefing.us_status, 'sys');
+  if (briefing && briefing.verification && a.p.id === 'verifier') addMsg('Audit ' + (briefing.verification.run_at || '').slice(0, 16).replace('T', ' ') + ' UTC: ' + briefing.verification.summary, 'sys');
   if (briefing && briefing.model === 'fallback-headlines') addMsg('Headlines-only mode: the daily agent run has not happened yet, so this is the wire, not analysis. Add your key in Settings for a live answer.', 'sys');
   const sg = $('suggest'); sg.innerHTML = '';
   a.p.questions.forEach(q => { const btn = document.createElement('button'); btn.textContent = q; btn.onclick = () => ask(q); sg.appendChild(btn); });
@@ -303,6 +305,7 @@ $('btn-board').onclick = () => {
       <dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
       <div class="sowhat"><b>So what:</b> ${esc(it.so_what)}</div>
       ${(it.labels || []).length ? `<div class="lbl">${it.labels.map(esc).join(' · ')}</div>` : ''}
+      ${(() => { const v = briefing.verification && briefing.verification.verdicts && briefing.verification.verdicts[it.headline]; return v ? `<div class="verdict"><b>Verifier:</b> ${esc(v.verdict)} — ${esc(v.reason)}</div>` : ''; })()}
       <div class="src">${(it.sources || []).map(s => s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a> ${esc(s.date || '')}` : `${esc(s.name)} ${esc(s.date || '')}`).join(' · ')}</div>`;
     bd.appendChild(d);
   });

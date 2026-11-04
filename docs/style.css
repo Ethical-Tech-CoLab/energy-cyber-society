@@ -70,3 +70,4 @@ canvas#town{width:100%;height:auto;display:block;image-rendering:pixelated;image
 .item .src a{color:var(--accent)}
 #board{max-height:60vh;overflow:auto}
 .lbl{color:var(--warn)}
+.verdict{margin-top:6px;padding:6px 8px;border-left:3px solid #e6e9ef;background:#1a1f2a;color:var(--ink)}

@@ -44,6 +44,15 @@
     "What is the coverage not telling us?": "Whether the European refrigeration victims shared a vendor or remote-access product, which would turn a scattered story into a supply-chain one. Whether any US critical-infrastructure site saw the same setpoint tampering and did not disclose. What the Zyxel credential theft was for. And the biggest silence: the information-sharing law expires next month (Utility Dive), and if it lapses, the quiet US week you are looking at could become structurally quieter, because fewer operators will share what they see."
    },
    "bubble": "And who was NOT affected? Every US utility, this week."
+  },
+  "verifier": {
+   "briefing": "Audit complete, 2026-11-04 23:14 UTC. Nine items audited. One upgraded (French blood service, victim-confirmed). Two downgraded pending primary documents (CISA 2015 renewal, foreign grid-component ban), both legal claims resting on trade press. Four of nine rest on a single outlet. CISA's own feeds were unreachable (HTTP 403), which is the main gap: the Siemens item cannot reach A-grade without a CISA or Siemens notice. Next run should check for a CISA ICS advisory on CVE-2026-58115, a common vendor in the European refrigeration cases, and the statute text for the CISA 2015 sunset.",
+   "answers": {
+    "Which items on the board rest on a single source?": "Four: Siemens IoT2050 exploitation (vendor via The Hacker News), Zyxel GS1900 (BleepingComputer), CISA 2015 renewal (Utility Dive), foreign grid-component ban (Utility Dive), plus the CISA campaign item (Industrial Cyber). Rule applied: corroboration count. Single-source items hold at credibility 2 or 3 and cannot reach 1.",
+    "What changed since the last run?": "This is the first audited run, so there is no delta. The baseline is nine items from a 7-day window. From the next run I report new items, retired items, and any verdict that moved.",
+    "Which claims are still unconfirmed and what would confirm them?": "The Siemens exploitation claim: a CISA ICS advisory or Siemens ProductCERT notice. The 110°C setpoint in the French case: the victim's own statement. The CISA 2015 sunset date and extension: the statute and the NDAA text on congress.gov. The grid-component ban: the executive order or Federal Register notice. The supermarket wave's common vendor: any victim or vendor statement."
+   },
+   "bubble": "Four of nine items rest on one source."
   }
  },
  "conversations": [
@@ -204,6 +213,38 @@
     {
      "who": "wideangle",
      "line": "It is also supply-chain security by another name. Both framings are true."
+    }
+   ]
+  },
+  {
+   "between": [
+    "verifier",
+    "contrarian"
+   ],
+   "lines": [
+    {
+     "who": "verifier",
+     "line": "Audit done. Two legal items downgraded: trade press only, no primary document."
+    },
+    {
+     "who": "contrarian",
+     "line": "Good. And the one everyone is quoting, the Siemens CVSS 10?"
+    },
+    {
+     "who": "verifier",
+     "line": "Holds at C2. One vendor's telemetry. CISA's feed returned 403, so I cannot check for an advisory."
+    },
+    {
+     "who": "contrarian",
+     "line": "So the loudest item is the least corroborated."
+    },
+    {
+     "who": "verifier",
+     "line": "Correct. Still worth patching. Corroboration and severity are different columns."
+    },
+    {
+     "who": "contrarian",
+     "line": "Put that sentence on the board."
     }
    ]
   }
@@ -802,5 +843,54 @@
    ]
   }
  ],
- "us_status": "No confirmed intrusion at a US electric utility, pipeline, refinery, LNG terminal or nuclear facility appeared in any allowlisted source in the 7-day window ending 2026-11-05. US items are policy and guidance."
+ "us_status": "No confirmed intrusion at a US electric utility, pipeline, refinery, LNG terminal or nuclear facility appeared in any allowlisted source in the 7-day window ending 2026-11-05. US items are policy and guidance.",
+ "verification": {
+  "run_at": "2026-11-04T23:14:31.753112+00:00",
+  "procedure": [
+   "1. Search: re-run the allowlisted fetch and compare to the previous bundle.",
+   "2. Fetch: for each board item, find whether a primary document or victim statement now exists.",
+   "3. Tier: rate each source A-F (reliability) and each claim 1-6 (credibility); vendor research is C at best.",
+   "4. Currency: flag items older than 7 days, items contradicted by newer stories, and expiring legal deadlines.",
+   "5. Report: per item a verdict (hold / upgrade / downgrade / retire) with the rule applied, plus a one-paragraph audit."
+  ],
+  "verdicts": {
+   "Siemens SIMATIC IoT2050 Advanced: CVSS 10 missing-authentication flaw exploited in the wild": {
+    "verdict": "hold at C2",
+    "reason": "single vendor-origin claim (VulnCheck via The Hacker News). Rule 6: vendor intel attributed and flagged. Would upgrade to A1 on a CISA ICS advisory or Siemens ProductCERT notice; neither is in the bundle (CISA feed 403)."
+   },
+   "Zyxel GS1900 switch zero-day used to compromise nearly 1,000 devices and steal configs and credentials": {
+    "verdict": "hold at B2",
+    "reason": "vendor patch confirms the flaw; the ~1,000 count is reported, not vendor-stated. One outlet. Needs a second independent source to reach 1."
+   },
+   "Cyberattack via refrigeration-equipment provider changed temperature settings at three French blood-service facilities": {
+    "verdict": "upgrade to A1",
+    "reason": "victim statement from the national blood service plus two outlets (BleepingComputer, The Register). The 110°C figure stays [unverified]: reported by one outlet, not in the victim statement."
+   },
+   "Overnight wave of refrigeration setpoint attacks on supermarkets in Belgium, Sweden, Estonia and elsewhere": {
+    "verdict": "hold at B2",
+    "reason": "two outlets (The Hacker News, Dark Reading), no victim named on record, no vendor named. Open question for next run: a common vendor across victims."
+   },
+   "Electric utilities urge Congress to renew the Cybersecurity Information Sharing Act of 2015 before it expires next month": {
+    "verdict": "downgrade to B3 pending primary",
+    "reason": "legal claim resting on trade press only (Utility Dive). Rule 3: fetch the statute sunset and any NDAA extension text before this item is treated as settled."
+   },
+   "CISA launches 2026 Critical Infrastructure Security and Resilience campaign: OT security, continuity, recovery planning": {
+    "verdict": "hold at B2",
+    "reason": "one trade outlet relaying a CISA campaign; CISA's own page not fetched because the feed returns 403. Low stakes, no obligation created."
+   },
+   "UK NCSC Annual Review warns of AI-assisted ransomware against critical national infrastructure by 2028": {
+    "verdict": "hold at A3",
+    "reason": "primary agency document, but it is a forecast. Three outlets in one day are one press cycle, not three corroborations."
+   },
+   "Trump administration ban on foreign grid components raises industry concern over practicality and cost": {
+    "verdict": "downgrade to B3 pending primary",
+    "reason": "policy claim on trade press only; the legal instrument and effective date are not in the bundle. Rule 3 applies."
+   },
+   "Russia and Ukraine report attacks on emergency alert apps during Kherson ceasefire": {
+    "verdict": "hold at B3",
+    "reason": "wartime claims by each side about the other, one outlet. Attribution is suspected, not assessed. Keep as context only."
+   }
+  },
+  "summary": "Nine items audited. One upgraded (French blood service, victim-confirmed). Two downgraded pending primary documents (CISA 2015 renewal, foreign grid-component ban), both legal claims resting on trade press. Four of nine rest on a single outlet. CISA's own feeds were unreachable (HTTP 403), which is the main gap: the Siemens item cannot reach A-grade without a CISA or Siemens notice. Next run should check for a CISA ICS advisory on CVE-2026-58115, a common vendor in the European refrigeration cases, and the statute text for the CISA 2015 sunset."
+ }
 }

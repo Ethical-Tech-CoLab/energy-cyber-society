@@ -70,7 +70,16 @@ def run_with_claude():
     except json.JSONDecodeError: result["items"] = []
     result["us_status"] = ask(BY_ID["contrarian"], "In one or two sentences: was any US energy operator (utility, pipeline, refinery, LNG, nuclear) confirmed breached in this bundle? If not, say so plainly and say what the US items are instead.", 200)
 
-    pairs = [("reporter", "analyst"), ("critic", "reporter"), ("contrarian", "analyst"), ("wideangle", "contrarian"), ("critic", "wideangle")]
+    # verifier pass over the ledger
+    print("verifier", file=sys.stderr)
+    vr = client.messages.create(model=MODEL, max_tokens=3000, system=system_for(BY_ID["verifier"]),
+        messages=[{"role": "user", "content": f"TODAY'S NEWS BUNDLE:\n{ctx}\n\nBOARD ITEMS:\n{json.dumps(result['items'])}\n\nPROCEDURE:\n{json.dumps(personas['verification_procedure'])}\n\nAudit every item. Output ONLY JSON: {{\"verdicts\": {{\"<headline>\": {{\"verdict\": \"hold|upgrade|downgrade|retire + grade\", \"reason\": \"rule applied\"}}}}, \"summary\": \"one paragraph\"}}"}])
+    vt = "".join(b.text for b in vr.content if b.type == "text"); vm = re.search(r"\{.*\}", vt, re.S)
+    try: result["verification"] = json.loads(vm.group(0)) if vm else {}
+    except json.JSONDecodeError: result["verification"] = {}
+    result["verification"]["run_at"] = datetime.now(timezone.utc).isoformat()
+
+    pairs = [("reporter", "analyst"), ("critic", "reporter"), ("contrarian", "analyst"), ("wideangle", "contrarian"), ("critic", "wideangle"), ("verifier", "contrarian")]
     for x, y in pairs:
         ax, ay = BY_ID[x], BY_ID[y]
         print("conversation:", x, y, file=sys.stderr)
@@ -130,6 +139,8 @@ def run_fallback():
         "briefing": "Before anyone says 'the grid was attacked': the headlines above do not tell us who was spared, and silence in coverage is not evidence of impact. Ask who is missing from each story.",
         "answers": {q: "Headlines-only mode. The honest answer is that nobody has checked who was not affected yet." for q in AGENTS[4]["questions"]},
         "bubble": "And who was NOT affected?"}
+    r["agents"]["verifier"] = {"briefing": "No audit possible in headlines-only mode; there are no analytic claims to verify yet.",
+        "answers": {q: "Nothing to audit until an agent run produces board items." for q in BY_ID["verifier"]["questions"]}, "bubble": "Nothing to audit yet."}
     if top:
         r["conversations"].append({"between": ["reporter", "contrarian"], "lines": [
             {"who": "reporter", "line": f"Top of the wire: {top[0]['title'][:70]} ({top[0]['source_name']})."},

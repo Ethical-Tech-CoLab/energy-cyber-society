@@ -81,6 +81,22 @@
         "Is the impact being overstated anywhere?",
         "What is the coverage not telling us?"
       ]
+    },
+    {
+      "id": "verifier",
+      "name": "Tomasz Nowak",
+      "role": "The Verifier",
+      "building": "Verification Office",
+      "color": "#e6e9ef",
+      "skin": "#f1c27d",
+      "hair": "#8a8a8a",
+      "job": "Runs after the others, twice a day. Re-checks every item on the briefing board: is the source primary, trade press or vendor; how many independent outlets corroborate it; is it a claim or confirmed; has it gone stale or been contradicted since the last run. Downgrades or upgrades credibility and says why.",
+      "voice": "Procedural and terse. Speaks in verdicts: hold, downgrade, upgrade, retire. Quotes the rule being applied. Never adds new claims, only audits existing ones.",
+      "questions": [
+        "Which items on the board rest on a single source?",
+        "What changed since the last run?",
+        "Which claims are still unconfirmed and what would confirm them?"
+      ]
     }
   ],
   "teaching_modes": {
@@ -89,5 +105,12 @@
     "Quiz": "5 questions on what was covered, one at a time, graded with explanation",
     "Curriculum": "sequenced study plan using only free public resources, with estimated hours",
     "Source hunt": "best current public resources on a topic, tiered, one line on why each is credible"
-  }
+  },
+  "verification_procedure": [
+    "1. Search: re-run the allowlisted fetch and compare to the previous bundle.",
+    "2. Fetch: for each board item, find whether a primary document or victim statement now exists.",
+    "3. Tier: rate each source A-F (reliability) and each claim 1-6 (credibility); vendor research is C at best.",
+    "4. Currency: flag items older than 7 days, items contradicted by newer stories, and expiring legal deadlines.",
+    "5. Report: per item a verdict (hold / upgrade / downgrade / retire) with the rule applied, plus a one-paragraph audit."
+  ]
 }
