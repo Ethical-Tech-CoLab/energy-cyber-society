@@ -4,7 +4,7 @@
   "cron_expression": "0 11,23 * * *",
   "enabled": true,
   "job_config": {"ccr": {"environment_id": "env_01M7gKfNsRpCaAKvbDJYgqUr",
-    "session_context": {"model": "claude-sonnet-5-5", "sources": [{"git_repository": {"url": "https://github.com/Ethical-Tech-CoLab/energy-cyber-society"}}], "allowed_tools": ["Bash", "Read", "Write", "Edit", "Glob", "Grep", "WebFetch"]},
+    "session_context": {"model": "claude-sonnet-5-5", "sources": [{"git_repository": {"url": "https://github.com/carolina-moron/energy-cyber-society"}}], "allowed_tools": ["Bash", "Read", "Write", "Edit", "Glob", "Grep", "WebFetch"]},
     "events": [{"data": {"uuid": "7f3c2a1e-9b4d-4c6e-8a2f-5d1e3b7c9a04", "session_id": "", "type": "user", "parent_tool_use_id": null,
       "message": {"role": "user", "content": "You are the scheduled runtime for the Energy Cyber Society repo. Open CURATION.md at the repo root and follow it exactly: fetch the allowlisted feeds, write a new docs/data/briefing.json for all six residents with schema items, us_status, conversations and a verification block that states what changed since the previous run, copy agents/personas.json to docs/data/personas.json, run python scripts/validate.py, then commit docs/data as 'briefing: <UTC date and hour>' and push to main. Never invent incidents or attributions; legal claims need a primary document or the label [unverified]; vendor intel is attributed and flagged; say 'I cannot verify this' rather than guess; for every incident say who was NOT affected and what else was happening in cyberspace. Do not edit files outside docs/data."}}}]}}
 }

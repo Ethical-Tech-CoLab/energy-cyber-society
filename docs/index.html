@@ -112,6 +112,11 @@
       </ul>
       <h3>How the residents learn where to ask</h3>
       <p>Each run records which sources supplied items, which primary hosts were reached, and which pages blocked the puller. The Librarian reads that record and reroutes the next run's questions (for example, statute questions to congress.gov rather than waiting for trade press). The map she keeps is <code>agents/where_to_look.json</code>, editable by hand.</p>
+      <h3>Cost, inputs and outputs of one run</h3>
+      <p><b>Input</b> is the fetched bundle: about 25 energy-cyber stories and 30 wider stories as title, summary, source and bias note, roughly 4,600 tokens, plus each resident's rules (about 670 tokens). The fetch and the direct-source pull are plain HTTP: zero model tokens, 20 to 40 seconds, about 2 MB. <b>Output</b> is the briefing file: seven residents' briefings, answers and bubbles, up to 12 structured records, seven conversations, the audit, about 10,000 tokens.</p>
+      <p>One run on the Claude API is about 44 calls, roughly 234,000 input tokens and 10,500 output tokens. Because every call reads the same bundle, the bundle is sent as a cached system block, which cuts the input cost by about 90%. At Anthropic's first-party rates (cached): Sonnet 5.5 about $0.22 per run, $0.44 per day, $13 per month; Opus 5.5 about $0.40 per run, $24 per month; Haiku 5.5 about $0.01 per run, under $1 per month. Uncached, multiply by about 2.5. The run itself takes 3 to 6 minutes. The alternative, a claude.ai scheduled routine that does the curation as an agent session, uses more tokens (it reads files and runs scripts interactively) and is billed through the subscription rather than per token. The actual counts are written to <code>usage</code> in the briefing on every API run, so the estimate is checked against reality daily.</p>
+      <h3>How certain is it, and can it invent news?</h3>
+      <p>The model never fetches; the fetcher does, from a fixed list, and writes a file. The model only reads that file. So an invented story would have to be invented against a bundle that does not contain it, which the Verifier's cross-check catches because every claim must trace to a source line. The remaining risk is misreading, not inventing: compressing a hedge, over-weighting a vivid number, mislabelling IT as OT. That is what the direct-source pull and the agree/differ cross-check exist for, and it is why the trust line, the corroboration count and the Verifier's verdict sit next to every item. Certainty is stated per item, never for the briefing as a whole. The limitations tab lists what the system cannot know at all.</p>
       <h3>Where the pieces live</h3>
       <p>Allowlist: <code>sources.json</code>. Residents and rules: <code>agents/personas.json</code>. Record schema and taxonomy: <code>agents/schema.json</code>. Scripts: <code>fetch_news.py</code>, <code>run_agents.py</code>, <code>pull_sources.py</code>, <code>validate.py</code>. Playbook for the scheduled agent: <code>CURATION.md</code>. The page is static; it only reads <code>docs/data/*.json</code>.</p>
     </div>
@@ -153,7 +158,7 @@
 <footer class="foot">
   An <a href="https://github.com/Ethical-Tech-CoLab">Ethical Tech CoLab</a> experiment ·
   six agents, one runtime, an allowlist of credible sources ·
-  <a href="https://github.com/Ethical-Tech-CoLab/energy-cyber-society">source</a>
+  <a href="https://github.com/carolina-moron/energy-cyber-society">source</a>
 </footer>
 <script src="game.js"></script>
 </body>

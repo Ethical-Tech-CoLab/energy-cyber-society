@@ -44,10 +44,19 @@ def run_with_claude():
     client = anthropic.Anthropic()
     ctx = news_context()
 
+    # The news bundle is identical across all ~44 calls of a run, so it goes first in a
+    # cached system block (prompt caching: ~90% off the input cost of every call after the first).
+    def sys_blocks(agent):
+        return [{"type": "text", "text": "TODAY'S NEWS BUNDLE (shared by every resident):\n" + ctx, "cache_control": {"type": "ephemeral"}},
+                {"type": "text", "text": system_for(agent)}]
+    usage = {"input": 0, "cached": 0, "output": 0, "calls": 0}
+    def tally(r):
+        u = r.usage; usage["calls"] += 1; usage["input"] += u.input_tokens; usage["output"] += u.output_tokens
+        usage["cached"] += getattr(u, "cache_read_input_tokens", 0) or 0
     def ask(agent, prompt, max_tokens=700):
-        r = client.messages.create(
-            model=MODEL, max_tokens=max_tokens, system=system_for(agent),
-            messages=[{"role": "user", "content": f"TODAY'S NEWS BUNDLE:\n{ctx}\n\n{prompt}"}])
+        r = client.messages.create(model=MODEL, max_tokens=max_tokens, system=sys_blocks(agent),
+            messages=[{"role": "user", "content": prompt}])
+        tally(r)
         return "".join(b.text for b in r.content if b.type == "text").strip()
 
     result = {"agents": {}, "conversations": []}
@@ -65,6 +74,7 @@ def run_with_claude():
     print("ledger", file=sys.stderr)
     r = client.messages.create(model=MODEL, max_tokens=6000, system=system_for(BY_ID["reporter"]),
         messages=[{"role": "user", "content": f"TODAY'S NEWS BUNDLE:\n{ctx}\n\nFill this intelligence record for each energy-relevant story (max 12), using only the allowed values in the taxonomy. Output ONLY a JSON array of items.\nSCHEMA:\n{json.dumps(schema)}"}])
+    tally(r)
     txt = "".join(b.text for b in r.content if b.type == "text"); m = re.search(r"\[.*\]", txt, re.S)
     try: result["items"] = json.loads(m.group(0)) if m else []
     except json.JSONDecodeError: result["items"] = []
@@ -72,8 +82,9 @@ def run_with_claude():
 
     # verifier pass over the ledger
     print("verifier", file=sys.stderr)
-    vr = client.messages.create(model=MODEL, max_tokens=3000, system=system_for(BY_ID["verifier"]),
-        messages=[{"role": "user", "content": f"TODAY'S NEWS BUNDLE:\n{ctx}\n\nBOARD ITEMS:\n{json.dumps(result['items'])}\n\nPROCEDURE:\n{json.dumps(personas['verification_procedure'])}\n\nAudit every item. Output ONLY JSON: {{\"verdicts\": {{\"<headline>\": {{\"verdict\": \"hold|upgrade|downgrade|retire + grade\", \"reason\": \"rule applied\"}}}}, \"summary\": \"one paragraph\"}}"}])
+    vr = client.messages.create(model=MODEL, max_tokens=3000, system=sys_blocks(BY_ID["verifier"]),
+        messages=[{"role": "user", "content": f"BOARD ITEMS:\n{json.dumps(result['items'])}\n\nPROCEDURE:\n{json.dumps(personas['verification_procedure'])}\n\nAudit every item. Output ONLY JSON: {{\"verdicts\": {{\"<headline>\": {{\"verdict\": \"hold|upgrade|downgrade|retire + grade\", \"reason\": \"rule applied\"}}}}, \"summary\": \"one paragraph\"}}"}])
+    tally(vr)
     vt = "".join(b.text for b in vr.content if b.type == "text"); vm = re.search(r"\{.*\}", vt, re.S)
     try: result["verification"] = json.loads(vm.group(0)) if vm else {}
     except json.JSONDecodeError: result["verification"] = {}
@@ -91,6 +102,7 @@ def run_with_claude():
                     f"{personas['shared_rules']} They should disagree or sharpen each other, not agree politely. "
                     f"Output ONLY a JSON array of 6 objects {{\"who\": \"{x}\" or \"{y}\", \"line\": \"...\"}}, each line under 30 words, alternating speakers starting with {x}."),
             messages=[{"role": "user", "content": f"TODAY'S NEWS BUNDLE:\n{ctx}"}])
+        tally(r)
         txt = "".join(b.text for b in r.content if b.type == "text")
         m = re.search(r"\[.*\]", txt, re.S)
         try:
@@ -99,6 +111,8 @@ def run_with_claude():
             lines = []
         if lines:
             result["conversations"].append({"between": [x, y], "lines": lines})
+    result["usage"] = usage
+    print(f"usage: {usage}", file=sys.stderr)
     return result, MODEL
 
 # -------------------------------------------------------------- fallback path

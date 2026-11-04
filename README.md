@@ -4,7 +4,7 @@ A virtual town of five LLM agents who read the day's cybersecurity news about th
 energy sector, worldwide with a focus on the United States, and argue about it.
 Walk around, overhear them, click one to talk.
 
-**Live demo:** https://ethical-tech-colab.github.io/energy-cyber-society/
+**Live demo:** https://carolina-moron.github.io/energy-cyber-society/ (once Pages is enabled on the public repo)
 
 ## The residents
 
