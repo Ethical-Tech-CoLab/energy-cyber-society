@@ -16,6 +16,7 @@
   <div class="hud-title"><span class="dot"></span>ENERGY CYBER SOCIETY</div>
   <div class="hud-meta" id="hud-meta">loading briefing…</div>
   <div class="hud-actions">
+    <button id="btn-board" class="pix">Briefing board</button>
     <button id="btn-stories" class="pix">Today's wire</button>
     <button id="btn-settings" class="pix">Settings</button>
   </div>
@@ -64,6 +65,15 @@
     <ol id="wire"></ol>
     <h3>Sources read (and nothing else)</h3>
     <ul id="sources" class="sources"></ul>
+    <div class="row"><button class="pix">Close</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-board" class="dlg wide">
+  <form method="dialog">
+    <h2>Briefing board <small id="board-meta"></small></h2>
+    <p class="us-status" id="us-status"></p>
+    <div id="board"></div>
     <div class="row"><button class="pix">Close</button></div>
   </form>
 </dialog>

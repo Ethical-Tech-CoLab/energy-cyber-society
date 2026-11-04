@@ -1,0 +1,31 @@
+{
+  "_comment": "Per-item intelligence record the agents fill for each story. Three layers: what happened, why it matters to energy, how much to trust it. Priority fields if lean: ot_impact, subsector/value_chain, actor_type+motivation, cves, operational_impact, geopolitical_link, source_reliability.",
+  "taxonomy": {
+    "subsector": ["electricity", "oil", "natural gas", "LNG", "coal", "nuclear", "solar", "wind", "hydro", "geothermal", "bioenergy", "hydrogen", "energy storage", "EV charging", "grid technology", "critical minerals", "cross-sector", "non-energy (spillover)"],
+    "value_chain": ["upstream", "midstream", "downstream", "oilfield services", "generation", "transmission", "distribution", "retail/trading", "utility (combined)", "enabling/cross-cutting", "n/a"],
+    "event_type": ["ransomware", "intrusion", "data breach", "DDoS", "vulnerability disclosure", "exploitation in the wild", "arrest/takedown", "advisory", "policy/regulatory change", "vendor announcement", "forecast/report", "information operation"],
+    "ot_impact": ["none (IT only)", "OT reached, no process effect", "OT process affected", "physical/safety impact", "unknown"],
+    "actor_type": ["nation state", "state-aligned", "criminal ransomware", "hacktivist", "insider", "unattributed", "n/a"],
+    "attribution_confidence": ["confirmed", "assessed", "suspected", "unattributed", "n/a"],
+    "source_reliability": {"A": "completely reliable (primary document, victim statement, government advisory)", "B": "usually reliable (wire, established trade press)", "C": "fairly reliable (vendor research, named firm that sells security products)", "D": "not usually reliable", "E": "unreliable", "F": "cannot be judged"},
+    "info_credibility": {"1": "confirmed by independent sources", "2": "probably true", "3": "possibly true", "4": "doubtful", "5": "improbable", "6": "cannot be judged"},
+    "severity": ["critical", "high", "medium", "low", "info"],
+    "recommended_action": ["patch", "hunt", "monitor", "awareness only", "policy watch"]
+  },
+  "item": {
+    "headline": "string", "severity": "severity", "event_type": "event_type",
+    "event_date": "YYYY-MM-DD or null", "reported_date": "YYYY-MM-DD",
+    "victim": "string or null", "country": "string", "status": "ongoing|contained|resolved|unconfirmed|n/a",
+    "subsector": "subsector", "value_chain": "value_chain", "ot_impact": "ot_impact",
+    "asset_type": "string or null", "ics_vendor": "string or null", "supply_chain_entry": "string or null",
+    "actor": "string or null", "actor_type": "actor_type", "attribution_confidence": "attribution_confidence", "attributed_by": "string or null", "motivation": "string or null",
+    "cves": ["CVE-..."], "kev_listed": "true|false|unknown", "initial_access": "string or null", "malware": "string or null",
+    "operational_impact": "string", "physical_safety_impact": "string or null", "customers_affected": "string or null", "data_exposed": "string or null", "cascading": "string or null",
+    "geopolitical_link": "string or null", "regulatory_trigger": "string or null", "government_response": "string or null",
+    "source_type": "government advisory|vendor report|victim statement|media|dark web claim|primary document",
+    "source_reliability": "A-F", "info_credibility": "1-6", "corroboration": "number of independent sources", "claim_vs_confirmed": "confirmed|claimed",
+    "so_what": "one sentence", "recommended_action": "recommended_action", "trend": "new|campaign|rising|recurring",
+    "labels": ["[inference]", "[unverified]", "[speculation]"], "confidence": "high|moderate|low",
+    "sources": [{"name": "string", "url": "string", "date": "YYYY-MM-DD"}]
+  }
+}

@@ -60,6 +60,16 @@ def run_with_claude():
         headline = ask(a, "Give one speech-bubble line of at most 12 words you might say today while walking around town. Output only the line.", 60)
         result["agents"][a["id"]] = {"briefing": briefing, "answers": answers, "bubble": headline.strip('"')}
 
+    # structured intelligence ledger: the Reporter fills the schema, the Contrarian audits it
+    schema = json.loads((ROOT / "agents" / "schema.json").read_text())
+    print("ledger", file=sys.stderr)
+    r = client.messages.create(model=MODEL, max_tokens=6000, system=system_for(BY_ID["reporter"]),
+        messages=[{"role": "user", "content": f"TODAY'S NEWS BUNDLE:\n{ctx}\n\nFill this intelligence record for each energy-relevant story (max 12), using only the allowed values in the taxonomy. Output ONLY a JSON array of items.\nSCHEMA:\n{json.dumps(schema)}"}])
+    txt = "".join(b.text for b in r.content if b.type == "text"); m = re.search(r"\[.*\]", txt, re.S)
+    try: result["items"] = json.loads(m.group(0)) if m else []
+    except json.JSONDecodeError: result["items"] = []
+    result["us_status"] = ask(BY_ID["contrarian"], "In one or two sentences: was any US energy operator (utility, pipeline, refinery, LNG, nuclear) confirmed breached in this bundle? If not, say so plainly and say what the US items are instead.", 200)
+
     pairs = [("reporter", "analyst"), ("critic", "reporter"), ("contrarian", "analyst"), ("wideangle", "contrarian"), ("critic", "wideangle")]
     for x, y in pairs:
         ax, ay = BY_ID[x], BY_ID[y]
@@ -92,7 +102,7 @@ def run_fallback():
     intl = [s for s in en if s["source_country"] != "US"]
     srcs_used = {s["source"] for s in en}
     bias = [f"{src['name']}: {src['bias_note']}" for src in news["sources"] if src["id"] in srcs_used]
-    r = {"agents": {}, "conversations": []}
+    r = {"agents": {}, "conversations": [], "items": [], "us_status": "Headlines-only mode: nobody has checked."}
     r["agents"]["reporter"] = {
         "briefing": ("Here is what the allowlisted feeds carried on energy-sector cyber in the last %d hours. " % news["window_hours"]
                      + (" ".join(cite(s) + "." for s in top) if top else "The energy bucket is thin today; no story matched the energy filter, so I will not invent one.")

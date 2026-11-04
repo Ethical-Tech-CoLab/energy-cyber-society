@@ -49,6 +49,21 @@ ANTHROPIC_API_KEY=sk-ant-... python scripts/run_agents.py
 cd docs && python -m http.server 8765    # open http://localhost:8765
 ```
 
+## The intelligence schema and sourcing rules
+
+Each story the agents keep becomes a structured record (`agents/schema.json`): event core,
+energy subsector and value-chain segment, IT-versus-OT impact, actor and attribution
+confidence, CVE/KEV, impact, geopolitical and regulatory context, Admiralty-style source
+reliability and credibility, a so-what line and a recommended action. The **Briefing board**
+in the page shows these ranked by severity. The residents' shared rules
+(`agents/personas.json`) carry the sourcing discipline: primary documents for legal claims,
+vendor intel attributed and flagged, `[inference]`/`[unverified]` labels, "I cannot verify
+this" instead of guesses.
+
+Two companion files for using the same rigor in a Claude Project:
+`docs/claude-project-instructions.md` (paste as Project instructions) and
+`docs/energy-cyber-source-registry.md` (tiered registry, upload to Project knowledge).
+
 ## Adding a source
 
 Add it to `sources.json` with a `bias_note`. The Media Critic reads those notes; a source

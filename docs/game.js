@@ -209,6 +209,7 @@ function select(a) {
   chat.innerHTML = '';
   const b = briefing && briefing.agents[a.p.id];
   addMsg(b ? b.briefing : 'No briefing yet today.', 'them');
+  if (briefing && briefing.us_status && a.p.id === 'contrarian') addMsg('US status: ' + briefing.us_status, 'sys');
   if (briefing && briefing.model === 'fallback-headlines') addMsg('Headlines-only mode: the daily agent run has not happened yet, so this is the wire, not analysis. Add your key in Settings for a live answer.', 'sys');
   const sg = $('suggest'); sg.innerHTML = '';
   a.p.questions.forEach(q => { const btn = document.createElement('button'); btn.textContent = q; btn.onclick = () => ask(q); sg.appendChild(btn); });
@@ -280,6 +281,32 @@ $('btn-stories').onclick = () => {
   (news ? news.sources : []).forEach(s => { const li = document.createElement('li'); li.innerHTML = `<b>${s.name}</b> (${s.type}, ${s.country}) — ${s.bias_note}`; so.appendChild(li); });
   $('wire-meta').textContent = news ? `${news.energy.length} energy-cyber stories, ${news.wide.length} other cyber stories, last ${news.window_hours}h, fetched ${news.generated_at.slice(0, 16).replace('T', ' ')} UTC` : '';
   $('dlg-stories').showModal();
+};
+
+// briefing board: the structured intelligence ledger
+function esc(t) { return String(t == null ? '' : t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
+$('btn-board').onclick = () => {
+  const items = (briefing && briefing.items) || [];
+  $('us-status').textContent = (briefing && briefing.us_status) || '';
+  $('board-meta').textContent = items.length ? `${items.length} items, ranked by severity · schema: what happened / why it matters to energy / how much to trust it` : 'No structured items yet (headlines-only mode).';
+  const order = { critical: 0, high: 1, medium: 2, low: 3, info: 4 };
+  const bd = $('board'); bd.innerHTML = '';
+  [...items].sort((a, b) => (order[a.severity] ?? 9) - (order[b.severity] ?? 9)).forEach(it => {
+    const otHit = /process|physical|reached/i.test(it.ot_impact || '');
+    const d = document.createElement('div'); d.className = 'item';
+    const rows = [['Energy', `${it.subsector || '?'} · ${it.value_chain || 'n/a'}`], ['IT vs OT', it.ot_impact], ['Actor', `${it.actor || 'none named'} · ${it.actor_type || ''} · ${it.attribution_confidence || ''}${it.attributed_by ? ' (by ' + it.attributed_by + ')' : ''}`],
+      ['Technical', [(it.cves || []).join(', '), it.ics_vendor, it.initial_access, it.malware].filter(Boolean).join(' · ') || 'n/a'],
+      ['Impact', [it.operational_impact, it.physical_safety_impact, it.data_exposed].filter(Boolean).join(' · ')], ['Context', [it.geopolitical_link, it.regulatory_trigger, it.government_response].filter(Boolean).join(' · ') || 'none'],
+      ['Trust', `source ${it.source_type || '?'} · reliability ${it.source_reliability || '?'} · credibility ${it.info_credibility || '?'} · ${it.corroboration || 0} independent · ${it.claim_vs_confirmed || ''} · confidence ${it.confidence || '?'}`]];
+    d.innerHTML = `<h4>${esc(it.headline)}</h4>
+      <div class="badges"><span class="badge sev-${esc(it.severity)}">${esc(it.severity)}</span><span class="badge ${otHit ? 'ot-hit' : ''}">${esc(it.ot_impact)}</span><span class="badge">${esc(it.event_type)}</span><span class="badge">${esc(it.country)}</span><span class="badge">${esc(it.recommended_action)}</span><span class="badge">${esc(it.trend)}</span></div>
+      <dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
+      <div class="sowhat"><b>So what:</b> ${esc(it.so_what)}</div>
+      ${(it.labels || []).length ? `<div class="lbl">${it.labels.map(esc).join(' · ')}</div>` : ''}
+      <div class="src">${(it.sources || []).map(s => s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a> ${esc(s.date || '')}` : `${esc(s.name)} ${esc(s.date || '')}`).join(' · ')}</div>`;
+    bd.appendChild(d);
+  });
+  $('dlg-board').showModal();
 };
 
 // ---------------------------------------------------------------- boot
