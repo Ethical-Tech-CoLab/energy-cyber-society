@@ -17,6 +17,9 @@
   <div class="hud-meta" id="hud-meta">loading briefing…</div>
   <div class="hud-actions">
     <button id="btn-chatter" class="pix">Chatter: on</button>
+    <button id="btn-method" class="pix">Methodology</button>
+    <button id="btn-look" class="pix">Where to look</button>
+    <button id="btn-limits" class="pix">Limitations</button>
     <button id="btn-board" class="pix">Briefing board</button>
     <button id="btn-stories" class="pix">Today's wire</button>
     <button id="btn-settings" class="pix">Settings</button>
@@ -77,6 +80,72 @@
     <p class="us-status" id="us-status"></p>
     <p class="rubric" id="rubric"></p>
     <div id="board"></div>
+    <div class="row"><button class="pix">Close</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-method" class="dlg wide">
+  <form method="dialog">
+    <h2>Methodology <small>how this world is built, and why</small></h2>
+    <div class="prose">
+      <h3>Intent</h3>
+      <p>A daily, unattended, credible read on cybersecurity in the energy sector, worldwide with a United States focus, that you can interrogate instead of scroll. The town metaphor is not decoration: each resident is one analytic job, and giving the jobs to different agents is what makes them disagree, which is where the analysis comes from.</p>
+      <h3>The loop (runs twice a day, no button to press)</h3>
+      <ol>
+        <li><b>Fetch.</b> Only the feeds in <code>sources.json</code> are read. Each carries a bias note. Nothing outside the allowlist enters.</li>
+        <li><b>Make relevance.</b> A story is energy-cyber only if it has both an energy signal (grid, pipeline, utility, ICS vendor, substation…) and a cyber signal (breach, CVE, ransomware, exploit…). Everything else from the same window is kept in a "wide" bucket so the Wide-Angle can see what else was happening.</li>
+        <li><b>Curate.</b> Six analytic residents each write a briefing over the same bundle: the Reporter (what happened, confirmed vs claimed), the Analyst (actor, tradecraft, IT vs OT), the Media Critic (bias of each outlet), the Wide-Angle (simultaneous events that could spill over), the Contrarian (who was <i>not</i> affected), and the Verifier (audit). The Librarian keeps the map of where to look.</li>
+        <li><b>Ledger.</b> Every kept story becomes one structured record: event core, energy subsector and value-chain segment, IT-versus-OT impact (the most important single field), actor and attribution confidence, CVE, impact, geopolitical and regulatory context, Admiralty-style source reliability (A–F) and credibility (1–6), so-what, recommended action.</li>
+        <li><b>Pull the direct source.</b> Every URL behind every item is fetched; links to primary documents (CISA, FERC, NERC, TSA, vendor advisories, victim statements) are followed and fetched too.</li>
+        <li><b>Verify one against the other.</b> For each item the outlet's claim is set beside the primary text: agree, differ, verdict. Items are corrected where the primary disagrees (CVE ids, counts, named vendors, hedges a headline dropped).</li>
+        <li><b>Audit and publish.</b> The Verifier issues a verdict per item and reports what changed since the last run. A validator rejects any malformed briefing. The result is committed and the page redraws from it.</li>
+      </ol>
+      <h3>How "right, wrong, important" are kept apart</h3>
+      <p><b>Importance</b> is the severity badge: OT or physical impact first, then US energy relevance, actor capability, scale, and whether action is possible. <b>Correctness</b> is the trust line and the Verifier's verdict: source tier, independent corroboration, claim-versus-confirmed, direct-source match. They are separate columns on purpose. An item can be critical and poorly confirmed, or fully confirmed and minor.</p>
+      <h3>Standing rules</h3>
+      <ul>
+        <li>Never invent incidents, numbers, victims or attributions. If the bundle does not cover it, say so.</li>
+        <li>Legal and regulatory claims need the primary document or the label [unverified]. Trade press is discovery only.</li>
+        <li>Vendor threat intelligence is attributed by name and flagged as coming from a firm that sells security products.</li>
+        <li>Attacker and leak-site claims are claims. "I cannot verify this" beats a plausible guess.</li>
+        <li>For every incident: who was not affected, and what else was happening at the same time.</li>
+      </ul>
+      <h3>How the residents learn where to ask</h3>
+      <p>Each run records which sources supplied items, which primary hosts were reached, and which pages blocked the puller. The Librarian reads that record and reroutes the next run's questions (for example, statute questions to congress.gov rather than waiting for trade press). The map she keeps is <code>agents/where_to_look.json</code>, editable by hand.</p>
+      <h3>Where the pieces live</h3>
+      <p>Allowlist: <code>sources.json</code>. Residents and rules: <code>agents/personas.json</code>. Record schema and taxonomy: <code>agents/schema.json</code>. Scripts: <code>fetch_news.py</code>, <code>run_agents.py</code>, <code>pull_sources.py</code>, <code>validate.py</code>. Playbook for the scheduled agent: <code>CURATION.md</code>. The page is static; it only reads <code>docs/data/*.json</code>.</p>
+    </div>
+    <div class="row"><button class="pix">Close</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-look" class="dlg wide">
+  <form method="dialog">
+    <h2>Where to look <small id="look-meta"></small></h2>
+    <div id="look" class="prose"></div>
+    <h3>What the last run learned</h3>
+    <div id="perf" class="prose"></div>
+    <div class="row"><button class="pix">Close</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-limits" class="dlg wide">
+  <form method="dialog">
+    <h2>Limitations <small>read before trusting anything here</small></h2>
+    <div class="prose">
+      <ul>
+        <li><b>Not live.</b> The town shows a snapshot from the last scheduled run, not the internet right now. The top bar shows the age of the data and turns amber past 24 hours. Nothing needs a button: runs are scheduled twice a day. Only the chat becomes live if you add a key or proxy in Settings.</li>
+        <li><b>Absence of evidence is the biggest gap.</b> "Who was not affected" can only be answered from what credible sources reported. If an operator was hit and did not disclose, the town will say "not affected" and be wrong. Silence in coverage is not safety, and the Contrarian says so, but the data cannot.</li>
+        <li><b>Verification is scheduled, not random.</b> The cloud schedule allows fixed times, not random intervals. The playbook adds a random spot-check: each run re-pulls two items chosen at random, so a page that quietly changed is caught eventually, not instantly.</li>
+        <li><b>The fetch is only as good as the allowlist.</b> CISA's feeds return 403 to automated clients and Utility Dive blocks the puller, so US government and utility-press items are under-represented and two legal items this week could not be checked against their text. NERC, Reuters, ENISA and Dragos have no working public RSS.</li>
+        <li><b>Relevance is a keyword rule.</b> A story needs an energy term and a cyber term. That misses stories that use neither (a vendor name only) and admits some that use both loosely. The Contrarian and Verifier exist partly to catch this.</li>
+        <li><b>The curator is a language model.</b> It can misread a summary, over-weight a vivid detail, or compress hedged language. The rules, the direct-source pull and the cross-check reduce this; they do not remove it. Today's briefing was curated in a live session rather than by the scheduled run, and the model field says so.</li>
+        <li><b>Vendor-funded outlets dominate OT coverage.</b> The Media Critic flags it every day; it does not change the fact that much ICS reporting originates with firms selling the fix.</li>
+        <li><b>English-only, US-first by construction.</b> The source list decides the geography. A French victim statement was reachable but the English keyword matcher found nothing in it; it was read by hand.</li>
+        <li><b>No private or member-only data.</b> E-ISAC, ONG-ISAC and paywalled journals are listed in Where to look but never read.</li>
+        <li><b>It does not predict.</b> Severity ranks what is known; it is not a forecast of what will be attacked.</li>
+      </ul>
+    </div>
     <div class="row"><button class="pix">Close</button></div>
   </form>
 </dialog>

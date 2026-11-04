@@ -21,6 +21,7 @@ for it in b.get("items", []):
     if not it.get("sources"): errs.append(f"item '{h}': no sources")
     if not it.get("so_what"): errs.append(f"item '{h}': no so_what")
 if "us_status" not in b: errs.append("missing us_status")
+if (ROOT / "docs/data/where_to_look.json").read_text() != (ROOT / "agents/where_to_look.json").read_text(): errs.append("docs/data/where_to_look.json differs from agents/where_to_look.json (cp it)")
 if (ROOT / "docs/data/personas.json").read_text() != json.dumps(p, indent=1, ensure_ascii=False):
     errs.append("docs/data/personas.json differs from agents/personas.json (run: python3 -c \"import json;json.dump(json.load(open('agents/personas.json')),open('docs/data/personas.json','w'),indent=1,ensure_ascii=False)\")")
 if errs:

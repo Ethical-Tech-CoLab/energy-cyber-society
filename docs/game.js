@@ -7,7 +7,7 @@ const cv = document.getElementById('town');
 const ctx = cv.getContext('2d');
 ctx.imageSmoothingEnabled = false;
 
-let personas, briefing, news, sources;
+let personas, briefing, news, sources, lookmap;
 let agents = [];
 let selected = null;
 let bubbles = [];                      // {agent, text, until}
@@ -24,6 +24,7 @@ const BUILDINGS = [
   { key: 'Observatory',       x: 130, y: 340, w: 150, h: 120, color: '#2c5a3e', roof: '#4be89a' },
   { key: "Devil's Advocate",  x: 700, y: 340, w: 160, h: 115, color: '#5a2c2c', roof: '#e85a4b' },
   { key: 'Verification Office', x: 400, y: 440, w: 160, h: 80, color: '#3a3f4a', roof: '#e6e9ef' },
+  { key: 'Library',            x: 40,  y: 470, w: 120, h: 70, color: '#4a4420', roof: '#e8d44b' },
 ];
 const PLAZA = { x: 380, y: 300, w: 200, h: 120 };
 
@@ -352,18 +353,44 @@ $('btn-board').onclick = () => {
   $('dlg-board').showModal();
 };
 
+// methodology / where to look / limitations
+$('btn-method').onclick = () => $('dlg-method').showModal();
+$('btn-limits').onclick = () => $('dlg-limits').showModal();
+$('btn-look').onclick = () => {
+  const el = $('look'); el.innerHTML = '';
+  if (lookmap) {
+    $('look-meta').textContent = `the Librarian's map · reviewed ${lookmap.reviewed} · edit agents/where_to_look.json`;
+    lookmap.sections.forEach(sec => {
+      const d = document.createElement('div'); d.className = 'look-sec';
+      d.innerHTML = `<h4>${esc(sec.question)}</h4><div class="tier">${esc(sec.tier)}</div><ul>${sec.entries.map(e => `<li>${e.url ? `<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.name)}</a>` : `<b>${esc(e.name)}</b>`} — ${esc(e.why)} <span class="acc">[${esc(e.access)}]</span></li>`).join('')}</ul>`;
+      el.appendChild(d);
+    });
+  }
+  const pf = $('perf'); pf.innerHTML = '';
+  if (sources && sources.source_performance) {
+    const rows = Object.entries(sources.source_performance).sort((a, b) => (b[1].energy_items || 0) - (a[1].energy_items || 0));
+    pf.innerHTML = `<table class="perf-table"><tr><th>Source</th><th>Energy items</th><th>Wide</th><th>Feed</th><th>Pulls ok</th><th>Blocked</th></tr>${rows.map(([k, v]) => `<tr><td>${esc(k)}</td><td>${v.energy_items || 0}</td><td>${v.wide_items || 0}</td><td class="${String(v.feed || '').startsWith('error') ? 'bad' : ''}">${esc(v.feed || 'n/a')}</td><td>${v.pulls_ok || 0}</td><td class="${v.pulls_blocked ? 'bad' : ''}">${v.pulls_blocked || 0}</td></tr>`).join('')}</table>
+      <p>Primary hosts reached: ${esc((sources.primary_hosts_reached || []).join(', ') || 'none')} · pulled ${esc((sources.pulled_at || '').slice(0, 16).replace('T', ' '))} UTC</p>`;
+  }
+  $('dlg-look').showModal();
+};
+
 // ---------------------------------------------------------------- boot
 async function boot() {
-  const [p, b, n, src] = await Promise.all([
+  const [p, b, n, src, lk] = await Promise.all([
     fetch('data/personas.json').then(r => r.json()),
     fetch('data/briefing.json').then(r => r.json()).catch(() => null),
     fetch('data/news.json').then(r => r.json()).catch(() => null),
     fetch('data/sources.json').then(r => r.json()).catch(() => null),
+    fetch('data/where_to_look.json').then(r => r.json()).catch(() => null),
   ]);
-  personas = p; briefing = b; news = n; sources = src;
-  $('hud-meta').textContent = briefing
-    ? `briefing ${briefing.generated_at.slice(0, 10)} · ${briefing.counts.energy} energy-cyber stories · ${briefing.counts.wide} wider cyber · model ${briefing.model}`
-    : 'no briefing yet';
+  personas = p; briefing = b; news = n; sources = src; lookmap = lk;
+  if (briefing) {
+    const ageH = (Date.now() - Date.parse(briefing.news_generated_at || briefing.generated_at)) / 36e5;
+    const age = ageH < 1 ? 'under an hour' : ageH < 48 ? `${Math.round(ageH)}h` : `${Math.round(ageH / 24)} days`;
+    $('hud-meta').textContent = `snapshot ${age} old (fetched ${(briefing.news_generated_at || briefing.generated_at).slice(0, 16).replace('T', ' ')} UTC) · ${briefing.counts.energy} energy-cyber · ${briefing.counts.wide} wider cyber · ${briefing.model}`;
+    if (ageH > 24) $('hud-meta').classList.add('stale');
+  } else $('hud-meta').textContent = 'no briefing yet';
   makeAgents();
   window.ECS = { agents, select };       // small debug hook, also handy for tests
   await document.fonts.ready;

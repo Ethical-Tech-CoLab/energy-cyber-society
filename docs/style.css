@@ -86,3 +86,12 @@ canvas#town{width:100%;height:auto;display:block;image-rendering:pixelated;image
 .pulled.primary{border-left-color:var(--warn)}
 .pulled .k{color:var(--mute);font-size:11px}
 .pulled blockquote{margin:4px 0;padding:4px 8px;background:#0b0e14;color:var(--mute);font-size:11px;border-left:2px solid #2a4a3a}
+
+.prose{font-size:13px;max-height:62vh;overflow:auto;padding-right:6px}
+.prose h3{margin:14px 0 4px}.prose p,.prose li{color:var(--ink)}.prose ul,.prose ol{padding-left:20px}.prose li{margin-bottom:6px}
+.prose code{background:#0b0e14;padding:1px 4px;font-size:12px}
+.look-sec{border:2px solid var(--line);padding:8px 10px;margin:8px 0}
+.look-sec h4{margin:0 0 4px;font-size:13px}.look-sec .tier{color:var(--warn);font-size:11px}
+.look-sec li{margin-bottom:4px}.look-sec .acc{color:var(--mute);font-size:11px}
+.perf-table{width:100%;border-collapse:collapse;font-size:12px}.perf-table td,.perf-table th{border-bottom:1px solid var(--line);padding:3px 6px;text-align:left}.perf-table .bad{color:#e85a4b}
+.hud-meta.stale{color:var(--warn)}

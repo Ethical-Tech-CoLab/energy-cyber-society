@@ -53,6 +53,15 @@
     "Which claims are still unconfirmed and what would confirm them?": "After the direct-source pull: the 110°C figure (only 'according to reports'); the 'nearly 1,000' Zyxel count (outlet's, not Zyxel's); both Utility Dive legal items, which the puller cannot fetch (HTTP 403) and which need the statute and the executive instrument; and whether IoT2050 units in energy networks were actually hit, since VulnCheck describes exploitation of Node-RED broadly."
    },
    "bubble": "Four of nine items rest on one source."
+  },
+  "librarian": {
+   "briefing": "Where this week's answers came from, and where they did not. Energy-relevant items were supplied mostly by Industrial Cyber, The Register Security, BleepingComputer, The Hacker News. Primary documents reached by the puller: presse.efs.sante.fr, www.ncsc.gov.uk, www.vulncheck.com, www.zyxel.com. Blocked or broken: CISA Advisories, CISA News, Utility Dive; CISA's feeds return 403 and Utility Dive refuses automated pulls, so the two US legal items could not be checked against their text. Next run, ask congress.gov and the Federal Register directly for the CISA 2015 sunset and the grid-component order instead of waiting for trade press. For the Siemens flaw, the place to look is Siemens ProductCERT and the CISA KEV catalog, neither of which the outlets linked.",
+   "answers": {
+    "Where do I find primary documents on US energy cyber regulation?": "Federal Register for any rule or executive order; FERC eLibrary for orders approving NERC CIP; the NERC Reliability Standards page for CIP-002 through CIP-015 with effective dates; TSA's surface cybersecurity toolkit for pipeline directives; congress.gov for statutes such as the Cybersecurity Information Sharing Act of 2015; NRC for 10 CFR 73.54 at nuclear plants. All free. Open 'Where to look' in the top bar for the full map.",
+    "Which journals and research outlets cover energy-sector cybersecurity?": "International Journal of Critical Infrastructure Protection and IEEE Transactions on Smart Grid (both paywalled, preprints on arXiv cs.CR and eess.SY), Journal of Cybersecurity at Oxford (open access), Computers & Security. Standards: NIST SP 800-82r3 free, ISA/IEC 62443 paid. Practitioner: SANS ICS papers, Dragos Year in Review (email gate, vendor). Policy: Lawfare, CSIS, Atlantic Council. Use Scite or Google Scholar to check whether later work supports a paper's claim.",
+    "Which sources worked and which were blocked in the latest run?": "Worked: Industrial Cyber, The Register Security, BleepingComputer, The Hacker News, Dark Reading, Utility Dive, UK NCSC News. Primary pages reached: presse.efs.sante.fr, www.ncsc.gov.uk, www.vulncheck.com, www.zyxel.com. Blocked: CISA Advisories, CISA News, Utility Dive. The EFS statement was reachable but in French, so the English keyword matcher found no excerpts and it was read by hand."
+   },
+   "bubble": "CISA says 403. Ask congress.gov directly."
   }
  },
  "conversations": [
@@ -245,6 +254,38 @@
     {
      "who": "contrarian",
      "line": "Put that sentence on the board."
+    }
+   ]
+  },
+  {
+   "between": [
+    "librarian",
+    "verifier"
+   ],
+   "lines": [
+    {
+     "who": "librarian",
+     "line": "Two legal items are unverified only because Utility Dive blocks the puller."
+    },
+    {
+     "who": "verifier",
+     "line": "Then they stay unverified. A blocked page is not a source."
+    },
+    {
+     "who": "librarian",
+     "line": "Agreed. Next run I route the statute question to congress.gov and the Federal Register first."
+    },
+    {
+     "who": "verifier",
+     "line": "And the Siemens flaw? VulnCheck is a seller."
+    },
+    {
+     "who": "librarian",
+     "line": "Siemens ProductCERT and the KEV catalog. Neither outlet linked them."
+    },
+    {
+     "who": "verifier",
+     "line": "Add both to the map. Where we ask is half of what we know."
     }
    ]
   }

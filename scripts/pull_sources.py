@@ -74,6 +74,19 @@ def main():
                 print(f"  ERR {url[:80]} {e}", file=sys.stderr)
         out["items"][it["headline"]] = rec
         print(f"[{len(rec['sources'])} sources, {len(rec['primary'])} primary] {it['headline'][:70]}", file=sys.stderr)
+    # what the Librarian learns: which sources delivered, which were blocked, which supplied items
+    news = json.loads((ROOT / "docs/data/news.json").read_text())
+    perf = {src["name"]: {"energy_items": 0, "wide_items": 0, "feed": "ok", "pulls_ok": 0, "pulls_blocked": 0} for src in news["sources"]}
+    for e in news.get("errors", []):
+        nm = next((x["name"] for x in news["sources"] if x["id"] == e["source"]), e["source"]); perf.setdefault(nm, {})["feed"] = "error: " + e["error"][:60]
+    for st in news["energy"]: perf.setdefault(st["source_name"], {}).setdefault("energy_items", 0); perf[st["source_name"]]["energy_items"] += 1
+    for st in news["wide"]: perf.setdefault(st["source_name"], {}).setdefault("wide_items", 0); perf[st["source_name"]]["wide_items"] += 1
+    for rec in out["items"].values():
+        for x in rec["sources"]:
+            nm = x["name"].split(" (")[0]; perf.setdefault(nm, {"energy_items": 0, "wide_items": 0, "feed": "n/a", "pulls_ok": 0, "pulls_blocked": 0})
+            perf[nm]["pulls_ok" if x.get("status") == 200 else "pulls_blocked"] = perf[nm].get("pulls_ok" if x.get("status") == 200 else "pulls_blocked", 0) + 1
+    out["source_performance"] = perf
+    out["primary_hosts_reached"] = sorted({urllib.parse.urlparse(p["url"]).netloc for rec in out["items"].values() for p in rec["primary"] if p.get("status") == 200})
     OUT.write_text(json.dumps(out, indent=1, ensure_ascii=False))
     print(f"wrote {OUT}")
 

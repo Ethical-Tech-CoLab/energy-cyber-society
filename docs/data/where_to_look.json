@@ -1,0 +1,46 @@
+{
+  "_comment": "The Librarian's map. Tiered by what kind of question you have. 'access' flags paywalls, memberships and feeds that block automated pulls. Edit freely; the Librarian reads this file.",
+  "reviewed": "2026-11-04",
+  "sections": [
+    {"question": "What does the law or regulator actually say? (US)", "tier": "primary", "entries": [
+      {"name": "Federal Register", "url": "https://www.federalregister.gov/", "why": "every proposed and final rule, executive order and notice; the controlling text", "access": "free"},
+      {"name": "FERC eLibrary and orders", "url": "https://www.ferc.gov/", "why": "approves and directs NERC CIP standards; orders are the primary record", "access": "free"},
+      {"name": "NERC Reliability Standards (CIP-002 to CIP-015)", "url": "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx", "why": "the mandatory bulk-power-system cyber standards, with effective dates", "access": "free; news page has no RSS"},
+      {"name": "TSA pipeline security directives", "url": "https://www.tsa.gov/for-industry/surface-transportation-cybersecurity-toolkit", "why": "the oil and gas pipeline cyber regime; check each directive's version and expiry", "access": "free"},
+      {"name": "congress.gov", "url": "https://www.congress.gov/", "why": "statutes and bills, e.g. the Cybersecurity Information Sharing Act of 2015 sunset and any NDAA extension", "access": "free"},
+      {"name": "DOE CESER", "url": "https://www.energy.gov/ceser", "why": "the energy sector risk management agency; programs, leadership, reports", "access": "free; RSS at energy.gov/rss/newsroom.xml"},
+      {"name": "NRC cybersecurity (10 CFR 73.54)", "url": "https://www.nrc.gov/", "why": "nuclear plant cyber rule and inspections", "access": "free"}]},
+    {"question": "Is this vulnerability real and is it exploited?", "tier": "primary", "entries": [
+      {"name": "CISA ICS advisories", "url": "https://www.cisa.gov/news-events/cybersecurity-advisories", "why": "the authoritative US advisory per ICS product, several per week, some tagged 'Used in Energy'", "access": "free; RSS returns 403 to many automated clients, read the site"},
+      {"name": "CISA Known Exploited Vulnerabilities catalog", "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog", "why": "if a CVE is here, exploitation is confirmed by the US government", "access": "free, JSON download"},
+      {"name": "NVD", "url": "https://nvd.nist.gov/", "why": "CVE record, CVSS, references", "access": "free, API"},
+      {"name": "Vendor PSIRT/ProductCERT pages", "url": "https://cert-portal.siemens.com/productcert/", "why": "Siemens, Schneider, Rockwell, ABB, Honeywell, Zyxel each publish their own advisories; the vendor advisory outranks any outlet", "access": "free"}]},
+    {"question": "Who is the actor and what is the tradecraft?", "tier": "vendor research (attribute by name, flag as seller)", "entries": [
+      {"name": "Dragos (Year in Review, threat group pages)", "url": "https://www.dragos.com/resources/", "why": "deepest public ICS threat-group tracking", "access": "free with email gate; no working RSS"},
+      {"name": "Mandiant / Google Threat Intelligence", "url": "https://cloud.google.com/blog/topics/threat-intelligence", "why": "nation-state attributions, Sandworm and Volt Typhoon reporting", "access": "free"},
+      {"name": "Microsoft Threat Intelligence", "url": "https://www.microsoft.com/en-us/security/blog/topic/threat-intelligence/", "why": "Volt Typhoon and similar campaigns; large telemetry", "access": "free"},
+      {"name": "Claroty Team82, Nozomi Labs, Forescout Vedere", "url": "https://claroty.com/team82", "why": "OT vulnerability research", "access": "free"},
+      {"name": "MITRE ATT&CK for ICS", "url": "https://attack.mitre.org/matrices/ics/", "why": "the shared vocabulary for techniques; use it to compare incidents", "access": "free"}]},
+    {"question": "What is the research and academic view?", "tier": "journals and standards", "entries": [
+      {"name": "IEEE Transactions on Smart Grid", "url": "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=5165411", "why": "grid cyber-physical security research", "access": "paywalled; many preprints on arXiv eess.SY / cs.CR"},
+      {"name": "International Journal of Critical Infrastructure Protection (Elsevier)", "url": "https://www.sciencedirect.com/journal/international-journal-of-critical-infrastructure-protection", "why": "the dedicated CIP journal", "access": "paywalled; check author preprints"},
+      {"name": "Journal of Cybersecurity (Oxford)", "url": "https://academic.oup.com/cybersecurity", "why": "policy and interdisciplinary cyber research", "access": "open access"},
+      {"name": "Computers & Security (Elsevier)", "url": "https://www.sciencedirect.com/journal/computers-and-security", "why": "ICS intrusion detection and OT security papers", "access": "paywalled"},
+      {"name": "arXiv cs.CR and eess.SY", "url": "https://arxiv.org/list/cs.CR/recent", "why": "free preprints, including grid and ICS security", "access": "free"},
+      {"name": "NIST SP 800-82 Rev. 3", "url": "https://csrc.nist.gov/pubs/sp/800/82/r3/final", "why": "the free OT security guide; the substitute for ISA/IEC 62443", "access": "free"},
+      {"name": "ISA/IEC 62443", "url": "https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards", "why": "the OT security standard family", "access": "paywalled"},
+      {"name": "SANS ICS resources and the SANS ICS Summit", "url": "https://www.sans.org/industrial-control-systems-security/", "why": "practitioner whitepapers and incident reviews", "access": "free papers, paid courses"},
+      {"name": "Lawfare, Just Security, CSIS, Atlantic Council Cyber Statecraft", "url": "https://www.lawfaremedia.org/", "why": "policy analysis of energy cyber law and geopolitics", "access": "free"},
+      {"name": "Scite / Google Scholar", "url": "https://scite.ai/", "why": "find and check citations; Scite shows whether later papers support or contrast a claim", "access": "Scite paid, Scholar free"}]},
+    {"question": "What happened today? (daily news, credible)", "tier": "press (see sources.json for bias notes)", "entries": [
+      {"name": "The Record, CyberScoop, SecurityWeek, Dark Reading, BleepingComputer, Krebs", "url": "", "why": "the allowlisted feeds; fast, US-centric, vendor-adjacent to varying degrees", "access": "free"},
+      {"name": "Utility Dive, E&E News, S&P Global Commodity Insights", "url": "https://www.utilitydive.com/", "why": "energy-industry framing of the same events", "access": "Utility Dive blocks automated pulls (403); E&E and S&P paywalled"},
+      {"name": "Industrial Cyber", "url": "https://industrialcyber.co/", "why": "OT-only trade press, relays regulator and vendor notices", "access": "free, vendor-advertising funded"}]},
+    {"question": "Sector sharing and incident data", "tier": "membership and datasets", "entries": [
+      {"name": "E-ISAC", "url": "https://www.eisac.com/", "why": "the electricity sector's sharing body; the richest incident data", "access": "members only; public output via NERC alerts"},
+      {"name": "ONG-ISAC, DNG-ISAC", "url": "https://ongisac.org/", "why": "oil and gas, downstream gas sharing", "access": "members only"},
+      {"name": "NERC Lessons Learned and GADS/TADS", "url": "https://www.nerc.com/pa/rrm/ea/Pages/Lessons-Learned.aspx", "why": "post-event reports, some cyber-related", "access": "free"},
+      {"name": "DOE OE-417 electric disturbance reports", "url": "https://www.oe.netl.doe.gov/OE417_annual_summary.aspx", "why": "mandatory US outage and disturbance filings, including cyber events", "access": "free"},
+      {"name": "CISA ICS-CERT historical advisories and the ICS Advisory Project", "url": "https://www.icsadvisoryproject.com/", "why": "dashboards over all ICS advisories by sector and vendor", "access": "free"}]}
+  ]
+}

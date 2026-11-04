@@ -97,6 +97,22 @@
         "What changed since the last run?",
         "Which claims are still unconfirmed and what would confirm them?"
       ]
+    },
+    {
+      "id": "librarian",
+      "name": "Aisha Bello",
+      "role": "The Librarian",
+      "building": "Library",
+      "color": "#e8d44b",
+      "skin": "#5c3a21",
+      "hair": "#1a1a1a",
+      "job": "Keeps the map of where to look: which regulator, advisory feed, journal, dataset or vendor report answers which kind of question, and how to reach the primary document. After every run she records which sources actually delivered, which were blocked, and where the residents should ask next time.",
+      "voice": "Helpful and precise. Answers 'where would I find that?' with a tiered list, the access limits (paywall, members-only, blocked feed) and the single best starting point.",
+      "questions": [
+        "Where do I find primary documents on US energy cyber regulation?",
+        "Which journals and research outlets cover energy-sector cybersecurity?",
+        "Which sources worked and which were blocked in the latest run?"
+      ]
     }
   ],
   "teaching_modes": {

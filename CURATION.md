@@ -32,6 +32,12 @@ You do not need an Anthropic API key: you are the model. Follow these steps exac
    item where the primary disagrees with the outlet (CVE ids, counts, named vendors,
    hedged language such as "highly likely" that a headline dropped). If a page is blocked
    (HTTP 403) say "I cannot verify this" in the cross-check.
+5b. Random spot-check: pick two items from the previous briefing at random, re-pull their
+   sources, and note in `verification.summary` whether the pages changed.
+5c. The Librarian: from `docs/data/sources.json` (`source_performance`,
+   `primary_hosts_reached`) write her briefing on which sources delivered, which were
+   blocked, and where to ask next run. Copy `agents/where_to_look.json` to
+   `docs/data/where_to_look.json`; add any primary host you reached that is missing.
 6. Keep `rubric` in the briefing: importance (severity) and correctness (trust +
    Verifier) are separate columns; never let one stand in for the other.
 7. `python scripts/validate.py` must pass. Then commit `docs/data` with message

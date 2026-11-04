@@ -1,5 +1,5 @@
 {
- "pulled_at": "2026-11-04T23:49:48.209229+00:00",
+ "pulled_at": "2026-11-04T23:51:42.246766+00:00",
  "items": {
   "Siemens SIMATIC IoT2050 Advanced: CVSS 10 missing-authentication flaw exploited in the wild": {
    "sources": [
@@ -286,5 +286,132 @@
    ],
    "primary": []
   }
- }
+ },
+ "source_performance": {
+  "CISA Advisories": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "error: <unknown>:10:2: mismatched tag",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "CISA News": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "error: <unknown>:10:2: mismatched tag",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "CyberScoop": {
+   "energy_items": 0,
+   "wide_items": 4,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "The Record (Recorded Future News)": {
+   "energy_items": 0,
+   "wide_items": 5,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "BleepingComputer": {
+   "energy_items": 2,
+   "wide_items": 13,
+   "feed": "ok",
+   "pulls_ok": 2,
+   "pulls_blocked": 0
+  },
+  "SecurityWeek": {
+   "energy_items": 0,
+   "wide_items": 10,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "Dark Reading": {
+   "energy_items": 1,
+   "wide_items": 6,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "Krebs on Security": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "Utility Dive": {
+   "energy_items": 1,
+   "wide_items": 3,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 2
+  },
+  "DOE Newsroom": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "UK NCSC News": {
+   "energy_items": 1,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 1,
+   "pulls_blocked": 0
+  },
+  "The Hacker News": {
+   "energy_items": 2,
+   "wide_items": 14,
+   "feed": "ok",
+   "pulls_ok": 2,
+   "pulls_blocked": 0
+  },
+  "Industrial Cyber": {
+   "energy_items": 6,
+   "wide_items": 1,
+   "feed": "ok",
+   "pulls_ok": 2,
+   "pulls_blocked": 0
+  },
+  "The Register Security": {
+   "energy_items": 3,
+   "wide_items": 4,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "Zyxel security advisory": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "n/a",
+   "pulls_ok": 1,
+   "pulls_blocked": 0
+  },
+  "The Register": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "n/a",
+   "pulls_ok": 2,
+   "pulls_blocked": 0
+  },
+  "EFS press statement": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "n/a",
+   "pulls_ok": 1,
+   "pulls_blocked": 0
+  }
+ },
+ "primary_hosts_reached": [
+  "presse.efs.sante.fr",
+  "www.ncsc.gov.uk",
+  "www.vulncheck.com",
+  "www.zyxel.com"
+ ]
 }
