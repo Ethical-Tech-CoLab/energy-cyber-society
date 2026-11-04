@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Energy Cyber Society</title>
+<meta name="description" content="A virtual town of five LLM agents who read the day's energy-sector cybersecurity news from credible sources and argue about it. Click a resident to talk.">
+<link rel="icon" type="image/svg+xml" href="etc-icon.svg">
+<link rel="icon" type="image/png" href="etc-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hud">
+  <div class="hud-title"><span class="dot"></span>ENERGY CYBER SOCIETY</div>
+  <div class="hud-meta" id="hud-meta">loading briefing…</div>
+  <div class="hud-actions">
+    <button id="btn-stories" class="pix">Today's wire</button>
+    <button id="btn-settings" class="pix">Settings</button>
+  </div>
+</header>
+
+<main class="stage">
+  <div class="town-wrap">
+    <canvas id="town" width="960" height="540" aria-label="Pixel town with five residents. Click a resident to talk."></canvas>
+    <div class="hint" id="hint">Click a resident to talk to them. They are discussing today's energy-sector cyber news.</div>
+  </div>
+
+  <aside class="panel" id="panel" hidden>
+    <div class="panel-head">
+      <canvas id="portrait" width="64" height="64"></canvas>
+      <div>
+        <div class="p-name" id="p-name"></div>
+        <div class="p-role" id="p-role"></div>
+      </div>
+      <button class="close" id="p-close" aria-label="Close">×</button>
+    </div>
+    <div class="p-job" id="p-job"></div>
+    <div class="chat" id="chat"></div>
+    <div class="suggest" id="suggest"></div>
+    <form class="ask" id="ask">
+      <input id="ask-input" autocomplete="off" placeholder="Ask them something…">
+      <button class="pix" type="submit">Ask</button>
+    </form>
+    <div class="live-note" id="live-note"></div>
+  </aside>
+</main>
+
+<dialog id="dlg-settings" class="dlg">
+  <form method="dialog">
+    <h2>Live chat settings</h2>
+    <p>Out of the box the residents answer from the briefing generated each morning by the daily run. To ask them anything, give the page a way to reach a model. Nothing here leaves your browser except the request itself.</p>
+    <label>Anthropic API key (direct from browser)<input id="s-key" type="password" placeholder="sk-ant-…"></label>
+    <label>…or an OpenAI-compatible proxy URL (e.g. pages-ai-proxy)<input id="s-proxy" placeholder="https://your-proxy/v1/chat/completions"></label>
+    <label>Model<input id="s-model" placeholder="claude-sonnet-5-5"></label>
+    <div class="row"><button class="pix" value="save">Save</button><button class="pix ghost" value="clear" id="s-clear">Clear</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-stories" class="dlg wide">
+  <form method="dialog">
+    <h2>Today's wire <small id="wire-meta"></small></h2>
+    <ol id="wire"></ol>
+    <h3>Sources read (and nothing else)</h3>
+    <ul id="sources" class="sources"></ul>
+    <div class="row"><button class="pix">Close</button></div>
+  </form>
+</dialog>
+
+<footer class="foot">
+  An <a href="https://github.com/Ethical-Tech-CoLab">Ethical Tech CoLab</a> experiment ·
+  five agents, one runtime, an allowlist of credible sources ·
+  <a href="https://github.com/Ethical-Tech-CoLab/energy-cyber-society">source</a>
+</footer>
+<script src="game.js"></script>
+</body>
+</html>

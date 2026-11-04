@@ -1,0 +1,302 @@
+/* Energy Cyber Society — a pixel town of five LLM agents.
+   Data: data/briefing.json (daily agent run) + data/news.json (raw wire) + ../agents/personas.json (voices). */
+(() => {
+const S = 3;                           // pixel scale
+const W = 960, H = 540;
+const cv = document.getElementById('town');
+const ctx = cv.getContext('2d');
+ctx.imageSmoothingEnabled = false;
+
+let personas, briefing, news;
+let agents = [];
+let selected = null;
+let bubbles = [];                      // {agent, text, until}
+let convo = null;                      // running overheard conversation
+let t0 = performance.now();
+
+// ---------------------------------------------------------------- buildings
+const BUILDINGS = [
+  { key: 'Newsroom',          x: 90,  y: 110, w: 150, h: 110, color: '#5a4a2c', roof: '#e8b04b' },
+  { key: 'Threat Lab',        x: 400, y: 80,  w: 170, h: 120, color: '#2c4a5a', roof: '#4bb3e8' },
+  { key: 'Press Review',      x: 720, y: 110, w: 150, h: 110, color: '#4a2c5a', roof: '#c94be8' },
+  { key: 'Observatory',       x: 130, y: 340, w: 150, h: 120, color: '#2c5a3e', roof: '#4be89a' },
+  { key: "Devil's Advocate",  x: 700, y: 340, w: 160, h: 115, color: '#5a2c2c', roof: '#e85a4b' },
+];
+const PLAZA = { x: 380, y: 300, w: 200, h: 120 };
+
+function rect(x, y, w, h, c) { ctx.fillStyle = c; ctx.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.round(h)); }
+
+function drawGround() {
+  rect(0, 0, W, H, '#1d2b1f');
+  // grass noise, deterministic
+  for (let i = 0; i < 400; i++) {
+    const x = (i * 97) % W, y = (i * 193) % H;
+    rect(x, y, S, S, i % 3 ? '#223325' : '#182419');
+  }
+  // paths
+  ctx.fillStyle = '#6b5f4a';
+  rect(0, 262, W, 26, '#6b5f4a');                 // main street
+  rect(165, 220, 26, 50, '#6b5f4a'); rect(485, 200, 26, 70, '#6b5f4a'); rect(795, 220, 26, 50, '#6b5f4a');
+  rect(205, 288, 26, 60, '#6b5f4a'); rect(775, 288, 26, 60, '#6b5f4a');
+  rect(PLAZA.x, PLAZA.y, PLAZA.w, PLAZA.h, '#7a6c55');
+  for (let i = 0; i < 30; i++) rect(PLAZA.x + (i * 37) % PLAZA.w, PLAZA.y + (i * 53) % PLAZA.h, S, S, '#8a7b62');
+  // the substation in the plaza: the town's reason to exist
+  rect(455, 330, 50, 40, '#3a3f4a'); rect(460, 318, 6, 12, '#9aa3b5'); rect(494, 318, 6, 12, '#9aa3b5');
+  rect(466, 312, 28, 6, '#9aa3b5');
+  ctx.fillStyle = '#e8b04b'; ctx.font = '10px "Press Start 2P"'; ctx.textAlign = 'center';
+  ctx.fillText('⚡', 480, 356);
+  // power lines
+  ctx.strokeStyle = '#9aa3b5'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(463, 318); ctx.lineTo(0, 240); ctx.moveTo(497, 318); ctx.lineTo(W, 240); ctx.stroke();
+}
+
+function drawBuilding(b, lit) {
+  rect(b.x, b.y, b.w, b.h, b.color);
+  rect(b.x - 6, b.y - 18, b.w + 12, 22, b.roof);
+  rect(b.x - 6, b.y - 18, b.w + 12, 4, '#05070b');
+  // windows
+  for (let r = 0; r < 2; r++) for (let c = 0; c < Math.floor(b.w / 36); c++) {
+    const on = lit || ((r * 7 + c * 13) % 5 !== 0);
+    rect(b.x + 14 + c * 36, b.y + 16 + r * 36, 16, 16, on ? '#f6e7a1' : '#0b0e14');
+  }
+  // door
+  rect(b.x + b.w / 2 - 10, b.y + b.h - 28, 20, 28, '#1a1410');
+  // sign
+  ctx.fillStyle = '#05070b'; ctx.fillRect(b.x + 4, b.y - 36, b.w - 8, 14);
+  ctx.fillStyle = '#e6e9ef'; ctx.font = '8px "Press Start 2P"'; ctx.textAlign = 'center';
+  ctx.fillText(b.key.toUpperCase(), b.x + b.w / 2, b.y - 26);
+}
+
+// ---------------------------------------------------------------- characters (16x24 pixel figure)
+function drawFigure(g, x, y, frame, facing, p, scale = S) {
+  const px = (cx, cy, c) => { g.fillStyle = c; g.fillRect(Math.round(x + cx * scale), Math.round(y + cy * scale), scale, scale); };
+  const hair = p.hair, skin = p.skin, coat = p.color, dark = '#05070b', pants = '#2a2f3a';
+  // hair
+  for (let i = 4; i < 12; i++) px(i, 0, hair);
+  for (let i = 3; i < 13; i++) px(i, 1, hair);
+  px(3, 2, hair); px(12, 2, hair);
+  // face
+  for (let r = 2; r < 7; r++) for (let i = 4; i < 12; i++) px(i, r, skin);
+  if (facing >= 0) { px(6, 4, dark); px(9, 4, dark); } else { px(5, 4, dark); px(8, 4, dark); }
+  // neck + coat
+  px(7, 7, skin); px(8, 7, skin);
+  for (let r = 8; r < 16; r++) for (let i = 3; i < 13; i++) px(i, r, coat);
+  px(7, 9, '#f6f6f6'); px(8, 9, '#f6f6f6'); px(7, 10, '#f6f6f6'); px(8, 10, '#f6f6f6');
+  // arms
+  for (let r = 9; r < 15; r++) { px(2, r, coat); px(13, r, coat); } px(2, 15, skin); px(13, 15, skin);
+  // legs with 2-frame walk
+  const step = frame % 2;
+  for (let r = 16; r < 22; r++) { px(5 + (step ? 1 : 0), r, pants); px(6 + (step ? 1 : 0), r, pants); px(9 - (step ? 1 : 0), r, pants); px(10 - (step ? 1 : 0), r, pants); }
+  px(5, 22, dark); px(6, 22, dark); px(9, 22, dark); px(10, 22, dark);
+}
+
+function makeAgents() {
+  agents = personas.agents.map((p, i) => {
+    const b = BUILDINGS.find(b => b.key === p.building);
+    return {
+      p, home: { x: b.x + b.w / 2 - 8 * S, y: b.y + b.h + 6 },
+      x: b.x + b.w / 2 - 8 * S, y: b.y + b.h + 6,
+      tx: null, ty: null, speed: 0.5 + Math.random() * 0.3, facing: 1, frame: 0,
+      wait: Math.random() * 2000, state: 'idle',
+    };
+  });
+}
+
+function pickTarget(a) {
+  const r = Math.random();
+  if (r < 0.4) { return { x: PLAZA.x + 10 + Math.random() * (PLAZA.w - 60), y: PLAZA.y + 10 + Math.random() * (PLAZA.h - 80) }; }
+  if (r < 0.7) { return { x: 40 + Math.random() * (W - 120), y: 262 - 30 + Math.random() * 10 }; }
+  return { ...a.home };
+}
+
+function update(dt) {
+  for (const a of agents) {
+    if (a === selected) continue;             // the one you're talking to stands still
+    if (a.state === 'idle') { a.wait -= dt; if (a.wait <= 0) { const t = pickTarget(a); a.tx = t.x; a.ty = t.y; a.state = 'walk'; } continue; }
+    const dx = a.tx - a.x, dy = a.ty - a.y, d = Math.hypot(dx, dy);
+    if (d < 2) { a.state = 'idle'; a.wait = 1500 + Math.random() * 4000; continue; }
+    const v = a.speed * dt / 16;
+    a.x += dx / d * v; a.y += dy / d * v; a.facing = dx >= 0 ? 1 : -1;
+    a.frame += dt / 180;
+  }
+  // overheard conversations: when a pair is close, play their dialogue
+  const now = performance.now();
+  bubbles = bubbles.filter(b => b.until > now);
+  if (!convo && briefing && briefing.conversations.length && Math.random() < 0.004) {
+    const c = briefing.conversations[Math.floor(Math.random() * briefing.conversations.length)];
+    const A = agents.find(a => a.p.id === c.between[0]), B = agents.find(a => a.p.id === c.between[1]);
+    if (A && B && A !== selected && B !== selected) {
+      // walk them toward each other in the plaza
+      const mx = PLAZA.x + PLAZA.w / 2, my = PLAZA.y + 30;
+      A.tx = mx - 40; A.ty = my; A.state = 'walk'; B.tx = mx + 20; B.ty = my; B.state = 'walk';
+      convo = { c, A, B, i: 0, next: now + 2500 };
+    }
+  }
+  if (convo) {
+    if (now >= convo.next) {
+      const line = convo.c.lines[convo.i];
+      if (!line) { convo = null; }
+      else {
+        const who = agents.find(a => a.p.id === line.who) || convo.A;
+        bubbles.push({ agent: who, text: line.line, until: now + 4200 });
+        convo.i++; convo.next = now + 4400;
+      }
+    }
+  } else if (Math.random() < 0.0015 && briefing) {
+    // solitary mutterings from the daily briefing
+    const a = agents[Math.floor(Math.random() * agents.length)];
+    const b = briefing.agents[a.p.id];
+    if (b && b.bubble && !bubbles.some(x => x.agent === a)) bubbles.push({ agent: a, text: b.bubble, until: now + 3500 });
+  }
+}
+
+function wrap(text, max) {
+  const words = text.split(' '), lines = []; let cur = '';
+  for (const w of words) { if ((cur + ' ' + w).trim().length > max) { lines.push(cur.trim()); cur = w; } else cur += ' ' + w; }
+  if (cur.trim()) lines.push(cur.trim()); return lines;
+}
+
+function drawBubble(b) {
+  const lines = wrap(b.text, 30);
+  ctx.font = '11px "IBM Plex Mono"';
+  const wdt = Math.min(300, Math.max(...lines.map(l => ctx.measureText(l).width)) + 24);
+  const hgt = lines.length * 14 + 10;
+  let x = b.agent.x + 8 * S - wdt / 2, y = b.agent.y - hgt - 12;
+  x = Math.max(4, Math.min(W - wdt - 4, x)); if (y < 4) y = b.agent.y + 24 * S + 8;
+  rect(x, y, wdt, hgt, '#f6f6f6'); rect(x + 2, y + 2, wdt - 4, hgt - 4, '#ffffff');
+  rect(b.agent.x + 8 * S - 3, y + hgt, 6, 6, '#f6f6f6');
+  ctx.fillStyle = '#0b0e14'; ctx.textAlign = 'left';
+  lines.forEach((l, i) => ctx.fillText(l, x + 10, y + 15 + i * 14));
+}
+
+function render() {
+  drawGround();
+  // depth sort: buildings then agents by y
+  for (const b of BUILDINGS) drawBuilding(b, selected && selected.p.building === b.key);
+  const sorted = [...agents].sort((a, b) => a.y - b.y);
+  for (const a of sorted) {
+    if (a === selected) { ctx.fillStyle = 'rgba(75,232,154,.25)'; ctx.beginPath(); ctx.ellipse(a.x + 8 * S, a.y + 23 * S, 30, 10, 0, 0, Math.PI * 2); ctx.fill(); }
+    drawFigure(ctx, a.x, a.y, a.state === 'walk' ? Math.floor(a.frame) : 0, a.facing, a.p);
+    ctx.fillStyle = '#05070b'; ctx.fillRect(a.x - 8, a.y + 24 * S + 2, 16 * S + 16, 12);
+    ctx.fillStyle = a.p.color; ctx.font = '7px "Press Start 2P"'; ctx.textAlign = 'center';
+    ctx.fillText(a.p.name.split(' ')[0].toUpperCase(), a.x + 8 * S, a.y + 24 * S + 11);
+  }
+  for (const b of bubbles) drawBubble(b);
+}
+
+let last = performance.now();
+function loop(now) { const dt = Math.min(50, now - last); last = now; update(dt); render(); requestAnimationFrame(loop); }
+
+// ---------------------------------------------------------------- interaction
+cv.addEventListener('click', ev => {
+  const r = cv.getBoundingClientRect();
+  const x = (ev.clientX - r.left) * (W / r.width), y = (ev.clientY - r.top) * (H / r.height);
+  const hit = [...agents].reverse().find(a => x >= a.x - 6 && x <= a.x + 16 * S + 6 && y >= a.y - 6 && y <= a.y + 24 * S + 14);
+  if (hit) select(hit);
+});
+
+const $ = id => document.getElementById(id);
+const panel = $('panel'), chat = $('chat');
+function addMsg(text, cls) { const d = document.createElement('div'); d.className = 'msg ' + cls; d.textContent = text; chat.appendChild(d); chat.scrollTop = chat.scrollHeight; return d; }
+
+function select(a) {
+  selected = a; a.state = 'idle'; a.wait = 99999;
+  panel.hidden = false;
+  $('p-name').textContent = a.p.name; $('p-role').textContent = a.p.role + ' · ' + a.p.building;
+  $('p-job').textContent = a.p.job;
+  const pc = $('portrait').getContext('2d'); pc.imageSmoothingEnabled = false; pc.fillStyle = '#1d2b1f'; pc.fillRect(0, 0, 64, 64);
+  drawFigure(pc, 8, 4, 0, 1, a.p, 3);
+  chat.innerHTML = '';
+  const b = briefing && briefing.agents[a.p.id];
+  addMsg(b ? b.briefing : 'No briefing yet today.', 'them');
+  if (briefing && briefing.model === 'fallback-headlines') addMsg('Headlines-only mode: the daily agent run has not happened yet, so this is the wire, not analysis. Add your key in Settings for a live answer.', 'sys');
+  const sg = $('suggest'); sg.innerHTML = '';
+  a.p.questions.forEach(q => { const btn = document.createElement('button'); btn.textContent = q; btn.onclick = () => ask(q); sg.appendChild(btn); });
+  updateLiveNote();
+}
+$('p-close').onclick = () => { if (selected) { selected.wait = 500; } selected = null; panel.hidden = true; };
+
+// ---------------------------------------------------------------- live chat
+const cfg = { get: () => { try { return JSON.parse(localStorage.getItem('ecs-cfg') || '{}'); } catch { return {}; } },
+              set: v => { try { localStorage.setItem('ecs-cfg', JSON.stringify(v)); } catch {} } };
+function isLive() { const c = cfg.get(); return !!(c.key || c.proxy); }
+function updateLiveNote() { $('live-note').textContent = isLive() ? 'Live: free-text questions go to the model with today\'s wire as context.' : 'Suggested questions are answered from today\'s briefing. Free-text needs a key or proxy in Settings.'; }
+
+function newsContext() {
+  if (!news) return '';
+  const L = ['# ENERGY-SECTOR STORIES'];
+  news.energy.slice(0, 25).forEach((s, i) => L.push(`E${i + 1}. [${s.source_name} | ${s.source_type} | ${s.source_country}] ${s.title} :: ${s.summary.slice(0, 300)} :: ${s.link}`));
+  L.push('\n# OTHER CYBER STORIES SAME PERIOD');
+  news.wide.slice(0, 30).forEach((s, i) => L.push(`W${i + 1}. [${s.source_name}] ${s.title} :: ${s.summary.slice(0, 200)}`));
+  L.push('\n# SOURCE BIAS NOTES');
+  news.sources.forEach(s => L.push(`- ${s.name} (${s.type}, ${s.country}): ${s.bias_note}`));
+  return L.join('\n');
+}
+function systemFor(p) { return `You are ${p.name}, ${p.role} of the town. ${p.job} Voice: ${p.voice}\n${personas.shared_rules}`; }
+
+async function callModel(p, question) {
+  const c = cfg.get(), model = c.model || 'claude-sonnet-5-5';
+  const user = `TODAY'S NEWS BUNDLE:\n${newsContext()}\n\nA visitor asks you: "${question}" Answer in your voice, 3 to 7 sentences, naming sources.`;
+  if (c.proxy) {
+    const r = await fetch(c.proxy, { method: 'POST', headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ model, messages: [{ role: 'system', content: systemFor(p) }, { role: 'user', content: user }], max_tokens: 600 }) });
+    if (!r.ok) throw new Error('proxy ' + r.status + ': ' + (await r.text()).slice(0, 200));
+    const j = await r.json(); return j.choices[0].message.content;
+  }
+  const r = await fetch('https://api.anthropic.com/v1/messages', { method: 'POST',
+    headers: { 'content-type': 'application/json', 'x-api-key': c.key, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+    body: JSON.stringify({ model, max_tokens: 600, system: systemFor(p), messages: [{ role: 'user', content: user }] }) });
+  if (!r.ok) throw new Error('anthropic ' + r.status + ': ' + (await r.text()).slice(0, 200));
+  const j = await r.json(); return j.content.filter(b => b.type === 'text').map(b => b.text).join('');
+}
+
+async function ask(q) {
+  if (!selected) return;
+  const p = selected.p; addMsg(q, 'me');
+  const canned = briefing && briefing.agents[p.id] && briefing.agents[p.id].answers[q];
+  if (canned && !isLive()) { setTimeout(() => addMsg(canned, 'them'), 350); return; }
+  if (!isLive()) { addMsg('I can only answer the suggested questions until you give the page a model. Open Settings and add an API key or a proxy URL.', 'sys'); return; }
+  const wait = addMsg('…', 'them');
+  try { wait.textContent = await callModel(p, q); }
+  catch (e) { wait.className = 'msg sys'; wait.textContent = 'Could not reach the model: ' + e.message; if (canned) addMsg(canned, 'them'); }
+}
+$('ask').addEventListener('submit', ev => { ev.preventDefault(); const v = $('ask-input').value.trim(); if (!v) return; $('ask-input').value = ''; ask(v); });
+
+// settings dialog
+const dlgS = $('dlg-settings');
+$('btn-settings').onclick = () => { const c = cfg.get(); $('s-key').value = c.key || ''; $('s-proxy').value = c.proxy || ''; $('s-model').value = c.model || ''; dlgS.showModal(); };
+dlgS.addEventListener('close', () => {
+  if (dlgS.returnValue === 'save') cfg.set({ key: $('s-key').value.trim(), proxy: $('s-proxy').value.trim(), model: $('s-model').value.trim() });
+  if (dlgS.returnValue === 'clear') cfg.set({});
+  updateLiveNote();
+});
+
+// wire dialog
+$('btn-stories').onclick = () => {
+  const w = $('wire'); w.innerHTML = '';
+  (news ? news.energy : []).forEach(s => { const li = document.createElement('li'); const a = document.createElement('a'); a.href = s.link; a.target = '_blank'; a.rel = 'noopener'; a.textContent = s.title; li.appendChild(a); const sp = document.createElement('div'); sp.className = 'src'; sp.textContent = `${s.source_name} · ${s.source_type} · ${s.source_country}` + (s.published ? ' · ' + s.published.slice(0, 16).replace('T', ' ') : ''); li.appendChild(sp); w.appendChild(li); });
+  if (!w.children.length) w.innerHTML = '<li>No energy-sector cyber story matched today.</li>';
+  const so = $('sources'); so.innerHTML = '';
+  (news ? news.sources : []).forEach(s => { const li = document.createElement('li'); li.innerHTML = `<b>${s.name}</b> (${s.type}, ${s.country}) — ${s.bias_note}`; so.appendChild(li); });
+  $('wire-meta').textContent = news ? `${news.energy.length} energy-cyber stories, ${news.wide.length} other cyber stories, last ${news.window_hours}h, fetched ${news.generated_at.slice(0, 16).replace('T', ' ')} UTC` : '';
+  $('dlg-stories').showModal();
+};
+
+// ---------------------------------------------------------------- boot
+async function boot() {
+  const [p, b, n] = await Promise.all([
+    fetch('data/personas.json').then(r => r.json()),
+    fetch('data/briefing.json').then(r => r.json()).catch(() => null),
+    fetch('data/news.json').then(r => r.json()).catch(() => null),
+  ]);
+  personas = p; briefing = b; news = n;
+  $('hud-meta').textContent = briefing
+    ? `briefing ${briefing.generated_at.slice(0, 10)} · ${briefing.counts.energy} energy-cyber stories · ${briefing.counts.wide} wider cyber · model ${briefing.model}`
+    : 'no briefing yet';
+  makeAgents();
+  window.ECS = { agents, select };       // small debug hook, also handy for tests
+  await document.fonts.ready;
+  requestAnimationFrame(loop);
+}
+boot();
+})();
