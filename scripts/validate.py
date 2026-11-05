@@ -21,6 +21,11 @@ for it in b.get("items", []):
     if not it.get("sources"): errs.append(f"item '{h}': no sources")
     if not it.get("so_what"): errs.append(f"item '{h}': no so_what")
 if "us_status" not in b: errs.append("missing us_status")
+sm = b.get("summary")
+if sm:
+    if not sm.get("bullets"): errs.append("summary has no bullets")
+    for x in sm.get("bullets", []):
+        if not x.get("sources"): errs.append(f"summary bullet without sources: {x.get('text','')[:40]}")
 if (ROOT / "docs/data/buildings.json").read_text() != (ROOT / "agents/buildings.json").read_text(): errs.append("docs/data/buildings.json differs from agents/buildings.json (cp it)")
 bl = json.loads((ROOT / "agents/buildings.json").read_text())["buildings"]
 for a in p["agents"]:

@@ -95,3 +95,8 @@ canvas#town{width:100%;height:auto;display:block;image-rendering:pixelated;image
 .look-sec li{margin-bottom:4px}.look-sec .acc{color:var(--mute);font-size:11px}
 .perf-table{width:100%;border-collapse:collapse;font-size:12px}.perf-table td,.perf-table th{border-bottom:1px solid var(--line);padding:3px 6px;text-align:left}.perf-table .bad{color:#e85a4b}
 .hud-meta.stale{color:var(--warn)}
+
+.sum-head{color:var(--ink);border-left:3px solid var(--accent);padding:6px 10px}
+.sum{padding-left:18px;font-size:13px;max-height:48vh;overflow:auto}
+.sum li{margin-bottom:10px}.sum .tag{font-family:var(--font-pix);font-size:7px;color:var(--warn);margin-right:6px}.sum .src{color:var(--mute);font-size:11px;display:block}
+.considerations li{color:var(--ink)}

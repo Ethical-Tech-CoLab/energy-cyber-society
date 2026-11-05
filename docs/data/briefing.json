@@ -1042,5 +1042,95 @@
   "importance": "IT-vs-OT impact (OT process/physical = top), then US energy relevance (subsector + value chain), actor capability, scale, and whether action is possible (patch/hunt beats awareness). Severity on the board is importance.",
   "correctness": "Source tier (A primary/victim, B wire/established press, C vendor research), independent corroboration count, claim-vs-confirmed, and whether the direct source was pulled and matches the outlet. Credibility 1-6 and the Verifier's verdict are correctness.",
   "rule": "Keep the two columns separate. An item can be critical and poorly confirmed (Siemens this week) or fully confirmed and low importance (NCSC forecast). Act on importance, trust on correctness, and say which is which."
+ },
+ "summary": {
+  "headline": "Quiet week for US energy operators on the record; loud week for exposed OT controls in Europe and for two exploited device flaws.",
+  "bullets": [
+   {
+    "text": "No confirmed cyber intrusion at any US electric utility, pipeline, refinery, LNG terminal or nuclear facility in the 7-day window across 14 allowlisted feeds.",
+    "sources": [
+     "all feeds"
+    ],
+    "tag": "US · status"
+   },
+   {
+    "text": "Electric utilities joined other industries urging Congress to renew the Cybersecurity Information Sharing Act of 2015, which provides liability cover for sharing threat indicators and expires next month.",
+    "sources": [
+     "Utility Dive, 2026-11-04"
+    ],
+    "tag": "US · policy"
+   },
+   {
+    "text": "CISA launched its 2026 Critical Infrastructure Security and Resilience campaign, pointing owners at OT security, operational continuity and recovery planning.",
+    "sources": [
+     "Industrial Cyber, 2026-11-03"
+    ],
+    "tag": "US · guidance"
+   },
+   {
+    "text": "A reported Trump-administration ban on foreign grid components has the utility industry worried about practicality and cost; the legal instrument was not in any allowlisted source.",
+    "sources": [
+     "Utility Dive, 2026-11-03"
+    ],
+    "tag": "US · policy · unverified"
+   },
+   {
+    "text": "Attackers remotely changed refrigeration setpoints overnight into November 2 at supermarkets in Belgium, Sweden, Estonia and elsewhere; Danfoss said its controls were involved, as in October's attacks on French supermarkets.",
+    "sources": [
+     "The Hacker News, 2026-11-03",
+     "Dark Reading, 2026-11-04"
+    ],
+    "tag": "EU · OT process affected"
+   },
+   {
+    "text": "France's national blood service confirmed an attack through its refrigeration-equipment provider that altered temperature and defrost settings at three sites; alarms caught it and products were moved preventively. The widely quoted 110°C figure is 'according to reports' only.",
+    "sources": [
+     "BleepingComputer, 2026-11-04",
+     "The Register, 2026-11-04",
+     "EFS statement"
+    ],
+    "tag": "EU · OT · victim-confirmed"
+   },
+   {
+    "text": "Siemens SIMATIC IoT2050 Advanced: CVE-2026-58115, CVSS 10, missing authentication on the Node-RED interface, reported under active exploitation by VulnCheck, a vendor; no CISA or Siemens notice found in the bundle.",
+    "sources": [
+     "The Hacker News, 2026-11-03",
+     "VulnCheck"
+    ],
+    "tag": "vulnerability · single source"
+   },
+   {
+    "text": "Zyxel GS1900 switches: zero-day CVE-2026-107441 used to compromise nearly 1,000 devices and steal configuration files and credentials; patches out October 22, advisory November 3.",
+    "sources": [
+     "BleepingComputer, 2026-11-05",
+     "Zyxel advisory"
+    ],
+    "tag": "vulnerability · vendor-confirmed"
+   },
+   {
+    "text": "UK NCSC's Annual Review says AI-powered malware is 'highly likely' to feature in a ransomware attack on UK critical national infrastructure by 2028 and names China as best positioned to use AI against it.",
+    "sources": [
+     "UK NCSC, 2026-11-03"
+    ],
+    "tag": "UK · forecast"
+   },
+   {
+    "text": "Elsewhere in cyberspace: a $6.3 billion Binance theft via a fake job interview attributed to North Korea; a cPGuard autoupdate backdoor; airline breaches spreading from IT provider Amadeus; Russia and Ukraine trading attacks on emergency alert apps.",
+    "sources": [
+     "BleepingComputer",
+     "SecurityWeek",
+     "The Record",
+     "The Register"
+    ],
+    "tag": "wide angle"
+   }
+  ],
+  "considerations": [
+   "Absence of evidence: the 'quiet US week' is what credible sources reported, not what happened. Silence is not safety, and the information-sharing law that makes disclosure safer is weeks from lapsing.",
+   "The loudest item is the least corroborated: the Siemens CVSS 10 rests on one vendor's telemetry relayed by one outlet. Still patch it; severity and corroboration are different columns.",
+   "The refrigeration attacks are the energy story in disguise: internet-reachable controllers, a vendor remote-access path, low-skill setpoint tampering. That is the architecture under substations, pump stations and battery sites.",
+   "Watch the vendor-funded framing: six of sixteen energy items came from one OT trade outlet, three of them company announcements. The UK '2028' headline is one agency press release run by three outlets.",
+   "Two US legal items could not be checked against their text because the outlet blocks automated fetching. Treat both as discovery, not fact, until the statute and the executive instrument are read."
+  ]
  }
 }

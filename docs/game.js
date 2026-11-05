@@ -376,6 +376,18 @@ $('btn-board').onclick = () => {
   $('dlg-board').showModal();
 };
 
+// summary: the week in bullet points
+$('btn-summary').onclick = () => {
+  const sm = briefing && briefing.summary;
+  $('sum-meta').textContent = briefing ? `${briefing.counts.energy} energy-cyber stories, ${briefing.counts.wide} wider · snapshot ${(briefing.news_generated_at || '').slice(0, 10)}` : '';
+  $('sum-head').textContent = sm ? sm.headline : 'No summary yet (headlines-only mode).';
+  const ul = $('sum-bullets'); ul.innerHTML = '';
+  (sm ? sm.bullets : []).forEach(x => { const li = document.createElement('li'); li.innerHTML = `<span class="tag">${esc(x.tag || '')}</span>${esc(x.text)}<span class="src">${esc((x.sources || []).join(' · '))}</span>`; ul.appendChild(li); });
+  const uc = $('sum-cons'); uc.innerHTML = '';
+  (sm ? sm.considerations : []).forEach(t => { const li = document.createElement('li'); li.textContent = t; uc.appendChild(li); });
+  $('dlg-summary').showModal();
+};
+
 // methodology / where to look / limitations
 $('btn-method').onclick = () => $('dlg-method').showModal();
 $('btn-limits').onclick = () => $('dlg-limits').showModal();

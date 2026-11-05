@@ -16,6 +16,7 @@
   <div class="hud-title"><span class="dot"></span>ENERGY CYBER SOCIETY</div>
   <div class="hud-meta" id="hud-meta">loading briefing…</div>
   <div class="hud-actions">
+    <button id="btn-summary" class="pix">Summary</button>
     <button id="btn-chatter" class="pix">Chatter: on</button>
     <button id="btn-method" class="pix">Methodology</button>
     <button id="btn-look" class="pix">Where to look</button>
@@ -80,6 +81,17 @@
     <p class="us-status" id="us-status"></p>
     <p class="rubric" id="rubric"></p>
     <div id="board"></div>
+    <div class="row"><button class="pix">Close</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-summary" class="dlg wide">
+  <form method="dialog">
+    <h2>This week in energy cyber <small id="sum-meta"></small></h2>
+    <p class="sum-head" id="sum-head"></p>
+    <ul class="sum" id="sum-bullets"></ul>
+    <h3>Critical-thought considerations</h3>
+    <ul class="sum considerations" id="sum-cons"></ul>
     <div class="row"><button class="pix">Close</button></div>
   </form>
 </dialog>

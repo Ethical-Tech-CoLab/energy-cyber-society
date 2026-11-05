@@ -78,6 +78,11 @@ def run_with_claude():
     txt = "".join(b.text for b in r.content if b.type == "text"); m = re.search(r"\[.*\]", txt, re.S)
     try: result["items"] = json.loads(m.group(0)) if m else []
     except json.JSONDecodeError: result["items"] = []
+    sm = client.messages.create(model=MODEL, max_tokens=2500, system=sys_blocks(BY_ID["reporter"]),
+        messages=[{"role": "user", "content": "Write the week's summary as JSON only: {\"headline\": one sentence, \"bullets\": [{\"text\": one-sentence bullet, \"sources\": [\"Outlet, YYYY-MM-DD\"], \"tag\": \"region · kind\"}] (6 to 10, US first), \"considerations\": [5 critical-thought sentences: absence of evidence, corroboration vs severity, vendor framing, what could not be verified, what spills over from the wider bucket]}"}])
+    tally(sm); smt = "".join(b.text for b in sm.content if b.type == "text"); smm = re.search(r"\{.*\}", smt, re.S)
+    try: result["summary"] = json.loads(smm.group(0)) if smm else None
+    except json.JSONDecodeError: result["summary"] = None
     result["us_status"] = ask(BY_ID["contrarian"], "In one or two sentences: was any US energy operator (utility, pipeline, refinery, LNG, nuclear) confirmed breached in this bundle? If not, say so plainly and say what the US items are instead.", 200)
 
     # verifier pass over the ledger
