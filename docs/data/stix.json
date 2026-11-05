@@ -7,7 +7,7 @@
    "spec_version": "2.1",
    "id": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "name": "Energy Cyber Society",
    "identity_class": "system",
    "description": "Seven LLM residents curating energy-sector cyber news from an allowlist of credible sources. Confidence per object follows the item's Admiralty grading."
@@ -17,7 +17,7 @@
    "spec_version": "2.1",
    "id": "vulnerability--848c2ba0-585a-5040-a0e4-052314070d4d",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "name": "CVE-2026-58115",
    "external_references": [
     {
@@ -31,11 +31,11 @@
    "spec_version": "2.1",
    "id": "indicator--e87b6e68-ed97-5b57-9638-ec604c5c2a45",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "name": "Exploitation of CVE-2026-58115",
    "pattern": "[vulnerability:name = 'CVE-2026-58115']",
    "pattern_type": "stix",
-   "valid_from": "2026-11-05T22:03:00.000Z",
+   "valid_from": "2026-11-05T22:03:56.000Z",
    "indicator_types": [
     "malicious-activity"
    ]
@@ -45,7 +45,7 @@
    "spec_version": "2.1",
    "id": "malware--85eaa397-b82e-5386-aca4-ef08e238afca",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "name": "remote command backdoor (reported)",
    "is_family": false
   },
@@ -54,7 +54,7 @@
    "spec_version": "2.1",
    "id": "attack-pattern--b25528cf-2bfb-57c3-b779-7f5fa4ddac32",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "name": "Internet Accessible Device (ICS)",
    "external_references": [
     {
@@ -68,7 +68,7 @@
    "spec_version": "2.1",
    "id": "attack-pattern--3d07c895-aadd-5bb7-a4af-dc1845a2f8a1",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "name": "Remote Services (ICS) [inference]",
    "external_references": [
     {
@@ -82,7 +82,7 @@
    "spec_version": "2.1",
    "id": "attack-pattern--ba81273d-5151-56a1-a2f4-ef4f9c45903a",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "name": "Valid Accounts (ICS) [inference: missing auth]",
    "external_references": [
     {
@@ -96,13 +96,13 @@
    "spec_version": "2.1",
    "id": "report--bfc77ba7-0306-5cce-81d5-926c26d7af6d",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
    "name": "Siemens SIMATIC IoT2050 Advanced: CVSS 10 missing-authentication flaw exploited in the wild",
    "report_types": [
     "threat-report"
    ],
-   "published": "2026-11-05T22:03:00.000Z",
+   "published": "2026-11-05T22:03:56.000Z",
    "description": "An unauthenticated RCE on a gateway that bridges field devices and IT, with exploitation reported by a firm that sells vulnerability intelligence; check for the device and patch regardless.",
    "confidence": 70,
    "labels": [
@@ -155,7 +155,7 @@
    "spec_version": "2.1",
    "id": "vulnerability--0535d089-ffd9-501c-96c1-76bd424de7a1",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "name": "CVE-2026-107441",
    "external_references": [
     {
@@ -169,11 +169,11 @@
    "spec_version": "2.1",
    "id": "indicator--96e98389-2246-5fef-bf87-023a5362ba2f",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "name": "Exploitation of CVE-2026-107441",
    "pattern": "[vulnerability:name = 'CVE-2026-107441']",
    "pattern_type": "stix",
-   "valid_from": "2026-11-05T22:03:00.000Z",
+   "valid_from": "2026-11-05T22:03:56.000Z",
    "indicator_types": [
     "malicious-activity"
    ]
@@ -183,7 +183,7 @@
    "spec_version": "2.1",
    "id": "attack-pattern--91fc36e7-0814-5ff0-b5dd-2f8d84434ab8",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "name": "Exploitation of Remote Services (ICS)",
    "external_references": [
     {
@@ -197,7 +197,7 @@
    "spec_version": "2.1",
    "id": "attack-pattern--2a97541b-20ef-5070-87ea-ec7f7fa9c0c0",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "name": "Unsecured Credentials (Enterprise) [inference: config theft]",
    "external_references": [
     {
@@ -211,13 +211,13 @@
    "spec_version": "2.1",
    "id": "report--3e8f6ebe-ee8f-5f81-ae83-b2ede889a96c",
    "created": "2026-11-05T19:29:03.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
    "name": "Zyxel GS1900 switch zero-day (CVE-2026-107441): first patch fails to block the exploit, Binarly finds; new firmware for 10 models",
    "report_types": [
     "threat-report"
    ],
-   "published": "2026-11-05T22:03:00.000Z",
+   "published": "2026-11-05T22:03:56.000Z",
    "description": "Operators who applied Zyxel's earlier GS1900 fix are still exploitable without login from the web management interface; a second firmware is out. Config and credential theft from ~1,000 switches was the first wave.",
    "confidence": 70,
    "labels": [
@@ -269,7 +269,7 @@
    "spec_version": "2.1",
    "id": "attack-pattern--1405b482-c33c-57de-a57a-cf594976e689",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "name": "Modify Parameter (ICS)",
    "external_references": [
     {
@@ -283,7 +283,7 @@
    "spec_version": "2.1",
    "id": "attack-pattern--b01a3448-13f1-56ac-8777-93b0619be848",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "name": "Supply Chain Compromise (ICS) [inference]",
    "external_references": [
     {
@@ -297,13 +297,13 @@
    "spec_version": "2.1",
    "id": "report--6d90b189-07fe-57ec-a98b-8a10b8fa6b85",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
    "name": "Cyberattack via refrigeration-equipment provider changed temperature settings at three French blood-service facilities",
    "report_types": [
     "threat-report"
    ],
-   "published": "2026-11-05T22:03:00.000Z",
+   "published": "2026-11-05T22:03:56.000Z",
    "description": "A vendor remote-access path reached physical controls; the same architecture sits under substations, pump stations and battery sites. The safeguard that held is the lesson.",
    "confidence": 90,
    "labels": [
@@ -347,13 +347,13 @@
    "spec_version": "2.1",
    "id": "report--2730c426-4045-5e9c-b782-7b2be35db6f5",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
    "name": "Overnight wave of refrigeration setpoint attacks on supermarkets in Belgium, Sweden, Estonia and elsewhere",
    "report_types": [
     "threat-report"
    ],
-   "published": "2026-11-05T22:03:00.000Z",
+   "published": "2026-11-05T22:03:56.000Z",
    "description": "A named control vendor now links the European wave to October's French attacks; any energy site using the same Danfoss controls for cooling should check exposure.",
    "confidence": 70,
    "labels": [
@@ -392,13 +392,13 @@
    "spec_version": "2.1",
    "id": "report--59f8ad8c-5b47-52e9-8317-524e6ac739ab",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
    "name": "Electric utilities urge Congress to renew the Cybersecurity Information Sharing Act of 2015 before it expires next month",
    "report_types": [
     "threat-report"
    ],
-   "published": "2026-11-05T22:03:00.000Z",
+   "published": "2026-11-05T22:03:56.000Z",
    "description": "Thirty-five critical-infrastructure organizations including the OT Cyber Coalition now urge Congress to reauthorize the 2015 information-sharing law for ten years, citing AI-driven exploitation; the sunset is next month and the lame-duck session decides it.",
    "confidence": 70,
    "labels": [
@@ -436,13 +436,13 @@
    "spec_version": "2.1",
    "id": "report--60a95dd3-60ec-5936-a4d7-f9aafd089b06",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
    "name": "CISA launches 2026 Critical Infrastructure Security and Resilience campaign: OT security, continuity, recovery planning",
    "report_types": [
     "threat-report"
    ],
-   "published": "2026-11-05T22:03:00.000Z",
+   "published": "2026-11-05T22:03:56.000Z",
    "description": "Federal priority signal for the year; useful framing, no new obligation.",
    "confidence": 70,
    "labels": [
@@ -474,13 +474,13 @@
    "spec_version": "2.1",
    "id": "report--09ec8dbd-9d6a-5352-9a6f-4a3cee4e15f1",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
    "name": "UK NCSC Annual Review warns of AI-assisted ransomware against critical national infrastructure by 2028",
    "report_types": [
     "threat-report"
    ],
-   "published": "2026-11-05T22:03:00.000Z",
+   "published": "2026-11-05T22:03:56.000Z",
    "description": "A primary-source forecast amplified by three outlets in one day; it is an argument for investment, not an incident.",
    "confidence": 50,
    "labels": [
@@ -526,13 +526,13 @@
    "spec_version": "2.1",
    "id": "report--e2a80172-2336-54fa-a010-3c5da85eada3",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
    "name": "Trump administration ban on foreign grid components raises industry concern over practicality and cost",
    "report_types": [
     "threat-report"
    ],
-   "published": "2026-11-05T22:03:00.000Z",
+   "published": "2026-11-05T22:03:56.000Z",
    "description": "Supply-chain security by another name; cyber press has not covered it, utility press frames it as cost.",
    "confidence": 70,
    "labels": [
@@ -566,7 +566,7 @@
    "spec_version": "2.1",
    "id": "attack-pattern--090482d0-a12d-5068-9110-e49e11f187e1",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "name": "Defacement / false alerts (Enterprise) [inference]",
    "external_references": [
     {
@@ -580,13 +580,13 @@
    "spec_version": "2.1",
    "id": "report--919c85f3-881a-5828-a1ea-c83bc7ed23c0",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
    "name": "Russia and Ukraine report attacks on emergency alert apps during Kherson ceasefire",
    "report_types": [
     "threat-report"
    ],
-   "published": "2026-11-05T22:03:00.000Z",
+   "published": "2026-11-05T22:03:56.000Z",
    "description": "Wartime information operations against civil alert systems; relevant to energy only as a reminder that public-warning channels are targets during grid events.",
    "confidence": 50,
    "labels": [
@@ -618,7 +618,7 @@
    "spec_version": "2.1",
    "id": "vulnerability--232d7f12-f561-5628-8475-6531e3cd0738",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "name": "CVE-2026-111497",
    "external_references": [
     {
@@ -632,11 +632,11 @@
    "spec_version": "2.1",
    "id": "indicator--08a8be03-563b-5831-bfe1-a120a11cdafa",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "name": "Exploitation of CVE-2026-111497",
    "pattern": "[vulnerability:name = 'CVE-2026-111497']",
    "pattern_type": "stix",
-   "valid_from": "2026-11-05T22:03:00.000Z",
+   "valid_from": "2026-11-05T22:03:56.000Z",
    "indicator_types": [
     "malicious-activity"
    ]
@@ -646,13 +646,13 @@
    "spec_version": "2.1",
    "id": "report--98970773-8c77-5802-b0d0-daca7942ffe1",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
    "name": "INCIBE-CERT relays Siemens advisories: Brotli flaw CVE-2026-111497 in Industrial Edge configurators and RUGGEDCOM APE1808",
    "report_types": [
     "threat-report"
    ],
-   "published": "2026-11-05T22:03:00.000Z",
+   "published": "2026-11-05T22:03:56.000Z",
    "description": "CISA lists CVE-2026-111497 as exploited in the wild (KEV); it sits inside Siemens Industrial Edge configurators and RUGGEDCOM APE1808 units found in substations. Patch under CIP-007 R2; this is no longer a disclosure-only item.",
    "confidence": 90,
    "labels": [
@@ -695,13 +695,13 @@
    "spec_version": "2.1",
    "id": "report--d1695b09-214b-5b56-a0f1-1cf11d12a10b",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
    "name": "INCIBE-CERT: multiple vulnerabilities in Welotec TK100/TK500 industrial routers (firmware before 3.5.116 / 1.0.124 / 1.0.123)",
    "report_types": [
     "threat-report"
    ],
-   "published": "2026-11-05T22:03:00.000Z",
+   "published": "2026-11-05T22:03:56.000Z",
    "description": "Industrial cellular routers are the link between remote energy sites and the control centre; the Zyxel campaign this week shows what happens when that layer is exploited.",
    "confidence": 70,
    "labels": [
@@ -735,7 +735,7 @@
    "spec_version": "2.1",
    "id": "attack-pattern--94103aba-a5c0-57c1-a64e-1e096281dd60",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "name": "Exploit Public-Facing Application (Enterprise)",
    "external_references": [
     {
@@ -749,13 +749,13 @@
    "spec_version": "2.1",
    "id": "report--a7f9e385-f72b-565a-b0f8-90fe1915ce2a",
    "created": "2026-11-05T02:15:29.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
    "name": "Attackers chain three Ivanti Connect Secure flaws for unauthenticated root on VPN appliances",
    "report_types": [
     "threat-report"
    ],
-   "published": "2026-11-05T22:03:00.000Z",
+   "published": "2026-11-05T22:03:56.000Z",
    "description": "The remote-access appliance class that gave Colonial's attackers their door is being chained for root again; energy operators' OT access often sits behind the same boxes.",
    "confidence": 70,
    "labels": [
@@ -790,13 +790,13 @@
    "spec_version": "2.1",
    "id": "report--325b145c-7d24-5aa3-a6bd-c0ff93881d50",
    "created": "2026-11-05T19:29:03.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
    "name": "INCIBE-CERT: PHP2Shell critical PHP flaws reach Phoenix Contact industrial switches, routers, WLAN and NTP time servers (FL SWITCH, TC ROUTER, FL TIMESERVER)",
    "report_types": [
     "threat-report"
    ],
-   "published": "2026-11-05T22:03:00.000Z",
+   "published": "2026-11-05T22:03:56.000Z",
    "description": "The same PHP flaw class seen in the Dräger advisory now lands in Phoenix Contact's industrial switches, routers and time servers, the connectivity layer the record shows is the most exploited; time servers add a timestamp-integrity risk for relays.",
    "confidence": 70,
    "labels": [
@@ -830,7 +830,7 @@
    "spec_version": "2.1",
    "id": "vulnerability--9de669a9-bb8c-5530-818e-61d63f929224",
    "created": "2026-11-05T19:45:37.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "name": "CVE-2026-63017",
    "external_references": [
     {
@@ -844,11 +844,11 @@
    "spec_version": "2.1",
    "id": "indicator--bdc372ca-2b92-5dff-9726-92cc77c4459f",
    "created": "2026-11-05T19:45:37.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "name": "Exploitation of CVE-2026-63017",
    "pattern": "[vulnerability:name = 'CVE-2026-63017']",
    "pattern_type": "stix",
-   "valid_from": "2026-11-05T22:03:00.000Z",
+   "valid_from": "2026-11-05T22:03:56.000Z",
    "indicator_types": [
     "malicious-activity"
    ]
@@ -858,7 +858,7 @@
    "spec_version": "2.1",
    "id": "vulnerability--4e41b066-61fa-555f-a441-655531fedfa8",
    "created": "2026-11-05T19:45:37.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "name": "CVE-2026-63774",
    "external_references": [
     {
@@ -872,11 +872,11 @@
    "spec_version": "2.1",
    "id": "indicator--cdbfa6bd-fea3-54a1-9329-f325a8b695a2",
    "created": "2026-11-05T19:45:37.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "name": "Exploitation of CVE-2026-63774",
    "pattern": "[vulnerability:name = 'CVE-2026-63774']",
    "pattern_type": "stix",
-   "valid_from": "2026-11-05T22:03:00.000Z",
+   "valid_from": "2026-11-05T22:03:56.000Z",
    "indicator_types": [
     "malicious-activity"
    ]
@@ -886,13 +886,13 @@
    "spec_version": "2.1",
    "id": "report--82692ee0-e12a-5771-8dc6-d9c7312c2056",
    "created": "2026-11-05T19:45:37.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
    "name": "CISA ICSA-26-307-01: critical flaws (CVE-2026-63017, CVE-2026-63774, CVSS 9.0) in Subnet Solutions PowerSYSTEM Center, energy-sector OT software",
    "report_types": [
     "threat-report"
    ],
-   "published": "2026-11-05T22:03:00.000Z",
+   "published": "2026-11-05T22:03:56.000Z",
    "description": "A CVSS 9.0 pair in software used to manage substation devices; check versions and patch; not exploited as far as any source says.",
    "confidence": 70,
    "labels": [
@@ -932,7 +932,7 @@
    "spec_version": "2.1",
    "id": "threat-actor--9b53d265-8bdb-55dc-87ec-f6097cd17fcb",
    "created": "2026-11-05T21:23:32.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "name": "Akira (claimed, by its own leak site)",
    "threat_actor_types": [
     "criminal-ransomware"
@@ -944,13 +944,13 @@
    "spec_version": "2.1",
    "id": "report--a752c5e1-f873-5119-94b3-cc5a0675fe9e",
    "created": "2026-11-05T21:23:32.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
    "name": "Akira ransomware leak-site listing claims Source Energy Services (frac sand and oilfield logistics, Western Canada); ~93 GB alleged; UNVERIFIED",
    "report_types": [
     "threat-report"
    ],
-   "published": "2026-11-05T22:03:00.000Z",
+   "published": "2026-11-05T22:03:56.000Z",
    "description": "An upstream supply-chain company listed by a ransomware group; the listing is documented by trackers, the intrusion, theft and effects are not confirmed. Watch for a company disclosure and whether exposure is business IT or engineering data.",
    "confidence": 30,
    "labels": [
@@ -985,7 +985,7 @@
    "spec_version": "2.1",
    "id": "threat-actor--72e68a95-f1ff-532a-ae15-32aaaa8d0d63",
    "created": "2026-11-05T21:23:32.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "name": "TheGentlemen (claimed)",
    "threat_actor_types": [
     "criminal-ransomware"
@@ -997,13 +997,13 @@
    "spec_version": "2.1",
    "id": "report--cc7536c9-717f-5283-87bf-8c7568aed272",
    "created": "2026-11-05T21:23:32.000Z",
-   "modified": "2026-11-05T22:03:00.000Z",
+   "modified": "2026-11-05T22:03:56.000Z",
    "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
    "name": "TheGentlemen ransomware claim against MegChem (engineering services to energy, oil and gas, petrochemicals, South Africa); claim dated Nov 2, analysed Nov 5; UNVERIFIED",
    "report_types": [
     "threat-report"
    ],
-   "published": "2026-11-05T22:03:00.000Z",
+   "published": "2026-11-05T22:03:56.000Z",
    "description": "A petrochemical engineering supplier on a leak site: the first Africa item the society has carried, and a claim only.",
    "confidence": 30,
    "labels": [

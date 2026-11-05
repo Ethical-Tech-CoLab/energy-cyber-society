@@ -171,7 +171,19 @@
   <form method="dialog">
     <h2>How the society works <small>the intelligence framework: one orchestrator, fifteen desks, a quarantined reader, an independent auditor, policy in code, an append-only ledger, a person at the end</small></h2>
     <div class="fw-tabs"><button type="button" class="pix on" data-fw="animate">The framework, animated on a real story</button><button type="button" class="pix" data-fw="cycle">The intelligence cycle</button></div>
-        <p class="k">Pattern after neocloud-supply-os (Appendix B1): Conductor, desks, Auditor, Policy Engine, Ledger, Envoy, Reader. Every step above is read from this item's own record, verdict, cross-check, pulled text and flags, not from a script.</p></div>
+    <div id="fw-cycle" class="fw-pane" hidden><ol class="cycle">
+      <li><b>Planning and direction</b> · the owner sets scope (energy, worldwide, US first) and the rules</li>
+      <li><b>Collection</b> · the Envoy reads the allowlist; the Librarian keeps the map of where to look and what was blocked</li>
+      <li><b>Processing</b> · the Reader filters, dedupes across languages, pulls direct sources, enriches CVEs from NVD and KEV</li>
+      <li><b>Analysis and production</b> · the desks write records, scoring with rationale, breach anatomy, correlations, scenarios, geopolitics by layer, regulations, costs</li>
+      <li><b>Verification</b> · the Verifier grades sources A-F and claims 1-6, cross-checks outlet against primary, issues verdicts; the Policy Engine rejects what breaks a rule</li>
+      <li><b>Dissemination</b> · the executive brief (unsigned), Summary, Gazette, Risk check, STIX</li>
+      <li><b>Evaluation</b> · the Ombudsman audits the residents; ground truth and human samples measure accuracy; the Engineer repairs the code by PR; the owner decides</li></ol>
+      <p class="k">Synthesised from the intelligence cycle, ICD 203 analytic standards, ICD 206 sourcing, Admiralty grading and the FBI/CISA advisory format; see INTELLIGENCE_ANALYSIS.md.</p></div>
+    <div id="fw-animate" class="fw-pane"><p class="k">Click any node for its role, where it lives in the repository, the rules that bind it and its phase of the intelligence cycle. Press play to watch a real story from today's board travel the path; each step names the rules it enforces and reads its facts from that item's own record.</p>
+    <div class="row" style="justify-content:flex-start;margin:0 0 8px;gap:8px;flex-wrap:wrap"><select id="vitem" style="flex:1;min-width:280px;background:#0b0e14;border:2px solid var(--line);color:var(--ink);padding:6px;font-family:var(--font);font-size:12px"></select><button type="button" class="pix accent" id="vplay">▶ Animate the write path</button></div>
+    <div class="vwrap2"><svg class="topo-svg" id="vtopo" viewBox="0 0 760 580" role="img" aria-label="Validation topology"></svg><div id="vnode" class="vnode"></div></div><ol id="vsteps" class="vsteps wide"></ol><p class="k">Green: deterministic code. Red: quarantine or independence. Amber: a person. Full text: <a href="RULES.md" target="_blank" rel="noopener">RULES.md</a> (39 rules) · <a href="INTELLIGENCE_ANALYSIS.md" target="_blank" rel="noopener">INTELLIGENCE_ANALYSIS.md</a> · <a href="REGISTER.md" target="_blank" rel="noopener">REGISTER.md</a> · diagram source <a href="topology.svg" target="_blank" rel="noopener">topology.svg</a>.</p>
+    <p class="k">Pattern after neocloud-supply-os (Appendix B1): Conductor, desks, Auditor, Policy Engine, Ledger, Envoy, Reader. Every step above is read from this item's own record, verdict, cross-check, pulled text and flags, not from a script.</p></div>
     <div class="row"><button class="pix">Close</button></div>
   </form>
 </dialog>
