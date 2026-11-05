@@ -116,6 +116,15 @@
     "Is any geopolitical event changing the attack surface rather than the threat?": "Yes: the foreign grid-component ban changes who supplies transmission hardware, which changes the PIT layer's supply chain over years; and the possible lapse of the 2015 information-sharing law would reduce US operators' visibility of threats, a defensive-surface change (Utility Dive, 2026-11-04 and 2026-11-03)."
    },
    "bubble": "China reaches PIT by policy; Russia reaches IT by war. OT: precedent only."
+  },
+  "technologist": {
+   "briefing": "AI and the market this week, from the wide bucket. Agent-security money and incidents: Sentra raised $150 million for agentic data security (SecurityWeek); Sysdig added runtime security and governance for AI agents (SecurityWeek); WorkOS said an attacker used an AI tool called ARTEX to breach an internal sales app, and Northflank and Trigger.dev disclosed AI-linked breaches (BleepingComputer; SecurityWeek). Researchers found prompt adware hidden in an OpenAI Codex jailbreak toolkit (The Hacker News). On the energy side of AI: industrial AI adoption is outpacing OT security readiness (Industrial Cyber, 2026-11-03), and the UK NCSC forecasts AI-assisted ransomware against critical infrastructure by 2028 (UK NCSC, 2026-11-03). Not in the bundle: any new frontier model release, any maker valuation, any data-centre power figure; I will not supply numbers the feeds did not. This society's own bill: about 234,000 input and 10,500 output tokens per API run, roughly $0.22 on Sonnet 5.5 with caching (COST.md, 2026-11-04); energy per run is not published by the provider.",
+   "answers": {
+    "Which new AI models or agents appeared this week, and what do they cost?": "No model release or price change appeared in the allowlisted feeds this week. What did: AI-agent security products and funding (Sysdig, Sentra $150M) and AI-linked breaches (WorkOS via ARTEX, Northflank, Trigger.dev) (SecurityWeek; BleepingComputer). For prices, the makers' pricing pages are the only source; the ones this society uses are recorded in COST.md.",
+    "How much energy does AI consume and what does it mean for the grid?": "Not in this week's bundle, and I will not quote a figure from memory. Where to look: the IEA's electricity and data-centre reports, EPRI's load forecasts, utility interconnection queues and company sustainability reports (see the inputs checklist). What it means structurally: data centres are a fast-growing firm load, their cooling is OT of the class attacked in Europe this week, and their power deals shape where generation gets built.",
+    "What are all the inputs an AI agent like this one needs?": "Nine layers, in agents/ai_market.json: compute hardware (accelerators, CPUs, HBM, interconnect, storage), data centre and plant (site, grid interconnection or on-site generation, cooling and water, backup, building OT), electricity and fuel, the software stack (weights, frameworks, inference servers, orchestration, agent tooling, observability), data, people, capital and market (funding, valuations, pricing), regulation (export controls, AI rules, permitting), and the security of the agent itself. For this society specifically: a hosted model at published per-token prices, a browser, GitHub Pages, and the allowlisted feeds; its hardware and energy per run are not disclosed by the provider."
+   },
+   "bubble": "No model release in the feeds. No number from memory."
   }
  },
  "conversations": [
@@ -500,6 +509,38 @@
     {
      "who": "verifier",
      "line": "Agreed. The most authoritative US source returns 403."
+    }
+   ]
+  },
+  {
+   "between": [
+    "technologist",
+    "economist"
+   ],
+   "lines": [
+    {
+     "who": "technologist",
+     "line": "Sentra raised $150 million for agent security. SecurityWeek, this week."
+    },
+    {
+     "who": "economist",
+     "line": "Valuation?"
+    },
+    {
+     "who": "technologist",
+     "line": "Not published. The round size is the only number."
+    },
+    {
+     "who": "economist",
+     "line": "And the energy per run of this town?"
+    },
+    {
+     "who": "technologist",
+     "line": "Not disclosed by the provider. Tokens and dollars are measured; watts are not."
+    },
+    {
+     "who": "economist",
+     "line": "Then the table has two columns filled and one honest blank."
     }
    ]
   }

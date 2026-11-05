@@ -71,6 +71,11 @@
       "resident": "geopolitics",
       "what": "The map of conflicts. The Geopolitical Analyst tracks wars, sanctions and ruptures that could reach energy, and analyses each by subsector and by layer: IT, OT, PIT.",
       "data": "Reads geopolitical_link fields, the wide bucket and advisories. Writes the per-layer geopolitical analysis."
+    },
+    "Compute Exchange": {
+      "resident": "technologist",
+      "what": "Where the AI market is watched: models, agents, prices, energy and water use, makers and valuations, and the full inputs checklist behind any agent, including this one.",
+      "data": "Reads the wide bucket, maker pricing pages, agency energy reports, COST.md and briefing.usage. Writes the AI-market note and keeps agents/ai_market.json."
     }
   }
 }

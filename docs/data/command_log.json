@@ -409,7 +409,17 @@
    "detail": "Sentence in a briefing with no (Source) citation.",
    "severity": "warn",
    "status": "open"
+  },
+  {
+   "at": "2026-11-05T01:07:21.970851+00:00",
+   "run": "2026-11-04T23:07:43.271471+00:00",
+   "type": "unsourced-claim",
+   "agent": "technologist",
+   "item": "Not in the bundle: any new frontier model release, any maker valuation, any data-centre po",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
   }
  ],
- "updated_at": "2026-11-05T01:03:51.724853+00:00"
+ "updated_at": "2026-11-05T01:07:21.970851+00:00"
 }

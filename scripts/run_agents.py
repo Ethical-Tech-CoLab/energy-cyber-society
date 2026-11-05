@@ -107,7 +107,7 @@ def run_with_claude():
     prev = json.loads(OUT.read_text()) if OUT.exists() else {}
     result["human_touch"] = prev.get("human_touch")
 
-    pairs = [("reporter", "analyst"), ("critic", "reporter"), ("contrarian", "analyst"), ("wideangle", "contrarian"), ("critic", "wideangle"), ("verifier", "contrarian"), ("counsel", "contrarian"), ("operator", "analyst"), ("geopolitics", "wideangle"), ("economist", "archivist"), ("ombudsman", "verifier"), ("librarian", "verifier")]
+    pairs = [("reporter", "analyst"), ("critic", "reporter"), ("contrarian", "analyst"), ("wideangle", "contrarian"), ("critic", "wideangle"), ("verifier", "contrarian"), ("counsel", "contrarian"), ("operator", "analyst"), ("geopolitics", "wideangle"), ("economist", "archivist"), ("ombudsman", "verifier"), ("librarian", "verifier"), ("technologist", "economist")]
     for x, y in pairs:
         ax, ay = BY_ID[x], BY_ID[y]
         print("conversation:", x, y, file=sys.stderr)

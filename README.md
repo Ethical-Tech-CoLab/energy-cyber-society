@@ -89,6 +89,11 @@ attack types, how a breach happens, live and background cases), and the newsstan
 opens the Gazette, a broadsheet printed from the same data. `docs/data/stix.json` is a STIX
 2.1 export of the board.
 
+## Backlog
+
+See `BACKLOG.md`: everything requested, what shipped, what is blocked on a person, what the
+scheduled runs will do on their own.
+
 ## Adding a source
 
 Add it to `sources.json` with a `bias_note`. The Media Critic reads those notes; a source

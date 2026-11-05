@@ -7,7 +7,7 @@ const cv = document.getElementById('town');
 const ctx = cv.getContext('2d');
 ctx.imageSmoothingEnabled = false;
 
-let personas, briefing, news, sources, lookmap, buildings, sectors, rulesText, cmdlog, history;
+let personas, briefing, news, sources, lookmap, buildings, sectors, rulesText, cmdlog, history, aimarket;
 let agents = [];
 let selected = null;
 let bubbles = [];                      // {agent, text, until}
@@ -26,12 +26,13 @@ const BUILDINGS = [
   { key: 'Verification Office', x: 400, y: 440, w: 160, h: 80, color: '#3a3f4a', roof: '#e6e9ef' },
   { key: 'Library',            x: 40,  y: 470, w: 120, h: 70, color: '#4a4420', roof: '#e8d44b' },
   { key: 'Cyber Command',      x: 700, y: 470, w: 150, h: 70, color: '#1f2a44', roof: '#4bb3e8' },
-  { key: "Counsel's Chambers", x: 40,  y: 640, w: 130, h: 70, color: '#4a3a2a', roof: '#b08968' },
-  { key: 'Archive',            x: 200, y: 640, w: 120, h: 70, color: '#3a402a', roof: '#8a9a5b' },
-  { key: "Ombudsman's Office", x: 350, y: 640, w: 130, h: 70, color: '#3a3f4a', roof: '#e6e9ef' },
-  { key: 'Control Room',       x: 510, y: 640, w: 130, h: 70, color: '#4a2f1a', roof: '#f28c28' },
-  { key: 'Exchange',           x: 670, y: 640, w: 120, h: 70, color: '#1f3f3d', roof: '#4bd1c5' },
-  { key: 'Situation Room',     x: 820, y: 640, w: 120, h: 70, color: '#4a1f33', roof: '#d94b8a' },
+  { key: "Counsel's Chambers", x: 20,  y: 640, w: 118, h: 70, color: '#4a3a2a', roof: '#b08968' },
+  { key: 'Archive',            x: 156, y: 640, w: 110, h: 70, color: '#3a402a', roof: '#8a9a5b' },
+  { key: "Ombudsman's Office", x: 284, y: 640, w: 120, h: 70, color: '#3a3f4a', roof: '#e6e9ef' },
+  { key: 'Control Room',       x: 422, y: 640, w: 118, h: 70, color: '#4a2f1a', roof: '#f28c28' },
+  { key: 'Exchange',           x: 558, y: 640, w: 108, h: 70, color: '#1f3f3d', roof: '#4bd1c5' },
+  { key: 'Situation Room',     x: 684, y: 640, w: 118, h: 70, color: '#4a1f33', roof: '#d94b8a' },
+  { key: 'Compute Exchange',   x: 820, y: 640, w: 126, h: 70, color: '#2a1f4a', roof: '#7c4dff' },
 ];
 const PLAZA = { x: 380, y: 300, w: 200, h: 120 };
 
@@ -307,6 +308,7 @@ function selectBuilding(b) {
   if (info) addMsg('Data flow: ' + info.data, 'sys');
   if (res) { addMsg(`${res.name} works here. ${res.job}`, 'them'); if (res.name_note) addMsg('About the name: ' + res.name_note, 'sys'); }
   if (buildings && buildings.naming_note) addMsg('How all the names were chosen: ' + buildings.naming_note, 'sys');
+  if (b.key === 'Compute Exchange' && aimarket) { aimarket.inputs.forEach(l => addMsg(`${l.layer}: ${l.items.join('; ')}\nTrack: ${l.track}\nEnergy relevance: ${l.energy_relevance}`, 'them')); addMsg('This society: ' + Object.entries(aimarket.this_society).map(([k, v]) => k.replace(/_/g, ' ') + ' — ' + v).join(' · '), 'sys'); }
   if (b.key === 'Situation Room' && briefing && briefing.geopolitics) { briefing.geopolitics.theatres.forEach(t => addMsg(`${t.conflict}\nIT: ${t.layers.IT}\nOT: ${t.layers.OT}\nPIT: ${t.layers.PIT}\nSubsectors: ${t.subsectors.join(', ')} · US relevance: ${t.us_relevance} · confidence ${t.confidence}`, 'them')); addMsg('Absent from this week\'s feeds: ' + briefing.geopolitics.absent_this_week.join('; ') + '. ' + briefing.geopolitics.note, 'sys'); }
   const sg = $('suggest'); sg.innerHTML = '';
   if (res) { const btn = document.createElement('button'); btn.textContent = `Talk to ${res.name.split(' ')[0]}`; btn.onclick = () => select(agents.find(a => a.p.id === res.id)); sg.appendChild(btn); }
@@ -718,7 +720,7 @@ $('btn-look').onclick = () => {
 
 // ---------------------------------------------------------------- boot
 async function boot() {
-  const [p, b, n, src, lk, bl, sc, rt, cl, hs] = await Promise.all([
+  const [p, b, n, src, lk, bl, sc, rt, cl, hs, am] = await Promise.all([
     fetch('data/personas.json').then(r => r.json()),
     fetch('data/briefing.json').then(r => r.json()).catch(() => null),
     fetch('data/news.json').then(r => r.json()).catch(() => null),
@@ -729,8 +731,9 @@ async function boot() {
     fetch('RULES.md').then(r => r.text()).catch(() => ''),
     fetch('data/command_log.json').then(r => r.json()).catch(() => ({ events: [] })),
     fetch('data/history.json').then(r => r.json()).catch(() => ({ runs: [] })),
+    fetch('data/ai_market.json').then(r => r.json()).catch(() => null),
   ]);
-  history = hs;
+  history = hs; aimarket = am;
   personas = p; briefing = b; news = n; sources = src; lookmap = lk; buildings = bl; sectors = sc; rulesText = rt; cmdlog = cl;
   const openFlags = cmdlog.events.filter(e => e.status === 'open').length; $('btn-command').textContent = `Cyber Command (${openFlags})`;
   if (briefing) {
