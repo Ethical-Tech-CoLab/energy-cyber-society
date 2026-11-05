@@ -26,6 +26,8 @@
     <button id="btn-register" class="pix">Agent Register</button>
     <button id="btn-dash" class="pix">Dashboard</button>
     <button id="btn-collections" class="pix">Collections</button>
+    <button id="btn-scenarios" class="pix">Scenarios</button>
+    <button id="btn-human" class="pix">Human touch</button>
     <button id="btn-board" class="pix">Briefing board</button>
     <button id="btn-stories" class="pix">Today's wire</button>
     <button id="btn-settings" class="pix">Settings</button>
@@ -34,7 +36,7 @@
 
 <main class="stage">
   <div class="town-wrap">
-    <canvas id="town" width="960" height="560" aria-label="Pixel town with six residents. Click a resident to talk."></canvas>
+    <canvas id="town" width="960" height="760" aria-label="Pixel town with thirteen residents. Click a resident to talk."></canvas>
     <div class="hint" id="hint">Click a resident to talk, a building to read what happens inside, a facility for its sector dossier, or the newsstand for the Gazette. They are discussing today's energy-sector cyber news.</div>
     <div class="log-wrap"><div class="log-head">Overheard in town</div><div id="log" class="log" aria-live="polite"></div></div>
   </div>
@@ -97,6 +99,22 @@
     <ul class="sum" id="sum-bullets"></ul>
     <h3>Critical-thought considerations</h3>
     <ul class="sum considerations" id="sum-cons"></ul>
+    <div class="row"><button class="pix">Close</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-scenarios" class="dlg wide">
+  <form method="dialog">
+    <h2>Action · impact · scenarios <small>the week's main stories framed for decision, and the correlations across domains</small></h2>
+    <div id="scen-body" class="prose"></div>
+    <div class="row"><button class="pix">Close</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-human" class="dlg wide">
+  <form method="dialog">
+    <h2>Human touch <small>what still needs a person and cannot be automated here</small></h2>
+    <div id="human-body" class="prose"></div>
     <div class="row"><button class="pix">Close</button></div>
   </form>
 </dialog>
@@ -184,6 +202,8 @@
         <li><b>Verify one against the other.</b> For each item the outlet's claim is set beside the primary text: agree, differ, verdict. Items are corrected where the primary disagrees (CVE ids, counts, named vendors, hedges a headline dropped).</li>
         <li><b>Audit and publish.</b> The Verifier issues a verdict per item and reports what changed since the last run. A validator rejects any malformed briefing. The result is committed and the page redraws from it.</li>
       </ol>
+      <h3>Correlation, action, impact, scenarios</h3>
+      <p>The residents start the inquiry without being asked: the scheduled run fetches, correlates and grades before anyone looks. Each run also correlates items across domains (sector, actor, technique, vendor, policy) and writes, for the main stories, an action now, an impact chain, and three scenarios with what would confirm each. Likelihood uses words, not numbers, because there is no base rate behind them; the scenarios are the residents' reasoning from the bundle, labelled as such, not forecasts. The Geopolitical Analyst adds a per-theatre, per-layer (IT, OT, PIT) reading of the conflicts in the bundle and lists the theatres absent from the feeds, so silence is explicit.</p>
       <h3>How "right, wrong, important" are kept apart</h3>
       <p><b>Importance</b> is the severity badge: OT or physical impact first, then US energy relevance, actor capability, scale, and whether action is possible. <b>Correctness</b> is the trust line and the Verifier's verdict: source tier, independent corroboration, claim-versus-confirmed, direct-source match. They are separate columns on purpose. An item can be critical and poorly confirmed, or fully confirmed and minor.</p>
       <h3>Standing rules</h3>
@@ -241,7 +261,7 @@
 
 <footer class="foot">
   An <a href="https://github.com/Ethical-Tech-CoLab">Ethical Tech CoLab</a> experiment ·
-  six agents, one runtime, an allowlist of credible sources ·
+  thirteen agents, one runtime, an allowlist of credible sources ·
   <a href="https://github.com/carolina-moron/energy-cyber-society">source</a>
 </footer>
 <script src="game.js"></script>

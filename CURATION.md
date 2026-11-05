@@ -20,6 +20,10 @@ You do not need an Anthropic API key: you are the model. Follow these steps exac
    - each item carries `scoring`: severity level with the five factors and a rationale that
      says why this level and not the adjacent ones, plus reliability and credibility rationales.
      Keep `rubric` (severity_scale, severity_factors, reliability_scale, credibility_scale, rule).
+   - `correlations` (links between items across domains with strength and evidence),
+     `scenarios` (per main story: action_now, impact_chain, three scenarios with likelihood
+     words and what confirms each), `geopolitics` (theatres with layers IT/OT/PIT, subsectors,
+     US relevance, confidence; and absent_this_week), and keep `human_touch` as is.
    - `us_status`: one or two sentences on whether any US energy operator was confirmed breached.
    - `conversations`: five or six pairwise dialogues of 6 lines each, residents disagreeing.
    - `verification`: `run_at`, `verdicts` keyed by item headline with `verdict` and `reason`,

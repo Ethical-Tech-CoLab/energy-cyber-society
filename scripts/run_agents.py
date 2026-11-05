@@ -95,7 +95,19 @@ def run_with_claude():
     except json.JSONDecodeError: result["verification"] = {}
     result["verification"]["run_at"] = datetime.now(timezone.utc).isoformat()
 
-    pairs = [("reporter", "analyst"), ("critic", "reporter"), ("contrarian", "analyst"), ("wideangle", "contrarian"), ("critic", "wideangle"), ("verifier", "contrarian")]
+    # correlations + scenarios + geopolitics (Analyst, Operator and Geopolitical Analyst)
+    for key, who, prompt, mt in [("correlations", "analyst", "Output ONLY a JSON array of correlations between board items across domains: [{\"between\": [headline, headline], \"domains\": [..], \"link\": \"...\", \"strength\": \"strong|thematic|inferred|weak\", \"evidence\": \"(Outlet, date) or [inference]\"}]", 2000),
+                                 ("scenarios", "operator", "For the three most important board items output ONLY a JSON array: [{\"story\": headline, \"title\": \"...\", \"action_now\": \"...\", \"impact_chain\": \"a → b → c\", \"scenarios\": [{\"name\", \"likelihood\": \"likely|possible|unlikely|cannot assess\", \"what\", \"confirms\"} x3]}]", 3000),
+                                 ("geopolitics", "geopolitics", "Output ONLY JSON: {\"theatres\": [{\"conflict\", \"parties\", \"evidence_this_week\": [..], \"layers\": {\"IT\", \"OT\", \"PIT\"}, \"subsectors\": [..], \"us_relevance\", \"confidence\"}], \"absent_this_week\": [..], \"note\": \"...\"}", 3000)]:
+        if who not in BY_ID: continue
+        rr = client.messages.create(model=MODEL, max_tokens=mt, system=sys_blocks(BY_ID[who]), messages=[{"role": "user", "content": f"BOARD ITEMS:\n{json.dumps(result.get('items', []))}\n\n{prompt}"}])
+        tally(rr); tt = "".join(bb.text for bb in rr.content if bb.type == "text"); mm = re.search(r"[\[{].*[\]}]", tt, re.S)
+        try: result[key] = json.loads(mm.group(0)) if mm else None
+        except json.JSONDecodeError: result[key] = None
+    prev = json.loads(OUT.read_text()) if OUT.exists() else {}
+    result["human_touch"] = prev.get("human_touch")
+
+    pairs = [("reporter", "analyst"), ("critic", "reporter"), ("contrarian", "analyst"), ("wideangle", "contrarian"), ("critic", "wideangle"), ("verifier", "contrarian"), ("counsel", "contrarian"), ("operator", "analyst"), ("geopolitics", "wideangle"), ("economist", "archivist"), ("ombudsman", "verifier"), ("librarian", "verifier")]
     for x, y in pairs:
         ax, ay = BY_ID[x], BY_ID[y]
         print("conversation:", x, y, file=sys.stderr)
@@ -158,8 +170,10 @@ def run_fallback():
         "briefing": "Before anyone says 'the grid was attacked': the headlines above do not tell us who was spared, and silence in coverage is not evidence of impact. Ask who is missing from each story.",
         "answers": {q: "Headlines-only mode. The honest answer is that nobody has checked who was not affected yet." for q in AGENTS[4]["questions"]},
         "bubble": "And who was NOT affected?"}
-    r["agents"]["verifier"] = {"briefing": "No audit possible in headlines-only mode; there are no analytic claims to verify yet.",
-        "answers": {q: "Nothing to audit until an agent run produces board items." for q in BY_ID["verifier"]["questions"]}, "bubble": "Nothing to audit yet."}
+    for aid, a in BY_ID.items():
+        if aid not in r["agents"]:
+            r["agents"][aid] = {"briefing": "Headlines-only mode; nothing for me to work on until an agent run produces board items.",
+                "answers": {q: "Nothing to work on until an agent run produces board items." for q in a["questions"]}, "bubble": "Waiting for the run."}
     if top:
         r["conversations"].append({"between": ["reporter", "contrarian"], "lines": [
             {"who": "reporter", "line": f"Top of the wire: {top[0]['title'][:70]} ({top[0]['source_name']})."},

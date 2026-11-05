@@ -62,6 +62,60 @@
     "Which sources worked and which were blocked in the latest run?": "Worked: Industrial Cyber, The Register Security, BleepingComputer, The Hacker News, Dark Reading, Utility Dive, UK NCSC News. Primary pages reached: presse.efs.sante.fr, www.ncsc.gov.uk, www.vulncheck.com, www.zyxel.com. Blocked: CISA Advisories, CISA News, Utility Dive. The EFS statement was reachable but in French, so the English keyword matcher found no excerpts and it was read by hand."
    },
    "bubble": "CISA says 403. Ask congress.gov directly."
+  },
+  "counsel": {
+   "briefing": "Three items this week carry a legal trigger and I have read the text of none of them, so here is the last confirmed status with its date. The Cybersecurity Information Sharing Act of 2015 (6 U.S.C. 1501 et seq.) has a statutory sunset; Utility Dive reports it expires next month and that utilities are lobbying for renewal (Utility Dive, 2026-11-04); I have not read the current statute or any NDAA extension text, so the date and the extension are [unverified]. The foreign grid-component ban: the instrument is not named in the bundle; it may be an executive order under the 2020 Bulk-Power System order's lineage, but that is [speculation] until the Federal Register notice is read (Utility Dive, 2026-11-03). CISA's 2026 resilience campaign creates no obligation (Industrial Cyber, 2026-11-03). For the Siemens and Zyxel flaws, the obligations for registered entities sit in NERC CIP-007 R2 (patch management, 35-day evaluation) and CIP-010 R1 (change management); for pipelines, TSA's security directives require vulnerability assessment and patching within the operator's plan; I have not re-read the directive versions this run, so cite the directive number only after checking tsa.gov.",
+   "answers": {
+    "What is the current status of the Cybersecurity Information Sharing Act of 2015?": "I have not read the text this run. Last confirmed status from the bundle: expiring next month, renewal urged by electric utilities and other industries (Utility Dive, 2026-11-04). What would settle it: the statute's sunset clause on congress.gov and the text of any NDAA extension. Until then: [unverified].",
+    "Is TSA's pipeline cybersecurity rule final?": "Not in this bundle, so I cannot verify from this run. The structure to check: TSA regulates pipelines through security directives (the Pipeline-2021-02 series, reissued periodically) and a proposed rule under 49 CFR; each directive has its own version and expiry. Open tsa.gov for the current directive before citing any of them.",
+    "Which NERC CIP standards apply to this week's items?": "For a registered entity running the Siemens IoT2050 or Zyxel GS1900 inside an electronic security perimeter: CIP-007 R2 (security patch management) and CIP-010 R1 (configuration change management), plus CIP-005 for the remote-access path the European refrigeration cases exploited. Check nerc.com for the versions in force; I have not re-read them this run."
+   },
+   "bubble": "I have not read the text. So: unverified."
+  },
+  "archivist": {
+   "briefing": "This week's items map onto the record like this. The European refrigeration attacks (The Hacker News, 2026-11-03; BleepingComputer, 2026-11-04) resemble the 'learn the process, then change a setpoint' phase of Ukraine 2015 at trivial skill, and their vendor path resembles the Triton engineering-workstation path in miniature; trend: campaign, since Danfoss links them to October's French wave. The Zyxel credential theft (BleepingComputer, 2026-11-05) resembles the Danish energy-sector Zyxel firewall campaign of May 2023 reported by SektorCERT; trend: recurring vendor. The Siemens IoT2050 flaw (The Hacker News, 2026-11-03) has no close precedent in the dossiers; trend: new. Background cases are unverified by this system; I spot-checked none this run because the run was hand-curated, and I have logged that.",
+   "answers": {
+    "Has this happened before, and what did it cost?": "Setpoint tampering on exposed controllers: yes, repeatedly, at low cost per site; the cost figures that exist are for IT ransomware (Colonial's $4.4M ransom, Halliburton's ~$35M) and they are the Economist's to cite. For refrigeration specifically, no public cost figure exists in the bundle.",
+    "Which past incident does this week's main story resemble?": "The refrigeration wave resembles the Ukraine 2015 operator-level manipulation stripped of its sophistication, and the Danish 2023 Zyxel campaign for the Zyxel item. Both are background cases pending verification.",
+    "Which background cases in the dossiers are still unverified?": "All of them. They come from the model's general knowledge with a year and a pointer. The playbook now spot-checks two per scheduled run; the count verified so far is zero."
+   },
+   "bubble": "Zero background cases verified so far. Say it plainly."
+  },
+  "ombudsman": {
+   "briefing": "Conduct note for the run of 2026-11-04. Rules broken: rule 4 (every claim names its source) in nine briefing sentences, mostly the Contrarian's and the Librarian's, where a sentence of reasoning carried no citation; rule 3 on two legal items, now held by the Counsel as unverified. Patterns: four of nine items single-source, which is a source-list problem (CISA and Utility Dive block the puller), not an agent problem; the Contrarian flagged overstatement on three items and all three survived cross-check, so no reflex detected yet. Bias watch: US-first produced zero US incidents and six European OT incidents, which is honest to the bundle; the risk is that the US quiet is a reporting artefact, and the Contrarian said so. The run was hand-curated in a live session rather than by the scheduled runtime, which the model field discloses. Proposals to the human owner: (1) fix or replace the CISA feed path, since the most authoritative US source is absent; (2) require a (Source) on reasoning sentences or accept them as labelled [inference]; (3) verify at least two background cases before the dossiers are shown to anyone else.",
+   "answers": {
+    "Which rules were broken this run and by whom?": "Rule 4: nine unsourced sentences (Contrarian 3, Librarian 2, Analyst 2, Critic 1, Wide-Angle 1), all reasoning rather than fact claims. Rule 3: two legal items on trade press only, now marked. Rule 21: zero background cases spot-checked, logged by the Archivist.",
+    "Is any resident showing a bias pattern over time?": "One run is not a pattern. What I will watch: whether the Contrarian's downgrades keep surviving cross-check, whether the Critic's vendor-funding flags concentrate on one outlet, and whether the Reporter's US-first ordering starves international items of records.",
+    "What should change in the rules or the sources?": "Sources: CISA's advisories must be reachable, by site scrape if the feed stays 403, and Utility Dive should be replaced or supplemented for utility policy. Rules: decide whether reasoning sentences need a citation or a label; today they are flagged either way."
+   },
+   "bubble": "Nine unsourced sentences. Mostly reasoning. Still flagged."
+  },
+  "operator": {
+   "briefing": "From the control room. Siemens IoT2050 Advanced (The Hacker News, 2026-11-03): if you have one, it is probably doing protocol translation at a remote site; the patch is a firmware update that takes the gateway down, so for a small co-op that means a truck roll and a planned window; in the meantime block the Node-RED port at the site firewall, which you can do tonight. Zyxel GS1900 (BleepingComputer, 2026-11-05): the firmware is a reboot of a switch, a few minutes of loss of view if it sits in the SCADA path; rotate every credential in any config you cannot prove was not pulled. The refrigeration cases (BleepingComputer, 2026-11-04): what the operators saw was a setpoint alarm and a temperature trend climbing; your equivalent is HVAC in a substation control house or a battery container. Ask your vendor who has remote access to those controllers and how. The information-sharing law (Utility Dive, 2026-11-04): if it lapses, your E-ISAC feed does not stop, but your lawyer may tell you to stop contributing.",
+   "answers": {
+    "What should my control room do this week?": "Tonight: block the Node-RED port on any IoT2050 and confirm the Zyxel firmware level. This week: schedule the gateway patch in a window, rotate switch credentials, and get the list of vendor remote-access paths to HVAC and refrigeration controllers. This month: read CISA's resilience campaign material for recovery planning (Industrial Cyber, 2026-11-03).",
+    "Which of these recommendations are unrealistic for a small utility?": "'Patch now' for a gateway at a remote site is unrealistic without a window; the compensating control is a firewall rule. 'Hunt' for stolen Zyxel configs assumes logs most co-ops do not keep; rotate credentials instead. Everything else is a phone call to a vendor.",
+    "What would this attack look like on an HMI?": "The refrigeration attacks: a setpoint changed without an operator action in the event log, then a slow temperature climb, then a high-temperature alarm. On a grid HMI the equivalent is a tag changing with no command logged, or a loss-of-view where the screen freezes while the process moves."
+   },
+   "bubble": "Block the port tonight. Patch in a window."
+  },
+  "economist": {
+   "briefing": "No incident in this week's bundle carries a published cost figure, so the loss-by-severity table is empty of dollars and I will not fill it with estimates. What exists: the European supermarket wave caused chilled stock to be discarded at several dozen stores per chain (The Hacker News, 2026-11-03), no amount given; the French blood service lost no stock (The Register, 2026-11-04); the Zyxel and Siemens items have no victim cost. Elsewhere in the wide bucket, Binance disclosed a theft of about $6.3 billion (BleepingComputer; The Register) and a French bank an estimated $133 million (The Record), both outside energy. Cost of acting: the Operator's estimate is one firewall rule tonight and one planned window per gateway; the cost of not acting on an unauthenticated RCE in an OT gateway is unbounded and unpublished. The policy item with the largest economic effect is the foreign grid-component ban, which the industry frames as cost (Utility Dive, 2026-11-03); no figure is given.",
+   "answers": {
+    "What did this week's incidents cost, and who says so?": "Nobody says. No energy item in the bundle has a published cost. Outside energy: Binance ~$6.3B (BleepingComputer; The Register), a French bank ~$133M estimated (The Record).",
+    "What is the cost of acting versus not acting on the Siemens flaw?": "Acting: a firewall rule (minutes) plus a firmware window per gateway (a truck roll for remote sites, per the Operator). Not acting: no published figure; the comparable class, OT gateway compromise, has no public cost dataset. I will not invent one.",
+    "How do markets and insurers price energy cyber risk?": "Not in this bundle. The places to look are insurer and reinsurer reports and utility rate cases; see the Librarian's map. I cannot verify any figure this run."
+   },
+   "bubble": "No energy cost figure published this week. Table stays empty."
+  },
+  "geopolitics": {
+   "briefing": "Conflicts in this week's bundle and what they reach in energy, by layer. Russia–Ukraine: attacks on both countries' emergency alert apps during the Kherson ceasefire (The Register, 2026-11-02), a suspected Russian attack on the Kyiv Independent (The Record) and ESET's Gorbag espionage campaign against Ukrainian administrations, defence and transport (Industrial Cyber). Energy reach: IT layer (espionage, information operations around outages) with high confidence from the record; OT layer by precedent (Sandworm's grid attacks, background cases) but nothing in this bundle; PIT none. North Korea: the Binance theft attributed in coverage to DPRK operators (BleepingComputer; The Register; SecurityWeek). Energy reach: IT layer only, financially motivated intrusions and fake-recruiter access; no OT intent evidenced. China: a China-aligned group hijacked Sogou input-method DNS to deploy a backdoor (The Hacker News); the UK NCSC names China as best positioned to use AI against critical infrastructure (UK NCSC, 2026-11-03); the US foreign grid-component ban targets the PIT layer, hardware inside transmission assets (Utility Dive, 2026-11-03). Energy reach: PIT (supply chain, policy-driven), OT by precedent (Volt Typhoon, background), IT ongoing. Not in this bundle this week: Iran, the Gulf, Venezuela, the Taiwan Strait; their absence is a sourcing fact, not an assessment.",
+   "answers": {
+    "Which conflicts this week could reach the energy sector, and through which layer?": "Russia–Ukraine through IT (espionage, information operations) now and OT by precedent; China through PIT (hardware supply chain, the grid-component ban) now and OT by precedent; North Korea through IT only, for money. Confidence: moderate on the layer assignments, high that none of this week's items shows OT contact by a state actor.",
+    "Who has intent and capability against US grid assets right now?": "From this bundle alone I cannot assess intent this week. By the public record (background): PRC actors have demonstrated prepositioning in US critical infrastructure (CISA AA24-038A, 2024) and Russian actors have demonstrated grid disruption capability in Ukraine. Neither is evidenced in this week's items; the US-focused items are policy.",
+    "Is any geopolitical event changing the attack surface rather than the threat?": "Yes: the foreign grid-component ban changes who supplies transmission hardware, which changes the PIT layer's supply chain over years; and the possible lapse of the 2015 information-sharing law would reduce US operators' visibility of threats, a defensive-surface change (Utility Dive, 2026-11-04 and 2026-11-03)."
+   },
+   "bubble": "China reaches PIT by policy; Russia reaches IT by war. OT: precedent only."
   }
  },
  "conversations": [
@@ -286,6 +340,166 @@
     {
      "who": "verifier",
      "line": "Add both to the map. Where we ask is half of what we know."
+    }
+   ]
+  },
+  {
+   "between": [
+    "counsel",
+    "contrarian"
+   ],
+   "lines": [
+    {
+     "who": "counsel",
+     "line": "The sharing law expires next month, says Utility Dive. I have not read the text."
+    },
+    {
+     "who": "contrarian",
+     "line": "Then why is it high severity on the board?"
+    },
+    {
+     "who": "counsel",
+     "line": "Relevance and deadline. Severity is not trust. Trust is B3 and says so."
+    },
+    {
+     "who": "contrarian",
+     "line": "A deadline we have not verified is a rumour with a date."
+    },
+    {
+     "who": "counsel",
+     "line": "Correct. Congress.gov next run. Until then: unverified, in writing."
+    },
+    {
+     "who": "contrarian",
+     "line": "Good. Put the word on the Gazette front page too."
+    }
+   ]
+  },
+  {
+   "between": [
+    "operator",
+    "analyst"
+   ],
+   "lines": [
+    {
+     "who": "operator",
+     "line": "Patch the IoT2050 now, you said. It sits at a remote site with no window until spring."
+    },
+    {
+     "who": "analyst",
+     "line": "Unauthenticated RCE on Node-RED. CVSS 10. Exploited, says VulnCheck."
+    },
+    {
+     "who": "operator",
+     "line": "Block the Node-RED port at the site firewall tonight. Patch in the window."
+    },
+    {
+     "who": "analyst",
+     "line": "That holds if the firewall is actually in front of it."
+    },
+    {
+     "who": "operator",
+     "line": "That is the question I will ask the vendor at seven tomorrow."
+    },
+    {
+     "who": "analyst",
+     "line": "Fair. Compensating control now, patch later. I will write it that way."
+    }
+   ]
+  },
+  {
+   "between": [
+    "geopolitics",
+    "wideangle"
+   ],
+   "lines": [
+    {
+     "who": "geopolitics",
+     "line": "Three theatres in the bundle: Russia-Ukraine, China, North Korea. None touched OT this week."
+    },
+    {
+     "who": "wideangle",
+     "line": "The grid-component ban touches hardware, though. That is PIT."
+    },
+    {
+     "who": "geopolitics",
+     "line": "By policy, not by attack. The surface changes over years."
+    },
+    {
+     "who": "wideangle",
+     "line": "And Iran? Nothing?"
+    },
+    {
+     "who": "geopolitics",
+     "line": "Not in the feeds this week. That is a sourcing fact, not a finding."
+    },
+    {
+     "who": "wideangle",
+     "line": "Then say 'absent', not 'quiet'. I will do the same."
+    }
+   ]
+  },
+  {
+   "between": [
+    "economist",
+    "archivist"
+   ],
+   "lines": [
+    {
+     "who": "economist",
+     "line": "No energy incident this week has a cost figure. The table stays empty."
+    },
+    {
+     "who": "archivist",
+     "line": "Colonial paid $4.4 million. Halliburton booked about $35 million. Background, unverified here."
+    },
+    {
+     "who": "economist",
+     "line": "Unverified numbers do not go in my table."
+    },
+    {
+     "who": "archivist",
+     "line": "Then verify them: the DOJ seizure notice and the 8-K are public."
+    },
+    {
+     "who": "economist",
+     "line": "Next run, with the pull. Until then they are your cases, not my figures."
+    },
+    {
+     "who": "archivist",
+     "line": "Agreed. Two spot-checks per run. Those two first."
+    }
+   ]
+  },
+  {
+   "between": [
+    "ombudsman",
+    "verifier"
+   ],
+   "lines": [
+    {
+     "who": "ombudsman",
+     "line": "Nine unsourced sentences this run. Rule 4."
+    },
+    {
+     "who": "verifier",
+     "line": "All reasoning, not fact claims. The facts were cited."
+    },
+    {
+     "who": "ombudsman",
+     "line": "Then the rule needs a label for reasoning, or the flags are noise."
+    },
+    {
+     "who": "verifier",
+     "line": "Proposal for the owner. Not for us to change."
+    },
+    {
+     "who": "ombudsman",
+     "line": "Proposed. Also: CISA is absent from every run. That is the real finding."
+    },
+    {
+     "who": "verifier",
+     "line": "Agreed. The most authoritative US source returns 403."
     }
    ]
   }
@@ -1378,7 +1592,296 @@
    "The loudest item is the least corroborated: the Siemens CVSS 10 rests on one vendor's telemetry relayed by one outlet. Still patch it; severity and corroboration are different columns.",
    "The refrigeration attacks are the energy story in disguise: internet-reachable controllers, a vendor remote-access path, low-skill setpoint tampering. That is the architecture under substations, pump stations and battery sites.",
    "Watch the vendor-funded framing: six of sixteen energy items came from one OT trade outlet, three of them company announcements. The UK '2028' headline is one agency press release run by three outlets.",
-   "Two US legal items could not be checked against their text because the outlet blocks automated fetching. Treat both as discovery, not fact, until the statute and the executive instrument are read."
+   "Two US legal items could not be checked against their text because the outlet blocks automated fetching. Treat both as discovery, not fact, until the statute and the executive instrument are read.",
+   "Six new residents joined this run (Counsel, Archivist, Ombudsman, Operator, Economist, Geopolitical Analyst); their first briefings are mostly statements of what has not yet been verified, which is the honest starting point."
   ]
+ },
+ "geopolitics": {
+  "theatres": [
+   {
+    "conflict": "Russia–Ukraine war",
+    "parties": "Russia; Ukraine; attributed actors Sandworm/APT44 (background), Gorbag campaign (ESET, this week)",
+    "evidence_this_week": [
+     "alert-app attacks during Kherson ceasefire (The Register, 2026-11-02)",
+     "Kyiv Independent suspected Russian attack (The Record)",
+     "Gorbag espionage vs Ukrainian administrations, defence, transport (Industrial Cyber)"
+    ],
+    "layers": {
+     "IT": "active: espionage and information operations; high confidence",
+     "OT": "precedent only: Ukraine 2015/2016/2022 grid attacks (background cases); nothing this week",
+     "PIT": "none evidenced"
+    },
+    "subsectors": [
+     "electricity (Ukraine, by precedent)",
+     "cross-sector public warning systems"
+    ],
+    "us_relevance": "indirect; FrostyGoop/Industroyer-class tooling exists; no US contact in bundle",
+    "confidence": "moderate"
+   },
+   {
+    "conflict": "China–US technology and supply-chain rivalry",
+    "parties": "PRC-aligned actors (Sogou DNS hijack, The Hacker News); UK NCSC naming China; US grid-component ban",
+    "evidence_this_week": [
+     "Sogou input-method DNS hijack, DarkVigil backdoor (The Hacker News)",
+     "NCSC: China best positioned to use AI against CNI (UK NCSC, 2026-11-03)",
+     "foreign grid-component ban (Utility Dive, 2026-11-03)"
+    ],
+    "layers": {
+     "IT": "active: espionage tradecraft",
+     "OT": "precedent only: Volt Typhoon prepositioning (CISA AA24-038A, background)",
+     "PIT": "active by policy: transmission hardware supply chain; inverter and BESS radio concerns (background)"
+    },
+    "subsectors": [
+     "electricity transmission",
+     "solar/wind/storage hardware"
+    ],
+    "us_relevance": "direct on PIT (policy); OT by precedent",
+    "confidence": "moderate"
+   },
+   {
+    "conflict": "North Korea revenue operations",
+    "parties": "DPRK operators (attributed in coverage of the Binance theft)",
+    "evidence_this_week": [
+     "~$6.3B Binance theft via fake job interview (BleepingComputer; The Register); DPRK missile launches and denial (SecurityWeek)"
+    ],
+    "layers": {
+     "IT": "active: financially motivated access via recruitment lures",
+     "OT": "none",
+     "PIT": "none"
+    },
+    "subsectors": [
+     "none directly; any energy company's treasury or crypto exposure"
+    ],
+    "us_relevance": "low for grid; moderate for corporate IT",
+    "confidence": "moderate"
+   }
+  ],
+  "absent_this_week": [
+   "Iran and Gulf tensions (CyberAv3ngers-class OT activity: background only)",
+   "Venezuela",
+   "Taiwan Strait",
+   "Israel–Gaza energy infrastructure targeting"
+  ],
+  "note": "Absence means the allowlisted feeds carried nothing in the window, not that the theatre is quiet."
+ },
+ "correlations": [
+  {
+   "between": [
+    "Cyberattack via refrigeration-equipment provider changed temperature settings at three French blood-service facilities",
+    "Overnight wave of refrigeration setpoint attacks on supermarkets in Belgium, Sweden, Estonia and elsewhere"
+   ],
+   "domains": [
+    "OT",
+    "supply chain",
+    "health",
+    "retail"
+   ],
+   "link": "Same technique (remote setpoint change), same vendor family (Danfoss controls per Danfoss; Sabcobel says same vulnerability as October), same 48-hour window.",
+   "strength": "strong",
+   "evidence": "The Hacker News 2026-11-03; BleepingComputer 2026-11-04"
+  },
+  {
+   "between": [
+    "Overnight wave of refrigeration setpoint attacks on supermarkets in Belgium, Sweden, Estonia and elsewhere",
+    "Siemens SIMATIC IoT2050 Advanced: CVSS 10 missing-authentication flaw exploited in the wild"
+   ],
+   "domains": [
+    "OT",
+    "vulnerability"
+   ],
+   "link": "Both are internet-reachable OT endpoints with weak or missing authentication; different products, same exposure class.",
+   "strength": "thematic",
+   "evidence": "VulnCheck blog; The Hacker News 2026-11-03"
+  },
+  {
+   "between": [
+    "Zyxel GS1900 switch zero-day used to compromise nearly 1,000 devices and steal configs and credentials",
+    "Siemens SIMATIC IoT2050 Advanced: CVSS 10 missing-authentication flaw exploited in the wild"
+   ],
+   "domains": [
+    "network",
+    "OT",
+    "credential"
+   ],
+   "link": "Stolen switch configurations give the network map and credentials an attacker needs to reach a gateway like the IoT2050; reconnaissance item feeding an access item.",
+   "strength": "inferred",
+   "evidence": "[inference] no source links the two campaigns"
+  },
+  {
+   "between": [
+    "Trump administration ban on foreign grid components raises industry concern over practicality and cost",
+    "UK NCSC Annual Review warns of AI-assisted ransomware against critical national infrastructure by 2028"
+   ],
+   "domains": [
+    "geopolitics",
+    "PIT",
+    "policy"
+   ],
+   "link": "Both frame China as the supply-chain and AI-capability concern for grid assets; one by hardware policy (US), one by forecast (UK).",
+   "strength": "thematic",
+   "evidence": "Utility Dive 2026-11-03; UK NCSC 2026-11-03"
+  },
+  {
+   "between": [
+    "Electric utilities urge Congress to renew the Cybersecurity Information Sharing Act of 2015 before it expires next month",
+    "Cyberattack via refrigeration-equipment provider changed temperature settings at three French blood-service facilities"
+   ],
+   "domains": [
+    "policy",
+    "OT",
+    "disclosure"
+   ],
+   "link": "The French case was disclosed by the victim within a day; the US law that protects such sharing is weeks from lapsing. Correlation of disclosure incentives, not of incidents.",
+   "strength": "inferred",
+   "evidence": "[inference]"
+  },
+  {
+   "between": [
+    "Russia and Ukraine report attacks on emergency alert apps during Kherson ceasefire",
+    "UK NCSC Annual Review warns of AI-assisted ransomware against critical national infrastructure by 2028"
+   ],
+   "domains": [
+    "geopolitics",
+    "information operations",
+    "IT"
+   ],
+   "link": "State-linked activity against civil systems in the same week the UK forecasts state AI-enabled attacks; context, not causation.",
+   "strength": "weak",
+   "evidence": "The Register 2026-11-02; UK NCSC 2026-11-03"
+  }
+ ],
+ "scenarios": [
+  {
+   "story": "Overnight wave of refrigeration setpoint attacks on supermarkets in Belgium, Sweden, Estonia and elsewhere",
+   "title": "Exposed refrigeration and building controls across Europe",
+   "action_now": "Operators with Danfoss or similar cooling controllers: inventory internet-reachable controllers and vendor remote-access paths; put them behind a VPN with MFA; alarm on setpoint changes without a logged operator action (Operator's note).",
+   "impact_chain": "vendor path → controller → setpoint → physical process (temperature) → stock loss or, in a battery container, thermal risk → operational outage.",
+   "scenarios": [
+    {
+     "name": "Contained",
+     "likelihood": "likely",
+     "what": "Copycats keep hitting retail cold chains at low scale; vendors push authentication fixes; no energy site affected.",
+     "confirms": "no new sectors in next two runs; Danfoss advisory published"
+    },
+    {
+     "name": "Spread to energy",
+     "likelihood": "possible",
+     "what": "Same technique reaches HVAC in substation control houses or BESS container cooling; first energy victim disclosed in Europe.",
+     "confirms": "an energy operator statement or CISA/ENISA advisory naming cooling or BMS controllers"
+    },
+    {
+     "name": "Coordinated campaign",
+     "likelihood": "unlikely on current evidence",
+     "what": "A named actor claims or is attributed the wave; targets chosen for political effect; attacks timed to cold-chain-dependent events.",
+     "confirms": "government attribution; a claim on a credible channel; victims clustering by country of policy interest"
+    }
+   ]
+  },
+  {
+   "story": "Siemens SIMATIC IoT2050 Advanced: CVSS 10 missing-authentication flaw exploited in the wild",
+   "title": "Siemens IoT2050 / Node-RED unauthenticated RCE",
+   "action_now": "Block the Node-RED HTTP port at the site firewall tonight; patch in the next window; check for unknown flows on any unit (Operator and Analyst).",
+   "impact_chain": "exposed gateway → arbitrary code on the edge device → pivot to field devices or IT → loss of view or manipulated telemetry.",
+   "scenarios": [
+    {
+     "name": "Patched before harm",
+     "likelihood": "likely for large operators",
+     "what": "Vendor and CISA advisories follow; exploitation stays opportunistic (crypto-miners, botnets).",
+     "confirms": "CISA ICS advisory; Siemens ProductCERT; KEV listing without energy victims"
+    },
+    {
+     "name": "Opportunistic foothold in a small operator",
+     "likelihood": "possible",
+     "what": "A rural co-op or small industrial site with an exposed unit is compromised; discovered months later during an unrelated incident.",
+     "confirms": "a disclosure or an E-ISAC/CISA alert naming the device in an energy intrusion"
+    },
+    {
+     "name": "Used in a targeted OT campaign",
+     "likelihood": "unlikely on current evidence",
+     "what": "A state-aligned actor uses the flaw for prepositioning in energy networks.",
+     "confirms": "government advisory attributing exploitation; indicators tied to a known group"
+    }
+   ]
+  },
+  {
+   "story": "Electric utilities urge Congress to renew the Cybersecurity Information Sharing Act of 2015 before it expires next month",
+   "title": "Lapse of the 2015 information-sharing law",
+   "action_now": "Counsel: read the sunset clause and any NDAA text; utilities: ask counsel what sharing continues if the protection lapses (Counsel, Operator).",
+   "impact_chain": "lapse → liability uncertainty → less indicator sharing with E-ISAC and CISA → slower detection across the sector → the 'quiet US week' becomes structurally quieter.",
+   "scenarios": [
+    {
+     "name": "Extended in time",
+     "likelihood": "possible; unverified",
+     "what": "An extension passes before the sunset; no change.",
+     "confirms": "enacted text on congress.gov"
+    },
+    {
+     "name": "Short lapse",
+     "likelihood": "possible; unverified",
+     "what": "Weeks of gap; most utilities keep sharing under existing agreements; some pause.",
+     "confirms": "E-ISAC or trade-association statements on sharing volumes"
+    },
+    {
+     "name": "Long lapse",
+     "likelihood": "cannot assess",
+     "what": "Sharing drops measurably; incidents surface later and larger.",
+     "confirms": "CISA or E-ISAC reporting reduced submissions"
+    }
+   ]
+  }
+ ],
+ "human_touch": {
+  "intro": "What this society cannot do without a person, and should not pretend to.",
+  "items": [
+   {
+    "what": "Decide what matters.",
+    "why": "Severity and relevance are scored by rules a person wrote; changing the rules, the weights or the US-first choice is a value judgement. The Ombudsman proposes; the owner decides."
+   },
+   {
+    "what": "Read the law.",
+    "why": "The Counsel can fetch a statute, but deciding what a directive requires of a specific operator is legal judgement, and the text often needs context from counsel who knows the entity."
+   },
+   {
+    "what": "Verify the unreachable.",
+    "why": "CISA's feeds and Utility Dive block automated pulls, E-ISAC is members-only, paywalled journals are closed. A person with access has to read those and tell the system what they say."
+   },
+   {
+    "what": "Talk to victims and vendors.",
+    "why": "The most important facts (was OT reached, what did it cost, who was spared) often exist only in a phone call. No agent makes that call."
+   },
+   {
+    "what": "Catch misreadings the rules cannot.",
+    "why": "The cross-check catches a dropped hedge or a wrong CVE; it will not catch a plausible summary that quietly inverts cause and effect. A domain reader will."
+   },
+   {
+    "what": "Attribute responsibly.",
+    "why": "The agents quote attributions; they must never make one. Saying 'this was China' or 'this was criminal' with consequences is a human act with accountability attached."
+   },
+   {
+    "what": "Own the mistakes.",
+    "why": "When a briefing is wrong and someone acted on it, a person answers for it. The Ombudsman writes the note; the owner signs it."
+   },
+   {
+    "what": "Add and remove sources.",
+    "why": "Judging whether an outlet is credible enough for the allowlist, and watching it drift, is editorial judgement; the bias notes are a person's opinion, dated."
+   },
+   {
+    "what": "Verify the background cases.",
+    "why": "Historical cases come from the model's memory. Until a person or a scheduled check reads the primary record, they are not evidence."
+   },
+   {
+    "what": "Decide whether to publish, to whom, and when.",
+    "why": "Sharing an analysis that names a vendor or a victim has consequences the system cannot weigh. Publishing is a human decision; the page is private until a person shares it."
+   },
+   {
+    "what": "Pay for it and set the budget.",
+    "why": "Each run has a measured cost; the choice of model, frequency and depth is a budget decision."
+   },
+   {
+    "what": "Rename, re-cast, retire.",
+    "why": "The residents, their names and their jobs were invented by an assistant on a given day; keeping them is a choice, not a fact."
+   }
+  ],
+  "automated": "What is automated: fetching from the allowlist, relevance filtering, writing briefings and records, pulling direct sources, cross-checking outlet against primary, grading, flagging, logging, exporting, scheduling. The agents start the inquiry without being asked; they do not finish it without a person."
  }
 }

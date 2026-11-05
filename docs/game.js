@@ -2,7 +2,7 @@
    Data: data/briefing.json (daily agent run) + data/news.json (raw wire) + ../agents/personas.json (voices). */
 (() => {
 const S = 3;                           // pixel scale
-const W = 960, H = 560;
+const W = 960, H = 760;
 const cv = document.getElementById('town');
 const ctx = cv.getContext('2d');
 ctx.imageSmoothingEnabled = false;
@@ -14,7 +14,7 @@ let bubbles = [];                      // {agent, text, until}
 let convo = null;                      // running overheard conversation
 let t0 = performance.now();
 let chatter = true, convoIdx = -1, nextConvoAt = 1500;
-const MEETING_SPOTS = [{ x: 480, y: 330 }, { x: 300, y: 250 }, { x: 660, y: 250 }, { x: 200, y: 300 }, { x: 760, y: 300 }, { x: 480, y: 240 }];
+const MEETING_SPOTS = [{ x: 480, y: 330 }, { x: 300, y: 250 }, { x: 660, y: 250 }, { x: 200, y: 300 }, { x: 760, y: 300 }, { x: 480, y: 240 }, { x: 300, y: 590 }, { x: 620, y: 590 }];
 
 // ---------------------------------------------------------------- buildings
 const BUILDINGS = [
@@ -26,6 +26,12 @@ const BUILDINGS = [
   { key: 'Verification Office', x: 400, y: 440, w: 160, h: 80, color: '#3a3f4a', roof: '#e6e9ef' },
   { key: 'Library',            x: 40,  y: 470, w: 120, h: 70, color: '#4a4420', roof: '#e8d44b' },
   { key: 'Cyber Command',      x: 700, y: 470, w: 150, h: 70, color: '#1f2a44', roof: '#4bb3e8' },
+  { key: "Counsel's Chambers", x: 40,  y: 640, w: 130, h: 70, color: '#4a3a2a', roof: '#b08968' },
+  { key: 'Archive',            x: 200, y: 640, w: 120, h: 70, color: '#3a402a', roof: '#8a9a5b' },
+  { key: "Ombudsman's Office", x: 350, y: 640, w: 130, h: 70, color: '#3a3f4a', roof: '#e6e9ef' },
+  { key: 'Control Room',       x: 510, y: 640, w: 130, h: 70, color: '#4a2f1a', roof: '#f28c28' },
+  { key: 'Exchange',           x: 670, y: 640, w: 120, h: 70, color: '#1f3f3d', roof: '#4bd1c5' },
+  { key: 'Situation Room',     x: 820, y: 640, w: 120, h: 70, color: '#4a1f33', roof: '#d94b8a' },
 ];
 const PLAZA = { x: 380, y: 300, w: 200, h: 120 };
 
@@ -41,6 +47,8 @@ function drawGround() {
   // paths
   ctx.fillStyle = '#6b5f4a';
   rect(0, 262, W, 26, '#6b5f4a');                 // main street
+  rect(0, 570, W, 26, '#6b5f4a');                 // south street
+  rect(467, 420, 26, 150, '#6b5f4a');
   rect(165, 220, 26, 50, '#6b5f4a'); rect(485, 200, 26, 70, '#6b5f4a'); rect(795, 220, 26, 50, '#6b5f4a');
   rect(205, 288, 26, 60, '#6b5f4a'); rect(775, 288, 26, 60, '#6b5f4a');
   rect(PLAZA.x, PLAZA.y, PLAZA.w, PLAZA.h, '#7a6c55'); rect(PLAZA.x + PLAZA.w/2 - 13, PLAZA.y + PLAZA.h, 26, 30, '#6b5f4a');
@@ -130,7 +138,8 @@ function makeAgents() {
 function pickTarget(a) {
   const r = Math.random();
   if (r < 0.4) { return { x: PLAZA.x + 10 + Math.random() * (PLAZA.w - 60), y: PLAZA.y + 10 + Math.random() * (PLAZA.h - 80) }; }
-  if (r < 0.7) { return { x: 40 + Math.random() * (W - 120), y: 262 - 30 + Math.random() * 10 }; }
+  if (r < 0.55) { return { x: 40 + Math.random() * (W - 120), y: 262 - 30 + Math.random() * 10 }; }
+  if (r < 0.7) { return { x: 40 + Math.random() * (W - 120), y: 570 - 30 + Math.random() * 10 }; }
   return { ...a.home };
 }
 
@@ -154,6 +163,7 @@ function update(dt) {
     const A = agents.find(a => a.p.id === c.between[0]), B = agents.find(a => a.p.id === c.between[1]);
     if (A && B && A !== selected && B !== selected) {
       const spot = MEETING_SPOTS[Math.floor(Math.random() * MEETING_SPOTS.length)];
+    if (A.y > 560 !== (spot.y > 560) && Math.random() < 0.5) {} // residents cross freely; no-op kept for clarity
       A.tx = spot.x - 40; A.ty = spot.y; A.state = 'walk'; B.tx = spot.x + 20; B.ty = spot.y; B.state = 'walk';
       convo = { c, A, B, i: 0, next: now + 2500 };
     } else nextConvoAt = now + 1500;
@@ -297,6 +307,7 @@ function selectBuilding(b) {
   if (info) addMsg('Data flow: ' + info.data, 'sys');
   if (res) { addMsg(`${res.name} works here. ${res.job}`, 'them'); if (res.name_note) addMsg('About the name: ' + res.name_note, 'sys'); }
   if (buildings && buildings.naming_note) addMsg('How all the names were chosen: ' + buildings.naming_note, 'sys');
+  if (b.key === 'Situation Room' && briefing && briefing.geopolitics) { briefing.geopolitics.theatres.forEach(t => addMsg(`${t.conflict}\nIT: ${t.layers.IT}\nOT: ${t.layers.OT}\nPIT: ${t.layers.PIT}\nSubsectors: ${t.subsectors.join(', ')} · US relevance: ${t.us_relevance} · confidence ${t.confidence}`, 'them')); addMsg('Absent from this week\'s feeds: ' + briefing.geopolitics.absent_this_week.join('; ') + '. ' + briefing.geopolitics.note, 'sys'); }
   const sg = $('suggest'); sg.innerHTML = '';
   if (res) { const btn = document.createElement('button'); btn.textContent = `Talk to ${res.name.split(' ')[0]}`; btn.onclick = () => select(agents.find(a => a.p.id === res.id)); sg.appendChild(btn); }
   $('live-note').textContent = 'Click a resident to talk, or a building to read what happens inside it.';
@@ -494,6 +505,24 @@ $('btn-collections').onclick = () => {
   renderCollection('Vulnerabilities'); $('dlg-collections').showModal();
 };
 
+// scenarios & correlations
+$('btn-scenarios').onclick = () => {
+  const sc = (briefing && briefing.scenarios) || [], co = (briefing && briefing.correlations) || [];
+  $('scen-body').innerHTML = (sc.length ? sc.map(s0 => `<div class="item"><h4>${esc(s0.title)}</h4><div class="k">${esc(s0.story)}</div>
+      <p><b>Action now:</b> ${esc(s0.action_now)}</p><p><b>Impact chain:</b> ${esc(s0.impact_chain)}</p>
+      <table class="fac-table"><tr><th>Scenario</th><th>Likelihood</th><th>What happens</th><th>What would confirm it</th></tr>${s0.scenarios.map(x => `<tr><th>${esc(x.name)}</th><td>${esc(x.likelihood)}</td><td>${esc(x.what)}</td><td>${esc(x.confirms)}</td></tr>`).join('')}</table>
+      <button type="button" class="link" data-an="${esc(s0.story)}">open full analysis</button></div>`).join('') : '<p class="k">No scenarios this run.</p>') +
+    `<h3>Correlations across domains</h3>` + (co.length ? `<table class="fac-table"><tr><th>Items</th><th>Domains</th><th>Link</th><th>Strength</th></tr>${co.map(c => `<tr><td>${c.between.map(h => `<button type="button" class="link" data-an="${esc(h)}">${esc(h.slice(0, 60))}</button>`).join('<br>')}</td><td>${esc(c.domains.join(', '))}</td><td>${esc(c.link)}<div class="k">${esc(c.evidence)}</div></td><td>${esc(c.strength)}</td></tr>`).join('')}</table>` : '<p class="k">none</p>') +
+    `<p class="k">Likelihood words follow the usual intelligence scale (likely / possible / unlikely / cannot assess); none is a probability number, because none has a base rate behind it. Scenarios are written by the residents from the bundle and are not predictions of what will happen.</p>`;
+  $('scen-body').querySelectorAll('[data-an]').forEach(btn => btn.onclick = () => openAnalysis(btn.dataset.an));
+  $('dlg-scenarios').showModal();
+};
+$('btn-human').onclick = () => {
+  const h = (briefing && briefing.human_touch) || { items: [] };
+  $('human-body').innerHTML = `<p>${esc(h.intro || '')}</p><table class="fac-table"><tr><th>Needs a person</th><th>Why it cannot be automated here</th></tr>${h.items.map(x => `<tr><th>${esc(x.what)}</th><td>${esc(x.why)}</td></tr>`).join('')}</table><p class="k">${esc(h.automated || '')}</p><p><b>Owner:</b> ${esc((personas && personas.human_owner) || '')}</p>`;
+  $('dlg-human').showModal();
+};
+
 // agent register
 $('btn-register').onclick = () => {
   const el = $('register'); const A = (briefing && briefing.agents) || {}; const ev = allEvents();
@@ -558,6 +587,7 @@ function openAnalysis(h) {
     <h3>Related facility dossier${fac && fac.length > 1 ? 's' : ''}</h3>
     ${fac && fac.length ? fac.map(f => `<button type="button" class="pix" data-fac="${esc(f.id)}">${esc(f.name)}</button> `).join('') : '<p class="k">none matched</p>'}
     ${convo.length ? `<h3>What the residents said about it</h3><ul>${convo.map(l => `<li><b>${esc(l.who)}:</b> ${esc(l.line)}</li>`).join('')}</ul>` : ''}
+    ${(() => { const co = ((briefing.correlations) || []).filter(c => c.between.includes(h)); const sc = ((briefing.scenarios) || []).find(x => x.story === h); return (co.length ? `<h3>Correlated with</h3><ul>${co.map(c => { const other = c.between.find(x => x !== h); return `<li><b>${esc(other)}</b> · ${esc(c.domains.join(', '))} · ${esc(c.strength)}<div class="k">${esc(c.link)}</div></li>`; }).join('')}</ul>` : '') + (sc ? `<h3>Action, impact, scenarios</h3><p><b>Action now:</b> ${esc(sc.action_now)}</p><p><b>Impact chain:</b> ${esc(sc.impact_chain)}</p><ul>${sc.scenarios.map(x => `<li><b>${esc(x.name)}</b> (${esc(x.likelihood)}): ${esc(x.what)} <span class="k">confirms: ${esc(x.confirms)}</span></li>`).join('')}</ul>` : ''); })()}
     <h3>Every field of the record</h3>
     <table class="fac-table">${fields}</table>
     <p class="k">STIX: <a href="data/stix.json" target="_blank" rel="noopener">report object in the bundle</a>. Schema: agents/schema.json.</p>`;

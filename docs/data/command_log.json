@@ -289,7 +289,127 @@
    "detail": "policy claim on trade press only; the legal instrument and effective date are not in the bundle. Rule 3 applies.",
    "severity": "warn",
    "status": "open"
+  },
+  {
+   "at": "2026-11-05T01:03:51.724853+00:00",
+   "run": "2026-11-04T23:07:43.271471+00:00",
+   "type": "unsourced-claim",
+   "agent": "counsel",
+   "item": "Three items this week carry a legal trigger and I have read the text of none of them, so h",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T01:03:51.724853+00:00",
+   "run": "2026-11-04T23:07:43.271471+00:00",
+   "type": "unsourced-claim",
+   "agent": "counsel",
+   "item": "For the Siemens and Zyxel flaws, the obligations for registered entities sit in NERC CIP-0",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T01:03:51.724853+00:00",
+   "run": "2026-11-04T23:07:43.271471+00:00",
+   "type": "unsourced-claim",
+   "agent": "archivist",
+   "item": "Background cases are unverified by this system; I spot-checked none this run because the r",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T01:03:51.724853+00:00",
+   "run": "2026-11-04T23:07:43.271471+00:00",
+   "type": "unsourced-claim",
+   "agent": "ombudsman",
+   "item": "Rules broken: rule 4 (every claim names its source) in nine briefing sentences, mostly the",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T01:03:51.724853+00:00",
+   "run": "2026-11-04T23:07:43.271471+00:00",
+   "type": "unsourced-claim",
+   "agent": "ombudsman",
+   "item": "Bias watch: US-first produced zero US incidents and six European OT incidents, which is ho",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T01:03:51.724853+00:00",
+   "run": "2026-11-04T23:07:43.271471+00:00",
+   "type": "unsourced-claim",
+   "agent": "ombudsman",
+   "item": "The run was hand-curated in a live session rather than by the scheduled runtime, which the",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T01:03:51.724853+00:00",
+   "run": "2026-11-04T23:07:43.271471+00:00",
+   "type": "unsourced-claim",
+   "agent": "operator",
+   "item": "Ask your vendor who has remote access to those controllers and how.",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T01:03:51.724853+00:00",
+   "run": "2026-11-04T23:07:43.271471+00:00",
+   "type": "unsourced-claim",
+   "agent": "economist",
+   "item": "No incident in this week's bundle carries a published cost figure, so the loss-by-severity",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T01:03:51.724853+00:00",
+   "run": "2026-11-04T23:07:43.271471+00:00",
+   "type": "unsourced-claim",
+   "agent": "economist",
+   "item": "Cost of acting: the Operator's estimate is one firewall rule tonight and one planned windo",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T01:03:51.724853+00:00",
+   "run": "2026-11-04T23:07:43.271471+00:00",
+   "type": "unsourced-claim",
+   "agent": "geopolitics",
+   "item": "Conflicts in this week's bundle and what they reach in energy, by layer.",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T01:03:51.724853+00:00",
+   "run": "2026-11-04T23:07:43.271471+00:00",
+   "type": "unsourced-claim",
+   "agent": "geopolitics",
+   "item": "Energy reach: IT layer only, financially motivated intrusions and fake-recruiter access; n",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T01:03:51.724853+00:00",
+   "run": "2026-11-04T23:07:43.271471+00:00",
+   "type": "unsourced-claim",
+   "agent": "geopolitics",
+   "item": "Not in this bundle this week: Iran, the Gulf, Venezuela, the Taiwan Strait; their absence ",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
   }
  ],
- "updated_at": "2026-11-05T00:28:53.348952+00:00"
+ "updated_at": "2026-11-05T01:03:51.724853+00:00"
 }

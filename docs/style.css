@@ -127,3 +127,5 @@ button.link{background:none;border:0;color:var(--accent);cursor:pointer;font-fam
 .clickable{cursor:pointer}.bar-row.clickable:hover .bl{color:var(--accent)}.tile.clickable:hover{border-color:var(--accent)}.item.clickable:hover,#board .item:hover{border-color:var(--accent)}
 .drill{margin-top:12px;border-top:2px solid var(--line);padding-top:8px}
 #an-body{max-height:70vh}#dash{max-height:72vh}
+#scen-body,#human-body{max-height:68vh}
+.item h4{margin:0 0 4px}

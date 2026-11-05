@@ -41,6 +41,36 @@
       "resident": null,
       "what": "The incident desk. Every flag raised by a resident or by a check is reported here immediately and kept forever: unsourced sentences, single-source items, outlet-versus-primary contradictions, downgrades, blocked pages, suspected inventions, and live answers without a citation. Also the place to verify any item or claim against the bundle, the pulled text and the verdicts.",
       "data": "Reads docs/data/command_log.json (written by scripts/command_log.py after each run) plus this browser's session flags. Never deleted; a resolved flag gets a later resolved event."
+    },
+    "Counsel's Chambers": {
+      "resident": "counsel",
+      "what": "Where the law is read in the original. The Counsel fetches the statute, rule, order or directive behind every regulatory trigger and records its status, effective date and sunset from the text.",
+      "data": "Reads items with regulatory_trigger and primary legal pages. Writes legal status on each item and the Counsel's briefing."
+    },
+    "Archive": {
+      "resident": "archivist",
+      "what": "The case history. Background cases are verified here against their primary records, today's items are linked to past incidents, and the trend field gets its evidence.",
+      "data": "Reads agents/sectors.json background cases and history.json. Writes trend, case links and background-check events in Cyber Command."
+    },
+    "Ombudsman's Office": {
+      "resident": "ombudsman",
+      "what": "Where the residents are audited. The Ombudsman reviews the flag history for patterns, checks the run against the 32 rules, and writes the conduct note. Owns Cyber Command.",
+      "data": "Reads command_log.json and RULES.md. Writes the conduct note; proposals go to the human owner."
+    },
+    "Control Room": {
+      "resident": "operator",
+      "what": "The defender's seat. The Operator translates every recommendation into shifts, outage windows and vendor calls, and says which are unrealistic for a small utility.",
+      "data": "Reads the board and the dossiers. Writes feasibility and 'what you would see on the HMI' notes."
+    },
+    "Exchange": {
+      "resident": "economist",
+      "what": "Where the money is counted. Ransoms, recovery costs, lost output, filings, insurance, and the cost of acting, each with a source or marked as not published.",
+      "data": "Reads items, filings and outage data. Writes the economics note and the loss-by-severity table."
+    },
+    "Situation Room": {
+      "resident": "geopolitics",
+      "what": "The map of conflicts. The Geopolitical Analyst tracks wars, sanctions and ruptures that could reach energy, and analyses each by subsector and by layer: IT, OT, PIT.",
+      "data": "Reads geopolitical_link fields, the wide bucket and advisories. Writes the per-layer geopolitical analysis."
     }
   }
 }
