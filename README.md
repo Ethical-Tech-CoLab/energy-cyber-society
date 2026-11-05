@@ -81,8 +81,12 @@ and a confirmed-but-minor one are never confused.
 
 ## Views in the page
 
-Summary · Chatter · Methodology · Where to look · Limitations · Rules · Cyber Command ·
-Agent Register · Dashboard · Collections · Briefing board · Today's wire · Settings.
+Final output: Executive brief (unsigned until a person signs) · Risk check (CIO) · How the society
+works · Regulations · Grid & weather (US and worldwide) · Summary · Chatter · Methodology · Where
+to look (with the verified source catalogue) · Limitations · Rules · Incident Desk · Agent Register ·
+Dashboard (drill-down, timelines) · Collections (TI cut, STIX) · Research · Scenarios · Human touch ·
+Briefing board · Today's wire · Sources & references · History (archive) · Cost & energy · Bank ·
+Notifications bell · Settings.
 On the map: seven buildings (click for purpose, data flow and naming), nine energy
 facilities (click for the sector dossier: variables, IT/OT/PIT layers, vulnerabilities,
 attack types, how a breach happens, live and background cases), and the newsstand, which
@@ -127,6 +131,26 @@ A fifteenth resident works on this codebase: `ENGINEERING.md` is the playbook, `
 finds UX and accessibility work, `scripts/routine_engineer.json` is the daily cloud routine. It opens
 pull requests and never merges; the owner reviews.
 
+## How the society works (the intelligence framework)
+
+The town runs the Conductor–desks–Auditor–Policy Engine–Ledger–Envoy–Reader topology from
+[neocloud-supply-os](https://github.com/yorkerhodes3/neocloud-supply-os) Appendix B1:
+
+| Role | In this society | Rule |
+|---|---|---|
+| Humans | the owner: edits rules, sources, personas, dossiers; merges PRs; signs the brief | 31 |
+| Conductor | the scheduled runtime following `CURATION.md`, twice a day | 29 |
+| Envoy | `scripts/fetch_news.py` over the allowlist (38 feeds, 9 languages) | 1 |
+| Reader (quarantined) | `news.json`, `pull_sources.py`, `enrich_cves.py`; fetched text fenced as data | 7, 25 |
+| Desks | 14 analytic residents + the Engineer; typed records against `agents/schema.json` | 13–15 |
+| Auditor | the Verifier, on stripped records and pulled text only | 16–21 |
+| Policy Engine | `RULES.md`, `validate.py`, computed severity, the attribution rule, the flag logger | 30 |
+| Ledger | `briefing.json`, `docs/archive/<run>/`, history, STIX, engineering log; append-only | — |
+| Out of mandate | the unsigned brief, Ombudsman proposals, Engineer PRs, blocked pages, "I cannot verify this" | 9 |
+
+In the page: **How the society works** (animated path per board item, map, roles, cycle).
+Diagram: `docs/topology.svg`. Procedure: `INTELLIGENCE_ANALYSIS.md`.
+
 ## Process topology
 
 After [neocloud-supply-os](https://github.com/yorkerhodes3/neocloud-supply-os) Appendix B1. The diagram is `docs/topology.svg` (Methodology tab).
@@ -169,6 +193,17 @@ product, plus the decisions the assistant made unasked so they can be reversed.
 `REVIEW.md` is a critical peer review: blockers, majors, minors, what is missing, what is
 sound. `PRESENTATION.md` is a timed ten-minute spoken walkthrough for someone who has never
 seen the project, with a guideline for presenters.
+
+## Operating it
+
+- Scheduled runs: two claude.ai routines (curation at 11:00 and 23:00 UTC; the Engineer at
+  14:00 UTC) clone this repo. The curation routine aborts, correctly, while the cloud sandbox
+  blocks the feed hosts; allow them in the environment settings, or use the GitHub Actions
+  workflow (`.github/workflows/daily.yml`, needs the `ANTHROPIC_API_KEY` secret).
+- Push to both remotes from the local clone: `git push etc main` (this repo) and
+  `git push origin main` (the private mirror at carolina-moron/energy-cyber-society).
+- Check everything that needs no key: `bash scripts/test_all.sh`.
+- The Engineer opens pull requests and never merges; a person reviews.
 
 ## Backlog
 
