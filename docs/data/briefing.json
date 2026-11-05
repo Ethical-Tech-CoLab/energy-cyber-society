@@ -556,7 +556,7 @@
    ]
   }
  ],
- "generated_at": "2026-11-05T19:28:05.048372+00:00",
+ "generated_at": "2026-11-05T21:22:41.931872+00:00",
  "news_generated_at": "2026-11-05T19:26:53.663619+00:00",
  "model": "curated-by-claude-fable-5.1 (session run, 2026-11-05 update)",
  "counts": {
@@ -2503,6 +2503,234 @@
      }
     }
    ]
+  },
+  {
+   "event_date": null,
+   "victim": "Source Energy Services (claimed)",
+   "continent": "North America",
+   "status": "unconfirmed",
+   "value_chain": "upstream",
+   "ot_impact": "unknown",
+   "asset_type": null,
+   "ics_vendor": null,
+   "supply_chain_entry": null,
+   "actor_type": "criminal ransomware",
+   "attribution_confidence": "suspected",
+   "motivation": "financial",
+   "cves": [],
+   "kev_listed": "n/a",
+   "initial_access": null,
+   "malware": null,
+   "indicators": [],
+   "ttps": [],
+   "physical_safety_impact": null,
+   "customers_affected": null,
+   "cascading": null,
+   "geopolitical_link": null,
+   "regulatory_trigger": null,
+   "government_response": null,
+   "source_type": "dark web claim",
+   "source_reliability": "C",
+   "info_credibility": "4",
+   "corroboration": 1,
+   "claim_vs_confirmed": "claimed",
+   "trend": "recurring",
+   "confidence": "low",
+   "related_cases": [
+    {
+     "report_ref": 10,
+     "name": "Halliburton, United States, August 2024",
+     "why": "oilfield-services supply chain; claim kept separate from confirmation"
+    }
+   ],
+   "headline": "Akira ransomware leak-site listing claims Source Energy Services (frac sand and oilfield logistics, Western Canada); ~93 GB alleged; UNVERIFIED",
+   "severity": "medium",
+   "event_type": "ransomware",
+   "reported_date": "2026-11-05",
+   "country": "Canada",
+   "subsector": "oil",
+   "actor": "Akira (claimed, by its own leak site)",
+   "attributed_by": "the attacker's listing, observed by RansomLook",
+   "operational_impact": "none reported; no company statement found",
+   "data_exposed": "alleged: employee information, contracts, financial records, project documents (~93 GB, per the listing)",
+   "so_what": "An upstream supply-chain company listed by a ransomware group; the listing is documented by trackers, the intrusion, theft and effects are not confirmed. Watch for a company disclosure and whether exposure is business IT or engineering data.",
+   "recommended_action": "monitor",
+   "labels": [
+    "[unverified] leak-site claim only (rule 35: not a case until corroborated)",
+    "[note] surfaced by an external daily brief pasted by the owner; RansomLook listing ~11:21 ET"
+   ],
+   "case_type": "claim (not a case until corroborated)",
+   "attribution_tier": "claimed",
+   "sources": [
+    {
+     "name": "RansomLook (leak-site tracker), via owner-pasted brief",
+     "url": "https://www.ransomlook.io/",
+     "date": "2026-11-05"
+    }
+   ],
+   "scoring": {
+    "severity": {
+     "level": "medium",
+     "factors": {
+      "ot_impact": "unknown",
+      "us_energy_relevance": "Canadian upstream supplier to the North American oil patch",
+      "actor_capability": "criminal ransomware",
+      "scale": "one company",
+      "actionable": "monitor"
+     },
+     "rationale": "Medium: a direct energy-supply-chain target by a known ransomware group, but a claim only; would rise on a company disclosure, fall if retracted."
+    },
+    "reliability_rationale": "C: a tracker of attacker claims; the attacker is a party to the story.",
+    "credibility_rationale": "4: doubtful until the company or a responder confirms; leak-site claims are often exaggerated (rule 7).",
+    "computed": {
+     "points": 5,
+     "level": "medium",
+     "breakdown": {
+      "ot_impact x3": 3,
+      "us_relevance x2": 0,
+      "actor_capability": 2,
+      "scale": 0,
+      "actionable": 0,
+      "exploited": 0
+     },
+     "formula": "critical >=11, high >=7, medium >=4, low >=2, else info"
+    }
+   },
+   "anatomy": {
+    "attribution": [
+     {
+      "hypothesis": "Akira ransomware group",
+      "why": "its own leak-site listing",
+      "confidence": "claimed",
+      "label": "[quoted]"
+     }
+    ],
+    "bypass": "not public",
+    "mechanics": "Akira's usual pattern (background): VPN credentials without MFA, then data theft and encryption; nothing specific to this victim is public.",
+    "process": [
+     "Leak-site listing observed",
+     "Company statement: none found",
+     "Confirmation pending"
+    ],
+    "next_layers": [
+     "Operators who use Source Energy Services: ask about third-party exposure of contracts and project documents",
+     "All upstream suppliers: MFA on VPN, offline backups (the Akira class)"
+    ]
+   }
+  },
+  {
+   "event_date": "2026-11-02",
+   "victim": "MegChem (claimed)",
+   "continent": "Africa",
+   "status": "unconfirmed",
+   "value_chain": "oilfield services",
+   "ot_impact": "unknown",
+   "asset_type": null,
+   "ics_vendor": null,
+   "supply_chain_entry": null,
+   "actor_type": "criminal ransomware",
+   "attribution_confidence": "suspected",
+   "motivation": "financial",
+   "cves": [],
+   "kev_listed": "n/a",
+   "initial_access": null,
+   "malware": null,
+   "indicators": [],
+   "ttps": [],
+   "physical_safety_impact": null,
+   "customers_affected": null,
+   "cascading": null,
+   "geopolitical_link": null,
+   "regulatory_trigger": null,
+   "government_response": null,
+   "source_type": "dark web claim",
+   "source_reliability": "C",
+   "info_credibility": "4",
+   "corroboration": 1,
+   "claim_vs_confirmed": "claimed",
+   "trend": "recurring",
+   "confidence": "low",
+   "related_cases": [
+    {
+     "report_ref": 10,
+     "name": "Halliburton, United States, August 2024",
+     "why": "oilfield-services supply chain; claim kept separate from confirmation"
+    }
+   ],
+   "headline": "TheGentlemen ransomware claim against MegChem (engineering services to energy, oil and gas, petrochemicals, South Africa); claim dated Nov 2, analysed Nov 5; UNVERIFIED",
+   "severity": "low",
+   "event_type": "ransomware",
+   "reported_date": "2026-11-05",
+   "country": "South Africa",
+   "subsector": "oil",
+   "actor": "TheGentlemen (claimed)",
+   "attributed_by": "the group's claim, analysed by QPulse",
+   "operational_impact": "none reported",
+   "data_exposed": "alleged: potential credential exposure of employees and third parties",
+   "so_what": "A petrochemical engineering supplier on a leak site: the first Africa item the society has carried, and a claim only.",
+   "recommended_action": "monitor",
+   "labels": [
+    "[unverified] leak-site claim; the Nov 5 report analyses a Nov 2 claim, not a new intrusion",
+    "[note] from an owner-pasted brief; QPulse is a vendor analysis"
+   ],
+   "case_type": "claim (not a case until corroborated)",
+   "attribution_tier": "claimed",
+   "sources": [
+    {
+     "name": "QPulse report (vendor), via owner-pasted brief",
+     "url": "https://www.quassrcybertech.com/",
+     "date": "2026-11-05"
+    }
+   ],
+   "scoring": {
+    "severity": {
+     "level": "low",
+     "factors": {
+      "ot_impact": "unknown",
+      "us_energy_relevance": "none",
+      "actor_capability": "criminal ransomware",
+      "scale": "one company",
+      "actionable": "monitor"
+     },
+     "rationale": "Low: unverified claim, outside the US, supplier not operator."
+    },
+    "reliability_rationale": "C: vendor analysis of an attacker claim.",
+    "credibility_rationale": "4: doubtful until confirmed.",
+    "computed": {
+     "points": 5,
+     "level": "medium",
+     "breakdown": {
+      "ot_impact x3": 3,
+      "us_relevance x2": 0,
+      "actor_capability": 2,
+      "scale": 0,
+      "actionable": 0,
+      "exploited": 0
+     },
+     "formula": "critical >=11, high >=7, medium >=4, low >=2, else info"
+    },
+    "override_reason": "Asserted low vs computed medium (5 pts): unverified claim outside the US with no operator affected."
+   },
+   "anatomy": {
+    "attribution": [
+     {
+      "hypothesis": "TheGentlemen ransomware group",
+      "why": "its own claim",
+      "confidence": "claimed",
+      "label": "[quoted]"
+     }
+    ],
+    "bypass": "not public",
+    "mechanics": "not public",
+    "process": [
+     "Claim Nov 2",
+     "Vendor analysis Nov 5",
+     "Confirmation pending"
+    ],
+    "next_layers": [
+     "Credential rotation for staff and third parties if confirmed"
+    ]
+   }
   }
  ],
  "us_status": "No confirmed intrusion at a US electric utility, pipeline, refinery, LNG terminal or nuclear facility appeared in any allowlisted source in the 7-day window ending 2026-11-05. US items are policy and guidance.",
@@ -2709,6 +2937,26 @@
      {
       "name": "The Hacker News (OpenAI)",
       "url": "https://thehackernews.com/2026/11/openai-ai-pipeline-generates-948-linux.html",
+      "date": "2026-11-05"
+     }
+    ]
+   },
+   {
+    "text": "Two unverified ransomware leak-site claims against energy suppliers today: Akira lists Source Energy Services (frac sand and oilfield logistics, Canada, ~93 GB alleged) and TheGentlemen's Nov 2 claim against MegChem (petrochemical engineering, South Africa) got a vendor analysis. Neither company has confirmed; both are claims, not cases.",
+    "sources": [
+     "RansomLook via owner brief, 2026-11-05",
+     "QPulse via owner brief, 2026-11-05"
+    ],
+    "tag": "claims · unverified",
+    "source_urls": [
+     {
+      "name": "RansomLook",
+      "url": "https://www.ransomlook.io/",
+      "date": "2026-11-05"
+     },
+     {
+      "name": "QPulse",
+      "url": "https://www.quassrcybertech.com/",
       "date": "2026-11-05"
      }
     ]
@@ -3550,7 +3798,7 @@
    "Europe": "The OT week: refrigeration setpoint attacks in Belgium, Sweden, Estonia and France; NCSC's AI forecast; wartime alert-app attacks in Ukraine and Russia. Germany's heise independently reported the Siemens IoT2050 attacks; CERT-FR, Le Monde, Security.NL, CERT Polska and CERT-UA joined the allowlist this run.",
    "Asia": "Japan now has a feed (JPCERT): this window carried a Cisco firewall DoS advisory in its weekly report. China, Korea and India still have no working feed; Sogou DNS hijack, airline breaches via Amadeus and the Binance theft came through international outlets.",
    "Middle East": "No energy-cyber reporting in the allowlisted feeds this window.",
-   "Africa": "No energy-cyber reporting in the allowlisted feeds this window.",
+   "Africa": "First item: a leak-site claim against MegChem, a South African petrochemical engineering supplier (TheGentlemen group, claim Nov 2, vendor analysis Nov 5); unverified. Still no regional feed.",
    "Oceania": "Australia's CISC updated critical-infrastructure risk guidance (Industrial Cyber); no incident.",
    "global": "Siemens IoT2050 exploitation and the Zyxel switch campaign affect devices wherever they sit.",
    "Latin America": "Feeds added this run (CSIRTAmericas, CERT.br, Ciberseguridad LATAM, Una al día). In this window they carried one energy-relevant item: a Spanish-language relay of the UK NCSC forecast (Ciberseguridad LATAM, 2026-11-04). No Latin American energy incident reported in these feeds; Pemex, Petrobras, Ecopetrol, YPF, CFE and the regional grids are now in the keyword list, so a story about them will be caught. Historical record: RECOPE (Costa Rica, 2024), ransomware in fuel-terminal billing that forced manual fuel sales, from the research report."
@@ -4863,7 +5111,7 @@
   "window_hours": 36,
   "stories_fetched": 168,
   "energy_cyber": 18,
-  "board_items": 14,
+  "board_items": 16,
   "languages": [
    "English",
    "Spanish",
@@ -4941,6 +5189,22 @@
    "the Ivanti Connect Secure chain (The Hacker News, Nov 2)",
    "the French blood-service case as victim-confirmed OT (EFS statement)"
   ],
-  "method_note": "The brief's closing method (distinguish confirmed attacks, active exploitation, disclosures, suspected actor activity, regulatory developments) matches our case_type field and rules 33-35. Its priority table matches our severity ordering except that we rank the CISA 2015 sunset high rather than 'strategic'."
+  "method_note": "The brief's closing method (distinguish confirmed attacks, active exploitation, disclosures, suspected actor activity, regulatory developments) matches our case_type field and rules 33-35. Its priority table matches our severity ordering except that we rank the CISA 2015 sunset high rather than 'strategic'.",
+  "second_brief": {
+   "source": "a second daily brief pasted by the owner, 2026-11-05 ('today only')",
+   "agreements": [
+    "No independently confirmed Nov 5 incident at a grid, refinery or control system (matches us_status)",
+    "Reuters on connected industrial equipment (the refrigeration cases) is context, not energy"
+   ],
+   "added_to_board": [
+    "Akira claim: Source Energy Services (claim, not a case)",
+    "TheGentlemen claim: MegChem (claim, not a case)"
+   ],
+   "context_only": [
+    "Dragos DISC conference today: an event, no new report verified",
+    "Reuters Nov 5 piece: Reuters blocks our fetch; cited via the brief"
+   ],
+   "note": "Both ransomware items are leak-site claims. Rule 35 keeps them out of the case count; they sit on the board as 'claim (not a case until corroborated)' with credibility 4 so a reader cannot mistake a listing for an intrusion."
+  }
  }
 }

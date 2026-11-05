@@ -1949,7 +1949,587 @@
    "detail": "INCIBE relay of CISA ICSA-26-307-01 was in the Nov 4 bundle but not promoted to the board; caught by an external brief cross-check on Nov 5.",
    "severity": "warn",
    "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "hand-curated",
+   "agent": "system",
+   "item": "",
+   "detail": "Briefing curated in a live session (curated-by-claude-fable-5.1 (session run, 2026-11-05 update)), not by the scheduled run.",
+   "severity": "info",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "analyst",
+   "item": "That is the exact architecture of a small substation, a pump station or a battery site.",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "analyst",
+   "item": "No attribution yet; I would put it at low confidence that this is a single actor, since co",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "critic",
+   "item": "Most of this week's energy-cyber coverage comes from two kinds of outlet, and you should r",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "wideangle",
+   "item": "Outside energy, the week was dominated by money and supply chains.",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "contrarian",
+   "item": "Start with who was not affected: every US electric utility, pipeline and generator, as far",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "librarian",
+   "item": "Energy-relevant items were supplied mostly by Industrial Cyber, The Register Security, Ble",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "librarian",
+   "item": "Primary documents reached by the puller: presse.efs.sante.fr, www.ncsc.gov.uk, www.vulnche",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "librarian",
+   "item": "Blocked or broken: CISA Advisories, CISA News, Utility Dive; CISA's feeds return 403 and U",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "librarian",
+   "item": "For the Siemens flaw, the place to look is Siemens ProductCERT and the CISA KEV catalog, n",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "counsel",
+   "item": "Three items this week carry a legal trigger and I have read the text of none of them, so h",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "counsel",
+   "item": "For the Siemens and Zyxel flaws, the obligations for registered entities sit in NERC CIP-0",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "counsel",
+   "item": "The week's regulatory news: Democrats took both chambers per MIT Technology Review and Cyb",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "archivist",
+   "item": "A user-provided Global Energy Cyber Threat Intelligence Report (evidence cut-off 2026-11-0",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "archivist",
+   "item": "I replaced or augmented the dossiers' background cases with these report-sourced cases and",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "archivist",
+   "item": "Verification status is honest: the report names its primary sources but the PDF text carri",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "archivist",
+   "item": "Latin America now has a case: RECOPE, Costa Rica, November 2024, ransomware that forced fu",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "ombudsman",
+   "item": "Rules broken: rule 4 (every claim names its source) in nine briefing sentences, mostly the",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "ombudsman",
+   "item": "Bias watch: US-first produced zero US incidents and six European OT incidents, which is ho",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "ombudsman",
+   "item": "The run was hand-curated in a live session rather than by the scheduled runtime, which the",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "operator",
+   "item": "Ask your vendor who has remote access to those controllers and how.",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "economist",
+   "item": "No incident in this week's bundle carries a published cost figure, so the loss-by-severity",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "economist",
+   "item": "Cost of acting: the Operator's estimate is one firewall rule tonight and one planned windo",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "geopolitics",
+   "item": "Conflicts in this week's bundle and what they reach in energy, by layer.",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "geopolitics",
+   "item": "Energy reach: IT layer only, financially motivated intrusions and fake-recruiter access; n",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "geopolitics",
+   "item": "Not in this bundle this week: Iran, the Gulf, Venezuela, the Taiwan Strait; their absence ",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "technologist",
+   "item": "For energy: the embedded Linux inside gateways, routers and HMIs is exactly the target cla",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "technologist",
+   "item": "Not in the bundle: any new frontier model release, any maker valuation, any data-centre po",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unsourced-claim",
+   "agent": "engineer",
+   "item": "My first pull request groups the buttons into five menus and adds a visible 'could not loa",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unverifiable",
+   "agent": "verifier",
+   "item": "Zyxel GS1900 switch zero-day (CVE-2026-107441): first patch fails to block the exploit, Binarly finds; new firmware for 10 models",
+   "detail": "[unverified] 'nearly 1,000 devices' is the outlet's figure, not in the vendor advisory",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unverifiable",
+   "agent": "verifier",
+   "item": "Cyberattack via refrigeration-equipment provider changed temperature settings at three French blood-service facilities",
+   "detail": "[unverified] the -30°C to 110°C figure is 'according to reports' (The Register); EFS's statement does not give it",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unverifiable",
+   "agent": "verifier",
+   "item": "Overnight wave of refrigeration setpoint attacks on supermarkets in Belgium, Sweden, Estonia and elsewhere",
+   "detail": "[unverified] whether the Danfoss products were misconfigured or vulnerable is not stated",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unverifiable",
+   "agent": "verifier",
+   "item": "Electric utilities urge Congress to renew the Cybersecurity Information Sharing Act of 2015 before it expires next month",
+   "detail": "[unverified] exact sunset date and status of any extension",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "single-source",
+   "agent": "reporter",
+   "item": "CISA launches 2026 Critical Infrastructure Security and Resilience campaign: OT security, continuity, recovery planning",
+   "detail": "Item rests on a single outlet.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "single-source",
+   "agent": "reporter",
+   "item": "Trump administration ban on foreign grid components raises industry concern over practicality and cost",
+   "detail": "Item rests on a single outlet.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unverifiable",
+   "agent": "verifier",
+   "item": "Trump administration ban on foreign grid components raises industry concern over practicality and cost",
+   "detail": "[unverified] legal instrument and effective date",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "single-source",
+   "agent": "reporter",
+   "item": "Russia and Ukraine report attacks on emergency alert apps during Kherson ceasefire",
+   "detail": "Item rests on a single outlet.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "single-source",
+   "agent": "reporter",
+   "item": "INCIBE-CERT: multiple vulnerabilities in Welotec TK100/TK500 industrial routers (firmware before 3.5.116 / 1.0.124 / 1.0.123)",
+   "detail": "Item rests on a single outlet.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unverifiable",
+   "agent": "verifier",
+   "item": "INCIBE-CERT: multiple vulnerabilities in Welotec TK100/TK500 industrial routers (firmware before 3.5.116 / 1.0.124 / 1.0.123)",
+   "detail": "[unverified] CVE identifiers not in the summary; read the full advisory",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "single-source",
+   "agent": "reporter",
+   "item": "Attackers chain three Ivanti Connect Secure flaws for unauthenticated root on VPN appliances",
+   "detail": "Item rests on a single outlet.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unverifiable",
+   "agent": "verifier",
+   "item": "Attackers chain three Ivanti Connect Secure flaws for unauthenticated root on VPN appliances",
+   "detail": "[unverified] CVE identifiers not in the summary",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "single-source",
+   "agent": "reporter",
+   "item": "INCIBE-CERT: PHP2Shell critical PHP flaws reach Phoenix Contact industrial switches, routers, WLAN and NTP time servers (FL SWITCH, TC ROUTER, FL TIMESERVER)",
+   "detail": "Item rests on a single outlet.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unverifiable",
+   "agent": "verifier",
+   "item": "INCIBE-CERT: PHP2Shell critical PHP flaws reach Phoenix Contact industrial switches, routers, WLAN and NTP time servers (FL SWITCH, TC ROUTER, FL TIMESERVER)",
+   "detail": "[unverified] CVE identifiers not in the summary; read the full advisory",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "single-source",
+   "agent": "reporter",
+   "item": "Akira ransomware leak-site listing claims Source Energy Services (frac sand and oilfield logistics, Western Canada); ~93 GB alleged; UNVERIFIED",
+   "detail": "Item rests on a single outlet.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unverifiable",
+   "agent": "verifier",
+   "item": "Akira ransomware leak-site listing claims Source Energy Services (frac sand and oilfield logistics, Western Canada); ~93 GB alleged; UNVERIFIED",
+   "detail": "[unverified] leak-site claim only (rule 35: not a case until corroborated)",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "single-source",
+   "agent": "reporter",
+   "item": "TheGentlemen ransomware claim against MegChem (engineering services to energy, oil and gas, petrochemicals, South Africa); claim dated Nov 2, analysed Nov 5; UNVERIFIED",
+   "detail": "Item rests on a single outlet.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unverifiable",
+   "agent": "verifier",
+   "item": "TheGentlemen ransomware claim against MegChem (engineering services to energy, oil and gas, petrochemicals, South Africa); claim dated Nov 2, analysed Nov 5; UNVERIFIED",
+   "detail": "[unverified] leak-site claim; the Nov 5 report analyses a Nov 2 claim, not a new intrusion",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unverifiable",
+   "agent": "librarian",
+   "item": "Electric utilities urge Congress to renew the Cybersecurity Information Sharing Act of 2015 before it expires next month",
+   "detail": "Source page blocked or failed: Utility Dive (error).",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unverifiable",
+   "agent": "librarian",
+   "item": "Trump administration ban on foreign grid components raises industry concern over practicality and cost",
+   "detail": "Source page blocked or failed: Utility Dive (error).",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "unverifiable",
+   "agent": "librarian",
+   "item": "INCIBE-CERT relays Siemens advisories: Brotli flaw CVE-2026-111497 in Industrial Edge configurators and RUGGEDCOM APE1808",
+   "detail": "Source page blocked or failed: INCIBE-CERT ICS advisories (Spain) (error).",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "contradiction",
+   "agent": "verifier",
+   "item": "Siemens SIMATIC IoT2050 Advanced: CVSS 10 missing-authentication flaw exploited in the wild",
+   "detail": "Cross-check: VulnCheck frames it as exploitation targeting Node-RED broadly; the outlet's headline makes it sound like a Siemens-specific campaign. No Siemens ProductCERT or",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "contradiction",
+   "agent": "verifier",
+   "item": "Zyxel GS1900 switch zero-day used to compromise nearly 1,000 devices and steal configs and credentials",
+   "detail": "Cross-check: The 'nearly 1,000 devices' and credential-theft details are the outlet's; Zyxel says 'LAN-based, unauthenticated attacker', and the outlet notes the flaw was fi",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "contradiction",
+   "agent": "verifier",
+   "item": "Cyberattack via refrigeration-equipment provider changed temperature settings at three French blood-service facilities",
+   "detail": "Cross-check: 110°C appears only as 'according to reports' in The Register and The Register itself says that does not mean contents reached it. BleepingComputer adds Sabcobel",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "contradiction",
+   "agent": "verifier",
+   "item": "Electric utilities urge Congress to renew the Cybersecurity Information Sharing Act of 2015 before it expires next month",
+   "detail": "Cross-check: Could not pull the article or the statute. Legal claim remains trade-press only.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "contradiction",
+   "agent": "verifier",
+   "item": "UK NCSC Annual Review warns of AI-assisted ransomware against critical national infrastructure by 2028",
+   "detail": "Cross-check: Primary text carries probability language ('highly likely') and names China as best positioned; Industrial Cyber keeps both, The Register's headline drops the h",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "contradiction",
+   "agent": "verifier",
+   "item": "Trump administration ban on foreign grid components raises industry concern over practicality and cost",
+   "detail": "Cross-check: Could not pull; no primary instrument identified.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "downgrade",
+   "agent": "verifier",
+   "item": "Electric utilities urge Congress to renew the Cybersecurity Information Sharing Act of 2015 before it expires next month",
+   "detail": "legal claim resting on trade press only (Utility Dive). Rule 3: fetch the statute sunset and any NDAA extension text before this item is treated as settled.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-05T21:23:32.711633+00:00",
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "type": "downgrade",
+   "agent": "verifier",
+   "item": "Trump administration ban on foreign grid components raises industry concern over practicality and cost",
+   "detail": "policy claim on trade press only; the legal instrument and effective date are not in the bundle. Rule 3 applies.",
+   "severity": "warn",
+   "status": "open"
   }
  ],
- "updated_at": "2026-11-05T19:46:00.220373+00:00"
+ "updated_at": "2026-11-05T21:23:32.711633+00:00"
 }

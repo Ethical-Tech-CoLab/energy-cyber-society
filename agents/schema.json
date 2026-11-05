@@ -135,7 +135,9 @@
       "third-party spillover",
       "adjacent dependency",
       "advisory (not a case)",
-      "policy (not a case)"
+      "policy (not a case)",
+      "claim (not a case until corroborated)",
+      "event (not a case)"
     ],
     "attribution_tier": [
       "confirmed",

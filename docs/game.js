@@ -744,7 +744,8 @@ $('btn-grid').onclick = async () => {
   $('grid-body').querySelectorAll('[data-an]').forEach(b => b.onclick = () => openAnalysis(b.dataset.an));
 };
 
-$('btn-pipeline').onclick = () => { $('dlg-pipeline').showModal(); setTimeout(() => window.ECS_PIPELINE && window.ECS_PIPELINE.play(), 300); };
+$('btn-framework').onclick = () => { $('dlg-pipeline').showModal(); setTimeout(() => window.ECS_PIPELINE && window.ECS_PIPELINE.play(), 300); };
+document.querySelectorAll('.fw-tabs [data-fw]').forEach(b => b.onclick = () => { document.querySelectorAll('.fw-tabs [data-fw]').forEach(x => x.classList.toggle('on', x === b)); document.querySelectorAll('.fw-pane').forEach(p => p.hidden = p.id !== 'fw-' + b.dataset.fw); if (b.dataset.fw === 'animate' && window.ECS_PIPELINE) window.ECS_PIPELINE.play(); });
 
 // regulations: the Counsel's register and the week's regulatory news with impact
 let regs = null;

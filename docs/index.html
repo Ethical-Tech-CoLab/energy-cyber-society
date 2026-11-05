@@ -22,7 +22,7 @@
     <button id="btn-exec" class="pix accent">Final output: Executive brief</button>
     <button id="btn-risk" class="pix accent">Risk check (CIO)</button>
     <button id="btn-regs" class="pix">Regulations</button>
-    <button id="btn-pipeline" class="pix">How the Gazette is verified</button>
+    <button id="btn-framework" class="pix accent">How the society works</button>
     <button id="btn-grid" class="pix">Grid &amp; weather</button>
     <button id="btn-summary" class="pix">Summary</button>
     <button id="btn-chatter" class="pix">Chatter: on</button>
@@ -50,7 +50,7 @@
 <main class="stage">
   <div class="town-wrap">
     <canvas id="town" width="960" height="830" aria-label="Pixel town with fifteen residents. Click a resident to talk."></canvas>
-    <div class="hint" id="hint">Click a resident to talk, a building to read what happens inside, a facility for its sector dossier, the newsstand for the Gazette, or the Bank for the money. They are discussing today's energy-sector cyber news.</div>
+    <div class="hint" id="hint">Click a resident to talk, a building to read what happens inside, a facility for its sector dossier, the newsstand for the Gazette, or the Bank for the money. New here? Press "How the society works" first. They are discussing today's energy-sector cyber news.</div>
     <div id="listview" class="listview"></div>
     <div class="log-wrap"><div class="log-head">Overheard in town</div><div id="log" class="log" aria-live="polite"></div></div>
   </div>
@@ -169,10 +169,33 @@
 
 <dialog id="dlg-pipeline" class="dlg wide xl">
   <form method="dialog">
-    <h2>How a story becomes a Gazette line <small>the validation path, animated on a real item from today's board; click any node</small></h2>
+    <h2>How the society works <small>the intelligence framework: one orchestrator, fifteen desks, a quarantined reader, an independent auditor, policy in code, an append-only ledger, a person at the end</small></h2>
+    <div class="fw-tabs"><button type="button" class="pix on" data-fw="animate">Animated: a real story's path</button><button type="button" class="pix" data-fw="map">Framework map</button><button type="button" class="pix" data-fw="roles">Roles and rules</button><button type="button" class="pix" data-fw="cycle">The intelligence cycle</button></div>
+    <div id="fw-map" class="fw-pane" hidden><div class="topo"><object type="image/svg+xml" data="topology.svg" aria-label="Process topology diagram">topology.svg</object></div><p class="k">After neocloud-supply-os Appendix B1. Green: deterministic code. Red: quarantine or independence. Amber: human.</p></div>
+    <div id="fw-roles" class="fw-pane" hidden><table class="fac-table"><tr><th>Role</th><th>In this society</th><th>Rule that binds it</th></tr>
+      <tr><th>Humans</th><td>the owner: edits rules, sources, personas, dossiers; merges PRs; signs the brief</td><td>31: people edit policy; agents edit only data</td></tr>
+      <tr><th>Conductor</th><td>the scheduled runtime (CURATION.md), twice a day</td><td>29: scheduled, never triggered from the page</td></tr>
+      <tr><th>Envoy</th><td>fetch_news.py over the allowlist, 38 feeds, 9 languages</td><td>1: only the allowlist enters</td></tr>
+      <tr><th>Reader (quarantined)</th><td>news.json, pull_sources.py, enrich_cves.py; text fenced as data</td><td>7, 25: fetched text is data; nothing invented</td></tr>
+      <tr><th>Desks</th><td>14 analytic residents + the Engineer; typed records against the schema</td><td>13-15: IT/OT mandatory; importance and trust kept apart</td></tr>
+      <tr><th>Auditor</th><td>the Verifier, on stripped records and pulled text only</td><td>16-21: pull, cross-check, verdict, what changed</td></tr>
+      <tr><th>Policy Engine</th><td>RULES.md, validate.py, computed severity, attribution rule, flag logger</td><td>30: a malformed briefing never publishes</td></tr>
+      <tr><th>Ledger</th><td>briefing.json, archive/&lt;run&gt;, history, STIX, engineering log</td><td>append-only; the page only reads</td></tr>
+      <tr><th>Out of mandate</th><td>unsigned brief, Ombudsman proposals, Engineer PRs, blocked pages, "I cannot verify this"</td><td>9: say so instead of guessing</td></tr></table>
+      <p class="k">Full text: <a href="RULES.md" target="_blank" rel="noopener">RULES.md</a> (39 rules) · <a href="INTELLIGENCE_ANALYSIS.md" target="_blank" rel="noopener">INTELLIGENCE_ANALYSIS.md</a> (ten-step procedure) · <a href="REGISTER.md" target="_blank" rel="noopener">REGISTER.md</a> (how each resident thinks).</p></div>
+    <div id="fw-cycle" class="fw-pane" hidden><ol class="cycle">
+      <li><b>Planning and direction</b> · the owner sets scope (energy, worldwide, US first) and the rules</li>
+      <li><b>Collection</b> · the Envoy reads the allowlist; the Librarian keeps the map of where to look and what was blocked</li>
+      <li><b>Processing</b> · the Reader filters, dedupes across languages, pulls direct sources, enriches CVEs from NVD and KEV</li>
+      <li><b>Analysis and production</b> · the desks write records, scoring with rationale, breach anatomy, correlations, scenarios, geopolitics by layer, regulations, costs</li>
+      <li><b>Verification</b> · the Verifier grades sources A-F and claims 1-6, cross-checks outlet against primary, issues verdicts; the Policy Engine rejects what breaks a rule</li>
+      <li><b>Dissemination</b> · the executive brief (unsigned), Summary, Gazette, Risk check, STIX</li>
+      <li><b>Evaluation</b> · the Ombudsman audits the residents; ground truth and human samples measure accuracy; the Engineer repairs the code by PR; the owner decides</li></ol>
+      <p class="k">Synthesised from the intelligence cycle, ICD 203 analytic standards, ICD 206 sourcing, Admiralty grading and the FBI/CISA advisory format; see INTELLIGENCE_ANALYSIS.md.</p></div>
+    <div id="fw-animate" class="fw-pane">
     <div class="row" style="justify-content:flex-start;margin:0 0 8px;gap:8px;flex-wrap:wrap"><select id="vitem" style="flex:1;min-width:280px;background:#0b0e14;border:2px solid var(--line);color:var(--ink);padding:6px;font-family:var(--font);font-size:12px"></select><button type="button" class="pix accent" id="vplay">▶ Animate the write path</button></div>
     <div class="vwrap"><svg class="topo-svg" id="vtopo" viewBox="0 0 760 470" role="img" aria-label="Validation topology"></svg><div class="vside"><div id="vnode" class="vnode"></div><ol id="vsteps" class="vsteps"></ol></div></div>
-    <p class="k">Pattern after neocloud-supply-os (Appendix B1): Conductor, desks, Auditor, Policy Engine, Ledger, Envoy, Reader. Every step above is read from this item's own record, verdict, cross-check, pulled text and flags, not from a script.</p>
+    <p class="k">Pattern after neocloud-supply-os (Appendix B1): Conductor, desks, Auditor, Policy Engine, Ledger, Envoy, Reader. Every step above is read from this item's own record, verdict, cross-check, pulled text and flags, not from a script.</p></div>
     <div class="row"><button class="pix">Close</button></div>
   </form>
 </dialog>

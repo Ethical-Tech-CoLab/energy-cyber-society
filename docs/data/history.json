@@ -288,6 +288,88 @@
    "feeds_ok": 36,
    "feeds_err": 2,
    "usage": null
+  },
+  {
+   "run": "2026-11-05T21:22:41.931872+00:00",
+   "model": "curated-by-claude-fable-5.1 (session run, 2026-11-05 update)",
+   "energy": 18,
+   "wide": 150,
+   "items": 16,
+   "severity": {
+    "critical": 1,
+    "high": 7,
+    "medium": 4,
+    "info": 1,
+    "low": 3
+   },
+   "ot_impact": {
+    "OT reached, no process effect": 1,
+    "none (IT only)": 6,
+    "OT process affected": 2,
+    "unknown": 7
+   },
+   "subsector": {
+    "cross-sector": 3,
+    "connectivity (routers, firewalls, internet, satellite)": 4,
+    "non-energy (spillover)": 3,
+    "electricity": 2,
+    "energy transport: transmission lines": 1,
+    "industrial machinery and OEM equipment": 1,
+    "oil": 2
+   },
+   "country": {
+    "global": 3,
+    "France": 1,
+    "EU (multiple)": 1,
+    "US": 3,
+    "UK": 1,
+    "Ukraine / Russia": 1,
+    "Spain (advisory); global (products)": 2,
+    "Spain (advisory); Europe (products)": 1,
+    "US (advisory); global (product)": 1,
+    "Canada": 1,
+    "South Africa": 1
+   },
+   "event_type": {
+    "exploitation in the wild": 4,
+    "intrusion": 2,
+    "policy/regulatory change": 2,
+    "advisory": 1,
+    "forecast/report": 1,
+    "information operation": 1,
+    "vulnerability disclosure": 3,
+    "ransomware": 2
+   },
+   "action": {
+    "patch": 6,
+    "hunt": 3,
+    "policy watch": 2,
+    "awareness only": 3,
+    "monitor": 2
+   },
+   "reliability": {
+    "C": 3,
+    "A": 7,
+    "B": 6
+   },
+   "credibility": {
+    "2": 10,
+    "1": 2,
+    "3": 2,
+    "4": 2
+   },
+   "single_source": 8,
+   "flags": {
+    "hand-curated": 1,
+    "unsourced-claim": 28,
+    "unverifiable": 13,
+    "single-source": 8,
+    "contradiction": 6,
+    "downgrade": 2
+   },
+   "feeds_ok": 36,
+   "feeds_err": 2,
+   "usage": null
   }
  ]
 }
