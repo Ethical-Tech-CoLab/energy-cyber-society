@@ -148,8 +148,13 @@ The town runs the Conductor–desks–Auditor–Policy Engine–Ledger–Envoy�
 | Ledger | `briefing.json`, `docs/archive/<run>/`, history, STIX, engineering log; append-only | — |
 | Out of mandate | the unsigned brief, Ombudsman proposals, Engineer PRs, blocked pages, "I cannot verify this" | 9 |
 
-In the page: **How the society works** (animated path per board item, map, roles, cycle).
-Diagram: `docs/topology.svg`. Procedure: `INTELLIGENCE_ANALYSIS.md`.
+![Intelligence framework: Humans, Conductor, Envoy, Reader, Desks, Auditor, Policy Engine, Ledger](docs/topology.svg)
+
+In the page, the same framework is interactive: a real story's path animated node to node, the map, the roles, the cycle.
+
+![How the society works, animated on a real item](docs/screenshots/how-the-society-works.png)
+
+Diagram source: `docs/topology.svg`. Procedure: `INTELLIGENCE_ANALYSIS.md`.
 
 ## Process topology
 
