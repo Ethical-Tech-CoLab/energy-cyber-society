@@ -73,6 +73,19 @@ def main():
                 energy.append(item)
             else:
                 wide.append(item)
+    # near-duplicate collapse across feeds and languages (REVIEW.md finding 13): same day and
+    # shared anchors (CVE ids, numbers, proper nouns) -> keep the first, record the rest as 'duplicates'
+    def anchors(t):
+        return set(re.findall(r"cve-\d{4}-\d+", t.lower())) | {w.lower() for w in re.findall(r"\b[A-Z][A-Za-z]{3,}\b", t)} | set(re.findall(r"\b\d{3,}\b", t))
+    def collapse(bucket):
+        kept = []
+        for it in bucket:
+            a = anchors(it["title"]); day = (it["published"] or "")[:10]
+            dup = next((k for k in kept if (k["published"] or "")[:10] == day and len(a & anchors(k["title"])) >= 3 and k["source"] != it["source"]), None)
+            if dup: dup.setdefault("duplicates", []).append({"source_name": it["source_name"], "title": it["title"], "link": it["link"]})
+            else: kept.append(it)
+        return kept
+    energy, wide = collapse(energy), collapse(wide)
     energy.sort(key=lambda x: x["published"] or "", reverse=True)
     wide.sort(key=lambda x: x["published"] or "", reverse=True)
     out = {

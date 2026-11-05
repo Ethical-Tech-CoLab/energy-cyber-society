@@ -2100,5 +2100,6 @@
    "source_type": "government",
    "source_country": "Canada"
   }
- ]
+ ],
+ "relevance_pass": "skipped: no ANTHROPIC_API_KEY; keyword pre-filter only"
 }

@@ -1,0 +1,79 @@
+{
+  "_comment": "Actor aliases across vendors and governments. Used by the Analyst and the Archivist to merge names; the attributor's own name is kept in the record.",
+  "reviewed": "2026-11-05",
+  "actors": [
+    {
+      "canonical": "Sandworm",
+      "aliases": [
+        "APT44",
+        "Seashell Blizzard",
+        "IRIDIUM",
+        "Voodoo Bear",
+        "ELECTRUM",
+        "Telebots",
+        "GRU Unit 74455"
+      ],
+      "sponsor_attributed": "Russia (US DOJ indictment 2020; multiple governments)"
+    },
+    {
+      "canonical": "Volt Typhoon",
+      "aliases": [
+        "Vanguard Panda",
+        "BRONZE SILHOUETTE",
+        "Insidious Taurus",
+        "UNC3236",
+        "VOLTZITE"
+      ],
+      "sponsor_attributed": "PRC (CISA/NSA/FBI AA24-038A)"
+    },
+    {
+      "canonical": "Dragonfly",
+      "aliases": [
+        "Energetic Bear",
+        "Berserk Bear",
+        "Crouching Yeti",
+        "TEMP.Isotope",
+        "Ghost Blizzard",
+        "Castle"
+      ],
+      "sponsor_attributed": "Russia (FSB Centre 16; US DOJ 2022)"
+    },
+    {
+      "canonical": "TEMP.Veles",
+      "aliases": [
+        "XENOTIME",
+        "Triton actor",
+        "TsNIIKhM"
+      ],
+      "sponsor_attributed": "Russia (Mandiant; US Treasury 2020)"
+    },
+    {
+      "canonical": "CyberAv3ngers",
+      "aliases": [
+        "IRGC-CEC affiliated",
+        "Storm-0784"
+      ],
+      "sponsor_attributed": "Iran (US Treasury 2024)"
+    },
+    {
+      "canonical": "Lazarus Group",
+      "aliases": [
+        "Hidden Cobra",
+        "Diamond Sleet",
+        "TraderTraitor",
+        "APT38 (financial arm)"
+      ],
+      "sponsor_attributed": "DPRK (US government)"
+    },
+    {
+      "canonical": "APT29",
+      "aliases": [
+        "Cozy Bear",
+        "Midnight Blizzard",
+        "NOBELIUM",
+        "The Dukes"
+      ],
+      "sponsor_attributed": "Russia (SVR; US/UK 2021)"
+    }
+  ]
+}

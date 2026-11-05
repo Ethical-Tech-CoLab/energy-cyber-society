@@ -1,5 +1,5 @@
 {
- "pulled_at": "2026-11-05T01:44:08.006256+00:00",
+ "pulled_at": "2026-11-05T02:15:42.598797+00:00",
  "items": {
   "Siemens SIMATIC IoT2050 Advanced: CVSS 10 missing-authentication flaw exploited in the wild": {
    "sources": [
@@ -10,8 +10,10 @@
      "chars": 7320,
      "excerpts": [
       "Attackers Exploit Critical Siemens IoT2050 Flaw to Plant Remote Command Backdoors --> Attackers Exploit Critical Siemens IoT2050 Flaw to Plant Remote Command Backdoors  Ravie Lakshmanan  Nov 03, 2026 Vulnerability / Cyber Attack A maximum-severity security flaw impacting Siemens SIMATIC IoT2050 Advanced devices has come under active exploitation, VulnCheck has revealed .",
+      "The vulnerability, tracked as CVE-2026-58115 (CVSS score: 10.0), is a case of missing authentication for a critical function that could be exploited by an unauthenticated remote attacker to run arbitrary code.",
       "\"SIMATIC IoT2050 Advanced devices running Industrial OS with Node-RED installed contain a missing authentication vulnerability in the Node-RED HTTP interface that could allow an unauthenticated remote attacker to create malicious flows and execute arbitrary code on the underlying server with maximum privileges,\" Siemens said in an advisory released back in August 2026.",
-      "The vulnerability, tracked as CVE-2026-58115 (CVSS score: 10.0), is a case of missing authentication for a critical function that could be exploited by an unauthenticated remote attacker to run arbitrary code."
+      "​ Expert Insights Articles Videos Your Attack Surface Is Growing Faster Than Your Team Can Respond  November 4, 2026 Read ➝ The MSP Margin Math Nobody's Doing: Your Next Technician Might Already be on Payroll  November 2, 2026 Read ➝ PEDM vs.",
+      "Standing Elevated Privileges: Control Access Without Flooding the Helpdesk  November 2, 2026 Read ➝ Why Root and Jailbreak Detection Alone Cannot Guarantee Mobile App Security  October 26, 2026 Read ➝ Get the Latest News in Your Inbox Get the latest news, expert insights, exclusive resources, and strategies from industry leaders, all for free."
      ]
     },
     {
@@ -20,8 +22,19 @@
      "status": 200,
      "chars": 3345,
      "excerpts": [
-      "Demnach hat eines der Systeme des Unternehmens am vergangenen Freitag einen Angriffsversuch auf die Schwachstelle CVE-2026-58115 (CVSS 10.0 , Risiko „ kritisch “) protokolliert."
+      "Demnach hat eines der Systeme des Unternehmens am vergangenen Freitag einen Angriffsversuch auf die Schwachstelle CVE-2026-58115 (CVSS 10.0 , Risiko „ kritisch “) protokolliert.",
+      "Geräte der Siemens-Simatic-IoT2050-Advanced-Baureihe werden im Internet attackiert.",
+      "IoT: Siemens Simatic-IoT2050-Gateways angegriffen | heise online heise+ entdecken Suchen Abo Suchen Alle Magazine im Browser lesen Newsletter heise-Bot Push -Nachrichten ${lead} ${lead} ${content} Anzeige close notice This article is also available in English .",
+      "Es handelt sich dabei um eine im August gemeldete und mit Update gestopfte Sicherheitslücke in Simatic-IoT2050-Advanced-Geräten vor Version 4.3.4.1, auf denen Node-RED installiert ist – ein Node.js-basiertes Werkzeug für flussbasierte Programmierung.",
+      "Siemens hat mit einer eigenen Sicherheitsmitteilung reagiert und die Version 4.3.4.1 (oder neuer) der Firmware bereitgestellt, die das Problem löst."
      ]
+    },
+    {
+     "name": "NVD CVE-2026-58115",
+     "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58115",
+     "status": 200,
+     "chars": 10,
+     "excerpts": []
     }
    ],
    "primary": [
@@ -30,11 +43,11 @@
      "status": 200,
      "chars": 11788,
      "excerpts": [
-      "This CVE was assigned by Siemens and affects the SIMATIC IoT2050 Advance, which shows the software is embedded in commercial ICS/OT products.",
       "CVE-2026-58115 allows unauthenticated access to programming nodes that are capable of executing system commands on the server.",
-      "We’re going to continue to deliver key insights on vulnerability management, exploitation and major trends we can extrapolate from our dataset to continuously support practitioners.",
-      "If so, VulnCheck's Exploit & Vulnerability Intelligence has broad threat actor coverage.",
-      "Explore VulnCheck, a next-generation Cyber Threat Intelligence platform, which provides exploit and vulnerability intelligence to help you prioritize and remediate vulnerabilities that matter."
+      "This CVE was assigned by Siemens and affects the SIMATIC IoT2050 Advance, which shows the software is embedded in commercial ICS/OT products.",
+      "Our detection for CVE-2026-58115 was published on October 27, and we caught this in-the-wild attempt on October 30, three days later, and moved the CVE into VulnCheck's KEV catalog; it is not in CISA's KEV at the time of writing.",
+      "We have seen it hit this Node-RED CVE 16 times between October 30 and November 1, and across our wider canary data the same address has logged 125 hits against 8 different CVEs over recent days: Apache Solr (CVE-2019-17558), Camunda, Gitea, MLflow, Traefik, and Joomla, alongside this Node-RED flaw.",
+      "We have since seen 16 events from the same IP against this CVE, covering several different payloads (see the Update section below)."
      ],
      "found_in": "The Hacker News (relaying VulnCheck)"
     },
@@ -56,10 +69,10 @@
      "chars": 6358,
      "excerpts": [
       "Administrators of affected Zyxel GS1900 switches are advised to install the latest firmware updates to protect against CVE-2026-107441.",
-      "The flaw affects ten GS1900 switch models, and Zyxel released security updates on October 22 and published a security advisory on November 3.",
+      "Binarly reported its findings to Zyxel on September 29, and the vendor confirmed the new vulnerability on October 11, assigning it CVE-2026-107441.",
+      "The vulnerability, tracked as CVE-2026-107441, is an out-of-bounds write flaw in the switches' web management interface that allows an unauthenticated attacker with network access to execute operating system commands using specially crafted HTTP requests.",
       "Attacks linked to zero-day flaw On June 16, 2026, Zyxel released security updates addressing CVE-2026-7273, a pre-authentication buffer overflow vulnerability affecting the same GS1900 switches.",
-      "However, the vulnerability was initially mistaken for an older flaw that Zyxel had already patched months before the attacks began.",
-      "Starting around August 17, cybersecurity company GreyNoise observed a suspected Chinese-speaking threat actor tracked as Kapibala exploiting Zyxel switches, reporting that the attackers compromised 996 devices across 48 countries."
+      "When GreyNoise disclosed the campaign on September 21, it attributed the exploitation to CVE-2026-7273, the vulnerability Zyxel had patched in June."
      ]
     },
     {
@@ -67,6 +80,15 @@
      "url": "https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-out-of-bound",
      "status": 200,
      "chars": 2028,
+     "excerpts": [
+      "Subscribe Copyright © Zyxel and/or its affiliates."
+     ]
+    },
+    {
+     "name": "NVD CVE-2026-107441",
+     "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107441",
+     "status": 200,
+     "chars": 10,
      "excerpts": []
     }
    ],
@@ -76,7 +98,10 @@
      "status": 200,
      "chars": 2074,
      "excerpts": [
-      "The out-of-bounds write vulnerability in the CGI program of the Zyxel GS1900 series switch firmware could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request."
+      "The out-of-bounds write vulnerability in the CGI program of the Zyxel GS1900 series switch firmware could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request.",
+      "Please contact your local service rep or visit Zyxel's Community for further information or assistance.",
+      "Contact us Copyright © Zyxel and/or its affiliates.",
+      "Revision history 2026-11-3: Initial release Have a question?"
      ],
      "found_in": "BleepingComputer"
     },
@@ -85,7 +110,10 @@
      "status": 200,
      "chars": 2151,
      "excerpts": [
-      "A stack-based buffer overflow vulnerability in the CGI program of the Zyxel GS1900 series switch firmware could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request."
+      "A stack-based buffer overflow vulnerability in the CGI program of the Zyxel GS1900 series switch firmware could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request.",
+      "Please contact your local service rep or visit Zyxel's Community for further information or assistance.",
+      "Contact us Copyright © Zyxel and/or its affiliates.",
+      "Revision history 2026-6-16: Initial release Have a question?"
      ],
      "found_in": "BleepingComputer"
     },
@@ -93,7 +121,9 @@
      "url": "https://www.zyxel.com/global/en/support/security-advisories",
      "status": 200,
      "chars": 2028,
-     "excerpts": [],
+     "excerpts": [
+      "Subscribe Copyright © Zyxel and/or its affiliates."
+     ],
      "found_in": "Zyxel security advisory (vendor, primary)"
     },
     {
@@ -111,21 +141,24 @@
      "name": "BleepingComputer",
      "url": "https://www.bleepingcomputer.com/news/security/cyberattack-disrupts-blood-storage-refrigeration-systems-in-france/",
      "status": 200,
-     "chars": 6923,
+     "chars": 7032,
      "excerpts": [
-      "Some refrigeration systems were shut down entirely, while others had their temperature settings changed remotely.",
-      "EFS says its monitoring and alarm systems quickly detected the temperature change, allowing staff to fix impacted equipment or transfer products to other refrigeration facilities.",
-      "The incident follows a wave of cyberattacks targeting refrigeration systems across Europe, where attackers remotely manipulate temperature settings or activate defrost functions that turn off cooling.",
-      "Belgian refrigeration company Sabcobel previously said that attackers behind the November incidents exploited the same vulnerability used in October's attacks against French supermarkets."
+      "Belgian refrigeration company Sabcobel previously said that attackers behind the November incidents exploited the same vulnerability used in October's attacks against French supermarkets.",
+      "The French Blood Establishment (Établissement français du sang or EFS), which manages blood collection, processing, and distribution across France, said the incident occurred on November 2 and affected systems used to monitor and control cold-storage chambers.",
+      "\"No health impact has been identified, and no loss of blood products has been reported,\" EFS said in its statement [translated from French].",
+      "In October, cyberattacks disrupted refrigeration systems at an estimated 250 to 350 French supermarkets, including Intermarché, Carrefour Market, Monoprix, Leclerc, and Super U.",
+      "Some refrigeration systems were shut down entirely, while others had their temperature settings changed remotely."
      ]
     },
     {
      "name": "The Register",
      "url": "https://www.theregister.com/security/2026/11/04/cyberattack-on-french-plasma-stores-is-enough-to-make-your-blood-boil/5307519",
      "status": 200,
-     "chars": 7906,
+     "chars": 7862,
      "excerpts": [
+      "The French Blood Establishment (EFS) confirmed the incident on Tuesday, saying its own systems had not been directly targeted.",
       "According to reports, attackers changed cold-room temperature settings from -30°C to 110°C.",
+      "The latest wave of cold-store attacks comes a month after the first, which affected French supermarket chains Carrefour, Coopérative U, Intermarché, Monoprix, and others.",
       "REG AD \"Thus, depending on the circumstances, as soon as the incident occurred, the affected equipment was either brought under control without impacting the products and samples, or neutralized; the products stored in these cold rooms were preventively transferred to other facilities.\" The EFS did not name the supplier publicly.",
       "That does not mean the equipment or its contents reached the higher temperature."
      ]
@@ -135,7 +168,9 @@
      "url": "http://presse.efs.sante.fr/actualites/l-efs-confirme-l-incident-de-cybersecurite-impactant-un-de-ces",
      "status": 200,
      "chars": 44,
-     "excerpts": []
+     "excerpts": [
+      "This website requires JS enabled and cookies"
+     ]
     }
    ],
    "primary": [
@@ -143,7 +178,9 @@
      "url": "http://presse.efs.sante.fr/actualites/l-efs-confirme-l-incident-de-cybersecurite-impactant-un-de-ces-prestataires-d-equipement-frigorifique-2c07c-08a0a.html",
      "status": 200,
      "chars": 44,
-     "excerpts": [],
+     "excerpts": [
+      "This website requires JS enabled and cookies"
+     ],
      "found_in": "BleepingComputer"
     },
     {
@@ -162,11 +199,11 @@
      "status": 200,
      "chars": 13509,
      "excerpts": [
-      "Danfoss, a Danish maker of refrigeration controls,  said its products were involved , as they were three weeks earlier when  attackers hit hundreds of French supermarkets .",
       "Who Is Behind It Danfoss said the Dutch attacks were the same kind as the one in France, Sabcobel said the same method was used in Belgium, and Kitman said the method in Estonia was similar.",
-      "In Belgium, attackers switched cooling units into defrost mode, Stephan Moelans, chief executive of the refrigeration contractor Sabcobel,  told Belgian media .",
-      "All of ICA's affected stores were connected to an outside refrigeration control system supplied by Danfoss, an ICA spokesperson  told AFP .",
-      "In Estonia, attackers reached the control computer of an older Danfoss system, Mutso said."
+      "Danfoss, a Danish maker of refrigeration controls,  said its products were involved , as they were three weeks earlier when  attackers hit hundreds of French supermarkets .",
+      "In Estonia, attackers reached the control computer of an older Danfoss system, Mutso said.",
+      "Estonia Selver, through supplier Kitman Coldtech 1 An attack on an older Danfoss system.",
+      "In Belgium, attackers switched cooling units into defrost mode, Stephan Moelans, chief executive of the refrigeration contractor Sabcobel,  told Belgian media ."
      ]
     }
    ],
@@ -193,10 +230,10 @@
      "chars": 11184,
      "excerpts": [
       "Cybersecurity and Infrastructure Security Agency (CISA) launched on Monday its 2026 Critical Infrastructure Security and Resilience Month campaign, urging infrastructure owners and operators to strengthen preparedness and improve their ability to withstand and recover from disruptions.",
-      "Critical Infrastructure Security and Resilience Month empowers American industry, state and local governments, and the Federal Government to each do their part to protect U.S.",
       "Organizations can participate in Critical Infrastructure Security and Resilience Month with CISA’s toolkit , which includes graphics and plain language text that organizations can use to show the steps they are taking this November to be more resilient.",
       "The Interagency Security Committee offers a wide range of resources to enhance the security of federal government facilities, and CISA’s infrastructure Resilience capabilities, tools, and services are available for exploration.",
-      "Critical infrastructure owners and operators can review and monitor the CISA CI Fortify page for information and updates on defending against disruptive cyberattacks through proactive isolation and recovery planning."
+      "Local leaders can meet with CISA representatives in their state or district to better understand local infrastructure and the risks it faces, host a town hall meeting to discuss local critical infrastructure issues, and write an opinion editorial in the local paper about the importance of critical infrastructure security and resilience.",
+      "Critical Infrastructure Security and Resilience Month empowers American industry, state and local governments, and the Federal Government to each do their part to protect U.S."
      ]
     }
    ],
@@ -235,11 +272,11 @@
      "status": 200,
      "chars": 6705,
      "excerpts": [
-      "AI-powered malware highly likely to be used in ransomware attack on Britain’s critical national infrastructure by 2028, new report warns.",
       "The UK’s critical national infrastructure should be braced for a ransomware attack involving AI-powered malware by 2028, a new report published today [Tuesday 3 November] by the National Cyber Security Centre (NCSC) – a part of the UK’s signals intelligence agency GCHQ says.",
-      "News Download & print article PDF Download & print article PDF Cyber chief: UK facing AI-powered attacks on critical infrastructure within two years The NCSC warns that ‘tech on the cheap’ has left UK organisations exposed to AI uncovering and exploiting longstanding cyber security weaknesses and calls for urgent investment in resilience.",
       "Security Minister Dan Jarvis   NCSC Annual Review 2026 Looking back at the National Cyber Security Centre's tenth year and its key developments and highlights, between 1 September 2025 and 31 August 2026.",
-      "Cyber chief: UK facing AI-powered attacks on critical infrastructure within two years | National Cyber Security Centre icons/chevron/16px/black Skip to main content Please enable JavaScript in your web browser to get the best experience."
+      "AI-powered malware highly likely to be used in ransomware attack on Britain’s critical national infrastructure by 2028, new report warns.",
+      "News Download & print article PDF Download & print article PDF Cyber chief: UK facing AI-powered attacks on critical infrastructure within two years The NCSC warns that ‘tech on the cheap’ has left UK organisations exposed to AI uncovering and exploiting longstanding cyber security weaknesses and calls for urgent investment in resilience.",
+      "“The NCSC's latest annual report shows cyber threats are growing more sophisticated."
      ]
     },
     {
@@ -248,11 +285,11 @@
      "status": 200,
      "chars": 21207,
      "excerpts": [
-      "In July 2026, the NCSC and 18 partners from 12 countries warned that FSB Centre 16 actors were exploiting vulnerable routers to target critical national infrastructure worldwide.",
-      "China is highly likely to have the intent and be best positioned to use AI against critical national infrastructure and other strategic targets, with its frontier AI programmes almost certainly improving its vulnerability identification, targeting efficiency and access operations.",
       "In its ‘NCSC Annual Review 2026’, the agency warned that AI could enable attackers to identify and exploit longstanding cybersecurity weaknesses at unprecedented speed and scale.",
       "But they are also reshaping the cyber threat landscape,” Anne Keast-Butler, director of the GCHQ, said in the NCSC Annual Review 2026.",
-      "Not only to protect their customers, services and livelihoods, but because cyber security is now part of the frontline defence of our nation.” The NCSC Annual Review 2026 said that Russian hacking groups engage in offensive cyber operations in Ukraine, including disrupting power generation."
+      "Not only to protect their customers, services and livelihoods, but because cyber security is now part of the frontline defence of our nation.” The NCSC Annual Review 2026 said that Russian hacking groups engage in offensive cyber operations in Ukraine, including disrupting power generation.",
+      "The NCSC Annual Review 2026 assesses that AI is already beginning to reshape the cyber threat landscape.",
+      "The NCSC Annual Review 2026 said that this year, the Government Cyber Coordination Centre (GC3), a joint NCSC-DCMS enterprise, the AI Security Institute (AISI) and other government departments launched Project DROMOS to explore how frontier AI models could help identify software vulnerabilities more quickly and effectively across government systems."
      ]
     }
    ],
@@ -290,10 +327,10 @@
      "name": "The Register",
      "url": "https://www.theregister.com/security/2026/11/02/nuclear-threats-and-street-brawls-russia-ukraine-report-attacks-on-their-emergency-alert-apps/5306901",
      "status": 200,
-     "chars": 8285,
+     "chars": 8241,
      "excerpts": [
       "Ukraine's announcement of the alert app cyberattack came almost simultaneously with the official conclusion of a six-day ceasefire in Kherson.",
-      "\"Citizens are alerted through primary channels: regional and municipal alert systems (sirens, loudspeakers), communication networks (SMS messaging), and television and radio broadcasts.",
+      "\"It is possible and we are quite prepared for such possibilities.\" Russia has not explicitly blamed Ukraine for the attack on its app, and official sources say the app is running as normal.",
       "According to the messages sent to devices after the compromise of Ukraine's alert app, the fake warnings pertained to various threats, such as street fights in Kyiv, chemical attacks, and radiation hazards.",
       "According to public statements and messages sent via social media, Ukraine’s alert app was hit first, with the country’s Air Force quick to dispel nuclear fears.",
       "Stay calm, follow our messages on our channel!\" REG AD At around 0030 UTC on Monday, Russia's Ministry of Emergency Situations confirmed the country’s app had also been abused, with fake messages sent to citizens' devices."
@@ -310,12 +347,26 @@
      "status": 200,
      "chars": 3240,
      "excerpts": [
+      "Detalle CVE-2026-111497: una escritura fuera de límites al descomprimir datos Brotli manipulados puede corromper memoria, revelar información, interrumpir el servicio o permitir ejecutar código.",
       "RUGGEDCOM APE1808: actualizar PAN-OS según el boletín de Palo Alto Networks y consultar al soporte de Siemens.",
-      "RUGGEDCOM APE1808 con una versión vulnerable de PAN-OS.",
       "Descripción Siemens ha publicado 3 boletines sobre el impacto de 3 vulnerabilidades de severidad crítica en PHP y Brotli que podrían permitir ejecutar código remoto.",
       "Solución Industrial Edge Management con aplicaciones de gestión afectadas: desinstalar todas las aplicaciones de gestión y proteger IEM con cortafuegos o WAF.",
       "Industrial Edge Hub e Industrial Edge Management Cloud han sido corregidos centralmente y no requieren intervención del cliente."
      ]
+    },
+    {
+     "name": "CISA Known Exploited Vulnerabilities catalog",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+     "status": "error",
+     "error": "HTTP Error 403: Forbidden",
+     "excerpts": []
+    },
+    {
+     "name": "NVD CVE-2026-111497",
+     "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111497",
+     "status": 200,
+     "chars": 10,
+     "excerpts": []
     }
    ],
    "primary": [
@@ -323,14 +374,24 @@
      "url": "https://www.siemens.com/cert/operational-guidelines-industrial-security",
      "status": 200,
      "chars": 188309,
-     "excerpts": [],
+     "excerpts": [
+      "�H��V|�s�\u0006ZI��Rf�VS���\u001byI�(\u0003UX�\u0000\u0011 x�\u0007\u0004�z��G$T��\\U�0A\u0018�7 �# x�\u0001�/Ǿ)��m�:taN� �w~����\u000eN\u0007���^hV�Lr\u0006�\u000eF\u000fZ�\u000e0?",
+      "��{�Z�%\u0004��\u0013Ԋϻ\u0018\u00149 X|�F\u0012�K;��\u0000��e�ĬA��S�bW\u0007�J�*��@��=N �8�|v�{�4���\u0019�E5+E'�O� F����=�������v���^T�`�m\u0003\u0018 \u0006:��k9M�� y`���k��\u0003��Л�̇ \u0018�������^�)\u001b`�#\u0017U*8Sչ�Ke�^��I5��[:�|�A J��͒_F��Z۝�~��g�\u0010���;\u0010R�F\u0004!",
+      "�K��F\u0011�H�;�5��K|�''�ɭ�\u0000���$\u0005�\u000f\u0018A��W\u0007\u0013G�ZG��� �\u0018q�����+�`w�\u000fN���%i�."
+     ],
      "found_in": "INCIBE-CERT ICS advisories (Spain)"
     },
     {
      "url": "https://productcert.siemens.com/productcert/html/ssa-166980.html",
      "status": 200,
      "chars": 12998,
-     "excerpts": [],
+     "excerpts": [
+      "Recommended security guidelines can be found at: https://www.siemens.com/gridsecurity PRODUCT DESCRIPTION Desigo CC is the integrated building management platform for managing high-performing buildings.",
+      "Vulnerability CVE-2026-109618 PHP uses longjmp() for out-of-memory (OOM) errors to exit the current context and abort handling of the request.",
+      "CVSS v3.1 Base Score 9.8 CVSS v3.1 Vector CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H CVSS v4.0 Base Score 9.2 CVSS v4.0 Vector CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N CWE CWE-416: Use After Free Vulnerability CVE-2026-109619 PHP has various global state that temporarily points into request memory.",
+      "This advisory covers the status of impact of various Siemens software products.",
+      "As a general security measure, Siemens strongly recommends to protect network access to devices with appropriate mechanisms."
+     ],
      "found_in": "INCIBE-CERT ICS advisories (Spain)"
     }
    ]
@@ -343,10 +404,11 @@
      "status": 200,
      "chars": 1946,
      "excerpts": [
-      "CVE Identificador CVE Severidad Explotación Fabricante CVE-2026-105982 Alta No WELOTEC CVE-2026-105981 Alta No WELOTEC CVE-2026-105980 Alta No WELOTEC CVE-2026-105979 Alta No WELOTEC CVE-2026-105978 Alta No WELOTEC CVE-2026-109161 Media No WELOTEC Listado de referencias Welotec: Multiple vulnerabilities in TK routers Etiquetas Actualización RCE Sistemas de control industrial Vulnerabilidad",
       "Múltiples vulnerabilidades en productos de Welotec | INCIBE-CERT | INCIBE Pasar al contenido principal Múltiples vulnerabilidades en productos de Welotec Fecha de publicación 04/11/2026 Identificador INCIBE-2026-828 Importancia 4 - Alta Recursos Afectados TK100, modelos TK102L y TK102W, con firmware anterior a 3.5.116.",
+      "CVE Identificador CVE Severidad Explotación Fabricante CVE-2026-105982 Alta No WELOTEC CVE-2026-105981 Alta No WELOTEC CVE-2026-105980 Alta No WELOTEC CVE-2026-105979 Alta No WELOTEC CVE-2026-105978 Alta No WELOTEC CVE-2026-109161 Media No WELOTEC Listado de referencias Welotec: Multiple vulnerabilities in TK routers Etiquetas Actualización RCE Sistemas de control industrial Vulnerabilidad",
       "Descripción Welotec en coordinación con CERT@VDE ha publicado 6 vulnerabilidades, 5 de severidad alta y 1 media, en las funciones de administración de sus routers TK.",
-      "Solución Actualizar el firmware a las siguientes versiones o posteriores: TK100: 3.5.116."
+      "Solución Actualizar el firmware a las siguientes versiones o posteriores: TK100: 3.5.116.",
+      "TK500-v2, modelos TK525L-v2, TK525L-W-v2, TK525W-v2 y TK535L1-v2, con firmware anterior a 1.0.124."
      ]
     }
    ],
@@ -362,8 +424,8 @@
      "excerpts": [
       "Attackers Chain Three Ivanti Connect Secure Flaws to Gain Unauthenticated Root Access --> Attackers Chain Three Ivanti Connect Secure Flaws to Gain Unauthenticated Root Access  Ravie Lakshmanan  Oct 31, 2026 Vulnerability / Cyber Attack The U.S.",
       "Cybersecurity and Infrastructure Security Agency (CISA) on Friday added two security flaws impacting Ivanti Connect Secure (ICS) to its Known Exploited Vulnerabilities ( KEV ) catalog, following active exploitation in the wild.",
-      "\"This exploit chain combined an authentication bypass, a remote code execution (RCE), and a privilege escalation vulnerability to achieve unauthenticated root-level code execution,\" Volexity noted.",
       "Ivanti said that, around the time the details were published, it was still working on developing fixes for the local privilege escalation (LPE) vulnerability exploited in the attack chain.",
+      "\"This exploit chain combined an authentication bypass, a remote code execution (RCE), and a privilege escalation vulnerability to achieve unauthenticated root-level code execution,\" Volexity noted.",
       "Standing Elevated Privileges: Control Access Without Flooding the Helpdesk  November 2, 2026 Read ➝ Why Root and Jailbreak Detection Alone Cannot Guarantee Mobile App Security  October 26, 2026 Read ➝ Get the Latest News in Your Inbox Get the latest news, expert insights, exclusive resources, and strategies from industry leaders, all for free."
      ]
     }
@@ -401,7 +463,7 @@
   },
   "CyberScoop": {
    "energy_items": 0,
-   "wide_items": 5,
+   "wide_items": 3,
    "feed": "ok",
    "pulls_ok": 0,
    "pulls_blocked": 0
@@ -415,7 +477,7 @@
   },
   "BleepingComputer": {
    "energy_items": 1,
-   "wide_items": 14,
+   "wide_items": 11,
    "feed": "ok",
    "pulls_ok": 2,
    "pulls_blocked": 0
@@ -464,7 +526,7 @@
   },
   "The Hacker News": {
    "energy_items": 2,
-   "wide_items": 13,
+   "wide_items": 11,
    "feed": "ok",
    "pulls_ok": 3,
    "pulls_blocked": 0
@@ -478,7 +540,7 @@
   },
   "The Register Security": {
    "energy_items": 3,
-   "wide_items": 5,
+   "wide_items": 4,
    "feed": "ok",
    "pulls_ok": 0,
    "pulls_blocked": 0
@@ -520,7 +582,7 @@
   },
   "WIRED Security": {
    "energy_items": 0,
-   "wide_items": 2,
+   "wide_items": 1,
    "feed": "ok",
    "pulls_ok": 0,
    "pulls_blocked": 0
@@ -576,7 +638,7 @@
   },
   "Le Monde Pixels (France)": {
    "energy_items": 0,
-   "wide_items": 5,
+   "wide_items": 4,
    "feed": "ok",
    "pulls_ok": 0,
    "pulls_blocked": 0
@@ -623,6 +685,34 @@
    "pulls_ok": 0,
    "pulls_blocked": 0
   },
+  "TechCrunch Security": {
+   "energy_items": 0,
+   "wide_items": 3,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "UC Berkeley Center for Long-Term Cybersecurity": {
+   "energy_items": 0,
+   "wide_items": 1,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "MIT Technology Review": {
+   "energy_items": 0,
+   "wide_items": 5,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "MIT Technology Review: climate and energy": {
+   "energy_items": 0,
+   "wide_items": 1,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
   "heise Security": {
    "energy_items": 0,
    "wide_items": 0,
@@ -630,7 +720,21 @@
    "pulls_ok": 1,
    "pulls_blocked": 0
   },
+  "NVD CVE-2026-58115": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "n/a",
+   "pulls_ok": 1,
+   "pulls_blocked": 0
+  },
   "Zyxel security advisory": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "n/a",
+   "pulls_ok": 1,
+   "pulls_blocked": 0
+  },
+  "NVD CVE-2026-107441": {
    "energy_items": 0,
    "wide_items": 0,
    "feed": "n/a",
@@ -656,6 +760,20 @@
    "wide_items": 0,
    "feed": "n/a",
    "pulls_ok": 2,
+   "pulls_blocked": 0
+  },
+  "CISA Known Exploited Vulnerabilities catalog": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "n/a",
+   "pulls_ok": 0,
+   "pulls_blocked": 1
+  },
+  "NVD CVE-2026-111497": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "n/a",
+   "pulls_ok": 1,
    "pulls_blocked": 0
   }
  },

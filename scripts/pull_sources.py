@@ -37,15 +37,29 @@ def keyterms(*parts):
     stop = {"that","with","from","this","have","were","been","their","which","into","after","about","than","what","when","will","over","more","also","they"}
     return {w for w in words if w not in stop}
 
-def relevant(sents, terms, n=5):
-    scored = sorted(((len(terms & keyterms(s)), s) for s in sents), key=lambda x: -x[0])
-    return [s for sc, s in scored[:n] if sc >= 2]
+def anchors(*parts):
+    """Language-independent tokens: CVE ids, numbers with units, capitalised proper nouns, vendor
+    names. These survive translation, so a French or Japanese primary can still be matched
+    (REVIEW.md finding 5)."""
+    t = " ".join(parts)
+    a = set(re.findall(r"CVE-\d{4}-\d+", t, re.I)) | set(re.findall(r"\b\d{2,}(?:[.,]\d+)?\s?(?:%|°C|MW|GW|million|billion|M|B)?\b", t))
+    a |= {w for w in re.findall(r"\b[A-Z][A-Za-z]{2,}\b", t) if w.lower() not in {"the","this","that","attackers","critical","multiple","cyberattack"}}
+    return {x.lower() for x in a if len(x) > 2}
+
+def relevant(sents, terms, n=5, anch=None):
+    anch = anch or set()
+    def score(s):
+        sl = s.lower(); return len(terms & keyterms(s)) + 2 * sum(1 for x in anch if x in sl)
+    scored = sorted(((score(s), s) for s in sents), key=lambda x: -x[0])
+    out = [s for sc, s in scored[:n] if sc >= 2]
+    return out if out else [s for s in sents[:3]]  # never return nothing: the first sentences are better than silence
 
 def main():
     b = json.loads(B.read_text())
     out = {"pulled_at": datetime.now(timezone.utc).isoformat(), "items": {}}
     for it in b.get("items", []):
         terms = keyterms(it["headline"], it.get("so_what", ""), " ".join(it.get("cves", [])))
+        anch = anchors(it["headline"], it.get("ics_vendor") or "", it.get("victim") or "", " ".join(it.get("cves", [])))
         rec = {"sources": [], "primary": []}
         seen = set()
         for s in it.get("sources", []):
@@ -54,7 +68,7 @@ def main():
             seen.add(url)
             try:
                 page, status = fetch(url); txt, links = text_of(page)
-                ex = relevant(sentences(txt), terms)
+                ex = relevant(sentences(txt), terms, anch=anch)
                 rec["sources"].append({"name": s["name"], "url": url, "status": status, "chars": len(txt), "excerpts": ex})
                 print(f"  ok  {status} {len(txt):>7} {len(ex)} excerpts  {url[:80]}", file=sys.stderr)
                 for l in links:
@@ -62,7 +76,7 @@ def main():
                     if any(h in host or h in l.lower() for h in PRIMARY_HOSTS) and l not in seen and not l.endswith((".png", ".jpg", ".svg", ".pdf")) and not re.search(r"facebook|twitter|linkedin|/styles/|share", l):
                         seen.add(l)
                         try:
-                            p2, st2 = fetch(l); t2, _ = text_of(p2); ex2 = relevant(sentences(t2), terms)
+                            p2, st2 = fetch(l); t2, _ = text_of(p2); ex2 = relevant(sentences(t2), terms, anch=anch)
                             if ex2 or st2 == 200:
                                 rec["primary"].append({"url": l, "status": st2, "chars": len(t2), "excerpts": ex2, "found_in": s["name"]})
                                 print(f"    primary {st2} {len(ex2)} excerpts {l[:80]}", file=sys.stderr)

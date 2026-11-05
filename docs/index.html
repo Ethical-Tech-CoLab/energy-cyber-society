@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https:; frame-ancestors 'none'">
 <title>Energy Cyber Society</title>
 <meta name="description" content="A virtual town of five LLM agents who read the day's energy-sector cybersecurity news from credible sources and argue about it. Click a resident to talk.">
 <link rel="icon" type="image/svg+xml" href="etc-icon.svg">
@@ -24,7 +25,7 @@
     <button id="btn-look" class="pix">Where to look</button>
     <button id="btn-limits" class="pix">Limitations</button>
     <button id="btn-rules" class="pix">Rules</button>
-    <button id="btn-command" class="pix">Cyber Command</button>
+    <button id="btn-command" class="pix">Incident Desk</button>
     <button id="btn-register" class="pix">Agent Register</button>
     <button id="btn-dash" class="pix">Dashboard</button>
     <button id="btn-collections" class="pix">Collections</button>
@@ -44,6 +45,7 @@
   <div class="town-wrap">
     <canvas id="town" width="960" height="830" aria-label="Pixel town with fourteen residents. Click a resident to talk."></canvas>
     <div class="hint" id="hint">Click a resident to talk, a building to read what happens inside, a facility for its sector dossier, the newsstand for the Gazette, or the Bank for the money. They are discussing today's energy-sector cyber news.</div>
+    <div id="listview" class="listview"></div>
     <div class="log-wrap"><div class="log-head">Overheard in town</div><div id="log" class="log" aria-live="polite"></div></div>
   </div>
 
@@ -70,7 +72,7 @@
 <dialog id="dlg-settings" class="dlg">
   <form method="dialog">
     <h2>Live chat settings</h2>
-    <p>Out of the box the residents answer from the briefing generated each morning by the daily run. To ask them anything, give the page a way to reach a model. Nothing here leaves your browser except the request itself.</p>
+    <p>Out of the box the residents answer from the briefing generated each morning by the daily run. To ask them anything, give the page a way to reach a model. <b>Prefer the proxy:</b> a key pasted here is stored in this browser's localStorage and sent from the browser; any script injected into the page could read it. A proxy keeps the key on a server you control. Fetched headlines are fenced as data in every prompt, but they remain untrusted text.</p>
     <label>Anthropic API key (direct from browser)<input id="s-key" type="password" placeholder="sk-ant-…"></label>
     <label>…or an OpenAI-compatible proxy URL (e.g. pages-ai-proxy)<input id="s-proxy" placeholder="https://your-proxy/v1/chat/completions"></label>
     <label>Model<input id="s-model" placeholder="claude-sonnet-5-5"></label>
@@ -220,7 +222,7 @@
 
 <dialog id="dlg-command" class="dlg wide">
   <form method="dialog">
-    <h2>Cyber Command <small id="cmd-meta"></small></h2>
+    <h2>Incident Desk <small id="cmd-meta"></small></h2>
     <p class="k">Every flag a resident or a check raises is reported here the moment it is raised: unsourced sentences, single-source items, contradictions between outlet and primary, downgrades, blocked pages, suspected inventions, and live-chat answers without a citation. The log is append-only; nothing is deleted.</p>
     <h3>Verify anything</h3>
     <div id="verify-form" class="verify"><select id="verify-pick"></select><input id="verify-input" placeholder="…or paste a claim, a headline, a number"><button class="pix" type="button" id="verify-go">Verify</button></div>

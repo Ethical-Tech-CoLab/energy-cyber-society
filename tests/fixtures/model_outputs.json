@@ -1,0 +1,561 @@
+{
+ "default": "A short briefing sentence with a source (The Hacker News, 2026-11-03). Second sentence (BleepingComputer, 2026-11-04).",
+ "by_prompt": {
+  "Fill this intelligence record": [
+   {
+    "headline": "Siemens SIMATIC IoT2050 Advanced: CVSS 10 missing-authentication flaw exploited in the wild",
+    "severity": "critical",
+    "event_type": "exploitation in the wild",
+    "event_date": null,
+    "reported_date": "2026-11-03",
+    "victim": null,
+    "country": "global",
+    "status": "ongoing",
+    "subsector": "cross-sector",
+    "value_chain": "enabling/cross-cutting",
+    "ot_impact": "OT reached, no process effect",
+    "asset_type": "industrial IoT edge gateway running Industrial OS with Node-RED",
+    "ics_vendor": "Siemens",
+    "supply_chain_entry": null,
+    "actor": null,
+    "actor_type": "unattributed",
+    "attribution_confidence": "unattributed",
+    "attributed_by": null,
+    "motivation": null,
+    "cves": [
+     "CVE-2026-58115"
+    ],
+    "kev_listed": "false (not in KEV as of 2026-11-05)",
+    "initial_access": "unauthenticated access to the Node-RED HTTP interface, creating flows that run system commands (VulnCheck)",
+    "malware": "remote command backdoor (reported)",
+    "operational_impact": "none reported",
+    "physical_safety_impact": null,
+    "customers_affected": null,
+    "data_exposed": null,
+    "cascading": null,
+    "geopolitical_link": null,
+    "regulatory_trigger": "NERC CIP-007/CIP-010 patch and change management for entities running the device",
+    "government_response": "[unverified] no CISA ICS advisory seen in the allowlisted feeds (CISA feed returned 403)",
+    "source_type": "vendor report",
+    "source_reliability": "C",
+    "info_credibility": "2",
+    "corroboration": 2,
+    "claim_vs_confirmed": "claimed",
+    "so_what": "An unauthenticated RCE on a gateway that bridges field devices and IT, with exploitation reported by a firm that sells vulnerability intelligence; check for the device and patch regardless.",
+    "recommended_action": "patch",
+    "trend": "new",
+    "labels": [
+     "[inference] exploitation is of Node-RED generally; whether IoT2050 units in energy networks were hit is not stated",
+     "[note] heise (DE) independently reports the attacks; VulnCheck remains the origin of the exploitation telemetry",
+     "[note] not in CISA KEV as of 2026-11-05; NVD confirms CVSS 4.0 = 10.0; exploitation remains a vendor claim"
+    ],
+    "confidence": "moderate",
+    "sources": [
+     {
+      "name": "The Hacker News (relaying VulnCheck)",
+      "url": "https://thehackernews.com/2026/11/attackers-exploit-critical-siemens.html",
+      "date": "2026-11-03"
+     },
+     {
+      "name": "VulnCheck blog (vendor, sells vulnerability intelligence)",
+      "url": "https://www.vulncheck.com/blog/exploitation-targeting-node-red",
+      "date": "2026-11-03"
+     },
+     {
+      "name": "heise Security (Germany)",
+      "url": "https://www.heise.de/news/Internet-of-Things-Siemens-Simatic-IoT2050-angegriffen-11509246.html",
+      "date": "2026-11-03"
+     },
+     {
+      "name": "NVD CVE-2026-58115",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58115",
+      "date": "2026-08-11"
+     }
+    ],
+    "indicators": [
+     {
+      "type": "cve",
+      "value": "CVE-2026-58115",
+      "source": "The Hacker News / VulnCheck"
+     }
+    ],
+    "ttps": [
+     {
+      "id": "T0883",
+      "name": "Internet Accessible Device (ICS)"
+     },
+     {
+      "id": "T0886",
+      "name": "Remote Services (ICS)"
+     },
+     {
+      "id": "T0859",
+      "name": "Valid Accounts (ICS) [inference: missing auth]"
+     }
+    ],
+    "continent": "global"
+   }
+  ],
+  "Write the week's summary": {
+   "headline": "Quiet week for US energy operators on the record; loud week for exposed OT controls in Europe and for two exploited device flaws.",
+   "bullets": [
+    {
+     "text": "No confirmed cyber intrusion at any US electric utility, pipeline, refinery, LNG terminal or nuclear facility in the 7-day window across 14 allowlisted feeds.",
+     "sources": [
+      "all feeds"
+     ],
+     "tag": "US · status",
+     "source_urls": []
+    },
+    {
+     "text": "Electric utilities joined other industries urging Congress to renew the Cybersecurity Information Sharing Act of 2015, which provides liability cover for sharing threat indicators and expires next month.",
+     "sources": [
+      "Utility Dive, 2026-11-04"
+     ],
+     "tag": "US · policy",
+     "source_urls": [
+      {
+       "name": "Utility Dive",
+       "url": "https://www.utilitydive.com/news/electric-utilities-join-industries-urging-renewal-of-cybersecurity-informat/873703/",
+       "date": "2026-11-04"
+      }
+     ]
+    },
+    {
+     "text": "CISA launched its 2026 Critical Infrastructure Security and Resilience campaign, pointing owners at OT security, operational continuity and recovery planning.",
+     "sources": [
+      "Industrial Cyber, 2026-11-03"
+     ],
+     "tag": "US · guidance",
+     "source_urls": [
+      {
+       "name": "Industrial Cyber",
+       "url": "https://industrialcyber.co/cisa/cisa-urges-critical-infrastructure-owners-to-prioritize-ot-security-operational-continuity-recovery-planning-in-2026-campaign/",
+       "date": "2026-11-03"
+      }
+     ]
+    },
+    {
+     "text": "A reported Trump-administration ban on foreign grid components has the utility industry worried about practicality and cost; the legal instrument was not in any allowlisted source.",
+     "sources": [
+      "Utility Dive, 2026-11-03"
+     ],
+     "tag": "US · policy · unverified",
+     "source_urls": [
+      {
+       "name": "Utility Dive",
+       "url": "https://www.utilitydive.com/news/trump-ban-on-foreign-grid-components-sparks-industry-concern-over-practical/873752/",
+       "date": "2026-11-03"
+      }
+     ]
+    },
+    {
+     "text": "Attackers remotely changed refrigeration setpoints overnight into November 2 at supermarkets in Belgium, Sweden, Estonia and elsewhere; Danfoss said its controls were involved, as in October's attacks on French supermarkets.",
+     "sources": [
+      "The Hacker News, 2026-11-03",
+      "Dark Reading, 2026-11-04"
+     ],
+     "tag": "EU · OT process affected",
+     "source_urls": [
+      {
+       "name": "The Hacker News",
+       "url": "https://thehackernews.com/2026/11/second-wave-of-cyberattacks-hits.html",
+       "date": "2026-11-03"
+      }
+     ]
+    },
+    {
+     "text": "France's national blood service confirmed an attack through its refrigeration-equipment provider that altered temperature and defrost settings at three sites; alarms caught it and products were moved preventively. The widely quoted 110°C figure is 'according to reports' only.",
+     "sources": [
+      "BleepingComputer, 2026-11-04",
+      "The Register, 2026-11-04",
+      "EFS statement"
+     ],
+     "tag": "EU · OT · victim-confirmed",
+     "source_urls": [
+      {
+       "name": "BleepingComputer",
+       "url": "https://www.bleepingcomputer.com/news/security/cyberattack-disrupts-blood-storage-refrigeration-systems-in-france/",
+       "date": "2026-11-04"
+      },
+      {
+       "name": "The Register",
+       "url": "https://www.theregister.com/security/2026/11/04/cyberattack-on-french-plasma-stores-is-enough-to-make-your-blood-boil/5307519",
+       "date": "2026-11-04"
+      },
+      {
+       "name": "EFS press statement (victim, primary, French)",
+       "url": "http://presse.efs.sante.fr/actualites/l-efs-confirme-l-incident-de-cybersecurite-impactant-un-de-ces",
+       "date": "2026-11-04"
+      }
+     ]
+    },
+    {
+     "text": "Siemens SIMATIC IoT2050 Advanced: CVE-2026-58115, CVSS 10, missing authentication on the Node-RED interface, reported under active exploitation by VulnCheck, a vendor; no CISA or Siemens notice found in the bundle.",
+     "sources": [
+      "The Hacker News, 2026-11-03",
+      "VulnCheck"
+     ],
+     "tag": "vulnerability · single source",
+     "source_urls": [
+      {
+       "name": "The Hacker News (relaying VulnCheck)",
+       "url": "https://thehackernews.com/2026/11/attackers-exploit-critical-siemens.html",
+       "date": "2026-11-03"
+      },
+      {
+       "name": "VulnCheck blog (vendor, sells vulnerability intelligence)",
+       "url": "https://www.vulncheck.com/blog/exploitation-targeting-node-red",
+       "date": "2026-11-03"
+      }
+     ]
+    },
+    {
+     "text": "Zyxel GS1900 switches: zero-day CVE-2026-107441 used to compromise nearly 1,000 devices and steal configuration files and credentials; patches out October 22, advisory November 3.",
+     "sources": [
+      "BleepingComputer, 2026-11-05",
+      "Zyxel advisory"
+     ],
+     "tag": "vulnerability · vendor-confirmed",
+     "source_urls": [
+      {
+       "name": "BleepingComputer",
+       "url": "https://www.bleepingcomputer.com/news/security/zyxel-fixes-zero-day-exploited-to-hack-nearly-1-000-network-switches/",
+       "date": "2026-11-05"
+      },
+      {
+       "name": "Zyxel security advisory (vendor, primary)",
+       "url": "https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-out-of-bound",
+       "date": "2026-11-03"
+      },
+      {
+       "name": "primary: www.zyxel.com",
+       "url": "https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-out-of-bounds-write-vulnerability-in-gs1900-series-switches-11-03-2026",
+       "date": ""
+      },
+      {
+       "name": "primary: www.zyxel.com",
+       "url": "https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-stack-based-buffer-overflow-vulnerability-in-gs1900-series-switches-06-16-2026",
+       "date": ""
+      }
+     ]
+    },
+    {
+     "text": "UK NCSC's Annual Review says AI-powered malware is 'highly likely' to feature in a ransomware attack on UK critical national infrastructure by 2028 and names China as best positioned to use AI against it.",
+     "sources": [
+      "UK NCSC, 2026-11-03"
+     ],
+     "tag": "UK · forecast",
+     "source_urls": [
+      {
+       "name": "UK NCSC News",
+       "url": "https://www.ncsc.gov.uk/news/cyber-chief-uk-facing-ai-powered-attacks-on-critical-infrastructure-in-two-years",
+       "date": "2026-11-03"
+      },
+      {
+       "name": "Industrial Cyber",
+       "url": "https://industrialcyber.co/critical-infrastructure/ncsc-annual-review-2026-warns-ai-powered-malware-could-target-uk-critical-infrastructure-by-2028/",
+       "date": "2026-11-04"
+      },
+      {
+       "name": "NCSC Annual Review 2026 (primary)",
+       "url": "https://www.ncsc.gov.uk/collection/annual-review-2026",
+       "date": "2026-11-03"
+      }
+     ]
+    },
+    {
+     "text": "Elsewhere in cyberspace: a $6.3 billion Binance theft via a fake job interview attributed to North Korea; a cPGuard autoupdate backdoor; airline breaches spreading from IT provider Amadeus; Russia and Ukraine trading attacks on emergency alert apps.",
+     "sources": [
+      "BleepingComputer",
+      "SecurityWeek",
+      "The Record",
+      "The Register"
+     ],
+     "tag": "wide angle",
+     "source_urls": [
+      {
+       "name": "The Register",
+       "url": "https://www.theregister.com/security/2026/11/02/nuclear-threats-and-street-brawls-russia-ukraine-report-attacks-on-their-emergency-alert-apps/5306901",
+       "date": "2026-11-02"
+      }
+     ]
+    }
+   ],
+   "considerations": [
+    "Absence of evidence: the 'quiet US week' is what credible sources reported, not what happened. Silence is not safety, and the information-sharing law that makes disclosure safer is weeks from lapsing.",
+    "The loudest item is the least corroborated: the Siemens CVSS 10 rests on one vendor's telemetry relayed by one outlet. Still patch it; severity and corroboration are different columns.",
+    "The refrigeration attacks are the energy story in disguise: internet-reachable controllers, a vendor remote-access path, low-skill setpoint tampering. That is the architecture under substations, pump stations and battery sites.",
+    "Watch the vendor-funded framing: six of sixteen energy items came from one OT trade outlet, three of them company announcements. The UK '2028' headline is one agency press release run by three outlets.",
+    "Two US legal items could not be checked against their text because the outlet blocks automated fetching. Treat both as discovery, not fact, until the statute and the executive instrument are read.",
+    "Six new residents joined this run (Counsel, Archivist, Ombudsman, Operator, Economist, Geopolitical Analyst); their first briefings are mostly statements of what has not yet been verified, which is the honest starting point.",
+    "Sample size: 38 feeds (36 answered) in 9 languages, 7-day window, 171 stories kept, 21 energy-cyber, 12 board items. Africa, the Middle East and most of Asia still lack regional sources."
+   ]
+  },
+  "For each item output ONLY a JSON object keyed by headline": {
+   "Siemens SIMATIC IoT2050 Advanced: CVSS 10 missing-authentication flaw exploited in the wild": {
+    "attribution": null,
+    "bypass": "No bypass needed: the Node-RED HTTP interface on affected units lacked authentication for a critical function, so any reachable unit accepts a new flow from anyone.",
+    "mechanics": "Attacker finds the exposed interface (internet scan or inside the network), creates a Node-RED flow containing an exec or function node, deploys it; the gateway runs the command as the service user. Reported payloads: remote command backdoors.",
+    "process": [
+     "Discover: scan for Node-RED/IoT2050 HTTP ports",
+     "Access: create a flow via the unauthenticated interface",
+     "Execute: the flow runs system commands on the gateway",
+     "Persist: keep a backdoor flow; optionally pivot to the field network or the IT side",
+     "Effect (potential): manipulated telemetry, loss of view, lateral movement"
+    ],
+    "next_layers": [
+     "Block the Node-RED port at the site firewall; allow only the engineering VLAN",
+     "Patch to the fixed Industrial OS build; verify no unknown flows",
+     "Put the gateway behind a jump host with MFA (Purdue 3.5 DMZ)",
+     "Alert on new flow deployments and on outbound connections from gateways",
+     "Ask the vendor whether Node-RED is needed at all on that unit"
+    ],
+    "attribution_note": "Unattributed by any government or named firm. Candidate classes and what would distinguish them: Opportunistic criminal operators scanning for exposed Node-RED instances: VulnCheck describes exploitation targeting Node-RED broadly, with backdoors that run commands; that is commodity tradecraft (botnets, miners) | State-aligned prepositioning in OT edge devices: IoT2050 sits between field devices and IT, the kind of device Volt Typhoon-class actors prefer; but no advisory names a state actor and no energy victim is named. No state or group is named as responsible here (rule 26)."
+   }
+  },
+  "Output ONLY a JSON array of correlations": [
+   {
+    "between": [
+     "Cyberattack via refrigeration-equipment provider changed temperature settings at three French blood-service facilities",
+     "Overnight wave of refrigeration setpoint attacks on supermarkets in Belgium, Sweden, Estonia and elsewhere"
+    ],
+    "domains": [
+     "OT",
+     "supply chain",
+     "health",
+     "retail"
+    ],
+    "link": "Same technique (remote setpoint change), same vendor family (Danfoss controls per Danfoss; Sabcobel says same vulnerability as October), same 48-hour window.",
+    "strength": "strong",
+    "evidence": "The Hacker News 2026-11-03; BleepingComputer 2026-11-04"
+   },
+   {
+    "between": [
+     "Overnight wave of refrigeration setpoint attacks on supermarkets in Belgium, Sweden, Estonia and elsewhere",
+     "Siemens SIMATIC IoT2050 Advanced: CVSS 10 missing-authentication flaw exploited in the wild"
+    ],
+    "domains": [
+     "OT",
+     "vulnerability"
+    ],
+    "link": "Both are internet-reachable OT endpoints with weak or missing authentication; different products, same exposure class.",
+    "strength": "thematic",
+    "evidence": "VulnCheck blog; The Hacker News 2026-11-03"
+   }
+  ],
+  "For the three most important board items": [
+   {
+    "story": "Overnight wave of refrigeration setpoint attacks on supermarkets in Belgium, Sweden, Estonia and elsewhere",
+    "title": "Exposed refrigeration and building controls across Europe",
+    "action_now": "Operators with Danfoss or similar cooling controllers: inventory internet-reachable controllers and vendor remote-access paths; put them behind a VPN with MFA; alarm on setpoint changes without a logged operator action (Operator's note).",
+    "impact_chain": "vendor path → controller → setpoint → physical process (temperature) → stock loss or, in a battery container, thermal risk → operational outage.",
+    "scenarios": [
+     {
+      "name": "Contained",
+      "likelihood": "likely",
+      "what": "Copycats keep hitting retail cold chains at low scale; vendors push authentication fixes; no energy site affected.",
+      "confirms": "no new sectors in next two runs; Danfoss advisory published"
+     },
+     {
+      "name": "Spread to energy",
+      "likelihood": "possible",
+      "what": "Same technique reaches HVAC in substation control houses or BESS container cooling; first energy victim disclosed in Europe.",
+      "confirms": "an energy operator statement or CISA/ENISA advisory naming cooling or BMS controllers"
+     },
+     {
+      "name": "Coordinated campaign",
+      "likelihood": "unlikely on current evidence",
+      "what": "A named actor claims or is attributed the wave; targets chosen for political effect; attacks timed to cold-chain-dependent events.",
+      "confirms": "government attribution; a claim on a credible channel; victims clustering by country of policy interest"
+     }
+    ],
+    "source_urls": [
+     {
+      "name": "The Hacker News",
+      "url": "https://thehackernews.com/2026/11/second-wave-of-cyberattacks-hits.html",
+      "date": "2026-11-03"
+     }
+    ]
+   }
+  ],
+  "Output ONLY JSON: {\"theatres\"": {
+   "theatres": [
+    {
+     "conflict": "Russia–Ukraine war",
+     "parties": "Russia; Ukraine; attributed actors Sandworm/APT44 (background), Gorbag campaign (ESET, this week)",
+     "evidence_this_week": [
+      "alert-app attacks during Kherson ceasefire (The Register, 2026-11-02)",
+      "Kyiv Independent suspected Russian attack (The Record)",
+      "Gorbag espionage vs Ukrainian administrations, defence, transport (Industrial Cyber)"
+     ],
+     "layers": {
+      "IT": "active: espionage and information operations; high confidence",
+      "OT": "precedent only: Ukraine 2015/2016/2022 grid attacks (background cases); nothing this week",
+      "PIT": "none evidenced"
+     },
+     "subsectors": [
+      "electricity (Ukraine, by precedent)",
+      "cross-sector public warning systems"
+     ],
+     "us_relevance": "indirect; FrostyGoop/Industroyer-class tooling exists; no US contact in bundle",
+     "confidence": "moderate",
+     "source_urls": [
+      {
+       "name": "The Register Security",
+       "url": "https://www.theregister.com/security/2026/11/02/nuclear-threats-and-street-brawls-russia-ukraine-report-attacks-on-their-emergency-alert-apps/5306901",
+       "date": "2026-11-02"
+      },
+      {
+       "name": "The Record (Recorded Future News)",
+       "url": "https://therecord.media/ukraine-kyiv-independent-cyberattack",
+       "date": "2026-11-04"
+      },
+      {
+       "name": "Industrial Cyber",
+       "url": "https://industrialcyber.co/ransomware/eset-uncovers-gorbag-cyberespionage-campaign-targeting-ukraines-administrations-defense-sector-transportation-hub/",
+       "date": "2026-11-04"
+      }
+     ]
+    },
+    {
+     "conflict": "China–US technology and supply-chain rivalry",
+     "parties": "PRC-aligned actors (Sogou DNS hijack, The Hacker News); UK NCSC naming China; US grid-component ban",
+     "evidence_this_week": [
+      "Sogou input-method DNS hijack, DarkVigil backdoor (The Hacker News)",
+      "NCSC: China best positioned to use AI against CNI (UK NCSC, 2026-11-03)",
+      "foreign grid-component ban (Utility Dive, 2026-11-03)"
+     ],
+     "layers": {
+      "IT": "active: espionage tradecraft",
+      "OT": "precedent only: Volt Typhoon prepositioning (CISA AA24-038A, background)",
+      "PIT": "active by policy: transmission hardware supply chain; inverter and BESS radio concerns (background)"
+     },
+     "subsectors": [
+      "electricity transmission",
+      "solar/wind/storage hardware"
+     ],
+     "us_relevance": "direct on PIT (policy); OT by precedent",
+     "confidence": "moderate",
+     "source_urls": [
+      {
+       "name": "The Hacker News",
+       "url": "https://thehackernews.com/2026/11/china-aligned-hackers-hijack-sogou.html",
+       "date": "2026-11-04"
+      },
+      {
+       "name": "UK NCSC News",
+       "url": "https://www.ncsc.gov.uk/news/cyber-chief-uk-facing-ai-powered-attacks-on-critical-infrastructure-in-two-years",
+       "date": "2026-11-03"
+      },
+      {
+       "name": "Industrial Cyber",
+       "url": "https://industrialcyber.co/critical-infrastructure/ncsc-annual-review-2026-warns-ai-powered-malware-could-target-uk-critical-infrastructure-by-2028/",
+       "date": "2026-11-04"
+      },
+      {
+       "name": "NCSC Annual Review 2026 (primary)",
+       "url": "https://www.ncsc.gov.uk/collection/annual-review-2026",
+       "date": "2026-11-03"
+      },
+      {
+       "name": "Utility Dive",
+       "url": "https://www.utilitydive.com/news/trump-ban-on-foreign-grid-components-sparks-industry-concern-over-practical/873752/",
+       "date": "2026-11-03"
+      }
+     ]
+    },
+    {
+     "conflict": "North Korea revenue operations",
+     "parties": "DPRK operators (attributed in coverage of the Binance theft)",
+     "evidence_this_week": [
+      "~$6.3B Binance theft via fake job interview (BleepingComputer; The Register); DPRK missile launches and denial (SecurityWeek)"
+     ],
+     "layers": {
+      "IT": "active: financially motivated access via recruitment lures",
+      "OT": "none",
+      "PIT": "none"
+     },
+     "subsectors": [
+      "none directly; any energy company's treasury or crypto exposure"
+     ],
+     "us_relevance": "low for grid; moderate for corporate IT",
+     "confidence": "moderate",
+     "source_urls": [
+      {
+       "name": "SecurityWeek",
+       "url": "https://www.securityweek.com/rigged-coding-assignment-abused-ai-tool-opened-path-to-6-billion-binance-heist/",
+       "date": "2026-11-04"
+      },
+      {
+       "name": "SecurityWeek",
+       "url": "https://www.securityweek.com/north-korea-launches-missiles-toward-the-sea-as-pyongyang-protests-against-us-claims-on-binance-hack/",
+       "date": "2026-11-04"
+      },
+      {
+       "name": "The Register Security",
+       "url": "https://www.theregister.com/security/2026/11/03/north-korean-fake-job-interview-led-to-63b-binance-heist/5307398",
+       "date": "2026-11-04"
+      }
+     ]
+    }
+   ],
+   "absent_this_week": [
+    "Iran and Gulf tensions (CyberAv3ngers-class OT activity: background only)",
+    "Venezuela",
+    "Taiwan Strait",
+    "Israel–Gaza energy infrastructure targeting"
+   ],
+   "note": "Absence means the allowlisted feeds carried nothing in the window, not that the theatre is quiet."
+  },
+  "Audit every item": {
+   "verdicts": {
+    "Siemens SIMATIC IoT2050 Advanced: CVSS 10 missing-authentication flaw exploited in the wild": {
+     "verdict": "hold at C2",
+     "reason": "single vendor source"
+    }
+   },
+   "summary": "Dry-run audit."
+  },
+  "Give one speech-bubble line": "Headlines are not evidence.",
+  "In one or two sentences: was any US energy operator": "No US energy operator was confirmed breached in this bundle.",
+  "Output ONLY a JSON array of 6 objects": [
+   {
+    "who": "reporter",
+    "line": "Dry-run line one."
+   },
+   {
+    "who": "analyst",
+    "line": "Dry-run line two."
+   }
+  ]
+ },
+ "by_system": {
+  "You write a short dialogue": [
+   {
+    "who": "reporter",
+    "line": "Dry-run line one (Outlet, 2026-11-04)."
+   },
+   {
+    "who": "analyst",
+    "line": "Dry-run line two."
+   },
+   {
+    "who": "reporter",
+    "line": "Three."
+   },
+   {
+    "who": "analyst",
+    "line": "Four."
+   },
+   {
+    "who": "reporter",
+    "line": "Five."
+   },
+   {
+    "who": "analyst",
+    "line": "Six."
+   }
+  ]
+ }
+}

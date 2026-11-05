@@ -46,6 +46,9 @@ follow INTELLIGENCE_ANALYSIS.md for how to evaluate sources, write judgments and
 4. Rules that override everything: never invent incidents, numbers, victims or attributions;
    legal claims need a primary document or get labelled [unverified]; vendor intel is
    attributed by name and flagged; say "I cannot verify this" instead of guessing.
+4b. `python scripts/classify_relevance.py` (second-stage relevance; you may do it yourself if no key:
+   label every story energy_cyber true/false with a reason) and, after the records exist,
+   `python scripts/enrich_cves.py` (NVD + CISA KEV; settles 'exploited?' from government data).
 5. `python scripts/pull_sources.py` pulls the direct source behind every item plus any
    primary document (government, regulator, vendor advisory, victim statement) linked from
    it, into `docs/data/sources.json`. Read the excerpts. Then do the second verification:
@@ -64,7 +67,13 @@ follow INTELLIGENCE_ANALYSIS.md for how to evaluate sources, write judgments and
    Verifier) are separate columns; never let one stand in for the other.
 7. Fill `indicators` (IOCs with source) and `ttps` (MITRE ATT&CK for ICS ids) on each item
    where the bundle supports them; never invent an IOC. Then `python scripts/export_stix.py`.
-7b. `python scripts/validate.py` must pass. Then `python scripts/command_log.py` appends this
+7b. `python scripts/validate.py` must pass; then `python scripts/check_ground_truth.py` (agreement
+   rate against tests/ground_truth.json; below 80% is a blocker, report it) and
+   `python scripts/sample_for_review.py` (draws the human-grading sample).
+7c. The Verifier's audit must use only the stripped records and the pulled text, never the
+   author's rationale (run_agents.py does this; a human curator must do the same by hand).
+7d. Attribution: only a named government or firm may be quoted as attributor; everything else
+   is 'unattributed' with distinguishing evidence and no state or group named. Then `python scripts/command_log.py` appends this
    run's flags to docs/data/command_log.json (append-only; never edit or delete events).
    Then `python scripts/archive.py` to file the run in docs/archive/ (append-only).
    Spot-check two background cases from agents/sectors.json against their 'check' pointer

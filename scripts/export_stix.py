@@ -10,6 +10,11 @@ b = json.loads((ROOT / "docs/data/briefing.json").read_text())
 NS = uuid.UUID("6ba7b810-9dad-11d1-80b4-00c04fd430c8")
 now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
 def sid(kind, key): return f"{kind}--{uuid.uuid5(NS, kind + ':' + key)}"
+CREATED_P = ROOT / "docs/data/stix_created.json"
+created_map = json.loads(CREATED_P.read_text()) if CREATED_P.exists() else {}
+def stamp(o):
+    """Keep 'created' stable per id across runs; bump only 'modified' (REVIEW.md finding 10)."""
+    o["created"] = created_map.setdefault(o["id"], now); o["modified"] = now; return o
 objs = {}
 ident = {"type": "identity", "spec_version": "2.1", "id": sid("identity", "energy-cyber-society"), "created": now, "modified": now, "name": "Energy Cyber Society", "identity_class": "system", "description": "Seven LLM residents curating energy-sector cyber news from an allowlist of credible sources. Confidence per object follows the item's Admiralty grading."}
 objs[ident["id"]] = ident
@@ -41,6 +46,8 @@ for it in b.get("items", []):
          "external_references": [({"source_name": s["name"], "url": s["url"]} if s.get("url") else {"source_name": s["name"]}) for s in it.get("sources", [])],
          "object_refs": refs or [ident["id"]], "x_ecs": {"source_reliability": it.get("source_reliability"), "info_credibility": it.get("info_credibility"), "claim_vs_confirmed": it.get("claim_vs_confirmed"), "labels": it.get("labels", []), "value_chain": it.get("value_chain"), "recommended_action": it.get("recommended_action")}}
     objs[r["id"]] = r
+for o in objs.values(): stamp(o)
+CREATED_P.write_text(json.dumps(created_map, indent=0))
 bundle = {"type": "bundle", "id": sid("bundle", b.get("generated_at", now)), "objects": list(objs.values())}
 (ROOT / "docs/data/stix.json").write_text(json.dumps(bundle, indent=1, ensure_ascii=False))
 print(f"stix: {len(bundle['objects'])} objects")

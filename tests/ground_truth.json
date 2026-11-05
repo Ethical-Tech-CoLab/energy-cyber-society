@@ -1,0 +1,15 @@
+{
+  "_comment": "Facts with a primary source, used to measure the pipeline (review blocker 2 / finding 3). check_ground_truth.py compares board items to these and writes the agreement rate. Add a fact only with its primary URL.",
+  "facts": [
+    {"match": "CVE-2026-58115", "field": "cvss", "expect": 10.0, "source": "https://nvd.nist.gov/vuln/detail/CVE-2026-58115"},
+    {"match": "CVE-2026-58115", "field": "kev_listed", "expect": "false", "source": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog", "as_of": "2026-11-05"},
+    {"match": "CVE-2026-107441", "field": "cvss", "expect": 8.8, "source": "https://nvd.nist.gov/vuln/detail/CVE-2026-107441"},
+    {"match": "CVE-2026-107441", "field": "ics_vendor", "expect": "Zyxel", "source": "https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-out-of-bound"},
+    {"match": "CVE-2026-111497", "field": "kev_listed", "expect": "true", "source": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog", "as_of": "2026-11-05"},
+    {"match": "CVE-2026-111497", "field": "event_type", "expect": "exploitation in the wild", "source": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"},
+    {"match": "blood", "field": "country", "expect": "France", "source": "http://presse.efs.sante.fr/actualites/l-efs-confirme-l-incident-de-cybersecurite-impactant-un-de-ces"},
+    {"match": "blood", "field": "ot_impact", "expect": "OT process affected", "source": "http://presse.efs.sante.fr/actualites/l-efs-confirme-l-incident-de-cybersecurite-impactant-un-de-ces"},
+    {"match": "NCSC", "field": "source_reliability", "expect": "A", "source": "https://www.ncsc.gov.uk/news/cyber-chief-uk-facing-ai-powered-attacks-on-critical-infrastructure-in-two-years"},
+    {"match": "Information Sharing", "field": "claim_vs_confirmed", "expect_contains": "claimed", "source": "no primary read; must not be marked confirmed"}
+  ]
+}

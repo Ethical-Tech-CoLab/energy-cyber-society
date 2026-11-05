@@ -25,7 +25,11 @@ forgotten; "blocked" means a person must act. Update this file when something sh
 - Twice-daily schedule: GitHub Actions workflow on disk; cloud-routine body in `scripts/routine.json`
 - Repo pushed to github.com/carolina-moron/energy-cyber-society (private)
 
-## From the peer review (REVIEW.md), in priority order
+## From the peer review (REVIEW.md): status 2026-11-05
+- DONE: dry-run replay; independent Verifier input; ground-truth check + eval tiles; human sample script; relevance classifier script; language-independent excerpting; NVD/KEV enrichment; computed severity + overrides; attribution restriction + validator rule; regional feeds/stories/items counts; CSP + prompt fencing + proxy-first note; STIX stable created; keyboard list view; schema_version; cross-language dedupe; actor aliases; Gazette AI line; Incident Desk rename; LICENSE (MIT, reversible); scripts/test_all.sh
+- OPEN: first real API run; CI workflow (needs gh workflow scope); split game.js; native-speaker review of keyword lists; outage datasets (OE-417, E-ISAC); push notifications; in-page human feedback
+
+## Original review list, for reference
 - BLOCKER 1: run the pipeline end to end once with a key; add a dry-run replay mode for every parser
 - BLOCKER 2: make the Verifier an independent call that never sees the author's rationale; held-out ground-truth set
 - MAJOR: human-graded weekly sample with published agreement rate; model classification pass for relevance; language-aware excerpting + NVD/KEV enrichment; computed severity score; restrict attribution hypotheses to named attributors; regional feed-vs-item counts; proxy-first live chat, prompt fencing, CSP

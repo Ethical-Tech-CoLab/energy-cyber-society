@@ -7,6 +7,11 @@ b = json.loads((ROOT / "docs/data/briefing.json").read_text())
 p = json.loads((ROOT / "agents/personas.json").read_text())
 sch = json.loads((ROOT / "agents/schema.json").read_text())["taxonomy"]
 errs = []
+if b.get("schema_version") != "2026-11-05.1": errs.append(f"schema_version is {b.get('schema_version')!r}, expected 2026-11-05.1")
+for sec in ("summary", "us_status", "rubric", "verification", "items", "conversations"):
+    if sec not in b: errs.append(f"missing section {sec}")
+for sec in ("correlations", "scenarios", "geopolitics", "world_desk", "executive_brief", "human_touch", "sample"):
+    if sec not in b: print(f"warn: section {sec} absent (allowed for dry-run and fallback)")
 for a in p["agents"]:
     ag = b.get("agents", {}).get(a["id"])
     if not ag: errs.append(f"missing agent {a['id']}"); continue
@@ -20,8 +25,13 @@ for it in b.get("items", []):
         if it.get(f) not in sch[f]: errs.append(f"item '{h}': {f}={it.get(f)!r} not in taxonomy")
     if not it.get("sources"): errs.append(f"item '{h}': no sources")
     if not it.get("so_what"): errs.append(f"item '{h}': no so_what")
+    an = it.get("anatomy")
+    if an and an.get("attribution"):
+        for a in an["attribution"]:
+            if a.get("label") != "[quoted]": errs.append(f"item '{h}': attribution hypothesis without a named attributor ({a.get('label')}); rule 26")
     scg = it.get("scoring", {})
     if not (scg.get("severity", {}).get("rationale") and scg.get("reliability_rationale")): errs.append(f"item '{h}': missing scoring rationale")
+    if scg.get("computed") and scg["computed"].get("level") != it.get("severity") and not scg.get("override_reason"): errs.append(f"item '{h}': severity {it.get('severity')} differs from computed {scg['computed']['level']} with no override_reason")
 if "us_status" not in b: errs.append("missing us_status")
 eb = b.get("executive_brief")
 if eb:

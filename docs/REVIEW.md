@@ -1,5 +1,10 @@
 # Peer review of the Energy Cyber Society
 
+> **Status 2026-11-05 (same day):** addressed in commit series 'review fixes'. Per finding:
+> 1 dry-run replay mode built and passing (91 call sites); the real API run still needs a key.
+> 2 Verifier now receives stripped records + pulled text only; ground-truth check added (10 facts, 100% today, trivially, because the facts were set from the same data; it becomes meaningful when facts are added by a person). 3 human-grading sample drawn each run; agreement tiles on the dashboard. 4 second-stage classifier script (runs with a key). 5 language-independent anchors in excerpting; NVD/KEV enrichment live (found one KEV-listed CVE the board had under-rated). 6 computed severity with arithmetic and mandatory override reasons. 7 attribution restricted to quoted attributors; validator enforces. 8 feeds/stories/items per continent beside every regional line; timeline marked illustrative. 9 CSP meta, prompt fencing, proxy-first settings text. 10 STIX stable `created`, nulls removed. 11 keyboard list view added; split and CI still pending. 12 schema_version + fuller validator. 13 cross-language dedupe in fetch; actor alias table. 14 Gazette masthead line. 15 renamed Incident Desk.
+> Still open: a real API run; CI (needs workflow scope); game.js split; native-speaker review; outage datasets; push notifications; human feedback inside the page.
+
 Reviewer: the assistant that built it, asked to be critical. Date: 2026-11-05. Severity:
 **blocker** (the product's claim does not hold), **major** (a user could be misled or the system
 could fail silently), **minor** (quality). Each finding has a fix.
