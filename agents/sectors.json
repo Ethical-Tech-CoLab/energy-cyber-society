@@ -92,7 +92,21 @@
         {
           "year": 2003,
           "case": "Davis-Besse (US): Slammer worm reached the plant process computer via a contractor connection; the plant was offline for other reasons.",
-          "check": "NRC inspection reports"
+          "check": "NRC inspection reports",
+          "anatomy": {
+            "attribution": "None: an untargeted worm",
+            "bypass": "A contractor's network link bypassed the plant firewall",
+            "mechanics": "SQL Slammer worm traffic saturated the network; the safety parameter display system was unavailable for hours",
+            "process": [
+              "Worm enters via contractor connection",
+              "Network saturation",
+              "Plant computer unavailable; plant was already offline"
+            ],
+            "next_layers": [
+              "Inventory and control every third-party connection",
+              "Network segmentation that does not rely on a single perimeter"
+            ]
+          }
         },
         {
           "year": 2014,
@@ -166,7 +180,25 @@
         {
           "year": 2017,
           "case": "Triton/Trisis: attackers reached Triconex safety controllers at a Saudi petrochemical plant via an engineering workstation; a plant trip revealed them.",
-          "check": "Mandiant and Dragos reports; Schneider Electric advisory"
+          "check": "Mandiant and Dragos reports; Schneider Electric advisory",
+          "anatomy": {
+            "attribution": "TEMP.Veles, linked by Mandiant to a Russian government research institute (TsNIIKhM), sanctioned by the US Treasury in 2020; high in the public record",
+            "bypass": "IT compromise, then a dual-homed engineering workstation that could reach the Triconex safety controllers; the controllers' physical key switch was left in Program mode",
+            "mechanics": "Custom TriStation protocol implementation to upload a malicious logic payload into the safety controller's memory; a bug in the payload caused a failed validation and a safe shutdown, which exposed the operation",
+            "process": [
+              "Gain IT access and move to the OT DMZ",
+              "Compromise the SIS engineering workstation",
+              "Reverse-engineer TriStation; build an implant",
+              "Upload to controllers in Program mode",
+              "Trip reveals the intrusion; investigation finds the implant"
+            ],
+            "next_layers": [
+              "Physical key switch policy and alarms for Program mode",
+              "No dual-homed workstations between DCS and SIS; separate SIS engineering",
+              "Monitor TriStation and other engineering protocols",
+              "Integrity checks on safety-controller logic"
+            ]
+          }
         },
         {
           "year": 2022,
@@ -238,17 +270,71 @@
         {
           "year": 2015,
           "case": "Ukraine, December 23: BlackEnergy intrusion, remote HMI operation opened breakers at three distribution companies, ~225,000 customers for up to six hours; KillDisk and a call-centre DDoS followed.",
-          "check": "SANS/E-ISAC 'Analysis of the Cyber Attack on the Ukrainian Power Grid' (2016); CISA alert IR-ALERT-H-16-056-01"
+          "check": "SANS/E-ISAC 'Analysis of the Cyber Attack on the Ukrainian Power Grid' (2016); CISA alert IR-ALERT-H-16-056-01",
+          "anatomy": {
+            "attribution": "Sandworm (GRU Unit 74455), per US DOJ indictment (2020) and multiple governments; confidence high in the public record",
+            "bypass": "Spear-phishing with macro documents delivered BlackEnergy 3 to corporate IT; VPN credentials harvested; the VPNs to the SCADA network had no MFA",
+            "mechanics": "Months of reconnaissance inside the networks; operators watched their own cursors move as attackers used remote-desktop sessions to open breakers at the HMI; KillDisk wiped workstations and serial-to-Ethernet converter firmware was corrupted; a telephony DDoS flooded the call centre",
+            "process": [
+              "Phish → BlackEnergy → credentials",
+              "Pivot via VPN to the SCADA network (no MFA)",
+              "Six months learning the HMI and the field",
+              "Remote HMI operation opens breakers at ~30 substations",
+              "KillDisk and firmware corruption to delay recovery; UPS and call centre attacked",
+              "Manual restoration within hours; automation lost for months"
+            ],
+            "next_layers": [
+              "MFA on every remote path into OT",
+              "Separate corporate identity from OT identity",
+              "Alert on interactive sessions to HMIs outside maintenance windows",
+              "Keep the ability to operate manually and test it",
+              "Protect serial converters and firmware integrity; offline backups of engineering files"
+            ]
+          }
         },
         {
           "year": 2016,
           "case": "Industroyer/CrashOverride at a Kyiv transmission substation: malware speaking IEC 101/104, 61850 and OPC natively; about an hour of outage.",
-          "check": "ESET and Dragos reports"
+          "check": "ESET and Dragos reports",
+          "anatomy": {
+            "attribution": "Sandworm, per ESET, Dragos and later US indictment; high in the public record",
+            "bypass": "Rather than driving the HMI, the malware spoke the grid protocols (IEC 101, IEC 104, IEC 61850, OPC DA) directly to substation devices, so it did not need an operator session",
+            "mechanics": "Modular framework: a backdoor, a launcher, four protocol payloads, a wiper, and a denial-of-service exploit against a Siemens SIPROTEC relay; it de-energised a transmission substation for about an hour",
+            "process": [
+              "Initial access (not fully public)",
+              "Deploy framework on a control-network host",
+              "Map device addresses",
+              "Issue protocol commands to open breakers",
+              "Wiper to slow recovery; relay DoS to block protection"
+            ],
+            "next_layers": [
+              "Protocol-aware monitoring on the station bus (detect IEC 104/61850 commands from unexpected hosts)",
+              "Allow-lists of which hosts may speak control protocols",
+              "Patch and segment protection relays; FERC Order 887's internal network monitoring is this lesson in rule form"
+            ]
+          }
         },
         {
           "year": 2023,
           "case": "Volt Typhoon: CISA, NSA and FBI advisory on PRC state actors prepositioning in US critical infrastructure including energy, using living-off-the-land techniques.",
-          "check": "CISA advisory AA24-038A (Feb 2024)"
+          "check": "CISA advisory AA24-038A (Feb 2024)",
+          "anatomy": {
+            "attribution": "PRC state-sponsored, per CISA/NSA/FBI with Five Eyes partners (AA24-038A); high",
+            "bypass": "Exploitation of internet-facing devices (routers, VPN appliances, firewalls) and use of valid credentials; living-off-the-land so that no malware triggers alarms",
+            "mechanics": "Access through end-of-life SOHO routers and edge devices; credential theft from Active Directory; command-line tools native to Windows; dormant presence for years in utilities, pipelines, water and communications",
+            "process": [
+              "Compromise edge devices and build a proxy network of hijacked routers",
+              "Enter victim networks with valid credentials",
+              "Move to OT-adjacent assets; collect information on OT",
+              "Maintain access for a crisis; no disruptive action observed"
+            ],
+            "next_layers": [
+              "Patch or replace edge devices; retire end-of-life routers",
+              "Logging sufficient to see LOTL behaviour (command-line auditing, PowerShell logging)",
+              "Credential hygiene, tiered admin, MFA",
+              "Hunt rather than wait: the advisory's indicators and techniques"
+            ]
+          }
         }
       ],
       "live_match": [
@@ -316,7 +402,23 @@
         {
           "year": 2022,
           "case": "Viasat KA-SAT attack on the day of the Ukraine invasion knocked out remote monitoring of ~5,800 Enercon wind turbines in Germany.",
-          "check": "Enercon statement; Viasat incident report"
+          "check": "Enercon statement; Viasat incident report",
+          "anatomy": {
+            "attribution": "Russian military intelligence (GRU), per EU, UK and US statements (2022); high",
+            "bypass": "A misconfigured VPN appliance gave access to the satellite network's management segment; from there, 'AcidRain' wiper commands were pushed to modems",
+            "mechanics": "Management-network access used to issue a destructive firmware update to tens of thousands of modems at the start of the invasion; collateral loss of monitoring for ~5,800 German wind turbines",
+            "process": [
+              "Exploit VPN misconfiguration",
+              "Reach the management network",
+              "Push wiper to modems in bulk",
+              "Effect: loss of connectivity and remote monitoring across Europe"
+            ],
+            "next_layers": [
+              "Do not depend on one link for OT telemetry; second path (cellular, leased line)",
+              "Harden the provider's management plane: it is your attack surface too",
+              "Know which remote assets go blind if a carrier fails, and how long you can run blind"
+            ]
+          }
         },
         {
           "year": 2024,
@@ -395,7 +497,23 @@
         {
           "year": 2024,
           "case": "Halliburton ransomware (August): systems taken offline, roughly $35 million impact disclosed in SEC filings; RansomHub claimed it.",
-          "check": "Halliburton 8-K filings"
+          "check": "Halliburton 8-K filings",
+          "anatomy": {
+            "attribution": "RansomHub (criminal RaaS) claimed; company did not name; moderate",
+            "bypass": "Not public",
+            "mechanics": "Ransomware on IT; systems taken offline proactively; ~$35M impact in filings",
+            "process": [
+              "Initial access (not public)",
+              "Ransomware deployment",
+              "Proactive shutdown of systems",
+              "Customer operations affected through the services dependency"
+            ],
+            "next_layers": [
+              "For operators: map dependence on oilfield-services contractors' IT",
+              "Contract terms for incident notification and continuity",
+              "Segmentation between contractor networks and your own"
+            ]
+          }
         }
       ],
       "live_match": [
@@ -465,7 +583,25 @@
         {
           "year": 2021,
           "case": "Colonial Pipeline, May 7: DarkSide ransomware on IT via a VPN account without MFA; the 5,500-mile pipeline shut for six days; $4.4M ransom paid, part recovered by DOJ.",
-          "check": "Congressional testimony of CEO Joseph Blount (June 2021); DOJ seizure announcement"
+          "check": "Congressional testimony of CEO Joseph Blount (June 2021); DOJ seizure announcement",
+          "anatomy": {
+            "attribution": "DarkSide ransomware-as-a-service affiliates, criminal; FBI attribution; high",
+            "bypass": "A legacy VPN account, no longer in use but still active, with no multi-factor authentication, and a password that had appeared in a prior leak",
+            "mechanics": "Login via VPN, lateral movement in corporate IT, data theft (~100 GB) then DarkSide ransomware encryption; the company shut the pipeline itself because billing and the safety of operations could not be assured",
+            "process": [
+              "Credential from a leak reused on the VPN (no MFA)",
+              "Access corporate IT; exfiltrate data",
+              "Deploy ransomware",
+              "Operator shuts OT as a precaution",
+              "Six-day fuel disruption on the US East Coast; $4.4M paid, ~$2.3M recovered by DOJ"
+            ],
+            "next_layers": [
+              "MFA everywhere; kill unused accounts",
+              "Know which IT systems OT depends on (billing, scheduling) and plan to run without them",
+              "Offline backups; tested restoration",
+              "TSA security directives made much of this mandatory for pipelines"
+            ]
+          }
         }
       ],
       "live_match": [
@@ -531,7 +667,23 @@
         {
           "year": 2012,
           "case": "Shamoon wiped ~35,000 Saudi Aramco workstations; production unaffected, business crippled for weeks.",
-          "check": "Saudi Aramco statements; US officials attributed to Iran"
+          "check": "Saudi Aramco statements; US officials attributed to Iran",
+          "anatomy": {
+            "attribution": "Iran, per US officials; 'Cutting Sword of Justice' claimed; moderate-high",
+            "bypass": "Insider or phished credentials enabled network-wide deployment (details disputed)",
+            "mechanics": "Wiper overwrote the master boot record of ~35,000 workstations with an image; production unaffected because OT was separate, business crippled for weeks",
+            "process": [
+              "Access to corporate domain",
+              "Mass deployment via domain tools",
+              "Overwrite boot records simultaneously",
+              "Weeks of manual recovery"
+            ],
+            "next_layers": [
+              "Domain hardening and tiered admin",
+              "Offline, immutable backups and rebuild capacity",
+              "Separation of OT from the corporate domain, which is what saved production"
+            ]
+          }
         },
         {
           "year": 2017,
@@ -814,7 +966,22 @@
         {
           "year": 2023,
           "case": "Ransomware (LockBit attributed) halted Japan's Port of Nagoya container operations for about two days.",
-          "check": "Nagoya Harbor Transportation Association statements"
+          "check": "Nagoya Harbor Transportation Association statements",
+          "anatomy": {
+            "attribution": "LockBit affiliates claimed; criminal; moderate",
+            "bypass": "Not public",
+            "mechanics": "Ransomware on the port's unified terminal system; container operations halted for about two days",
+            "process": [
+              "Initial access (not public)",
+              "Encrypt the terminal system",
+              "Operations stop; manual workarounds",
+              "Restore from backups"
+            ],
+            "next_layers": [
+              "Port community systems need the same continuity planning as SCADA",
+              "Backups tested for restoration time, not just existence"
+            ]
+          }
         },
         {
           "year": 2024,
@@ -886,7 +1053,23 @@
         {
           "year": 2022,
           "case": "Viasat KA-SAT attack removed remote monitoring from thousands of wind turbines and other users across Europe.",
-          "check": "Viasat statement; EU and US attributions to Russia"
+          "check": "Viasat statement; EU and US attributions to Russia",
+          "anatomy": {
+            "attribution": "Russian military intelligence (GRU), per EU, UK and US statements (2022); high",
+            "bypass": "A misconfigured VPN appliance gave access to the satellite network's management segment; from there, 'AcidRain' wiper commands were pushed to modems",
+            "mechanics": "Management-network access used to issue a destructive firmware update to tens of thousands of modems at the start of the invasion; collateral loss of monitoring for ~5,800 German wind turbines",
+            "process": [
+              "Exploit VPN misconfiguration",
+              "Reach the management network",
+              "Push wiper to modems in bulk",
+              "Effect: loss of connectivity and remote monitoring across Europe"
+            ],
+            "next_layers": [
+              "Do not depend on one link for OT telemetry; second path (cellular, leased line)",
+              "Harden the provider's management plane: it is your attack surface too",
+              "Know which remote assets go blind if a carrier fails, and how long you can run blind"
+            ]
+          }
         },
         {
           "year": 2023,

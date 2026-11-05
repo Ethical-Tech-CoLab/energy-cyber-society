@@ -96,6 +96,13 @@ def run_with_claude():
     result["verification"]["run_at"] = datetime.now(timezone.utc).isoformat()
 
     # correlations + scenarios + geopolitics (Analyst, Operator and Geopolitical Analyst)
+    # breach anatomy per item (Analyst)
+    an = client.messages.create(model=MODEL, max_tokens=8000, system=sys_blocks(BY_ID["analyst"]), messages=[{"role": "user", "content": f"BOARD ITEMS:\n{json.dumps(result.get('items', []))}\n\nFor each item output ONLY a JSON object keyed by headline: {{headline: {{\"attribution\": [{{\"hypothesis\", \"why\", \"confidence\", \"label\"}}] or null, \"bypass\", \"mechanics\", \"process\": [..], \"next_layers\": [..]}}}}. Attribution is hypothesis with reasoning, never assertion; label [inference]/[speculation]/[quoted]/[unverified]."}])
+    tally(an); at = "".join(bb.text for bb in an.content if bb.type == "text"); am = re.search(r"\{.*\}", at, re.S)
+    try:
+        anat = json.loads(am.group(0)) if am else {}
+        for it in result.get("items", []): it["anatomy"] = anat.get(it["headline"])
+    except json.JSONDecodeError: pass
     for key, who, prompt, mt in [("correlations", "analyst", "Output ONLY a JSON array of correlations between board items across domains: [{\"between\": [headline, headline], \"domains\": [..], \"link\": \"...\", \"strength\": \"strong|thematic|inferred|weak\", \"evidence\": \"(Outlet, date) or [inference]\"}]", 2000),
                                  ("scenarios", "operator", "For the three most important board items output ONLY a JSON array: [{\"story\": headline, \"title\": \"...\", \"action_now\": \"...\", \"impact_chain\": \"a → b → c\", \"scenarios\": [{\"name\", \"likelihood\": \"likely|possible|unlikely|cannot assess\", \"what\", \"confirms\"} x3]}]", 3000),
                                  ("geopolitics", "geopolitics", "Output ONLY JSON: {\"theatres\": [{\"conflict\", \"parties\", \"evidence_this_week\": [..], \"layers\": {\"IT\", \"OT\", \"PIT\"}, \"subsectors\": [..], \"us_relevance\", \"confidence\"}], \"absent_this_week\": [..], \"note\": \"...\"}", 3000)]:

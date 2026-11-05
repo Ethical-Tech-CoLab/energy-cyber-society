@@ -754,7 +754,39 @@
     "reliability_rationale": "C: the exploitation claim originates with VulnCheck, a vulnerability-intelligence vendor, relayed by The Hacker News. No CISA or Siemens notice reached the bundle (CISA feed 403).",
     "credibility_rationale": "2: probably true; the CVE and CVSS are consistent across the outlet and the vendor blog, the exploitation telemetry is unconfirmed by a second party."
    },
-   "continent": "global"
+   "continent": "global",
+   "anatomy": {
+    "attribution": [
+     {
+      "hypothesis": "Opportunistic criminal operators scanning for exposed Node-RED instances",
+      "why": "VulnCheck describes exploitation targeting Node-RED broadly, with backdoors that run commands; that is commodity tradecraft (botnets, miners)",
+      "confidence": "moderate",
+      "label": "[inference]"
+     },
+     {
+      "hypothesis": "State-aligned prepositioning in OT edge devices",
+      "why": "IoT2050 sits between field devices and IT, the kind of device Volt Typhoon-class actors prefer; but no advisory names a state actor and no energy victim is named",
+      "confidence": "low",
+      "label": "[speculation]"
+     }
+    ],
+    "bypass": "No bypass needed: the Node-RED HTTP interface on affected units lacked authentication for a critical function, so any reachable unit accepts a new flow from anyone.",
+    "mechanics": "Attacker finds the exposed interface (internet scan or inside the network), creates a Node-RED flow containing an exec or function node, deploys it; the gateway runs the command as the service user. Reported payloads: remote command backdoors.",
+    "process": [
+     "Discover: scan for Node-RED/IoT2050 HTTP ports",
+     "Access: create a flow via the unauthenticated interface",
+     "Execute: the flow runs system commands on the gateway",
+     "Persist: keep a backdoor flow; optionally pivot to the field network or the IT side",
+     "Effect (potential): manipulated telemetry, loss of view, lateral movement"
+    ],
+    "next_layers": [
+     "Block the Node-RED port at the site firewall; allow only the engineering VLAN",
+     "Patch to the fixed Industrial OS build; verify no unknown flows",
+     "Put the gateway behind a jump host with MFA (Purdue 3.5 DMZ)",
+     "Alert on new flow deployments and on outbound connections from gateways",
+     "Ask the vendor whether Node-RED is needed at all on that unit"
+    ]
+   }
   },
   {
    "headline": "Zyxel GS1900 switch zero-day used to compromise nearly 1,000 devices and steal configs and credentials",
@@ -847,7 +879,39 @@
     "reliability_rationale": "A after the pull: the Zyxel security advisory was fetched and confirms the flaw; the device count remains the outlet's.",
     "credibility_rationale": "2: the flaw is confirmed; the scale is single-source."
    },
-   "continent": "global"
+   "continent": "global",
+   "anatomy": {
+    "attribution": [
+     {
+      "hypothesis": "Criminal access brokers harvesting credentials and configs for resale",
+      "why": "Mass exploitation of ~1,000 devices with config and credential theft fits broker economics; no destructive action reported",
+      "confidence": "moderate",
+      "label": "[inference]"
+     },
+     {
+      "hypothesis": "State-aligned reconnaissance of small operators",
+      "why": "Zyxel gear was used against Danish energy companies in 2023 in a campaign SektorCERT linked in part to Sandworm infrastructure (background, unverified here)",
+      "confidence": "low",
+      "label": "[speculation]"
+     }
+    ],
+    "bypass": "Pre-authentication flaw in the switch's CGI program: a crafted HTTP request executes OS commands before any login. Initially mistaken for an older, already-patched flaw, which delayed the right fix.",
+    "mechanics": "Crafted HTTP request to the management interface (LAN-based per Zyxel; internet-exposed management makes it remote in practice); command execution dumps the configuration file, which contains credentials and the network layout.",
+    "process": [
+     "Discover: find GS1900 management interfaces reachable",
+     "Exploit: crafted request to the CGI program, pre-auth",
+     "Collect: dump config (VLANs, SNMP strings, admin hashes, syslog targets)",
+     "Resell or reuse: credentials reused against other devices on the same network",
+     "Potential effect: VLAN changes to bridge IT and OT, traffic mirroring, loss of segmentation"
+    ],
+    "next_layers": [
+     "Patch firmware (October 22 release); confirm version on every unit",
+     "Rotate every credential present in any config that may have been pulled; change SNMP strings",
+     "Management interfaces only on a dedicated management VLAN, never routable from user or OT networks",
+     "Log and alert on config exports and admin logins on switches",
+     "Inventory small-site network gear; it is usually the least-watched layer"
+    ]
+   }
   },
   {
    "headline": "Cyberattack via refrigeration-equipment provider changed temperature settings at three French blood-service facilities",
@@ -940,7 +1004,39 @@
     "reliability_rationale": "A: victim statement (EFS) plus two outlets.",
     "credibility_rationale": "1: confirmed independently; only the 110°C figure is unconfirmed and labelled."
    },
-   "continent": "Europe"
+   "continent": "Europe",
+   "anatomy": {
+    "attribution": [
+     {
+      "hypothesis": "The same actor or method as October's French supermarket attacks, via the refrigeration vendor path",
+      "why": "Sabcobel said the same vulnerability was used; EFS was reached through its equipment provider; same 48-hour window as the supermarket wave",
+      "confidence": "moderate",
+      "label": "[inference]"
+     },
+     {
+      "hypothesis": "Hacktivist or nuisance actor choosing visible physical effects",
+      "why": "Changing setpoints on blood storage is designed for attention; no ransom reported; no claim by Monday night",
+      "confidence": "low",
+      "label": "[speculation]"
+     }
+    ],
+    "bypass": "The intrusion did not defeat EFS's own perimeter; it came through the provider's remote access to refrigeration controllers, the trusted-third-party path. Physical safeguards (alarms, monitoring) then limited the effect.",
+    "mechanics": "Compromise of the refrigeration provider's access (method not public), then commands to controllers: shut some units, raise temperature and defrost setpoints on others. Alarms fired; staff restored settings or moved products.",
+    "process": [
+     "Access the provider (method unverified: credentials or an exposed remote tool)",
+     "Reach the customer's controllers through the provider's maintenance path",
+     "Change setpoints and defrost schedules; shut some systems",
+     "Effect: temperature rise; averted by alarms and transfers",
+     "No persistence or extortion reported"
+    ],
+    "next_layers": [
+     "Contractual and technical control of vendor remote access: named accounts, MFA, session recording, time-boxed access",
+     "Alarms on setpoint changes without an operator action in the event log (detects the attack before the temperature does)",
+     "Controllers not reachable from the internet; vendor path through a broker, not directly to the device",
+     "Tabletop the 'vendor compromised' scenario with the vendor present",
+     "For energy: the same checklist for substation HVAC and battery-container cooling"
+    ]
+   }
   },
   {
    "headline": "Overnight wave of refrigeration setpoint attacks on supermarkets in Belgium, Sweden, Estonia and elsewhere",
@@ -1028,7 +1124,38 @@
     "reliability_rationale": "B: one outlet quoting three named companies on record.",
     "credibility_rationale": "2: probably true; vendor and contractors quoted by name, no official statement."
    },
-   "continent": "Europe"
+   "continent": "Europe",
+   "anatomy": {
+    "attribution": [
+     {
+      "hypothesis": "One actor or toolkit reusing a vulnerability in widely deployed Danfoss-controlled refrigeration systems across countries",
+      "why": "Danfoss says its products were involved as in France in October; three contractors describe the same method; attacks clustered in one night",
+      "confidence": "moderate",
+      "label": "[inference]"
+     },
+     {
+      "hypothesis": "Copycats after public reporting of the French attacks",
+      "why": "Technique is simple and the October coverage was wide",
+      "confidence": "moderate",
+      "label": "[inference]"
+     }
+    ],
+    "bypass": "Exposed or weakly protected refrigeration controllers and their remote-management paths; the exact flaw is not public, Danfoss only confirms involvement of its products.",
+    "mechanics": "Attackers switch cooling units into defrost mode or raise setpoints remotely overnight, when nobody is watching the displays; stock warms until morning.",
+    "process": [
+     "Enumerate reachable controllers of one product family across countries",
+     "Authenticate or exploit (not public)",
+     "Change mode or setpoint on many sites in one night",
+     "Effect: discarded stock at dozens of stores per chain",
+     "Repeat three weeks after the French wave"
+    ],
+    "next_layers": [
+     "Vendor advisory and patch or configuration hardening for the product family (not yet seen in the bundle)",
+     "Remote management only through the vendor's broker with MFA; no direct exposure",
+     "Night-time alarm escalation for temperature and mode changes",
+     "Sector-wide notice through retail and food ISACs; energy sites with the same controls should be told"
+    ]
+   }
   },
   {
    "headline": "Electric utilities urge Congress to renew the Cybersecurity Information Sharing Act of 2015 before it expires next month",
@@ -1098,7 +1225,22 @@
     "reliability_rationale": "B: Utility Dive, utility-industry trade press; the article blocked the puller (403).",
     "credibility_rationale": "3: possibly true as stated; sunset date and extension status unverified."
    },
-   "continent": "North America"
+   "continent": "North America",
+   "anatomy": {
+    "attribution": null,
+    "bypass": "Not an attack: a policy risk. The relevant 'bypass' is institutional: if liability protection lapses, lawyers advise less sharing.",
+    "mechanics": "n/a",
+    "process": [
+     "Sunset date approaches (unverified)",
+     "Renewal urged by utilities and other industries",
+     "Outcomes: extension, short lapse, long lapse (see Scenarios)"
+    ],
+    "next_layers": [
+     "Read the statute's sunset clause and any NDAA text (Counsel)",
+     "Confirm with E-ISAC what sharing continues under existing agreements",
+     "Board-level awareness: detection speed depends on sharing"
+    ]
+   }
   },
   {
    "headline": "CISA launches 2026 Critical Infrastructure Security and Resilience campaign: OT security, continuity, recovery planning",
@@ -1166,7 +1308,20 @@
     "reliability_rationale": "B: one trade outlet relaying a CISA campaign; CISA's own page unreachable (feed 403).",
     "credibility_rationale": "2: probably true, low stakes."
    },
-   "continent": "North America"
+   "continent": "North America",
+   "anatomy": {
+    "attribution": null,
+    "bypass": "n/a (guidance)",
+    "mechanics": "n/a",
+    "process": [
+     "Campaign launched",
+     "Owners asked to prioritise OT security, continuity and recovery"
+    ],
+    "next_layers": [
+     "Use the campaign's recovery-planning material as a checklist",
+     "Tabletop an OT recovery without IT (the Colonial lesson)"
+    ]
+   }
   },
   {
    "headline": "UK NCSC Annual Review warns of AI-assisted ransomware against critical national infrastructure by 2028",
@@ -1252,7 +1407,27 @@
     "reliability_rationale": "A: the agency's own annual review and news release, both fetched.",
     "credibility_rationale": "3: a forecast cannot be confirmed; the primary carries 'highly likely'."
    },
-   "continent": "Europe"
+   "continent": "Europe",
+   "anatomy": {
+    "attribution": [
+     {
+      "hypothesis": "China as the actor best positioned to use AI against critical national infrastructure",
+      "why": "NCSC's own assessment in the Annual Review; a primary-source attribution of capability, not of an incident",
+      "confidence": "as stated by NCSC: 'highly likely'",
+      "label": "[quoted]"
+     }
+    ],
+    "bypass": "Forecast: AI used to find and exploit longstanding weaknesses faster than defenders patch them.",
+    "mechanics": "n/a (no incident)",
+    "process": [
+     "Agency assessment published",
+     "Three outlets amplify in one day"
+    ],
+    "next_layers": [
+     "Fund the basics (patching, segmentation, MFA); the forecast changes speed, not the fixes",
+     "Track AI-assisted exploitation claims in the bundle with the Technologist"
+    ]
+   }
   },
   {
    "headline": "Trump administration ban on foreign grid components raises industry concern over practicality and cost",
@@ -1322,7 +1497,22 @@
     "reliability_rationale": "B: trade press only; blocked the puller (403).",
     "credibility_rationale": "3: instrument and effective date unverified."
    },
-   "continent": "North America"
+   "continent": "North America",
+   "anatomy": {
+    "attribution": null,
+    "bypass": "Supply-chain risk by policy: hardware provenance in the PIT layer.",
+    "mechanics": "n/a",
+    "process": [
+     "Ban reported (instrument unverified)",
+     "Industry raises practicality and cost",
+     "Procurement and lead times change over years"
+    ],
+    "next_layers": [
+     "Map component origin for transformers, inverters, relays and controls",
+     "Read the instrument once the Counsel has it",
+     "Hardware bill-of-materials for new procurement"
+    ]
+   }
   },
   {
    "headline": "Russia and Ukraine report attacks on emergency alert apps during Kherson ceasefire",
@@ -1395,7 +1585,28 @@
     "reliability_rationale": "B: one outlet using public statements and social media.",
     "credibility_rationale": "3: each side's claim about the other, unconfirmed."
    },
-   "continent": "Europe"
+   "continent": "Europe",
+   "anatomy": {
+    "attribution": [
+     {
+      "hypothesis": "Russian state-aligned actors against Ukraine's app, and Ukrainian or pro-Ukrainian actors against Russia's",
+      "why": "Each government attributes to the other; timing with the Kherson ceasefire; content (nuclear, chemical, street-fight alerts) aimed at panic",
+      "confidence": "low (each side's claim)",
+      "label": "[unverified]"
+     }
+    ],
+    "bypass": "Not public; the apps' push-notification backends or credentials were abused to send false alerts.",
+    "mechanics": "False warnings pushed to many devices at once; the Air Force had to dispel nuclear fears publicly.",
+    "process": [
+     "Gain control of the push channel (method unverified)",
+     "Send fake alerts timed to a political moment",
+     "Public confusion; official rebuttals"
+    ],
+    "next_layers": [
+     "For energy: public-warning and outage-communication channels need the same protection as SCADA; MFA on notification consoles, signed alerts",
+     "Pre-agreed rebuttal channels with regulators and media"
+    ]
+   }
   }
  ],
  "us_status": "No confirmed intrusion at a US electric utility, pipeline, refinery, LNG terminal or nuclear facility appeared in any allowlisted source in the 7-day window ending 2026-11-05. US items are policy and guidance.",

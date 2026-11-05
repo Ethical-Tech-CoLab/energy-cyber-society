@@ -212,6 +212,24 @@
       "reliability_rationale": "why this letter",
       "credibility_rationale": "why this number"
     },
-    "continent": "continent"
+    "continent": "continent",
+    "anatomy": {
+      "attribution": [
+        {
+          "hypothesis": "string",
+          "why": "string",
+          "confidence": "high|moderate|low",
+          "label": "[inference]|[speculation]|[quoted]|[unverified]"
+        }
+      ],
+      "bypass": "how the defences were bypassed",
+      "mechanics": "the lure, exploit, malware or ransomware mechanics",
+      "process": [
+        "step-by-step kill chain"
+      ],
+      "next_layers": [
+        "defensive layers to add"
+      ]
+    }
   }
 }

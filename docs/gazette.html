@@ -48,10 +48,10 @@ const esc = t => String(t == null ? '' : t).replace(/[&<>"]/g, c => ({ '&': '&am
 (async () => {
   const run = new URLSearchParams(location.search).get('run'); const base = run ? `archive/${run}/` : 'data/';
   const [b, n] = await Promise.all([fetch(base + 'briefing.json').then(r => r.json()), fetch(base + 'news.json').then(r => r.json()).catch(() => null)]);
-  if (run) document.getElementById('edition').textContent = 'Archived edition ' + run;
+
   const d = new Date(b.news_generated_at || b.generated_at);
   document.getElementById('date').textContent = d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-  document.getElementById('edition').textContent = (b.model || '').includes('session') ? 'Hand-set edition' : 'Morning edition';
+  document.getElementById('edition').textContent = run ? 'Archived edition ' + run : (b.model || '').includes('session') ? 'Hand-set edition' : 'Morning edition';
   document.getElementById('stamp').textContent = b.us_status && /no confirmed/i.test(b.us_status) ? 'NO US OPERATOR BREACHED' : 'SEE BOARD';
   const sm = b.summary || { headline: 'No summary yet', bullets: [], considerations: [] };
   document.getElementById('lead').textContent = sm.headline;

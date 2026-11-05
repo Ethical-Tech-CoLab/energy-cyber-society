@@ -35,6 +35,8 @@ follow INTELLIGENCE_ANALYSIS.md for how to evaluate sources, write judgments and
    - `source_urls` ([{name,url,date}]) on every executive_brief threat, summary bullet, scenario
      and geopolitics theatre; and `references` (every URL read or cited this run, categorised).
      A claim without a clickable source is a validator failure.
+   - each item carries `anatomy` (attribution hypotheses with why, confidence and label; bypass;
+     mechanics; process; next_layers). Attribution is hypothesis, never assertion.
    - `us_status`: one or two sentences on whether any US energy operator was confirmed breached.
    - `conversations`: five or six pairwise dialogues of 6 lines each, residents disagreeing.
    - `verification`: `run_at`, `verdicts` keyed by item headline with `verdict` and `reason`,
