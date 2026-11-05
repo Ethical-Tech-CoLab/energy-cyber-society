@@ -25,6 +25,12 @@ forgotten; "blocked" means a person must act. Update this file when something sh
 - Twice-daily schedule: GitHub Actions workflow on disk; cloud-routine body in `scripts/routine.json`
 - Repo pushed to github.com/carolina-moron/energy-cyber-society (private)
 
+## From the peer review (REVIEW.md), in priority order
+- BLOCKER 1: run the pipeline end to end once with a key; add a dry-run replay mode for every parser
+- BLOCKER 2: make the Verifier an independent call that never sees the author's rationale; held-out ground-truth set
+- MAJOR: human-graded weekly sample with published agreement rate; model classification pass for relevance; language-aware excerpting + NVD/KEV enrichment; computed severity score; restrict attribution hypotheses to named attributors; regional feed-vs-item counts; proxy-first live chat, prompt fencing, CSP
+- MINOR: stable STIX `created` (null-url fixed 2026-11-05); split game.js, CI smoke test, accessibility, mobile; schema_version + JSON Schema; cross-language dedupe and actor aliases; Gazette masthead 'written by AI residents'; rename Cyber Command
+
 ## Blocked: needs Carolina
 - Make the repo public and enable Pages from `main:/docs` (the assistant's permissions refuse public surfaces)
 - `gh auth refresh -h github.com -s workflow`, then un-ignore and push `.github/workflows/daily.yml`

@@ -101,6 +101,12 @@ Git history is the second copy. Nothing is overwritten.
 synthesised from the intelligence cycle, ICD 203 analytic standards, ICD 206 sourcing,
 Admiralty grading, structured analytic techniques and the FBI/CISA advisory format.
 
+## Review and presentation
+
+`REVIEW.md` is a critical peer review: blockers, majors, minors, what is missing, what is
+sound. `PRESENTATION.md` is a timed ten-minute spoken walkthrough for someone who has never
+seen the project, with a guideline for presenters.
+
 ## Backlog
 
 See `BACKLOG.md`: everything requested, what shipped, what is blocked on a person, what the

@@ -38,7 +38,7 @@ for it in b.get("items", []):
         objs[ap["id"]] = ap; refs.append(ap["id"])
     r = {"type": "report", "spec_version": "2.1", "id": sid("report", it["headline"]), "created": now, "modified": now, "created_by_ref": ident["id"], "name": it["headline"], "report_types": ["threat-report"], "published": now,
          "description": it.get("so_what", ""), "confidence": CONF.get(str(it.get("info_credibility")), 0), "labels": [it.get("severity", ""), it.get("subsector", ""), it.get("ot_impact", ""), it.get("event_type", "")],
-         "external_references": [{"source_name": s["name"], "url": s.get("url") or None} for s in it.get("sources", [])],
+         "external_references": [({"source_name": s["name"], "url": s["url"]} if s.get("url") else {"source_name": s["name"]}) for s in it.get("sources", [])],
          "object_refs": refs or [ident["id"]], "x_ecs": {"source_reliability": it.get("source_reliability"), "info_credibility": it.get("info_credibility"), "claim_vs_confirmed": it.get("claim_vs_confirmed"), "labels": it.get("labels", []), "value_chain": it.get("value_chain"), "recommended_action": it.get("recommended_action")}}
     objs[r["id"]] = r
 bundle = {"type": "bundle", "id": sid("bundle", b.get("generated_at", now)), "objects": list(objs.values())}
