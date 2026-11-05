@@ -682,12 +682,28 @@ $('btn-history').onclick = async () => {
   $('dlg-history').showModal();
 };
 
+// regulations: the Counsel's register and the week's regulatory news with impact
+let regs = null;
+async function loadRegs() { if (!regs) regs = await fetch('data/regulations.json').then(r => r.json()).catch(() => null); return regs; }
+$('btn-regs').onclick = async () => {
+  const R = await loadRegs(); if (!R) { $('regs-body').innerHTML = '<p class="k">regulations.json missing</p>'; $('dlg-regs').showModal(); return; }
+  $('regs-meta').textContent = `${R.regimes.length} regimes in the register · ${R.news_this_week.length} regulatory items in this week's news · reviewed ${R.reviewed}`;
+  $('regs-body').innerHTML = `<div class="verdict"><b>The Counsel:</b> ${esc(R.counsel_note)}</div>
+    <h3>Newest regulations, proposals and policy signals in this week's news, and what they mean</h3>
+    <div class="regs-news">${R.news_this_week.map(x => `<div class="item"><h4>${esc(x.headline)}</h4><div class="badges"><span class="badge">${esc(x.status)}</span><span class="badge">confidence: ${esc(x.confidence)}</span></div><p>${esc(x.what)}</p><p><b>Impact on the energy sector:</b> ${esc(x.energy_impact)}</p><p><b>Impact on cyber intelligence:</b> ${esc(x.intel_impact)}</p>${srcList(x.sources)}</div>`).join('')}</div>
+    <h3>Register of regimes (status as last confirmed; unverified until the primary text is read)</h3>
+    <table class="fac-table"><tr><th>Regime</th><th>Jurisdiction · regulator</th><th>Status</th><th>Energy impact</th><th>Cyber-intelligence impact</th><th>Primary</th></tr>${R.regimes.map(g => `<tr><th>${esc(g.name)}</th><td>${esc(g.jurisdiction)}<div class="k">${esc(g.regulator)}</div></td><td>${esc(g.status)}<div class="k">${esc(g.verified)}</div></td><td>${esc(g.energy_impact)}</td><td>${esc(g.intel_impact)}</td><td><a href="${esc(g.primary)}" target="_blank" rel="noopener">read</a>${g.news_url ? ` · <a href="${esc(g.news_url)}" target="_blank" rel="noopener">news</a>` : ''}</td></tr>`).join('')}</table>
+    <p class="k">Rule 3: a legal claim needs the primary document. Everything here is a register to read from, not a legal opinion. The Risk check lists the regimes that apply to a profile.</p>`;
+  $('dlg-regs').showModal();
+};
+
 // risk check for a CIO: exposure from evidence, priorities with the evidence behind them
 let riskModel = null;
 function riskProfile() { try { return JSON.parse(localStorage.getItem('ecs-risk') || '{}'); } catch { return {}; } }
 function saveRiskProfile(pf) { try { localStorage.setItem('ecs-risk', JSON.stringify(pf)); } catch {} }
 async function openRisk() {
   if (!riskModel) riskModel = await fetch('data/risk_model.json').then(r => r.json()).catch(() => null);
+  await loadRegs();
   if (!riskModel || !sectors) { $('risk-form').innerHTML = '<p class="k">risk model or sectors missing</p>'; $('dlg-risk').showModal(); return; }
   const pf = riskProfile();
   const chk = (name, id, label, on) => `<label><input type="checkbox" data-g="${name}" value="${esc(id)}" ${on ? 'checked' : ''}> ${esc(label)}</label>`;
@@ -737,6 +753,7 @@ function renderRisk(pf) {
     <h4>This week's items that touch you</h4>${hits.length ? `<ul>${hits.slice(0, 8).map(h => `<li><button type="button" class="link" data-an="${esc(h.it.headline)}">${esc(h.it.headline)}</button> <span class="k">${esc(h.why)} · ${esc(h.it.severity)} · ${esc(h.it.ot_impact)}</span></li>`).join('')}</ul>` : '<p class="k">No item on this week\'s board matches your products or subsectors. That is what the allowlisted feeds reported, not a guarantee.</p>'}
     <h4>Who was NOT affected, and what it means for you</h4><p>${esc((briefing && briefing.us_status) || '')} ${pf.region !== 'North America' ? `Your region: ${esc(((briefing && briefing.world_desk && briefing.world_desk.continents) || {})[pf.region] || 'no regional line this week')}` : ''}</p>
     <h4>Historical cases that fit your profile (${cases.length})</h4><ul>${cases.map(c => `<li><button type="button" class="link" data-rcase="${c.n}">${esc(c.name)}</button> <span class="k">${esc(c.case_type)} · ${esc(c.ot_reach)} · attribution ${esc(c.attribution.tier)}</span></li>`).join('') || '<li class="k">none in the research record for these choices</li>'}</ul>
+    ${(() => { const R = regs; if (!R) return '<p class="k">Regulations register not loaded; open the Regulations tab once.</p>'; const app = R.regimes.filter(g => g.regions.includes(pf.region) || g.regions.includes('global')).filter(g => g.applies_to.some(id => pf.fac.includes(id))); return `<h4>Regulations that apply to this profile (${app.length})</h4><table class="fac-table"><tr><th>Regime</th><th>Status</th><th>Why it matters to you</th><th></th></tr>${app.map(g => `<tr><th>${esc(g.name)}</th><td>${esc(g.status)}<div class="k">${esc(g.verified)}</div></td><td>${esc(g.energy_impact)}</td><td><a href="${esc(g.primary)}" target="_blank" rel="noopener">read</a></td></tr>`).join('') || '<tr><td colspan="4" class="k">none in the register for this region and these facilities</td></tr>'}</table><p class="k">Newest in the news: ${R.news_this_week.slice(0, 3).map(x => esc(x.headline.slice(0, 80))).join(' · ')}. Open the Regulations tab for the impact lines.</p>`; })()}
     <p class="k">Programme reference: ${esc(riskModel.defensive_program_ref)}. Regulatory: NERC CIP for US bulk-power entities, TSA directives for pipelines, NIS2 in the EU; the Counsel's items this week are on the board.</p>`;
   $('risk-out').querySelectorAll('[data-an]').forEach(b => b.onclick = () => openAnalysis(b.dataset.an));
   $('risk-out').querySelectorAll('[data-rcase]').forEach(b => b.onclick = () => { $('dlg-risk').close(); $('btn-research').click(); setTimeout(() => { const d = [...document.querySelectorAll('#research-body details')][+b.dataset.rcase - 1]; if (d) { d.open = true; d.scrollIntoView(); } }, 50); });

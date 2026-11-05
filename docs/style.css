@@ -163,3 +163,4 @@ button.link{background:none;border:0;color:var(--accent);cursor:pointer;font-fam
 .prio{border:2px solid var(--line);padding:8px 10px;margin:8px 0}.prio .n{font-family:var(--font-pix);font-size:12px;color:var(--accent);margin-right:8px}
 .gauge{display:inline-block;width:160px;height:10px;background:#0b0e14;vertical-align:middle;margin:0 6px}.gauge span{display:block;height:10px}
 #risk-form,#risk-out{max-height:none}#dlg-risk .prose{max-height:none}#dlg-risk form{max-height:80vh;overflow:auto}
+#regs-body{max-height:70vh}.regs-news .item h4{margin:0 0 4px}

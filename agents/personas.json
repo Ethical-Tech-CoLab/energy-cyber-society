@@ -190,7 +190,8 @@
       "questions": [
         "What is the current status of the Cybersecurity Information Sharing Act of 2015?",
         "Is TSA's pipeline cybersecurity rule final?",
-        "Which NERC CIP standards apply to this week's items?"
+        "Which NERC CIP standards apply to this week's items?",
+        "What are the newest regulations and proposals in the news?"
       ],
       "process": [
         "List every item with a regulatory_trigger or a policy event_type.",

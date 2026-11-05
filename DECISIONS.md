@@ -63,6 +63,8 @@ Nothing here is lost in chat.
 
 | 52 | A CIO should be able to determine if their organization is at risk and prioritize security efforts across all parts of the energy sector | Risk check (CIO) tab: tick facilities, products and environment patterns; scored 45/35/20 from patterns, live items and historical cases; ranked actions with evidence; export | Risk check (CIO); `agents/risk_model.json` |
 
+| 53 | Add regulations: newest regulations and proposals in the news, and how they impact the energy sector and cyber intelligence | Regulations tab with the register and the week's regulatory news, each with energy-impact and intel-impact lines labelled [inference] where inferred; applicable regimes in the Risk check | Regulations tab; `agents/regulations.json` |
+
 ## Standing decisions made by the assistant without being asked (so you can reverse them)
 
 - Resident names and the town metaphor; the building names; PIT as the third layer (DoD term).
