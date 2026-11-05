@@ -14,7 +14,7 @@ idx = json.loads(idx_p.read_text()) if idx_p.exists() else {"runs": []}
 if dest.exists():
     print(f"archive: {run_id} already archived"); raise SystemExit(0)
 dest.mkdir(parents=True)
-files = ["briefing.json", "news.json", "sources.json", "command_log.json", "stix.json", "history.json", "personas.json", "sectors.json", "where_to_look.json", "buildings.json", "ai_market.json", "grid_weather.json", "regulations.json", "risk_model.json"]
+files = ["briefing.json", "news.json", "sources.json", "command_log.json", "stix.json", "history.json", "personas.json", "sectors.json", "where_to_look.json", "buildings.json", "ai_market.json", "grid_weather.json", "plants.json", "regulations.json", "risk_model.json"]
 copied = []
 for f in files:
     if (D / f).exists(): shutil.copy2(D / f, dest / f); copied.append(f)

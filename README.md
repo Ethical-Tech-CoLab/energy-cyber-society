@@ -101,6 +101,12 @@ Git history is the second copy. Nothing is overwritten.
 synthesised from the intelligence cycle, ICD 203 analytic standards, ICD 206 sourcing,
 Admiralty grading, structured analytic techniques and the FBI/CISA advisory format.
 
+## Grid & weather, US and worldwide
+
+`scripts/build_plants.py` compacts the WRI Global Power Plant Database (CC BY 4.0) into
+`docs/data/plants.json`; the tab draws 4,360 plants worldwide with live US ISO load, NWS alerts,
+GDACS global alerts and hub forecasts.
+
 ## US grid & weather
 
 `scripts/grid_weather.py` pulls live ISO load (gridstatus library), energy-relevant NWS alerts and

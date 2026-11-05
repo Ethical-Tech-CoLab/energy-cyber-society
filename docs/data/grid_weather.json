@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-05T04:03:40.164038+00:00",
+ "generated_at": "2026-11-05T04:05:58.793368+00:00",
  "isos": [
   {
    "iso": "ERCOT",
-   "time": "2026-11-04 21:55:00",
-   "load_mw": 51496,
+   "time": "2026-11-04 22:00:00",
+   "load_mw": 51422,
    "peak_today_mw": 58799
   },
   {
@@ -159,14 +159,14 @@
     "event": "Flood Warning",
     "area": "Platte, MO",
     "severity": "Severe",
-    "ends": "2026-11-08T12:37",
+    "ends": "2026-11-08T19:32",
     "why": "substations, pump stations, pipeline crossings"
    },
    {
     "event": "Flood Warning",
     "area": "Platte, MO",
     "severity": "Severe",
-    "ends": "2026-11-08T19:32",
+    "ends": "2026-11-08T12:37",
     "why": "substations, pump stations, pipeline crossings"
    },
    {
@@ -435,5 +435,51 @@
   "Wind": 19034,
   "Natural Gas": 23667,
   "Other": 0
+ },
+ "gdacs": {
+  "orange_red": [
+   {
+    "level": "Red",
+    "type": "tropical cyclone",
+    "country": "India",
+    "title": "Red notification for tropical cyclone MURASU-26. Population affected by Category 1 (120 km/h) wind speeds or higher is 1",
+    "lat": 15.8,
+    "lon": 80.2,
+    "link": "http://www.gdacs.org/report.aspx?eventtype=TC&amp;eventid=1001346",
+    "why": "transmission, offshore wind, ports and LNG"
+   },
+   {
+    "level": "Orange",
+    "type": "drought",
+    "country": "Democratic Republic of Congo, Central African Republic, Cameroon, Eritrea, Ethiopia, Kenya, Niger, Nigeria, Sudan, South Sudan, Chad, Tanzania, Uganda",
+    "title": "Drought is on going in Democratic Republic of Congo, Central African Republic, Cameroon, Eritrea, Ethiopia, Kenya, Niger",
+    "lat": 8.955,
+    "lon": 34.193,
+    "link": "http://www.gdacs.org/report.aspx?eventtype=DR&amp;eventid=1027450",
+    "why": "hydro and thermal cooling water"
+   },
+   {
+    "level": "Orange",
+    "type": "drought",
+    "country": "Belize, Costa Rica, Cuba, Dominican Republic, Guatemala, Honduras, Haiti, Mexico, Nicaragua, El Salvador, United States",
+    "title": "Drought is on going in Belize, Costa Rica, Cuba, Dominican Republic, Guatemala, Honduras, Haiti, Mexico, Nicaragua, El S",
+    "lat": 18.563,
+    "lon": -95.396,
+    "link": "http://www.gdacs.org/report.aspx?eventtype=DR&amp;eventid=1027449",
+    "why": "hydro and thermal cooling water"
+   },
+   {
+    "level": "Orange",
+    "type": "drought",
+    "country": "Andorra, Albania, Austria, Bosnia &amp; Herzegovina, Belgium, Bulgaria, Belarus, Switzerland, Czech Republic, Germany, Denmark, Spain, France, Croatia, Hungary, Ireland, Italy, Liechtenstein, Luxembourg, Moldova, Montenegro, Netherlands, Poland, Romania, Serbia, Sweden, Slovenia, Slovakia, Ukraine,",
+    "title": "Drought is on going in Andorra, Albania, Austria, Bosnia &amp; Herzegovina, Belgium, Bulgaria, Belarus, Switzerland, Cze",
+    "lat": 48.127,
+    "lon": 12.876,
+    "link": "http://www.gdacs.org/report.aspx?eventtype=DR&amp;eventid=1018332",
+    "why": "hydro and thermal cooling water"
+   }
+  ],
+  "total_items": 222,
+  "source": "https://www.gdacs.org/"
  }
 }

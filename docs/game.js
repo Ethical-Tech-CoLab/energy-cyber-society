@@ -683,7 +683,8 @@ $('btn-history').onclick = async () => {
 };
 
 // US grid & weather: live ISO load, NWS alerts, hub forecasts on a map; Grid Status for plants
-let gw = null, gmap = null;
+let gw = null, gmap = null, plants = null, plantLayer = null;
+const FUEL_COLOR = { C: '#6b6b6b', G: '#e8b04b', O: '#8a5a2c', N: '#c94be8', H: '#4bb3e8', W: '#4be89a', S: '#e8d44b', B: '#8a9a5b', T: '#e85a4b', E: '#4bd1c5', X: '#9aa3b5' };
 const ISO_POS = { ERCOT: [31.0, -99.0], CAISO: [37.0, -120.0], MISO: [41.5, -91.0], NYISO: [42.9, -75.5], ISONE: [43.5, -71.5], PJM: [39.5, -79.0], SPP: [37.5, -97.5] };
 const STATE_POS = { TX: [31.5, -99.3], CA: [37.2, -119.5], FL: [28.6, -82.4], NY: [42.9, -75.5], WA: [47.4, -120.5], OR: [43.9, -120.6], AK: [64.2, -152.5], HI: [20.8, -156.3], LA: [31.0, -92.0], MI: [44.3, -85.4], MN: [46.3, -94.3], ME: [45.4, -69.2], MA: [42.3, -71.8], NC: [35.5, -79.4], VA: [37.5, -78.9], PA: [40.9, -77.8], OH: [40.4, -82.8], IL: [40.0, -89.2], CO: [39.0, -105.5], AZ: [34.3, -111.7], NM: [34.4, -106.1], NV: [39.3, -116.6], UT: [39.3, -111.7], ID: [44.4, -114.6], MT: [47.0, -109.6], WY: [43.0, -107.6], ND: [47.5, -100.5], SD: [44.4, -100.2], NE: [41.5, -99.8], KS: [38.5, -98.4], OK: [35.6, -97.5], AR: [34.9, -92.4], MO: [38.4, -92.5], IA: [42.1, -93.5], WI: [44.6, -89.8], IN: [39.9, -86.3], KY: [37.5, -85.3], TN: [35.9, -86.4], MS: [32.7, -89.7], AL: [32.8, -86.8], GA: [32.7, -83.4], SC: [33.9, -80.9], WV: [38.6, -80.6], MD: [39.0, -76.8], DE: [39.0, -75.5], NJ: [40.2, -74.7], CT: [41.6, -72.7], RI: [41.7, -71.5], VT: [44.1, -72.7], NH: [43.7, -71.6], PR: [18.2, -66.5] };
 $('btn-grid').onclick = async () => {
@@ -694,18 +695,33 @@ $('btn-grid').onclick = async () => {
   $('dlg-grid').showModal();
   if (typeof L === 'undefined') { $('grid-body').innerHTML = '<p class="k">Leaflet did not load (offline or blocked); the tables below still work.</p>'; }
   else if (!gmap) {
-    gmap = L.map('gridmap', { worldCopyJump: true }).setView([38, -96], 4);
+    gmap = L.map('gridmap', { worldCopyJump: true, preferCanvas: true }).setView([38, -96], 4);
+    L.control.scale().addTo(gmap);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap', maxZoom: 10 }).addTo(gmap);
     const ev = (gw.alerts.by_state || {});
     Object.entries(ev).forEach(([st, counts]) => { const pos = STATE_POS[st]; if (!pos) return; const n = Object.values(counts).reduce((a, v) => a + v, 0); L.circleMarker(pos, { radius: 6 + Math.min(14, n), color: '#e85a4b', fillColor: '#e85a4b', fillOpacity: .35, weight: 1 }).addTo(gmap).bindPopup(`<b>${esc(st)}</b>: ${n} energy-relevant alert${n > 1 ? 's' : ''}<br>${Object.entries(counts).map(([e, c]) => `${esc(e)} ×${c} <i>(${esc(gw.alerts.why[e] || '')})</i>`).join('<br>')}`); });
     gw.isos.forEach(i => { const pos = ISO_POS[i.iso]; if (!pos) return; L.marker(pos).addTo(gmap).bindPopup(`<b>${esc(i.iso)}</b> load ${i.load_mw.toLocaleString()} MW at ${esc(i.time)}<br>peak today ${i.peak_today_mw.toLocaleString()} MW${i.iso === 'ERCOT' && gw.ercot_fuel_mix_mw ? '<br>fuel mix: ' + Object.entries(gw.ercot_fuel_mix_mw).filter(([k, v]) => v > 0).sort((a, b) => b[1] - a[1]).slice(0, 6).map(([k, v]) => `${esc(k)} ${v.toLocaleString()}`).join(', ') : ''}<br><a href="https://www.gridstatus.io/" target="_blank" rel="noopener">Grid Status</a>`); });
     gw.hubs.forEach(h => { L.circleMarker([h.lat, h.lon], { radius: 5, color: h.stress.length ? '#e8b04b' : '#4be89a', fillOpacity: .8, weight: 1 }).addTo(gmap).bindPopup(`<b>${esc(h.hub)}</b><br>3-day: ${h.tmin_c}°C to ${h.tmax_c}°C, wind to ${h.wind_max_kmh} km/h, rain ${h.rain_3d_mm} mm${h.stress.length ? '<br><b>stress: ' + esc(h.stress.join(', ')) + '</b>' : ''}<br>facilities: ${h.facilities.map(id => { const f = sectors && sectors.facilities.find(x => x.id === id); return f ? esc(f.name) : id; }).join(', ')}`); });
+    // worldwide plants (WRI GPPD, >= 300 MW + all nuclear), drawn on canvas
+    if (!plants) plants = await fetch('data/plants.json').then(r => r.json()).catch(() => null);
+    if (plants) {
+      plantLayer = L.layerGroup();
+      plants.plants.forEach(([lat, lon, mw, f, c, n]) => L.circleMarker([lat, lon], { radius: Math.max(2, Math.min(9, Math.sqrt(mw) / 12)), color: FUEL_COLOR[f] || '#9aa3b5', fillColor: FUEL_COLOR[f] || '#9aa3b5', fillOpacity: .55, weight: .5 }).bindPopup(`<b>${esc(n)}</b><br>${esc(plants.fuel_codes[f] || f)} · ${mw.toLocaleString()} MW · ${esc(c)}<br><span style="font-size:10px">WRI Global Power Plant Database</span>`).addTo(plantLayer));
+      plantLayer.addTo(gmap);
+    }
+    // GDACS orange/red global alerts
+    ((gw.gdacs && gw.gdacs.orange_red) || []).forEach(a => L.circleMarker([a.lat, a.lon], { radius: a.level === 'Red' ? 14 : 10, color: a.level === 'Red' ? '#e85a4b' : '#e8b04b', fillOpacity: .25, weight: 2, dashArray: '4 3' }).addTo(gmap).bindPopup(`<b>GDACS ${esc(a.level)}: ${esc(a.type)}</b><br>${esc(a.title)}<br><i>${esc(a.why)}</i><br><a href="${esc(a.link)}" target="_blank" rel="noopener">GDACS</a>`));
+    L.control.layers(null, { 'Power plants (WRI, ≥300 MW + nuclear)': plantLayer || L.layerGroup() }, { collapsed: false }).addTo(gmap);
     setTimeout(() => gmap.invalidateSize(), 100);
   } else setTimeout(() => gmap.invalidateSize(), 100);
+  $('grid-us').onclick = () => gmap && gmap.setView([38, -96], 4); $('grid-world').onclick = () => gmap && gmap.setView([20, 10], 2);
   const items = (briefing && briefing.items) || [];
   const stressed = gw.hubs.filter(h => h.stress.length);
   const corr = stressed.flatMap(h => h.facilities.flatMap(fid => { const f = sectors && sectors.facilities.find(x => x.id === fid); return f ? items.filter(it => (f.live_match || []).some(k => (it.headline + ' ' + it.subsector).toLowerCase().includes(k))).map(it => ({ hub: h.hub, stress: h.stress, item: it })) : []; }));
-  $('grid-body').innerHTML = `<p class="k">${esc(gw.note)} Sources: ISO loads via the gridstatus library (public ISO APIs); alerts: api.weather.gov; forecasts: Open-Meteo; plant-level map: Grid Status (link). Red circles: states with energy-relevant NWS alerts, sized by count. Pins: ISO load. Dots: energy hubs, amber when the 3-day forecast flags heat, cold, wind or rain.</p>
+  const gd = (gw.gdacs && gw.gdacs.orange_red) || [];
+  $('grid-body').innerHTML = `${plants ? `<p class="k">Plants: ${plants.kept.toLocaleString()} of ${plants.total_in_source.toLocaleString()} worldwide (${esc(plants.filter)}), ${esc(plants.source)}. Colours: coal grey, gas amber, oil brown, nuclear purple, hydro blue, wind green, solar yellow, storage teal. Grid Status's plant map has US plants with live status; this layer is worldwide and static (database year), so use it for 'what is there', not 'what is running'.</p>` : ''}
+    <h3>Worldwide disaster alerts (GDACS orange and red)</h3>${gd.length ? `<table class="fac-table"><tr><th>Level</th><th>Type</th><th>Where</th><th>Why it matters to energy</th></tr>${gd.map(a => `<tr><th>${esc(a.level)}</th><td>${esc(a.type)}</td><td>${esc(a.country.slice(0, 90))}</td><td class="k">${esc(a.why)}</td></tr>`).join('')}</table>` : '<p class="k">no orange or red GDACS alerts, or feed unreachable</p>'}
+    <p class="k">${esc(gw.note)} Sources: ISO loads via the gridstatus library (public ISO APIs); alerts: api.weather.gov; forecasts: Open-Meteo; plant-level map: Grid Status (link). Red circles: states with energy-relevant NWS alerts, sized by count. Pins: ISO load. Dots: energy hubs, amber when the 3-day forecast flags heat, cold, wind or rain.</p>
     <h3>ISO load now</h3><table class="fac-table"><tr><th>ISO</th><th>Load (MW)</th><th>Peak today</th><th>As of</th></tr>${gw.isos.map(i => `<tr><th>${esc(i.iso)}</th><td>${i.load_mw.toLocaleString()}</td><td>${i.peak_today_mw.toLocaleString()}</td><td class="k">${esc(i.time)}</td></tr>`).join('')}</table>${gw.errors.length ? `<p class="k">Not available: ${esc(gw.errors.join('; '))}. PJM needs a free API key (PJM_API_KEY); SPP's feed is too slow for the run.</p>` : ''}
     <h3>Energy-relevant weather alerts (top by severity)</h3><table class="fac-table"><tr><th>Event</th><th>Area</th><th>Severity</th><th>Why it matters to energy</th></tr>${(gw.alerts.top || []).map(a => `<tr><th>${esc(a.event)}</th><td>${esc(a.area)}</td><td>${esc(a.severity)}</td><td class="k">${esc(a.why)}</td></tr>`).join('')}</table>
     <h3>Hubs under weather stress (3-day forecast)</h3>${stressed.length ? `<ul>${stressed.map(h => `<li><b>${esc(h.hub)}</b>: ${esc(h.stress.join(', '))} (${h.tmin_c}°C to ${h.tmax_c}°C, wind ${h.wind_max_kmh} km/h, rain ${h.rain_3d_mm} mm)</li>`).join('')}</ul>` : '<p class="k">No hub crosses the heat (35°C), cold (-10°C), wind (60 km/h) or rain (50 mm) thresholds in the next three days.</p>'}

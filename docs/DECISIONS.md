@@ -67,6 +67,8 @@ Nothing here is lost in chat.
 
 | 54 | Connect the Grid Status power-plant map and weather that might affect facilities and providers; connect the US grid map | Grid Status blocks embedding (X-Frame-Options), so it is linked; built an in-page US map with live ISO load, NWS alerts, hub forecasts and weather-to-item overlap labelled as inference | US grid & weather tab; `scripts/grid_weather.py` |
 
+| 55 | Grid Status plant map, and worldwide | Grid Status cannot be embedded; its open-data equivalent (WRI GPPD) is drawn in-page worldwide, GDACS adds global disaster alerts; Grid Status linked for live US plant status | Grid & weather tab; `scripts/build_plants.py` |
+
 ## Standing decisions made by the assistant without being asked (so you can reverse them)
 
 - Resident names and the town metaphor; the building names; PIT as the third layer (DoD term).

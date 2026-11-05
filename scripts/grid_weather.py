@@ -58,5 +58,19 @@ for name, lat, lon, fac in HUBS:
         flags = [x for x, c in (("heat", tmax >= 35), ("cold", tmin <= -10), ("wind", wind >= 60), ("rain", rain >= 50)) if c]
         out["hubs"].append({"hub": name, "lat": lat, "lon": lon, "facilities": fac, "tmax_c": tmax, "tmin_c": tmin, "wind_max_kmh": wind, "rain_3d_mm": round(rain, 1), "stress": flags})
     except Exception as e: out["errors"].append(f"open-meteo {name}: {type(e).__name__}")
+# GDACS: global disaster alerts (floods, cyclones, earthquakes, wildfires, volcanoes), orange/red only
+try:
+    import re, urllib.request as ur
+    xml = ur.urlopen(ur.Request("https://www.gdacs.org/xml/rss.xml", headers=UA), timeout=30).read().decode("utf-8", "replace")
+    items = re.findall(r"<item>(.*?)</item>", xml, re.S); gd = []
+    for it in items:
+        g = lambda tag: (re.search(rf"<{tag}>(.*?)</{tag}>", it, re.S) or [None, ""])[1].strip()
+        lvl = g("gdacs:alertlevel"); ev = g("gdacs:eventtype"); cty = g("gdacs:country"); title = re.sub(r"<.*?>", "", g("title"))
+        lat = g("geo:lat") or g("geo:Point>\s*<geo:lat"); lon = g("geo:long")
+        if lvl in ("Orange", "Red"):
+            try: gd.append({"level": lvl, "type": {"FL": "flood", "TC": "tropical cyclone", "EQ": "earthquake", "WF": "wildfire", "VO": "volcano", "DR": "drought"}.get(ev, ev), "country": cty, "title": title[:120], "lat": float(lat), "lon": float(lon), "link": g("link"), "why": {"FL": "substations, pump stations, hydro spillways", "TC": "transmission, offshore wind, ports and LNG", "EQ": "pipelines, refineries, nuclear safety shutdowns", "WF": "transmission corridors, de-energisation", "VO": "ash on insulators and turbines, aviation fuel", "DR": "hydro and thermal cooling water"}.get(ev, "")})
+            except ValueError: pass
+    out["gdacs"] = {"orange_red": gd, "total_items": len(items), "source": "https://www.gdacs.org/"}
+except Exception as e: out["errors"].append(f"GDACS: {type(e).__name__}")
 OUT.write_text(json.dumps(out, indent=1, ensure_ascii=False))
 print(f"grid_weather: {len(out['isos'])} ISOs, {out['alerts'].get('energy_relevant', 0)} energy-relevant alerts, {len(out['hubs'])} hubs, errors={out['errors']}")
