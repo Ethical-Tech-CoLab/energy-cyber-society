@@ -179,6 +179,30 @@
           "url": "https://scite.ai/",
           "why": "find and check citations; Scite shows whether later papers support or contrast a claim",
           "access": "Scite paid, Scholar free"
+        },
+        {
+          "name": "Stanford Cyber Policy Center and Internet Observatory",
+          "url": "https://cyber.fsi.stanford.edu/",
+          "why": "policy research on critical infrastructure, platform and state cyber behaviour; feeds malformed, read by hand",
+          "access": "free"
+        },
+        {
+          "name": "UC Berkeley Center for Long-Term Cybersecurity",
+          "url": "https://cltc.berkeley.edu/",
+          "why": "futures and policy research; read automatically via feed",
+          "access": "free"
+        },
+        {
+          "name": "MIT Technology Review",
+          "url": "https://www.technologyreview.com/",
+          "why": "AI and energy reporting, data-centre power; read automatically via feed",
+          "access": "metered paywall"
+        },
+        {
+          "name": "Stanford HAI AI Index",
+          "url": "https://aiindex.stanford.edu/",
+          "why": "annual data on AI compute, cost and energy for the Technologist",
+          "access": "free"
         }
       ]
     },

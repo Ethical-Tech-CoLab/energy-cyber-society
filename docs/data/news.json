@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-05T01:42:42.657501+00:00",
+ "generated_at": "2026-11-05T01:48:23.457968+00:00",
  "window_hours": 168,
  "sources": [
   {
@@ -273,6 +273,38 @@
    "country": "Canada",
    "bias_note": "Same agency in French; duplicates the English feed, counted once by the Verifier.",
    "url": "https://www.cyber.gc.ca/api/cccs/rss/v1/get?feed=alerts_advisories&lang=fr"
+  },
+  {
+   "id": "techcrunch-sec",
+   "name": "TechCrunch Security",
+   "type": "tech press",
+   "country": "US",
+   "bias_note": "Startup-and-tech press; strong breach reporting (Zack Whittaker); Yahoo-owned; business framing, little OT.",
+   "url": "https://techcrunch.com/category/security/feed/"
+  },
+  {
+   "id": "berkeley-cltc",
+   "name": "UC Berkeley Center for Long-Term Cybersecurity",
+   "type": "academic",
+   "country": "US",
+   "bias_note": "University research centre; policy and futures work, slow cadence, event announcements mixed with research; funded by foundations and industry.",
+   "url": "https://cltc.berkeley.edu/feed/"
+  },
+  {
+   "id": "mit-tr",
+   "name": "MIT Technology Review",
+   "type": "magazine",
+   "country": "US",
+   "bias_note": "MIT-owned magazine; strong on AI, data-centre power and energy policy; narrative, not incident-driven.",
+   "url": "https://www.technologyreview.com/feed/"
+  },
+  {
+   "id": "mit-tr-climate",
+   "name": "MIT Technology Review: climate and energy",
+   "type": "magazine",
+   "country": "US",
+   "bias_note": "Same magazine, energy desk: grid, data-centre load, US energy policy; not a security outlet.",
+   "url": "https://www.technologyreview.com/topic/climate-change/feed"
   }
  ],
  "errors": [
@@ -769,6 +801,16 @@
    "source_country": "France"
   },
   {
+   "title": "Hackers stole DreamHost customer files and inboxes during months-long attack",
+   "summary": "The web host said hackers exploited a vulnerability to access customer emails and files during a \"deliberate attack.\"",
+   "link": "https://techcrunch.com/2026/11/04/hackers-stole-dreamhost-customer-files-and-inboxes-during-months-long-attack/",
+   "published": "2026-11-05T01:36:57+00:00",
+   "source": "techcrunch-sec",
+   "source_name": "TechCrunch Security",
+   "source_type": "tech press",
+   "source_country": "US"
+  },
+  {
    "title": "Android security advisory – November 2026 monthly rollup (AV26-1128)",
    "summary": "",
    "link": "https://cyber.gc.ca/en/alerts-advisories/android-security-advisory-november-2026-monthly-rollup-av26-1128",
@@ -999,6 +1041,36 @@
    "source_country": "US"
   },
   {
+   "title": "Texas was the new epicenter of the AI data center buildout. That might be kaput.",
+   "summary": "Texas is the fastest-growing data center market in the US and ground zero for Big Tech’s largest AI buildouts. But the blue wave that swept the Lone Star State may jeopardize that position. Democrat James Talarico won the US Senate seat against Ken Paxton. Gina Hinojosa won the race for governor against the Republican incumbent,…",
+   "link": "https://www.technologyreview.com/2026/11/04/1148043/texas-was-the-new-epicenter-of-the-ai-data-center-buildout-that-might-be-kaput/",
+   "published": "2026-11-04T23:50:55+00:00",
+   "source": "mit-tr",
+   "source_name": "MIT Technology Review",
+   "source_type": "magazine",
+   "source_country": "US"
+  },
+  {
+   "title": "Building on open source AI? Hugging Face’s policy chief on the costs, risks, and trade-offs",
+   "summary": "Open source models are becoming more mainstream as enterprises, governments and startups alike rely on the promise of lower costs, more control, and more flexibility. But as increasingly capable models become more freely available, how do companies capture value? And with Chinese open models gaining ground, can American players keep up? On this episode of […]",
+   "link": "https://techcrunch.com/podcast/building-on-open-source-ai-hugging-faces-policy-chief-on-the-costs-risks-and-trade-offs/",
+   "published": "2026-11-04T23:44:57+00:00",
+   "source": "techcrunch-sec",
+   "source_name": "TechCrunch Security",
+   "source_type": "tech press",
+   "source_country": "US"
+  },
+  {
+   "title": "Roundtables: Inside the Quest for Cognitive Immortality",
+   "summary": "Tuesday, November 17, 2026 In an effort to reach an elusive continuity of the self, some far-thinking technologists are working on ways to keep your brain going—even beyond death. Join science editor Mary Beth Griggs and senior editor for biomedicine Antonio Regalado for a conversation exploring possible paths to keep your mind going, including gradual…",
+   "link": "https://www.technologyreview.com/2026/11/04/1148049/roundtables-inside-the-quest-for-cognitive-immortality/",
+   "published": "2026-11-04T23:21:40+00:00",
+   "source": "mit-tr",
+   "source_name": "MIT Technology Review",
+   "source_type": "magazine",
+   "source_country": "US"
+  },
+  {
    "title": "Cyberattack disrupts blood storage refrigeration systems in France",
    "summary": "France's national blood service has confirmed that a cyberattack targeting a refrigeration equipment provider raised temperature and defrost settings at three of its facilities, threatening stored blood products. [...]",
    "link": "https://www.bleepingcomputer.com/news/security/cyberattack-disrupts-blood-storage-refrigeration-systems-in-france/",
@@ -1016,6 +1088,26 @@
    "source": "utilitydive",
    "source_name": "Utility Dive",
    "source_type": "industry press",
+   "source_country": "US"
+  },
+  {
+   "title": "What’s next for US energy policy after the midterm elections?",
+   "summary": "I’ve been locked in to my various screens since results from midterm elections started to roll in last night. And it didn’t take long to see the beginning of the blue wave: Democrats took control of both the US House of Representatives and the Senate, a dramatic swing from Donald Trump’s victory two years ago. …",
+   "link": "https://www.technologyreview.com/2026/11/04/1148022/us-energy-midterm/",
+   "published": "2026-11-04T22:08:00+00:00",
+   "source": "mit-tr",
+   "source_name": "MIT Technology Review",
+   "source_type": "magazine",
+   "source_country": "US"
+  },
+  {
+   "title": "What’s next for US energy policy after the midterm elections?",
+   "summary": "I’ve been locked in to my various screens since results from midterm elections started to roll in last night. And it didn’t take long to see the beginning of the blue wave: Democrats took control of both the US House of Representatives and the Senate, a dramatic swing from Donald Trump’s victory two years ago. …",
+   "link": "https://www.technologyreview.com/2026/11/04/1148022/us-energy-midterm/",
+   "published": "2026-11-04T22:08:00+00:00",
+   "source": "mit-tr-climate",
+   "source_name": "MIT Technology Review: climate and energy",
+   "source_type": "magazine",
    "source_country": "US"
   },
   {
@@ -1316,6 +1408,26 @@
    "source": "bleeping",
    "source_name": "BleepingComputer",
    "source_type": "tech press",
+   "source_country": "US"
+  },
+  {
+   "title": "The Download: blended meat, restored sight, and the agentic web",
+   "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. These startups hope “blended” food will cut our appetite for red meat In the fall of 2025, Jeff Dodge served hungry students steaming marinara sauce and meatballs. The students loved them:…",
+   "link": "https://www.technologyreview.com/2026/11/04/1148001/the-download-blended-meat-sight-restoring-implant-agentic-web/",
+   "published": "2026-11-04T18:10:00+00:00",
+   "source": "mit-tr",
+   "source_name": "MIT Technology Review",
+   "source_type": "magazine",
+   "source_country": "US"
+  },
+  {
+   "title": "Securing the agentic enterprise with data lineage",
+   "summary": "A sales representative asks an AI agent for customer pricing, and the agent pulls data from multiple sources: restricted pricing systems, internal communications, and archived quotes. The output looks accurate to the agent, so a second agent uses the data to draft the proposal for the sales rep. No human checks either handoff. When it’s…",
+   "link": "https://www.technologyreview.com/2026/11/04/1147596/securing-the-agentic-enterprise-with-data-lineage/",
+   "published": "2026-11-04T18:00:00+00:00",
+   "source": "mit-tr",
+   "source_name": "MIT Technology Review",
+   "source_type": "magazine",
    "source_country": "US"
   },
   {
@@ -1909,6 +2021,16 @@
    "source_country": "France"
   },
   {
+   "title": "UC Berkeley Honors Craig Newmark",
+   "summary": "Founders’ Pledge event celebrates craigslist founder for his entreprenuerial journey and cyber philanthropy On October 29, the UC Berkeley Center for Long-Term Cybersecurity (CLTC), together with the UC… The post UC Berkeley Honors Craig Newmark appeared first on CLTC .",
+   "link": "https://cltc.berkeley.edu/2026/11/03/uc-berkeley-honors-craig-newmark/",
+   "published": "2026-11-04T04:00:40+00:00",
+   "source": "berkeley-cltc",
+   "source_name": "UC Berkeley Center for Long-Term Cybersecurity",
+   "source_type": "academic",
+   "source_country": "US"
+  },
+  {
    "title": "Hackers hijack cPGuard autoupdate to deploy backdoor, steal data",
    "summary": "Attackers have compromised the update infrastructure for the cPGuard web security suite to distribute a backdoor and a data-stealing script. [...]",
    "link": "https://www.bleepingcomputer.com/news/security/hackers-hijack-cpguard-autoupdate-to-deploy-backdoor-steal-data/",
@@ -1949,6 +2071,16 @@
    "source_country": "US"
   },
   {
+   "title": "Ted Schlein’s Ballistic Ventures seeks $490M for new funds amid AI-driven cybersecurity boom",
+   "summary": "Cybersecurity-focused Ballistic Ventures is seeking to raise $360 million for a new flagship fund and another $130 million for a separate investment vehicle.",
+   "link": "https://techcrunch.com/2026/11/03/ted-schleins-ballistic-ventures-seeks-490m-for-new-funds-amid-ai-driven-cybersecurity-boom/",
+   "published": "2026-11-04T02:43:08+00:00",
+   "source": "techcrunch-sec",
+   "source_name": "TechCrunch Security",
+   "source_type": "tech press",
+   "source_country": "US"
+  },
+  {
    "title": "WordPress security advisory (AV26-1117)",
    "summary": "",
    "link": "https://cyber.gc.ca/en/alerts-advisories/wordpress-security-advisory-av26-1117",
@@ -1967,106 +2099,6 @@
    "source_name": "Centre canadien pour la cybersécurité (alertes, FR)",
    "source_type": "government",
    "source_country": "Canada"
-  },
-  {
-   "title": "WorkOS says attacker used ARTEX AI to breach internal sales app",
-   "summary": "Developer platform WorkOS suffered a data breach after a threat actor accessed business contact records and summaries of customer communications. [...]",
-   "link": "https://www.bleepingcomputer.com/news/security/workos-says-attacker-used-artex-ai-to-breach-internal-sales-app/",
-   "published": "2026-11-04T02:28:44+00:00",
-   "source": "bleeping",
-   "source_name": "BleepingComputer",
-   "source_type": "tech press",
-   "source_country": "US"
-  },
-  {
-   "title": "Binance says fake job interview led to $6.3 billion crypto heist",
-   "summary": "Cryptocurrency exchange Binance says North Korean hackers used a fake job interview to trick an employee into installing malware that ultimately let them compromise the company's wallet infrastructure and steal about $6.34 billion in digital assets. [...]",
-   "link": "https://www.bleepingcomputer.com/news/security/binance-says-fake-job-interview-led-to-63-billion-crypto-heist/",
-   "published": "2026-11-04T01:05:50+00:00",
-   "source": "bleeping",
-   "source_name": "BleepingComputer",
-   "source_type": "tech press",
-   "source_country": "US"
-  },
-  {
-   "title": "Mobilisation sociale : une deuxième influenceuse mise en cause par la justice pour « provocation à commettre un crime ou délit »",
-   "summary": "Comme Manon Delcourt, la créatrice de contenu Osmose a été placée en garde à vue le 22 octobre à la suite d’un signalement concernant l’une de ses publications. Toutes deux font désormais l’objet d’une enquête.",
-   "link": "https://www.lemonde.fr/politique/article/2026/11/03/mobilisation-sociale-une-deuxieme-influenceuse-mise-en-cause-par-la-justice-pour-provocation-a-commettre-un-crime-ou-delit_6805660_823448.html",
-   "published": "2026-11-04T00:42:59+00:00",
-   "source": "lemonde",
-   "source_name": "Le Monde Pixels (France)",
-   "source_type": "wire",
-   "source_country": "France"
-  },
-  {
-   "title": "AI policy wonks declare 'sovereign agents' a threat to civilization",
-   "summary": "These are AI agents that operate outside of human control and 'pursue open-ended, evolving survival'",
-   "link": "https://www.theregister.com/security/2026/11/03/ai-policy-wonks-declare-sovereign-agents-a-threat-to-civilization/5307354",
-   "published": "2026-11-04T00:33:01+00:00",
-   "source": "register",
-   "source_name": "The Register Security",
-   "source_type": "tech press",
-   "source_country": "UK"
-  },
-  {
-   "title": "Binance Says Hackers Used Well-Known Tricks to Carry Out a $6.34 Billion Heist",
-   "summary": "Suspected North Korean attackers duped an engineer with a fake job interview and a malicious download to gain a foothold in the crypto firm’s system and steal billions, according to Binance.",
-   "link": "https://www.wired.com/story/binance-says-hackers-used-well-known-tricks-to-carry-out-a-dollar634-billion-heist/",
-   "published": "2026-11-04T00:04:58+00:00",
-   "source": "wired-sec",
-   "source_name": "WIRED Security",
-   "source_type": "magazine",
-   "source_country": "US"
-  },
-  {
-   "title": "Oklahoma man charged with mailing threats, substances to election officials nationwide",
-   "summary": "Robin Patrick Martin was charged with conveying false or misleading information and hoaxes and mailing threatening communications in an effort to intimidate election officials. The post Oklahoma man charged with mailing threats, substances to election officials nationwide appeared first on CyberScoop .",
-   "link": "https://cyberscoop.com/oklahoma-man-charged-white-powder-letters-election-officials/",
-   "published": "2026-11-03T23:51:23+00:00",
-   "source": "cyberscoop",
-   "source_name": "CyberScoop",
-   "source_type": "trade press",
-   "source_country": "US"
-  },
-  {
-   "title": "Google: LLMjacking attacks rack up $1 million in cloud AI charges",
-   "summary": "Large language model hijacking attacks, also known as LLMjacking, are generating large fraudulent cloud charges, with some organizations losing more than $100,000 per day. [...]",
-   "link": "https://www.bleepingcomputer.com/news/security/google-llmjacking-attacks-rack-up-1-million-in-cloud-ai-charges/",
-   "published": "2026-11-03T23:51:04+00:00",
-   "source": "bleeping",
-   "source_name": "BleepingComputer",
-   "source_type": "tech press",
-   "source_country": "US"
-  },
-  {
-   "title": "mSecure Warns Users to Change Passwords, Reset 2FA and Passkeys After Suspicious Activity",
-   "summary": "Customers of the mSecure password manager are being urged to act now to protect the confidential information they store in it, possibly by changing passwords, resetting two-factor authentication (2FA), and removing passkeys. The warning came in an email sent on November 3 in the name of developer mSeven Software. It says the company recently learned of suspicious activity linked to the app but",
-   "link": "https://thehackernews.com/2026/11/msecure-warns-users-to-change-passwords.html",
-   "published": "2026-11-03T23:46:38+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "Chainstack Reports Production Systems Breach Exposing Customer Data and Password Hashes",
-   "summary": "Blockchain infrastructure provider Chainstack on Tuesday disclosed that it was targeted in a cyber attack that allowed an unauthorized party to gain access to some parts of its infrastructure. The incident is assessed to be part of a large-scale, artificial intelligence (AI)-powered attack campaign that came to light last week. \"An external attacker gained unauthorized access to part of",
-   "link": "https://thehackernews.com/2026/11/chainstack-reports-production-systems.html",
-   "published": "2026-11-03T23:16:19+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "Europol dismantles investment scheme that impacted potential victims in 50 countries",
-   "summary": "Authorities seized more than 100 servers and searched locations linked to the alleged operation across 17 countries. The post Europol dismantles investment scheme that impacted potential victims in 50 countries appeared first on CyberScoop .",
-   "link": "https://cyberscoop.com/europol-investment-scam-takedown/",
-   "published": "2026-11-03T22:02:27+00:00",
-   "source": "cyberscoop",
-   "source_name": "CyberScoop",
-   "source_type": "trade press",
-   "source_country": "US"
   }
  ]
 }

@@ -272,6 +272,38 @@
       "type": "government",
       "country": "Canada",
       "bias_note": "Same agency in French; duplicates the English feed, counted once by the Verifier."
+    },
+    {
+      "id": "techcrunch-sec",
+      "name": "TechCrunch Security",
+      "url": "https://techcrunch.com/category/security/feed/",
+      "type": "tech press",
+      "country": "US",
+      "bias_note": "Startup-and-tech press; strong breach reporting (Zack Whittaker); Yahoo-owned; business framing, little OT."
+    },
+    {
+      "id": "berkeley-cltc",
+      "name": "UC Berkeley Center for Long-Term Cybersecurity",
+      "url": "https://cltc.berkeley.edu/feed/",
+      "type": "academic",
+      "country": "US",
+      "bias_note": "University research centre; policy and futures work, slow cadence, event announcements mixed with research; funded by foundations and industry."
+    },
+    {
+      "id": "mit-tr",
+      "name": "MIT Technology Review",
+      "url": "https://www.technologyreview.com/feed/",
+      "type": "magazine",
+      "country": "US",
+      "bias_note": "MIT-owned magazine; strong on AI, data-centre power and energy policy; narrative, not incident-driven."
+    },
+    {
+      "id": "mit-tr-climate",
+      "name": "MIT Technology Review: climate and energy",
+      "url": "https://www.technologyreview.com/topic/climate-change/feed",
+      "type": "magazine",
+      "country": "US",
+      "bias_note": "Same magazine, energy desk: grid, data-centre load, US energy policy; not a security outlet."
     }
   ],
   "energy_keywords": [
@@ -456,7 +488,7 @@
     "hydro one",
     "ontario power"
   ],
-  "_feed_note": "CISA feeds return 403 to some clients (Akamai); they may work from GitHub Actions. NERC, Reuters, ENISA and Dragos have no working public RSS as of 2026-11-04. Probed 2026-11-04 and NOT available as feeds: SANS blog (500), Lawfare (403), Claroty Team82 (404), Nozomi (404), Microsoft Security blog (no response), Ars Technica security (404), E&E News (403), S&P Global (403). Journals (IJCIP, IEEE TSG, Computers & Security, Journal of Cybersecurity) have no usable public RSS and are mapped in where_to_look.json for manual reading. Forums and social posts are excluded by rule 7. Latin America added 2026-11-04: CSIRTAmericas, CERT.br, INCIBE-CERT ICS advisories, Una al día, Ciberseguridad LATAM; Spanish/Portuguese keywords added to both filters. Probed and unavailable: WeLiveSecurity ES (404), BNamericas (403), GSI Brasil (404), Infobae tecno (404), El Universal (404), Energía Estratégica (404), O Petróleo (403), Reuters Americas (401). Other languages added 2026-11-05: heise (DE), CERT-FR, Le Monde (FR), Security.NL (NL), CERT Polska (PL), CERT-UA (UK), JPCERT (JA), CCCS Canada (EN/FR). Probed and unusable: BSI (404), ACN/CSIRT Italy (bad XML), NCSC-NL (HTML), NISC Japan (bad XML), KISA Korea (bad XML), USOM Turkey (HTML), CFCS Denmark (bad XML), CERT-In (bad XML), ANSSI main (bad XML), ZDNet FR (bad XML), ACSC Australia (no response), CERT-EE and NCSC-CH (404). No working Arabic, Korean, Turkish, Chinese or Hindi feed found yet.",
+  "_feed_note": "CISA feeds return 403 to some clients (Akamai); they may work from GitHub Actions. NERC, Reuters, ENISA and Dragos have no working public RSS as of 2026-11-04. Probed 2026-11-04 and NOT available as feeds: SANS blog (500), Lawfare (403), Claroty Team82 (404), Nozomi (404), Microsoft Security blog (no response), Ars Technica security (404), E&E News (403), S&P Global (403). Journals (IJCIP, IEEE TSG, Computers & Security, Journal of Cybersecurity) have no usable public RSS and are mapped in where_to_look.json for manual reading. Forums and social posts are excluded by rule 7. Latin America added 2026-11-04: CSIRTAmericas, CERT.br, INCIBE-CERT ICS advisories, Una al día, Ciberseguridad LATAM; Spanish/Portuguese keywords added to both filters. Probed and unavailable: WeLiveSecurity ES (404), BNamericas (403), GSI Brasil (404), Infobae tecno (404), El Universal (404), Energía Estratégica (404), O Petróleo (403), Reuters Americas (401). Other languages added 2026-11-05: heise (DE), CERT-FR, Le Monde (FR), Security.NL (NL), CERT Polska (PL), CERT-UA (UK), JPCERT (JA), CCCS Canada (EN/FR). Probed and unusable: BSI (404), ACN/CSIRT Italy (bad XML), NCSC-NL (HTML), NISC Japan (bad XML), KISA Korea (bad XML), USOM Turkey (HTML), CFCS Denmark (bad XML), CERT-In (bad XML), ANSSI main (bad XML), ZDNet FR (bad XML), ACSC Australia (no response), CERT-EE and NCSC-CH (404). No working Arabic, Korean, Turkish, Chinese or Hindi feed found yet. Added 2026-11-05 on request: TechCrunch Security, Berkeley CLTC, MIT Technology Review (main + climate/energy). Stanford (Cyber Policy Center, Internet Observatory, HAI, Center for Internet and Society) feeds all return malformed XML; mapped in where_to_look.json for manual reading.",
   "cyber_keywords": [
     "cyber",
     "hack",
