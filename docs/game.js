@@ -560,6 +560,56 @@ $('btn-refs').onclick = () => {
   render(''); $('refs-q').oninput = ev => render(ev.target.value); $('dlg-refs').showModal();
 };
 
+// notifications: what happened since your last visit
+const SEEN_KEY = 'ecs-seen';
+function seenState() { try { return JSON.parse(localStorage.getItem(SEEN_KEY) || '{}'); } catch { return {}; } }
+function buildNotifications() {
+  const seen = seenState(); const since = seen.at || '1970-01-01T00:00:00Z'; const first = !seen.at;
+  const N = []; const push = (kind, title, detail, at, open) => N.push({ kind, title, detail, at: at || '', open });
+  const runs = (history && history.runs) || [];
+  runs.filter(r => r.run > since).forEach(r => push('run', `New edition: ${r.run.slice(0, 16).replace('T', ' ')} UTC`, `${r.items} items, ${r.energy} energy-cyber stories, ${Object.values(r.flags || {}).reduce((a, v) => a + v, 0)} flags · ${r.model}`, r.run, () => $('btn-history').click()));
+  const items = (briefing && briefing.items) || []; const seenItems = new Set(seen.items || []);
+  items.filter(it => !seenItems.has(it.headline)).forEach(it => {
+    const ot = /process|physical|reached/i.test(it.ot_impact || ''); const hot = it.severity === 'critical' || it.severity === 'high' || ot;
+    push(hot ? 'breaking' : 'verify', `${hot ? 'Breaking' : 'New item'}: ${it.headline}`, `${it.severity} · ${it.ot_impact} · ${it.country} · ${it.so_what}`, it.reported_date || '', () => openAnalysis(it.headline));
+  });
+  const V = (briefing && briefing.verification) || {}; const seenV = seen.verdicts || {};
+  Object.entries(V.verdicts || {}).forEach(([h, v]) => { if (seenV[h] !== v.verdict && !first) push('verify', `Verdict changed: ${h.slice(0, 70)}`, `${seenV[h] ? seenV[h] + ' → ' : ''}${v.verdict} — ${v.reason}`, V.run_at || '', () => openAnalysis(h)); });
+  const ev = allEvents().filter(e => e.at > since);
+  const grave = ev.filter(e => ['invented-suspected', 'contradiction', 'downgrade', 'retire', 'not-in-bundle', 'hand-curated', 'fallback-run'].includes(e.type));
+  grave.forEach(e => push('behaviour', `Behaviour: ${e.type} by ${e.agent}`, `${e.item ? e.item.slice(0, 80) + ' · ' : ''}${e.detail}`, e.at, () => openCommand()));
+  const other = ev.length - grave.length; if (other > 0) push('behaviour', `${other} routine flag${other > 1 ? 's' : ''} in Cyber Command`, 'unsourced sentences, single-source items, blocked pages', ev[0] ? ev[0].at : '', () => openCommand());
+  const convos = (briefing && briefing.conversations) || []; const seenC = seen.convos || 0;
+  if (convos.length > seenC) push('talk', `${convos.length - seenC} new discussion${convos.length - seenC > 1 ? 's' : ''} between residents`, convos.slice(seenC).map(c => c.between.map(id => (personas.agents.find(a => a.id === id) || { name: id }).name.split(' ')[0]).join(' & ') + ': “' + c.lines[0].line.slice(0, 70) + '”').join(' · '), briefing.generated_at, () => { $('log').scrollIntoView(); });
+  const eb = briefing && briefing.executive_brief; if (eb && seen.brief && seen.brief !== JSON.stringify(eb.threats.map(t => t.threat))) push('breaking', 'Executive brief changed', 'the ten threats were re-ranked or replaced', briefing.generated_at, () => $('btn-exec').click());
+  if (briefing && briefing.us_status && seen.us_status && seen.us_status !== briefing.us_status) push('breaking', 'US status changed', briefing.us_status, briefing.generated_at, () => $('btn-exec').click());
+  const blocked = Object.entries((sources && sources.source_performance) || {}).filter(([, v]) => v.pulls_blocked || String(v.feed || '').startsWith('error')).map(([k]) => k);
+  if (blocked.length && !first) push('behaviour', `${blocked.length} source${blocked.length > 1 ? 's' : ''} blocked or broken`, blocked.join(', '), '', () => $('btn-look').click());
+  const order = { breaking: 0, behaviour: 1, verify: 2, talk: 3, run: 4 }; N.sort((a, b) => order[a.kind] - order[b.kind] || (b.at || '').localeCompare(a.at || ''));
+  return { N, since, first };
+}
+function markSeen() {
+  const st = { at: new Date().toISOString(), items: ((briefing && briefing.items) || []).map(i => i.headline), verdicts: Object.fromEntries(Object.entries(((briefing && briefing.verification) || {}).verdicts || {}).map(([h, v]) => [h, v.verdict])), convos: ((briefing && briefing.conversations) || []).length, brief: briefing && briefing.executive_brief ? JSON.stringify(briefing.executive_brief.threats.map(t => t.threat)) : '', us_status: briefing && briefing.us_status };
+  try { localStorage.setItem(SEEN_KEY, JSON.stringify(st)); } catch {}
+  refreshBell();
+}
+function refreshBell() { const { N } = buildNotifications(); $('notify-count').textContent = N.length; $('btn-notify').classList.toggle('unread', N.length > 0); return N.length; }
+function openNotify() {
+  const { N, since, first } = buildNotifications();
+  $('notify-meta').textContent = first ? 'first visit in this browser: everything is new' : `since ${since.slice(0, 16).replace('T', ' ')} UTC · ${N.length} item${N.length === 1 ? '' : 's'}`;
+  $('notify-body').innerHTML = N.length ? N.map((n, i) => `<div class="ntf ${n.kind}" data-i="${i}"><b>${esc(n.title)}</b><div>${esc(n.detail)}</div><div class="when">${esc((n.at || '').slice(0, 16).replace('T', ' '))} · ${esc(n.kind)}</div></div>`).join('') : '<p class="k">Nothing new since your last visit.</p>';
+  $('notify-body').querySelectorAll('[data-i]').forEach(el => el.onclick = () => { const n = N[+el.dataset.i]; $('dlg-notify').close(); if (n.open) n.open(); });
+  $('notify-body').insertAdjacentHTML('beforeend', '<p class="k">Order: breaking (critical/high or OT-affected items, brief or US-status changes), behaviour (grave flags: suspected inventions, contradictions, downgrades, hand-curated or fallback runs, blocked sources), verification (new items and verdict changes), discussions, editions. State is kept in this browser; browser push notifications would need a server and are listed in the backlog.</p>');
+  $('dlg-notify').showModal();
+}
+$('btn-notify').onclick = openNotify;
+$('notify-clear').onclick = () => { markSeen(); $('dlg-notify').close(); };
+function toastAway() {
+  const n = refreshBell(); if (!n) return; const seen = seenState();
+  const t = document.createElement('div'); t.className = 'toast'; t.innerHTML = `<b>${n} thing${n > 1 ? 's' : ''} happened while you were away.</b><br><span class="k">${seen.at ? 'since ' + seen.at.slice(0, 16).replace('T', ' ') + ' UTC' : 'first visit'} · click to read</span>`;
+  t.onclick = () => { t.remove(); openNotify(); }; document.body.appendChild(t); setTimeout(() => t.remove(), 12000);
+}
+
 // cost & energy
 function ledger() { try { return JSON.parse(localStorage.getItem('ecs-ledger') || '[]'); } catch { return []; } }
 function ledgerAdd(agent, q, tin, tout, ms) { const L = ledger(); L.push({ at: new Date().toISOString(), agent, q: q.slice(0, 80), tin, tout, ms: Math.round(ms), model: (cfg.get().model || 'claude-sonnet-5-5') }); try { localStorage.setItem('ecs-ledger', JSON.stringify(L.slice(-500))); } catch {} }
@@ -890,7 +940,8 @@ async function boot() {
     if (ageH > 24) $('hud-meta').classList.add('stale');
   } else $('hud-meta').textContent = 'no briefing yet';
   makeAgents();
-  window.ECS = { agents, select };       // small debug hook, also handy for tests
+  window.ECS = { agents, select };
+  setTimeout(toastAway, 800);       // small debug hook, also handy for tests
   await document.fonts.ready;
   requestAnimationFrame(loop);
 }

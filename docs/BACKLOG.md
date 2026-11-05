@@ -15,6 +15,7 @@ forgotten; "blocked" means a person must act. Update this file when something sh
 - The Gazette: broadsheet printed from the data, with the ten-threat box
 - Per-layer geopolitical analysis (theatres, IT/OT/PIT, subsectors, absent theatres)
 - AI-market inputs checklist (`agents/ai_market.json`) and the Technologist's note
+- Notifications bell and 'While you were away' inbox (breaking, behaviour, verification, discussions, editions; state per browser)
 - The Bank (building + tab): per-run spend from history, running total, projected month, browser-stored budget with warning
 - Cost & energy tab (interactive: model, runs/day, caching, energy assumption; per stage, per resident, per question ledger); feeds in 9 languages (34 feeds)
 - Breach anatomy layer on every item and on key background cases (attribution hypotheses with reasoning, bypass, mechanics, full process, layers to add)
@@ -39,6 +40,7 @@ forgotten; "blocked" means a person must act. Update this file when something sh
 - Economist fills loss figures only where filings exist; Technologist records model releases and prices from makers' pages
 
 ## Pending: product ideas raised but not yet built
+- Push notifications outside the page (email, browser push, Slack): needs a server or a GitHub Action step that sends on critical items; the in-page inbox is the current form
 - 26-year backfill: an Archivist job that walks sources with archives (CISA ICS advisories 2010+, SEC 8-Ks, SANS/E-ISAC reports, DOJ indictments, court records) and adds one verified case per run; today the historical timeline holds ~25 background cases
 - Random-interval verification (cloud cron minimum is 1 hour; spot-checks approximate it)
 - Live monitoring (by design this is a snapshot; a push feed would need a server)
