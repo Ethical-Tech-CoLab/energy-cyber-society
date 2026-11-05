@@ -101,6 +101,11 @@ Git history is the second copy. Nothing is overwritten.
 synthesised from the intelligence cycle, ICD 203 analytic standards, ICD 206 sourcing,
 Admiralty grading, structured analytic techniques and the FBI/CISA advisory format.
 
+## Decisions log
+
+`DECISIONS.md`: every question asked during the build, the answer, and where it lives in the
+product, plus the decisions the assistant made unasked so they can be reversed.
+
 ## Review and presentation
 
 `REVIEW.md` is a critical peer review: blockers, majors, minors, what is missing, what is
