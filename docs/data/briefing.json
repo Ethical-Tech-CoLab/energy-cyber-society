@@ -1563,28 +1563,50 @@
     "sources": [
      "all feeds"
     ],
-    "tag": "US · status"
+    "tag": "US · status",
+    "source_urls": []
    },
    {
     "text": "Electric utilities joined other industries urging Congress to renew the Cybersecurity Information Sharing Act of 2015, which provides liability cover for sharing threat indicators and expires next month.",
     "sources": [
      "Utility Dive, 2026-11-04"
     ],
-    "tag": "US · policy"
+    "tag": "US · policy",
+    "source_urls": [
+     {
+      "name": "Utility Dive",
+      "url": "https://www.utilitydive.com/news/electric-utilities-join-industries-urging-renewal-of-cybersecurity-informat/873703/",
+      "date": "2026-11-04"
+     }
+    ]
    },
    {
     "text": "CISA launched its 2026 Critical Infrastructure Security and Resilience campaign, pointing owners at OT security, operational continuity and recovery planning.",
     "sources": [
      "Industrial Cyber, 2026-11-03"
     ],
-    "tag": "US · guidance"
+    "tag": "US · guidance",
+    "source_urls": [
+     {
+      "name": "Industrial Cyber",
+      "url": "https://industrialcyber.co/cisa/cisa-urges-critical-infrastructure-owners-to-prioritize-ot-security-operational-continuity-recovery-planning-in-2026-campaign/",
+      "date": "2026-11-03"
+     }
+    ]
    },
    {
     "text": "A reported Trump-administration ban on foreign grid components has the utility industry worried about practicality and cost; the legal instrument was not in any allowlisted source.",
     "sources": [
      "Utility Dive, 2026-11-03"
     ],
-    "tag": "US · policy · unverified"
+    "tag": "US · policy · unverified",
+    "source_urls": [
+     {
+      "name": "Utility Dive",
+      "url": "https://www.utilitydive.com/news/trump-ban-on-foreign-grid-components-sparks-industry-concern-over-practical/873752/",
+      "date": "2026-11-03"
+     }
+    ]
    },
    {
     "text": "Attackers remotely changed refrigeration setpoints overnight into November 2 at supermarkets in Belgium, Sweden, Estonia and elsewhere; Danfoss said its controls were involved, as in October's attacks on French supermarkets.",
@@ -1592,7 +1614,14 @@
      "The Hacker News, 2026-11-03",
      "Dark Reading, 2026-11-04"
     ],
-    "tag": "EU · OT process affected"
+    "tag": "EU · OT process affected",
+    "source_urls": [
+     {
+      "name": "The Hacker News",
+      "url": "https://thehackernews.com/2026/11/second-wave-of-cyberattacks-hits.html",
+      "date": "2026-11-03"
+     }
+    ]
    },
    {
     "text": "France's national blood service confirmed an attack through its refrigeration-equipment provider that altered temperature and defrost settings at three sites; alarms caught it and products were moved preventively. The widely quoted 110°C figure is 'according to reports' only.",
@@ -1601,7 +1630,24 @@
      "The Register, 2026-11-04",
      "EFS statement"
     ],
-    "tag": "EU · OT · victim-confirmed"
+    "tag": "EU · OT · victim-confirmed",
+    "source_urls": [
+     {
+      "name": "BleepingComputer",
+      "url": "https://www.bleepingcomputer.com/news/security/cyberattack-disrupts-blood-storage-refrigeration-systems-in-france/",
+      "date": "2026-11-04"
+     },
+     {
+      "name": "The Register",
+      "url": "https://www.theregister.com/security/2026/11/04/cyberattack-on-french-plasma-stores-is-enough-to-make-your-blood-boil/5307519",
+      "date": "2026-11-04"
+     },
+     {
+      "name": "EFS press statement (victim, primary, French)",
+      "url": "http://presse.efs.sante.fr/actualites/l-efs-confirme-l-incident-de-cybersecurite-impactant-un-de-ces",
+      "date": "2026-11-04"
+     }
+    ]
    },
    {
     "text": "Siemens SIMATIC IoT2050 Advanced: CVE-2026-58115, CVSS 10, missing authentication on the Node-RED interface, reported under active exploitation by VulnCheck, a vendor; no CISA or Siemens notice found in the bundle.",
@@ -1609,7 +1655,19 @@
      "The Hacker News, 2026-11-03",
      "VulnCheck"
     ],
-    "tag": "vulnerability · single source"
+    "tag": "vulnerability · single source",
+    "source_urls": [
+     {
+      "name": "The Hacker News (relaying VulnCheck)",
+      "url": "https://thehackernews.com/2026/11/attackers-exploit-critical-siemens.html",
+      "date": "2026-11-03"
+     },
+     {
+      "name": "VulnCheck blog (vendor, sells vulnerability intelligence)",
+      "url": "https://www.vulncheck.com/blog/exploitation-targeting-node-red",
+      "date": "2026-11-03"
+     }
+    ]
    },
    {
     "text": "Zyxel GS1900 switches: zero-day CVE-2026-107441 used to compromise nearly 1,000 devices and steal configuration files and credentials; patches out October 22, advisory November 3.",
@@ -1617,14 +1675,53 @@
      "BleepingComputer, 2026-11-05",
      "Zyxel advisory"
     ],
-    "tag": "vulnerability · vendor-confirmed"
+    "tag": "vulnerability · vendor-confirmed",
+    "source_urls": [
+     {
+      "name": "BleepingComputer",
+      "url": "https://www.bleepingcomputer.com/news/security/zyxel-fixes-zero-day-exploited-to-hack-nearly-1-000-network-switches/",
+      "date": "2026-11-05"
+     },
+     {
+      "name": "Zyxel security advisory (vendor, primary)",
+      "url": "https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-out-of-bound",
+      "date": "2026-11-03"
+     },
+     {
+      "name": "primary: www.zyxel.com",
+      "url": "https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-out-of-bounds-write-vulnerability-in-gs1900-series-switches-11-03-2026",
+      "date": ""
+     },
+     {
+      "name": "primary: www.zyxel.com",
+      "url": "https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-stack-based-buffer-overflow-vulnerability-in-gs1900-series-switches-06-16-2026",
+      "date": ""
+     }
+    ]
    },
    {
     "text": "UK NCSC's Annual Review says AI-powered malware is 'highly likely' to feature in a ransomware attack on UK critical national infrastructure by 2028 and names China as best positioned to use AI against it.",
     "sources": [
      "UK NCSC, 2026-11-03"
     ],
-    "tag": "UK · forecast"
+    "tag": "UK · forecast",
+    "source_urls": [
+     {
+      "name": "UK NCSC News",
+      "url": "https://www.ncsc.gov.uk/news/cyber-chief-uk-facing-ai-powered-attacks-on-critical-infrastructure-in-two-years",
+      "date": "2026-11-03"
+     },
+     {
+      "name": "Industrial Cyber",
+      "url": "https://industrialcyber.co/critical-infrastructure/ncsc-annual-review-2026-warns-ai-powered-malware-could-target-uk-critical-infrastructure-by-2028/",
+      "date": "2026-11-04"
+     },
+     {
+      "name": "NCSC Annual Review 2026 (primary)",
+      "url": "https://www.ncsc.gov.uk/collection/annual-review-2026",
+      "date": "2026-11-03"
+     }
+    ]
    },
    {
     "text": "Elsewhere in cyberspace: a $6.3 billion Binance theft via a fake job interview attributed to North Korea; a cPGuard autoupdate backdoor; airline breaches spreading from IT provider Amadeus; Russia and Ukraine trading attacks on emergency alert apps.",
@@ -1634,7 +1731,14 @@
      "The Record",
      "The Register"
     ],
-    "tag": "wide angle"
+    "tag": "wide angle",
+    "source_urls": [
+     {
+      "name": "The Register",
+      "url": "https://www.theregister.com/security/2026/11/02/nuclear-threats-and-street-brawls-russia-ukraine-report-attacks-on-their-emergency-alert-apps/5306901",
+      "date": "2026-11-02"
+     }
+    ]
    }
   ],
   "considerations": [
@@ -1666,7 +1770,24 @@
      "cross-sector public warning systems"
     ],
     "us_relevance": "indirect; FrostyGoop/Industroyer-class tooling exists; no US contact in bundle",
-    "confidence": "moderate"
+    "confidence": "moderate",
+    "source_urls": [
+     {
+      "name": "The Register Security",
+      "url": "https://www.theregister.com/security/2026/11/02/nuclear-threats-and-street-brawls-russia-ukraine-report-attacks-on-their-emergency-alert-apps/5306901",
+      "date": "2026-11-02"
+     },
+     {
+      "name": "The Record (Recorded Future News)",
+      "url": "https://therecord.media/ukraine-kyiv-independent-cyberattack",
+      "date": "2026-11-04"
+     },
+     {
+      "name": "Industrial Cyber",
+      "url": "https://industrialcyber.co/ransomware/eset-uncovers-gorbag-cyberespionage-campaign-targeting-ukraines-administrations-defense-sector-transportation-hub/",
+      "date": "2026-11-04"
+     }
+    ]
    },
    {
     "conflict": "China–US technology and supply-chain rivalry",
@@ -1686,7 +1807,34 @@
      "solar/wind/storage hardware"
     ],
     "us_relevance": "direct on PIT (policy); OT by precedent",
-    "confidence": "moderate"
+    "confidence": "moderate",
+    "source_urls": [
+     {
+      "name": "The Hacker News",
+      "url": "https://thehackernews.com/2026/11/china-aligned-hackers-hijack-sogou.html",
+      "date": "2026-11-04"
+     },
+     {
+      "name": "UK NCSC News",
+      "url": "https://www.ncsc.gov.uk/news/cyber-chief-uk-facing-ai-powered-attacks-on-critical-infrastructure-in-two-years",
+      "date": "2026-11-03"
+     },
+     {
+      "name": "Industrial Cyber",
+      "url": "https://industrialcyber.co/critical-infrastructure/ncsc-annual-review-2026-warns-ai-powered-malware-could-target-uk-critical-infrastructure-by-2028/",
+      "date": "2026-11-04"
+     },
+     {
+      "name": "NCSC Annual Review 2026 (primary)",
+      "url": "https://www.ncsc.gov.uk/collection/annual-review-2026",
+      "date": "2026-11-03"
+     },
+     {
+      "name": "Utility Dive",
+      "url": "https://www.utilitydive.com/news/trump-ban-on-foreign-grid-components-sparks-industry-concern-over-practical/873752/",
+      "date": "2026-11-03"
+     }
+    ]
    },
    {
     "conflict": "North Korea revenue operations",
@@ -1703,7 +1851,24 @@
      "none directly; any energy company's treasury or crypto exposure"
     ],
     "us_relevance": "low for grid; moderate for corporate IT",
-    "confidence": "moderate"
+    "confidence": "moderate",
+    "source_urls": [
+     {
+      "name": "SecurityWeek",
+      "url": "https://www.securityweek.com/rigged-coding-assignment-abused-ai-tool-opened-path-to-6-billion-binance-heist/",
+      "date": "2026-11-04"
+     },
+     {
+      "name": "SecurityWeek",
+      "url": "https://www.securityweek.com/north-korea-launches-missiles-toward-the-sea-as-pyongyang-protests-against-us-claims-on-binance-hack/",
+      "date": "2026-11-04"
+     },
+     {
+      "name": "The Register Security",
+      "url": "https://www.theregister.com/security/2026/11/03/north-korean-fake-job-interview-led-to-63b-binance-heist/5307398",
+      "date": "2026-11-04"
+     }
+    ]
    }
   ],
   "absent_this_week": [
@@ -1825,6 +1990,13 @@
      "what": "A named actor claims or is attributed the wave; targets chosen for political effect; attacks timed to cold-chain-dependent events.",
      "confirms": "government attribution; a claim on a credible channel; victims clustering by country of policy interest"
     }
+   ],
+   "source_urls": [
+    {
+     "name": "The Hacker News",
+     "url": "https://thehackernews.com/2026/11/second-wave-of-cyberattacks-hits.html",
+     "date": "2026-11-03"
+    }
    ]
   },
   {
@@ -1851,6 +2023,18 @@
      "what": "A state-aligned actor uses the flaw for prepositioning in energy networks.",
      "confirms": "government advisory attributing exploitation; indicators tied to a known group"
     }
+   ],
+   "source_urls": [
+    {
+     "name": "The Hacker News (relaying VulnCheck)",
+     "url": "https://thehackernews.com/2026/11/attackers-exploit-critical-siemens.html",
+     "date": "2026-11-03"
+    },
+    {
+     "name": "VulnCheck blog (vendor, sells vulnerability intelligence)",
+     "url": "https://www.vulncheck.com/blog/exploitation-targeting-node-red",
+     "date": "2026-11-03"
+    }
    ]
   },
   {
@@ -1876,6 +2060,13 @@
      "likelihood": "cannot assess",
      "what": "Sharing drops measurably; incidents surface later and larger.",
      "confirms": "CISA or E-ISAC reporting reduced submissions"
+    }
+   ],
+   "source_urls": [
+    {
+     "name": "Utility Dive",
+     "url": "https://www.utilitydive.com/news/electric-utilities-join-industries-urging-renewal-of-cybersecurity-informat/873703/",
+     "date": "2026-11-04"
     }
    ]
   }
@@ -1947,7 +2138,19 @@
     "action": "Block the Node-RED port tonight; patch in the next window; confirm the firewall is in front of it.",
     "confidence": "moderate (single vendor source, no CISA notice yet)",
     "source": "The Hacker News 2026-11-03; VulnCheck",
-    "sev": "critical"
+    "sev": "critical",
+    "source_urls": [
+     {
+      "name": "The Hacker News (relaying VulnCheck)",
+      "url": "https://thehackernews.com/2026/11/attackers-exploit-critical-siemens.html",
+      "date": "2026-11-03"
+     },
+     {
+      "name": "VulnCheck blog (vendor, sells vulnerability intelligence)",
+      "url": "https://www.vulncheck.com/blog/exploitation-targeting-node-red",
+      "date": "2026-11-03"
+     }
+    ]
    },
    {
     "rank": 2,
@@ -1957,7 +2160,29 @@
     "action": "Inventory vendor remote access to controllers; MFA and VPN; alarm on setpoint changes with no logged operator action.",
     "confidence": "high (victim-confirmed; vendor named)",
     "source": "BleepingComputer 2026-11-04; The Hacker News 2026-11-03",
-    "sev": "high"
+    "sev": "high",
+    "source_urls": [
+     {
+      "name": "BleepingComputer",
+      "url": "https://www.bleepingcomputer.com/news/security/cyberattack-disrupts-blood-storage-refrigeration-systems-in-france/",
+      "date": "2026-11-04"
+     },
+     {
+      "name": "The Register",
+      "url": "https://www.theregister.com/security/2026/11/04/cyberattack-on-french-plasma-stores-is-enough-to-make-your-blood-boil/5307519",
+      "date": "2026-11-04"
+     },
+     {
+      "name": "EFS press statement (victim, primary, French)",
+      "url": "http://presse.efs.sante.fr/actualites/l-efs-confirme-l-incident-de-cybersecurite-impactant-un-de-ces",
+      "date": "2026-11-04"
+     },
+     {
+      "name": "The Hacker News",
+      "url": "https://thehackernews.com/2026/11/second-wave-of-cyberattacks-hits.html",
+      "date": "2026-11-03"
+     }
+    ]
    },
    {
     "rank": 3,
@@ -1967,7 +2192,29 @@
     "action": "Patch; rotate every credential in any config you cannot prove untouched.",
     "confidence": "high on the flaw (vendor advisory), moderate on scale",
     "source": "BleepingComputer 2026-11-05; Zyxel advisory",
-    "sev": "high"
+    "sev": "high",
+    "source_urls": [
+     {
+      "name": "BleepingComputer",
+      "url": "https://www.bleepingcomputer.com/news/security/zyxel-fixes-zero-day-exploited-to-hack-nearly-1-000-network-switches/",
+      "date": "2026-11-05"
+     },
+     {
+      "name": "Zyxel security advisory (vendor, primary)",
+      "url": "https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-out-of-bound",
+      "date": "2026-11-03"
+     },
+     {
+      "name": "primary: www.zyxel.com",
+      "url": "https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-out-of-bounds-write-vulnerability-in-gs1900-series-switches-11-03-2026",
+      "date": ""
+     },
+     {
+      "name": "primary: www.zyxel.com",
+      "url": "https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-stack-based-buffer-overflow-vulnerability-in-gs1900-series-switches-06-16-2026",
+      "date": ""
+     }
+    ]
    },
    {
     "rank": 4,
@@ -1977,7 +2224,14 @@
     "action": "Ask counsel what sharing continues if it lapses; support renewal through your association.",
     "confidence": "low until the statute is read (trade press only)",
     "source": "Utility Dive 2026-11-04",
-    "sev": "high"
+    "sev": "high",
+    "source_urls": [
+     {
+      "name": "Utility Dive",
+      "url": "https://www.utilitydive.com/news/electric-utilities-join-industries-urging-renewal-of-cybersecurity-informat/873703/",
+      "date": "2026-11-04"
+     }
+    ]
    },
    {
     "rank": 5,
@@ -1987,7 +2241,24 @@
     "action": "Inventory auto-updating software in OT-adjacent networks; require provider breach notification terms.",
     "confidence": "high on the incidents, moderate on energy transfer",
     "source": "SecurityWeek; BleepingComputer; The Record (wide bucket)",
-    "sev": "high"
+    "sev": "high",
+    "source_urls": [
+     {
+      "name": "SecurityWeek",
+      "url": "https://www.securityweek.com/malicious-cpguard-updates-served-in-opsshield-supply-chain-attack/",
+      "date": "2026-11-04"
+     },
+     {
+      "name": "BleepingComputer",
+      "url": "https://www.bleepingcomputer.com/news/security/hackers-hijack-cpguard-autoupdate-to-deploy-backdoor-steal-data/",
+      "date": "2026-11-04"
+     },
+     {
+      "name": "The Record (Recorded Future News)",
+      "url": "https://therecord.media/asian-airlines-announce-data-breach-it-provider-incident",
+      "date": "2026-11-05"
+     }
+    ]
    },
    {
     "rank": 6,
@@ -1997,7 +2268,29 @@
     "action": "Hunt for LOTL behaviour; review logging on edge devices; read CISA AA24-038A.",
     "confidence": "background: not evidenced in this week's bundle; high in the public record",
     "source": "CISA AA24-038A (2024, background); UK NCSC 2026-11-03 names China",
-    "sev": "high"
+    "sev": "high",
+    "source_urls": [
+     {
+      "name": "CISA AA24-038A (background)",
+      "url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-038a",
+      "date": "2024-02-07"
+     },
+     {
+      "name": "UK NCSC News",
+      "url": "https://www.ncsc.gov.uk/news/cyber-chief-uk-facing-ai-powered-attacks-on-critical-infrastructure-in-two-years",
+      "date": "2026-11-03"
+     },
+     {
+      "name": "Industrial Cyber",
+      "url": "https://industrialcyber.co/critical-infrastructure/ncsc-annual-review-2026-warns-ai-powered-malware-could-target-uk-critical-infrastructure-by-2028/",
+      "date": "2026-11-04"
+     },
+     {
+      "name": "NCSC Annual Review 2026 (primary)",
+      "url": "https://www.ncsc.gov.uk/collection/annual-review-2026",
+      "date": "2026-11-03"
+     }
+    ]
    },
    {
     "rank": 7,
@@ -2007,7 +2300,14 @@
     "action": "Map component origin; engage on the rule once the Counsel has the text.",
     "confidence": "low on specifics (instrument not read)",
     "source": "Utility Dive 2026-11-03",
-    "sev": "medium"
+    "sev": "medium",
+    "source_urls": [
+     {
+      "name": "Utility Dive",
+      "url": "https://www.utilitydive.com/news/trump-ban-on-foreign-grid-components-sparks-industry-concern-over-practical/873752/",
+      "date": "2026-11-03"
+     }
+    ]
    },
    {
     "rank": 8,
@@ -2017,7 +2317,24 @@
     "action": "Brief hiring managers and staff; isolate interview-related downloads.",
     "confidence": "high on the incident, moderate on energy transfer",
     "source": "BleepingComputer; The Register (wide bucket)",
-    "sev": "medium"
+    "sev": "medium",
+    "source_urls": [
+     {
+      "name": "SecurityWeek",
+      "url": "https://www.securityweek.com/rigged-coding-assignment-abused-ai-tool-opened-path-to-6-billion-binance-heist/",
+      "date": "2026-11-04"
+     },
+     {
+      "name": "SecurityWeek",
+      "url": "https://www.securityweek.com/north-korea-launches-missiles-toward-the-sea-as-pyongyang-protests-against-us-claims-on-binance-hack/",
+      "date": "2026-11-04"
+     },
+     {
+      "name": "The Register Security",
+      "url": "https://www.theregister.com/security/2026/11/03/north-korean-fake-job-interview-led-to-63b-binance-heist/5307398",
+      "date": "2026-11-04"
+     }
+    ]
    },
    {
     "rank": 9,
@@ -2027,7 +2344,19 @@
     "action": "Patch mobile fleets; separate MFA devices from browsing devices for OT staff.",
     "confidence": "moderate",
     "source": "BleepingComputer; The Hacker News (wide bucket)",
-    "sev": "medium"
+    "sev": "medium",
+    "source_urls": [
+     {
+      "name": "BleepingComputer",
+      "url": "https://www.bleepingcomputer.com/news/security/hackers-use-n-day-exploits-in-zero-click-attacks-on-ios-android-devices/",
+      "date": "2026-11-04"
+     },
+     {
+      "name": "The Hacker News",
+      "url": "https://thehackernews.com/2026/11/apt29-linked-hackers-hijack-web.html",
+      "date": "2026-11-04"
+     }
+    ]
    },
    {
     "rank": 10,
@@ -2037,7 +2366,24 @@
     "action": "Fund the basics; the forecast changes speed, not the fixes.",
     "confidence": "forecast; high provenance, cannot be confirmed",
     "source": "UK NCSC 2026-11-03",
-    "sev": "low"
+    "sev": "low",
+    "source_urls": [
+     {
+      "name": "UK NCSC News",
+      "url": "https://www.ncsc.gov.uk/news/cyber-chief-uk-facing-ai-powered-attacks-on-critical-infrastructure-in-two-years",
+      "date": "2026-11-03"
+     },
+     {
+      "name": "Industrial Cyber",
+      "url": "https://industrialcyber.co/critical-infrastructure/ncsc-annual-review-2026-warns-ai-powered-malware-could-target-uk-critical-infrastructure-by-2028/",
+      "date": "2026-11-04"
+     },
+     {
+      "name": "NCSC Annual Review 2026 (primary)",
+      "url": "https://www.ncsc.gov.uk/collection/annual-review-2026",
+      "date": "2026-11-03"
+     }
+    ]
    }
   ],
   "not_on_the_list": "No confirmed intrusion at a US energy operator this week; Iran, the Gulf and the Taiwan Strait are absent from the feeds; no energy incident has a published cost figure.",
@@ -2060,5 +2406,1138 @@
    "Oceania": "Australia's CISC updated critical-infrastructure risk guidance (Industrial Cyber); no incident.",
    "global": "Siemens IoT2050 exploitation and the Zyxel switch campaign affect devices wherever they sit."
   }
+ },
+ "references": {
+  "generated_at": "2026-11-04T23:07:43.271471+00:00",
+  "count": 161,
+  "entries": [
+   {
+    "category": "Board item source",
+    "name": "The Hacker News (relaying VulnCheck)",
+    "url": "https://thehackernews.com/2026/11/attackers-exploit-critical-siemens.html",
+    "date": "2026-11-03",
+    "context": "Siemens SIMATIC IoT2050 Advanced: CVSS 10 missing-authentication flaw exploited in the wild"
+   },
+   {
+    "category": "Board item source",
+    "name": "VulnCheck blog (vendor, sells vulnerability intelligence)",
+    "url": "https://www.vulncheck.com/blog/exploitation-targeting-node-red",
+    "date": "2026-11-03",
+    "context": "Siemens SIMATIC IoT2050 Advanced: CVSS 10 missing-authentication flaw exploited in the wild"
+   },
+   {
+    "category": "Board item source",
+    "name": "BleepingComputer",
+    "url": "https://www.bleepingcomputer.com/news/security/zyxel-fixes-zero-day-exploited-to-hack-nearly-1-000-network-switches/",
+    "date": "2026-11-05",
+    "context": "Zyxel GS1900 switch zero-day used to compromise nearly 1,000 devices and steal configs and credentials"
+   },
+   {
+    "category": "Board item source",
+    "name": "Zyxel security advisory (vendor, primary)",
+    "url": "https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-out-of-bound",
+    "date": "2026-11-03",
+    "context": "Zyxel GS1900 switch zero-day used to compromise nearly 1,000 devices and steal configs and credentials"
+   },
+   {
+    "category": "Board item source",
+    "name": "BleepingComputer",
+    "url": "https://www.bleepingcomputer.com/news/security/cyberattack-disrupts-blood-storage-refrigeration-systems-in-france/",
+    "date": "2026-11-04",
+    "context": "Cyberattack via refrigeration-equipment provider changed temperature settings at three French blood-service facilities"
+   },
+   {
+    "category": "Board item source",
+    "name": "The Register",
+    "url": "https://www.theregister.com/security/2026/11/04/cyberattack-on-french-plasma-stores-is-enough-to-make-your-blood-boil/5307519",
+    "date": "2026-11-04",
+    "context": "Cyberattack via refrigeration-equipment provider changed temperature settings at three French blood-service facilities"
+   },
+   {
+    "category": "Board item source",
+    "name": "EFS press statement (victim, primary, French)",
+    "url": "http://presse.efs.sante.fr/actualites/l-efs-confirme-l-incident-de-cybersecurite-impactant-un-de-ces",
+    "date": "2026-11-04",
+    "context": "Cyberattack via refrigeration-equipment provider changed temperature settings at three French blood-service facilities"
+   },
+   {
+    "category": "Board item source",
+    "name": "The Hacker News",
+    "url": "https://thehackernews.com/2026/11/second-wave-of-cyberattacks-hits.html",
+    "date": "2026-11-03",
+    "context": "Overnight wave of refrigeration setpoint attacks on supermarkets in Belgium, Sweden, Estonia and elsewhere"
+   },
+   {
+    "category": "Board item source",
+    "name": "Utility Dive",
+    "url": "https://www.utilitydive.com/news/electric-utilities-join-industries-urging-renewal-of-cybersecurity-informat/873703/",
+    "date": "2026-11-04",
+    "context": "Electric utilities urge Congress to renew the Cybersecurity Information Sharing Act of 2015 before it expires next month"
+   },
+   {
+    "category": "Board item source",
+    "name": "Industrial Cyber",
+    "url": "https://industrialcyber.co/cisa/cisa-urges-critical-infrastructure-owners-to-prioritize-ot-security-operational-continuity-recovery-planning-in-2026-campaign/",
+    "date": "2026-11-03",
+    "context": "CISA launches 2026 Critical Infrastructure Security and Resilience campaign: OT security, continuity, recovery planning"
+   },
+   {
+    "category": "Board item source",
+    "name": "UK NCSC News",
+    "url": "https://www.ncsc.gov.uk/news/cyber-chief-uk-facing-ai-powered-attacks-on-critical-infrastructure-in-two-years",
+    "date": "2026-11-03",
+    "context": "UK NCSC Annual Review warns of AI-assisted ransomware against critical national infrastructure by 2028"
+   },
+   {
+    "category": "Board item source",
+    "name": "Industrial Cyber",
+    "url": "https://industrialcyber.co/critical-infrastructure/ncsc-annual-review-2026-warns-ai-powered-malware-could-target-uk-critical-infrastructure-by-2028/",
+    "date": "2026-11-04",
+    "context": "UK NCSC Annual Review warns of AI-assisted ransomware against critical national infrastructure by 2028"
+   },
+   {
+    "category": "Board item source",
+    "name": "NCSC Annual Review 2026 (primary)",
+    "url": "https://www.ncsc.gov.uk/collection/annual-review-2026",
+    "date": "2026-11-03",
+    "context": "UK NCSC Annual Review warns of AI-assisted ransomware against critical national infrastructure by 2028"
+   },
+   {
+    "category": "Board item source",
+    "name": "Utility Dive",
+    "url": "https://www.utilitydive.com/news/trump-ban-on-foreign-grid-components-sparks-industry-concern-over-practical/873752/",
+    "date": "2026-11-03",
+    "context": "Trump administration ban on foreign grid components raises industry concern over practicality and cost"
+   },
+   {
+    "category": "Board item source",
+    "name": "The Register",
+    "url": "https://www.theregister.com/security/2026/11/02/nuclear-threats-and-street-brawls-russia-ukraine-report-attacks-on-their-emergency-alert-apps/5306901",
+    "date": "2026-11-02",
+    "context": "Russia and Ukraine report attacks on emergency alert apps during Kherson ceasefire"
+   },
+   {
+    "category": "Primary document (pulled)",
+    "name": "www.zyxel.com",
+    "url": "https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-out-of-bounds-write-vulnerability-in-gs1900-series-switches-11-03-2026",
+    "date": "",
+    "context": "Zyxel GS1900 switch zero-day used to compromise nearly 1,000 devices and steal configs and credentials"
+   },
+   {
+    "category": "Primary document (pulled)",
+    "name": "www.zyxel.com",
+    "url": "https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-stack-based-buffer-overflow-vulnerability-in-gs1900-series-switches-06-16-2026",
+    "date": "",
+    "context": "Zyxel GS1900 switch zero-day used to compromise nearly 1,000 devices and steal configs and credentials"
+   },
+   {
+    "category": "Fetched story (energy bucket)",
+    "name": "Dark Reading",
+    "url": "https://www.darkreading.com/application-security/critical-rails-bug-derail-vulnerable-servers",
+    "date": "2026-11-05",
+    "context": "Critical Rails Bug Threatens to Derail Vulnerable Servers"
+   },
+   {
+    "category": "Fetched story (energy bucket)",
+    "name": "The Hacker News",
+    "url": "https://thehackernews.com/2026/11/critical-rails-flaw-lets-attackers.html",
+    "date": "2026-11-04",
+    "context": "Critical Rails Flaw Lets Attackers Write Server Files via Crafted ImageMagick Uploads"
+   },
+   {
+    "category": "Fetched story (energy bucket)",
+    "name": "Industrial Cyber",
+    "url": "https://industrialcyber.co/critical-infrastructure/australias-cisc-sharpens-critical-infrastructure-risk-guidance-urges-stronger-cyber-and-supply-chain-controls/",
+    "date": "2026-11-04",
+    "context": "Australia’s CISC sharpens critical infrastructure risk guidance, urges stronger cyber and supply chain controls"
+   },
+   {
+    "category": "Fetched story (energy bucket)",
+    "name": "Industrial Cyber",
+    "url": "https://industrialcyber.co/news/crytica-security-partners-with-carahsoft-to-expand-device-level-ot-threat-detection-across-us-public-sector/",
+    "date": "2026-11-04",
+    "context": "Crytica Security partners with Carahsoft to expand device-level OT threat detection across US public sector"
+   },
+   {
+    "category": "Fetched story (energy bucket)",
+    "name": "Industrial Cyber",
+    "url": "https://industrialcyber.co/news/dispel-joins-white-house-backed-project-lifeline-250-to-secure-remote-access-at-rural-hospitals/",
+    "date": "2026-11-04",
+    "context": "Dispel joins White House-backed Project Lifeline 250 to secure remote access at rural hospitals"
+   },
+   {
+    "category": "Fetched story (energy bucket)",
+    "name": "Dark Reading",
+    "url": "https://www.darkreading.com/ics-ot-security/fresh-european-fridge-attacks-cold-chain-security",
+    "date": "2026-11-04",
+    "context": "Fresh European Fridge Attacks Put Cold-Chain Security in Focus"
+   },
+   {
+    "category": "Fetched story (energy bucket)",
+    "name": "Industrial Cyber",
+    "url": "https://industrialcyber.co/features/industrial-ai-adoption-outpaces-security-readiness-leaving-ot-environments-exposed-to-emerging-threats/",
+    "date": "2026-11-03",
+    "context": "Industrial AI adoption outpaces security readiness, leaving OT environments exposed to emerging threats"
+   },
+   {
+    "category": "Fetched story (energy bucket)",
+    "name": "The Register Security",
+    "url": "https://www.theregister.com/security/2026/11/03/britain-on-notice-ai-powered-ransomware-attacks-to-arrive-by-2028/5307200",
+    "date": "2026-11-03",
+    "context": "Britain on notice: AI-powered ransomware attacks to arrive by 2028"
+   },
+   {
+    "category": "Fetched story (energy bucket)",
+    "name": "The Register Security",
+    "url": "https://www.theregister.com/cyber-crime/2026/11/02/cops-bust-botnet-of-13m-infected-android-tv-boxes/5307045",
+    "date": "2026-11-03",
+    "context": "Cops bust botnet of 1.3M infected Android TV boxes"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "CyberScoop",
+    "url": "https://cyberscoop.com/democrats-congress-cybersecurity-cisa-ai-priorities/",
+    "date": "2026-11-05",
+    "context": "What Democratic control of Congress means for cybersecurity"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "The Register Security",
+    "url": "https://www.theregister.com/security/2026/11/04/apple-turns-icloud-into-spy-cloud-will-start-looking-at-public-share-links/5307681",
+    "date": "2026-11-05",
+    "context": "Apple turns iCloud into spy cloud, will start looking at public share links"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "BleepingComputer",
+    "url": "https://www.bleepingcomputer.com/news/security/vercel-rolls-out-new-protection-against-stolen-session-cookie-attacks/",
+    "date": "2026-11-05",
+    "context": "Vercel rolls out new protection against stolen session cookie attacks"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "The Record (Recorded Future News)",
+    "url": "https://therecord.media/asian-airlines-announce-data-breach-it-provider-incident",
+    "date": "2026-11-05",
+    "context": "More Asian airlines announce data breaches after attack on Spanish IT provider Amadeus"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "CyberScoop",
+    "url": "https://cyberscoop.com/canadian-extradited-cryptomining-universities/",
+    "date": "2026-11-05",
+    "context": "Officials extradite Canadian man to US for alleged cryptomining spree"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "The Record (Recorded Future News)",
+    "url": "https://therecord.media/canadian-nationals-accused-us-education-hacks-cryptomining",
+    "date": "2026-11-05",
+    "context": "Canadian extradited to US for allegedly hacking schools in at least four states"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "BleepingComputer",
+    "url": "https://www.bleepingcomputer.com/news/security/dreamhost-confirms-data-breach-exposed-ftp-logins-and-webmail-sessions/",
+    "date": "2026-11-05",
+    "context": "DreamHost confirms data breach exposed FTP logins and webmail sessions"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "The Record (Recorded Future News)",
+    "url": "https://therecord.media/french-bank-confirms-cyber-heist",
+    "date": "2026-11-04",
+    "context": "French bank confirms cyber heist, hackers suspected to have stolen an estimated $133 million"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "Utility Dive",
+    "url": "https://www.utilitydive.com/news/aps-sales-double-by-2041-proposes-extending-coal-use-to-2038/873648/",
+    "date": "2026-11-04",
+    "context": "APS expects sales to double by 2041, plans extending coal use to 2038"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "The Hacker News",
+    "url": "https://thehackernews.com/2026/11/debian-and-ubuntu-apt-flaw-lets-mitm.html",
+    "date": "2026-11-04",
+    "context": "Debian and Ubuntu APT Flaw Lets MitM Attackers Swap Verified Packages and Run Code as Root"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "The Hacker News",
+    "url": "https://thehackernews.com/2026/11/sonicwall-wont-patch-eol-gms-flaws-that.html",
+    "date": "2026-11-04",
+    "context": "SonicWall Won't Patch EoL GMS Flaws That Could Expose Files, Alter Database Records"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "BleepingComputer",
+    "url": "https://www.bleepingcomputer.com/news/security/nikke-pc-game-launcher-hacked-to-spread-remote-access-data-stealing-malware/",
+    "date": "2026-11-04",
+    "context": "NIKKE PC game launcher hacked to spread remote access, data-stealing malware"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "Dark Reading",
+    "url": "https://www.darkreading.com/endpoint-security/google-13-million-device-strong-xcpe-botnet",
+    "date": "2026-11-04",
+    "context": "Google, Partners Disrupt 1.3 Million-Device-Strong XCPE Botnet"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "The Record (Recorded Future News)",
+    "url": "https://therecord.media/ukraine-kyiv-independent-cyberattack",
+    "date": "2026-11-04",
+    "context": "Ukrainian news outlet Kyiv Independent hit by suspected Russian cyberattack"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "The Hacker News",
+    "url": "https://thehackernews.com/2026/11/researchers-uncover-prompt-adware.html",
+    "date": "2026-11-04",
+    "context": "Researchers Uncover Prompt Adware Hidden in OpenAI Codex Jailbreak Toolkit"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "BleepingComputer",
+    "url": "https://www.bleepingcomputer.com/news/security/msecure-password-manager-hack-prompts-password-reset-warnings/",
+    "date": "2026-11-04",
+    "context": "mSecure password manager hack prompts password reset warnings"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "The Register Security",
+    "url": "https://www.theregister.com/security/2026/11/04/us-gov-it-worker-pleads-guilty-to-sending-top-secret-files-to-ethiopia/5307595",
+    "date": "2026-11-04",
+    "context": "US gov IT worker pleads guilty to sending Top Secret files to Ethiopia"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "BleepingComputer",
+    "url": "https://www.bleepingcomputer.com/news/security/google-calendar-phishing-campaign-hijacks-sessions-bypasses-mfa/",
+    "date": "2026-11-04",
+    "context": "Google Calendar phishing campaign hijacks sessions, bypasses MFA"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "BleepingComputer",
+    "url": "https://www.bleepingcomputer.com/news/security/sonicwall-warns-of-unpatched-flaws-in-end-of-life-gms-software/",
+    "date": "2026-11-04",
+    "context": "SonicWall warns of unpatched flaws in end-of-life GMS software"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "SecurityWeek",
+    "url": "https://www.securityweek.com/sysdig-adds-runtime-security-and-governance-for-ai-agents/",
+    "date": "2026-11-04",
+    "context": "Sysdig Adds Runtime Security and Governance for AI Agents"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "The Hacker News",
+    "url": "https://thehackernews.com/2026/11/apt29-linked-hackers-hijack-web.html",
+    "date": "2026-11-04",
+    "context": "APT29-Linked Hackers Hijack Web Analytics Script to Deliver iOS and Android Exploits"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "SecurityWeek",
+    "url": "https://www.securityweek.com/barracuda-email-security-gateway-authentication-bypass-opens-path-to-root/",
+    "date": "2026-11-04",
+    "context": "Barracuda ESG Authentication Bypass Flaw Opens Path to Root"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "Dark Reading",
+    "url": "https://www.darkreading.com/cybersecurity-operations/incidents-move-fast-pen-paper",
+    "date": "2026-11-04",
+    "context": "Incidents Move Too Fast for Pen & Paper"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "SecurityWeek",
+    "url": "https://www.securityweek.com/agentic-data-security-firm-sentra-raises-150-million/",
+    "date": "2026-11-04",
+    "context": "Agentic Data Security Firm Sentra Raises $150 Million"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "The Record (Recorded Future News)",
+    "url": "https://therecord.media/russia-cyberattack-beget-cloud",
+    "date": "2026-11-04",
+    "context": "Cyberattack wipes cloud data at major Russian hosting provider Beget"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "BleepingComputer",
+    "url": "https://www.bleepingcomputer.com/news/security/us-charges-two-canadians-accused-of-hacking-us-universities/",
+    "date": "2026-11-04",
+    "context": "US charges two Canadians accused of hacking US universities"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "SecurityWeek",
+    "url": "https://www.securityweek.com/ai-linked-breaches-mount-as-workos-northflank-trigger-dev-disclose-hacks/",
+    "date": "2026-11-04",
+    "context": "AI-Linked Breaches Mount as WorkOS, Northflank, Trigger.dev Disclose Hacks"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "SecurityWeek",
+    "url": "https://www.securityweek.com/canadian-extradited-to-us-over-cryptomining-hacks-on-university-supercomputers/",
+    "date": "2026-11-04",
+    "context": "Canadian Extradited to US Over Cryptomining Hacks on University Supercomputers"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "BleepingComputer",
+    "url": "https://www.bleepingcomputer.com/news/security/cisa-flags-wordpress-rce-flaw-as-actively-exploited-in-attacks/",
+    "date": "2026-11-04",
+    "context": "CISA flags WordPress RCE flaw as actively exploited in attacks"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "The Hacker News",
+    "url": "https://thehackernews.com/2026/11/xen-hypervisor-flaws-let-one-malicious.html",
+    "date": "2026-11-04",
+    "context": "Xen Hypervisor Flaws Let One Malicious VM Read and Write Any Other VM's Memory"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "The Hacker News",
+    "url": "https://thehackernews.com/2026/11/radio-with-no-radar-why-agent-runtime.html",
+    "date": "2026-11-04",
+    "context": "Radio With No Radar: Why Agent Runtime Security Fails Without the Layers Beneath It"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "The Hacker News",
+    "url": "https://thehackernews.com/2026/11/china-aligned-hackers-hijack-sogou.html",
+    "date": "2026-11-04",
+    "context": "China-Aligned Hackers Hijack Sogou Input Method DNS Requests to Deploy DarkVigil Backdoor"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "SecurityWeek",
+    "url": "https://www.securityweek.com/malicious-cpguard-updates-served-in-opsshield-supply-chain-attack/",
+    "date": "2026-11-04",
+    "context": "Malicious cPGuard Updates Served in OpsShield Supply Chain Attack"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "SecurityWeek",
+    "url": "https://www.securityweek.com/chrome-157-rolls-out-with-213-security-fixes-seven-rated-critical/",
+    "date": "2026-11-04",
+    "context": "Chrome 157 Rolls Out With 213 Security Fixes, Seven Rated Critical"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "SecurityWeek",
+    "url": "https://www.securityweek.com/rigged-coding-assignment-abused-ai-tool-opened-path-to-6-billion-binance-heist/",
+    "date": "2026-11-04",
+    "context": "Rigged Coding Assignment, Abused AI Tool Opened Path to $6 Billion Binance Heist"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "BleepingComputer",
+    "url": "https://www.bleepingcomputer.com/news/security/hackers-use-n-day-exploits-in-zero-click-attacks-on-ios-android-devices/",
+    "date": "2026-11-04",
+    "context": "Hackers use n-day exploits in zero-click attacks on iOS, Android devices"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "SecurityWeek",
+    "url": "https://www.securityweek.com/north-korea-launches-missiles-toward-the-sea-as-pyongyang-protests-against-us-claims-on-binance-hack/",
+    "date": "2026-11-04",
+    "context": "North Korea Launches Missiles Toward the Sea as Pyongyang Protests Against US Claims on Binance Hack"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "Industrial Cyber",
+    "url": "https://industrialcyber.co/ransomware/eset-uncovers-gorbag-cyberespionage-campaign-targeting-ukraines-administrations-defense-sector-transportation-hub/",
+    "date": "2026-11-04",
+    "context": "ESET uncovers Gorbag cyberespionage campaign targeting Ukraine’s administrations, defense sector, transportation hub"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "SecurityWeek",
+    "url": "https://www.securityweek.com/meta-shares-top-muse-bug-bounty-findings-as-payouts-reach-1-2-million/",
+    "date": "2026-11-04",
+    "context": "Meta Shares Top Muse Bug Bounty Findings as Payouts Reach $1.2 Million"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "The Hacker News",
+    "url": "https://thehackernews.com/2026/11/russian-police-arrest-3-suspected.html",
+    "date": "2026-11-04",
+    "context": "Russian Police Arrest 3 Suspected VasyGrek Hackers, Dismantle Criminal Infrastructure"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "The Hacker News",
+    "url": "https://thehackernews.com/2026/11/google-patches-critical-android-flaw.html",
+    "date": "2026-11-04",
+    "context": "Google Issues Patches for Critical Android Flaw That Could Allow RCE Without User Interaction"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "The Hacker News",
+    "url": "https://thehackernews.com/2026/11/cisa-confirms-hackers-exploiting.html",
+    "date": "2026-11-04",
+    "context": "CISA Confirms Hackers Exploiting WordPress Core Flaw During Software Upgrades"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "Dark Reading",
+    "url": "https://www.darkreading.com/cyberattacks-data-breaches/philippine-migrant-worker-data-69gb-government-breach",
+    "date": "2026-11-04",
+    "context": "Philippine Migrant Worker Data Likely Leaked in 69GB Government Breach"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "Dark Reading",
+    "url": "https://www.darkreading.com/identity-access-management-security/beyond-phishing-resistant-yubico-identity-verification-gap",
+    "date": "2026-11-04",
+    "context": "Phishing-Resistant Isn't Enough; Yubico Takes Aim at Identity-Verification Gap"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "BleepingComputer",
+    "url": "https://www.bleepingcomputer.com/news/security/hackers-hijack-cpguard-autoupdate-to-deploy-backdoor-steal-data/",
+    "date": "2026-11-04",
+    "context": "Hackers hijack cPGuard autoupdate to deploy backdoor, steal data"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "The Register Security",
+    "url": "https://www.theregister.com/security/2026/11/03/north-korean-fake-job-interview-led-to-63b-binance-heist/5307398",
+    "date": "2026-11-04",
+    "context": "North Korean fake job interview led to $6.3B Binance heist"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "Dark Reading",
+    "url": "https://www.darkreading.com/cybersecurity-operations/germany-crime-service-investment-fraud",
+    "date": "2026-11-04",
+    "context": "Germany Busts 'Crime-as-a-Service' Investment Fraud Outfit"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "CyberScoop",
+    "url": "https://cyberscoop.com/ilc-dover-cybersecurity-settlement-false-claims-act/",
+    "date": "2026-11-04",
+    "context": "Defense and aerospace firm settles with government over allegedly failing to meet cybersecurity contract requirements"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "BleepingComputer",
+    "url": "https://www.bleepingcomputer.com/news/security/workos-says-attacker-used-artex-ai-to-breach-internal-sales-app/",
+    "date": "2026-11-04",
+    "context": "WorkOS says attacker used ARTEX AI to breach internal sales app"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "BleepingComputer",
+    "url": "https://www.bleepingcomputer.com/news/security/binance-says-fake-job-interview-led-to-63-billion-crypto-heist/",
+    "date": "2026-11-04",
+    "context": "Binance says fake job interview led to $6.3 billion crypto heist"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "The Register Security",
+    "url": "https://www.theregister.com/security/2026/11/03/ai-policy-wonks-declare-sovereign-agents-a-threat-to-civilization/5307354",
+    "date": "2026-11-04",
+    "context": "AI policy wonks declare 'sovereign agents' a threat to civilization"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "CyberScoop",
+    "url": "https://cyberscoop.com/oklahoma-man-charged-white-powder-letters-election-officials/",
+    "date": "2026-11-03",
+    "context": "Oklahoma man charged with mailing threats, substances to election officials nationwide"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "BleepingComputer",
+    "url": "https://www.bleepingcomputer.com/news/security/google-llmjacking-attacks-rack-up-1-million-in-cloud-ai-charges/",
+    "date": "2026-11-03",
+    "context": "Google: LLMjacking attacks rack up $1 million in cloud AI charges"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "The Hacker News",
+    "url": "https://thehackernews.com/2026/11/msecure-warns-users-to-change-passwords.html",
+    "date": "2026-11-03",
+    "context": "mSecure Warns Users to Change Passwords, Reset 2FA and Passkeys After Suspicious Activity"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "The Hacker News",
+    "url": "https://thehackernews.com/2026/11/chainstack-reports-production-systems.html",
+    "date": "2026-11-03",
+    "context": "Chainstack Reports Production Systems Breach Exposing Customer Data and Password Hashes"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "CyberScoop",
+    "url": "https://cyberscoop.com/europol-investment-scam-takedown/",
+    "date": "2026-11-03",
+    "context": "Europol dismantles investment scheme that impacted potential victims in 50 countries"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "Utility Dive",
+    "url": "https://www.utilitydive.com/news/senate-permitting-bill-holds-promise-needs-amendments/873419/",
+    "date": "2026-11-03",
+    "context": "The Senate permitting bill holds promise but needs amendments"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "The Hacker News",
+    "url": "https://thehackernews.com/2026/11/binance-reveals-how-fake-job-interviews.html",
+    "date": "2026-11-03",
+    "context": "Binance Reveals How Fake Job Interviews and AI Tool Abuse Led to $6.43 Billion Theft"
+   },
+   {
+    "category": "Fetched story (wide bucket)",
+    "name": "Utility Dive",
+    "url": "https://www.utilitydive.com/news/caterpillar-posts-highest-sales-quarter-ever-data-centers-q3-2026/873586/",
+    "date": "2026-11-03",
+    "context": "Caterpillar expands production of engines and turbines to meet data center demand"
+   },
+   {
+    "category": "Allowlisted feed",
+    "name": "CISA Advisories",
+    "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
+    "date": "",
+    "context": "US government body; authoritative on US-facing threats, careful wording, rarely attributes publicly, slow on non-US incidents."
+   },
+   {
+    "category": "Allowlisted feed",
+    "name": "CISA News",
+    "url": "https://www.cisa.gov/news.xml",
+    "date": "",
+    "context": "Agency press office; frames events around its own programs and successes."
+   },
+   {
+    "category": "Allowlisted feed",
+    "name": "CyberScoop",
+    "url": "https://cyberscoop.com/feed/",
+    "date": "",
+    "context": "Washington-focused trade outlet; strong on policy and federal sourcing, sponsor-funded events with vendors."
+   },
+   {
+    "category": "Allowlisted feed",
+    "name": "The Record (Recorded Future News)",
+    "url": "https://therecord.media/feed",
+    "date": "",
+    "context": "Editorially independent but owned by threat-intel vendor Recorded Future; strong on nation-state and ransomware actors."
+   },
+   {
+    "category": "Allowlisted feed",
+    "name": "BleepingComputer",
+    "url": "https://www.bleepingcomputer.com/feed/",
+    "date": "",
+    "context": "Fast, incident-driven, often first with ransomware claims; headlines can run ahead of confirmation."
+   },
+   {
+    "category": "Allowlisted feed",
+    "name": "SecurityWeek",
+    "url": "https://www.securityweek.com/feed/",
+    "date": "",
+    "context": "Vendor-advertising supported; dedicated ICS/OT coverage, sometimes echoes vendor research uncritically."
+   },
+   {
+    "category": "Allowlisted feed",
+    "name": "Dark Reading",
+    "url": "https://www.darkreading.com/rss.xml",
+    "date": "",
+    "context": "Informa-owned, heavy vendor sponsorship; analysis-led, can amplify vendor threat reports."
+   },
+   {
+    "category": "Allowlisted feed",
+    "name": "Krebs on Security",
+    "url": "https://krebsonsecurity.com/feed/",
+    "date": "",
+    "context": "Single investigative reporter; deep on cybercrime ecosystems, selective coverage, US-centric."
+   },
+   {
+    "category": "Allowlisted feed",
+    "name": "Utility Dive",
+    "url": "https://www.utilitydive.com/feeds/news/",
+    "date": "",
+    "context": "Utility-industry trade outlet; frames security through regulation, cost and reliability; sympathetic to utilities."
+   },
+   {
+    "category": "Allowlisted feed",
+    "name": "DOE Newsroom",
+    "url": "https://www.energy.gov/rss/newsroom.xml",
+    "date": "",
+    "context": "Department press releases; promotional about federal programs."
+   },
+   {
+    "category": "Allowlisted feed",
+    "name": "UK NCSC News",
+    "url": "https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml",
+    "date": "",
+    "context": "UK government agency; aligned with Five Eyes attributions."
+   },
+   {
+    "category": "Allowlisted feed",
+    "name": "The Hacker News",
+    "url": "https://feeds.feedburner.com/TheHackersNews",
+    "date": "",
+    "context": "High volume, sponsored content mixed with news; good for the wide-angle view of what else is happening."
+   },
+   {
+    "category": "Allowlisted feed",
+    "name": "Industrial Cyber",
+    "url": "https://industrialcyber.co/feed/",
+    "date": "",
+    "context": "ICS/OT-only trade outlet; vendor-advertising supported, relays vendor reports and regulator notices with little pushback."
+   },
+   {
+    "category": "Allowlisted feed",
+    "name": "The Register Security",
+    "url": "https://www.theregister.com/security/headlines.atom",
+    "date": "",
+    "context": "Irreverent UK tech press; sceptical of vendors and governments alike, headline tone can trivialise."
+   },
+   {
+    "category": "Where to look: What does the law or regulator actually say? (US)",
+    "name": "Federal Register",
+    "url": "https://www.federalregister.gov/",
+    "date": "",
+    "context": "every proposed and final rule, executive order and notice; the controlling text"
+   },
+   {
+    "category": "Where to look: What does the law or regulator actually say? (US)",
+    "name": "FERC eLibrary and orders",
+    "url": "https://www.ferc.gov/",
+    "date": "",
+    "context": "approves and directs NERC CIP standards; orders are the primary record"
+   },
+   {
+    "category": "Where to look: What does the law or regulator actually say? (US)",
+    "name": "NERC Reliability Standards (CIP-002 to CIP-015)",
+    "url": "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx",
+    "date": "",
+    "context": "the mandatory bulk-power-system cyber standards, with effective dates"
+   },
+   {
+    "category": "Where to look: What does the law or regulator actually say? (US)",
+    "name": "TSA pipeline security directives",
+    "url": "https://www.tsa.gov/for-industry/surface-transportation-cybersecurity-toolkit",
+    "date": "",
+    "context": "the oil and gas pipeline cyber regime; check each directive's version and expiry"
+   },
+   {
+    "category": "Where to look: What does the law or regulator actually say? (US)",
+    "name": "congress.gov",
+    "url": "https://www.congress.gov/",
+    "date": "",
+    "context": "statutes and bills, e.g. the Cybersecurity Information Sharing Act of 2015 sunset and any NDAA extension"
+   },
+   {
+    "category": "Where to look: What does the law or regulator actually say? (US)",
+    "name": "DOE CESER",
+    "url": "https://www.energy.gov/ceser",
+    "date": "",
+    "context": "the energy sector risk management agency; programs, leadership, reports"
+   },
+   {
+    "category": "Where to look: What does the law or regulator actually say? (US)",
+    "name": "NRC cybersecurity (10 CFR 73.54)",
+    "url": "https://www.nrc.gov/",
+    "date": "",
+    "context": "nuclear plant cyber rule and inspections"
+   },
+   {
+    "category": "Where to look: Is this vulnerability real and is it exploited?",
+    "name": "CISA ICS advisories",
+    "url": "https://www.cisa.gov/news-events/cybersecurity-advisories",
+    "date": "",
+    "context": "the authoritative US advisory per ICS product, several per week, some tagged 'Used in Energy'"
+   },
+   {
+    "category": "Where to look: Is this vulnerability real and is it exploited?",
+    "name": "CISA Known Exploited Vulnerabilities catalog",
+    "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+    "date": "",
+    "context": "if a CVE is here, exploitation is confirmed by the US government"
+   },
+   {
+    "category": "Where to look: Is this vulnerability real and is it exploited?",
+    "name": "NVD",
+    "url": "https://nvd.nist.gov/",
+    "date": "",
+    "context": "CVE record, CVSS, references"
+   },
+   {
+    "category": "Where to look: Is this vulnerability real and is it exploited?",
+    "name": "Vendor PSIRT/ProductCERT pages",
+    "url": "https://cert-portal.siemens.com/productcert/",
+    "date": "",
+    "context": "Siemens, Schneider, Rockwell, ABB, Honeywell, Zyxel each publish their own advisories; the vendor advisory outranks any outlet"
+   },
+   {
+    "category": "Where to look: Who is the actor and what is the tradecraft?",
+    "name": "Dragos (Year in Review, threat group pages)",
+    "url": "https://www.dragos.com/resources/",
+    "date": "",
+    "context": "deepest public ICS threat-group tracking"
+   },
+   {
+    "category": "Where to look: Who is the actor and what is the tradecraft?",
+    "name": "Mandiant / Google Threat Intelligence",
+    "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+    "date": "",
+    "context": "nation-state attributions, Sandworm and Volt Typhoon reporting"
+   },
+   {
+    "category": "Where to look: Who is the actor and what is the tradecraft?",
+    "name": "Microsoft Threat Intelligence",
+    "url": "https://www.microsoft.com/en-us/security/blog/topic/threat-intelligence/",
+    "date": "",
+    "context": "Volt Typhoon and similar campaigns; large telemetry"
+   },
+   {
+    "category": "Where to look: Who is the actor and what is the tradecraft?",
+    "name": "Claroty Team82, Nozomi Labs, Forescout Vedere",
+    "url": "https://claroty.com/team82",
+    "date": "",
+    "context": "OT vulnerability research"
+   },
+   {
+    "category": "Where to look: Who is the actor and what is the tradecraft?",
+    "name": "MITRE ATT&CK for ICS",
+    "url": "https://attack.mitre.org/matrices/ics/",
+    "date": "",
+    "context": "the shared vocabulary for techniques; use it to compare incidents"
+   },
+   {
+    "category": "Where to look: What is the research and academic view?",
+    "name": "IEEE Transactions on Smart Grid",
+    "url": "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=5165411",
+    "date": "",
+    "context": "grid cyber-physical security research"
+   },
+   {
+    "category": "Where to look: What is the research and academic view?",
+    "name": "International Journal of Critical Infrastructure Protection (Elsevier)",
+    "url": "https://www.sciencedirect.com/journal/international-journal-of-critical-infrastructure-protection",
+    "date": "",
+    "context": "the dedicated CIP journal"
+   },
+   {
+    "category": "Where to look: What is the research and academic view?",
+    "name": "Journal of Cybersecurity (Oxford)",
+    "url": "https://academic.oup.com/cybersecurity",
+    "date": "",
+    "context": "policy and interdisciplinary cyber research"
+   },
+   {
+    "category": "Where to look: What is the research and academic view?",
+    "name": "Computers & Security (Elsevier)",
+    "url": "https://www.sciencedirect.com/journal/computers-and-security",
+    "date": "",
+    "context": "ICS intrusion detection and OT security papers"
+   },
+   {
+    "category": "Where to look: What is the research and academic view?",
+    "name": "arXiv cs.CR and eess.SY",
+    "url": "https://arxiv.org/list/cs.CR/recent",
+    "date": "",
+    "context": "free preprints, including grid and ICS security"
+   },
+   {
+    "category": "Where to look: What is the research and academic view?",
+    "name": "NIST SP 800-82 Rev. 3",
+    "url": "https://csrc.nist.gov/pubs/sp/800/82/r3/final",
+    "date": "",
+    "context": "the free OT security guide; the substitute for ISA/IEC 62443"
+   },
+   {
+    "category": "Where to look: What is the research and academic view?",
+    "name": "ISA/IEC 62443",
+    "url": "https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards",
+    "date": "",
+    "context": "the OT security standard family"
+   },
+   {
+    "category": "Where to look: What is the research and academic view?",
+    "name": "SANS ICS resources and the SANS ICS Summit",
+    "url": "https://www.sans.org/industrial-control-systems-security/",
+    "date": "",
+    "context": "practitioner whitepapers and incident reviews"
+   },
+   {
+    "category": "Where to look: What is the research and academic view?",
+    "name": "Lawfare, Just Security, CSIS, Atlantic Council Cyber Statecraft",
+    "url": "https://www.lawfaremedia.org/",
+    "date": "",
+    "context": "policy analysis of energy cyber law and geopolitics"
+   },
+   {
+    "category": "Where to look: What is the research and academic view?",
+    "name": "Scite / Google Scholar",
+    "url": "https://scite.ai/",
+    "date": "",
+    "context": "find and check citations; Scite shows whether later papers support or contrast a claim"
+   },
+   {
+    "category": "Where to look: What happened today? (daily news, credible)",
+    "name": "Utility Dive, E&E News, S&P Global Commodity Insights",
+    "url": "https://www.utilitydive.com/",
+    "date": "",
+    "context": "energy-industry framing of the same events"
+   },
+   {
+    "category": "Where to look: What happened today? (daily news, credible)",
+    "name": "Industrial Cyber",
+    "url": "https://industrialcyber.co/",
+    "date": "",
+    "context": "OT-only trade press, relays regulator and vendor notices"
+   },
+   {
+    "category": "Where to look: Sector sharing and incident data",
+    "name": "E-ISAC",
+    "url": "https://www.eisac.com/",
+    "date": "",
+    "context": "the electricity sector's sharing body; the richest incident data"
+   },
+   {
+    "category": "Where to look: Sector sharing and incident data",
+    "name": "ONG-ISAC, DNG-ISAC",
+    "url": "https://ongisac.org/",
+    "date": "",
+    "context": "oil and gas, downstream gas sharing"
+   },
+   {
+    "category": "Where to look: Sector sharing and incident data",
+    "name": "NERC Lessons Learned and GADS/TADS",
+    "url": "https://www.nerc.com/pa/rrm/ea/Pages/Lessons-Learned.aspx",
+    "date": "",
+    "context": "post-event reports, some cyber-related"
+   },
+   {
+    "category": "Where to look: Sector sharing and incident data",
+    "name": "DOE OE-417 electric disturbance reports",
+    "url": "https://www.oe.netl.doe.gov/OE417_annual_summary.aspx",
+    "date": "",
+    "context": "mandatory US outage and disturbance filings, including cyber events"
+   },
+   {
+    "category": "Where to look: Sector sharing and incident data",
+    "name": "CISA ICS-CERT historical advisories and the ICS Advisory Project",
+    "url": "https://www.icsadvisoryproject.com/",
+    "date": "",
+    "context": "dashboards over all ICS advisories by sector and vendor"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "Nuclear plant 2003",
+    "url": "check:nuclear:2003",
+    "date": "2003",
+    "context": "NRC inspection reports"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "Nuclear plant 2014",
+    "url": "check:nuclear:2014",
+    "date": "2014",
+    "context": "KHNP / South Korean government statements"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "Nuclear plant 2019",
+    "url": "check:nuclear:2019",
+    "date": "2019",
+    "context": "NPCIL press release"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "Thermal power plant 2017",
+    "url": "check:thermal:2017",
+    "date": "2017",
+    "context": "Mandiant and Dragos reports; Schneider Electric advisory"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "Thermal power plant 2022",
+    "url": "check:thermal:2022",
+    "date": "2022",
+    "context": "CERT-UA, ESET"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "Substation 2015",
+    "url": "check:substation:2015",
+    "date": "2015",
+    "context": "SANS/E-ISAC 'Analysis of the Cyber Attack on the Ukrainian Power Grid' (2016); CISA alert IR-ALERT-H-16-056-01"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "Substation 2016",
+    "url": "check:substation:2016",
+    "date": "2016",
+    "context": "ESET and Dragos reports"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "Substation 2023",
+    "url": "check:substation:2023",
+    "date": "2023",
+    "context": "CISA advisory AA24-038A (Feb 2024)"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "Wind and solar farm 2022",
+    "url": "check:renewables:2022",
+    "date": "2022",
+    "context": "Enercon statement; Viasat incident report"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "Wind and solar farm 2024",
+    "url": "check:renewables:2024",
+    "date": "2024",
+    "context": "Contec advisory; Japanese press"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "Wind and solar farm 2025",
+    "url": "check:renewables:2025",
+    "date": "2025",
+    "context": "Forescout Vedere Labs report; CISA ICS advisories"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "Upstream oil and gas 2011",
+    "url": "check:wellhead:2011",
+    "date": "2011",
+    "context": "McAfee report"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "Upstream oil and gas 2024",
+    "url": "check:wellhead:2024",
+    "date": "2024",
+    "context": "Halliburton 8-K filings"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "Pipeline compressor station 2020",
+    "url": "check:pipeline:2020",
+    "date": "2020",
+    "context": "CISA AA20-049A"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "Pipeline compressor station 2021",
+    "url": "check:pipeline:2021",
+    "date": "2021",
+    "context": "Congressional testimony of CEO Joseph Blount (June 2021); DOJ seizure announcement"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "Refinery and LNG terminal 2012",
+    "url": "check:refinery:2012",
+    "date": "2012",
+    "context": "Saudi Aramco statements; US officials attributed to Iran"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "Refinery and LNG terminal 2017",
+    "url": "check:refinery:2017",
+    "date": "2017",
+    "context": "Mandiant/FireEye report (2018); US Treasury sanctions on TsNIIKhM (2020)"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "Battery storage site 2024",
+    "url": "check:storage:2024",
+    "date": "2024",
+    "context": "Congressional letters; Reuters reporting (May 2025) on undocumented communication devices in inverters"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "EV charging hub 2022",
+    "url": "check:evcharging:2022",
+    "date": "2022",
+    "context": "Press reports; charger operator statements"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "EV charging hub 2024",
+    "url": "check:evcharging:2024",
+    "date": "2024",
+    "context": "Zero Day Initiative results"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "Data centre 2021",
+    "url": "check:datacentre:2021",
+    "date": "2021",
+    "context": "OVHcloud statements; French investigation"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "Data centre 2023",
+    "url": "check:datacentre:2023",
+    "date": "2023",
+    "context": "Trellix research; CISA ICS advisories"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "LNG terminal and tanker 2017",
+    "url": "check:lngport:2017",
+    "date": "2017",
+    "context": "Maersk interim report 2017"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "LNG terminal and tanker 2023",
+    "url": "check:lngport:2023",
+    "date": "2023",
+    "context": "Nagoya Harbor Transportation Association statements"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "LNG terminal and tanker 2024",
+    "url": "check:lngport:2024",
+    "date": "2024",
+    "context": "national aviation and maritime authority notices"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "Interconnector and subsea cable 2022",
+    "url": "check:interconnector:2022",
+    "date": "2022",
+    "context": "Viasat statement; EU and US attributions to Russia"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "Interconnector and subsea cable 2023",
+    "url": "check:interconnector:2023",
+    "date": "2023",
+    "context": "Finnish National Bureau of Investigation"
+   },
+   {
+    "category": "Background case pointer (unverified; no URL)",
+    "name": "Interconnector and subsea cable 2024",
+    "url": "check:interconnector:2024",
+    "date": "2024",
+    "context": "Finnish and Estonian authorities; NATO statements"
+   },
+   {
+    "category": "Executive brief",
+    "name": "CISA AA24-038A (background)",
+    "url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-038a",
+    "date": "2024-02-07",
+    "context": "State prepositioning in US critical infrastructure (PRC-linked; Volt Typhoon pattern)"
+   }
+  ]
  }
 }

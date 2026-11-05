@@ -23,11 +23,17 @@ for it in b.get("items", []):
     scg = it.get("scoring", {})
     if not (scg.get("severity", {}).get("rationale") and scg.get("reliability_rationale")): errs.append(f"item '{h}': missing scoring rationale")
 if "us_status" not in b: errs.append("missing us_status")
+eb = b.get("executive_brief")
+if eb:
+    for t in eb.get("threats", []):
+        if not t.get("source_urls"): errs.append(f"executive brief threat without source_urls: {t.get('threat','')[:40]}")
+if not b.get("references", {}).get("entries"): errs.append("missing references index")
 sm = b.get("summary")
 if sm:
     if not sm.get("bullets"): errs.append("summary has no bullets")
     for x in sm.get("bullets", []):
         if not x.get("sources"): errs.append(f"summary bullet without sources: {x.get('text','')[:40]}")
+        if not x.get("source_urls") and "all feeds" not in " ".join(x.get("sources", [])): errs.append(f"summary bullet without source_urls: {x.get('text','')[:40]}")
 if (ROOT / "docs/data/buildings.json").read_text() != (ROOT / "agents/buildings.json").read_text(): errs.append("docs/data/buildings.json differs from agents/buildings.json (cp it)")
 bl = json.loads((ROOT / "agents/buildings.json").read_text())["buildings"]
 for a in p["agents"]:

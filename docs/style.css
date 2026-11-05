@@ -130,3 +130,7 @@ button.link{background:none;border:0;color:var(--accent);cursor:pointer;font-fam
 #scen-body,#human-body{max-height:68vh}
 .item h4{margin:0 0 4px}
 .exec th:first-child{width:36px}#exec-body{max-height:70vh}
+
+.srcs{font-size:11px;color:var(--mute);margin-top:4px}.srcs a,.src-link{color:var(--accent)}
+.refs-q{width:100%;background:#0b0e14;border:2px solid var(--line);color:var(--ink);padding:8px;font-family:var(--font);font-size:12px;margin-bottom:8px}
+#refs-body{max-height:62vh}#refs-body li{margin-bottom:4px;font-size:12px}

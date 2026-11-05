@@ -279,7 +279,7 @@ cv.addEventListener('click', ev => {
 
 const $ = id => document.getElementById(id);
 const panel = $('panel'), chat = $('chat');
-function addMsg(text, cls) { const d = document.createElement('div'); d.className = 'msg ' + cls; d.textContent = text; chat.appendChild(d); chat.scrollTop = chat.scrollHeight; return d; }
+function addMsg(text, cls) { const d = document.createElement('div'); d.className = 'msg ' + cls; if (cls === 'them' && /\(/.test(text)) d.innerHTML = linkify(text, ''); else d.textContent = text; chat.appendChild(d); chat.scrollTop = chat.scrollHeight; return d; }
 
 function select(a) {
   selected = a; a.state = 'idle'; a.wait = 99999;
@@ -312,7 +312,7 @@ function selectBuilding(b) {
   if (res) { addMsg(`${res.name} works here. ${res.job}`, 'them'); if (res.name_note) addMsg('About the name: ' + res.name_note, 'sys'); }
   if (buildings && buildings.naming_note) addMsg('How all the names were chosen: ' + buildings.naming_note, 'sys');
   if (b.key === 'Compute Exchange' && aimarket) { aimarket.inputs.forEach(l => addMsg(`${l.layer}: ${l.items.join('; ')}\nTrack: ${l.track}\nEnergy relevance: ${l.energy_relevance}`, 'them')); addMsg('This society: ' + Object.entries(aimarket.this_society).map(([k, v]) => k.replace(/_/g, ' ') + ' — ' + v).join(' · '), 'sys'); }
-  if (b.key === 'Situation Room' && briefing && briefing.geopolitics) { briefing.geopolitics.theatres.forEach(t => addMsg(`${t.conflict}\nIT: ${t.layers.IT}\nOT: ${t.layers.OT}\nPIT: ${t.layers.PIT}\nSubsectors: ${t.subsectors.join(', ')} · US relevance: ${t.us_relevance} · confidence ${t.confidence}`, 'them')); addMsg('Absent from this week\'s feeds: ' + briefing.geopolitics.absent_this_week.join('; ') + '. ' + briefing.geopolitics.note, 'sys'); }
+  if (b.key === 'Situation Room' && briefing && briefing.geopolitics) { briefing.geopolitics.theatres.forEach(t => { const m = addMsg(`${t.conflict}\nIT: ${t.layers.IT}\nOT: ${t.layers.OT}\nPIT: ${t.layers.PIT}\nSubsectors: ${t.subsectors.join(', ')} · US relevance: ${t.us_relevance} · confidence ${t.confidence}`, 'them'); m.innerHTML += srcList(t.source_urls); }); addMsg('Absent from this week\'s feeds: ' + briefing.geopolitics.absent_this_week.join('; ') + '. ' + briefing.geopolitics.note, 'sys'); }
   const sg = $('suggest'); sg.innerHTML = '';
   if (res) { const btn = document.createElement('button'); btn.textContent = `Talk to ${res.name.split(' ')[0]}`; btn.onclick = () => select(agents.find(a => a.p.id === res.id)); sg.appendChild(btn); }
   $('live-note').textContent = 'Click a resident to talk, or a building to read what happens inside it.';
@@ -426,7 +426,7 @@ $('btn-summary').onclick = () => {
   $('sum-meta').textContent = briefing ? `${briefing.counts.energy} energy-cyber stories, ${briefing.counts.wide} wider · snapshot ${(briefing.news_generated_at || '').slice(0, 10)}` : '';
   $('sum-head').textContent = sm ? sm.headline : 'No summary yet (headlines-only mode).';
   const ul = $('sum-bullets'); ul.innerHTML = '';
-  (sm ? sm.bullets : []).forEach(x => { const li = document.createElement('li'); li.innerHTML = `<span class="tag">${esc(x.tag || '')}</span>${esc(x.text)}<span class="src">${esc((x.sources || []).join(' · '))}</span>`; ul.appendChild(li); });
+  (sm ? sm.bullets : []).forEach(x => { const li = document.createElement('li'); li.innerHTML = `<span class="tag">${esc(x.tag || '')}</span>${esc(x.text)}<span class="src">${(x.source_urls || []).length ? x.source_urls.map(u => `<a href="${esc(u.url)}" target="_blank" rel="noopener">${esc(u.name)}</a>${u.date ? ' ' + esc(u.date) : ''}`).join(' · ') : (x.sources || []).map(sname => { const u = resolveSource(sname, x.text); return u ? `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(sname)}</a>` : esc(sname); }).join(' · ')}</span>`; ul.appendChild(li); });
   const uc = $('sum-cons'); uc.innerHTML = '';
   (sm ? sm.considerations : []).forEach(t => { const li = document.createElement('li'); li.textContent = t; uc.appendChild(li); });
   const wd = briefing && briefing.world_desk; const wdEl = $('sum-world'); if (wdEl) wdEl.innerHTML = wd ? `<h3>World desk, by continent</h3><table class="fac-table">${Object.entries(wd.continents).map(([c, t]) => `<tr><th>${esc(c)}</th><td>${esc(t)}</td></tr>`).join('')}</table><p class="k">${esc(wd.note)}</p>` : '';
@@ -502,7 +502,7 @@ function renderCollection(name) {
     ${name === 'Cyber Attacks' ? `<div><b>Initial access:</b> ${esc(it.initial_access || 'unknown')} · <b>Impact:</b> ${esc(it.operational_impact || '')}</div>` : ''}
     ${name === 'Action Required' ? `<div><b>Do:</b> ${esc(it.recommended_action)} · ${esc(it.so_what)}</div>` : ''}
     <div>${(it.ttps || []).map(t => `<span class="ttp" title="${esc(t.name)}">${esc(t.id)} ${esc(t.name.slice(0, 28))}</span>`).join('')}</div>
-    <div class="k">trust: ${esc(it.source_reliability)}${esc(it.info_credibility)} · ${esc(it.claim_vs_confirmed)}${V[it.headline] ? ' · Verifier: ' + esc(V[it.headline].verdict) : ''}</div></div>`).join('') : '<p class="k">Nothing in this collection this run. Empty means the allowlisted feeds reported nothing of this kind, not that nothing happened.</p>';
+    ${srcList(it.sources)}<div class="k">trust: ${esc(it.source_reliability)}${esc(it.info_credibility)} · ${esc(it.claim_vs_confirmed)}${V[it.headline] ? ' · Verifier: ' + esc(V[it.headline].verdict) : ''}</div></div>`).join('') : '<p class="k">Nothing in this collection this run. Empty means the allowlisted feeds reported nothing of this kind, not that nothing happened.</p>';
 }
 $('btn-collections').onclick = () => {
   const items = (briefing && briefing.items) || [];
@@ -511,13 +511,55 @@ $('btn-collections').onclick = () => {
   renderCollection('Vulnerabilities'); $('dlg-collections').showModal();
 };
 
+// source resolver: turn any "(Outlet, date)" or "Outlet 2026-11-03" mention into a link
+let urlIndex = null;
+function buildUrlIndex() {
+  urlIndex = [];
+  const push = (name, url, date, title) => { if (url && !url.startsWith('check:')) urlIndex.push({ name: name.toLowerCase(), url, date: date || '', title: (title || '').toLowerCase() }); };
+  ((briefing && briefing.items) || []).forEach(it => (it.sources || []).forEach(x => push(x.name, x.url, x.date, it.headline)));
+  if (news) { news.energy.forEach(x => push(x.source_name, x.link, (x.published || '').slice(0, 10), x.title)); news.wide.forEach(x => push(x.source_name, x.link, (x.published || '').slice(0, 10), x.title)); }
+  ((briefing && briefing.references && briefing.references.entries) || []).forEach(r => push(r.name, r.url, r.date, r.context));
+}
+function resolveSource(label, context) {
+  if (!urlIndex) buildUrlIndex();
+  const l = label.toLowerCase().replace(/\(.*?\)/g, '').trim(); const date = (label.match(/\d{4}-\d{2}-\d{2}/) || [''])[0];
+  const cw = (context || '').toLowerCase().match(/[a-z0-9]{5,}/g) || [];
+  let best = null, bs = 0;
+  for (const e of urlIndex) {
+    if (!l.split(/[,;·]/)[0].trim().split(' ').slice(0, 2).every(w => e.name.includes(w))) continue;
+    let sc = 1 + (date && e.date === date ? 2 : 0) + cw.filter(w => e.title.includes(w)).length;
+    if (sc > bs) { bs = sc; best = e; }
+  }
+  return best ? best.url : null;
+}
+function linkify(text, context) {
+  // links "(Outlet, date)" and "(Outlet; Outlet)" citations and bare "Outlet YYYY-MM-DD" mentions
+  return esc(text).replace(/\(([^()]{3,120}?)\)/g, (m, inner) => {
+    const parts = inner.split(/;|·/).map(p => p.trim()).filter(Boolean);
+    const linked = parts.map(p => { const u = resolveSource(p, context); return u ? `<a href="${esc(u)}" target="_blank" rel="noopener" class="src-link">${esc(p)}</a>` : esc(p); });
+    return linked.some(x => x.includes('<a ')) ? '(' + linked.join('; ') + ')' : m;
+  });
+}
+function srcList(list) { return (list || []).length ? `<div class="srcs">Sources: ${list.map(u => `<a href="${esc(u.url)}" target="_blank" rel="noopener">${esc(u.name)}</a>${u.date ? ' ' + esc(u.date) : ''}`).join(' · ')}</div>` : ''; }
+
+$('btn-refs').onclick = () => {
+  const R = (briefing && briefing.references) || { entries: [] };
+  const render = q => {
+    const ql = (q || '').toLowerCase(); const rows = R.entries.filter(r => !ql || (r.name + ' ' + r.context + ' ' + r.category + ' ' + r.url).toLowerCase().includes(ql));
+    const cats = {}; rows.forEach(r => (cats[r.category] = cats[r.category] || []).push(r));
+    $('refs-body').innerHTML = Object.entries(cats).map(([c, rs]) => `<details ${ql ? 'open' : ''}><summary><b>${esc(c)}</b> <span class="k">${rs.length}</span></summary><ul>${rs.map(r => `<li>${r.url.startsWith('check:') ? `<b>${esc(r.name)}</b> <span class="k">no URL: check ${esc(r.context)}</span>` : `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.name)}</a> ${esc(r.date)} <span class="k">${esc(r.context.slice(0, 110))}</span>`}</li>`).join('')}</ul></details>`).join('') || '<p class="k">nothing matches</p>';
+    $('refs-meta').textContent = `${rows.length} of ${R.entries.length} references · every URL the system read or cited this run`;
+  };
+  render(''); $('refs-q').oninput = ev => render(ev.target.value); $('dlg-refs').showModal();
+};
+
 // executive brief: the ten biggest threats, assembled for evaluation
 $('btn-exec').onclick = () => {
   const e = briefing && briefing.executive_brief; if (!e) { $('exec-body').innerHTML = '<p class="k">No executive brief this run.</p>'; $('dlg-exec').showModal(); return; }
   $('exec-meta').textContent = `${e.audience} · as of ${(e.as_of || '').slice(0, 10)} · ${e.evaluation.signed ? 'signed by ' + e.evaluation.evaluated_by : 'UNSIGNED: awaiting human evaluation'}`;
   $('exec-body').innerHTML = `<p>${esc(e.framing)}</p>
     <table class="fac-table exec"><tr><th>#</th><th>Threat</th><th>Why it matters at board level</th><th>Your exposure</th><th>Action</th><th>Confidence · source</th></tr>
-    ${e.threats.map(t => `<tr><th><span class="badge sev-${esc(t.sev)}">${t.rank}</span></th><td><b>${esc(t.threat)}</b></td><td>${esc(t.why)}</td><td>${esc(t.exposure)}</td><td>${esc(t.action)}</td><td class="k">${esc(t.confidence)}<br>${esc(t.source)}</td></tr>`).join('')}</table>
+    ${e.threats.map(t => `<tr><th><span class="badge sev-${esc(t.sev)}">${t.rank}</span></th><td><b>${esc(t.threat)}</b></td><td>${esc(t.why)}</td><td>${esc(t.exposure)}</td><td>${esc(t.action)}</td><td class="k">${esc(t.confidence)}<br>${(t.source_urls || []).length ? t.source_urls.map(u => `<a href="${esc(u.url)}" target="_blank" rel="noopener">${esc(u.name)}</a>${u.date ? ' ' + esc(u.date) : ''}`).join('<br>') : linkify(t.source, t.threat)}</td></tr>`).join('')}</table>
     <p><b>Not on the list, deliberately:</b> ${esc(e.not_on_the_list)}</p>
     <div class="verdict"><b>Evaluation.</b> Assembled by ${esc(e.evaluation.assembled_by)}. ${e.evaluation.signed ? 'Evaluated and signed by ' + esc(e.evaluation.evaluated_by) + '.' : 'Not yet evaluated by a person. The role of the senior analyst here is to assess this assembled picture, not to build it: open each source, check the confidence line, strike what does not hold, then sign in docs/data/briefing.json → executive_brief.evaluation.'}${e.evaluation.evaluator_notes ? '<br>Notes: ' + esc(e.evaluation.evaluator_notes) : ''}</div>`;
   $('dlg-exec').showModal();
@@ -529,7 +571,7 @@ $('btn-scenarios').onclick = () => {
   $('scen-body').innerHTML = (sc.length ? sc.map(s0 => `<div class="item"><h4>${esc(s0.title)}</h4><div class="k">${esc(s0.story)}</div>
       <p><b>Action now:</b> ${esc(s0.action_now)}</p><p><b>Impact chain:</b> ${esc(s0.impact_chain)}</p>
       <table class="fac-table"><tr><th>Scenario</th><th>Likelihood</th><th>What happens</th><th>What would confirm it</th></tr>${s0.scenarios.map(x => `<tr><th>${esc(x.name)}</th><td>${esc(x.likelihood)}</td><td>${esc(x.what)}</td><td>${esc(x.confirms)}</td></tr>`).join('')}</table>
-      <button type="button" class="link" data-an="${esc(s0.story)}">open full analysis</button></div>`).join('') : '<p class="k">No scenarios this run.</p>') +
+      ${srcList(s0.source_urls)}<button type="button" class="link" data-an="${esc(s0.story)}">open full analysis</button></div>`).join('') : '<p class="k">No scenarios this run.</p>') +
     `<h3>Correlations across domains</h3>` + (co.length ? `<table class="fac-table"><tr><th>Items</th><th>Domains</th><th>Link</th><th>Strength</th></tr>${co.map(c => `<tr><td>${c.between.map(h => `<button type="button" class="link" data-an="${esc(h)}">${esc(h.slice(0, 60))}</button>`).join('<br>')}</td><td>${esc(c.domains.join(', '))}</td><td>${esc(c.link)}<div class="k">${esc(c.evidence)}</div></td><td>${esc(c.strength)}</td></tr>`).join('')}</table>` : '<p class="k">none</p>') +
     `<p class="k">Likelihood words follow the usual intelligence scale (likely / possible / unlikely / cannot assess); none is a probability number, because none has a base rate behind it. Scenarios are written by the residents from the bundle and are not predictions of what will happen.</p>`;
   $('scen-body').querySelectorAll('[data-an]').forEach(btn => btn.onclick = () => openAnalysis(btn.dataset.an));
@@ -550,7 +592,7 @@ $('btn-register').onclick = () => {
       <dt>Process</dt><dd><ol>${(a.process || []).map(x => `<li>${esc(x)}</li>`).join('')}</ol></dd>
       <dt>Where it looks</dt><dd>${esc(a.looks || '')}</dd><dt>How it verifies</dt><dd>${esc(a.verifies || '')}</dd>
       <dt>Questions</dt><dd>${(a.questions || []).map(esc).join(' · ')}</dd>
-      <dt>Wrote this run</dt><dd>${out.briefing ? `<blockquote>${esc(out.briefing)}</blockquote>` : '<span class="k">nothing yet</span>'}${out.bubble ? `<div class="k">Bubble: “${esc(out.bubble)}”</div>` : ''}</dd>
+      <dt>Wrote this run</dt><dd>${out.briefing ? `<blockquote>${linkify(out.briefing, '')}</blockquote>` : '<span class="k">nothing yet</span>'}${out.bubble ? `<div class="k">Bubble: “${esc(out.bubble)}”</div>` : ''}</dd>
       <dt>Flags raised / received</dt><dd>${flags.length ? `<ul>${flags.slice(0, 8).map(f => `<li>${esc(f.type)} · ${esc((f.item || '').slice(0, 60))} <span class="k">${esc(f.at.slice(0, 16).replace('T', ' '))}</span></li>`).join('')}</ul>` : '<span class="k">none</span>'}</dd>
       <dt>Name</dt><dd class="k">${esc(a.name_note || '')}</dd></dl></details>`; }).join('');
   $('dlg-register').showModal();
@@ -567,7 +609,7 @@ function drill(field, key) {
   const sc = briefing.rubric || {};
   const crit = field === 'severity' && sc.severity_scale ? `<p class="k"><b>${esc(key)}</b> means: ${esc(sc.severity_scale[key] || '')}</p>` : field === 'source_reliability' && sc.reliability_scale ? `<p class="k"><b>${esc(key)}</b>: ${esc(sc.reliability_scale[key] || '')}</p>` : field === 'info_credibility' && sc.credibility_scale ? `<p class="k"><b>${esc(key)}</b>: ${esc(sc.credibility_scale[key] || '')}</p>` : '';
   $('drill').innerHTML = `<div class="ct">${esc(field.replace(/_/g, ' '))} = ${esc(key)} · ${items.length} item${items.length === 1 ? '' : 's'} <span class="k">click an item for the full analysis</span></div>${crit}` +
-    (items.length ? items.map(it => `<div class="item clickable" data-h="${esc(it.headline)}"><b>${esc(it.headline)}</b><div class="badges"><span class="badge sev-${esc(it.severity)}">${esc(it.severity)}</span><span class="badge">${esc(it.ot_impact)}</span><span class="badge">${esc(it.source_reliability)}${esc(it.info_credibility)}</span></div><div class="k">${esc(it.scoring && it.scoring.severity ? it.scoring.severity.rationale : it.so_what)}</div></div>`).join('') : '<p class="k">no items</p>');
+    (items.length ? items.map(it => `<div class="item clickable" data-h="${esc(it.headline)}"><b>${esc(it.headline)}</b><div class="badges"><span class="badge sev-${esc(it.severity)}">${esc(it.severity)}</span><span class="badge">${esc(it.ot_impact)}</span><span class="badge">${esc(it.source_reliability)}${esc(it.info_credibility)}</span></div><div class="k">${esc(it.scoring && it.scoring.severity ? it.scoring.severity.rationale : it.so_what)}</div>${srcList(it.sources)}</div>`).join('') : '<p class="k">no items</p>');
   $('drill').querySelectorAll('[data-h]').forEach(d => d.onclick = () => openAnalysis(d.dataset.h));
   $('drill').scrollIntoView({ block: 'nearest' });
 }
@@ -677,7 +719,7 @@ function openFacility(f) {
     <h3>How a breach happens here</h3><p>${esc(f.how_breach)}</p>
     <details><summary>The generic breach pattern (all facilities) and the Purdue levels it crosses</summary><ol>${sectors.breach_pattern.map(x => `<li>${esc(x)}</li>`).join('')}</ol><p class="k">Purdue reference model: ${esc(sectors.purdue.join(' → '))}</p></details>
     <h3>Live cases from this week's board <span class="k">(verified by the Verifier's cross-check; click Briefing board for the full record)</span></h3>
-    ${live.length ? `<ul>${live.map(it => `<li><b>${esc(it.headline)}</b> <span class="badge sev-${esc(it.severity)}">${esc(it.severity)}</span> ${esc(it.ot_impact)}${verdicts[it.headline] ? ` · <i>Verifier: ${esc(verdicts[it.headline].verdict)}</i>` : ''}</li>`).join('')}</ul>` : '<p class="k">No item on this week\'s board matched this facility. The absence means the allowlisted feeds reported nothing matching, not that nothing happened.</p>'}
+    ${live.length ? `<ul>${live.map(it => `<li><b>${esc(it.headline)}</b> <span class="badge sev-${esc(it.severity)}">${esc(it.severity)}</span> ${esc(it.ot_impact)}${verdicts[it.headline] ? ` · <i>Verifier: ${esc(verdicts[it.headline].verdict)}</i>` : ''}${srcList(it.sources)}</li>`).join('')}</ul>` : '<p class="k">No item on this week\'s board matched this facility. The absence means the allowlisted feeds reported nothing matching, not that nothing happened.</p>'}
     <h3>Background cases <span class="k">(historical; from the model\'s general knowledge, not from the feeds; unverified by this system until spot-checked; check where indicated)</span></h3>
     <ul>${f.background_cases.map(c => `<li><b>${c.year}</b> ${esc(c.case)} <span class="k">Check: ${esc(c.check)}</span></li>`).join('')}</ul>
     <details><summary>Methodology, verification and limits of this dossier</summary>

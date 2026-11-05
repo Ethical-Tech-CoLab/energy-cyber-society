@@ -31,6 +31,7 @@
     <button id="btn-human" class="pix">Human touch</button>
     <button id="btn-board" class="pix">Briefing board</button>
     <button id="btn-stories" class="pix">Today's wire</button>
+    <button id="btn-refs" class="pix">Sources &amp; references</button>
     <button id="btn-settings" class="pix">Settings</button>
   </div>
 </header>
@@ -101,6 +102,16 @@
     <h3>Critical-thought considerations</h3>
     <ul class="sum considerations" id="sum-cons"></ul>
     <div id="sum-world"></div>
+    <div class="row"><button class="pix">Close</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-refs" class="dlg wide">
+  <form method="dialog">
+    <h2>Sources &amp; references <small id="refs-meta"></small></h2>
+    <input id="refs-q" class="refs-q" placeholder="filter by outlet, title, URL, category…">
+    <div id="refs-body" class="prose"></div>
+    <p class="k">Everything the system read or cited this run: board-item sources, pulled primary documents, every fetched story in both buckets, the allowlisted feeds with their bias notes, the Where-to-look map, background-case pointers (no URL, by design: check them), and the executive brief's sources. Citations in every resident's text are links where the outlet and date resolve to a fetched URL.</p>
     <div class="row"><button class="pix">Close</button></div>
   </form>
 </dialog>
