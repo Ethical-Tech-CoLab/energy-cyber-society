@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.tile.openstreetmap.org https://cdnjs.cloudflare.com; object-src 'self'; connect-src 'self' https:; frame-ancestors 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.tile.openstreetmap.org https://cdnjs.cloudflare.com; object-src 'self'; connect-src 'self' https:; frame-src 'self'; frame-ancestors 'self'">
 <title>Energy Cyber Society</title>
 <meta name="description" content="A virtual town of five LLM agents who read the day's energy-sector cybersecurity news from credible sources and argue about it. Click a resident to talk.">
 <link rel="icon" type="image/svg+xml" href="etc-icon.svg">
@@ -391,6 +391,14 @@
       </ul>
       <p class="k">See also: <a href="BACKLOG.md" target="_blank" rel="noopener">BACKLOG.md</a> for what is not built, <a href="energy-cyber-source-registry.md" target="_blank" rel="noopener">the source registry</a> for what is and is not read, and the Human touch tab.</p>
     </div>
+    <div class="row"><button class="pix">Close</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-viewer" class="dlg wide xl">
+  <form method="dialog">
+    <h2><span id="viewer-title"></span> <small><a id="viewer-link" href="#" target="_blank" rel="noopener">open in its own tab ↗</a></small></h2>
+    <iframe id="viewer-frame" class="viewer" title="Internal page" src="about:blank"></iframe>
     <div class="row"><button class="pix">Close</button></div>
   </form>
 </dialog>

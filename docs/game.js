@@ -277,12 +277,15 @@ cv.addEventListener('click', ev => {
   const fac = sectors && sectors.facilities.find(f => x >= f.x - 6 && x <= f.x + 66 && y >= f.y - 10 && y <= f.y + 54);
   if (fac) { openFacility(fac); return; }
   if (x >= 554 && x <= 630 && y >= 738 && y <= 800) { openBank(); return; }
-  if (x >= NEWSSTAND.x - 8 && x <= NEWSSTAND.x + NEWSSTAND.w + 8 && y >= NEWSSTAND.y - 4 && y <= NEWSSTAND.y + NEWSSTAND.h + 12) { if (!window.open('gazette.html', '_blank', 'noopener')) location.href = 'gazette.html'; return; }
+  if (x >= NEWSSTAND.x - 8 && x <= NEWSSTAND.x + NEWSSTAND.w + 8 && y >= NEWSSTAND.y - 4 && y <= NEWSSTAND.y + NEWSSTAND.h + 12) { openViewer('gazette.html', 'The Energy Cyber Gazette'); return; }
   const bld = BUILDINGS.find(b => x >= b.x - 6 && x <= b.x + b.w + 6 && y >= b.y - 36 && y <= b.y + b.h);
   if (bld) { if (bld.key === 'Cyber Command' || bld.key === 'Incident Desk') openCommand(); else selectBuilding(bld); }
 });
 
 const $ = id => document.getElementById(id);
+// in-page viewer for internal pages: popups and top-level navigation are blocked inside the artifact frame (COOP)
+function openViewer(url, title) { const d = $('dlg-viewer'); $('viewer-title').textContent = title || url; $('viewer-frame').src = url; $('viewer-link').href = url; d.showModal(); }
+document.addEventListener('DOMContentLoaded', () => { const d = $('dlg-viewer'); if (d) d.addEventListener('close', () => { $('viewer-frame').src = 'about:blank'; }); });
 const panel = $('panel'), chat = $('chat');
 function addMsg(text, cls) { const d = document.createElement('div'); d.className = 'msg ' + cls; if (cls === 'them' && /\(/.test(text)) d.innerHTML = linkify(text, ''); else d.textContent = text; chat.appendChild(d); chat.scrollTop = chat.scrollHeight; return d; }
 
@@ -687,8 +690,9 @@ $('btn-history').onclick = async () => {
   let idx = { runs: [] }; try { idx = await fetch('archive/index.json').then(r => r.json()); } catch {}
   const runs = [...idx.runs].reverse();
   $('hist-meta').textContent = `${runs.length} archived run${runs.length === 1 ? '' : 's'} · nothing is overwritten or deleted`;
-  $('hist-body').innerHTML = (runs.length ? `<table class="perf-table"><tr><th>Run (UTC)</th><th>Model</th><th>Items</th><th>Stories</th><th>Flags</th><th>Headline</th><th>Open</th></tr>${runs.map(r => `<tr><td>${esc(r.run)}</td><td>${esc(r.model)}</td><td>${r.items}</td><td>${r.energy}/${r.wide}</td><td>${r.flags}</td><td>${esc(r.headline.slice(0, 90))}</td><td><a href="gazette.html?run=${esc(r.run)}" target="_blank" rel="noopener">Gazette</a> · <a href="archive/${esc(r.run)}/briefing.json" target="_blank" rel="noopener">briefing</a> · <a href="archive/${esc(r.run)}/news.json" target="_blank" rel="noopener">wire</a> · <a href="archive/${esc(r.run)}/command_log.json" target="_blank" rel="noopener">flags</a> · <a href="archive/${esc(r.run)}/stix.json" target="_blank" rel="noopener">STIX</a></td></tr>`).join('')}</table>` : '<p class="k">No archived runs yet.</p>') +
+  $('hist-body').innerHTML = (runs.length ? `<table class="perf-table"><tr><th>Run (UTC)</th><th>Model</th><th>Items</th><th>Stories</th><th>Flags</th><th>Headline</th><th>Open</th></tr>${runs.map(r => `<tr><td>${esc(r.run)}</td><td>${esc(r.model)}</td><td>${r.items}</td><td>${r.energy}/${r.wide}</td><td>${r.flags}</td><td>${esc(r.headline.slice(0, 90))}</td><td><button type="button" class="link" data-view="gazette.html?run=${esc(r.run)}">Gazette</button> · <a href="archive/${esc(r.run)}/briefing.json" target="_blank" rel="noopener">briefing</a> · <a href="archive/${esc(r.run)}/news.json" target="_blank" rel="noopener">wire</a> · <a href="archive/${esc(r.run)}/command_log.json" target="_blank" rel="noopener">flags</a> · <a href="archive/${esc(r.run)}/stix.json" target="_blank" rel="noopener">STIX</a></td></tr>`).join('')}</table>` : '<p class="k">No archived runs yet.</p>') +
     `<p class="k">Each folder holds the complete published data set (briefing, wire, pulled sources, flag log, STIX, personas, dossiers, map) plus the rules, procedure, playbook and cost sheet in force at the time. Index: <a href="ARCHIVE.md" target="_blank" rel="noopener">ARCHIVE.md</a>. The git history of the repository is the second copy.</p>`;
+  $('hist-body').querySelectorAll('[data-view]').forEach(b => b.onclick = () => openViewer(b.dataset.view, 'Archived Gazette'));
   $('dlg-history').showModal();
 };
 
@@ -1072,7 +1076,7 @@ $('btn-rules').onclick = () => {
 // methodology / where to look / limitations
 $('btn-method').onclick = () => $('dlg-method').showModal();
 $('btn-limits').onclick = () => $('dlg-limits').showModal();
-$('btn-look').onclick = () => {
+$('btn-look').onclick = async () => {
   const el = $('look'); el.innerHTML = '';
   if (lookmap) {
     $('look-meta').textContent = `the Librarian's map · reviewed ${lookmap.reviewed} · edit agents/where_to_look.json`;
@@ -1140,7 +1144,7 @@ async function boot() {
     lv.querySelectorAll('[data-res]').forEach(b => b.onclick = () => select(agents[+b.dataset.res]));
     lv.querySelectorAll('[data-bld]').forEach(b => b.onclick = () => { const bl = BUILDINGS.find(x => x.key === b.dataset.bld); if (bl.key === 'Incident Desk') openCommand(); else selectBuilding(bl); });
     lv.querySelectorAll('[data-facl]').forEach(b => b.onclick = () => openFacility(sectors.facilities.find(x => x.id === b.dataset.facl)));
-    lv.querySelectorAll('[data-place]').forEach(b => b.onclick = () => b.dataset.place === 'gazette' ? (window.open('gazette.html', '_blank', 'noopener') || (location.href = 'gazette.html')) : openBank());
+    lv.querySelectorAll('[data-place]').forEach(b => b.onclick = () => b.dataset.place === 'gazette' ? openViewer('gazette.html', 'The Energy Cyber Gazette') : openBank());
   }
   setTimeout(toastAway, 800);       // small debug hook, also handy for tests
   await document.fonts.ready;
