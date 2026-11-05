@@ -177,6 +177,21 @@
         "id": "T0xxx (MITRE ATT&CK for ICS) or Txxxx (Enterprise)",
         "name": "string"
       }
-    ]
+    ],
+    "scoring": {
+      "severity": {
+        "level": "severity",
+        "factors": {
+          "ot_impact": "string",
+          "us_energy_relevance": "string",
+          "actor_capability": "string",
+          "scale": "string",
+          "actionable": "string"
+        },
+        "rationale": "why this level and not the adjacent ones"
+      },
+      "reliability_rationale": "why this letter",
+      "credibility_rationale": "why this number"
+    }
   }
 }

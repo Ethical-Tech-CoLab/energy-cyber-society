@@ -384,7 +384,8 @@ $('btn-board').onclick = () => {
   const bd = $('board'); bd.innerHTML = '';
   [...items].sort((a, b) => (order[a.severity] ?? 9) - (order[b.severity] ?? 9)).forEach(it => {
     const otHit = /process|physical|reached/i.test(it.ot_impact || '');
-    const d = document.createElement('div'); d.className = 'item';
+    const d = document.createElement('div'); d.className = 'item'; d.title = 'Click for the full analysis';
+    d.onclick = ev => { if (ev.target.closest('a, details, summary')) return; openAnalysis(it.headline); };
     const rows = [['Energy', `${it.subsector || '?'} · ${it.value_chain || 'n/a'}`], ['IT vs OT', it.ot_impact], ['Actor', `${it.actor || 'none named'} · ${it.actor_type || ''} · ${it.attribution_confidence || ''}${it.attributed_by ? ' (by ' + it.attributed_by + ')' : ''}`],
       ['Technical', [(it.cves || []).join(', '), it.ics_vendor, it.initial_access, it.malware].filter(Boolean).join(' · ') || 'n/a'],
       ['Impact', [it.operational_impact, it.physical_safety_impact, it.data_exposed].filter(Boolean).join(' · ')], ['Context', [it.geopolitical_link, it.regulatory_trigger, it.government_response].filter(Boolean).join(' · ') || 'none'],
@@ -509,9 +510,59 @@ $('btn-register').onclick = () => {
 };
 
 // analytics dashboard (inline SVG, no library)
-function bar(title, counts, color) {
+function bar(title, counts, color, field) {
   const ent = Object.entries(counts || {}).filter(([k]) => k && k !== 'undefined' && k !== 'null').sort((a, b) => b[1] - a[1]); const max = Math.max(1, ...ent.map(e => e[1]));
-  return `<div class="chart"><div class="ct">${esc(title)}</div>${ent.length ? ent.map(([k, v]) => `<div class="bar-row"><span class="bl" title="${esc(k)}">${esc(String(k).slice(0, 26))}</span><span class="bt"><span class="bf" style="width:${(v / max) * 100}%;background:${color}"></span></span><span class="bv">${v}</span></div>`).join('') : '<div class="k">no data</div>'}</div>`;
+  return `<div class="chart"><div class="ct">${esc(title)}${field ? ' <span class="k">click a bar</span>' : ''}</div>${ent.length ? ent.map(([k, v]) => `<div class="bar-row ${field ? 'clickable' : ''}" ${field ? `data-field="${esc(field)}" data-key="${esc(k)}"` : ''}><span class="bl" title="${esc(k)}">${esc(String(k).slice(0, 26))}</span><span class="bt"><span class="bf" style="width:${(v / max) * 100}%;background:${color}"></span></span><span class="bv">${v}</span></div>`).join('') : '<div class="k">no data</div>'}</div>`;
+}
+const FIELD_PICK = { severity: i => i.severity, ot_impact: i => i.ot_impact, subsector: i => i.subsector, country: i => i.country, event_type: i => i.event_type, recommended_action: i => i.recommended_action, source_reliability: i => i.source_reliability, info_credibility: i => String(i.info_credibility), source: i => (i.sources || []).map(s => s.name.split(' (')[0]), ot_hit: i => /process|physical|reached/i.test(i.ot_impact || '') ? 'yes' : 'no', crit_high: i => /critical|high/.test(i.severity) ? 'yes' : 'no', single: i => new Set((i.sources || []).map(s => s.name.split(' (')[0])).size <= 1 ? 'yes' : 'no', all: () => 'all' };
+function drill(field, key) {
+  const items = ((briefing && briefing.items) || []).filter(it => { const v = FIELD_PICK[field] ? FIELD_PICK[field](it) : null; return Array.isArray(v) ? v.includes(key) : v === key; });
+  const sc = briefing.rubric || {};
+  const crit = field === 'severity' && sc.severity_scale ? `<p class="k"><b>${esc(key)}</b> means: ${esc(sc.severity_scale[key] || '')}</p>` : field === 'source_reliability' && sc.reliability_scale ? `<p class="k"><b>${esc(key)}</b>: ${esc(sc.reliability_scale[key] || '')}</p>` : field === 'info_credibility' && sc.credibility_scale ? `<p class="k"><b>${esc(key)}</b>: ${esc(sc.credibility_scale[key] || '')}</p>` : '';
+  $('drill').innerHTML = `<div class="ct">${esc(field.replace(/_/g, ' '))} = ${esc(key)} · ${items.length} item${items.length === 1 ? '' : 's'} <span class="k">click an item for the full analysis</span></div>${crit}` +
+    (items.length ? items.map(it => `<div class="item clickable" data-h="${esc(it.headline)}"><b>${esc(it.headline)}</b><div class="badges"><span class="badge sev-${esc(it.severity)}">${esc(it.severity)}</span><span class="badge">${esc(it.ot_impact)}</span><span class="badge">${esc(it.source_reliability)}${esc(it.info_credibility)}</span></div><div class="k">${esc(it.scoring && it.scoring.severity ? it.scoring.severity.rationale : it.so_what)}</div></div>`).join('') : '<p class="k">no items</p>');
+  $('drill').querySelectorAll('[data-h]').forEach(d => d.onclick = () => openAnalysis(d.dataset.h));
+  $('drill').scrollIntoView({ block: 'nearest' });
+}
+function openAnalysis(h) {
+  const it = ((briefing && briefing.items) || []).find(i => i.headline === h); if (!it) return;
+  const V = (briefing.verification || {}); const v = V.verdicts && V.verdicts[h]; const c = V.crosschecks && V.crosschecks[h]; const r = sources && sources.items && sources.items[h];
+  const flags = allEvents().filter(e => e.item === h); const sc = briefing.rubric || {}; const S = it.scoring || {};
+  const fac = sectors && sectors.facilities.filter(f => f.live_match.some(k => (h + ' ' + it.subsector + ' ' + (it.supply_chain_entry || '') + ' ' + (it.asset_type || '')).toLowerCase().includes(k.toLowerCase())));
+  const convo = ((briefing.conversations) || []).flatMap(cv => cv.lines.filter(l => h.toLowerCase().split(' ').slice(0, 2).every(w => l.line.toLowerCase().includes(w.toLowerCase()))).map(l => ({ who: l.who, line: l.line })));
+  const skip = new Set(['headline', 'scoring', 'sources', 'labels', 'indicators', 'ttps', 'cves']);
+  const fields = Object.entries(it).filter(([k]) => !skip.has(k)).map(([k, val]) => `<tr><th>${esc(k.replace(/_/g, ' '))}</th><td>${esc(Array.isArray(val) ? val.join(', ') : (val == null ? '—' : val))}</td></tr>`).join('');
+  $('an-title').textContent = h;
+  $('an-body').innerHTML = `
+    <div class="badges"><span class="badge sev-${esc(it.severity)}">${esc(it.severity)}</span><span class="badge ${/process|physical|reached/i.test(it.ot_impact) ? 'ot-hit' : ''}">${esc(it.ot_impact)}</span><span class="badge">${esc(it.event_type)}</span><span class="badge">${esc(it.country)}</span><span class="badge">${esc(it.recommended_action)}</span><span class="badge">trust ${esc(it.source_reliability)}${esc(it.info_credibility)}</span></div>
+    <h3>Why this severity: ${esc(it.severity)}</h3>
+    <p class="k">Scale: ${esc((sc.severity_scale || {})[it.severity] || '')}</p>
+    ${S.severity ? `<table class="fac-table">${Object.entries(S.severity.factors || {}).map(([k, val]) => `<tr><th>${esc(k.replace(/_/g, ' '))}</th><td>${esc(val)}</td></tr>`).join('')}</table><p><b>Rationale:</b> ${esc(S.severity.rationale)}</p>` : '<p class="k">No scoring rationale recorded for this item (older run).</p>'}
+    <p class="k">Factors and weights: ${esc((sc.severity_factors || []).join(' · '))}</p>
+    <h3>Why this trust: reliability ${esc(it.source_reliability)}, credibility ${esc(it.info_credibility)}</h3>
+    <p><b>${esc(it.source_reliability)}</b> = ${esc((sc.reliability_scale || {})[it.source_reliability] || '')}. ${esc(S.reliability_rationale || '')}</p>
+    <p><b>${esc(it.info_credibility)}</b> = ${esc((sc.credibility_scale || {})[String(it.info_credibility)] || '')}. ${esc(S.credibility_rationale || '')}</p>
+    <p class="k">${esc(sc.rule || '')}</p>
+    <h3>Verification</h3>
+    ${v ? `<div class="verdict"><b>Verifier:</b> ${esc(v.verdict)} — ${esc(v.reason)}</div>` : '<p class="k">no verdict</p>'}
+    ${c ? `<div class="xcheck"><b>Cross-check (${esc((c.compared || []).join(' vs '))}):</b> ${esc(c.verdict)}<div><b>Agree:</b> ${esc(c.agree)}</div><div><b>Differ:</b> ${esc(c.differ)}</div></div>` : ''}
+    ${(it.labels || []).length ? `<div class="lbl">${it.labels.map(esc).join(' · ')}</div>` : ''}
+    <h3>Sources and pulled text</h3>
+    <ul>${(it.sources || []).map(s => `<li>${s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>` : esc(s.name)} ${esc(s.date || '')}</li>`).join('')}</ul>
+    ${r ? [...(r.sources || []), ...(r.primary || [])].filter(x => x.excerpts && x.excerpts.length).map(x => `<div class="pulled ${x.kind || (x.found_in ? 'primary' : 'outlet')}"><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name || x.url.slice(0, 70))}</a>${x.excerpts.slice(0, 3).map(e => `<blockquote>${esc(e)}</blockquote>`).join('')}</div>`).join('') : '<p class="k">no pulled text</p>'}
+    <h3>Technical</h3>
+    <p><b>CVEs:</b> ${(it.cves || []).map(cv => `<a href="https://nvd.nist.gov/vuln/detail/${esc(cv)}" target="_blank" rel="noopener">${esc(cv)}</a>`).join(', ') || 'none'} · <b>KEV:</b> ${esc(it.kev_listed)} · <b>Indicators:</b> ${(it.indicators || []).map(i => `<span class="ttp">${esc(i.type)}: ${esc(i.value)}</span>`).join('') || 'none in bundle'}</p>
+    <p>${(it.ttps || []).map(t => `<span class="ttp" title="${esc(t.name)}">${esc(t.id)} ${esc(t.name)}</span>`).join('') || '<span class="k">no ATT&CK mapping</span>'}</p>
+    <h3>Flags in Cyber Command (${flags.length})</h3>
+    ${flags.length ? `<ul>${flags.map(f => `<li><b>${esc(f.type)}</b> by ${esc(f.agent)} · ${esc(f.detail)} <span class="k">${esc(f.at.slice(0, 16).replace('T', ' '))}</span></li>`).join('')}</ul>` : '<p class="k">none</p>'}
+    <h3>Related facility dossier${fac && fac.length > 1 ? 's' : ''}</h3>
+    ${fac && fac.length ? fac.map(f => `<button type="button" class="pix" data-fac="${esc(f.id)}">${esc(f.name)}</button> `).join('') : '<p class="k">none matched</p>'}
+    ${convo.length ? `<h3>What the residents said about it</h3><ul>${convo.map(l => `<li><b>${esc(l.who)}:</b> ${esc(l.line)}</li>`).join('')}</ul>` : ''}
+    <h3>Every field of the record</h3>
+    <table class="fac-table">${fields}</table>
+    <p class="k">STIX: <a href="data/stix.json" target="_blank" rel="noopener">report object in the bundle</a>. Schema: agents/schema.json.</p>`;
+  $('an-body').querySelectorAll('[data-fac]').forEach(btn => btn.onclick = () => { const f = sectors.facilities.find(x => x.id === btn.dataset.fac); $('dlg-analysis').close(); openFacility(f); });
+  $('dlg-analysis').showModal();
 }
 function line(title, runs, pick, color) {
   const vals = runs.map(pick); if (!vals.length) return `<div class="chart"><div class="ct">${esc(title)}</div><div class="k">no runs yet</div></div>`;
@@ -526,25 +577,25 @@ $('btn-dash').onclick = () => {
   const usage = briefing && briefing.usage;
   $('dash-meta').textContent = `snapshot ${(briefing.news_generated_at || '').slice(0, 16).replace('T', ' ')} UTC · ${runs.length} run${runs.length === 1 ? '' : 's'} in history`;
   $('dash').innerHTML = `<div class="tiles">
-      <div class="tile"><div class="tv">${items.length}</div><div class="tl">board items</div></div>
+      <div class="tile clickable" data-field="all" data-key="all"><div class="tv">${items.length}</div><div class="tl">board items</div></div>
       <div class="tile"><div class="tv">${briefing.counts.energy}</div><div class="tl">energy-cyber stories fetched</div></div>
       <div class="tile"><div class="tv">${briefing.counts.wide}</div><div class="tl">wider cyber stories</div></div>
-      <div class="tile ${ot ? 'warn' : ''}"><div class="tv">${ot}</div><div class="tl">items where OT was reached or affected</div></div>
-      <div class="tile"><div class="tv">${items.filter(i => i.severity === 'critical' || i.severity === 'high').length}</div><div class="tl">critical + high</div></div>
-      <div class="tile ${single ? 'warn' : ''}"><div class="tv">${single}</div><div class="tl">single-source items</div></div>
+      <div class="tile clickable ${ot ? 'warn' : ''}" data-field="ot_hit" data-key="yes"><div class="tv">${ot}</div><div class="tl">items where OT was reached or affected</div></div>
+      <div class="tile clickable" data-field="crit_high" data-key="yes"><div class="tv">${items.filter(i => i.severity === 'critical' || i.severity === 'high').length}</div><div class="tl">critical + high</div></div>
+      <div class="tile clickable ${single ? 'warn' : ''}" data-field="single" data-key="yes"><div class="tv">${single}</div><div class="tl">single-source items</div></div>
       <div class="tile"><div class="tv">${ev.filter(e => e.status === 'open').length}</div><div class="tl">open flags in Cyber Command</div></div>
       <div class="tile"><div class="tv">${news ? news.sources.length - (news.errors || []).length : '?'}/${news ? news.sources.length : '?'}</div><div class="tl">feeds that answered</div></div>
       <div class="tile"><div class="tv">${usage ? (usage.input / 1000).toFixed(0) + 'k' : 'n/a'}</div><div class="tl">model input tokens this run${usage ? '' : ' (hand-curated run)'}</div></div>
     </div>
     <div class="charts">
-      ${bar('Items by severity', C(i => i.severity), '#e85a4b')}
-      ${bar('Items by IT / OT impact', C(i => i.ot_impact), '#e8b04b')}
-      ${bar('Items by energy subsector', C(i => i.subsector), '#4be89a')}
-      ${bar('Items by country / region', C(i => i.country), '#4bb3e8')}
-      ${bar('Items by event type', C(i => i.event_type), '#c94be8')}
-      ${bar('Recommended action', C(i => i.recommended_action), '#e8d44b')}
-      ${bar('Source reliability (Admiralty A–F)', C(i => i.source_reliability), '#9aa3b5')}
-      ${bar('Information credibility (1–6)', C(i => String(i.info_credibility)), '#9aa3b5')}
+      ${bar('Items by severity', C(i => i.severity), '#e85a4b', 'severity')}
+      ${bar('Items by IT / OT impact', C(i => i.ot_impact), '#e8b04b', 'ot_impact')}
+      ${bar('Items by energy subsector', C(i => i.subsector), '#4be89a', 'subsector')}
+      ${bar('Items by country / region', C(i => i.country), '#4bb3e8', 'country')}
+      ${bar('Items by event type', C(i => i.event_type), '#c94be8', 'event_type')}
+      ${bar('Recommended action', C(i => i.recommended_action), '#e8d44b', 'recommended_action')}
+      ${bar('Source reliability (Admiralty A–F)', C(i => i.source_reliability), '#9aa3b5', 'source_reliability')}
+      ${bar('Information credibility (1–6)', C(i => String(i.info_credibility)), '#9aa3b5', 'info_credibility')}
       ${bar('Stories per source (energy bucket)', news ? news.energy.reduce((m, s) => { m[s.source_name] = (m[s.source_name] || 0) + 1; return m; }, {}) : {}, '#4bb3e8')}
       ${bar('Flags by type (all history)', ev.reduce((m, e) => { m[e.type] = (m[e.type] || 0) + 1; return m; }, {}), '#e85a4b')}
       ${bar('Flags by agent', ev.reduce((m, e) => { m[e.agent] = (m[e.agent] || 0) + 1; return m; }, {}), '#e8b04b')}
@@ -552,7 +603,14 @@ $('btn-dash').onclick = () => {
       ${line('Board items per run', runs, r => r.items, '#e8b04b')}
       ${line('OT-affected items per run', runs, r => Object.entries(r.ot_impact || {}).filter(([k]) => /process|physical|reached/i.test(k)).reduce((a, [, v]) => a + v, 0), '#e85a4b')}
       ${line('Flags raised per run', runs, r => Object.values(r.flags || {}).reduce((a, v) => a + v, 0), '#c94be8')}
-    </div>`;
+    </div>
+    <h3>Scoring criteria</h3>
+    <table class="fac-table"><tr><th>Severity</th><td>${Object.entries((briefing.rubric || {}).severity_scale || {}).map(([k, v]) => `<div><span class="badge sev-${esc(k)}">${esc(k)}</span> ${esc(v)}</div>`).join('')}<div class="k">Factors: ${esc(((briefing.rubric || {}).severity_factors || []).join(' · '))}</div></td></tr>
+    <tr><th>Reliability</th><td>${Object.entries((briefing.rubric || {}).reliability_scale || {}).map(([k, v]) => `<b>${esc(k)}</b> ${esc(v)}`).join(' · ')}</td></tr>
+    <tr><th>Credibility</th><td>${Object.entries((briefing.rubric || {}).credibility_scale || {}).map(([k, v]) => `<b>${esc(k)}</b> ${esc(v)}`).join(' · ')}</td></tr>
+    <tr><th>Rule</th><td>${esc((briefing.rubric || {}).rule || '')}</td></tr></table>
+    <div id="drill" class="drill"><div class="k">Click a tile or a bar above to see the cases behind it.</div></div>`;
+  $('dash').querySelectorAll('[data-field]').forEach(el => el.onclick = () => drill(el.dataset.field, el.dataset.key));
   $('dlg-dash').showModal();
 };
 

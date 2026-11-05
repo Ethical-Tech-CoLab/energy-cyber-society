@@ -17,6 +17,9 @@ You do not need an Anthropic API key: you are the model. Follow these steps exac
      IT-versus-OT impact is mandatory on every item.
    - `summary`: `headline`, 6-10 `bullets` ({text, sources, tag}, US first, each with outlet
      and date), and 5 `considerations` (critical-thought sentences).
+   - each item carries `scoring`: severity level with the five factors and a rationale that
+     says why this level and not the adjacent ones, plus reliability and credibility rationales.
+     Keep `rubric` (severity_scale, severity_factors, reliability_scale, credibility_scale, rule).
    - `us_status`: one or two sentences on whether any US energy operator was confirmed breached.
    - `conversations`: five or six pairwise dialogues of 6 lines each, residents disagreeing.
    - `verification`: `run_at`, `verdicts` keyed by item headline with `verdict` and `reason`,

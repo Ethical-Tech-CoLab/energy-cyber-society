@@ -20,6 +20,8 @@ for it in b.get("items", []):
         if it.get(f) not in sch[f]: errs.append(f"item '{h}': {f}={it.get(f)!r} not in taxonomy")
     if not it.get("sources"): errs.append(f"item '{h}': no sources")
     if not it.get("so_what"): errs.append(f"item '{h}': no so_what")
+    scg = it.get("scoring", {})
+    if not (scg.get("severity", {}).get("rationale") and scg.get("reliability_rationale")): errs.append(f"item '{h}': missing scoring rationale")
 if "us_status" not in b: errs.append("missing us_status")
 sm = b.get("summary")
 if sm:

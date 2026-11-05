@@ -483,7 +483,22 @@
      "id": "T0859",
      "name": "Valid Accounts (ICS) [inference: missing auth]"
     }
-   ]
+   ],
+   "scoring": {
+    "severity": {
+     "level": "critical",
+     "factors": {
+      "ot_impact": "OT reached, no process effect (edge gateway between field devices and IT)",
+      "us_energy_relevance": "product line used in US industrial and energy networks",
+      "actor_capability": "unattributed",
+      "scale": "any exposed IoT2050 unit worldwide",
+      "actionable": "yes: patch available"
+     },
+     "rationale": "Critical because an unauthenticated remote code execution flaw (CVSS 10) on an OT edge device is reported exploited and a patch exists. It is NOT critical because of confirmed energy victims; none are named. Corroboration is weak, which is why trust is C2 while severity stays critical."
+    },
+    "reliability_rationale": "C: the exploitation claim originates with VulnCheck, a vulnerability-intelligence vendor, relayed by The Hacker News. No CISA or Siemens notice reached the bundle (CISA feed 403).",
+    "credibility_rationale": "2: probably true; the CVE and CVSS are consistent across the outlet and the vendor blog, the exploitation telemetry is unconfirmed by a second party."
+   }
   },
   {
    "headline": "Zyxel GS1900 switch zero-day used to compromise nearly 1,000 devices and steal configs and credentials",
@@ -560,7 +575,22 @@
      "id": "T1552",
      "name": "Unsecured Credentials (Enterprise) [inference: config theft]"
     }
-   ]
+   ],
+   "scoring": {
+    "severity": {
+     "level": "high",
+     "factors": {
+      "ot_impact": "none (IT only): managed switches, configs and credentials stolen",
+      "us_energy_relevance": "GS1900 switches are common in small operators and sites",
+      "actor_capability": "unattributed",
+      "scale": "~1,000 devices worldwide (outlet figure)",
+      "actionable": "yes: firmware update and credential rotation"
+     },
+     "rationale": "High, not critical: no process reached, but stolen switch configurations and credentials are reconnaissance for later intrusion, the flaw is confirmed by the vendor, and action is available."
+    },
+    "reliability_rationale": "A after the pull: the Zyxel security advisory was fetched and confirms the flaw; the device count remains the outlet's.",
+    "credibility_rationale": "2: the flaw is confirmed; the scale is single-source."
+   }
   },
   {
    "headline": "Cyberattack via refrigeration-equipment provider changed temperature settings at three French blood-service facilities",
@@ -637,7 +667,22 @@
      "id": "T0862",
      "name": "Supply Chain Compromise (ICS) [inference]"
     }
-   ]
+   ],
+   "scoring": {
+    "severity": {
+     "level": "high",
+     "factors": {
+      "ot_impact": "OT process affected (temperature and defrost setpoints changed)",
+      "us_energy_relevance": "no US or energy victim; the vendor remote-access path is the transferable part",
+      "actor_capability": "unattributed",
+      "scale": "three facilities",
+      "actionable": "hunt: review vendor remote access to controllers"
+     },
+     "rationale": "High because OT was reached and physically manipulated through a supplier, the exact architecture under energy sites, and because the victim confirmed it. Not critical because it is outside energy and safeguards held."
+    },
+    "reliability_rationale": "A: victim statement (EFS) plus two outlets.",
+    "credibility_rationale": "1: confirmed independently; only the 110°C figure is unconfirmed and labelled."
+   }
   },
   {
    "headline": "Overnight wave of refrigeration setpoint attacks on supermarkets in Belgium, Sweden, Estonia and elsewhere",
@@ -709,7 +754,22 @@
      "id": "T0862",
      "name": "Supply Chain Compromise (ICS) [inference]"
     }
-   ]
+   ],
+   "scoring": {
+    "severity": {
+     "level": "medium",
+     "factors": {
+      "ot_impact": "OT process affected (refrigeration warmed)",
+      "us_energy_relevance": "none directly; technique and vendor (Danfoss) transfer to any cooling-dependent site",
+      "actor_capability": "unattributed, low-skill technique",
+      "scale": "several dozen stores per chain, several countries",
+      "actionable": "monitor; check Danfoss controller exposure"
+     },
+     "rationale": "Medium: real physical effect but outside energy, limited scale per chain, and no named victim statement; raised from low because a named control vendor links it to October's wave."
+    },
+    "reliability_rationale": "B: one outlet quoting three named companies on record.",
+    "credibility_rationale": "2: probably true; vendor and contractors quoted by name, no official statement."
+   }
   },
   {
    "headline": "Electric utilities urge Congress to renew the Cybersecurity Information Sharing Act of 2015 before it expires next month",
@@ -763,7 +823,22 @@
     }
    ],
    "indicators": [],
-   "ttps": []
+   "ttps": [],
+   "scoring": {
+    "severity": {
+     "level": "high",
+     "factors": {
+      "ot_impact": "none",
+      "us_energy_relevance": "direct: US utilities' legal cover for sharing indicators",
+      "actor_capability": "n/a",
+      "scale": "sector-wide",
+      "actionable": "policy watch; deadline within weeks"
+     },
+     "rationale": "High on relevance and deadline, not on impact: if the law lapses, sector-wide indicator sharing loses liability protection. Trust is low because the claim rests on trade press and the statute was not read."
+    },
+    "reliability_rationale": "B: Utility Dive, utility-industry trade press; the article blocked the puller (403).",
+    "credibility_rationale": "3: possibly true as stated; sunset date and extension status unverified."
+   }
   },
   {
    "headline": "CISA launches 2026 Critical Infrastructure Security and Resilience campaign: OT security, continuity, recovery planning",
@@ -815,7 +890,22 @@
     }
    ],
    "indicators": [],
-   "ttps": []
+   "ttps": [],
+   "scoring": {
+    "severity": {
+     "level": "info",
+     "factors": {
+      "ot_impact": "none",
+      "us_energy_relevance": "US guidance to all sectors",
+      "actor_capability": "n/a",
+      "scale": "sector-wide",
+      "actionable": "awareness only"
+     },
+     "rationale": "Info: a federal priority signal that creates no new obligation."
+    },
+    "reliability_rationale": "B: one trade outlet relaying a CISA campaign; CISA's own page unreachable (feed 403).",
+    "credibility_rationale": "2: probably true, low stakes."
+   }
   },
   {
    "headline": "UK NCSC Annual Review warns of AI-assisted ransomware against critical national infrastructure by 2028",
@@ -885,7 +975,22 @@
     }
    ],
    "indicators": [],
-   "ttps": []
+   "ttps": [],
+   "scoring": {
+    "severity": {
+     "level": "low",
+     "factors": {
+      "ot_impact": "unknown (forecast)",
+      "us_energy_relevance": "UK; indirect",
+      "actor_capability": "state (China named as best positioned)",
+      "scale": "national",
+      "actionable": "awareness only"
+     },
+     "rationale": "Low: a forecast, not an incident, from an agency making an investment case. Primary source, so trust is high while severity is low; the two columns diverge on purpose."
+    },
+    "reliability_rationale": "A: the agency's own annual review and news release, both fetched.",
+    "credibility_rationale": "3: a forecast cannot be confirmed; the primary carries 'highly likely'."
+   }
   },
   {
    "headline": "Trump administration ban on foreign grid components raises industry concern over practicality and cost",
@@ -939,7 +1044,22 @@
     }
    ],
    "indicators": [],
-   "ttps": []
+   "ttps": [],
+   "scoring": {
+    "severity": {
+     "level": "medium",
+     "factors": {
+      "ot_impact": "none",
+      "us_energy_relevance": "direct: transmission equipment supply chain",
+      "actor_capability": "n/a",
+      "scale": "sector-wide procurement",
+      "actionable": "policy watch"
+     },
+     "rationale": "Medium: supply-chain security policy with cost effect and no deadline in the bundle; would rise if the instrument and effective date were read."
+    },
+    "reliability_rationale": "B: trade press only; blocked the puller (403).",
+    "credibility_rationale": "3: instrument and effective date unverified."
+   }
   },
   {
    "headline": "Russia and Ukraine report attacks on emergency alert apps during Kherson ceasefire",
@@ -996,7 +1116,22 @@
      "id": "T1491",
      "name": "Defacement / false alerts (Enterprise) [inference]"
     }
-   ]
+   ],
+   "scoring": {
+    "severity": {
+     "level": "low",
+     "factors": {
+      "ot_impact": "none (IT only)",
+      "us_energy_relevance": "none; context for public-warning channels during grid events",
+      "actor_capability": "state-aligned, suspected",
+      "scale": "national apps",
+      "actionable": "awareness only"
+     },
+     "rationale": "Low: wartime information operation with no energy asset involved; kept as context."
+    },
+    "reliability_rationale": "B: one outlet using public statements and social media.",
+    "credibility_rationale": "3: each side's claim about the other, unconfirmed."
+   }
   }
  ],
  "us_status": "No confirmed intrusion at a US electric utility, pipeline, refinery, LNG terminal or nuclear facility appeared in any allowlisted source in the 7-day window ending 2026-11-05. US items are policy and guidance.",
@@ -1124,7 +1259,37 @@
  "rubric": {
   "importance": "IT-vs-OT impact (OT process/physical = top), then US energy relevance (subsector + value chain), actor capability, scale, and whether action is possible (patch/hunt beats awareness). Severity on the board is importance.",
   "correctness": "Source tier (A primary/victim, B wire/established press, C vendor research), independent corroboration count, claim-vs-confirmed, and whether the direct source was pulled and matches the outlet. Credibility 1-6 and the Verifier's verdict are correctness.",
-  "rule": "Keep the two columns separate. An item can be critical and poorly confirmed (Siemens this week) or fully confirmed and low importance (NCSC forecast). Act on importance, trust on correctness, and say which is which."
+  "rule": "Keep the two columns separate. An item can be critical and poorly confirmed (Siemens this week) or fully confirmed and low importance (NCSC forecast). Act on importance, trust on correctness, and say which is which.",
+  "severity_scale": {
+   "critical": "OT process or physical/safety impact confirmed or imminent at energy assets, OR an exploited flaw (unauthenticated, remote) in a product that sits in energy OT networks. Action is possible now.",
+   "high": "OT reached without process effect, or IT impact that forced or could force an operational shutdown, or a law/rule change that alters obligations within weeks, or confirmed exploitation of networking gear used by operators.",
+   "medium": "IT-only or OT incidents outside energy whose technique transfers directly, or policy with cost/supply-chain effect but no deadline.",
+   "low": "Forecasts, information operations, or incidents with no transferable technique and no energy victim.",
+   "info": "Guidance, campaigns and announcements that create no new obligation."
+  },
+  "severity_factors": [
+   "ot_impact (weight 3): none / reached / process affected / physical-safety",
+   "us_energy_relevance (weight 2): US energy asset, US operator, or product in US energy networks",
+   "actor_capability (weight 1): unattributed low-skill / criminal / state-aligned / state",
+   "scale (weight 1): single site / many sites / fleet or sector",
+   "actionable (weight 1): patch or hunt available now"
+  ],
+  "reliability_scale": {
+   "A": "primary document, victim statement, government advisory",
+   "B": "wire or established press with named sources",
+   "C": "vendor research or a firm that sells security products",
+   "D": "not usually reliable",
+   "E": "unreliable",
+   "F": "cannot be judged"
+  },
+  "credibility_scale": {
+   "1": "confirmed by independent sources",
+   "2": "probably true (one solid source, consistent with others)",
+   "3": "possibly true (single source, plausible, unconfirmed)",
+   "4": "doubtful",
+   "5": "improbable",
+   "6": "cannot be judged"
+  }
  },
  "summary": {
   "headline": "Quiet week for US energy operators on the record; loud week for exposed OT controls in Europe and for two exploited device flaws.",

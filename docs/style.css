@@ -123,3 +123,7 @@ button.link{background:none;border:0;color:var(--accent);cursor:pointer;font-fam
 .tabs button .n{color:var(--mute);margin-left:4px}
 #col-body{max-height:58vh}
 .ttp{display:inline-block;font-size:11px;border:1px solid var(--line);padding:1px 5px;margin:2px 2px 0 0;color:var(--mute)}
+
+.clickable{cursor:pointer}.bar-row.clickable:hover .bl{color:var(--accent)}.tile.clickable:hover{border-color:var(--accent)}.item.clickable:hover,#board .item:hover{border-color:var(--accent)}
+.drill{margin-top:12px;border-top:2px solid var(--line);padding-top:8px}
+#an-body{max-height:70vh}#dash{max-height:72vh}
