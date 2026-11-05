@@ -89,6 +89,12 @@ attack types, how a breach happens, live and background cases), and the newsstan
 opens the Gazette, a broadsheet printed from the same data. `docs/data/stix.json` is a STIX
 2.1 export of the board.
 
+## Analysis procedure
+
+`INTELLIGENCE_ANALYSIS.md`: the ten-step procedure an investigative agent follows here,
+synthesised from the intelligence cycle, ICD 203 analytic standards, ICD 206 sourcing,
+Admiralty grading, structured analytic techniques and the FBI/CISA advisory format.
+
 ## Backlog
 
 See `BACKLOG.md`: everything requested, what shipped, what is blocked on a person, what the

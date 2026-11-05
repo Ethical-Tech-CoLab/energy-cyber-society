@@ -16,7 +16,7 @@ forgotten; "blocked" means a person must act. Update this file when something sh
 - Per-layer geopolitical analysis (theatres, IT/OT/PIT, subsectors, absent theatres)
 - AI-market inputs checklist (`agents/ai_market.json`) and the Technologist's note
 - STIX 2.1 export; per-run history for trend charts; measured cost model (`COST.md`)
-- RULES.md (32 rules), REGISTER.md, source registry, Project instructions file, CURATION.md playbook, validator
+- INTELLIGENCE_ANALYSIS.md (ten-step procedure to IC standards), RULES.md (32 rules), REGISTER.md, source registry, Project instructions file, CURATION.md playbook, validator
 - Twice-daily schedule: GitHub Actions workflow on disk; cloud-routine body in `scripts/routine.json`
 - Repo pushed to github.com/carolina-moron/energy-cyber-society (private)
 

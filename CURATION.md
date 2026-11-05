@@ -1,7 +1,8 @@
 # Curation playbook (for the scheduled agent)
 
 You are the runtime for the Energy Cyber Society. You run twice a day without being asked.
-You do not need an Anthropic API key: you are the model. Follow these steps exactly.
+You do not need an Anthropic API key: you are the model. Follow these steps exactly, and
+follow INTELLIGENCE_ANALYSIS.md for how to evaluate sources, write judgments and state confidence.
 
 1. `pip install feedparser` then `python scripts/fetch_news.py 48`. Read `docs/data/news.json`.
    Only the feeds in `sources.json` are allowed. Do not search the open web for stories;
