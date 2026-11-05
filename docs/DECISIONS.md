@@ -71,6 +71,8 @@ Nothing here is lost in chat.
 
 | 56 | Look at today's energy news; add a graphic of the process using the agent topology from neocloud-supply-os | Four items added or updated for 2026-11-05; topology SVG and role-mapping table in Methodology, Mermaid in README | Methodology tab; `docs/topology.svg` |
 
+| 57 | See the graphic the way the neocloud repo shows it, with the process of validating the Gazette | Interactive topology in the page (pipeline.js): animated write path per item, every step read from that item's data | How the Gazette is verified tab |
+
 ## Standing decisions made by the assistant without being asked (so you can reverse them)
 
 - Resident names and the town metaphor; the building names; PIT as the third layer (DoD term).

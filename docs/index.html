@@ -22,6 +22,7 @@
     <button id="btn-exec" class="pix accent">Final output: Executive brief</button>
     <button id="btn-risk" class="pix accent">Risk check (CIO)</button>
     <button id="btn-regs" class="pix">Regulations</button>
+    <button id="btn-pipeline" class="pix">How the Gazette is verified</button>
     <button id="btn-grid" class="pix">Grid &amp; weather</button>
     <button id="btn-summary" class="pix">Summary</button>
     <button id="btn-chatter" class="pix">Chatter: on</button>
@@ -161,6 +162,16 @@
     <input id="refs-q" class="refs-q" placeholder="filter by outlet, title, URL, category…">
     <div id="refs-body" class="prose"></div>
     <p class="k">Everything the system read or cited this run: board-item sources, pulled primary documents, every fetched story in both buckets, the allowlisted feeds with their bias notes, the Where-to-look map, background-case pointers (no URL, by design: check them), and the executive brief's sources. Citations in every resident's text are links where the outlet and date resolve to a fetched URL.</p>
+    <div class="row"><button class="pix">Close</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-pipeline" class="dlg wide xl">
+  <form method="dialog">
+    <h2>How a story becomes a Gazette line <small>the validation path, animated on a real item from today's board; click any node</small></h2>
+    <div class="row" style="justify-content:flex-start;margin:0 0 8px;gap:8px;flex-wrap:wrap"><select id="vitem" style="flex:1;min-width:280px;background:#0b0e14;border:2px solid var(--line);color:var(--ink);padding:6px;font-family:var(--font);font-size:12px"></select><button type="button" class="pix accent" id="vplay">▶ Animate the write path</button></div>
+    <div class="vwrap"><svg class="topo-svg" id="vtopo" viewBox="0 0 760 470" role="img" aria-label="Validation topology"></svg><div class="vside"><div id="vnode" class="vnode"></div><ol id="vsteps" class="vsteps"></ol></div></div>
+    <p class="k">Pattern after neocloud-supply-os (Appendix B1): Conductor, desks, Auditor, Policy Engine, Ledger, Envoy, Reader. Every step above is read from this item's own record, verdict, cross-check, pulled text and flags, not from a script.</p>
     <div class="row"><button class="pix">Close</button></div>
   </form>
 </dialog>
@@ -388,5 +399,6 @@
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="game.js"></script>
+<script src="pipeline.js"></script>
 </body>
 </html>

@@ -739,6 +739,8 @@ $('btn-grid').onclick = async () => {
   $('grid-body').querySelectorAll('[data-an]').forEach(b => b.onclick = () => openAnalysis(b.dataset.an));
 };
 
+$('btn-pipeline').onclick = () => { $('dlg-pipeline').showModal(); setTimeout(() => window.ECS_PIPELINE && window.ECS_PIPELINE.play(), 300); };
+
 // regulations: the Counsel's register and the week's regulatory news with impact
 let regs = null;
 async function loadRegs() { if (!regs) regs = await fetch('data/regulations.json').then(r => r.json()).catch(() => null); return regs; }
@@ -1110,6 +1112,7 @@ async function boot() {
   history = hs; aimarket = am; costModel = cmd; evalData = evd; research = rsr;
   try { englog = (await fetch('data/engineering_log.json').then(r => r.ok ? r.json() : null)) || { events: [] }; } catch { englog = { events: [] }; }
   personas = p; briefing = b; news = n; sources = src; lookmap = lk; buildings = bl; sectors = sc; rulesText = rt; cmdlog = cl;
+  if (window.ECS_PIPELINE && briefing) window.ECS_PIPELINE.init(briefing, sources, cmdlog);
   const openFlags = cmdlog.events.filter(e => e.status === 'open').length; $('btn-command').textContent = `Incident Desk (${openFlags})`;
   if (briefing) {
     const ageH = (Date.now() - Date.parse(briefing.news_generated_at || briefing.generated_at)) / 36e5;

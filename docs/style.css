@@ -166,3 +166,12 @@ button.link{background:none;border:0;color:var(--accent);cursor:pointer;font-fam
 #regs-body{max-height:70vh}.regs-news .item h4{margin:0 0 4px}
 .gridmap{height:420px;border:2px solid var(--line);margin-bottom:10px;background:#0b0e14}#grid-body{max-height:40vh}.leaflet-container{font-family:var(--font);font-size:12px}.dlg.wide.xl{max-width:1100px}
 .topo{border:2px solid var(--line);background:#0b0e14;margin:8px 0}.topo object{width:100%;display:block}
+
+.vwrap{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(260px,1fr);gap:12px}@media(max-width:900px){.vwrap{grid-template-columns:1fr}}
+.topo-svg{width:100%;height:auto;background:#0b0e14;border:2px solid var(--line);font-family:var(--font);font-size:11px}
+.topo-svg .node rect{fill:#131824;stroke:#263042;stroke-width:1.5;cursor:pointer}.topo-svg .node text{fill:#e6e9ef;font-weight:600;font-size:12px}.topo-svg .node .sub{fill:#8b96a8;font-weight:400;font-size:10px}
+.topo-svg .node.on rect{stroke:#4be89a;stroke-width:2.5}.topo-svg .node.human rect{stroke:#e8b04b}.topo-svg .node.gate rect{stroke:#4be89a;fill:#0f1a16}
+.topo-svg .edge{fill:none;stroke:#9aa3b5;stroke-width:1.4}.topo-svg .edge.dash{stroke-dasharray:5 4}.topo-svg .edge.esc{stroke:#e8b04b;stroke-dasharray:5 4}.topo-svg .elabel{fill:#8b96a8;font-size:10px}
+.topo-svg .packet{fill:#4be89a}.topo-svg .packet.risk{fill:#e85a4b}
+.vnode{border:2px solid var(--line);padding:8px 10px;font-size:12px;min-height:90px}.vnode h4{margin:2px 0 4px}.vnode p{margin:0;color:var(--mute)}
+.vsteps{font-size:12px;padding-left:18px;max-height:40vh;overflow:auto}.vsteps li{margin-bottom:6px;color:var(--mute)}.vsteps li.on{color:var(--ink);border-left:3px solid var(--accent);padding-left:6px;margin-left:-9px}
