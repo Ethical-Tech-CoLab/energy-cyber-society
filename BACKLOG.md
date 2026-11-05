@@ -41,11 +41,11 @@ forgotten; "blocked" means a person must act. Update this file when something sh
 - The Engineer (resident, Workshop, ENGINEERING.md, scripts/ux_audit.py, scripts/engineer_log.py, scripts/routine_engineer.json): autonomous bug-fix/refactor/UX agent that opens PRs daily, never merges
 
 ## Blocked: needs Carolina
-- Create the Engineer routine from scripts/routine_engineer.json (RemoteTrigger) once the repo is reachable to routines; review and merge its PRs
+- Review and merge the Engineer's PRs; first: https://github.com/carolina-moron/energy-cyber-society/pull/1
 - Make the repo public and enable Pages from `main:/docs` (the assistant's permissions refuse public surfaces)
 - `gh auth refresh -h github.com -s workflow`, then un-ignore and push `.github/workflows/daily.yml`
 - Add the `ANTHROPIC_API_KEY` repository secret (for the Actions path)
-- Create the claude.ai scheduled routine from `scripts/routine.json` (fails with repo_access_denied until the repo is reachable)
+- DONE 2026-11-05: claude.ai routines created: curation twice daily (trig_012X5bG37PWjSiAvMKUj71j6, 11:00 and 23:00 UTC) and Engineer daily (trig_01LtA6QZvXTLp7ukpepZmiC7, 14:00 UTC). Manage at https://claude.ai/code/routines. First runs: 2026-11-05 11:00 UTC and 14:00 UTC.
 - Sign the executive brief (`executive_brief.evaluation`) after reading the sources
 - Decide the Ombudsman's three proposals: CISA feed path, citation rule for reasoning sentences, background-case verification before sharing
 
