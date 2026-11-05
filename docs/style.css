@@ -181,3 +181,4 @@ button.link{background:none;border:0;color:var(--accent);cursor:pointer;font-fam
 .sc{display:inline-block;width:9px;height:9px;margin-right:1px;background:#1e2634}.sc.on{background:#4be89a}.tier-A{color:#4be89a;font-weight:600}.tier-B{color:#e8d44b}.tier-C{color:var(--mute)}
 .viewer{width:100%;height:72vh;border:2px solid var(--line);background:#f1e9d6}
 .fw-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}.fw-tabs .pix.on{border-color:var(--accent);color:var(--accent)}.fw-pane[hidden]{display:none}.cycle li{margin-bottom:8px}.cycle{padding-left:20px;font-size:13px}
+.vdet{font-size:11px;color:var(--mute);margin-top:4px}.vdet b{color:var(--warn)}.vnode{min-height:140px}
