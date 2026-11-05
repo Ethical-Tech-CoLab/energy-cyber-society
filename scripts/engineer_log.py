@@ -3,7 +3,7 @@
 import json, sys
 from datetime import datetime, timezone
 from pathlib import Path
-ROOT = Path(__file__).resolve().parent.parent; LOG = ROOT / "docs/data/command_log.json"
+ROOT = Path(__file__).resolve().parent.parent; LOG = ROOT / "docs/data/engineering_log.json"  # separate from the pipeline log: the Engineer may edit this file only
 log = json.loads(LOG.read_text()) if LOG.exists() else {"events": []}
 url, summary = (sys.argv + ["", ""])[1:3]
 now = datetime.now(timezone.utc).isoformat()

@@ -6,7 +6,7 @@ experience, and open pull requests. You never merge.
 
 ## Rules that override everything
 1. Never push to `main`. Work on `engineer/<slug>` and open a PR.
-2. Never edit `docs/data/`, `agents/personas.json`, `agents/schema.json`, `sources.json`,
+2. Never edit `docs/data/` (except `docs/data/engineering_log.json`, which is yours), `agents/personas.json`, `agents/schema.json`, `sources.json`,
    `RULES.md`, `agents/sectors.json` or the research files. Those belong to the pipeline and to people.
 3. Never touch secrets, workflows under `.github/`, or `LICENSE`.
 4. `bash scripts/test_all.sh` must pass before you open a PR. If it is red on `main`, the first PR fixes that and nothing else.

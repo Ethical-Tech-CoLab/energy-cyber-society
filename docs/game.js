@@ -451,7 +451,8 @@ function sessionFlag(type, agent, item, detail) {
   addMsg('⚑ Reported to the Incident Desk: ' + detail, 'sys');
   $('btn-command').textContent = `Incident Desk (${cmdlog.events.filter(e => e.status === 'open').length + all.length})`;
 }
-function allEvents() { return [...(cmdlog ? cmdlog.events : []), ...sessionFlags()].sort((a, b) => b.at.localeCompare(a.at)); }
+let englog = { events: [] };
+function allEvents() { return [...(cmdlog ? cmdlog.events : []), ...(englog.events || []), ...sessionFlags()].sort((a, b) => b.at.localeCompare(a.at)); }
 function openCommand() {
   const ev = allEvents(); const open = ev.filter(e => e.status === 'open');
   const byType = {}; open.forEach(e => (byType[e.type] = byType[e.type] || []).push(e));
@@ -969,6 +970,7 @@ async function boot() {
     fetch('data/research/energy_cyber_cti_report.json').then(r => r.json()).catch(() => null),
   ]);
   history = hs; aimarket = am; costModel = cmd; evalData = evd; research = rsr;
+  try { englog = (await fetch('data/engineering_log.json').then(r => r.ok ? r.json() : null)) || { events: [] }; } catch { englog = { events: [] }; }
   personas = p; briefing = b; news = n; sources = src; lookmap = lk; buildings = bl; sectors = sc; rulesText = rt; cmdlog = cl;
   const openFlags = cmdlog.events.filter(e => e.status === 'open').length; $('btn-command').textContent = `Incident Desk (${openFlags})`;
   if (briefing) {
