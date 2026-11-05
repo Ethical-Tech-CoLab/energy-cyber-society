@@ -1,0 +1,485 @@
+{
+ "generated_at": "2026-11-05T04:07:13.490221+00:00",
+ "isos": [
+  {
+   "iso": "ERCOT",
+   "time": "2026-11-04 22:00:00",
+   "load_mw": 51422,
+   "peak_today_mw": 58799
+  },
+  {
+   "iso": "CAISO",
+   "time": "2026-11-04 20:00:00",
+   "load_mw": 26605,
+   "peak_today_mw": 27930
+  },
+  {
+   "iso": "MISO",
+   "time": "2026-11-04 23:00:00",
+   "load_mw": 72108,
+   "peak_today_mw": 82021
+  },
+  {
+   "iso": "NYISO",
+   "time": "2026-11-04 22:50:00",
+   "load_mw": 14970,
+   "peak_today_mw": 18250
+  },
+  {
+   "iso": "ISONE",
+   "time": "2026-11-04 23:05:00",
+   "load_mw": 10819,
+   "peak_today_mw": 14546
+  }
+ ],
+ "alerts": {
+  "total_active": 471,
+  "energy_relevant": 141,
+  "by_state": {
+   "GA": {
+    "Flash Flood Warning": 6
+   },
+   "AZ": {
+    "Flood Warning": 8
+   },
+   "MO": {
+    "Flood Warning": 13
+   },
+   "LM": {
+    "Gale Warning": 28
+   },
+   "LS": {
+    "Gale Warning": 17
+   },
+   "IA": {
+    "Flood Warning": 3
+   },
+   "FL": {
+    "Flood Warning": 11
+   },
+   "AK": {
+    "High Wind Warning": 3,
+    "Winter Weather Advisory": 3
+   },
+   "CO": {
+    "Winter Weather Advisory": 9,
+    "Flood Warning": 5
+   },
+   "PK": {
+    "Gale Warning": 78,
+    "Storm Warning": 13
+   },
+   "LA": {
+    "Flood Warning": 2
+   },
+   "NE": {
+    "Flood Warning": 1
+   },
+   "NM": {
+    "Flood Warning": 1
+   },
+   "UT": {
+    "Flood Warning": 2
+   }
+  },
+  "events": [
+   "Flash Flood Warning",
+   "Flood Warning",
+   "Gale Warning",
+   "High Wind Warning",
+   "Storm Warning",
+   "Winter Weather Advisory"
+  ],
+  "why": {
+   "Flash Flood Warning": "substations, pump stations, pipeline crossings",
+   "Flood Warning": "substations, pump stations, pipeline crossings",
+   "Gale Warning": "LNG and tanker movements, offshore wind",
+   "High Wind Warning": "transmission lines, wind-farm curtailment, substation damage",
+   "Storm Warning": "LNG and tanker movements, offshore wind",
+   "Winter Weather Advisory": "line loading, icing, telecom and cellular backhaul"
+  },
+  "top": [
+   {
+    "event": "Flash Flood Warning",
+    "area": "Fannin, GA; Gilmer, GA",
+    "severity": "Severe",
+    "ends": "2026-11-05T01:30",
+    "why": "substations, pump stations, pipeline crossings"
+   },
+   {
+    "event": "Flood Warning",
+    "area": "Maricopa, AZ",
+    "severity": "Severe",
+    "ends": "2026-11-07T14:00",
+    "why": "substations, pump stations, pipeline crossings"
+   },
+   {
+    "event": "Flood Warning",
+    "area": "Maricopa, AZ",
+    "severity": "Severe",
+    "ends": "2026-11-05T14:00",
+    "why": "substations, pump stations, pipeline crossings"
+   },
+   {
+    "event": "Flood Warning",
+    "area": "Maricopa, AZ",
+    "severity": "Severe",
+    "ends": "2026-11-05T14:00",
+    "why": "substations, pump stations, pipeline crossings"
+   },
+   {
+    "event": "Flood Warning",
+    "area": "Maricopa, AZ",
+    "severity": "Severe",
+    "ends": "2026-11-05T20:00",
+    "why": "substations, pump stations, pipeline crossings"
+   },
+   {
+    "event": "Flood Warning",
+    "area": "Maricopa, AZ",
+    "severity": "Severe",
+    "ends": "2026-11-05T11:45",
+    "why": "substations, pump stations, pipeline crossings"
+   },
+   {
+    "event": "Flood Warning",
+    "area": "Coconino, AZ; Navajo, AZ",
+    "severity": "Severe",
+    "ends": "2026-11-05T20:00",
+    "why": "substations, pump stations, pipeline crossings"
+   },
+   {
+    "event": "Flood Warning",
+    "area": "Buchanan, MO",
+    "severity": "Severe",
+    "ends": "2026-11-07T06:27",
+    "why": "substations, pump stations, pipeline crossings"
+   },
+   {
+    "event": "Flood Warning",
+    "area": "Platte, MO",
+    "severity": "Severe",
+    "ends": "2026-11-08T19:32",
+    "why": "substations, pump stations, pipeline crossings"
+   },
+   {
+    "event": "Flood Warning",
+    "area": "Platte, MO",
+    "severity": "Severe",
+    "ends": "2026-11-08T12:37",
+    "why": "substations, pump stations, pipeline crossings"
+   },
+   {
+    "event": "Flood Warning",
+    "area": "Andrew, MO; Buchanan, MO",
+    "severity": "Severe",
+    "ends": "2026-11-06T00:00",
+    "why": "substations, pump stations, pipeline crossings"
+   },
+   {
+    "event": "Flood Warning",
+    "area": "Benton, IA; Iowa, IA",
+    "severity": "Severe",
+    "ends": "2026-11-10T11:00",
+    "why": "substations, pump stations, pipeline crossings"
+   },
+   {
+    "event": "Flood Warning",
+    "area": "Keokuk, IA",
+    "severity": "Severe",
+    "ends": "2026-11-07T11:25",
+    "why": "substations, pump stations, pipeline crossings"
+   },
+   {
+    "event": "Flood Warning",
+    "area": "Lake, FL; Volusia, FL",
+    "severity": "Severe",
+    "ends": "",
+    "why": "substations, pump stations, pipeline crossings"
+   },
+   {
+    "event": "Flood Warning",
+    "area": "Lake, FL; Volusia, FL",
+    "severity": "Severe",
+    "ends": "",
+    "why": "substations, pump stations, pipeline crossings"
+   }
+  ]
+ },
+ "hubs": [
+  {
+   "hub": "Houston TX (Gulf Coast refining, LNG, ERCOT)",
+   "lat": 29.76,
+   "lon": -95.37,
+   "facilities": [
+    "refinery",
+    "lngport",
+    "pipeline"
+   ],
+   "tmax_c": 26.0,
+   "tmin_c": 13.9,
+   "wind_max_kmh": 14.7,
+   "rain_3d_mm": 0.0,
+   "stress": []
+  },
+  {
+   "hub": "Midland TX (Permian upstream)",
+   "lat": 31.99,
+   "lon": -102.08,
+   "facilities": [
+    "wellhead"
+   ],
+   "tmax_c": 21.6,
+   "tmin_c": 6.6,
+   "wind_max_kmh": 24.5,
+   "rain_3d_mm": 1.5,
+   "stress": []
+  },
+  {
+   "hub": "Chicago IL (PJM/MISO seam, pipelines)",
+   "lat": 41.88,
+   "lon": -87.63,
+   "facilities": [
+    "pipeline",
+    "substation"
+   ],
+   "tmax_c": 11.4,
+   "tmin_c": 3.7,
+   "wind_max_kmh": 24.6,
+   "rain_3d_mm": 1.6,
+   "stress": []
+  },
+  {
+   "hub": "Phoenix AZ (data centres, solar, nuclear)",
+   "lat": 33.45,
+   "lon": -112.07,
+   "facilities": [
+    "datacentre",
+    "renewables",
+    "nuclear"
+   ],
+   "tmax_c": 28.1,
+   "tmin_c": 11.5,
+   "wind_max_kmh": 14.3,
+   "rain_3d_mm": 0.0,
+   "stress": []
+  },
+  {
+   "hub": "Northern Virginia (data-centre capital)",
+   "lat": 38.95,
+   "lon": -77.45,
+   "facilities": [
+    "datacentre",
+    "substation"
+   ],
+   "tmax_c": 23.8,
+   "tmin_c": 7.7,
+   "wind_max_kmh": 24.0,
+   "rain_3d_mm": 9.8,
+   "stress": []
+  },
+  {
+   "hub": "Los Angeles CA (CAISO, ports)",
+   "lat": 34.05,
+   "lon": -118.24,
+   "facilities": [
+    "lngport",
+    "evcharging"
+   ],
+   "tmax_c": 30.1,
+   "tmin_c": 13.4,
+   "wind_max_kmh": 15.5,
+   "rain_3d_mm": 0.0,
+   "stress": []
+  },
+  {
+   "hub": "New York NY (NYISO, interconnectors)",
+   "lat": 40.71,
+   "lon": -74.01,
+   "facilities": [
+    "interconnector",
+    "substation"
+   ],
+   "tmax_c": 24.0,
+   "tmin_c": 11.5,
+   "wind_max_kmh": 22.6,
+   "rain_3d_mm": 16.2,
+   "stress": []
+  },
+  {
+   "hub": "Minneapolis MN (MISO north, cold)",
+   "lat": 44.98,
+   "lon": -93.27,
+   "facilities": [
+    "thermal",
+    "substation"
+   ],
+   "tmax_c": 9.7,
+   "tmin_c": 0.5,
+   "wind_max_kmh": 22.0,
+   "rain_3d_mm": 1.2,
+   "stress": []
+  },
+  {
+   "hub": "Hamburg DE (offshore wind, interconnectors)",
+   "lat": 53.55,
+   "lon": 9.99,
+   "facilities": [
+    "renewables",
+    "interconnector"
+   ],
+   "tmax_c": 9.9,
+   "tmin_c": 2.2,
+   "wind_max_kmh": 13.0,
+   "rain_3d_mm": 0.0,
+   "stress": []
+  },
+  {
+   "hub": "Rotterdam NL (refining, LNG)",
+   "lat": 51.92,
+   "lon": 4.48,
+   "facilities": [
+    "refinery",
+    "lngport"
+   ],
+   "tmax_c": 10.6,
+   "tmin_c": 3.1,
+   "wind_max_kmh": 18.4,
+   "rain_3d_mm": 0.6,
+   "stress": []
+  },
+  {
+   "hub": "Warsaw PL (CHP, distributed energy)",
+   "lat": 52.23,
+   "lon": 21.01,
+   "facilities": [
+    "thermal",
+    "renewables"
+   ],
+   "tmax_c": 9.6,
+   "tmin_c": -1.3,
+   "wind_max_kmh": 18.4,
+   "rain_3d_mm": 0.0,
+   "stress": []
+  },
+  {
+   "hub": "Kyiv UA (grid under attack)",
+   "lat": 50.45,
+   "lon": 30.52,
+   "facilities": [
+    "substation",
+    "thermal"
+   ],
+   "tmax_c": 6.4,
+   "tmin_c": 0.0,
+   "wind_max_kmh": 16.0,
+   "rain_3d_mm": 2.7,
+   "stress": []
+  },
+  {
+   "hub": "Tokyo JP (nuclear restart, LNG)",
+   "lat": 35.68,
+   "lon": 139.69,
+   "facilities": [
+    "nuclear",
+    "lngport"
+   ],
+   "tmax_c": 23.4,
+   "tmin_c": 8.7,
+   "wind_max_kmh": 14.7,
+   "rain_3d_mm": 1.8,
+   "stress": []
+  },
+  {
+   "hub": "São Paulo BR (hydro, distribution)",
+   "lat": -23.55,
+   "lon": -46.63,
+   "facilities": [
+    "substation"
+   ],
+   "tmax_c": 29.9,
+   "tmin_c": 18.6,
+   "wind_max_kmh": 20.9,
+   "rain_3d_mm": 18.5,
+   "stress": []
+  },
+  {
+   "hub": "Mexico City MX (CFE)",
+   "lat": 19.43,
+   "lon": -99.13,
+   "facilities": [
+    "substation",
+    "pipeline"
+   ],
+   "tmax_c": 25.4,
+   "tmin_c": 11.7,
+   "wind_max_kmh": 13.7,
+   "rain_3d_mm": 1.4,
+   "stress": []
+  }
+ ],
+ "errors": [],
+ "links": {
+  "gridstatus_map": "https://www.gridstatus.io/power-plant-map",
+  "gridstatus": "https://www.gridstatus.io/",
+  "nws": "https://www.weather.gov/",
+  "eia_outages": "https://www.eia.gov/electricity/gridmonitor/"
+ },
+ "note": "Grid Status's map cannot be embedded (X-Frame-Options); it opens in a new tab. Load and weather are context for which assets are stressed, not evidence of any cyber event. Correlation with the board is keyword-based and labelled.",
+ "ercot_fuel_mix_mw": {
+  "Coal and Lignite": 5540,
+  "Hydro": 30,
+  "Nuclear": 3835,
+  "Power Storage": -928,
+  "Solar": 0,
+  "Wind": 19112,
+  "Natural Gas": 23617,
+  "Other": 0
+ },
+ "gdacs": {
+  "orange_red": [
+   {
+    "level": "Red",
+    "type": "tropical cyclone",
+    "country": "India",
+    "title": "Red notification for tropical cyclone MURASU-26. Population affected by Category 1 (120 km/h) wind speeds or higher is 1",
+    "lat": 15.8,
+    "lon": 80.2,
+    "link": "http://www.gdacs.org/report.aspx?eventtype=TC&amp;eventid=1001346",
+    "why": "transmission, offshore wind, ports and LNG"
+   },
+   {
+    "level": "Orange",
+    "type": "drought",
+    "country": "Democratic Republic of Congo, Central African Republic, Cameroon, Eritrea, Ethiopia, Kenya, Niger, Nigeria, Sudan, South Sudan, Chad, Tanzania, Uganda",
+    "title": "Drought is on going in Democratic Republic of Congo, Central African Republic, Cameroon, Eritrea, Ethiopia, Kenya, Niger",
+    "lat": 8.955,
+    "lon": 34.193,
+    "link": "http://www.gdacs.org/report.aspx?eventtype=DR&amp;eventid=1027450",
+    "why": "hydro and thermal cooling water"
+   },
+   {
+    "level": "Orange",
+    "type": "drought",
+    "country": "Belize, Costa Rica, Cuba, Dominican Republic, Guatemala, Honduras, Haiti, Mexico, Nicaragua, El Salvador, United States",
+    "title": "Drought is on going in Belize, Costa Rica, Cuba, Dominican Republic, Guatemala, Honduras, Haiti, Mexico, Nicaragua, El S",
+    "lat": 18.563,
+    "lon": -95.396,
+    "link": "http://www.gdacs.org/report.aspx?eventtype=DR&amp;eventid=1027449",
+    "why": "hydro and thermal cooling water"
+   },
+   {
+    "level": "Orange",
+    "type": "drought",
+    "country": "Andorra, Albania, Austria, Bosnia & Herzegovina, Belgium, Bulgaria, Belarus, Switzerland, Czech Republic, Germany, Denmark, Spain, France, Croatia, Hungary, Ireland, Italy, Liechtenstein, Luxembourg, Moldova, Montenegro, Netherlands, Poland, Romania, Serbia, Sweden, Slovenia, Slovakia, Ukraine,",
+    "title": "Drought is on going in Andorra, Albania, Austria, Bosnia &amp; Herzegovina, Belgium, Bulgaria, Belarus, Switzerland, Cze",
+    "lat": 48.127,
+    "lon": 12.876,
+    "link": "http://www.gdacs.org/report.aspx?eventtype=DR&amp;eventid=1018332",
+    "why": "hydro and thermal cooling water"
+   }
+  ],
+  "total_items": 222,
+  "source": "https://www.gdacs.org/"
+ }
+}

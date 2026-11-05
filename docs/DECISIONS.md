@@ -69,6 +69,8 @@ Nothing here is lost in chat.
 
 | 55 | Grid Status plant map, and worldwide | Grid Status cannot be embedded; its open-data equivalent (WRI GPPD) is drawn in-page worldwide, GDACS adds global disaster alerts; Grid Status linked for live US plant status | Grid & weather tab; `scripts/build_plants.py` |
 
+| 56 | Look at today's energy news; add a graphic of the process using the agent topology from neocloud-supply-os | Four items added or updated for 2026-11-05; topology SVG and role-mapping table in Methodology, Mermaid in README | Methodology tab; `docs/topology.svg` |
+
 ## Standing decisions made by the assistant without being asked (so you can reverse them)
 
 - Resident names and the town metaphor; the building names; PIT as the third layer (DoD term).

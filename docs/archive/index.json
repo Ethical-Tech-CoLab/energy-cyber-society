@@ -89,6 +89,40 @@
     "repo_sources.json"
    ],
    "flags": 50
+  },
+  {
+   "run": "2026-11-05T19-28",
+   "generated_at": "2026-11-05T19:28:05.048372+00:00",
+   "news_generated_at": "2026-11-05T19:26:53.663619+00:00",
+   "model": "curated-by-claude-fable-5.1 (session run, 2026-11-05 update)",
+   "items": 13,
+   "energy": 18,
+   "wide": 150,
+   "headline": "Today: a failed Zyxel patch, a ten-year push to save the US sharing law, PHP flaws in substation network gear, and AI that writes exploits at scale.",
+   "us_status": "No confirmed intrusion at a US electric utility, pipeline, refinery, LNG terminal or nuclear facility appeared in any allowlisted source in the 7-day window ending 2026-11-05. US items are policy and guidance.",
+   "files": [
+    "briefing.json",
+    "news.json",
+    "sources.json",
+    "command_log.json",
+    "stix.json",
+    "history.json",
+    "personas.json",
+    "sectors.json",
+    "where_to_look.json",
+    "buildings.json",
+    "ai_market.json",
+    "grid_weather.json",
+    "plants.json",
+    "regulations.json",
+    "risk_model.json",
+    "repo_RULES.md",
+    "repo_INTELLIGENCE_ANALYSIS.md",
+    "repo_CURATION.md",
+    "repo_COST.md",
+    "repo_sources.json"
+   ],
+   "flags": 54
   }
  ]
 }

@@ -127,6 +127,32 @@ A fifteenth resident works on this codebase: `ENGINEERING.md` is the playbook, `
 finds UX and accessibility work, `scripts/routine_engineer.json` is the daily cloud routine. It opens
 pull requests and never merges; the owner reviews.
 
+## Process topology
+
+After [neocloud-supply-os](https://github.com/yorkerhodes3/neocloud-supply-os) Appendix B1. The diagram is `docs/topology.svg` (Methodology tab).
+
+```mermaid
+flowchart TB
+  H["Humans: owner, signer, merger"]
+  C["Conductor: scheduled runtime (CURATION.md)"]
+  D["Domain desks: 14 analytic residents + Engineer"]
+  A["Auditor: the Verifier (stripped records + pulled text only)"]
+  PE["Policy and Mandate Engine: RULES.md, validate.py, computed severity, flag logger"]
+  L["Event Ledger: briefing.json + append-only archive, STIX"]
+  E["Envoy gateway: fetch_news.py over the allowlist"]
+  RD["Reader (quarantined): news.json, pull_sources.py, text fenced as data"]
+  X["External: feeds, primary documents, NVD/KEV, NWS, ISOs"]
+  H -->|"intent, rules, sources, personas"| C
+  C -->|"tasks"| D
+  D -->|"proposed records"| PE
+  PE -->|"allowed only"| L
+  A -.->|"re-checks"| D
+  X -->|"RSS, HTTP"| E
+  E -->|"untrusted content"| RD
+  RD -->|"schema data"| D
+  PE -->|"out of mandate: unsigned brief, proposals, PRs"| H
+```
+
 ## Research
 
 `agents/research/` holds user-provided research transcribed to data. The Global Energy Cyber

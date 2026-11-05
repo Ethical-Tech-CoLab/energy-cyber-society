@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.tile.openstreetmap.org https://cdnjs.cloudflare.com; connect-src 'self' https:; frame-ancestors 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.tile.openstreetmap.org https://cdnjs.cloudflare.com; object-src 'self'; connect-src 'self' https:; frame-ancestors 'none'">
 <title>Energy Cyber Society</title>
 <meta name="description" content="A virtual town of five LLM agents who read the day's energy-sector cybersecurity news from credible sources and argue about it. Click a resident to talk.">
 <link rel="icon" type="image/svg+xml" href="etc-icon.svg">
@@ -319,6 +319,19 @@
         <li>Attacker and leak-site claims are claims. "I cannot verify this" beats a plausible guess.</li>
         <li>For every incident: who was not affected, and what else was happening at the same time.</li>
       </ul>
+      <h3>Process topology</h3>
+      <p>The society follows the Conductor–desks–Auditor–Policy Engine–Ledger–Envoy–Reader topology from <a href="https://github.com/yorkerhodes3/neocloud-supply-os" target="_blank" rel="noopener">neocloud-supply-os</a> (Appendix B1): one orchestrator turns intent and events into tasks for domain desks; every output passes deterministic policy before it reaches the ledger; an independent auditor re-checks; all external content enters through a gateway and is read only by a quarantined reader; anything out of mandate goes to a human.</p>
+      <div class="topo"><object type="image/svg+xml" data="topology.svg" aria-label="Process topology diagram">topology.svg</object></div>
+      <table class="fac-table"><tr><th>Topology role</th><th>In this society</th><th>Why it matters</th></tr>
+      <tr><th>Humans</th><td>Carolina: owner, signer, merger</td><td>intent, rules, sources and personas are edited only by people (rule 31)</td></tr>
+      <tr><th>Conductor</th><td>the scheduled runtime following CURATION.md</td><td>never parses raw feeds itself; reasons over the Reader's structured records</td></tr>
+      <tr><th>Envoy</th><td>fetch_news.py over the allowlist</td><td>the only door; 38 feeds, nothing else enters</td></tr>
+      <tr><th>Reader (quarantined)</th><td>news.json and pull_sources.py; text fenced as data</td><td>a malicious headline is data, never an instruction</td></tr>
+      <tr><th>Domain desks</th><td>the fourteen analytic residents and the Engineer</td><td>typed outputs against a schema; no desk fetches</td></tr>
+      <tr><th>Auditor</th><td>the Verifier, on stripped records and pulled text only</td><td>independence by construction (review blocker 2)</td></tr>
+      <tr><th>Policy and Mandate Engine</th><td>RULES.md, validate.py, computed severity, the attribution rule, the flag logger</td><td>deterministic code, not an agent; a malformed briefing never publishes</td></tr>
+      <tr><th>Ledger</th><td>briefing.json plus the append-only archive, history, STIX, engineering log</td><td>the page only reads; nothing is overwritten</td></tr>
+      <tr><th>Out of mandate</th><td>the unsigned brief, Ombudsman proposals, Engineer PRs, blocked pages, "I cannot verify this"</td><td>escalation to a person is a normal outcome, not a failure</td></tr></table>
       <h3>How the residents learn where to ask</h3>
       <p>Each run records which sources supplied items, which primary hosts were reached, and which pages blocked the puller. The Librarian reads that record and reroutes the next run's questions (for example, statute questions to congress.gov rather than waiting for trade press). The map she keeps is <code>agents/where_to_look.json</code>, editable by hand.</p>
       <h3>Cost, inputs and outputs of one run</h3>

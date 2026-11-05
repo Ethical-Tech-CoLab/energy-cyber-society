@@ -1,0 +1,2064 @@
+{
+ "generated_at": "2026-11-05T19:26:53.663619+00:00",
+ "window_hours": 36,
+ "sources": [
+  {
+   "id": "cisa",
+   "name": "CISA Advisories",
+   "type": "government",
+   "country": "US",
+   "bias_note": "US government body; authoritative on US-facing threats, careful wording, rarely attributes publicly, slow on non-US incidents.",
+   "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml"
+  },
+  {
+   "id": "cisa-news",
+   "name": "CISA News",
+   "type": "government",
+   "country": "US",
+   "bias_note": "Agency press office; frames events around its own programs and successes.",
+   "url": "https://www.cisa.gov/news.xml"
+  },
+  {
+   "id": "cyberscoop",
+   "name": "CyberScoop",
+   "type": "trade press",
+   "country": "US",
+   "bias_note": "Washington-focused trade outlet; strong on policy and federal sourcing, sponsor-funded events with vendors.",
+   "url": "https://cyberscoop.com/feed/"
+  },
+  {
+   "id": "therecord",
+   "name": "The Record (Recorded Future News)",
+   "type": "vendor-owned press",
+   "country": "US",
+   "bias_note": "Editorially independent but owned by threat-intel vendor Recorded Future; strong on nation-state and ransomware actors.",
+   "url": "https://therecord.media/feed"
+  },
+  {
+   "id": "bleeping",
+   "name": "BleepingComputer",
+   "type": "tech press",
+   "country": "US",
+   "bias_note": "Fast, incident-driven, often first with ransomware claims; headlines can run ahead of confirmation.",
+   "url": "https://www.bleepingcomputer.com/feed/"
+  },
+  {
+   "id": "securityweek",
+   "name": "SecurityWeek",
+   "type": "trade press",
+   "country": "US",
+   "bias_note": "Vendor-advertising supported; dedicated ICS/OT coverage, sometimes echoes vendor research uncritically.",
+   "url": "https://www.securityweek.com/feed/"
+  },
+  {
+   "id": "darkreading",
+   "name": "Dark Reading",
+   "type": "trade press",
+   "country": "US",
+   "bias_note": "Informa-owned, heavy vendor sponsorship; analysis-led, can amplify vendor threat reports.",
+   "url": "https://www.darkreading.com/rss.xml"
+  },
+  {
+   "id": "krebs",
+   "name": "Krebs on Security",
+   "type": "independent",
+   "country": "US",
+   "bias_note": "Single investigative reporter; deep on cybercrime ecosystems, selective coverage, US-centric.",
+   "url": "https://krebsonsecurity.com/feed/"
+  },
+  {
+   "id": "utilitydive",
+   "name": "Utility Dive",
+   "type": "industry press",
+   "country": "US",
+   "bias_note": "Utility-industry trade outlet; frames security through regulation, cost and reliability; sympathetic to utilities.",
+   "url": "https://www.utilitydive.com/feeds/news/"
+  },
+  {
+   "id": "doe-ceser",
+   "name": "DOE Newsroom",
+   "type": "government",
+   "country": "US",
+   "bias_note": "Department press releases; promotional about federal programs.",
+   "url": "https://www.energy.gov/rss/newsroom.xml"
+  },
+  {
+   "id": "ncsc-uk",
+   "name": "UK NCSC News",
+   "type": "government",
+   "country": "UK",
+   "bias_note": "UK government agency; aligned with Five Eyes attributions.",
+   "url": "https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml"
+  },
+  {
+   "id": "hackernews",
+   "name": "The Hacker News",
+   "type": "tech press",
+   "country": "international",
+   "bias_note": "High volume, sponsored content mixed with news; good for the wide-angle view of what else is happening.",
+   "url": "https://feeds.feedburner.com/TheHackersNews"
+  },
+  {
+   "id": "industrialcyber",
+   "name": "Industrial Cyber",
+   "type": "trade press",
+   "country": "international",
+   "bias_note": "ICS/OT-only trade outlet; vendor-advertising supported, relays vendor reports and regulator notices with little pushback.",
+   "url": "https://industrialcyber.co/feed/"
+  },
+  {
+   "id": "register",
+   "name": "The Register Security",
+   "type": "tech press",
+   "country": "UK",
+   "bias_note": "Irreverent UK tech press; sceptical of vendors and governments alike, headline tone can trivialise.",
+   "url": "https://www.theregister.com/security/headlines.atom"
+  },
+  {
+   "id": "arxiv-cr",
+   "name": "arXiv cs.CR (preprints)",
+   "type": "research preprints",
+   "country": "international",
+   "bias_note": "Unreviewed preprints; author claims, not findings; good for what researchers are probing (ICS intrusion detection, grid attacks) before journals publish.",
+   "url": "http://export.arxiv.org/rss/cs.CR"
+  },
+  {
+   "id": "arxiv-sy",
+   "name": "arXiv eess.SY (systems and control preprints)",
+   "type": "research preprints",
+   "country": "international",
+   "bias_note": "Control-systems research, including grid and cyber-physical security; unreviewed.",
+   "url": "http://export.arxiv.org/rss/eess.SY"
+  },
+  {
+   "id": "schneier",
+   "name": "Schneier on Security",
+   "type": "independent",
+   "country": "US",
+   "bias_note": "One academic's commentary and links; strong on policy and crypto, selective, opinionated.",
+   "url": "https://www.schneier.com/feed/atom/"
+  },
+  {
+   "id": "csis",
+   "name": "CSIS",
+   "type": "think tank",
+   "country": "US",
+   "bias_note": "Washington think tank; policy analysis with funders across defence and industry; frames through US strategic interest.",
+   "url": "https://www.csis.org/rss.xml"
+  },
+  {
+   "id": "kaspersky-ics",
+   "name": "Kaspersky ICS CERT",
+   "type": "vendor research",
+   "country": "Russia",
+   "bias_note": "Deep ICS vulnerability and threat research from a Russian vendor banned from US federal use (2017) and US sales (2024); technical content is strong, attribution of Russian activity is absent or soft.",
+   "url": "https://ics-cert.kaspersky.com/feed/"
+  },
+  {
+   "id": "wired-sec",
+   "name": "WIRED Security",
+   "type": "magazine",
+   "country": "US",
+   "bias_note": "Narrative long-form; strong investigative pieces on Sandworm and grid attacks; prioritises story over timeliness; Condé Nast.",
+   "url": "https://www.wired.com/feed/category/security/latest/rss"
+  },
+  {
+   "id": "csirtamericas",
+   "name": "CSIRTAmericas (OAS)",
+   "type": "government",
+   "country": "Latin America",
+   "bias_note": "Organization of American States regional CSIRT network; Spanish; aggregates national CSIRT notices; institutional tone, slow on attribution.",
+   "url": "https://www.csirtamericas.org/es/rss.xml"
+  },
+  {
+   "id": "certbr",
+   "name": "CERT.br (Brazil)",
+   "type": "government",
+   "country": "Brazil",
+   "bias_note": "Brazil's national CERT (NIC.br); Portuguese; statistics and advisories, rarely names victims.",
+   "url": "https://www.cert.br/rss/"
+  },
+  {
+   "id": "incibe-sci",
+   "name": "INCIBE-CERT ICS advisories (Spain)",
+   "type": "government",
+   "country": "Spain",
+   "bias_note": "Spanish government ICS/SCADA advisories, several per week, often mirroring CISA ICS advisories a day later; a workaround for CISA's 403.",
+   "url": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/feed"
+  },
+  {
+   "id": "unaaldia",
+   "name": "Una al día (Hispasec)",
+   "type": "independent",
+   "country": "Spain",
+   "bias_note": "Daily Spanish-language security news since 1998 from a security firm (Hispasec); concise, vendor-light, Spain and Latin America coverage.",
+   "url": "https://feeds.feedburner.com/Unaaldia"
+  },
+  {
+   "id": "ciberlatam",
+   "name": "Ciberseguridad LATAM",
+   "type": "trade press",
+   "country": "Latin America",
+   "bias_note": "Regional trade outlet; vendor-advertising funded; relays regional incidents and vendor reports in Spanish.",
+   "url": "https://www.ciberseguridadlatam.com/feed/"
+  },
+  {
+   "id": "heise",
+   "name": "heise Security (Germany)",
+   "type": "tech press",
+   "country": "Germany",
+   "bias_note": "Germany's main tech press; German; sober, fast, strong on EU regulation and German utilities; Heise Medien.",
+   "url": "https://www.heise.de/security/rss/news-atom.xml"
+  },
+  {
+   "id": "certfr",
+   "name": "CERT-FR advisories (France)",
+   "type": "government",
+   "country": "France",
+   "bias_note": "ANSSI's CERT; French; vulnerability advisories including ICS vendors; institutional, no attribution.",
+   "url": "https://www.cert.ssi.gouv.fr/avis/feed/"
+  },
+  {
+   "id": "lemonde",
+   "name": "Le Monde Pixels (France)",
+   "type": "wire",
+   "country": "France",
+   "bias_note": "National daily's tech desk; French; covered the EFS and supermarket attacks domestically; general audience.",
+   "url": "https://www.lemonde.fr/pixels/rss_full.xml"
+  },
+  {
+   "id": "securitynl",
+   "name": "Security.NL (Netherlands)",
+   "type": "independent",
+   "country": "Netherlands",
+   "bias_note": "Dutch independent security news; terse, high volume; good on Dutch and EU incidents.",
+   "url": "https://www.security.nl/rss/headlines.xml"
+  },
+  {
+   "id": "certpl",
+   "name": "CERT Polska",
+   "type": "government",
+   "country": "Poland",
+   "bias_note": "Poland's national CERT (NASK); Polish; incident reports, strong on Russian-linked activity against Poland.",
+   "url": "https://cert.pl/rss.xml"
+  },
+  {
+   "id": "certua",
+   "name": "CERT-UA (Ukraine)",
+   "type": "government",
+   "country": "Ukraine",
+   "bias_note": "Ukraine's government CERT; Ukrainian; the primary source on attacks against Ukrainian energy and government; a party to the war, attributions are to Russia.",
+   "url": "https://cert.gov.ua/api/articles/rss"
+  },
+  {
+   "id": "jpcert",
+   "name": "JPCERT/CC (Japan)",
+   "type": "government",
+   "country": "Japan",
+   "bias_note": "Japan's coordination CERT; Japanese; vulnerability notes and alerts; institutional.",
+   "url": "https://www.jpcert.or.jp/rss/jpcert.rdf"
+  },
+  {
+   "id": "cccs-en",
+   "name": "Canadian Centre for Cyber Security (alerts, EN)",
+   "type": "government",
+   "country": "Canada",
+   "bias_note": "Canada's national cyber agency; English; alerts and advisories, often mirroring vendor and CISA notices.",
+   "url": "https://www.cyber.gc.ca/api/cccs/rss/v1/get?feed=alerts_advisories&lang=en"
+  },
+  {
+   "id": "cccs-fr",
+   "name": "Centre canadien pour la cybersécurité (alertes, FR)",
+   "type": "government",
+   "country": "Canada",
+   "bias_note": "Same agency in French; duplicates the English feed, counted once by the Verifier.",
+   "url": "https://www.cyber.gc.ca/api/cccs/rss/v1/get?feed=alerts_advisories&lang=fr"
+  },
+  {
+   "id": "techcrunch-sec",
+   "name": "TechCrunch Security",
+   "type": "tech press",
+   "country": "US",
+   "bias_note": "Startup-and-tech press; strong breach reporting (Zack Whittaker); Yahoo-owned; business framing, little OT.",
+   "url": "https://techcrunch.com/category/security/feed/"
+  },
+  {
+   "id": "berkeley-cltc",
+   "name": "UC Berkeley Center for Long-Term Cybersecurity",
+   "type": "academic",
+   "country": "US",
+   "bias_note": "University research centre; policy and futures work, slow cadence, event announcements mixed with research; funded by foundations and industry.",
+   "url": "https://cltc.berkeley.edu/feed/"
+  },
+  {
+   "id": "mit-tr",
+   "name": "MIT Technology Review",
+   "type": "magazine",
+   "country": "US",
+   "bias_note": "MIT-owned magazine; strong on AI, data-centre power and energy policy; narrative, not incident-driven.",
+   "url": "https://www.technologyreview.com/feed/"
+  },
+  {
+   "id": "mit-tr-climate",
+   "name": "MIT Technology Review: climate and energy",
+   "type": "magazine",
+   "country": "US",
+   "bias_note": "Same magazine, energy desk: grid, data-centre load, US energy policy; not a security outlet.",
+   "url": "https://www.technologyreview.com/topic/climate-change/feed"
+  }
+ ],
+ "errors": [
+  {
+   "source": "cisa",
+   "error": "<unknown>:10:2: mismatched tag"
+  },
+  {
+   "source": "cisa-news",
+   "error": "<unknown>:10:2: mismatched tag"
+  }
+ ],
+ "energy": [
+  {
+   "title": "OpenAI AI Pipeline Generates 948 Linux Root Escalation Exploits in 30-Hour Run",
+   "summary": "OpenAI on Wednesday detailed a pipeline that employed an upcoming cyber-focused artificial intelligence (AI) model to validate and patch 948 local privilege escalation vulnerabilities in Linux for $1.2 million in API costs. \"Our prototype identified and analyzed 2,308 candidate Linux kernel findings, dynamically reproduced 1,724 vulnerabilities, and produced 948 local privilege escalation (LPE)",
+   "link": "https://thehackernews.com/2026/11/openai-ai-pipeline-generates-948-linux.html",
+   "published": "2026-11-05T17:08:54+00:00",
+   "source": "hackernews",
+   "source_name": "The Hacker News",
+   "source_type": "tech press",
+   "source_country": "international",
+   "matched": [
+    "pipeline",
+    "pipeline"
+   ]
+  },
+  {
+   "title": "OT-ISAC details aviation cybersecurity risks involving passenger reservation systems, airport OT, communications protocols",
+   "summary": "The OT-ISAC (Operational Technology Information Sharing and Analysis Center) published two reports Wednesday warning that cybersecurity risks facing... The post OT-ISAC details aviation cybersecurity risks involving passenger reservation systems, airport OT, communications protocols appeared first on Industrial Cyber .",
+   "link": "https://industrialcyber.co/transport/ot-isac-details-aviation-cybersecurity-risks-involving-passenger-reservation-systems-airport-ot-communications-protocols/",
+   "published": "2026-11-05T17:01:40+00:00",
+   "source": "industrialcyber",
+   "source_name": "Industrial Cyber",
+   "source_type": "trade press",
+   "source_country": "international",
+   "matched": [
+    "operational technology"
+   ]
+  },
+  {
+   "title": "OTCC cites AI-driven vulnerability exploitation in push for 10-year CISA 2015 reauthorization",
+   "summary": "The Operational Technology Cyber Coalition (OTCC) has joined 34 critical infrastructure organizations in urging U.S. congressional leaders to... The post OTCC cites AI-driven vulnerability exploitation in push for 10-year CISA 2015 reauthorization appeared first on Industrial Cyber .",
+   "link": "https://industrialcyber.co/regulation-standards-and-compliance/otcc-cites-ai-driven-vulnerability-exploitation-in-push-for-10-year-cisa-2015-reauthorization/",
+   "published": "2026-11-05T17:00:44+00:00",
+   "source": "industrialcyber",
+   "source_name": "Industrial Cyber",
+   "source_type": "trade press",
+   "source_country": "international",
+   "matched": [
+    "operational technology",
+    "critical infrastructure"
+   ]
+  },
+  {
+   "title": "Múltiples vulnerabilidades en productos de Phoenix Contact",
+   "summary": "Múltiples vulnerabilidades en productos de Phoenix Contact Jue, 05/11/2026 - 09:24 Aviso SCI Recursos Afectados FL WLAN 1x2x/23xx. FL SWITCH 2xxx. FL NAT 2xxx. FL SWITCH TSN 23xx. FL SWITCH 59xx. TC ROUTER 4xxx. FL TIMESERVER NTP. FL WLAN 11xx/21xx. TC EXTENDER x00x. SCX xPOE. Descripción Phoenix Contact ha publicado información sobre el impacto de 2 vulnerabilidades de severidad crítica de PHP, conocidas como PHP2Shell, en varias familias de productos. En determinadas condiciones, un atacante sin autenticar podría ejecutar código en los dispositivos afectados. Identificador INCIBE-2026-838 So",
+   "link": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/multiples-vulnerabilidades-en-productos-de-phoenix-contact-9",
+   "published": "2026-11-05T13:24:14+00:00",
+   "source": "incibe-sci",
+   "source_name": "INCIBE-CERT ICS advisories (Spain)",
+   "source_type": "government",
+   "source_country": "Spain",
+   "matched": [
+    "router"
+   ]
+  },
+  {
+   "title": "Zyxel GS1900 Patch Fails to Block Zero-Day Exploit Allowing Root Command Execution",
+   "summary": "Zyxel GS1900 network switches that received the vendor's earlier fix for an actively exploited flaw are still open to the exploit attackers used, researchers at Binarly found. The exploit lets anyone who can reach a switch's web management interface run commands on it without logging in. Zyxel has released new firmware for 10 GS1900 models that closes the hole. The earlier fix is the 2.90",
+   "link": "https://thehackernews.com/2026/11/zyxel-gs1900-patch-fails-to-block-zero.html",
+   "published": "2026-11-05T12:06:33+00:00",
+   "source": "hackernews",
+   "source_name": "The Hacker News",
+   "source_type": "tech press",
+   "source_country": "international",
+   "matched": [
+    "network switch"
+   ]
+  },
+  {
+   "title": "Network Intrusion Forensic Detection System with Explainable Artificial Intelligence and Digital Chain of Custody",
+   "summary": "arXiv:2611.06173v1 Announce Type: new Abstract: Deploying an explainable intrusion detection model from a validated laboratory setting into a forensic workflow requires guarantees that benchmarks do not test: that the certified model is the exact artifact applied to a case, that heterogeneous evidence can be classified reliably, and that every step is verifiable. We present MODEXRE, a forensic pipeline that extends a previously validated synthetic-data-trained XGBoost classifier with SHAP explainability (arXiv:2607.00763) into a dual-mode architecture: a Laboratory mode, where models are train",
+   "link": "https://arxiv.org/abs/2611.06173",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international",
+   "matched": [
+    "pipeline",
+    "pipeline"
+   ]
+  },
+  {
+   "title": "Trinetra.Q: Statistical and Behavioral Detection of Attacks on the Quantum-Error-Correction Layer and Classical Control Stack of Quantum Computing Systems",
+   "summary": "arXiv:2611.05722v1 Announce Type: cross Abstract: Most quantum-computer security work targets physical-layer attacks on qubits, while two surfaces remain inadequately defended: the quantum-error-correction (QEC) syndrome-and-decoder pipeline, and the classical control and software stack that runs it. Tampering on these surfaces can corrupt a computation while the physical error rate appears normal, and can stay within a single-circuit integrity tolerance. We present Trinetra.Q, a detection layer of cooperating detectors, each monitoring a statistical or behavioral property of quantum-domain da",
+   "link": "https://arxiv.org/abs/2611.05722",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international",
+   "matched": [
+    "pipeline",
+    "pipeline"
+   ]
+  },
+  {
+   "title": "A Bag of Tricks for Defending Deep Learning-based Face Recognition Pipelines against Backdoor Attacks",
+   "summary": "arXiv:2611.06412v1 Announce Type: cross Abstract: The protection of mature, multi-stage Face Recognition Systems is crucial to system providers. This technical report targets the threat model most relevant to industry practitioners: although model training is performed in-house, training data is sourced from possibly-compromised third parties. Given this setting, we present three practical defense \"tricks\" against data poisoning-based backdoor attacks. The first operates at training-time, detecting poisoned identities during training or prior to a pipeline's deployment. The last two operate at",
+   "link": "https://arxiv.org/abs/2611.06412",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international",
+   "matched": [
+    "pipeline",
+    "pipeline"
+   ]
+  },
+  {
+   "title": "Weekly Report: Cisco Secure Firewall ASAおよびFTD Softwareにサービス運用妨害（DoS）の脆弱性",
+   "summary": "Cisco Secure Firewall ASAおよびFTD Softwareにサービス運用妨害（DoS）の脆弱性",
+   "link": "https://www.jpcert.or.jp/wr/2026/wr261105.html#3",
+   "published": "2026-11-05T05:52:00+00:00",
+   "source": "jpcert",
+   "source_name": "JPCERT/CC (Japan)",
+   "source_type": "government",
+   "source_country": "Japan",
+   "matched": [
+    "firewall"
+   ]
+  },
+  {
+   "title": "Multiples vulnérabilités dans les produits Siemens (05 novembre 2026)",
+   "summary": "De multiples vulnérabilités ont été découvertes dans les produits Siemens. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, un déni de service à distance et une atteinte à la confidentialité des données.",
+   "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1464/",
+   "published": "2026-11-05T05:00:00+00:00",
+   "source": "certfr",
+   "source_name": "CERT-FR advisories (France)",
+   "source_type": "government",
+   "source_country": "France",
+   "matched": [
+    "siemens"
+   ]
+  },
+  {
+   "title": "Zyxel fixes zero-day exploited to hack nearly 1,000 network switches",
+   "summary": "Zyxel has patched a zero-day vulnerability in its GS1900 series network switches that hackers exploited to compromise nearly 1,000 devices worldwide and steal configuration files and credentials. [...]",
+   "link": "https://www.bleepingcomputer.com/news/security/zyxel-fixes-zero-day-exploited-to-hack-nearly-1-000-network-switches/",
+   "published": "2026-11-05T01:58:19+00:00",
+   "source": "bleeping",
+   "source_name": "BleepingComputer",
+   "source_type": "tech press",
+   "source_country": "US",
+   "matched": [
+    "network switch"
+   ]
+  },
+  {
+   "title": "Electric utilities join industries urging renewal of cybersecurity information-sharing law",
+   "summary": "CISA 2015, as the law is often called, provides liability protections for companies sharing cyber threat indicators amongst themselves and with federal agencies. It is set to expire next month.",
+   "link": "https://www.utilitydive.com/news/electric-utilities-join-industries-urging-renewal-of-cybersecurity-informat/873703/",
+   "published": "2026-11-04T20:24:26+00:00",
+   "source": "utilitydive",
+   "source_name": "Utility Dive",
+   "source_type": "industry press",
+   "source_country": "US",
+   "matched": [
+    "utilities",
+    "electric"
+   ]
+  },
+  {
+   "title": "NCSC Annual Review 2026 warns AI-powered malware could target UK critical infrastructure by 2028",
+   "summary": "The U.K.’s critical national infrastructure should prepare for ransomware attacks involving artificial intelligence-powered malware by 2028, according to... The post NCSC Annual Review 2026 warns AI-powered malware could target UK critical infrastructure by 2028 appeared first on Industrial Cyber .",
+   "link": "https://industrialcyber.co/critical-infrastructure/ncsc-annual-review-2026-warns-ai-powered-malware-could-target-uk-critical-infrastructure-by-2028/",
+   "published": "2026-11-04T15:43:51+00:00",
+   "source": "industrialcyber",
+   "source_name": "Industrial Cyber",
+   "source_type": "trade press",
+   "source_country": "international",
+   "matched": [
+    "critical infrastructure"
+   ]
+  },
+  {
+   "title": "Reino Unido anticipa ransomware potenciado por IA contra infraestructura crítica en dos años",
+   "summary": "El NCSC advierte que la adopción de inteligencia artificial por actores hostiles acelerará la explotación de vulnerabilidades acumuladas por años de subinversión en seguridad.",
+   "link": "https://ciberseguridadlatam.com/reino-unido-anticipa-ransomware-potenciado-por-ia-contra-infraestructura-critica-en-dos-anos/",
+   "published": "2026-11-04T15:43:13+00:00",
+   "source": "ciberlatam",
+   "source_name": "Ciberseguridad LATAM",
+   "source_type": "trade press",
+   "source_country": "Latin America",
+   "matched": [
+    "infraestructura crítica"
+   ]
+  },
+  {
+   "title": "Australia’s CISC sharpens critical infrastructure risk guidance, urges stronger cyber and supply chain controls",
+   "summary": "Australia’s Critical Infrastructure Security Centre (CISC) recently announced that it has published updated Critical Infrastructure Risk Management Program... The post Australia’s CISC sharpens critical infrastructure risk guidance, urges stronger cyber and supply chain controls appeared first on Industrial Cyber .",
+   "link": "https://industrialcyber.co/critical-infrastructure/australias-cisc-sharpens-critical-infrastructure-risk-guidance-urges-stronger-cyber-and-supply-chain-controls/",
+   "published": "2026-11-04T14:12:12+00:00",
+   "source": "industrialcyber",
+   "source_name": "Industrial Cyber",
+   "source_type": "trade press",
+   "source_country": "international",
+   "matched": [
+    "critical infrastructure"
+   ]
+  },
+  {
+   "title": "Crytica Security partners with Carahsoft to expand device-level OT threat detection across US public sector",
+   "summary": "Crytica Security, developer of Rapid Detection, Alert and isolation (RDAi) solution, and Carahsoft Technology Corp. announced a distribution... The post Crytica Security partners with Carahsoft to expand device-level OT threat detection across US public sector appeared first on Industrial Cyber .",
+   "link": "https://industrialcyber.co/news/crytica-security-partners-with-carahsoft-to-expand-device-level-ot-threat-detection-across-us-public-sector/",
+   "published": "2026-11-04T14:00:14+00:00",
+   "source": "industrialcyber",
+   "source_name": "Industrial Cyber",
+   "source_type": "trade press",
+   "source_country": "international",
+   "matched": [
+    "ot threat"
+   ]
+  },
+  {
+   "title": "Dispel joins White House-backed Project Lifeline 250 to secure remote access at rural hospitals",
+   "summary": "Dispel, a vendor of Secure Remote Access (SRA) for Operational Technology (OT), announced its participation in Project Lifeline... The post Dispel joins White House-backed Project Lifeline 250 to secure remote access at rural hospitals appeared first on Industrial Cyber .",
+   "link": "https://industrialcyber.co/news/dispel-joins-white-house-backed-project-lifeline-250-to-secure-remote-access-at-rural-hospitals/",
+   "published": "2026-11-04T13:48:58+00:00",
+   "source": "industrialcyber",
+   "source_name": "Industrial Cyber",
+   "source_type": "trade press",
+   "source_country": "international",
+   "matched": [
+    "operational technology"
+   ]
+  },
+  {
+   "title": "Múltiples vulnerabilidades en productos de Welotec",
+   "summary": "Múltiples vulnerabilidades en productos de Welotec Mié, 04/11/2026 - 09:25 Aviso SCI Recursos Afectados TK100, modelos TK102L y TK102W, con firmware anterior a 3.5.116. TK500-v2, modelos TK525L-v2, TK525L-W-v2, TK525W-v2 y TK535L1-v2, con firmware anterior a 1.0.124. TK500-v3, modelos TK525L-v3, TK525L-W-G-v3, TK525L-IO-v3, TK525L-W-v3, TK525W-v3 y TK555L-v3, con firmware anterior a 1.0.123. Descripción Welotec en coordinación con CERT@VDE ha publicado 6 vulnerabilidades, 5 de severidad alta y 1 media, en las funciones de administración de sus routers TK. Un atacante remoto con privilegios ele",
+   "link": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/multiples-vulnerabilidades-en-productos-de-welotec",
+   "published": "2026-11-04T13:25:27+00:00",
+   "source": "incibe-sci",
+   "source_name": "INCIBE-CERT ICS advisories (Spain)",
+   "source_type": "government",
+   "source_country": "Spain",
+   "matched": [
+    "router"
+   ]
+  }
+ ],
+ "wide": [
+  {
+   "title": "OpenAI’s GPT-6 Astra silently obstructed safety research tasks",
+   "summary": "OpenAI has disclosed another AI alignment incident where GPT-6 Astra was found to sometimes quietly withhold help on safety research. [...]",
+   "link": "https://www.bleepingcomputer.com/news/security/openais-gpt-6-astra-silently-obstructed-safety-research-tasks/",
+   "published": "2026-11-06T00:24:26+00:00",
+   "source": "bleeping",
+   "source_name": "BleepingComputer",
+   "source_type": "tech press",
+   "source_country": "US"
+  },
+  {
+   "title": "Bulletin de sécurité OpenBSD (AV26-1130)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/fr/alertes-avis/bulletin-securite-openbsd-av26-1130",
+   "published": "2026-11-06T00:01:14+00:00",
+   "source": "cccs-fr",
+   "source_name": "Centre canadien pour la cybersécurité (alertes, FR)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
+   "title": "OpenBSD security advisory (AV26-1130)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/en/alerts-advisories/openbsd-security-advisory-av26-1130",
+   "published": "2026-11-06T00:00:54+00:00",
+   "source": "cccs-en",
+   "source_name": "Canadian Centre for Cyber Security (alerts, EN)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
+   "title": "US government warns of ‘ongoing cyber threat’ amid mass hacks of industrial retail and military freezers",
+   "summary": "A joint U.S. government statement says the hacks are affecting the food, transportation, and healthcare industries after reports of global mass hacks.",
+   "link": "https://techcrunch.com/2026/11/05/u-s-government-warns-of-ongoing-cyber-threat-amid-mass-hacks-of-industrial-retail-and-military-freezers/",
+   "published": "2026-11-05T23:48:34+00:00",
+   "source": "techcrunch-sec",
+   "source_name": "TechCrunch Security",
+   "source_type": "tech press",
+   "source_country": "US"
+  },
+  {
+   "title": "Aide aux créateurs de contenu : pourquoi les annonces du CNC font grincer des dents",
+   "summary": "Suspendu depuis le mois d’avril après une polémique, le fonds d’aide à la création sur les plateformes sociales du Centre national du cinéma et de l’image animée sera relancé en 2027, a annoncé son président, Gaëtan Bruel, jeudi, à la Paris Creator Week. Sans parvenir toutefois à convaincre des professionnels du secteur qui s’estiment « méprisés ».",
+   "link": "https://www.lemonde.fr/pixels/article/2026/11/05/aide-aux-createurs-de-contenus-pourquoi-les-annonces-du-cnc-font-grincer-des-dents_6807331_4408996.html",
+   "published": "2026-11-05T23:36:28+00:00",
+   "source": "lemonde",
+   "source_name": "Le Monde Pixels (France)",
+   "source_type": "wire",
+   "source_country": "France"
+  },
+  {
+   "title": "Get root on a musl Linux system by slamming it with an overly long password",
+   "summary": "Decade-old vulnerability in OpenSSH is now fixed, so get a-patchin'",
+   "link": "https://www.theregister.com/security/2026/11/05/get-root-on-a-musl-linux-system-by-slamming-it-with-an-overly-long-password/5307910",
+   "published": "2026-11-05T23:29:00+00:00",
+   "source": "register",
+   "source_name": "The Register Security",
+   "source_type": "tech press",
+   "source_country": "UK"
+  },
+  {
+   "title": "October crypto-tracker hack: Access cracked, law enforcement tokens packed",
+   "summary": "Agentic 'on-path attack' went after Chainalysis's tools, which are routinely called upon to assist police investigations",
+   "link": "https://www.theregister.com/cyber-crime/2026/11/05/october-crypto-tracker-hack-access-cracked-law-enforcement-tokens-packed/5307852",
+   "published": "2026-11-05T23:03:00+00:00",
+   "source": "register",
+   "source_name": "The Register Security",
+   "source_type": "tech press",
+   "source_country": "UK"
+  },
+  {
+   "title": "OpenSSH flaw lets attackers log into password-disabled Linux accounts",
+   "summary": "A newly disclosed OpenSSH vulnerability dubbed \"*sshole\" allows attackers to log in to certain Alpine Linux and other musl-based Linux accounts that are configured to block password authentication, simply by entering an oversized password. [...]",
+   "link": "https://www.bleepingcomputer.com/news/security/openssh-flaw-lets-attackers-log-into-password-disabled-linux-accounts/",
+   "published": "2026-11-05T22:45:29+00:00",
+   "source": "bleeping",
+   "source_name": "BleepingComputer",
+   "source_type": "tech press",
+   "source_country": "US"
+  },
+  {
+   "title": "AI Agents Got Root on Linux via 948 Kernel Flaws in OpenAI Research",
+   "summary": "An unreleased OpenAI cyber model found and exploited 948 distinct Linux kernel privilege escalation bugs for about $1.2 million. The post AI Agents Got Root on Linux via 948 Kernel Flaws in OpenAI Research appeared first on SecurityWeek .",
+   "link": "https://www.securityweek.com/ai-agents-got-root-on-linux-via-948-kernel-flaws-in-openai-research/",
+   "published": "2026-11-05T22:32:37+00:00",
+   "source": "securityweek",
+   "source_name": "SecurityWeek",
+   "source_type": "trade press",
+   "source_country": "US"
+  },
+  {
+   "title": "Eaton CEO: AC to DC migration for data centers ‘is real’",
+   "summary": "The electrical equipment multinational says it’s poised to capitalize on the trend by investing in solid-state transformers. But the “timing of that transition is not under our control,” said CEO Paulo Ruiz.",
+   "link": "https://www.utilitydive.com/news/eaton-ceo-ac-to-dc-migration-is-real-because-of-large-power-savings/873887/",
+   "published": "2026-11-05T22:05:42+00:00",
+   "source": "utilitydive",
+   "source_name": "Utility Dive",
+   "source_type": "industry press",
+   "source_country": "US"
+  },
+  {
+   "title": "OpenAI debuts GPT-6 Cyber, touting better performance — and safety guardrails",
+   "summary": "After a summer of sandbox escaping hacks, OpenAI said their new model was trained to be more cautious around user intent and less sensitive to “reward hacking” behaviors. The post OpenAI debuts GPT-6 Cyber, touting better performance — and safety guardrails appeared first on CyberScoop .",
+   "link": "https://cyberscoop.com/openai-gpt-6-cyber-security-model/",
+   "published": "2026-11-05T22:00:00+00:00",
+   "source": "cyberscoop",
+   "source_name": "CyberScoop",
+   "source_type": "trade press",
+   "source_country": "US"
+  },
+  {
+   "title": "Russian state-linked hackers target iPhone, Android devices in zero-click espionage campaign",
+   "summary": "Russian state-linked hackers targeted users in Ukraine, the United States and Europe in a campaign to steal sensitive information from iPhone and Android devices, researchers found.",
+   "link": "https://therecord.media/russia-hackers-smartphone-cyberattacks",
+   "published": "2026-11-05T22:00:00+00:00",
+   "source": "therecord",
+   "source_name": "The Record (Recorded Future News)",
+   "source_type": "vendor-owned press",
+   "source_country": "US"
+  },
+  {
+   "title": "OpenAI releases GPT-6 Cyber, and promises this one stays within 'rules of engagement'",
+   "summary": "The latest bug hunting model 'avoided exploiting out-of-scope services over 99 percent of the time', claims House of Altman",
+   "link": "https://www.theregister.com/security/2026/11/05/openai-releases-gpt-6-cyber-and-promises-this-one-stays-within-rules-of-engagement/5307855",
+   "published": "2026-11-05T22:00:00+00:00",
+   "source": "register",
+   "source_name": "The Register Security",
+   "source_type": "tech press",
+   "source_country": "UK"
+  },
+  {
+   "title": "SecurityDataPipeline.com Launches as a New Educational Resource for the AI Era",
+   "summary": "The ungated resource explains how security data pipelines reduce SIEM ingestion costs, preserve detection coverage, and prepare the data layer for AI-driven security operations.",
+   "link": "https://www.darkreading.com/cybersecurity-operations/securitydatapipeline-com-launches-as-a-new-educational-resource-for-the-ai-era",
+   "published": "2026-11-05T21:48:36+00:00",
+   "source": "darkreading",
+   "source_name": "Dark Reading",
+   "source_type": "trade press",
+   "source_country": "US"
+  },
+  {
+   "title": "Co-located solar, storage jumps to 16% of all installations, up from 2% in 2017: EIA",
+   "summary": "The share of solar projects co-located with storage is projected to pass 30% over the next two years, based on planned additions, according to a report from the U.S. Energy Information Administration.",
+   "link": "https://www.utilitydive.com/news/storage-solar-colocation-eia-seia/873882/",
+   "published": "2026-11-05T21:37:03+00:00",
+   "source": "utilitydive",
+   "source_name": "Utility Dive",
+   "source_type": "industry press",
+   "source_country": "US"
+  },
+  {
+   "title": "Certificaatautoriteit DigiCert lekt id-bewijzen en gegevens van klanten",
+   "summary": "Certificaatautoriteit DigiCert heeft identiteitsbewijzen en persoonlijke informatie van klanten gelekt. Dat heeft het bedrijf ...",
+   "link": "https://www.security.nl/posting/960537/Certificaatautoriteit+DigiCert+lekt+id-bewijzen+en+gegevens+van+klanten?channel=rss",
+   "published": "2026-11-05T21:24:44+00:00",
+   "source": "securitynl",
+   "source_name": "Security.NL (Netherlands)",
+   "source_type": "independent",
+   "source_country": "Netherlands"
+  },
+  {
+   "title": "Hackers backdoor Linux servers using trojanized CWP web server",
+   "summary": "A new Linux malware called CWPdoor is being distributed through a trojanized version of cwpsrv, the web server behind the Control Web Panel (CWP) management interface. [...]",
+   "link": "https://www.bleepingcomputer.com/news/security/hackers-backdoor-linux-servers-using-trojanized-cwp-web-server/",
+   "published": "2026-11-05T21:24:26+00:00",
+   "source": "bleeping",
+   "source_name": "BleepingComputer",
+   "source_type": "tech press",
+   "source_country": "US"
+  },
+  {
+   "title": "Mobilisation sociale et TikTok : une étude bat en brèche le rôle joué par la plateforme dans les violences",
+   "summary": "Contrairement à ce qu’avance le gouvernement, les chercheurs n’ont pas trouvé de traces d’une coordination particulière des actions violentes sur le réseau social, ni d’une forte viralité des appels à en commettre.",
+   "link": "https://www.lemonde.fr/pixels/article/2026/11/05/mobilisation-sociale-et-tiktok-une-etude-bat-en-breche-le-role-joue-par-la-plateforme-dans-les-violences_6807112_4408996.html",
+   "published": "2026-11-05T21:16:20+00:00",
+   "source": "lemonde",
+   "source_name": "Le Monde Pixels (France)",
+   "source_type": "wire",
+   "source_country": "France"
+  },
+  {
+   "title": "DigiCert data breach exposes customer information, identity documents",
+   "summary": "DigiCert warns it suffered a data breach after a server migration mistakenly exposed an internal business system to the internet, allowing unauthorized access to customer information and identity documents. [...]",
+   "link": "https://www.bleepingcomputer.com/news/security/digicert-data-breach-exposes-customer-information-identity-documents/",
+   "published": "2026-11-05T21:12:46+00:00",
+   "source": "bleeping",
+   "source_name": "BleepingComputer",
+   "source_type": "tech press",
+   "source_country": "US"
+  },
+  {
+   "title": "Tobacco company got smoked by leaving secret recipes on a file share",
+   "summary": "They denied the data was real...then removed it",
+   "link": "https://www.theregister.com/security/2026/11/05/tobacco-company-got-smoked-by-leaving-secret-recipes-on-a-file-share/5307704",
+   "published": "2026-11-05T21:02:00+00:00",
+   "source": "register",
+   "source_name": "The Register Security",
+   "source_type": "tech press",
+   "source_country": "UK"
+  },
+  {
+   "title": "Entergy sees progress on Arkansas data center deal, strong Q3 sales",
+   "summary": "The New Orleans-based company separately inked firm pipeline contracts for enough natural gas to support 10 new combined-cycle power plants in Louisiana, CEO Drew Marsh said Monday.",
+   "link": "https://www.utilitydive.com/news/entergy-makes-progress-on-arkansas-data-center-reports-strong-q3-sales/873873/",
+   "published": "2026-11-05T20:51:49+00:00",
+   "source": "utilitydive",
+   "source_name": "Utility Dive",
+   "source_type": "industry press",
+   "source_country": "US"
+  },
+  {
+   "title": "Rubyonrails security advisory (AV26-1129)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/en/alerts-advisories/rubyonrails-security-advisory-av26-1129",
+   "published": "2026-11-05T20:41:50+00:00",
+   "source": "cccs-en",
+   "source_name": "Canadian Centre for Cyber Security (alerts, EN)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
+   "title": "Bulletin de sécurité Rubyonrails (AV26-1129)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/fr/alertes-avis/bulletin-securite-rubyonrails-av26-1129",
+   "published": "2026-11-05T20:41:29+00:00",
+   "source": "cccs-fr",
+   "source_name": "Centre canadien pour la cybersécurité (alertes, FR)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
+   "title": "OpenSSH waarschuwt voor kritiek lek waardoor authenticatie is te omzeilen",
+   "summary": "De makers van OpenSSH waarschuwen voor een kritieke kwetsbaarheid waardoor de authenticatie op bepaalde systemen is te ...",
+   "link": "https://www.security.nl/posting/960523/OpenSSH+waarschuwt+voor+kritiek+lek+waardoor+authenticatie+is+te+omzeilen?channel=rss",
+   "published": "2026-11-05T20:30:00+00:00",
+   "source": "securitynl",
+   "source_name": "Security.NL (Netherlands)",
+   "source_type": "independent",
+   "source_country": "Netherlands"
+  },
+  {
+   "title": "Ubuntu dicht APT-kwetsbaarheid waardoor aanvaller root kan worden",
+   "summary": "Ubuntu heeft updates uitgebracht voor een kwetsbaarheid in de APT package manager waardoor een aanvaller via een ...",
+   "link": "https://www.security.nl/posting/960531/Ubuntu+dicht+APT-kwetsbaarheid+waardoor+aanvaller+root+kan+worden?channel=rss",
+   "published": "2026-11-05T20:20:00+00:00",
+   "source": "securitynl",
+   "source_name": "Security.NL (Netherlands)",
+   "source_type": "independent",
+   "source_country": "Netherlands"
+  },
+  {
+   "title": "Closing the Identity Gap at the Service Desk",
+   "summary": "Attackers target IT service desks to bypass MFA by impersonating employees and convincing staff to reset passwords or register new authentication devices. Specops Software explains why traditional identity verification methods are no longer sufficient and how organizations can secure account recovery against social engineering risks. [...]",
+   "link": "https://www.bleepingcomputer.com/news/security/closing-the-identity-gap-at-the-service-desk/",
+   "published": "2026-11-05T20:00:10+00:00",
+   "source": "bleeping",
+   "source_name": "BleepingComputer",
+   "source_type": "tech press",
+   "source_country": "US"
+  },
+  {
+   "title": "ThreatsDay: Apache OFBiz RCE, DreamHost Breach, DeFi Site Hijacks + 17 More Stories",
+   "summary": "How much damage can someone do without breaking much? Quite a lot, it seems. A stolen login can open doors across several systems. A trusted setting can be used to lock people out. Even a simple file copy can reach places it shouldn't. And while new tools are helping find security holes faster, some important systems are still taking months, sometimes over a year, to get patched. Not exactly a",
+   "link": "https://thehackernews.com/2026/11/threatsday-apache-ofbiz-rce-dreamhost.html",
+   "published": "2026-11-05T19:41:10+00:00",
+   "source": "hackernews",
+   "source_name": "The Hacker News",
+   "source_type": "tech press",
+   "source_country": "international"
+  },
+  {
+   "title": "Exelon, Invenergy complaints at FERC seek capacity market changes",
+   "summary": "Exelon asked the Federal Energy Regulatory Commission to order PJM to adopt a “prompt” capacity auction, while Invenergy wants the Midcontinent grid operator to let HVDC merchant lines receive capacity payments.",
+   "link": "https://www.utilitydive.com/news/exelon-invenergy-ferc-complaint-pjm-miso-capacity-market-/873845/",
+   "published": "2026-11-05T19:27:13+00:00",
+   "source": "utilitydive",
+   "source_name": "Utility Dive",
+   "source_type": "industry press",
+   "source_country": "US"
+  },
+  {
+   "title": "Bank Phishing Sites Show Fake ‘Suspended’ Pages to Evade Takedowns",
+   "summary": "More than 200 sites were seen serving phishing content to first-time visitors but not to those who revisit. The post Bank Phishing Sites Show Fake ‘Suspended’ Pages to Evade Takedowns appeared first on SecurityWeek .",
+   "link": "https://www.securityweek.com/bank-phishing-sites-show-fake-suspended-pages-to-evade-takedowns/",
+   "published": "2026-11-05T18:22:12+00:00",
+   "source": "securityweek",
+   "source_name": "SecurityWeek",
+   "source_type": "trade press",
+   "source_country": "US"
+  },
+  {
+   "title": "HomeBrew hekelt Google over malafide advertenties gebruikt bij Binance-hack",
+   "summary": "De makers van HomeBrew hebben uitgehaald naar Google, omdat het bedrijf niets doet tegen malafide advertenties, zoals gebruikt ...",
+   "link": "https://www.security.nl/posting/960517/HomeBrew+hekelt+Google+over+malafide+advertenties+gebruikt+bij+Binance-hack?channel=rss",
+   "published": "2026-11-05T18:20:28+00:00",
+   "source": "securitynl",
+   "source_name": "Security.NL (Netherlands)",
+   "source_type": "independent",
+   "source_country": "Netherlands"
+  },
+  {
+   "title": "Signature 27: Motorolas teuerstes Handy ist das erste mit GrapheneOS-Support",
+   "summary": "Motorolas erstes Smartphone mit GrapheneOS-Unterstützung ist da: Das High-End-Modell Signature 27 ist jedoch das Gegenteil eines Schnäppchens.",
+   "link": "https://www.heise.de/news/Signature-27-Motorolas-teuerstes-Handy-ist-das-erste-mit-GrapheneOS-Support-11513509.html",
+   "published": "2026-11-05T18:14:00+00:00",
+   "source": "heise",
+   "source_name": "heise Security (Germany)",
+   "source_type": "tech press",
+   "source_country": "Germany"
+  },
+  {
+   "title": "The Download: Texas’s fragile AI boom and energy policy shifts",
+   "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Texas was the new epicenter of the AI data center buildout. That might be kaput. Texas is the fastest-growing data center market in the US and ground zero for Big Tech’s…",
+   "link": "https://www.technologyreview.com/2026/11/05/1144908/the-download-texas-fragile-ai-boom-us-energy-policy/",
+   "published": "2026-11-05T18:10:00+00:00",
+   "source": "mit-tr",
+   "source_name": "MIT Technology Review",
+   "source_type": "magazine",
+   "source_country": "US"
+  },
+  {
+   "title": "Anthropic won't fix a Claude Dispatch flaw that could let attackers execute remote commands across corporate boundaries",
+   "summary": "From EOP to RCE in six simple steps",
+   "link": "https://www.theregister.com/research/2026/11/05/anthropic-wont-fix-a-claude-dispatch-flaw-that-could-let-attackers-execute-remote-commands-across-corporate-boundaries/5307684",
+   "published": "2026-11-05T18:00:00+00:00",
+   "source": "register",
+   "source_name": "The Register Security",
+   "source_type": "tech press",
+   "source_country": "UK"
+  },
+  {
+   "title": "Cyberattack Hits French Blood Bank Site but No Blood Products Are Compromised",
+   "summary": "The incident comes after supermarkets in a number of European countries reported this week that their fridges and freezers warmed up after they were remotely hacked. The post Cyberattack Hits French Blood Bank Site but No Blood Products Are Compromised appeared first on SecurityWeek .",
+   "link": "https://www.securityweek.com/cyberattack-hits-french-blood-bank-site-but-no-blood-products-are-compromised/",
+   "published": "2026-11-05T17:58:32+00:00",
+   "source": "securityweek",
+   "source_name": "SecurityWeek",
+   "source_type": "trade press",
+   "source_country": "US"
+  },
+  {
+   "title": "SonicWall Global Management System verwundbar, bekommt aber keine Updates mehr",
+   "summary": "SonicWalls Managementplattform Global Management System für IT-Security-Appliances ist angreifbar. Admins müssen auf den Nachfolger upgraden.",
+   "link": "https://www.heise.de/news/SonicWall-Global-Management-System-verwundbar-bekommt-aber-keine-Updates-mehr-11513413.html",
+   "published": "2026-11-05T17:51:00+00:00",
+   "source": "heise",
+   "source_name": "heise Security (Germany)",
+   "source_type": "tech press",
+   "source_country": "Germany"
+  },
+  {
+   "title": "Cisco, WatchGuard Release Patches; SonicWall Won’t Fix GMS Flaws",
+   "summary": "Cisco patched an RCE in UCS Central Software; WatchGuard fixed authentication and MitM flaws. The post Cisco, WatchGuard Release Patches; SonicWall Won’t Fix GMS Flaws appeared first on SecurityWeek .",
+   "link": "https://www.securityweek.com/cisco-watchguard-release-patches-sonicwall-wont-fix-gms-flaws/",
+   "published": "2026-11-05T17:33:49+00:00",
+   "source": "securityweek",
+   "source_name": "SecurityWeek",
+   "source_type": "trade press",
+   "source_country": "US"
+  },
+  {
+   "title": "Kamervragen over aanval op koelsystemen Franse bloedbank",
+   "summary": "In de Tweede Kamer zijn vragen gesteld aan minister Hermans van Volksgezondheid over de aanval op koelsystemen van de Franse ...",
+   "link": "https://www.security.nl/posting/960510/Kamervragen+over+aanval+op+koelsystemen+Franse+bloedbank?channel=rss",
+   "published": "2026-11-05T17:29:00+00:00",
+   "source": "securitynl",
+   "source_name": "Security.NL (Netherlands)",
+   "source_type": "independent",
+   "source_country": "Netherlands"
+  },
+  {
+   "title": "Is Your Exposure Management Platform Leaving You Exposed? Five Tests to Find Out",
+   "summary": "A critical finding can move through several security tools and still leave the organization exposed. The vulnerability has a severity score, and a ticket has reached the queue. Progress then depends on information the finding may lack: who owns the system, whether attackers can reach it, what protection exists, and how a change could affect the business. Each missing detail creates",
+   "link": "https://thehackernews.com/2026/11/is-your-exposure-management-platform.html",
+   "published": "2026-11-05T17:25:00+00:00",
+   "source": "hackernews",
+   "source_name": "The Hacker News",
+   "source_type": "tech press",
+   "source_country": "international"
+  },
+  {
+   "title": "New York's Queens Public Library battles ransomware crims: Wi-Fi, checkouts, and website go dark",
+   "summary": "No gang has claimed the attack on incredible neighborhood resource yet",
+   "link": "https://www.theregister.com/cyber-crime/2026/11/05/new-yorks-queens-public-library-battles-ransomware-crims-wi-fi-checkouts-and-website-go-dark/5307796",
+   "published": "2026-11-05T17:10:15+00:00",
+   "source": "register",
+   "source_name": "The Register Security",
+   "source_type": "tech press",
+   "source_country": "UK"
+  },
+  {
+   "title": "VAPOR PANDA hackers use multi-agent AI to target government, pharmaceutical, semiconductor, defense organizations",
+   "summary": "New research from CrowdStrike has identified a global cyberespionage campaign by China-nexus threat actor VAPOR PANDA that uses... The post VAPOR PANDA hackers use multi-agent AI to target government, pharmaceutical, semiconductor, defense organizations appeared first on Industrial Cyber .",
+   "link": "https://industrialcyber.co/ransomware/vapor-panda-hackers-use-multi-agent-ai-to-target-government-pharmaceutical-semiconductor-defense-organizations/",
+   "published": "2026-11-05T17:10:00+00:00",
+   "source": "industrialcyber",
+   "source_name": "Industrial Cyber",
+   "source_type": "trade press",
+   "source_country": "international"
+  },
+  {
+   "title": "Dragos appoints SANS veteran Rob T. Lee as first chief AI officer to guide OT cybersecurity strategy",
+   "summary": "Dragos, a vendor of xOT cybersecurity solutions, announced on Wednesday that Rob T. Lee has joined the company... The post Dragos appoints SANS veteran Rob T. Lee as first chief AI officer to guide OT cybersecurity strategy appeared first on Industrial Cyber .",
+   "link": "https://industrialcyber.co/news/dragos-appoints-sans-veteran-rob-t-lee-as-first-chief-ai-officer-to-guide-ot-cybersecurity-strategy/",
+   "published": "2026-11-05T17:00:14+00:00",
+   "source": "industrialcyber",
+   "source_name": "Industrial Cyber",
+   "source_type": "trade press",
+   "source_country": "international"
+  },
+  {
+   "title": "OpenSSH und Alpine Linux warnen vor nischigem, aber gravierendem Bug",
+   "summary": "OpenSSH 10.6p2 umgeht einen Bug, der zwar schwerwiegend ist, aber eher wenige Setups betrifft – und wohl auch nicht in OpenSSH selbst liegt.",
+   "link": "https://www.heise.de/news/OpenSSH-und-Alpine-Linux-warnt-vor-nischigem-aber-gravierendem-Bug-11513105.html",
+   "published": "2026-11-05T16:46:00+00:00",
+   "source": "heise",
+   "source_name": "heise Security (Germany)",
+   "source_type": "tech press",
+   "source_country": "Germany"
+  },
+  {
+   "title": "Chainalysis lekt wachtwoordhashes en persoonsgegevens van alle klanten",
+   "summary": "Blockchainanalysebedrijf Chainalysis heeft van alle klanten wachtwoordhashes, gebruikersnamen, live tokens en persoonsgegevens ...",
+   "link": "https://www.security.nl/posting/960488/Chainalysis+lekt+wachtwoordhashes+en+persoonsgegevens+van+alle+klanten?channel=rss",
+   "published": "2026-11-05T16:34:39+00:00",
+   "source": "securitynl",
+   "source_name": "Security.NL (Netherlands)",
+   "source_type": "independent",
+   "source_country": "Netherlands"
+  },
+  {
+   "title": "Cursos: Agenda 2027 e Regras do Processo Seletivo",
+   "summary": "Anunciadas as datas das turmas para o ano de 2027 . Confira as regras do processo seletivo e os critérios de aceite . Inscrições estarão abertas de 06 a 12 de janeiro de 2027 .",
+   "link": "https://cursos.cert.br/",
+   "published": "2026-11-05T16:20:00+00:00",
+   "source": "certbr",
+   "source_name": "CERT.br (Brazil)",
+   "source_type": "government",
+   "source_country": "Brazil"
+  },
+  {
+   "title": "Norway's aid agency pwned and all users' data is stolen",
+   "summary": "Norad said it cannot be sure that the details of those in 'conflict areas and authoritarian states' are safe or not",
+   "link": "https://www.theregister.com/cyber-crime/2026/11/05/norways-aid-agency-pwned-and-all-users-data-is-stolen/5307765",
+   "published": "2026-11-05T16:19:16+00:00",
+   "source": "register",
+   "source_name": "The Register Security",
+   "source_type": "tech press",
+   "source_country": "UK"
+  },
+  {
+   "title": "The Agent Smith Dilemma: Governing Agentic Identities",
+   "summary": "Every autonomous AI agent deployed across your enterprise today is a new proxy identity operating inside your perimeter. The post The Agent Smith Dilemma: Governing Agentic Identities appeared first on SecurityWeek .",
+   "link": "https://www.securityweek.com/the-agent-smith-dilemma-governing-agentic-identities/",
+   "published": "2026-11-05T16:15:00+00:00",
+   "source": "securityweek",
+   "source_name": "SecurityWeek",
+   "source_type": "trade press",
+   "source_country": "US"
+  },
+  {
+   "title": "WordPress bajo ataque masivo — CISA ordena parche urgente por falla crítica en actualizaciones",
+   "summary": "Más de 18.500 intentos de explotación en 21 horas revelan una ventana de exposición estructural en el proceso de actualización del CMS más usado del mundo",
+   "link": "https://ciberseguridadlatam.com/wordpress-bajo-ataque-masivo-cisa-ordena-parche-urgente-por-falla-critica-en-actualizaciones/",
+   "published": "2026-11-05T16:03:06+00:00",
+   "source": "ciberlatam",
+   "source_name": "Ciberseguridad LATAM",
+   "source_type": "trade press",
+   "source_country": "Latin America"
+  },
+  {
+   "title": "CISO Conversations: Ryan Davis – The Unknown Is Where Security Meets Reality",
+   "summary": "Ryan Davis went from hacking his school’s network to running security at New Charter Technologies. What worries him now is shadow AI. The post CISO Conversations: Ryan Davis – The Unknown Is Where Security Meets Reality appeared first on SecurityWeek .",
+   "link": "https://www.securityweek.com/ciso-conversations-ryan-davis-the-unknown-is-where-security-meets-reality/",
+   "published": "2026-11-05T16:00:00+00:00",
+   "source": "securityweek",
+   "source_name": "SecurityWeek",
+   "source_type": "trade press",
+   "source_country": "US"
+  },
+  {
+   "title": "Rapid7 certifica su gestión de IA bajo el primer estándar internacional — ocho sistemas en producción auditados",
+   "summary": "La empresa de ciberseguridad obtuvo ISO/IEC 42001:2023 para su programa de gobierno de inteligencia artificial, cubriendo desde búsqueda en logs hasta workflows autónomos en MDR.",
+   "link": "https://ciberseguridadlatam.com/rapid7-certifica-su-gestion-de-ia-bajo-el-primer-estandar-internacional-ocho-sistemas-en-produccion-auditados/",
+   "published": "2026-11-05T15:58:02+00:00",
+   "source": "ciberlatam",
+   "source_name": "Ciberseguridad LATAM",
+   "source_type": "trade press",
+   "source_country": "Latin America"
+  },
+  {
+   "title": "Zyxel Switch Hacks Blamed on Patched Flaw Actually Exploited a Zero-Day",
+   "summary": "Tracked as CVE-2026-107441, the out-of-bounds write flaw could allow attackers to execute OS commands via crafted HTTP requests. The post Zyxel Switch Hacks Blamed on Patched Flaw Actually Exploited a Zero-Day appeared first on SecurityWeek .",
+   "link": "https://www.securityweek.com/zyxel-switch-hacks-blamed-on-patched-flaw-actually-exploited-a-zero-day/",
+   "published": "2026-11-05T15:56:41+00:00",
+   "source": "securityweek",
+   "source_name": "SecurityWeek",
+   "source_type": "trade press",
+   "source_country": "US"
+  },
+  {
+   "title": "Lanzador de NIKKE comprometido — malware distribuido vía actualización oficial",
+   "summary": "Los desarrolladores confirmaron que atacantes modificaron scripts del cliente de PC para distribuir código malicioso capaz de robar credenciales y datos de carteras de criptomonedas.",
+   "link": "https://ciberseguridadlatam.com/lanzador-de-nikke-comprometido-malware-distribuido-via-actualizacion-oficial/",
+   "published": "2026-11-05T15:53:33+00:00",
+   "source": "ciberlatam",
+   "source_name": "Ciberseguridad LATAM",
+   "source_type": "trade press",
+   "source_country": "Latin America"
+  },
+  {
+   "title": "ILC Dover paga $13 millones por violar requisitos de ciberseguridad en contratos federales",
+   "summary": "Un denunciante interno destapó seis años de incumplimientos en contratos con el Ejército y la NASA — el caso marca un precedente en el uso de una ley de la Guerra Civil para penalizar fallas de seguridad.",
+   "link": "https://ciberseguridadlatam.com/ilc-dover-paga-13-millones-por-violar-requisitos-de-ciberseguridad-en-contratos-federales/",
+   "published": "2026-11-05T15:50:30+00:00",
+   "source": "ciberlatam",
+   "source_name": "Ciberseguridad LATAM",
+   "source_type": "trade press",
+   "source_country": "Latin America"
+  },
+  {
+   "title": "Politici en DuckDuckGo kritisch op Googles AI-beleid voor scholen",
+   "summary": "Amerikaanse politici en zoekmachine DuckDuckGo hebben uitgehaald naar Google, omdat het techbedrijf scholen zou willen ...",
+   "link": "https://www.security.nl/posting/960482/Politici+en+DuckDuckGo+kritisch+op+Googles+AI-beleid+voor+scholen?channel=rss",
+   "published": "2026-11-05T15:41:43+00:00",
+   "source": "securitynl",
+   "source_name": "Security.NL (Netherlands)",
+   "source_type": "independent",
+   "source_country": "Netherlands"
+  },
+  {
+   "title": "Langflow corrige dos fallas críticas que permiten ejecución remota de código sin autenticación",
+   "summary": "IBM parchó cuatro vulnerabilidades en su framework de IA de código abierto, dos con puntuación CVSS 9.8 que exponen sistemas empresariales a toma de control completa",
+   "link": "https://ciberseguridadlatam.com/langflow-corrige-dos-fallas-criticas-que-permiten-ejecucion-remota-de-codigo-sin-autenticacion/",
+   "published": "2026-11-05T15:39:42+00:00",
+   "source": "ciberlatam",
+   "source_name": "Ciberseguridad LATAM",
+   "source_type": "trade press",
+   "source_country": "Latin America"
+  },
+  {
+   "title": "Russia-Linked Hackers Hit iOS, Android Devices With Exploit Chains via Watering Holes",
+   "summary": "The large-scale watering hole campaign has been targeting entities in the US and Europe, mainly in Ukraine. The post Russia-Linked Hackers Hit iOS, Android Devices With Exploit Chains via Watering Holes appeared first on SecurityWeek .",
+   "link": "https://www.securityweek.com/russia-linked-hackers-hit-ios-android-devices-with-exploit-chains-via-watering-holes/",
+   "published": "2026-11-05T15:37:13+00:00",
+   "source": "securityweek",
+   "source_name": "SecurityWeek",
+   "source_type": "trade press",
+   "source_country": "US"
+  },
+  {
+   "title": "« Le grand danger serait une vision de la recherche mathématique cantonnée à sa partie la plus vulnérable à l’IA »",
+   "summary": "En réduisant le domaine aux seuls problèmes que l’intelligence artificielle sait résoudre, c’est le travail des chercheurs, à la croisée des disciplines, qui est menacé, alertent les mathématiciens Stéphane Jaffard et Yves Meyer, dans une tribune au « Monde ».",
+   "link": "https://www.lemonde.fr/sciences/article/2026/11/05/le-grand-danger-serait-une-vision-de-la-recherche-mathematique-cantonnee-a-sa-partie-la-plus-vulnerable-a-l-ia_6806850_1650684.html",
+   "published": "2026-11-05T15:30:04+00:00",
+   "source": "lemonde",
+   "source_name": "Le Monde Pixels (France)",
+   "source_type": "wire",
+   "source_country": "France"
+  },
+  {
+   "title": "5 Active Cyber Threats That Put US Enterprises at Risk in October 2026",
+   "summary": "October 2026 brought another wave of cyber threats targeting US businesses, with attackers exploiting trusted platforms, legitimate authentication processes, and everyday business workflows. For enterprises, these campaigns raise the stakes beyond individual security incidents, increasing the risk of financial losses, data breaches, and costly operational disruption. Below, we examine five",
+   "link": "https://thehackernews.com/2026/11/5-active-cyber-threats-that-put-us.html",
+   "published": "2026-11-05T15:06:19+00:00",
+   "source": "hackernews",
+   "source_name": "The Hacker News",
+   "source_type": "tech press",
+   "source_country": "international"
+  },
+  {
+   "title": "OpenAI Finds GPT-6 Astra Quietly Holding Back on Internal Red-Teaming, Exploit Tasks",
+   "summary": "OpenAI says its Critical-rated cyber model met fewer hidden task goals when work was framed as AI safety research, often silently. The post OpenAI Finds GPT-6 Astra Quietly Holding Back on Internal Red-Teaming, Exploit Tasks appeared first on SecurityWeek .",
+   "link": "https://www.securityweek.com/openai-finds-gpt-6-astra-quietly-holding-back-on-internal-red-teaming-exploit-tasks/",
+   "published": "2026-11-05T15:02:00+00:00",
+   "source": "securityweek",
+   "source_name": "SecurityWeek",
+   "source_type": "trade press",
+   "source_country": "US"
+  },
+  {
+   "title": "A new bill could change how the US builds energy infrastructure",
+   "summary": "A sweeping bit of legislation designed to cut red tape could speed up the buildout of energy infrastructure in the US. With the dust barely settled on this week’s momentous midterms, the Senate is set to vote on the Bipartisan American Affordability and Jobs Act (BAAJA) on November 9. It’s a plan that could finally…",
+   "link": "https://www.technologyreview.com/2026/11/05/1148062/permitting-reform/",
+   "published": "2026-11-05T15:00:00+00:00",
+   "source": "mit-tr",
+   "source_name": "MIT Technology Review",
+   "source_type": "magazine",
+   "source_country": "US"
+  },
+  {
+   "title": "A new bill could change how the US builds energy infrastructure",
+   "summary": "A sweeping bit of legislation designed to cut red tape could speed up the buildout of energy infrastructure in the US. With the dust barely settled on this week’s momentous midterms, the Senate is set to vote on the Bipartisan American Affordability and Jobs Act (BAAJA) on November 9. It’s a plan that could finally…",
+   "link": "https://www.technologyreview.com/2026/11/05/1148062/permitting-reform/",
+   "published": "2026-11-05T15:00:00+00:00",
+   "source": "mit-tr-climate",
+   "source_name": "MIT Technology Review: climate and energy",
+   "source_type": "magazine",
+   "source_country": "US"
+  },
+  {
+   "title": "DreamHost meldt diefstal van webmail- en ftp-wachtwoorden bij aanval",
+   "summary": "Bij een aanval op hostingprovider DreamHost zijn ftp- en webmail-wachtwoorden van klanten gestolen. Op 23 oktober meldde ...",
+   "link": "https://www.security.nl/posting/960474/DreamHost+meldt+diefstal+van+webmail-+en+ftp-wachtwoorden+bij+aanval?channel=rss",
+   "published": "2026-11-05T14:52:00+00:00",
+   "source": "securitynl",
+   "source_name": "Security.NL (Netherlands)",
+   "source_type": "independent",
+   "source_country": "Netherlands"
+  },
+  {
+   "title": "Beveiligingslek in Microsoft Paint maakt remote code execution mogelijk",
+   "summary": "Een beveiligingslek in Microsoft Paint maakt remote code execution mogelijk. Microsoft kondigde vorige maand een update aan, ...",
+   "link": "https://www.security.nl/posting/960470/Beveiligingslek+in+Microsoft+Paint+maakt+remote+code+execution+mogelijk?channel=rss",
+   "published": "2026-11-05T14:35:15+00:00",
+   "source": "securitynl",
+   "source_name": "Security.NL (Netherlands)",
+   "source_type": "independent",
+   "source_country": "Netherlands"
+  },
+  {
+   "title": "GhostMap Android flaw lets malicious app trigger persistent boot loop",
+   "summary": "Attackers can force Android devices into a continuous boot loop using a specially crafted app that requires no permissions and only needs to be installed. [...]",
+   "link": "https://www.bleepingcomputer.com/news/security/ghostmap-android-flaw-lets-malicious-app-trigger-persistent-boot-loop/",
+   "published": "2026-11-05T14:18:29+00:00",
+   "source": "bleeping",
+   "source_name": "BleepingComputer",
+   "source_type": "tech press",
+   "source_country": "US"
+  },
+  {
+   "title": "Apple to Start Scanning Publicly Shared iCloud Photos and Files for Harmful Content",
+   "summary": "Apple has revealed that it plans to start checking public iCloud links for harmful content starting with iOS 27.3, iPadOS 27.3, macOS 27.3, and visionOS 27.3. The change specifically applies to scenarios where users share iCloud content, such as photos in iCloud Photos or files in iCloud Drive, by sharing a link and making it accessible to \"Anyone with the link.\" When users choose this option,",
+   "link": "https://thehackernews.com/2026/11/apple-to-start-scanning-publicly-shared.html",
+   "published": "2026-11-05T14:13:28+00:00",
+   "source": "hackernews",
+   "source_name": "The Hacker News",
+   "source_type": "tech press",
+   "source_country": "international"
+  },
+  {
+   "title": "Supply chain attack: BO Team in a software developer's infrastructure",
+   "summary": "Incident response, that allowed us to learn a great deal about the APT group's tactics and techniques.",
+   "link": "https://ics-cert.kaspersky.com/publications/reports/2026/11/05/supply-chain-attack-bo-team-in-a-software-developers-infrastructure/?utm_source=ics-cert.kaspersky.com&utm_medium=rss&utm_campaign=main",
+   "published": "2026-11-05T14:00:00+00:00",
+   "source": "kaspersky-ics",
+   "source_name": "Kaspersky ICS CERT",
+   "source_type": "vendor research",
+   "source_country": "Russia"
+  },
+  {
+   "title": "CERT-In Flags AI-Driven Attacks as Backdoored ARTEX Exposes 62 Consoles to Root Access",
+   "summary": "The Indian Computer Emergency Response Team (CERT-In) has disclosed that an artificial intelligence (AI)-assisted threat actor it tracks as Crafty Falcon is targeting organizations in the Banking, Financial Services, and Insurance (BFSI) sectors in the country. Describing the threat as active and ongoing, the activity involves the use of publicly-available AI-driven offensive security tools",
+   "link": "https://thehackernews.com/2026/11/backdoored-docker-image-for-artex-ai.html",
+   "published": "2026-11-05T13:42:03+00:00",
+   "source": "hackernews",
+   "source_name": "The Hacker News",
+   "source_type": "tech press",
+   "source_country": "international"
+  },
+  {
+   "title": "Zyxel dicht lek waardoor duizend netwerkswitches wereldwijd werden gehackt",
+   "summary": "Zyxel heeft een update uitgebracht voor een kwetsbaarheid waardoor wereldwijd duizend netwerkswitches van de GS1900-serie ...",
+   "link": "https://www.security.nl/posting/960466/Zyxel+dicht+lek+waardoor+duizend+netwerkswitches+wereldwijd+werden+gehackt?channel=rss",
+   "published": "2026-11-05T13:40:00+00:00",
+   "source": "securitynl",
+   "source_name": "Security.NL (Netherlands)",
+   "source_type": "independent",
+   "source_country": "Netherlands"
+  },
+  {
+   "title": "Jetzt patchen! Attacken auf Zyxel-Switches beobachtet",
+   "summary": "Derzeit haben es Angreifer auf Netzwerkswitches der GS1900-Serie von Zyxel abgesehen. Sicherheitspatches sind verfügbar.",
+   "link": "https://www.heise.de/news/Jetzt-patchen-Attacken-auf-Zyxel-Switches-beobachtet-11512953.html",
+   "published": "2026-11-05T13:37:00+00:00",
+   "source": "heise",
+   "source_name": "heise Security (Germany)",
+   "source_type": "tech press",
+   "source_country": "Germany"
+  },
+  {
+   "title": "Recuperación insegura de contraseñas en Building Cloud Services de WAGO",
+   "summary": "Recuperación insegura de contraseñas en Building Cloud Services de WAGO Jue, 05/11/2026 - 09:24 Aviso SCI Recursos Afectados Building Cloud Services, versiones desde 7.19 y anteriores a 7.36.156. Descripción James Paremain ha informado sobre una vulnerabilidad de severidad crítica en Keycloak que afecta a Building Cloud Services de WAGO. WAGO, en coordinación con CERT@VDE, ha publicado su afectación. Un atacante sin autenticar podría restablecer contraseñas sin completar la verificación del correo electrónico y tomar el control de cuentas de usuario. Identificador INCIBE-2026-839 Solución WAGO",
+   "link": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/recuperacion-insegura-de-contrasenas-en-building-cloud-services-de-wago",
+   "published": "2026-11-05T13:24:15+00:00",
+   "source": "incibe-sci",
+   "source_name": "INCIBE-CERT ICS advisories (Spain)",
+   "source_type": "government",
+   "source_country": "Spain"
+  },
+  {
+   "title": "Escritura fuera de límites en Advanced Batch Management de ABB",
+   "summary": "Escritura fuera de límites en Advanced Batch Management de ABB Jue, 05/11/2026 - 09:24 Aviso SCI Recursos Afectados Advanced Batch Management (ABM), versiones 1.0, 1.1, 1.1b, 1.2 y 1.2.1, cuando incorporen una versión vulnerable de Node.js. La versión instalada puede variar entre proyectos. Descripción ABB ha publicado una vulnerabilidad de severidad crítica en el decodificador Brotli de Node.js utilizado por Advanced Batch Management. Su explotación podría permitir interrumpir el servicio, divulgar memoria del proceso o ejecutar código arbitrario. En la configuración estándar revisada, ABB no",
+   "link": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/escritura-fuera-de-limites-en-advanced-batch-management-de-abb",
+   "published": "2026-11-05T13:24:12+00:00",
+   "source": "incibe-sci",
+   "source_name": "INCIBE-CERT ICS advisories (Spain)",
+   "source_type": "government",
+   "source_country": "Spain"
+  },
+  {
+   "title": "« The Legend of Zelda » ou l’art de faire peau neuve",
+   "summary": "Le remake de « Zelda : Ocarina of Time », sorti jeudi, a dérouté de nombreux fans par son aspect visuel, jugé trop éloigné de l’original sorti en 1998. Mais c’est oublier la diversité des réincarnations esthétiques passées de la franchise, d’épisode en épisode.",
+   "link": "https://www.lemonde.fr/pixels/article/2026/11/05/the-legend-of-zelda-ou-l-art-de-faire-peau-neuve_6806825_4408996.html",
+   "published": "2026-11-05T11:00:11+00:00",
+   "source": "lemonde",
+   "source_name": "Le Monde Pixels (France)",
+   "source_type": "wire",
+   "source_country": "France"
+  },
+  {
+   "title": "Hackers Exploit Patched Apple Flaw to Deliver Info-Stealing Malware, CISA Says",
+   "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Wednesday added a medium-severity security flaw impacting multiple Apple operating systems to its Known Exploited Vulnerabilities (KEV) catalog, following reports of active exploitation. The vulnerability in question is CVE-2024-27834 (CVSS score: 5.5), a case of improper authentication that could allow an attacker with",
+   "link": "https://thehackernews.com/2026/11/hackers-exploit-patched-apple-flaw-to.html",
+   "published": "2026-11-05T10:17:04+00:00",
+   "source": "hackernews",
+   "source_name": "The Hacker News",
+   "source_type": "tech press",
+   "source_country": "international"
+  },
+  {
+   "title": "Comment « The Legend of Zelda : Ocarina of Time » a-t-il révolutionné le monde du jeu vidéo ? Comprendre en trois minutes",
+   "summary": "A la fin des années 1990, alors que la 3D dans le jeu vidéo est encore balbutiante, Nintendo sort « The Legend of Zelda : Ocarina of Time », un jeu devenu culte.",
+   "link": "https://www.lemonde.fr/comprendre-en-3-minutes/video/2026/11/05/comment-the-legend-of-zelda-ocarina-of-time-a-t-il-revolutionne-le-monde-du-jeu-video-comprendre-en-trois-minutes_6806815_6176282.html",
+   "published": "2026-11-05T10:00:30+00:00",
+   "source": "lemonde",
+   "source_name": "Le Monde Pixels (France)",
+   "source_type": "wire",
+   "source_country": "France"
+  },
+  {
+   "title": "« Nous avancions à tâtons dans le noir » : derrière « Zelda : Ocarina of Time », le génie plein de nostalgie d’Eiji Aonuma et Hidemaro Fujibayashi",
+   "summary": "A l’occasion de la sortie, jeudi, du remake de ce jeu vidéo culte de 1998, les deux principaux producteurs de la franchise racontent comment ils se sont replongés dans ce chef-d’œuvre pionnier.",
+   "link": "https://www.lemonde.fr/pixels/article/2026/11/05/nous-avancions-a-tatons-dans-le-noir-derriere-zelda-ocarina-of-time-le-genie-plein-de-nostalgie-d-eiji-aonuma-et-hidemaro-fujibayashi_6806778_4408996.html",
+   "published": "2026-11-05T10:00:08+00:00",
+   "source": "lemonde",
+   "source_name": "Le Monde Pixels (France)",
+   "source_type": "wire",
+   "source_country": "France"
+  },
+  {
+   "title": "Optimal Marginal Mixing for Transvection-Based Trapdoored Matrices over Large Fields",
+   "summary": "arXiv:2611.05573v1 Announce Type: new Abstract: \\emph{Trapdoored matrices} are pseudorandom matrices admitting a fast matrix-vector multiplication algorithm given the secret key. We study a candidate family of such matrices: matrices generated by short random \\emph{transvection walks} on \\(\\mathrm{SL}_n(\\mathbb{F}_q)\\), whose steps are given by adding a random multiple of a random row of the current state to another. We show that the worst-case time for any nonempty set \\(\\mathcal{S}\\subseteq [n]\\times[n]\\) of matrix entries to come within TV distance \\(\\varepsilon\\leq \\frac{1}{4}\\) of its sta",
+   "link": "https://arxiv.org/abs/2611.05573",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "AQUA - A Modular Authentication Quality Modeling Framework",
+   "summary": "arXiv:2611.05660v1 Announce Type: new Abstract: Authentication solutions are the key design, architectural, and implementation decisions that implement authentication security controls. An example is a password-based authentication solution. While researchers often examine authentication quality, existing approaches do not distinguish which effects on quality stem from which aspect of authentication. For example, multi-factor authentication solutions tend to be less usable because they combine multiple authenticators, whereas passkeys are more secure than passwords because of properties inhere",
+   "link": "https://arxiv.org/abs/2611.05660",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Constraint-Aware Evaluation of Reinforcement Learning and Unsupervised Anomaly Detection for Security Operations Alert Triage",
+   "summary": "arXiv:2611.05746v1 Announce Type: new Abstract: Security Operations Centers (SOCs) must identify real threats from large alert streams, but limited analyst capacity means that unnecessary escalations can delay more serious investigations. Existing studies often frame SOC alert triage as classification or anomaly detection, but both views are incomplete for production SOCs, where the central problem is selecting alerts worth escalating under limited capacity, asymmetric error costs, and workload constraints. This paper addresses that gap by formalizing alert triage as a constrained decision pro",
+   "link": "https://arxiv.org/abs/2611.05746",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Private Vulnerability Testing for User Oversharing",
+   "summary": "arXiv:2611.05779v1 Announce Type: new Abstract: Users can inadvertently increase their vulnerability to privacy attacks by oversharing personal information. In particular, the combination of individually innocuous attributes can place a user in a sufficiently small population to enable linkage or re-identification attacks. We present a privacy-preserving mechanism that allows users to determine whether the information they disclose places them below a predefined population threshold, without revealing their query or the data of other users. Our setting presents several practical challenges: us",
+   "link": "https://arxiv.org/abs/2611.05779",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Timing is Everything: Inferring Temporal Membership in Continually Updated Models",
+   "summary": "arXiv:2611.05781v1 Announce Type: new Abstract: Continual model updating has become a common practice in the deployment of machine learning systems. However, the dynamic training behaviors give rise to new risks not sufficiently addressed by existing studies. In this paper, we present the first systematic study of temporal privacy risk in continually updated deep learning models. We formalize the notion of temporal membership in continually updated models. We then define the temporal membership inference attack, which seeks to infer whether and when individual samples were involved in model tr",
+   "link": "https://arxiv.org/abs/2611.05781",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "When File Ingestion Misleads Language Models: Measuring and Mitigating Divergences in Office Documents",
+   "summary": "arXiv:2611.05806v1 Announce Type: new Abstract: Office documents are now routinely uploaded to large language models (LLMs) for processing. However, an LLM does not always see what a human sees, because it typically reads the text that an extractor produces from the document's underlying Office Open XML (OOXML) files. Depending on the implementation, extractors differ in which OOXML parts they read and how they interpret them, so their output can differ from what Office applications display. For example, by slightly shifting the positions of text boxes on a slide, an adversary can swap the ord",
+   "link": "https://arxiv.org/abs/2611.05806",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "GRIDSHIELD: Verifiable Grid Feasibility and Manipulation Resistance in Privacy-Preserving Peer-to-Peer Energy Trading",
+   "summary": "arXiv:2611.05816v1 Announce Type: new Abstract: Blockchain-based peer-to-peer (P2P) energy markets let neighbors trade directly, but concentrate unchecked power in the clearing operator. Most prior work addresses only part of this: network-aware clearing respects grid constraints but operates on plaintext allocations, while privacy-preserving designs hide bids yet either drop the network constraint, enforce it only inside an unauditable computation, or recover it at the cost of a per-circuit trusted setup. Neither considers what happens if an adversary captures the operator's clearing privileg",
+   "link": "https://arxiv.org/abs/2611.05816",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "A Hybrid Approach for Automated Security Pattern Recovery",
+   "summary": "arXiv:2611.05823v1 Announce Type: new Abstract: Security-by-design emphasises integrating security into software design and development. Security pattern catalogues operationalise this principle by prescribing reusable architectural solutions to recurring security problems. However, recovering their implementations from source code remains challenging because security patterns are abstract, span multiple components, and admit many valid implementations. We present SecPatRec, a hybrid approach for automated security pattern recovery from source code repositories. We treat a security pattern as ",
+   "link": "https://arxiv.org/abs/2611.05823",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Enforcing Accountable Disclosure in Confidential AI",
+   "summary": "arXiv:2611.05971v1 Announce Type: new Abstract: Advances in CPU and GPU confidential computing enable confidential AI, allowing LLMs to process user prompts without exposing them to service providers or infrastructure operators. However, AI agents often need to send prompt-derived information to external services, and providers may also require limited disclosure for safety monitoring and failure diagnosis. We propose CORDE, a system for confidential virtual machines (CVMs) designed to satisfy the principle of Confine or Declare: user-derived data is confined by default, but when necessary, it",
+   "link": "https://arxiv.org/abs/2611.05971",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "CoordX Protocol: Peer to Peer Cryptographically Verified Shared Records",
+   "summary": "arXiv:2611.06034v1 Announce Type: new Abstract: People, companies and software agents often must work on shared records even when they do not trust each other. Today they usually give those records to a central server. The server keeps the canonical copy, authenticates users, and decides who has permissions to act on the record. The CoordX Protocol removes the need for that central server. In the CoordX protocol the author of a record holds full permission over it. Permission for any other party to create, read or update the record is assigned by explicit grants and keys. An invitation only st",
+   "link": "https://arxiv.org/abs/2611.06034",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "PIMROP: A Feasibility Study of Return-Oriented Programming on Commercial Processing-in-Memory Architectures",
+   "summary": "arXiv:2611.06036v1 Announce Type: new Abstract: Processing-in-Memory places small programmable cores on the memory device, where they execute beside the DRAM banks and beyond the control-flow defenses that protect host programs. The security of this in-memory code is an attack surface that remains largely unstudied. We present PIMROP, to our knowledge the first demonstrated code-reuse attack on a commercial Processing in-Memory ISA. We show that return-oriented programming is feasible on a real, commercially shipped PIM instruction set, the UPMEM DPU, whose DRAM Processing Units run C compiled",
+   "link": "https://arxiv.org/abs/2611.06036",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Securing Web Agents with the Compile-Then-Execute Paradigm",
+   "summary": "arXiv:2611.06039v1 Announce Type: new Abstract: Web agents commonly follow the ReAct paradigm, selecting each action from runtime observations that inherently mix trusted and untrusted content. This design makes their control flow vulnerable to prompt injections embedded in webpages. We introduce Baya, a compile-then-execute web agent designed to prevent prompt-injection-driven control-flow hijacking by design. Before accessing the live website, Baya compiles the user's request into an executable Python program that calls a Trusted Website API. The planning model does not observe live website ",
+   "link": "https://arxiv.org/abs/2611.06039",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Reconciling Privacy with Provenance for Language Model Watermarks",
+   "summary": "arXiv:2611.06100v1 Announce Type: new Abstract: Watermarking has great potential for regulating the use of language models (LMs), but its deployment has been marred by controversy, as many users argue that fine-grained tracking of LM usage violates their privacy. This tension reduces the effectiveness of watermarks, as users engage in evasion strategies such as paraphrasing that can remove much of the watermark signal. We show that provenance and privacy can be reconciled if we shift the goal of watermark design from tracking individuals to estimating aggregate usage. We develop locally differ",
+   "link": "https://arxiv.org/abs/2611.06100",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "SenTrojan: Revealing Analog Hardware Trojan Attacks on Sensors",
+   "summary": "arXiv:2611.06103v1 Announce Type: new Abstract: Sensors bridge the physical and digital worlds, making their integrity critical to cyber-physical system security. Existing sensor attacks largely exploit unintended and sensor-specific physical vulnerabilities, limiting their generalizability and motivating a different threat model, i.e., whether an adversary can implant hidden attack surfaces into sensors before deployment. In this paper, we present SenTrojan, an analog hardware Trojan framework for sensors. SenTrojan embeds malicious functionality into analog signal circuitry commonly shared a",
+   "link": "https://arxiv.org/abs/2611.06103",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "KVGuard: A KV Cache Safety Checker for LLM Serving Systems",
+   "summary": "arXiv:2611.06138v1 Announce Type: new Abstract: Modern LLM serving systems manage the KV cache through PagedAttention, a custom GPU allocator that partitions a single CUDA-allocated region into fixed-size physical blocks and maps each request to those blocks through a CPU-built block table. This block-based design exposes a previously unstudied class of memory safety bugs in the KV cache, including double-free, use-after-free, out-of-bounds access, uninitialized read, and permission violation, which silently corrupt outputs or break request isolation without ever crashing the system. Existing ",
+   "link": "https://arxiv.org/abs/2611.06138",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Beyond the Landing Page: Website Blocking, Tracker Visibility, and Human Alignment in Automated Web Crawls",
+   "summary": "arXiv:2611.06197v1 Announce Type: new Abstract: Web tracking studies largely rely on automated crawlers, yet their measurements can differ from what people encounter while browsing. Conventional crawlers follow predefined navigation rules, whereas LLM-driven agents decide how to navigate and interact with websites, potentially changing the tracking they encounter. We compare agentic and non-agentic crawlers to examine how websites respond to them, what tracking they record, and how closely their observations match human browsing. Across 2,000 popular websites, we evaluate different navigation ",
+   "link": "https://arxiv.org/abs/2611.06197",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Explainable Anomaly Detection in 5G Networks through Continuous Time Graphs",
+   "summary": "arXiv:2611.06225v1 Announce Type: new Abstract: 5G networks increasingly resemble distributed systems in their design. It then becomes crucial to move beyond traditional network-based detection methods and to explore alternative approaches. In this work, we propose a formalization of 5G network exchanges as a dynamic graph, on which we apply techniques from the field of graph-based learning to detect anomalies effectively. This representation allows for fine-grained analysis of packet-level semantic content, while simultaneously capturing sequential and topological contexts, both of which are ",
+   "link": "https://arxiv.org/abs/2611.06225",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Analysis of Local Open-Weight LLM Agents on Vulnerability-Reproduction Tasks",
+   "summary": "arXiv:2611.06257v1 Announce Type: new Abstract: Open-weight language models that fit on a single consumer GPU are becoming capable on a growing range of tasks, and they matter because they can run locally without sending the code to a hosted service. Vulnerability reproduction, turning a vulnerability description into an input that crashes the vulnerable build, is a natural target for them, since it is an automated analysis task closer to test generation than to code comprehension and it runs against a build that must be executed rather than read. In order to assess whether current models can ",
+   "link": "https://arxiv.org/abs/2611.06257",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Beyond Identity Creation: Bilinear Sybil Cost in Identities and Time",
+   "summary": "arXiv:2611.06268v1 Announce Type: new Abstract: Sybil defenses price the creation of an identity, yet influence goes, again and again, to active identities. We study the cost of maintaining influence. A defense has a bilinear Sybil cost with ratio $A$ if keeping $s$ identities active for $T$ periods costs at least $sT/A$ honest units: the average cost per identity-window is at least $1/A$ times an honest participant's cost. Recurrence alone does not guarantee this cost. The cost can be carried over from earlier periods, shared among many identities, or be negligible when fast hardware does the",
+   "link": "https://arxiv.org/abs/2611.06268",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Clear Human Web: Where a Person Vouches for Every Client",
+   "summary": "arXiv:2611.06286v1 Announce Type: new Abstract: The web cannot tell whether a request comes from a person or from a program. Sites have checked the network address and puzzles in its place, and both have given way: automated traffic exceeds human traffic, and puzzles are solved for pay and by agents. This paper proposes the Clear Human Web, the part of the public web that sites open only to clients a person vouches for. A person's wallet presents their person identification data (PID) to one issuer, the only party that registers as a relying party, and receives a bounded number of blind-signed",
+   "link": "https://arxiv.org/abs/2611.06286",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "A.S.E 2.0: Understanding How Repository Context Impacts the Security of LLM-Generated Code",
+   "summary": "arXiv:2611.06294v1 Announce Type: new Abstract: Large language model (LLM) coding assistants and agents construct a repository context before generating code. For security-sensitive code, this context decides whether the model sees the project's safeguards (e.g., authorization checks) or insecure code to imitate. However, context construction is designed almost exclusively for functional correctness, and secure-code benchmarks treat the context as fixed, so how repository context affects the security of generated code remains unclear. We construct CASE-Bench, a benchmark of 145 repository-leve",
+   "link": "https://arxiv.org/abs/2611.06294",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "CoRTeC: A Differentially Private Release for Synthetic Tabular Data, Decodable by Any Generator",
+   "summary": "arXiv:2611.06342v1 Announce Type: new Abstract: The records that could train the most useful models, such as a hospital's patient files, are often the ones an institution cannot share. We propose CoRTeC, a method that releases synthetic versions of such records under differential privacy. Differential privacy places a proven limit on what the synthetic data can reveal about any person, and in particular on membership inference. CoRTeC spends the privacy budget once, on a small file of noisy counts designed for training a classifier. For each group of records, the file gives the group's size, i",
+   "link": "https://arxiv.org/abs/2611.06342",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Shoot on (Core)Sight: Re-enabling Secure Debug on the RP2350 with Photon-Emission Microscopy and Laser Fault Injection",
+   "summary": "arXiv:2611.06386v1 Announce Type: new Abstract: Fault-resistant policy storage does not guarantee fault-resistant enforcement. We demonstrated this distinction on the RP2350A4 using differential photon-emission microscopy (PEM) and laser fault injection (LFI). PEM narrowed the area for laser scanning, which found two sites where pulses set the DEBUGEN bits enabling core~1 Secure debug. An online attack sequence using only Serial Wire Debug (SWD) feedback restored sustained access. After rescue reset, the sequence recovered a 128-bit test secret. This reset reloads the secret's runtime page loc",
+   "link": "https://arxiv.org/abs/2611.06386",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Towards Early Warning of Real-World Vulnerabilities: An Evidence-Aware Decoupled Method for CVSS Vector Prediction Based on Unstructured Disclosures",
+   "summary": "arXiv:2611.06477v1 Announce Type: new Abstract: Early assessment of Common Vulnerability Scoring System (CVSS) vectors from Open Source Intelligence (OSINT) can reduce the delay between initial public disclosure and official National Vulnerability Database (NVD) scoring. Existing predictors, trained mainly on standardized late-stage descriptions, degrade on noisy and incomplete pre-NVD reports. We introduce PARSE, a vulnerability-disclosure lifecycle model, and VPre, an early assessment framework built on two-level Evidence-Aware Decoupling. Decoupling Level I, Security-Evidence Screening, sep",
+   "link": "https://arxiv.org/abs/2611.06477",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Signed but Steerable: Measuring and Closing the Text-Vector Integrity Gap in Offline Retrieval-Augmented Generation",
+   "summary": "arXiv:2611.06498v1 Announce Type: new Abstract: Offline retrieval-augmented generation (RAG) on edge devices is updated through signed knowledge packs that carry text and precomputed embedding vectors. A signature proves who published a pack, not that its vectors encode its text. We study this text-vector integrity gap. A verifier that recomputes vectors and accepts them within a cosine tolerance concedes a predictable share of queries to an attacker who controls the vectors: the hijack rate equals the distribution of angular retrieval margins at the tolerance (the margin law). Margins are sma",
+   "link": "https://arxiv.org/abs/2611.06498",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Signed, Sealed, Leaked: Trust Beyond Signature for MCP Toolchains",
+   "summary": "arXiv:2611.06585v1 Announce Type: new Abstract: AI agents rely on third-party tools, such as Model Context Protocol (MCP) servers, whose publishers can be authenticated and whose execution can be restricted by runtime security policies. Yet authenticity does not guarantee benign behaviour: a legitimately signed tool may perform its advertised function while concealing malicious code that leaks confidential information. We demonstrate this trust failure with a signed MCP tool that embeds sensitive data in requests to a policy-allowed destination. Meta's MCPGuard-Dynamic, a state-of-the-art runt",
+   "link": "https://arxiv.org/abs/2611.06585",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Integrated Identity Protection for Semantic Communications in Embodied IoT Systems",
+   "summary": "arXiv:2611.06788v1 Announce Type: new Abstract: Embodied Internet of Things (IoT) systems are promoting the adoption of task-oriented semantic communication (SemCom), in which the trustworthy task decisions require both semantic information reliability and source legitimacy. However, existing trustworthy designs in SemCom mainly focus on semantic content recovery and protection, with limited attention to source legitimacy. Motivated by this limitation, this paper establishes a new information exploitation paradigm for integrated SemCom-identity protection to address active source impersonation",
+   "link": "https://arxiv.org/abs/2611.06788",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "From Claws to Conferences: Device-Independent Key Agreement Beyond Non-Signaling",
+   "summary": "arXiv:2611.05509v1 Announce Type: cross Abstract: Device-independent conference key agreement (DI-CKA) allows a group of users to establish a common secret key without trusting the internal operation of their quantum devices. Existing DI-CKA protocols derive their security from multipartite Bell tests and therefore require the device components not to communicate during each round. We present, to the best of our knowledge, the first DI-CKA protocol that removes this non-signaling assumption: all interfaces and their mutual communication are treated as one untrusted device, which only has to be",
+   "link": "https://arxiv.org/abs/2611.05509",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Exploring the Privacy--Size Tradeoff for Differentially Private Self-Attentive Variational Autoencoders",
+   "summary": "arXiv:2611.05582v1 Announce Type: cross Abstract: Data tends to be most useful when it is shared, and the data most worth sharing is often the data that privacy obligations restrict. Synthetic data from a generator trained under differential privacy (DP) is one way to reconcile the two, but its utility depends on the privacy budget $\\varepsilon$ and on how much data the generator sees - a parameter that most data sharing applications of synthetic data control. We present SAVANT, a self-attentive variational autoencoder for tabular data trained with DP-SGD that, to our knowledge, is the first t",
+   "link": "https://arxiv.org/abs/2611.05582",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Assurance-Conditioned Continuous Authorization for Autonomous AI Agents",
+   "summary": "arXiv:2611.05632v1 Announce Type: cross Abstract: Autonomous software agents can act through tools, delegate work, and change their models or execution environments while earlier authorizations remain in flight. We present Assurance-Conditioned Continuous Authorization (ACCA), an approach designed to be harness-independent, for maintaining operational authority according to currently justified assurance. It distinguishes evidence validity from contextual applicability, derives assurance claims from eligible evidence, and resolves a multidimensional effective-authority envelope within a princip",
+   "link": "https://arxiv.org/abs/2611.05632",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Demystifying Information Flow Downgrading using the Real--Ideal Paradigm",
+   "summary": "arXiv:2611.05695v1 Announce Type: cross Abstract: The real--ideal paradigm, an approach to security specification developed in the cryptography community, has the benefit that it can express sophisticated confidentiality and integrity requirements, even for decentralized systems. We show that this paradigm is the basis for a powerful and intuitive new semantic framework for language-based security. Our new framework cleanly and extensionally captures existing security definitions, including not only noninterference but also less understood information flow properties that involve downgrading, ",
+   "link": "https://arxiv.org/abs/2611.05695",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Quantum Key Exchange from Public Quantum Money",
+   "summary": "arXiv:2611.05985v1 Announce Type: cross Abstract: Two-message quantum key exchange (2QKE) cannot be realized in a statistically secure way, and therefore some computational assumptions are required. So far, the known weakest assumption for 2QKE is the existence of one-way functions (OWFs). Can we construct 2QKE from a weaker assumption than OWFs? In this paper, we give the first complete characterization of 2QKE. We show that the following four primitives are (existentially) equivalent: everlasting-secure 2QKE, standard 2QKE, efficiently-verifiable state puzzles (EV-StatePuzzs), and one-time s",
+   "link": "https://arxiv.org/abs/2611.05985",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Catastrophic Overfitting is Weight Drift the Training Loss Cannot See",
+   "summary": "arXiv:2611.06082v1 Announce Type: cross Abstract: Fast adversarial training (FAT) makes robust training affordable by replacing the multi-step attack with a single-step one, but it suffers from catastrophic overfitting (CO): partway through training, robustness to multi-step attacks collapses to near zero while the single-step attack used for training keeps being repelled. We show that CO is a quiet escape of the weights. Across the event the network's clean behavior quietly improves, and moving from the weights just before CO to those just after it changes the training objective only marginal",
+   "link": "https://arxiv.org/abs/2611.06082",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "A Post-Quantum Interactive Hashing Theorem",
+   "summary": "arXiv:2611.06124v1 Announce Type: cross Abstract: Interactive hashing, introduced by Ostrovsky, Venkatesan, and Yung [OVY93], is a building block in many cryptographic protocols, including perfectly hiding commitments from one-way permutations [NOVY92]. Its multi-output generalization is a key ingredient in constructions of statistical zero-knowledge arguments for NP and statistically hiding commitments from arbitrary one-way functions [NOV06,HR07]. In this note, we give a post-quantum security proof for this multi-output interactive hashing protocol with arbitrary relations.",
+   "link": "https://arxiv.org/abs/2611.06124",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Addition by Subtraction: Toward Mitigating Fragile Safety Alignment in Large Language Models",
+   "summary": "arXiv:2611.06553v1 Announce Type: cross Abstract: Large language models (LLMs) undergo safety alignment to prevent harmful generations, yet they remain vulnerable to jailbreak attacks. Recent work reveals a deeper structural weakness: safety alignment can be highly sparse, such that pruning a small number of safety-critical neurons or ablating a single refusal direction can substantially undermine aligned behavior. In this work, we take the first steps toward strengthening safety alignment such that it is less dependent on sparse model components. We propose Addition by Subtraction, which grad",
+   "link": "https://arxiv.org/abs/2611.06553",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Your Trust, Your Terms: A General Paradigm for Near-Instant Cross-Chain Transfer",
+   "summary": "arXiv:2403.15191v5 Announce Type: replace Abstract: Cross-chain transactions today remain slow, costly, and fragmented. Existing custodial exchanges expose users to counterparty and centralization risks, while non-custodial liquidity bridges suffer from capital inefficiency and slow settlement; critically, neither approach guarantees users a unilateral path to recover assets if the infrastructure fails. We introduce the Delegated Ownership Transfer (DOT) paradigm, which decouples key ownership from value ownership to enable secure, high-performance cross-chain payments. In DOT, a user deposits",
+   "link": "https://arxiv.org/abs/2403.15191",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Automated Exploit and Security Test Generation: A Systematic Literature Review",
+   "summary": "arXiv:2502.04953v2 Announce Type: replace Abstract: Static analysis techniques are often insufficient to determine whether a reported security vulnerability is exploitable and actually poses a real security risk to a software application. Dynamic analysis addresses this limitation by executing the target application with carefully crafted inputs that trigger or reproduce a given vulnerability. Over the past two decades, automatic exploit generation (AEG) and automatic security test generation (ASTG) have emerged as active research areas in cybersecurity and software engineering. This paper dem",
+   "link": "https://arxiv.org/abs/2502.04953",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-cr",
+   "source_name": "arXiv cs.CR (preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Data-Driven Stochastic LQR Control with Probabilistic Guarantees and Uncertainty Refinement",
+   "summary": "arXiv:2611.05533v1 Announce Type: new Abstract: This paper presents a probabilistic framework for the direct, data-driven synthesis of the stochastic linear- quadratic output-feedback control for linear systems sub- ject to process and measurement noise. Using delayed input-output measurements, we derive a lifted parameter- ization together with an equivalent lifted linear quadratic cost, enabling controller synthesis without explicitly identi- fying the lifted dynamics. Two complementary closed-loop formulations, based on trajectory and covariance represen- tations, are then developed, whose ",
+   "link": "https://arxiv.org/abs/2611.05533",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Barrier-State-Based Safe Navigation in Complex Environments Using Look-Ahead Safety Corridors",
+   "summary": "arXiv:2611.05617v1 Announce Type: new Abstract: Safe navigation in cluttered environments requires a safety representation that captures the available motion space along the planned path. A single local safe region may restrict progress through narrow passages and continuous turns. This paper presents a planning-guided look-ahead safety corridor framework for barrier-state-based navigation. Local safe convex polytopes are constructed around collision-free seeds along the forward reference path. Their facet constraints are combined using softmin, and the local functions are fused using softmax ",
+   "link": "https://arxiv.org/abs/2611.05617",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Decentralized Impedance Specifications for Grid-Connected Converters: a Sequence-Domain Gershgorin Method, and a Frequency-Wise Framework for Combining Different Criteria",
+   "summary": "arXiv:2611.05683v1 Announce Type: new Abstract: In complex grid scenarios, with many power electronics (PE) converters connected, having specifications for converters can ease the design process. A practical approach is to impose the specifications on the converter's small-signal impedance in the frequency domain. This is advantageous since impedance is a physical property that can be measured. This paper focuses on providing decentralized impedance specifications for each converter connected to an ac bus. With decentralized specifications, each converter has its own specifications, which are ",
+   "link": "https://arxiv.org/abs/2611.05683",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Continuous-Discrete Dual-Domain Co-Design for Optimized Digital Control of Power Converters",
+   "summary": "arXiv:2611.05910v1 Announce Type: new Abstract: Optimizing digital control for power converters typically involves designing continuous-time controllers and discretizing them via Euler, Tustin, or Generalized Bilinear Transform (GBT) methods. However, the intrinsic coupling between continuous-domain control parameters and discrete-domain implementation parameters remains underexplored, often leading to suboptimal performance. To bridge this gap, this paper first establishes a Non-Uniqueness Theorem, elucidating the coupling mechanism between dual-domain parameters. Based on this, two co-design",
+   "link": "https://arxiv.org/abs/2611.05910",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Conflict-Aware Impedance-Sensitivity-Based Tuning for Multi-Mode Damping Enhancement",
+   "summary": "arXiv:2611.05935v1 Announce Type: new Abstract: Impedance-based eigenvalue sensitivity provides a practical way to relate converter parameters to poorly damped system modes, but tuning becomes nontrivial when one parameter improves one target mode while degrading another. This paper introduces a conflict-aware tuning strategy for simultaneous damping enhancement of multiple modes. The method converts impedance-derived eigenvalue sensitivities into normalized damping-ratio sensitivities, diagnoses opposing modal tuning directions, and selects either one parameter or a coordinated pair at each i",
+   "link": "https://arxiv.org/abs/2611.05935",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Adaptive Grid-Mode-Aware Hybrid Energy Storage Control for AI Data Center Oscillation Mitigation",
+   "summary": "arXiv:2611.05939v1 Announce Type: new Abstract: Oscillatory power components in AI data-center demand can produce large frequency deviations when they coincide with vulnerable grid modes. Mode-aware hybrid energy storage systems (HESSs) can selectively suppress these components, but their effectiveness degrades when the grid mode changes while the control target remains fixed. This paper proposes a closed-loop grid-mode-adaptive HESS control framework that integrates measurement-based modal identification with mode-selective control. A sliding-window N4SID estimator identifies the local grid d",
+   "link": "https://arxiv.org/abs/2611.05939",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Transmission Expansion with Large, Discrete Data Center Realization Uncertainty",
+   "summary": "arXiv:2611.05958v1 Announce Type: new Abstract: Large data center projects introduce a distinct transmission planning uncertainty because of their large scale, discrete project realization nature, and strong locational impacts on the transmission network. On the one hand, conventional deterministic treatments can either overbuild the network by assuming that all candidate projects materialize; on the other, they can leave the system underprepared by prematurely screening out projects. This paper develops a project-realization-based framework for systematically modeling, planning, and evaluatin",
+   "link": "https://arxiv.org/abs/2611.05958",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Analyzing Simultaneous Charging Factors of Electric Vehicles Using Monte Carlo Simulation: A Case Study in Phu Quoc City, Vietnam",
+   "summary": "arXiv:2611.06145v1 Announce Type: new Abstract: This study estimates the simultaneous charging factor (SCF) of electric vehicles (EVs) in Phu Quoc City, Vietnam, using a Monte Carlo simulation. Three planning scenarios (2030, 2035, and 2040) are developed from population-based EV uptake assumptions and vehicle-specific charging probability profiles over 24 hours, reflecting distinct operating patterns of motorbikes, cars, taxis, and buses. For each vehicle class and scenario, 1,000 simulation runs are performed to compute SCF and its uncertainty, reported via 95% confidence intervals. Results ",
+   "link": "https://arxiv.org/abs/2611.06145",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Multi-Period Bilevel Coordination of Primary and Secondary Frequency Regulation for Grid-Forming Battery Energy Storage",
+   "summary": "arXiv:2611.06146v1 Announce Type: new Abstract: We study the coordination of primary and secondary frequency regulation by grid-forming battery energy storage systems in islanded microgrids. We formulate the coordination as a multi-period bilevel program, in which the upper level schedules secondary regulation setpoints and each lower level computes primary regulation decisions. Using the lower-level Karush-Kuhn-Tucker conditions, we obtain an exact single-level reformulation with complementarity constraints. To address the numerical difficulties introduced by these constraints, we develop a c",
+   "link": "https://arxiv.org/abs/2611.06146",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Eco-MP: Ecological Max-Pressure Traffic Signal Control with Ecological Driving",
+   "summary": "arXiv:2611.06155v1 Announce Type: new Abstract: Max-pressure (MP) traffic signal control provides a decentralized mechanism for urban networks, but conventional pressure states do not directly capture the propulsion burden generated by signal-induced stop-and-go traffic. Eco-driving, by contrast, typically relies on prespecified signal information and optimizes vehicle trajectories separately from the feedback among vehicle motion, traffic states, and signal decisions. This paper develops Ecological Max-Pressure (Eco-MP), a closed-loop framework that integrates ecological MP signal control wit",
+   "link": "https://arxiv.org/abs/2611.06155",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Transversal Passivity: Dissipation Relative to Input and Output Manifolds",
+   "summary": "arXiv:2611.06251v1 Announce Type: new Abstract: This paper introduces transversal passivity, a local dissipation property for regulating input and output signals to prescribed manifolds. Its supply rate is built from the transverse port errors induced by nearest-point projections, so that motion along the manifolds is not penalized. We give a necessary condition and a constructive sufficient condition for the property and relate it to existing passivity notions. For feedback interconnections through negative-adjoint linear channels, power conservation no longer cancels the transverse supply. T",
+   "link": "https://arxiv.org/abs/2611.06251",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Topology Identification of Directed Signed Networks via Repelling Laplacians",
+   "summary": "arXiv:2611.06327v1 Announce Type: new Abstract: We address the problem of simultaneously identifying the interaction topology and synchronizing a network interconnected over a directed graph that exhibits both cooperative and antagonistic interactions, modeled via a repelling Laplacian matrix. We propose an adaptive control protocol built on a node-centric regressor formulation, in which the network is driven to track a persistently exciting auxiliary network. We then propose a time-varying adaptive gain to remove the need for global knowledge of the network. We establish uniform semiglobal pr",
+   "link": "https://arxiv.org/abs/2611.06327",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "On the Optimality of Implicit Feedback in Markov Decision Processes over Imperfect Links",
+   "summary": "arXiv:2611.06365v1 Announce Type: new Abstract: Goal-oriented communication protocols are explicitly designed to support the objectives of target applications, such as the monitoring and control of remote processes, while minimizing data traffic. This study considers a transmitter node that observes the environment state and sends it to a remote agent, which then performs control actions. This problem can be modeled as a remote Partially Observable Markov Decision Process (POMDP), a subclass of decentralized POMDPs. Existing studies limit transmissions through communication costs, but neglect ",
+   "link": "https://arxiv.org/abs/2611.06365",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Spatial Differences Analysis of Nodal Frequency Considering Frequency-Voltage Coupling",
+   "summary": "arXiv:2611.06385v1 Announce Type: new Abstract: The rising penetration of inverter-based resources (IBRs) brings rich control dynamics that can amplify spatial differences in nodal frequency through frequency-voltage (F-V) coupling. Existing analyses often neglect voltage dynamics or only examine the aggregate frequency, leading to overoptimistic evaluation of frequency security. To address these drawbacks, this paper develops a unified model of synchronous generators (SGs), grid-following (GFL)-IBRs, and grid-forming (GFM)-IBRs based on the magnitude and phase dynamics of equivalent internal ",
+   "link": "https://arxiv.org/abs/2611.06385",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Neural Network-based Control Systems with Application to Flight Control, From Classical Neural Control to Reinforcement Learning",
+   "summary": "arXiv:2611.06429v1 Announce Type: new Abstract: This book provides a comprehensive and systematic exploration of neural network-based intelligent control systems for aerospace applications, bridging foundational theory with practical implementation. It is structured into two primary parts: Part I covers model-based control design, detailing Feedback Error Learning (FEL), pseudocontrol strategies, and neural backstepping for strict-feedback systems, along with practical refinements such as learning rule modifications, composite learning, and discrete-time formulations, all grounded in rigorous ",
+   "link": "https://arxiv.org/abs/2611.06429",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Enhanced Imitation Learning of Model Predictive Control through Importance Weighting",
+   "summary": "arXiv:2611.06622v1 Announce Type: new Abstract: The approximation of model predictive control (MPC) algorithms with neural network models has received significant attention in the power electronics research community, as a valuable tool to enable the real-time implementation of computationally expensive methods. Training machine learning models to imitate MPC algorithms typically follows a traditional supervised learning flow, with a static training data set generated through either uniform sampling or simulation. Training with uniformly distributed data allows models to maintain consistent pe",
+   "link": "https://arxiv.org/abs/2611.06622",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "System-Theoretic Analysis of Extended Cellular Potts Models for Tumor Invasion",
+   "summary": "arXiv:2611.06690v1 Announce Type: new Abstract: The Cellular Potts Model has emerged as a standard framework for modeling multicellular systems and metastatic progression. Yet, computational extensions incorporating cell movement within spatial gradients of Extracellular Matrix (ECM), an important element of the tissue microenvironment, lack theoretical foundations. This work provides a system-theoretic formulation and analysis of Extended Cellular Potts Models (ECPMs) that explicitly couple tumor dynamics with ECM degradation. We reformulate the ECPM as an interconnected dynamical system: a s",
+   "link": "https://arxiv.org/abs/2611.06690",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Excitability of High-Frequency Positive Feedback",
+   "summary": "arXiv:2611.06822v1 Announce Type: new Abstract: What is the threshold of an excitable system, i.e. the criterion that distinguishes rest from excitation? Previous research has shown that this question is far from trivial to answer. This paper studies the threshold of a simple excitable primitive in which excitability arises from the positive feedback interconnection of a first-order high-pass filter and a static, strictly monotone and strictly convex activation function. This threshold is a simple inequality on the difference between the instantaneous input and the motif's internal memory. Whi",
+   "link": "https://arxiv.org/abs/2611.06822",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Extremal-Phase-Guided Sequential Convex Optimization: Model Order Reduction",
+   "summary": "arXiv:2611.06850v1 Announce Type: new Abstract: Fixed-order frequency-weighted H-infinity approximation is a nonconvex problem, and local optimization methods can be sensitive to initialization. We present extremal-phase-guided sequential convex optimization (EPGSCO) for stable fixed-order rational approximation. We introduce a novel phase-guidance technique motivated by the all-pass structure underlying optimal Hankel-norm approximation, with a phase template fitted to the error-magnitude derivative at dominant peaks. We integrate this guidance with dominant-peak selection, focused frequency ",
+   "link": "https://arxiv.org/abs/2611.06850",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Human Mobility Sensing Using Wall-Reflected Beamformed Millimeter-Wave Communication Signals",
+   "summary": "arXiv:2611.06900v1 Announce Type: new Abstract: Existing millimeter-wave (mmWave) communication beam patterns spatially weight human-scattered signals and shape the received-power signatures induced by human motion. We exploit these beam-shaped signatures for device-free walkingpace and walk-direction classification using a wall-reflected 60.8-GHz link with closely spaced phased arrays and fixed communication beamforming vectors. Human movement alters the interference between wall-reflected and scattered signals, producing power oscillations surrounding a central blockage fade. A beam-dependen",
+   "link": "https://arxiv.org/abs/2611.06900",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Soft-Label Governance for Distributional Safety in Multi-Agent Systems",
+   "summary": "arXiv:2604.19752v1 Announce Type: cross Abstract: Multi-agent AI systems exhibit emergent risks that no single agent produces in isolation. Existing safety frameworks rely on binary classifications of agent behavior, discarding the uncertainty inherent in proxy-based evaluation. We introduce SWARM (\\textbf{S}ystem-\\textbf{W}ide \\textbf{A}ssessment of \\textbf{R}isk in \\textbf{M}ulti-agent systems), a simulation framework that replaces binary good/bad labels with \\emph{soft probabilistic labels} $p = P(v{=}+1) \\in [0,1]$, enabling continuous-valued payoff computation, toxicity measurement, and g",
+   "link": "https://arxiv.org/abs/2604.19752",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Algorithmic Authority and the Clinical Standard of Care",
+   "summary": "arXiv:2606.00044v1 Announce Type: cross Abstract: The integration of artificial intelligence into clinical medicine creates a fundamental tension between algorithmic probabilistic reasoning and the experiential intuition of expert physicians; applying Lawrence Lessig's \\enquote{Code is Law} framework, I argue that the architecture of clinical AI systems already functions as de facto medical regulation, reshaping liability and the standard of care. Reframing AI \\enquote{hallucination} as structurally analogous to well-documented human cognitive failures such as confirmation bias and premature d",
+   "link": "https://arxiv.org/abs/2606.00044",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Translate, then decide: asymptotic optimality of latent-space control in bistable systems",
+   "summary": "arXiv:2611.05736v1 Announce Type: cross Abstract: This paper asks whether an optimal decision can be separated from the physical dynamics on which it acts. It studies this question through minimum-energy barrier crossing in scalar bistable systems. It characterizes the finite-horizon optimal feedback and shows that, as the horizon grows, it converges to a law that doubles and reverses the drift while it opposes crossing, and switches off once the barrier is passed. In physical coordinates, this law inherits the plant's nonlinearity, entangling decision and dynamics. We show that a plant-specif",
+   "link": "https://arxiv.org/abs/2611.05736",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Conditions for Normality of Pontryagin's Maximum Principle in the Absence of State Constraints",
+   "summary": "arXiv:2611.05743v1 Announce Type: cross Abstract: Pontryagin's Maximum Principle is said to be \"normal\" for the problem at hand when it has a solution (maximizer u*) that explicitly involves the problem's cost function, making the maximum principle helpful (while in the opposite situation it is of no help). The aim of the present paper is, for Lagrange optimal control problems without state constraints, to identify classes of problems for which the Principle is normal. General conditions are introduced that guarantee normality, and classes of problems that satisfy these conditions are identifi",
+   "link": "https://arxiv.org/abs/2611.05743",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "ZipDrift: Generating Multimodal Short-Horizon MPC Costs with One-Step Drifting Models",
+   "summary": "arXiv:2611.05793v1 Announce Type: cross Abstract: Short-horizon model predictive control (MPC) is fast but myopic. ZipMPC compensates by learning a context-dependent correction of the short-horizon cost that imitates a long-horizon expert. We observe that the optimal correction is often multimodal: when a slower opponent can be passed on either side, good corrections of opposite sign coexist, and the expert's choice between them hinges on tiny cost differences. Deterministic regression then averages modes or inherits inconsistent expert tie-breaking. We propose ZipDrift, which trains a one-ste",
+   "link": "https://arxiv.org/abs/2611.05793",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Frequency-Frame Covariance for Reactive-Power Scalarization",
+   "summary": "arXiv:2611.05913v1 Announce Type: cross Abstract: Measured voltage and current waveforms may be represented in a reference frame whose frequency differs from the physical fundamental frequency. Reactive-power readouts calculated from such frequency-shifted coordinates may change if their readout operators are not transformed consistently. This paper presents a frequency-frame covariance formulation for finite-spectrum, zero-mean periodic waveforms with complete harmonic information over one physical period. A necessary and sufficient covariance condition is derived, requiring the readout opera",
+   "link": "https://arxiv.org/abs/2611.05913",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "The Effectiveness of Sliding Mode Control for Robust Vision Stabilization under the Plant-Binding Condition",
+   "summary": "arXiv:2611.06028v1 Announce Type: cross Abstract: Boundary-layer Sliding Mode Control (SMC) has been applied to vision-based stabilization, but identifying its activation condition against simpler causal baselines (LPF, PID) has been elusive. The operational condition is plant binding: the disturbance velocity approaches or exceeds the actuator slew limit, so the bounded per-step actuation budget binds. We validate this in two independent vision domains: handheld translation stabilization (12 1080p clips; LPF, PID, SMC, L1) and angular re-framing against a virtual slew-rate-limited pan-tilt-zo",
+   "link": "https://arxiv.org/abs/2611.06028",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Single-sided lens terahertz flat-top beam shaping in the Fresnel region",
+   "summary": "arXiv:2611.06050v1 Announce Type: cross Abstract: In this paper, a novel, to our knowledge, analytical approach is introduced for the design of a single-sided plano-convex lens (PCL) capable of terahertz (THz) flat-top beam shaping in the Fresnel region. The lens profile, derived from geometrical optics principles, integrates collimating and beam-shaping functions into a single optical surface, thereby simplifying fabrication. The efficiency of the method is demonstrated by designing two PCLs that convert a divergent Gaussian beam from a monochromatic THz source (at 100 and 200 GHz) into flat-",
+   "link": "https://arxiv.org/abs/2611.06050",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Millimeter-Wave Gaussian-to-Flat-Top Beam Shaping Using a Single-Curvature Lens: A Novel Approach",
+   "summary": "arXiv:2611.06053v1 Announce Type: cross Abstract: This paper presents a novel method for converting the divergent Gaussian intensity distribution of a millimeter-wave source into a uniform (flat-top) distribution using a single curved surface. The proposed method combines the surface profile of a collimator with that of a beam shaper. To validate the method, the profile of a single-sided (plano-convex) lens is derived and placed 52 mm in front of a conical horn antenna operating at 100 GHz. The lens transforms the Gaussian radiation of the horn, with an incident beam radius of 11.9 mm, into a ",
+   "link": "https://arxiv.org/abs/2611.06053",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "A Layered View of LLM Support in Underwater Robotics",
+   "summary": "arXiv:2611.06162v1 Announce Type: cross Abstract: This extended abstract discusses a specific and, in our experience, practically relevant role for large language models (LLMs) in underwater robotics. Our main premise is that, in underwater fielding missions, the immediate difficulty is often not the synthesis of new low-level control laws, but the operation of complex robotic systems under limited communications, partial observability, and expensive field time. In particular, a significant fraction of the effort during sea trials is devoted to fault diagnosis, telemetry interpretation, missio",
+   "link": "https://arxiv.org/abs/2611.06162",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Corridor-Based Monitoring and Emergency Braking Decision for Automated Vehicle Safety",
+   "summary": "arXiv:2611.06287v1 Announce Type: cross Abstract: This paper addresses emergency-braking decisions for a redundant safety channel in automated vehicles. The channel is responsible for identifying hazards from sensor data and determining whether braking is necessary, given the constrained computational resources of embedded hardware. We present an emergency-braking approach that uses a predicted motion corridor to filter \\ac{lidar} measurements and then decide whether the ego vehicle must brake. \\ac{pmcm} constructs a curvature-aware boundary from the planned path and vehicle geometry so that t",
+   "link": "https://arxiv.org/abs/2611.06287",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Mind Control of LLMs via Closed-Loop Stimulation: Out-of-Distribution Robustness",
+   "summary": "arXiv:2611.06418v1 Announce Type: cross Abstract: Brains and large language models need not be considered equivalent systems to reveal an interpretable commonality: both exhibit high-dimensional, nonlinear dynamics whose behavior can only be modeled imperfectly. This creates a shared challenge whenever we seek to intervene in their dynamics. A controller may either rely on a model identified around a particular operating regime and risk failure as the system moves away from that regime, or explicitly account for uncertainty and a changing internal state. Neurostimulation has confronted an anal",
+   "link": "https://arxiv.org/abs/2611.06418",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Phase Locking in Oscillator Networks with Uncertain and State-Dependent Couplings",
+   "summary": "arXiv:2611.06466v1 Announce Type: cross Abstract: Phase locking in oscillator networks depends critically on the interaction strengths between coupled units. In many applications, however, these couplings are uncertain, state dependent, or time varying. We derive rigorous conditions for phase locking in Kuramoto-type networks when each coupling strength is known only within prescribed bounds. Building on a convex formulation of the nonlinear fixed-point equations, we obtain edge-wise error bounds for arbitrary feasible approximations that hold uniformly over all admissible couplings. These bou",
+   "link": "https://arxiv.org/abs/2611.06466",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "To lift or not to lift: Operator inference for nonlinear PDEs with boundary control",
+   "summary": "arXiv:2611.06665v1 Announce Type: cross Abstract: Operator inference (OpInf) provides a nonintrusive framework for learning projection-based reduced-order models directly from data, but its standard formulations do not explicitly account for the fact that boundary actuation changes the admissible solution space of a PDE. This paper develops and evaluates a boundary-consistent, lifting-based OpInf formulation for nonlinear PDEs with time-varying inhomogeneous boundary conditions. The proposed approach decomposes the state into a known lifting component that satisfies the prescribed boundary con",
+   "link": "https://arxiv.org/abs/2611.06665",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Cognitive and Behavioural Effects of Haptic Feedback for ROV Teleoperation in Hazardous Environments",
+   "summary": "arXiv:2611.06689v1 Announce Type: cross Abstract: Teleoperating a Remotely Operated Vehicle (ROV) in complex underwater environments presents unique challenges. Dynamic, three dimensional obstacles and unseen water currents pose real risks to expensive robotic hardware in environments in which recovery can be next to impossible. This paper explores the cognitive effects of haptic feedback to improve vehicle safety in such environments. An in-water study is analysed with a ROV exposed to controlled cross-currents, with environmental information presented via a soft and vibrating haptic touchpad",
+   "link": "https://arxiv.org/abs/2611.06689",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "When to Ask for Help: Uncertainty-Triggered Aerial Refinement for Off-Road Navigation",
+   "summary": "arXiv:2611.06702v1 Announce Type: cross Abstract: Heterogeneous air-ground teams can use aerial sensing to address the limited range and viewpoint of ground-vehicle sensors, but deciding when the UGV needs assistance and what information the UAV should collect remains a challenge. This paper presents a planner-conditioned air-ground assistance method that evaluates how uncertain map information affects the UGV's current MPPI rollouts. When navigation remains degraded, we score the same rollouts under resolved map hypotheses, select the map layer with the largest useful improvement, request the",
+   "link": "https://arxiv.org/abs/2611.06702",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "ConDR: Conservative Reachability through Neural Hamilton-Jacobi Subsolutions",
+   "summary": "arXiv:2611.06802v1 Announce Type: cross Abstract: Hamilton-Jacobi (HJ) Reachability identifies the unsafe states of a dynamical system from which it can be forced into failure under worst-case disturbance. However, classical grid-based solvers scale exponentially with state dimension. DeepReach improves scalability by replacing the grid with a neural value function trained on the HJ-Isaacs (HJI) variational inequality (VI), but penalizes both sides of the residual equally. This allows the learned value to lie above the true one and unsafe states to be misclassified as safe. We propose Conserva",
+   "link": "https://arxiv.org/abs/2611.06802",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "CMS ECAL Phase-2 upgrade: characterisation and stability analysis of a three-stage low-voltage power-conversion system",
+   "summary": "arXiv:2611.06807v1 Announce Type: cross Abstract: As part of the High-Luminosity upgrade of the Large Hadron Collider, the front-end electronics of the Compact Muon Solenoid electromagnetic calorimeter barrel are being replaced. A three-stage low-voltage power-conversion system supplies the upgraded electronics. As the cascade dynamics require characterisation to ensure stable operation, interactions between the three converter stages are assessed at their two interfaces using the Nyquist criterion. A validated shunt-injection setup using a Bode 100 frequency-response analyser provides in-situ",
+   "link": "https://arxiv.org/abs/2611.06807",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Risk-Sensitive Stochastic Optimal Control on Positive Cones",
+   "summary": "arXiv:2611.06887v1 Announce Type: cross Abstract: We consider stochastic optimal control problems in which the state is constrained to a proper cone. Specifically, we consider risk-neutral, risk-averse, and risk-seeking formulations within a single entropic-risk framework. We investigate classes of problems whose Bellman operator preserves affine functions and characterize their optimal value functions and feedback policies for both finite-horizon and time-average infinite-horizon problems. Additionally, we establish convergence and state-bound results under finite-step cost observability. Mor",
+   "link": "https://arxiv.org/abs/2611.06887",
+   "published": "2026-11-05T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  }
+ ]
+}
