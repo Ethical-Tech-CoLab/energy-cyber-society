@@ -8,11 +8,11 @@ follow INTELLIGENCE_ANALYSIS.md for how to evaluate sources, write judgments and
    Only the feeds in `sources.json` are allowed. Do not search the open web for stories;
    you may fetch a primary document (statute, FERC/NERC/CISA/TSA page, vendor advisory) to
    confirm a claim that is already in the bundle.
-2. Read `agents/personas.json` (six residents, shared rules, verification procedure) and
+2. Read `agents/personas.json` (fifteen residents, shared rules, verification procedure) and
    `agents/schema.json` (per-item record and taxonomy). Read the previous
    `docs/data/briefing.json` so you can report what changed.
 3. Write a new `docs/data/briefing.json` with:
-   - `agents`: for each of the six residents, `briefing` (4-7 sentences, every claim with
+   - `agents`: for each of the fifteen residents, `briefing` (4-7 sentences, every claim with
      (Source Name, date)), `answers` (one per question in personas.json), `bubble` (≤12 words).
    - `items`: one schema record per energy-relevant story, max 12, only taxonomy values.
      IT-versus-OT impact is mandatory on every item.

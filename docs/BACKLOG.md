@@ -48,11 +48,16 @@ forgotten; "blocked" means a person must act. Update this file when something sh
 - Risk check (CIO) tab: profile of facilities, products, environment patterns, size and region → exposure score from this week's board, dependency stacks and the research record; ranked priorities with evidence; Markdown export; profile stays in the browser
 - The Engineer (resident, Workshop, ENGINEERING.md, scripts/ux_audit.py, scripts/engineer_log.py, scripts/routine_engineer.json): autonomous bug-fix/refactor/UX agent that opens PRs daily, never merges
 
+## Status of the unattended runs (2026-11-05)
+- Curation routine fired 11:04 UTC and ABORTED CORRECTLY: the cloud sandbox's network policy returns 403 for every one of the 38 feeds, so it refused to write a briefing from no data, restored news.json and sent a push notification. Nothing was committed. Fix is one of: (a) allow the feed hosts in the routine's environment network settings at https://claude.ai/code/environments (allowed hosts from sources.json), or (b) run the GitHub Actions workflow instead (needs the gh workflow scope to push .github/workflows/daily.yml, or paste it through the GitHub web UI).
+- Engineer routine fired 14:08 UTC and WORKED: it ran the tests, took the audit's high finding, opened PR #2 (24 buttons → 10, four menus) with an honest 'not tested' section (Playwright would not install in the sandbox). PR #2 overlaps PR #1 (same menu grouping, done by hand earlier); merge one and close the other.
+- Site now lives at https://ethical-tech-colab.github.io/energy-cyber-society/ (public ETC repo, Pages from main:/docs, topics added). carolina-moron/energy-cyber-society remains as a private mirror.
+
 ## Blocked: needs Carolina
-- Review and merge the Engineer's PRs; first: https://github.com/Ethical-Tech-CoLab/energy-cyber-society/pull/1
-- Make the repo public and enable Pages from `main:/docs` (the assistant's permissions refuse public surfaces)
+- Merge PR #1 or PR #2 (duplicates) and close the other; both at https://github.com/Ethical-Tech-CoLab/energy-cyber-society/pull/1
+- DONE 2026-11-05: public ETC repo + Pages live
 - `gh auth refresh -h github.com -s workflow`, then un-ignore and push `.github/workflows/daily.yml`
-- Add the `ANTHROPIC_API_KEY` repository secret (for the Actions path)
+- Add the workflow: `gh auth refresh -h github.com -s workflow` then un-ignore and push `.github/workflows/daily.yml` (or paste it in the GitHub web UI); add the `ANTHROPIC_API_KEY` secret on Ethical-Tech-CoLab/energy-cyber-society. This is the path that does not depend on sandbox network policy.
 - DONE 2026-11-05: claude.ai routines created: curation twice daily (trig_012X5bG37PWjSiAvMKUj71j6, 11:00 and 23:00 UTC) and Engineer daily (trig_01LtA6QZvXTLp7ukpepZmiC7, 14:00 UTC). Manage at https://claude.ai/code/routines. First runs: 2026-11-05 11:00 UTC and 14:00 UTC.
 - Sign the executive brief (`executive_brief.evaluation`) after reading the sources
 - Decide the Ombudsman's three proposals: CISA feed path, citation rule for reasoning sentences, background-case verification before sharing
