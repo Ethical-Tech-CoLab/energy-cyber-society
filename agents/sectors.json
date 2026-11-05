@@ -1,5 +1,5 @@
 {
-  "_comment": "Facility dossiers for the town map. One per energy subsector. Layers: IT (corporate), OT (control systems), PIT (Platform IT: computing embedded inside the physical asset itself; the term comes from US DoD usage). 'background_cases' are historical incidents from the model's general knowledge as of its training cutoff, given with year and a pointer; they are NOT from the allowlisted feeds and must be checked against the Where-to-look sources before being cited. 'live_match' lists keywords used to pull this week's board items into the dossier.",
+  "_comment": "Facility dossiers for the town map. One per energy subsector. Layers: IT (corporate), OT (control systems), PIT (Platform IT: computing embedded inside the physical asset itself; the term comes from US DoD usage). 'background_cases' are historical incidents from the model's general knowledge as of its training cutoff, given with year and a pointer; they are NOT from the allowlisted feeds and must be checked against the Where-to-look sources before being cited. 'live_match' lists keywords used to pull this week's board items into the dossier. Cases marked status 'report-sourced' come from the Global Energy Cyber Threat Intelligence Report (user-provided, evidence cut-off 2026-11-04), which cites primary sources by name; URLs are to be resolved by the Archivist. Cases marked 'background' are from the model's general knowledge.",
   "layer_definitions": {
     "IT": "Corporate information technology: email, ERP, billing, customer portals, engineering file shares, Active Directory, VPNs, cloud. Breaches here are business problems.",
     "OT": "Operational technology: the systems that monitor and control the physical process. SCADA servers, HMIs, historians, engineering workstations, PLCs, RTUs, DCS. Breaches here can change physical state.",
@@ -106,24 +106,77 @@
               "Inventory and control every third-party connection",
               "Network segmentation that does not rely on a single perimeter"
             ]
-          }
+          },
+          "status": "background"
+        },
+        {
+          "year": 2010,
+          "case": "Natanz, Iran, discovered 2010 (Stuxnet): malicious PLC code on SIMATIC S7-315 altered centrifuge-drive behaviour while disguising changes",
+          "check": "MITRE Stuxnet software analysis; CCDCOE technical reconstruction",
+          "status": "report-sourced",
+          "report_ref": 13,
+          "case_type": "confirmed intrusion",
+          "ot_reach": "OT process affected",
+          "entry": "removable media and Siemens Step 7 project workflows; first infection path not proven publicly",
+          "attribution_tier": "claimed/reported",
+          "attribution": "US-Israel sponsorship remains reporting, not an official admission",
+          "caveats": [
+            "product naming is not an allegation that suppliers participated"
+          ],
+          "attack": []
         },
         {
           "year": 2014,
           "case": "Korea Hydro & Nuclear Power: data theft and leak of plant documents, attributed by South Korea to North Korea.",
-          "check": "KHNP / South Korean government statements"
+          "check": "KHNP / South Korean government statements",
+          "status": "background"
+        },
+        {
+          "year": 2017,
+          "case": "Chornobyl decommissioning site, June 2017 (NotPetya collateral): loss of website, email, file sharing; some radiation-monitoring operator workstations affected; instrument-based monitoring continued; no abnormal radiation",
+          "check": "Chornobyl plant statement; CISA attribution",
+          "status": "report-sourced",
+          "report_ref": 15,
+          "case_type": "third-party spillover",
+          "ot_reach": "auxiliary monitoring IT only",
+          "entry": "site-specific path not public",
+          "attribution_tier": "confirmed (operation-level)",
+          "attribution": "NotPetya attributed to Russian GRU by US authorities",
+          "caveats": [
+            "not evidence of reactor or safety-system manipulation"
+          ],
+          "attack": []
         },
         {
           "year": 2019,
-          "case": "Kudankulam (India): DTrack malware on the administrative network, confirmed by NPCIL.",
-          "check": "NPCIL press release"
+          "case": "Kudankulam nuclear plant, India, 2019: malware on an internet-connected administrative PC; control and instrumentation systems unaffected and separated (Department of Atomic Energy)",
+          "check": "Government of India statement; World Nuclear News account",
+          "status": "report-sourced",
+          "report_ref": 4,
+          "case_type": "confirmed intrusion (IT)",
+          "ot_reach": "none (IT only)",
+          "entry": "unresolved",
+          "attribution_tier": "claimed/assessed by researchers",
+          "attribution": "Dtrack / Lazarus-related per researchers; official source did not establish attribution",
+          "caveats": [
+            "distinction between confirmed IT infection and unconfirmed OT compromise is essential",
+            "data exfiltration unresolved"
+          ],
+          "attack": [],
+          "anatomy": null
         }
       ],
       "live_match": [
         "nuclear",
         "radiation",
         "reactor"
-      ]
+      ],
+      "report_view": {
+        "exposed_technology": "administrative IT, engineering and plant control/safety domains",
+        "failure_mode": "espionage or malware in administrative network; risk of cross-domain movement",
+        "priority_defense": "strict separation, removable-media controls, verified transfer and monitoring",
+        "from": "Global Energy Cyber Threat Intelligence Report, subsector table"
+      }
     },
     {
       "id": "thermal",
@@ -179,8 +232,23 @@
       "background_cases": [
         {
           "year": 2017,
-          "case": "Triton/Trisis: attackers reached Triconex safety controllers at a Saudi petrochemical plant via an engineering workstation; a plant trip revealed them.",
-          "check": "Mandiant and Dragos reports; Schneider Electric advisory",
+          "case": "Saudi petrochemical facility, 2017 (TRITON/TRISIS): attempt to alter logic on Schneider Electric Triconex SIS; safety system tripped",
+          "check": "Dragos TRISIS analysis; MITRE T0886",
+          "status": "report-sourced",
+          "report_ref": 3,
+          "case_type": "confirmed intrusion",
+          "ot_reach": "OT reached (safety system)",
+          "entry": "engineering workstation; external entry path not public",
+          "attribution_tier": "assessed",
+          "attribution": "not named in this report's case text; Dragos analysis cited",
+          "caveats": [
+            "Dragos: original malware did not rely on an inherent Schneider product vulnerability",
+            "precise plant not public"
+          ],
+          "attack": [
+            "T0886",
+            "Inhibit Response Function tactic"
+          ],
           "anatomy": {
             "attribution": "TEMP.Veles, linked by Mandiant to a Russian government research institute (TsNIIKhM), sanctioned by the US Treasury in 2020; high in the public record",
             "bypass": "IT compromise, then a dual-homed engineering workstation that could reach the Triconex safety controllers; the controllers' physical key switch was left in Program mode",
@@ -203,7 +271,67 @@
         {
           "year": 2022,
           "case": "Industroyer2 at a Ukrainian electricity provider, aimed at substations feeding generation and load; blocked, per CERT-UA and ESET.",
-          "check": "CERT-UA, ESET"
+          "check": "CERT-UA, ESET",
+          "status": "background"
+        },
+        {
+          "year": 2024,
+          "case": "Ukrainian district heating, January 2024 (FrostyGoop/BUSTLEBERM): Modbus TCP commands; heat disrupted to 600+ apartment buildings; nearly two days to restore",
+          "check": "Dragos intelligence brief; Dragos technical account",
+          "status": "report-sourced",
+          "report_ref": 9,
+          "case_type": "confirmed intrusion",
+          "ot_reach": "OT process affected",
+          "entry": "internet-exposed ENCO controllers",
+          "attribution_tier": "unknown",
+          "attribution": "unknown; malware-to-event linkage at Dragos's moderate confidence",
+          "caveats": [
+            "retain Dragos's confidence qualification"
+          ],
+          "attack": [
+            "T0831"
+          ]
+        },
+        {
+          "year": 2025,
+          "case": "Nova Scotia Power, Canada, March-April 2025: data theft from on-premises and cloud; backups destroyed; ransomware late April; generation, transmission and distribution continued; smart-meter reads and billing disrupted",
+          "check": "Office of the Privacy Commissioner of Canada findings; Nova Scotia Power updates",
+          "status": "report-sourced",
+          "report_ref": 11,
+          "case_type": "confirmed intrusion (IT)",
+          "ot_reach": "none (IT only)",
+          "entry": "employee clicked a malicious website pop-up (~19 March) installing SocGholish/FakeUpdates; credential harvesting; domain-admin access",
+          "attribution_tier": "unknown",
+          "attribution": "not established in the regulator's findings",
+          "caveats": [
+            "no remote meter-disconnect attack established"
+          ],
+          "attack": [
+            "Enterprise ATT&CK"
+          ]
+        },
+        {
+          "year": 2025,
+          "case": "Poland distributed energy and CHP, December 2025: 30+ wind and PV farms: RTUs, protection relays and HMIs damaged, loss of communications with DSOs while generation continued; EDR blocked a wiper at a large CHP; at a smaller CHP a steam turbine and process-water treatment stopped briefly, heat continued",
+          "check": "CERT Polska report; CERT Polska follow-up; MITRE case mapping; UK NCSC 2026 assessment",
+          "status": "report-sourced",
+          "report_ref": 12,
+          "case_type": "campaign (destructive OT)",
+          "ot_reach": "physical/safety impact (device destruction, process interruption)",
+          "entry": "compromised edge and remote-access infrastructure; privileged accounts; at a second CHP a misconfigured private APN allowed peer access",
+          "attribution_tier": "assessed (cluster) / political",
+          "attribution": "CERT Polska cluster attribution; later UK/EU political attribution recorded separately",
+          "caveats": [
+            "named products (Fortinet edge, Mikronika RTUs/HMIs, Hitachi Relion relays, Moxa NPort) identify affected equipment, not product defects"
+          ],
+          "attack": [
+            "T0822",
+            "T1694.001",
+            "T0809",
+            "T0827",
+            "T0829",
+            "T1693.001"
+          ]
         }
       ],
       "live_match": [
@@ -212,7 +340,13 @@
         "turbine",
         "gas plant",
         "coal"
-      ]
+      ],
+      "report_view": {
+        "exposed_technology": "DCS/SCADA, engineering workstations, turbine control, protection",
+        "failure_mode": "wiper or ransomware in IT, control-path intrusion, loss of heat dispatch",
+        "priority_defense": "OT segmentation; independent local control; restore tested with operators",
+        "from": "Global Energy Cyber Threat Intelligence Report, subsector table"
+      }
     },
     {
       "id": "substation",
@@ -269,8 +403,25 @@
       "background_cases": [
         {
           "year": 2015,
-          "case": "Ukraine, December 23: BlackEnergy intrusion, remote HMI operation opened breakers at three distribution companies, ~225,000 customers for up to six hours; KillDisk and a call-centre DDoS followed.",
-          "check": "SANS/E-ISAC 'Analysis of the Cyber Attack on the Ukrainian Power Grid' (2016); CISA alert IR-ALERT-H-16-056-01",
+          "case": "Ukraine distribution grid, December 2015: operator HMIs used to open breakers at multiple substations; destructive actions and telephone DoS impeded recovery; ~225,000 customers, 1-6 hours",
+          "check": "CISA government case study; MITRE ATT&CK T0822",
+          "status": "report-sourced",
+          "report_ref": 1,
+          "case_type": "confirmed intrusion",
+          "ot_reach": "OT process affected",
+          "entry": "spear-phishing macro documents months before; stolen credentials; business IT to control-system VPNs",
+          "attribution_tier": "assessed/confirmed",
+          "attribution": "Sandworm (per later US indictment); report cites CISA case study",
+          "caveats": [
+            "BlackEnergy3 was present but did not itself open breakers; operators' remote-control functions were abused",
+            "equipment vendors for every substation not established in the public report"
+          ],
+          "attack": [
+            "T0822",
+            "T0886",
+            "T0831",
+            "T0827"
+          ],
           "anatomy": {
             "attribution": "Sandworm (GRU Unit 74455), per US DOJ indictment (2020) and multiple governments; confidence high in the public record",
             "bypass": "Spear-phishing with macro documents delivered BlackEnergy 3 to corporate IT; VPN credentials harvested; the VPNs to the SCADA network had no MFA",
@@ -312,12 +463,64 @@
               "Allow-lists of which hosts may speak control protocols",
               "Patch and segment protection relays; FERC Order 887's internal network monitoring is this lesson in rule form"
             ]
-          }
+          },
+          "status": "background"
+        },
+        {
+          "year": 2016,
+          "case": "Ukraine Kyiv-area substation, December 2016 (Industroyer/CrashOverride): modules for IEC 60870-5-104 and other protocols issued valid commands to RTUs and breakers from a Windows host inside OT; Siemens relay DoS module; wiper; localized blackout at Pivnichna",
+          "check": "MITRE technical case study; MITRE Industroyer software",
+          "status": "report-sourced",
+          "report_ref": 2,
+          "case_type": "confirmed intrusion",
+          "ot_reach": "OT process affected",
+          "entry": "earliest intrusion steps incompletely evidenced (MITRE)",
+          "attribution_tier": "assessed",
+          "attribution": "Sandworm / GRU Unit 74455 (MITRE reconstruction)",
+          "caveats": [
+            "incomplete evidence about earliest intrusion"
+          ],
+          "attack": [
+            "T0831",
+            "T0806",
+            "T0809",
+            "T0826"
+          ]
+        },
+        {
+          "year": 2022,
+          "case": "Ukraine utility, October 2022 (MicroSCADA native command abuse): legitimate scilc.exe invoked to issue unauthorized commands likely opening breakers; unscheduled outage; CaddyWiper later on enterprise systems",
+          "check": "Mandiant technical analysis; MITRE ICS command-message technique",
+          "status": "report-sourced",
+          "report_ref": 19,
+          "case_type": "confirmed intrusion",
+          "ot_reach": "OT process affected",
+          "entry": "ISO image with VBScript and batch files on a MicroSCADA server",
+          "attribution_tier": "assessed",
+          "attribution": "Sandworm (Mandiant)",
+          "caveats": [
+            "some OT command bytes unrecovered; exact command list not established"
+          ],
+          "attack": [
+            "ICS command message technique"
+          ],
+          "anatomy": null
         },
         {
           "year": 2023,
-          "case": "Volt Typhoon: CISA, NSA and FBI advisory on PRC state actors prepositioning in US critical infrastructure including energy, using living-off-the-land techniques.",
-          "check": "CISA advisory AA24-038A (Feb 2024)",
+          "case": "Danish energy companies, May 2023 (Zyxel firewall exploitation): 11 of 16 targeted organizations initially compromised; firewall configs and account details taken; some devices joined Mirai; one operator lost visibility of three remote sites; no national outage",
+          "check": "SektorCERT technical report",
+          "status": "report-sourced",
+          "report_ref": 8,
+          "case_type": "campaign",
+          "ot_reach": "loss of view at one operator",
+          "entry": "crafted UDP/500 IKE packets exploiting CVE-2023-28771 in Zyxel firewalls; later CVE-2023-33009/33010",
+          "attribution_tier": "unknown",
+          "attribution": "SektorCERT saw similarities to Sandworm but did not confirm",
+          "caveats": [
+            "one coordinated campaign in two waves against 22 organizations; do not multiply into 22 cases"
+          ],
+          "attack": [],
           "anatomy": {
             "attribution": "PRC state-sponsored, per CISA/NSA/FBI with Five Eyes partners (AA24-038A); high",
             "bypass": "Exploitation of internet-facing devices (routers, VPN appliances, firewalls) and use of valid credentials; living-off-the-land so that no malware triggers alarms",
@@ -335,6 +538,47 @@
               "Hunt rather than wait: the advisory's indicators and techniques"
             ]
           }
+        },
+        {
+          "year": 2025,
+          "case": "Nova Scotia Power, Canada, March-April 2025: data theft from on-premises and cloud; backups destroyed; ransomware late April; generation, transmission and distribution continued; smart-meter reads and billing disrupted",
+          "check": "Office of the Privacy Commissioner of Canada findings; Nova Scotia Power updates",
+          "status": "report-sourced",
+          "report_ref": 11,
+          "case_type": "confirmed intrusion (IT)",
+          "ot_reach": "none (IT only)",
+          "entry": "employee clicked a malicious website pop-up (~19 March) installing SocGholish/FakeUpdates; credential harvesting; domain-admin access",
+          "attribution_tier": "unknown",
+          "attribution": "not established in the regulator's findings",
+          "caveats": [
+            "no remote meter-disconnect attack established"
+          ],
+          "attack": [
+            "Enterprise ATT&CK"
+          ]
+        },
+        {
+          "year": 2025,
+          "case": "Poland distributed energy and CHP, December 2025: 30+ wind and PV farms: RTUs, protection relays and HMIs damaged, loss of communications with DSOs while generation continued; EDR blocked a wiper at a large CHP; at a smaller CHP a steam turbine and process-water treatment stopped briefly, heat continued",
+          "check": "CERT Polska report; CERT Polska follow-up; MITRE case mapping; UK NCSC 2026 assessment",
+          "status": "report-sourced",
+          "report_ref": 12,
+          "case_type": "campaign (destructive OT)",
+          "ot_reach": "physical/safety impact (device destruction, process interruption)",
+          "entry": "compromised edge and remote-access infrastructure; privileged accounts; at a second CHP a misconfigured private APN allowed peer access",
+          "attribution_tier": "assessed (cluster) / political",
+          "attribution": "CERT Polska cluster attribution; later UK/EU political attribution recorded separately",
+          "caveats": [
+            "named products (Fortinet edge, Mikronika RTUs/HMIs, Hitachi Relion relays, Moxa NPort) identify affected equipment, not product defects"
+          ],
+          "attack": [
+            "T0822",
+            "T1694.001",
+            "T0809",
+            "T0827",
+            "T0829",
+            "T1693.001"
+          ]
         }
       ],
       "live_match": [
@@ -345,7 +589,13 @@
         "zyxel",
         "volt typhoon",
         "breaker"
-      ]
+      ],
+      "report_view": {
+        "exposed_technology": "EMS/DMS, substations, RTUs, protection relays, IEC 60870-5-104 / IEC 61850",
+        "failure_mode": "unauthorized switching, relay disruption, loss of view/control",
+        "priority_defense": "protocol-aware monitoring; device configuration baselines; remote access control",
+        "from": "Global Energy Cyber Threat Intelligence Report, subsector table"
+      }
     },
     {
       "id": "renewables",
@@ -400,6 +650,22 @@
       "how_breach": "Not through the farm, through the cloud. One phished installer or vendor account can address thousands of inverters at once. The physical effect is curtailment or disconnection in bulk, which matters to the grid when solar supplies a large share of daytime load.",
       "background_cases": [
         {
+          "year": 2019,
+          "case": "sPower, United States, March 2019: repeated reboots of devices linking the control centre to twelve remote sites; brief communications loss; output continued; no deeper intrusion found",
+          "check": "National Security Archive FOIA documents; US DOE distributed-energy briefing",
+          "status": "report-sourced",
+          "report_ref": 18,
+          "case_type": "confirmed intrusion (availability)",
+          "ot_reach": "loss of view only",
+          "entry": "internet-reachable Cisco firewall vulnerability (DoS)",
+          "attribution_tier": "unknown",
+          "attribution": "not stated",
+          "caveats": [
+            "perimeter-device availability failure, not inverter or turbine manipulation"
+          ],
+          "attack": []
+        },
+        {
           "year": 2022,
           "case": "Viasat KA-SAT attack on the day of the Ukraine invasion knocked out remote monitoring of ~5,800 Enercon wind turbines in Germany.",
           "check": "Enercon statement; Viasat incident report",
@@ -418,17 +684,76 @@
               "Harden the provider's management plane: it is your attack surface too",
               "Know which remote assets go blind if a carrier fails, and how long you can run blind"
             ]
-          }
+          },
+          "status": "background"
+        },
+        {
+          "year": 2022,
+          "case": "KA-SAT/Viasat and German wind farms, February 2022: German wind-turbine operators lost remote monitoring; generation continued; CERT-EU: likely collateral",
+          "check": "Viasat technical account; CERT-EU report",
+          "status": "report-sourced",
+          "report_ref": 6,
+          "case_type": "third-party spillover",
+          "ot_reach": "loss of view only",
+          "entry": "misconfigured Viasat VPN appliance; trusted management segment; legitimate management commands overwrote modem flash (AcidRain)",
+          "attribution_tier": "assessed",
+          "attribution": "attributed by EU/UK/US to Russia (not restated in case text)",
+          "caveats": [
+            "communications dependency incident, not intrusion into turbine controllers",
+            "Viasat: no evidence the firmware-update channel or satellite was compromised"
+          ],
+          "attack": []
+        },
+        {
+          "year": 2023,
+          "case": "Danish energy companies, May 2023 (Zyxel firewall exploitation): 11 of 16 targeted organizations initially compromised; firewall configs and account details taken; some devices joined Mirai; one operator lost visibility of three remote sites; no national outage",
+          "check": "SektorCERT technical report",
+          "status": "report-sourced",
+          "report_ref": 8,
+          "case_type": "campaign",
+          "ot_reach": "loss of view at one operator",
+          "entry": "crafted UDP/500 IKE packets exploiting CVE-2023-28771 in Zyxel firewalls; later CVE-2023-33009/33010",
+          "attribution_tier": "unknown",
+          "attribution": "SektorCERT saw similarities to Sandworm but did not confirm",
+          "caveats": [
+            "one coordinated campaign in two waves against 22 organizations; do not multiply into 22 cases"
+          ],
+          "attack": []
         },
         {
           "year": 2024,
           "case": "Hacktivists (allegedly Arab-linked) tampered with Japanese solar monitoring devices (Contec SolarView) to steal bank credentials, per Japanese reports.",
-          "check": "Contec advisory; Japanese press"
+          "check": "Contec advisory; Japanese press",
+          "status": "background"
         },
         {
           "year": 2025,
           "case": "Forescout SUN:DOWN research disclosed dozens of flaws in Sungrow, Growatt and SMA inverter ecosystems enabling fleet takeover.",
-          "check": "Forescout Vedere Labs report; CISA ICS advisories"
+          "check": "Forescout Vedere Labs report; CISA ICS advisories",
+          "status": "background"
+        },
+        {
+          "year": 2025,
+          "case": "Poland distributed energy and CHP, December 2025: 30+ wind and PV farms: RTUs, protection relays and HMIs damaged, loss of communications with DSOs while generation continued; EDR blocked a wiper at a large CHP; at a smaller CHP a steam turbine and process-water treatment stopped briefly, heat continued",
+          "check": "CERT Polska report; CERT Polska follow-up; MITRE case mapping; UK NCSC 2026 assessment",
+          "status": "report-sourced",
+          "report_ref": 12,
+          "case_type": "campaign (destructive OT)",
+          "ot_reach": "physical/safety impact (device destruction, process interruption)",
+          "entry": "compromised edge and remote-access infrastructure; privileged accounts; at a second CHP a misconfigured private APN allowed peer access",
+          "attribution_tier": "assessed (cluster) / political",
+          "attribution": "CERT Polska cluster attribution; later UK/EU political attribution recorded separately",
+          "caveats": [
+            "named products (Fortinet edge, Mikronika RTUs/HMIs, Hitachi Relion relays, Moxa NPort) identify affected equipment, not product defects"
+          ],
+          "attack": [
+            "T0822",
+            "T1694.001",
+            "T0809",
+            "T0827",
+            "T0829",
+            "T1693.001"
+          ]
         }
       ],
       "live_match": [
@@ -438,7 +763,13 @@
         "renewable",
         "DER",
         "foreign grid"
-      ]
+      ],
+      "report_view": {
+        "exposed_technology": "inverters, RTUs, aggregation gateways, cellular/satellite links, cloud fleet management",
+        "failure_mode": "lost telemetry/control, mass configuration change, supplier compromise",
+        "priority_defense": "fleet asset inventory; signed updates; per-site segmentation; alternate telemetry",
+        "from": "Global Energy Cyber Threat Intelligence Report, subsector table"
+      }
     },
     {
       "id": "wellhead",
@@ -492,12 +823,38 @@
         {
           "year": 2011,
           "case": "Night Dragon: espionage campaign against oil and gas majors for bid and production data, attributed by McAfee to China-based actors.",
-          "check": "McAfee report"
+          "check": "McAfee report",
+          "status": "background"
+        },
+        {
+          "year": 2012,
+          "case": "Saudi Aramco, August 2012 (Shamoon/Disttrack): ~30,000 corporate Windows systems destroyed (US DOJ); oil and gas flow not interrupted",
+          "check": "US DOJ account; Reuters operational account",
+          "status": "report-sourced",
+          "report_ref": 14,
+          "case_type": "confirmed intrusion (IT)",
+          "ot_reach": "none (IT only)",
+          "entry": "not established",
+          "attribution_tier": "claimed (persona) / state attribution separate",
+          "attribution": "'Cutting Sword of Justice' claimed; state attribution recorded separately",
+          "caveats": [],
+          "attack": []
         },
         {
           "year": 2024,
-          "case": "Halliburton ransomware (August): systems taken offline, roughly $35 million impact disclosed in SEC filings; RansomHub claimed it.",
-          "check": "Halliburton 8-K filings",
+          "case": "Halliburton, United States, August 2024: unauthorized access disclosed 21 August; systems taken offline; data exfiltration reported in SEC filing",
+          "check": "Halliburton SEC filing; Halliburton quarterly filing",
+          "status": "report-sourced",
+          "report_ref": 10,
+          "case_type": "confirmed intrusion (IT)",
+          "ot_reach": "not established",
+          "entry": "not established in filings",
+          "attribution_tier": "claimed",
+          "attribution": "RansomHub claimed in reporting; not confirmed by operator",
+          "caveats": [
+            "claim and confirmed attribution kept separate"
+          ],
+          "attack": [],
           "anatomy": {
             "attribution": "RansomHub (criminal RaaS) claimed; company did not name; moderate",
             "bypass": "Not public",
@@ -522,7 +879,13 @@
         "oilfield",
         "halliburton",
         "exploration"
-      ]
+      ],
+      "report_view": {
+        "exposed_technology": "pipeline SCADA, compressor/pump controls, tank loading, trading/dispatch, SIS",
+        "failure_mode": "business-system shutdown, loading disruption, safety-system manipulation",
+        "priority_defense": "IT/OT separation; manual dispatch; SIS independence; vendor access governance",
+        "from": "Global Energy Cyber Threat Intelligence Report, subsector table"
+      }
     },
     {
       "id": "pipeline",
@@ -578,12 +941,26 @@
         {
           "year": 2020,
           "case": "CISA alert AA20-049A: ransomware entered a natural-gas compression facility via a phishing link, crossed from IT to OT, and encrypted HMIs; two-day shutdown.",
-          "check": "CISA AA20-049A"
+          "check": "CISA AA20-049A",
+          "status": "background"
         },
         {
           "year": 2021,
-          "case": "Colonial Pipeline, May 7: DarkSide ransomware on IT via a VPN account without MFA; the 5,500-mile pipeline shut for six days; $4.4M ransom paid, part recovered by DOJ.",
-          "check": "Congressional testimony of CEO Joseph Blount (June 2021); DOJ seizure announcement",
+          "case": "Colonial Pipeline, United States, May 2021: ransomware on IT; CISA/FBI: no indication OT directly affected; operator halted the pipeline to contain risk; widespread fuel-distribution effects",
+          "check": "CISA/FBI DarkSide advisory; U.S. Senate testimony",
+          "status": "report-sourced",
+          "report_ref": 5,
+          "case_type": "confirmed intrusion (IT) with precautionary OT shutdown",
+          "ot_reach": "none (IT only); operational shutdown by decision",
+          "entry": "compromised legacy VPN account without MFA (company testimony)",
+          "attribution_tier": "confirmed",
+          "attribution": "DarkSide ransomware (criminal)",
+          "caveats": [
+            "causal chain is IT ransomware to precautionary shutdown, not demonstrated malicious pipeline-control commands"
+          ],
+          "attack": [
+            "Enterprise ATT&CK better fit"
+          ],
           "anatomy": {
             "attribution": "DarkSide ransomware-as-a-service affiliates, criminal; FBI attribution; high",
             "bypass": "A legacy VPN account, no longer in use but still active, with no multi-factor authentication, and a password that had appeared in a prior leak",
@@ -610,7 +987,13 @@
         "midstream",
         "colonial",
         "tsa"
-      ]
+      ],
+      "report_view": {
+        "exposed_technology": "pipeline SCADA, compressor/pump controls, tank loading, trading/dispatch, SIS",
+        "failure_mode": "business-system shutdown, loading disruption, safety-system manipulation",
+        "priority_defense": "IT/OT separation; manual dispatch; SIS independence; vendor access governance",
+        "from": "Global Energy Cyber Threat Intelligence Report, subsector table"
+      }
     },
     {
       "id": "refinery",
@@ -666,8 +1049,17 @@
       "background_cases": [
         {
           "year": 2012,
-          "case": "Shamoon wiped ~35,000 Saudi Aramco workstations; production unaffected, business crippled for weeks.",
-          "check": "Saudi Aramco statements; US officials attributed to Iran",
+          "case": "Saudi Aramco, August 2012 (Shamoon/Disttrack): ~30,000 corporate Windows systems destroyed (US DOJ); oil and gas flow not interrupted",
+          "check": "US DOJ account; Reuters operational account",
+          "status": "report-sourced",
+          "report_ref": 14,
+          "case_type": "confirmed intrusion (IT)",
+          "ot_reach": "none (IT only)",
+          "entry": "not established",
+          "attribution_tier": "claimed (persona) / state attribution separate",
+          "attribution": "'Cutting Sword of Justice' claimed; state attribution recorded separately",
+          "caveats": [],
+          "attack": [],
           "anatomy": {
             "attribution": "Iran, per US officials; 'Cutting Sword of Justice' claimed; moderate-high",
             "bypass": "Insider or phished credentials enabled network-wide deployment (details disputed)",
@@ -687,8 +1079,56 @@
         },
         {
           "year": 2017,
-          "case": "Triton at a Saudi petrochemical plant: first malware built to attack a safety instrumented system; attributed by Mandiant to a Russian government research institute (TEMP.Veles).",
-          "check": "Mandiant/FireEye report (2018); US Treasury sanctions on TsNIIKhM (2020)"
+          "case": "Saudi petrochemical facility, 2017 (TRITON/TRISIS): attempt to alter logic on Schneider Electric Triconex SIS; safety system tripped",
+          "check": "Dragos TRISIS analysis; MITRE T0886",
+          "status": "report-sourced",
+          "report_ref": 3,
+          "case_type": "confirmed intrusion",
+          "ot_reach": "OT reached (safety system)",
+          "entry": "engineering workstation; external entry path not public",
+          "attribution_tier": "assessed",
+          "attribution": "not named in this report's case text; Dragos analysis cited",
+          "caveats": [
+            "Dragos: original malware did not rely on an inherent Schneider product vulnerability",
+            "precise plant not public"
+          ],
+          "attack": [
+            "T0886",
+            "Inhibit Response Function tactic"
+          ],
+          "anatomy": null
+        },
+        {
+          "year": 2019,
+          "case": "Bapco, Bahrain, December 2019 (Dustman): wiper distributed via antivirus console and PsExec; EldoS RawDisk driver; some machines infected; operations continued",
+          "check": "Kaspersky ICS CERT technical analysis; EuRepoC case study",
+          "status": "report-sourced",
+          "report_ref": 16,
+          "case_type": "confirmed intrusion (IT)",
+          "ot_reach": "none (IT only)",
+          "entry": "likely VPN appliance exploitation (Kaspersky ICS CERT); domain and service accounts",
+          "attribution_tier": "unknown",
+          "attribution": "not stated",
+          "caveats": [
+            "Dustman related to ZeroCleare but not the same"
+          ],
+          "attack": []
+        },
+        {
+          "year": 2024,
+          "case": "RECOPE, Costa Rica, November 2024: ransomware on administrative systems; SIG/SAP isolated; fuel sales moved to manual after SAP and SVFA billing at land and aviation terminals became unavailable",
+          "check": "RECOPE management report; local contemporaneous report",
+          "status": "report-sourced",
+          "report_ref": 17,
+          "case_type": "confirmed intrusion (IT)",
+          "ot_reach": "none (IT only); operational dependency",
+          "entry": "not stated",
+          "attribution_tier": "unknown",
+          "attribution": "not stated",
+          "caveats": [
+            "SAP is the named platform, not an identified exploit or responsible party"
+          ],
+          "attack": []
         }
       ],
       "live_match": [
@@ -697,7 +1137,13 @@
         "petrochemical",
         "terminal",
         "tank"
-      ]
+      ],
+      "report_view": {
+        "exposed_technology": "pipeline SCADA, compressor/pump controls, tank loading, trading/dispatch, SIS",
+        "failure_mode": "business-system shutdown, loading disruption, safety-system manipulation",
+        "priority_defense": "IT/OT separation; manual dispatch; SIS independence; vendor access governance",
+        "from": "Global Energy Cyber Threat Intelligence Report, subsector table"
+      }
     },
     {
       "id": "storage",
@@ -750,9 +1196,44 @@
       "how_breach": "Like the fridges this week: a vendor remote-access path or an exposed controller, then a changed setpoint. For a battery that means charge limits and thermal thresholds, where the failure mode is fire rather than spoiled food. No public BESS cyber incident has caused a fire; the vulnerability research exists.",
       "background_cases": [
         {
+          "year": 2023,
+          "case": "Aliquippa water booster station, United States, November 2023 (Unitronics): HMI defacement; booster station placed in manual",
+          "check": "CISA/partner advisory AA23-335A; https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-335a",
+          "status": "report-sourced",
+          "report_ref": 20,
+          "case_type": "adjacent dependency (water)",
+          "ot_reach": "OT reached, no process effect",
+          "entry": "internet-exposed Unitronics Vision PLC/HMI, default passwords over TCP 20256",
+          "attribution_tier": "assessed",
+          "attribution": "IRGC-affiliated CyberAv3ngers (CISA/partner advisory AA23-335A)",
+          "caveats": [
+            "CISA discusses a product CVE but default credentials are the supported mechanism"
+          ],
+          "attack": []
+        },
+        {
           "year": 2024,
           "case": "US House and state inquiries into Chinese-made BESS and inverter hardware with cellular radios; no confirmed attack, a supply-chain concern.",
-          "check": "Congressional letters; Reuters reporting (May 2025) on undocumented communication devices in inverters"
+          "check": "Congressional letters; Reuters reporting (May 2025) on undocumented communication devices in inverters",
+          "status": "background"
+        },
+        {
+          "year": 2024,
+          "case": "Ukrainian district heating, January 2024 (FrostyGoop/BUSTLEBERM): Modbus TCP commands; heat disrupted to 600+ apartment buildings; nearly two days to restore",
+          "check": "Dragos intelligence brief; Dragos technical account",
+          "status": "report-sourced",
+          "report_ref": 9,
+          "case_type": "confirmed intrusion",
+          "ot_reach": "OT process affected",
+          "entry": "internet-exposed ENCO controllers",
+          "attribution_tier": "unknown",
+          "attribution": "unknown; malware-to-event linkage at Dragos's moderate confidence",
+          "caveats": [
+            "retain Dragos's confidence qualification"
+          ],
+          "attack": [
+            "T0831"
+          ]
         }
       ],
       "live_match": [
@@ -763,7 +1244,13 @@
         "setpoint",
         "danfoss",
         "cold"
-      ]
+      ],
+      "report_view": {
+        "exposed_technology": "inverters, RTUs, aggregation gateways, cellular/satellite links, cloud fleet management",
+        "failure_mode": "lost telemetry/control, mass configuration change, supplier compromise",
+        "priority_defense": "fleet asset inventory; signed updates; per-site segmentation; alternate telemetry",
+        "from": "Global Energy Cyber Threat Intelligence Report, subsector table"
+      }
     },
     {
       "id": "evcharging",
@@ -818,12 +1305,14 @@
         {
           "year": 2022,
           "case": "Chargers in Russia displayed pro-Ukraine messages after a Ukrainian supplier's component was repurposed; Isle of Wight chargers showed pornography after a compromise.",
-          "check": "Press reports; charger operator statements"
+          "check": "Press reports; charger operator statements",
+          "status": "background"
         },
         {
           "year": 2024,
           "case": "Pwn2Own Automotive (Tokyo) researchers exploited multiple commercial EV chargers (ChargePoint, Autel, JuiceBox among them).",
-          "check": "Zero Day Initiative results"
+          "check": "Zero Day Initiative results",
+          "status": "background"
         }
       ],
       "live_match": [
@@ -888,12 +1377,30 @@
         {
           "year": 2021,
           "case": "OVHcloud Strasbourg fire destroyed a data centre; not cyber, but the reference case for what loss of a site means to dependent services.",
-          "check": "OVHcloud statements; French investigation"
+          "check": "OVHcloud statements; French investigation",
+          "status": "background"
         },
         {
           "year": 2023,
           "case": "Research disclosures of BMC and DCIM flaws (e.g., CyberPower PowerPanel, Dataprobe iBoot PDU) enabling remote power control, reported by Trellix.",
-          "check": "Trellix research; CISA ICS advisories"
+          "check": "Trellix research; CISA ICS advisories",
+          "status": "background"
+        },
+        {
+          "year": 2023,
+          "case": "Aliquippa water booster station, United States, November 2023 (Unitronics): HMI defacement; booster station placed in manual",
+          "check": "CISA/partner advisory AA23-335A; https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-335a",
+          "status": "report-sourced",
+          "report_ref": 20,
+          "case_type": "adjacent dependency (water)",
+          "ot_reach": "OT reached, no process effect",
+          "entry": "internet-exposed Unitronics Vision PLC/HMI, default passwords over TCP 20256",
+          "attribution_tier": "assessed",
+          "attribution": "IRGC-affiliated CyberAv3ngers (CISA/partner advisory AA23-335A)",
+          "caveats": [
+            "CISA discusses a product CVE but default credentials are the supported mechanism"
+          ],
+          "attack": []
         }
       ],
       "live_match": [
@@ -904,7 +1411,13 @@
         "ai agent",
         "artex",
         "gpu"
-      ]
+      ],
+      "report_view": {
+        "exposed_technology": "pumps, chillers, UPS, generators, BMS, cloud and network links",
+        "failure_mode": "loss of cooling, telemetry, availability or public confidence",
+        "priority_defense": "remote access hardening; independent alarms; tested fallback capacity",
+        "from": "Global Energy Cyber Threat Intelligence Report, subsector table"
+      }
     },
     {
       "id": "lngport",
@@ -961,7 +1474,8 @@
         {
           "year": 2017,
           "case": "NotPetya shut Maersk's global operations and port terminals for days; ~$300M impact reported.",
-          "check": "Maersk interim report 2017"
+          "check": "Maersk interim report 2017",
+          "status": "background"
         },
         {
           "year": 2023,
@@ -981,12 +1495,30 @@
               "Port community systems need the same continuity planning as SCADA",
               "Backups tested for restoration time, not just existence"
             ]
-          }
+          },
+          "status": "background"
         },
         {
           "year": 2024,
           "case": "Widespread GNSS interference in the Baltic and Black Sea affecting shipping and aviation, reported by national authorities.",
-          "check": "national aviation and maritime authority notices"
+          "check": "national aviation and maritime authority notices",
+          "status": "background"
+        },
+        {
+          "year": 2024,
+          "case": "RECOPE, Costa Rica, November 2024: ransomware on administrative systems; SIG/SAP isolated; fuel sales moved to manual after SAP and SVFA billing at land and aviation terminals became unavailable",
+          "check": "RECOPE management report; local contemporaneous report",
+          "status": "report-sourced",
+          "report_ref": 17,
+          "case_type": "confirmed intrusion (IT)",
+          "ot_reach": "none (IT only); operational dependency",
+          "entry": "not stated",
+          "attribution_tier": "unknown",
+          "attribution": "not stated",
+          "caveats": [
+            "SAP is the named platform, not an identified exploit or responsible party"
+          ],
+          "attack": []
         }
       ],
       "live_match": [
@@ -998,7 +1530,13 @@
         "maritime",
         "gnss",
         "satellite"
-      ]
+      ],
+      "report_view": {
+        "exposed_technology": "pipeline SCADA, compressor/pump controls, tank loading, trading/dispatch, SIS",
+        "failure_mode": "business-system shutdown, loading disruption, safety-system manipulation",
+        "priority_defense": "IT/OT separation; manual dispatch; SIS independence; vendor access governance",
+        "from": "Global Energy Cyber Threat Intelligence Report, subsector table"
+      }
     },
     {
       "id": "interconnector",
@@ -1069,17 +1607,37 @@
               "Harden the provider's management plane: it is your attack surface too",
               "Know which remote assets go blind if a carrier fails, and how long you can run blind"
             ]
-          }
+          },
+          "status": "background"
+        },
+        {
+          "year": 2022,
+          "case": "KA-SAT/Viasat and German wind farms, February 2022: German wind-turbine operators lost remote monitoring; generation continued; CERT-EU: likely collateral",
+          "check": "Viasat technical account; CERT-EU report",
+          "status": "report-sourced",
+          "report_ref": 6,
+          "case_type": "third-party spillover",
+          "ot_reach": "loss of view only",
+          "entry": "misconfigured Viasat VPN appliance; trusted management segment; legitimate management commands overwrote modem flash (AcidRain)",
+          "attribution_tier": "assessed",
+          "attribution": "attributed by EU/UK/US to Russia (not restated in case text)",
+          "caveats": [
+            "communications dependency incident, not intrusion into turbine controllers",
+            "Viasat: no evidence the firmware-update channel or satellite was compromised"
+          ],
+          "attack": []
         },
         {
           "year": 2023,
           "case": "Balticconnector gas pipeline and a telecom cable damaged in the Gulf of Finland; Finnish investigation pointed to a ship's anchor.",
-          "check": "Finnish National Bureau of Investigation"
+          "check": "Finnish National Bureau of Investigation",
+          "status": "background"
         },
         {
           "year": 2024,
           "case": "Further Baltic subsea cable damage incidents (Estlink 2, C-Lion1) under investigation by Finland and partners.",
-          "check": "Finnish and Estonian authorities; NATO statements"
+          "check": "Finnish and Estonian authorities; NATO statements",
+          "status": "background"
         }
       ],
       "live_match": [
@@ -1090,7 +1648,13 @@
         "hvdc",
         "cross-border",
         "baltic"
-      ]
+      ],
+      "report_view": {
+        "exposed_technology": "EMS/DMS, substations, RTUs, protection relays, IEC 60870-5-104 / IEC 61850",
+        "failure_mode": "unauthorized switching, relay disruption, loss of view/control",
+        "priority_defense": "protocol-aware monitoring; device configuration baselines; remote access control",
+        "from": "Global Energy Cyber Threat Intelligence Report, subsector table"
+      }
     }
   ]
 }

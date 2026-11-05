@@ -29,6 +29,7 @@
     <button id="btn-register" class="pix">Agent Register</button>
     <button id="btn-dash" class="pix">Dashboard</button>
     <button id="btn-collections" class="pix">Collections</button>
+    <button id="btn-research" class="pix">Research</button>
     <button id="btn-scenarios" class="pix">Scenarios</button>
     <button id="btn-human" class="pix">Human touch</button>
     <button id="btn-board" class="pix">Briefing board</button>
@@ -198,6 +199,14 @@
     <div class="tabs" id="col-tabs"></div>
     <div id="col-body" class="prose"></div>
     <p class="k">Boards: <b>Action Required</b> = items whose recommended action is patch or hunt · <b>Weekly Sync</b> = the Summary tab · <b>Cyber Bytes</b> = the bullets. Export: <a href="data/stix.json" target="_blank" rel="noopener">STIX 2.1 bundle</a> (reports, vulnerabilities, indicators, threat actors, malware, ATT&amp;CK patterns), regenerated every run.</p>
+    <div class="row"><button class="pix">Close</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-research" class="dlg wide">
+  <form method="dialog">
+    <h2>Research <small id="research-meta"></small></h2>
+    <div id="research-body" class="prose"></div>
     <div class="row"><button class="pix">Close</button></div>
   </form>
 </dialog>

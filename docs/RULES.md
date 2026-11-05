@@ -32,6 +32,15 @@ Precedence: a rule here beats a resident's voice; a primary document beats any o
 20. Each run re-pulls two random items from the previous run as a spot check.
 21. Facility dossiers: live cases come from the board and inherit its verdicts. Background cases are historical, from the model's general knowledge, labelled as such, with a pointer to where to check; each run spot-checks two of them against their pointer and records the result.
 
+### 4a. Case counting and labelling (adopted from the Global Energy Cyber Threat Intelligence Report, 2026-11-05)
+33. The unit of analysis is a distinct observed operation against an energy entity or a clearly identified energy dependency. One coordinated campaign is one record, however many sites it touched (Denmark 2023, Poland 2025).
+34. Every case carries a type: confirmed intrusion, attempted intrusion, campaign, third-party spillover, or adjacent dependency (water, data centre). Only direct energy entities count as energy cases.
+35. Excluded from the case count: physical sabotage, drills and simulations, unexploited CVEs, generic threat warnings, advisories, and ransomware claims without corroboration.
+36. Attribution carries a tier: confirmed (legal attribution, acknowledged responsibility, unusually strong official conclusion), assessed (a named government or forensic team), claimed (actor claim only), unknown. Impact and attribution are recorded separately.
+37. Vendor names identify products observed in the affected environment, never proof that the vendor caused the compromise.
+38. ATT&CK mappings are restricted to techniques observed or directly supported by the incident account; plausible techniques are labelled analytical hypotheses. For IT-only ransomware, Enterprise ATT&CK fits better than ICS.
+39. A blank field ("not disclosed") is an evidence gap, never an inference that the technique was absent.
+
 ## 5. Contrarian duties
 22. For every incident: who was NOT affected, and why. Silence in coverage is not safety; say when the answer is bounded by what was reported.
 23. For every incident: what else was happening in cyberspace at the same time that could spill over.

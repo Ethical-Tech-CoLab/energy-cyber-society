@@ -73,11 +73,11 @@
    "bubble": "I have not read the text. So: unverified."
   },
   "archivist": {
-   "briefing": "This week's items map onto the record like this. The European refrigeration attacks (The Hacker News, 2026-11-03; BleepingComputer, 2026-11-04) resemble the 'learn the process, then change a setpoint' phase of Ukraine 2015 at trivial skill, and their vendor path resembles the Triton engineering-workstation path in miniature; trend: campaign, since Danfoss links them to October's French wave. The Zyxel credential theft (BleepingComputer, 2026-11-05) resembles the Danish energy-sector Zyxel firewall campaign of May 2023 reported by SektorCERT; trend: recurring vendor. The Siemens IoT2050 flaw (The Hacker News, 2026-11-03) has no close precedent in the dossiers; trend: new. Background cases are unverified by this system; I spot-checked none this run because the run was hand-curated, and I have logged that.",
+   "briefing": "The archive changed shape this run. A user-provided Global Energy Cyber Threat Intelligence Report (evidence cut-off 2026-11-04) supplied twenty case studies with confidence qualifiers, a counting method and an exclusions list; its 95-record spreadsheet was not attached. I replaced or augmented the dossiers' background cases with these report-sourced cases and adopted its rules as rules 33-39: a campaign is one record, attribution is tiered, vendor names are not culprits, blanks are gaps. Verification status is honest: the report names its primary sources but the PDF text carried no URLs, so every case is 'report-sourced, URL pending' until I resolve them; zero are verified against a fetched primary yet. This week's links: the Zyxel switch campaign resembles Denmark 2023 (SektorCERT); the refrigeration attacks resemble FrostyGoop 2024 (Modbus to exposed controllers) and Poland 2025 (vendor and APN paths into field devices); the Ivanti chain is Colonial's door class. Latin America now has a case: RECOPE, Costa Rica, November 2024, ransomware that forced fuel sales to manual.",
    "answers": {
     "Has this happened before, and what did it cost?": "Setpoint tampering on exposed controllers: yes, repeatedly, at low cost per site; the cost figures that exist are for IT ransomware (Colonial's $4.4M ransom, Halliburton's ~$35M) and they are the Economist's to cite. For refrigeration specifically, no public cost figure exists in the bundle.",
-    "Which past incident does this week's main story resemble?": "The refrigeration wave resembles the Ukraine 2015 operator-level manipulation stripped of its sophistication, and the Danish 2023 Zyxel campaign for the Zyxel item. Both are background cases pending verification.",
-    "Which background cases in the dossiers are still unverified?": "All of them. They come from the model's general knowledge with a year and a pointer. The playbook now spot-checks two per scheduled run; the count verified so far is zero."
+    "Which past incident does this week's main story resemble?": "The refrigeration wave resembles FrostyGoop 2024 in mechanism (commands to internet-exposed controllers) and Poland 2025 in path (vendor and private-APN access into field equipment), both report-sourced. The Zyxel campaign resembles Denmark 2023, where Zyxel firewalls at 22 energy organizations were exploited for configurations and credentials; SektorCERT counted it as one campaign, and so do we.",
+    "Which background cases in the dossiers are still unverified?": "All of them, in two classes. Twenty are report-sourced: they carry the report's primary-source names (CISA, MITRE, Dragos, SektorCERT, CERT Polska, SEC filings, regulators) but no URL yet, so I have not fetched the record myself. The remainder are background from the model's memory. Two spot-checks per scheduled run; verified so far: zero."
    },
    "bubble": "Zero background cases verified so far. Say it plainly."
   },
@@ -824,6 +824,20 @@
       "required_action": null
      }
     }
+   ],
+   "case_type": "advisory (not a case)",
+   "attribution_tier": "unknown",
+   "related_cases": [
+    {
+     "report_ref": 18,
+     "name": "sPower, United States, March 2019",
+     "why": "sPower 2019: an internet-reachable perimeter device at renewable sites; exposure class"
+    },
+    {
+     "report_ref": 12,
+     "name": "Poland distributed energy and CHP, December 2025",
+     "why": "Poland 2025: edge/remote-access path into RTUs and HMIs"
+    }
    ]
   },
   {
@@ -981,6 +995,15 @@
       "required_action": null
      }
     }
+   ],
+   "case_type": "campaign",
+   "attribution_tier": "unknown",
+   "related_cases": [
+    {
+     "report_ref": 8,
+     "name": "Danish energy companies, May 2023 (Zyxel firewall exploitation)",
+     "why": "same device class and tactic: Zyxel edge gear exploited for configs and credentials at Danish energy companies, 2023"
+    }
    ]
   },
   {
@@ -1109,7 +1132,21 @@
     ],
     "attribution_note": "Unattributed by any government or named firm. Candidate classes and what would distinguish them: The same actor or method as October's French supermarket attacks, via the refrigeration vendor path: Sabcobel said the same vulnerability was used; EFS was reached through its equipment provider; same 48-hour window as the supermarket wave | Hacktivist or nuisance actor choosing visible physical effects: Changing setpoints on blood storage is designed for attention; no ransom reported; no claim by Monday night. No state or group is named as responsible here (rule 26)."
    },
-   "cve_details": []
+   "cve_details": [],
+   "case_type": "confirmed intrusion",
+   "attribution_tier": "unknown",
+   "related_cases": [
+    {
+     "report_ref": 9,
+     "name": "Ukrainian district heating, January 2024 (FrostyGoop/BUSTLEBERM)",
+     "why": "exposed controllers driven over an industrial protocol to change a physical process (FrostyGoop, district heating 2024)"
+    },
+    {
+     "report_ref": 12,
+     "name": "Poland distributed energy and CHP, December 2025",
+     "why": "vendor/remote-access path into field equipment (Poland 2025)"
+    }
+   ]
   },
   {
    "headline": "Overnight wave of refrigeration setpoint attacks on supermarkets in Belgium, Sweden, Estonia and elsewhere",
@@ -1231,7 +1268,21 @@
     ],
     "attribution_note": "Unattributed by any government or named firm. Candidate classes and what would distinguish them: One actor or toolkit reusing a vulnerability in widely deployed Danfoss-controlled refrigeration systems across countries: Danfoss says its products were involved as in France in October; three contractors describe the same method; attacks clustered in one night | Copycats after public reporting of the French attacks: Technique is simple and the October coverage was wide. No state or group is named as responsible here (rule 26)."
    },
-   "cve_details": []
+   "cve_details": [],
+   "case_type": "campaign",
+   "attribution_tier": "unknown",
+   "related_cases": [
+    {
+     "report_ref": 9,
+     "name": "Ukrainian district heating, January 2024 (FrostyGoop/BUSTLEBERM)",
+     "why": "FrostyGoop: Modbus commands to internet-exposed controllers; same failure mode"
+    },
+    {
+     "report_ref": 20,
+     "name": "Aliquippa water booster station, United States, November 2023 (Unitronics)",
+     "why": "Aliquippa 2023: internet-exposed controllers with default credentials"
+    }
+   ]
   },
   {
    "headline": "Electric utilities urge Congress to renew the Cybersecurity Information Sharing Act of 2015 before it expires next month",
@@ -1331,7 +1382,10 @@
      "Board-level awareness: detection speed depends on sharing"
     ]
    },
-   "cve_details": []
+   "cve_details": [],
+   "case_type": "policy (not a case)",
+   "attribution_tier": "n/a",
+   "related_cases": []
   },
   {
    "headline": "CISA launches 2026 Critical Infrastructure Security and Resilience campaign: OT security, continuity, recovery planning",
@@ -1427,7 +1481,10 @@
      "Tabletop an OT recovery without IT (the Colonial lesson)"
     ]
    },
-   "cve_details": []
+   "cve_details": [],
+   "case_type": "advisory (not a case)",
+   "attribution_tier": "n/a",
+   "related_cases": []
   },
   {
    "headline": "UK NCSC Annual Review warns of AI-assisted ransomware against critical national infrastructure by 2028",
@@ -1547,7 +1604,10 @@
      "Track AI-assisted exploitation claims in the bundle with the Technologist"
     ]
    },
-   "cve_details": []
+   "cve_details": [],
+   "case_type": "advisory (not a case)",
+   "attribution_tier": "n/a",
+   "related_cases": []
   },
   {
    "headline": "Trump administration ban on foreign grid components raises industry concern over practicality and cost",
@@ -1646,7 +1706,10 @@
      "Hardware bill-of-materials for new procurement"
     ]
    },
-   "cve_details": []
+   "cve_details": [],
+   "case_type": "policy (not a case)",
+   "attribution_tier": "n/a",
+   "related_cases": []
   },
   {
    "headline": "Russia and Ukraine report attacks on emergency alert apps during Kherson ceasefire",
@@ -1748,7 +1811,16 @@
     ],
     "attribution_note": "Unattributed by any government or named firm. Candidate classes and what would distinguish them: a state-aligned actor actors against Ukraine's app, and Ukrainian or pro-Ukrainian actors against a state-aligned actor's: Each government attributes to the other; timing with the Kherson ceasefire; content (nuclear, chemical, street-fight alerts) aimed at panic. No state or group is named as responsible here (rule 26)."
    },
-   "cve_details": []
+   "cve_details": [],
+   "case_type": "confirmed intrusion",
+   "attribution_tier": "claimed",
+   "related_cases": [
+    {
+     "report_ref": 15,
+     "name": "Chornobyl decommissioning site, June 2017 (NotPetya collateral)",
+     "why": "Chornobyl 2017: wartime collateral effects on auxiliary IT around nuclear sites"
+    }
+   ]
   },
   {
    "headline": "INCIBE-CERT relays Siemens advisories: Brotli flaw CVE-2026-111497 in Industrial Edge configurators and RUGGEDCOM APE1808",
@@ -1898,6 +1970,15 @@
       "required_action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines."
      }
     }
+   ],
+   "case_type": "advisory (not a case)",
+   "attribution_tier": "unknown",
+   "related_cases": [
+    {
+     "report_ref": 2,
+     "name": "Ukraine Kyiv-area substation, December 2016 (Industroyer/CrashOverride)",
+     "why": "Industroyer 2016 included a Siemens relay DoS module; RUGGEDCOM sits in the same substation class"
+    }
    ]
   },
   {
@@ -1997,7 +2078,16 @@
      "Alert on config changes and new admin sessions"
     ]
    },
-   "cve_details": []
+   "cve_details": [],
+   "case_type": "advisory (not a case)",
+   "attribution_tier": "n/a",
+   "related_cases": [
+    {
+     "report_ref": 8,
+     "name": "Danish energy companies, May 2023 (Zyxel firewall exploitation)",
+     "why": "Denmark 2023: edge devices at remote energy sites as the entry class"
+    }
+   ]
   },
   {
    "headline": "Attackers chain three Ivanti Connect Secure flaws for unauthenticated root on VPN appliances",
@@ -2110,7 +2200,21 @@
     ],
     "attribution_note": "Unattributed by any government or named firm. Candidate classes and what would distinguish them: State-aligned espionage actors, who have repeatedly targeted Ivanti appliances: The appliance class and the chaining of flaws match prior campaigns attributed by governments to a state-aligned actor actors (background) | Criminal initial-access brokers: Root on a VPN appliance is sellable access. No state or group is named as responsible here (rule 26)."
    },
-   "cve_details": []
+   "cve_details": [],
+   "case_type": "campaign",
+   "attribution_tier": "unknown",
+   "related_cases": [
+    {
+     "report_ref": 5,
+     "name": "Colonial Pipeline, United States, May 2021",
+     "why": "Colonial 2021: a VPN account without MFA was the door"
+    },
+    {
+     "report_ref": 16,
+     "name": "Bapco, Bahrain, December 2019 (Dustman)",
+     "why": "Bapco 2019: likely VPN appliance exploitation before a wiper"
+    }
+   ]
   }
  ],
  "us_status": "No confirmed intrusion at a US electric utility, pipeline, refinery, LNG terminal or nuclear facility appeared in any allowlisted source in the 7-day window ending 2026-11-05. US items are policy and guidance.",
@@ -2468,7 +2572,8 @@
    "Watch the vendor-funded framing: six of sixteen energy items came from one OT trade outlet, three of them company announcements. The UK '2028' headline is one agency press release run by three outlets.",
    "Two US legal items could not be checked against their text because the outlet blocks automated fetching. Treat both as discovery, not fact, until the statute and the executive instrument are read.",
    "Six new residents joined this run (Counsel, Archivist, Ombudsman, Operator, Economist, Geopolitical Analyst); their first briefings are mostly statements of what has not yet been verified, which is the honest starting point.",
-   "Sample size: 38 feeds (36 answered) in 9 languages, 7-day window, 171 stories kept, 21 energy-cyber, 12 board items. Africa, the Middle East and most of Asia still lack regional sources."
+   "Sample size: 38 feeds (36 answered) in 9 languages, 7-day window, 171 stories kept, 21 energy-cyber, 12 board items. Africa, the Middle East and most of Asia still lack regional sources.",
+   "A user-provided threat-intelligence report added twenty report-sourced case studies and a stricter counting method (one campaign, one record); its cases are linked to this week's items but none is yet verified against a fetched primary."
   ]
  },
  "geopolitics": {
@@ -3125,12 +3230,12 @@
    "Africa": "No energy-cyber reporting in the allowlisted feeds this window.",
    "Oceania": "Australia's CISC updated critical-infrastructure risk guidance (Industrial Cyber); no incident.",
    "global": "Siemens IoT2050 exploitation and the Zyxel switch campaign affect devices wherever they sit.",
-   "Latin America": "Feeds added this run (CSIRTAmericas, CERT.br, Ciberseguridad LATAM, Una al día). In this window they carried one energy-relevant item: a Spanish-language relay of the UK NCSC forecast (Ciberseguridad LATAM, 2026-11-04). No Latin American energy incident reported in these feeds; Pemex, Petrobras, Ecopetrol, YPF, CFE and the regional grids are now in the keyword list, so a story about them will be caught."
+   "Latin America": "Feeds added this run (CSIRTAmericas, CERT.br, Ciberseguridad LATAM, Una al día). In this window they carried one energy-relevant item: a Spanish-language relay of the UK NCSC forecast (Ciberseguridad LATAM, 2026-11-04). No Latin American energy incident reported in these feeds; Pemex, Petrobras, Ecopetrol, YPF, CFE and the regional grids are now in the keyword list, so a story about them will be caught. Historical record: RECOPE (Costa Rica, 2024), ransomware in fuel-terminal billing that forced manual fuel sales, from the research report."
   }
  },
  "references": {
   "generated_at": "2026-11-04T23:07:43.271471+00:00",
-  "count": 161,
+  "count": 185,
   "entries": [
    {
     "category": "Board item source",
@@ -4258,6 +4363,174 @@
     "url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-038a",
     "date": "2024-02-07",
     "context": "State prepositioning in US critical infrastructure (PRC-linked; Volt Typhoon pattern)"
+   },
+   {
+    "category": "Research report (user-provided)",
+    "name": "Global Energy Cyber Threat Intelligence Report",
+    "url": "data/research/energy_cyber_cti_report.json",
+    "date": "2026-11-04",
+    "context": "20 case studies, method, ATT&CK mapping, defensive program, exclusions; 95-record ledger not attached"
+   },
+   {
+    "category": "Report-cited source (URL to resolve)",
+    "name": "CISA/FBI DarkSide advisory",
+    "url": "check:report:CISA/FBI DarkSide advisory",
+    "date": "",
+    "context": "named in the research report; Archivist to attach the primary URL"
+   },
+   {
+    "category": "Report-cited source (URL to resolve)",
+    "name": "MITRE Ukraine 2016 case study",
+    "url": "check:report:MITRE Ukraine 2016 case study",
+    "date": "",
+    "context": "named in the research report; Archivist to attach the primary URL"
+   },
+   {
+    "category": "Report-cited source (URL to resolve)",
+    "name": "Dragos FrostyGoop analysis",
+    "url": "check:report:Dragos FrostyGoop analysis",
+    "date": "",
+    "context": "named in the research report; Archivist to attach the primary URL"
+   },
+   {
+    "category": "Report-cited source (URL to resolve)",
+    "name": "CERT-EU Viasat assessment",
+    "url": "check:report:CERT-EU Viasat assessment",
+    "date": "",
+    "context": "named in the research report; Archivist to attach the primary URL"
+   },
+   {
+    "category": "Report-cited source (URL to resolve)",
+    "name": "CERT Polska incident report and follow-up",
+    "url": "check:report:CERT Polska incident report and follow-up",
+    "date": "",
+    "context": "named in the research report; Archivist to attach the primary URL"
+   },
+   {
+    "category": "Report-cited source (URL to resolve)",
+    "name": "EuRepoC methodology and v1.3 dataset",
+    "url": "check:report:EuRepoC methodology and v1.3 dataset",
+    "date": "",
+    "context": "named in the research report; Archivist to attach the primary URL"
+   },
+   {
+    "category": "Report-cited source (URL to resolve)",
+    "name": "NIST SP 800-82 Rev. 3",
+    "url": "check:report:NIST SP 800-82 Rev. 3",
+    "date": "",
+    "context": "named in the research report; Archivist to attach the primary URL"
+   },
+   {
+    "category": "Report-cited source (URL to resolve)",
+    "name": "SektorCERT report",
+    "url": "check:report:SektorCERT report",
+    "date": "",
+    "context": "named in the research report; Archivist to attach the primary URL"
+   },
+   {
+    "category": "Report-cited source (URL to resolve)",
+    "name": "MITRE ATT&CK ICS matrix",
+    "url": "check:report:MITRE ATT&CK ICS matrix",
+    "date": "",
+    "context": "named in the research report; Archivist to attach the primary URL"
+   },
+   {
+    "category": "Report-cited source (URL to resolve)",
+    "name": "CISA OT mitigation fact sheet",
+    "url": "check:report:CISA OT mitigation fact sheet",
+    "date": "",
+    "context": "named in the research report; Archivist to attach the primary URL"
+   },
+   {
+    "category": "Report-cited source (URL to resolve)",
+    "name": "DOE C2M2",
+    "url": "check:report:DOE C2M2",
+    "date": "",
+    "context": "named in the research report; Archivist to attach the primary URL"
+   },
+   {
+    "category": "Report-cited source (URL to resolve)",
+    "name": "NERC CIP standards",
+    "url": "check:report:NERC CIP standards",
+    "date": "",
+    "context": "named in the research report; Archivist to attach the primary URL"
+   },
+   {
+    "category": "Report-cited source (URL to resolve)",
+    "name": "Office of the Privacy Commissioner of Canada findings",
+    "url": "check:report:Office of the Privacy Commissioner of Canada findings",
+    "date": "",
+    "context": "named in the research report; Archivist to attach the primary URL"
+   },
+   {
+    "category": "Report-cited source (URL to resolve)",
+    "name": "Halliburton SEC filings",
+    "url": "check:report:Halliburton SEC filings",
+    "date": "",
+    "context": "named in the research report; Archivist to attach the primary URL"
+   },
+   {
+    "category": "Report-cited source (URL to resolve)",
+    "name": "Mandiant MicroSCADA analysis",
+    "url": "check:report:Mandiant MicroSCADA analysis",
+    "date": "",
+    "context": "named in the research report; Archivist to attach the primary URL"
+   },
+   {
+    "category": "Report-cited source (URL to resolve)",
+    "name": "Kaspersky ICS CERT Dustman analysis",
+    "url": "check:report:Kaspersky ICS CERT Dustman analysis",
+    "date": "",
+    "context": "named in the research report; Archivist to attach the primary URL"
+   },
+   {
+    "category": "Report-cited source (URL to resolve)",
+    "name": "RECOPE management report",
+    "url": "check:report:RECOPE management report",
+    "date": "",
+    "context": "named in the research report; Archivist to attach the primary URL"
+   },
+   {
+    "category": "Report-cited source (URL to resolve)",
+    "name": "National Security Archive FOIA (sPower)",
+    "url": "check:report:National Security Archive FOIA (sPower)",
+    "date": "",
+    "context": "named in the research report; Archivist to attach the primary URL"
+   },
+   {
+    "category": "Report-cited source (URL to resolve)",
+    "name": "Government of India statement (Kudankulam)",
+    "url": "check:report:Government of India statement (Kudankulam)",
+    "date": "",
+    "context": "named in the research report; Archivist to attach the primary URL"
+   },
+   {
+    "category": "Report-cited source (URL to resolve)",
+    "name": "Viasat technical account",
+    "url": "check:report:Viasat technical account",
+    "date": "",
+    "context": "named in the research report; Archivist to attach the primary URL"
+   },
+   {
+    "category": "Report-cited source (URL to resolve)",
+    "name": "ESET Industroyer2 reports",
+    "url": "check:report:ESET Industroyer2 reports",
+    "date": "",
+    "context": "named in the research report; Archivist to attach the primary URL"
+   },
+   {
+    "category": "Report-cited source (URL to resolve)",
+    "name": "UK NCSC 2026 assessment",
+    "url": "check:report:UK NCSC 2026 assessment",
+    "date": "",
+    "context": "named in the research report; Archivist to attach the primary URL"
+   },
+   {
+    "category": "Report-cited source (URL to resolve)",
+    "name": "CISA/partner advisory AA23-335A (Unitronics)",
+    "url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-335a",
+    "date": "2023-12",
+    "context": "the one report citation with a known canonical URL"
    }
   ]
  },
@@ -4294,5 +4567,14 @@
   ],
   "note": "This is a small sample by design: an allowlist of credible feeds, not the open web. Board items are the stories that survived the energy-and-cyber filter and were worth a record. Growth comes from adding feeds to sources.json, not from loosening the rules."
  },
- "schema_version": "2026-11-05.1"
+ "schema_version": "2026-11-05.1",
+ "research": {
+  "report": "Global Energy Cyber Threat Intelligence Report",
+  "cutoff": "2026-11-04",
+  "cases": 20,
+  "ledger_records": 95,
+  "spreadsheet_attached": false,
+  "adopted_rules": "33-39",
+  "file": "data/research/energy_cyber_cti_report.json"
+ }
 }

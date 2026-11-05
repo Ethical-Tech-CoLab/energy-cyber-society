@@ -319,6 +319,54 @@
           "access": "not fetched"
         }
       ]
+    },
+    {
+      "question": "Incident datasets and case registers (discovery, then verify at the primary)",
+      "tier": "curated databases: discovery aids, not final authority",
+      "entries": [
+        {
+          "name": "EuRepoC (European Repository of Cyber Incidents)",
+          "url": "https://eurepoc.eu/",
+          "why": "expert-reviewed dataset; 175 energy-tagged rows in v1.3, most without coded initial access; triangulate, do not cite as final",
+          "access": "free"
+        },
+        {
+          "name": "The Observatory (energy cyber incidents)",
+          "url": "",
+          "why": "has duplicate campaign rows and some wrong sector/attribution fields per the report; discovery only",
+          "access": "free"
+        },
+        {
+          "name": "SektorCERT (Denmark)",
+          "url": "https://sektorcert.dk/",
+          "why": "the Danish 2023 Zyxel campaign report; model for counting a campaign once",
+          "access": "free"
+        },
+        {
+          "name": "CERT Polska incident reports",
+          "url": "https://cert.pl/",
+          "why": "Poland December 2025 distributed-energy campaign and follow-up; already an allowlisted feed",
+          "access": "free"
+        },
+        {
+          "name": "MITRE ATT&CK for ICS case studies and software pages",
+          "url": "https://attack.mitre.org/matrices/ics/",
+          "why": "technical reconstructions (Ukraine 2016, Industroyer, Stuxnet) with evidence limits stated",
+          "access": "free"
+        },
+        {
+          "name": "DOE C2M2",
+          "url": "https://www.energy.gov/ceser/cybersecurity-capability-maturity-model-c2m2",
+          "why": "governance model for the defensive program",
+          "access": "free"
+        },
+        {
+          "name": "Office of the Privacy Commissioner of Canada findings (Nova Scotia Power)",
+          "url": "https://www.priv.gc.ca/",
+          "why": "an unusually detailed official incident reconstruction",
+          "access": "free"
+        }
+      ]
     }
   ]
 }

@@ -35,6 +35,8 @@ forgotten; "blocked" means a person must act. Update this file when something sh
 - MAJOR: human-graded weekly sample with published agreement rate; model classification pass for relevance; language-aware excerpting + NVD/KEV enrichment; computed severity score; restrict attribution hypotheses to named attributors; regional feed-vs-item counts; proxy-first live chat, prompt fencing, CSP
 - MINOR: stable STIX `created` (null-url fixed 2026-11-05); split game.js, CI smoke test, accessibility, mobile; schema_version + JSON Schema; cross-language dedupe and actor aliases; Gazette masthead 'written by AI residents'; rename Cyber Command
 
+- Research report integrated (2026-11-05): 20 report-sourced cases in the dossiers and timeline, rules 33-39, Research tab, related cases on items. OPEN: resolve the report's cited URLs (Archivist); obtain the 95-record spreadsheet from Carolina and import it
+
 ## Blocked: needs Carolina
 - Make the repo public and enable Pages from `main:/docs` (the assistant's permissions refuse public surfaces)
 - `gh auth refresh -h github.com -s workflow`, then un-ignore and push `.github/workflows/daily.yml`

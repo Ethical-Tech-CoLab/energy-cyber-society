@@ -101,6 +101,12 @@ Git history is the second copy. Nothing is overwritten.
 synthesised from the intelligence cycle, ICD 203 analytic standards, ICD 206 sourcing,
 Admiralty grading, structured analytic techniques and the FBI/CISA advisory format.
 
+## Research
+
+`agents/research/` holds user-provided research transcribed to data. The Global Energy Cyber
+Threat Intelligence Report (cut-off 2026-11-04) supplies twenty case studies, the counting and
+attribution rules now in `RULES.md` §4a, and the Research tab.
+
 ## Decisions log
 
 `DECISIONS.md`: every question asked during the build, the answer, and where it lives in the

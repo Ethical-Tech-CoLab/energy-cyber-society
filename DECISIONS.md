@@ -55,6 +55,8 @@ Nothing here is lost in chat.
 | 47 | Peer review, be critical; presentation in under ten minutes | `REVIEW.md` (2 blockers, 7 majors, 6 minors, missing list); `PRESENTATION.md` | both files |
 | 48 | Are all answers documented? | This file | `DECISIONS.md` |
 
+| 49 | Add this research (Global Energy Cyber Threat Intelligence Report PDF) | Transcribed to structured data; 20 cases into dossiers and timeline as 'report-sourced'; its counting and attribution rules adopted as rules 33-39; Research tab; items linked to related cases; spreadsheet not attached, URLs pending | Research tab; `agents/research/`; `RULES.md` §4a |
+
 ## Standing decisions made by the assistant without being asked (so you can reverse them)
 
 - Resident names and the town metaphor; the building names; PIT as the third layer (DoD term).

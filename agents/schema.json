@@ -127,6 +127,22 @@
       "Oceania",
       "global",
       "unknown"
+    ],
+    "case_type": [
+      "confirmed intrusion",
+      "attempted intrusion",
+      "campaign",
+      "third-party spillover",
+      "adjacent dependency",
+      "advisory (not a case)",
+      "policy (not a case)"
+    ],
+    "attribution_tier": [
+      "confirmed",
+      "assessed",
+      "claimed",
+      "unknown",
+      "n/a"
     ]
   },
   "item": {
@@ -230,6 +246,15 @@
       "next_layers": [
         "defensive layers to add"
       ]
-    }
+    },
+    "case_type": "case_type",
+    "attribution_tier": "attribution_tier",
+    "related_cases": [
+      {
+        "report_ref": "int",
+        "name": "string",
+        "why": "string"
+      }
+    ]
   }
 }

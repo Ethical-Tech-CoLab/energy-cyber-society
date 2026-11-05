@@ -7,7 +7,7 @@ const cv = document.getElementById('town');
 const ctx = cv.getContext('2d');
 ctx.imageSmoothingEnabled = false;
 
-let personas, briefing, news, sources, lookmap, buildings, sectors, rulesText, cmdlog, history, aimarket, costModel, evalData;
+let personas, briefing, news, sources, lookmap, buildings, sectors, rulesText, cmdlog, history, aimarket, costModel, evalData, research;
 let agents = [];
 let selected = null;
 let bubbles = [];                      // {agent, text, until}
@@ -709,6 +709,28 @@ $('btn-human').onclick = () => {
   $('dlg-human').showModal();
 };
 
+// research tab: the user-provided threat-intelligence report
+$('btn-research').onclick = () => {
+  const R = research; if (!R) { $('research-body').innerHTML = '<p class="k">no research file</p>'; $('dlg-research').showModal(); return; }
+  $('research-meta').textContent = `${R.title} · evidence cut-off ${R.evidence_cutoff} · ${R.cases.length} case studies · ledger of ${R.ledger.records} records (spreadsheet not attached)`;
+  $('research-body').innerHTML = `<p class="k">${esc(R.provenance_note)}</p>
+    <h3>Three paths an energy cyber event takes</h3><table class="fac-table"><tr><th>Path</th><th>Example</th><th>Controls</th></tr>${R.three_paths.map(x => `<tr><th>${esc(x.path)}</th><td>${esc(x.example)}</td><td>${esc(x.controls)}</td></tr>`).join('')}</table>
+    <p><b>Highest-confidence current concern:</b> ${esc(R.highest_confidence_concern)}</p>
+    <h3>Evidence ledger</h3><p>${R.ledger.records} records across ${R.ledger.country_labels} country labels: ${R.ledger.direct_energy} direct energy, ${R.ledger.supplier_dependency} supplier/dependency, ${R.ledger.adjacent_water} adjacent water, ${R.ledger.cross_sector} cross-sector. Entry path unspecified in ${R.ledger.entry_path_unspecified}; provider unspecified in ${R.ledger.provider_unspecified}. <span class="k">${esc(R.ledger.note)}</span></p>
+    <h3>Method and confidence rules (adopted as rules 33-39)</h3><ul><li><b>Unit:</b> ${esc(R.method.unit)}</li><li><b>Case types:</b> ${esc(R.method.case_types.join('; '))}</li><li><b>Excluded:</b> ${esc(R.method.excluded.join('; '))}</li><li><b>Source rank:</b> ${esc(R.method.source_rank.join(' · '))}</li><li><b>Attribution tiers:</b> ${Object.entries(R.method.attribution_tiers).map(([k, v]) => `<b>${esc(k)}</b> = ${esc(v)}`).join(' · ')}</li><li>${esc(R.method.vendor_rule)}</li><li>${esc(R.method.attack_rule)}</li><li class="k">${esc(R.method.eurepoc_screen)}</li></ul>
+    <h3>Attack surface by boundary</h3><table class="fac-table"><tr><th>Boundary</th><th>How intrusion crosses it</th><th>Evidence-led control</th></tr>${R.boundaries.map(x => `<tr><th>${esc(x.boundary)}</th><td>${esc(x.crossing)}</td><td>${esc(x.control)}</td></tr>`).join('')}</table>
+    <h3>Threats by subsector</h3><table class="fac-table"><tr><th>Subsector</th><th>Exposed technology</th><th>Failure mode</th><th>Priority defence</th></tr>${R.subsectors.map(x => `<tr><th>${esc(x.subsector)}</th><td>${esc(x.technology)}</td><td>${esc(x.failure_mode)}</td><td>${esc(x.defense)}</td></tr>`).join('')}</table>
+    <h3>Timeline of pivotal operations</h3><table class="fac-table"><tr><th>Year</th><th>Case</th><th>System or dependency</th><th>Established result</th></tr>${R.timeline.map(x => `<tr><th>${x.year}</th><td>${esc(x.case)}</td><td>${esc(x.system)}</td><td>${esc(x.result)}</td></tr>`).join('')}</table>
+    <h3>Twenty technical case studies</h3>${R.cases.map(c => `<details class="anat"><summary><b>${c.n}. ${esc(c.name)}</b> · ${esc(c.case_type)} · ${esc(c.ot_reach)} · attribution ${esc(c.attribution.tier)}</summary><p><b>Entry:</b> ${esc(c.entry)}</p><p><b>Effect:</b> ${esc(c.effect)}</p><p><b>Attribution:</b> ${esc(c.attribution.actor)} <span class="k">(${esc(c.attribution.tier)})</span></p>${c.caveats.length ? `<p><b>Caveats:</b> ${c.caveats.map(esc).join(' · ')}</p>` : ''}${c.attack.length ? `<p>${c.attack.map(t => `<span class="ttp">${esc(t)}</span>`).join('')}</p>` : ''}<p class="k">Sources named: ${c.sources.map(esc).join('; ')}${c.known_url ? ` · <a href="${esc(c.known_url)}" target="_blank" rel="noopener">${esc(c.known_url)}</a>` : ' · URLs to resolve'}</p><p class="k">Facilities: ${c.facility_ids.map(id => { const f = sectors && sectors.facilities.find(x => x.id === id); return f ? `<button type="button" class="link" data-facr="${esc(id)}">${esc(f.name)}</button>` : esc(id); }).join(' ')}</p></details>`).join('')}
+    <h3>Cross-case trends</h3><ul>${R.trends.map(t => `<li>${esc(t)}</li>`).join('')}</ul>
+    <h3>ATT&amp;CK for ICS crosswalk</h3><table class="fac-table"><tr><th>Technique</th><th>Evidence in energy cases</th><th>Detection and mitigation</th></tr>${R.attack_mapping.map(x => `<tr><th>${esc(x.technique)}</th><td>${esc(x.evidence)}</td><td>${esc(x.emphasis)}</td></tr>`).join('')}</table>
+    <h3>Prioritised defensive program</h3><ol>${R.defensive_program.map(t => `<li>${esc(t)}</li>`).join('')}</ol>
+    <h3>Evidence limits and exclusions</h3><ul>${R.exclusions.map(t => `<li>${esc(t)}</li>`).join('')}</ul>
+    <p class="k">Sources cited by the report, pending URL resolution by the Archivist: ${R.cited_sources_to_resolve.map(esc).join('; ')}.</p>`;
+  $('research-body').querySelectorAll('[data-facr]').forEach(btn => btn.onclick = () => { $('dlg-research').close(); openFacility(sectors.facilities.find(x => x.id === btn.dataset.facr)); });
+  $('dlg-research').showModal();
+};
+
 // agent register
 $('btn-register').onclick = () => {
   const el = $('register'); const A = (briefing && briefing.agents) || {}; const ev = allEvents();
@@ -749,7 +771,7 @@ function openAnalysis(h) {
   const fields = Object.entries(it).filter(([k]) => !skip.has(k)).map(([k, val]) => `<tr><th>${esc(k.replace(/_/g, ' '))}</th><td>${esc(Array.isArray(val) ? val.join(', ') : (val == null ? '—' : val))}</td></tr>`).join('');
   $('an-title').textContent = h;
   $('an-body').innerHTML = `
-    <div class="badges"><span class="badge sev-${esc(it.severity)}">${esc(it.severity)}</span><span class="badge ${/process|physical|reached/i.test(it.ot_impact) ? 'ot-hit' : ''}">${esc(it.ot_impact)}</span><span class="badge">${esc(it.event_type)}</span><span class="badge">${esc(it.country)}</span><span class="badge">${esc(it.recommended_action)}</span><span class="badge">trust ${esc(it.source_reliability)}${esc(it.info_credibility)}</span></div>
+    <div class="badges"><span class="badge sev-${esc(it.severity)}">${esc(it.severity)}</span><span class="badge ${/process|physical|reached/i.test(it.ot_impact) ? 'ot-hit' : ''}">${esc(it.ot_impact)}</span><span class="badge">${esc(it.event_type)}</span><span class="badge">${esc(it.country)}</span><span class="badge">${esc(it.recommended_action)}</span><span class="badge">trust ${esc(it.source_reliability)}${esc(it.info_credibility)}</span>${it.case_type ? `<span class="badge">${esc(it.case_type)}</span>` : ''}${it.attribution_tier ? `<span class="badge">attribution: ${esc(it.attribution_tier)}</span>` : ''}</div>
     <h3>Why this severity: ${esc(it.severity)}</h3>
     <p class="k">Scale: ${esc((sc.severity_scale || {})[it.severity] || '')}</p>
     ${S.severity ? `<table class="fac-table">${Object.entries(S.severity.factors || {}).map(([k, val]) => `<tr><th>${esc(k.replace(/_/g, ' '))}</th><td>${esc(val)}</td></tr>`).join('')}</table><p><b>Rationale:</b> ${esc(S.severity.rationale)}</p>` : '<p class="k">No scoring rationale recorded for this item (older run).</p>'}
@@ -783,6 +805,7 @@ function openAnalysis(h) {
     ${fac && fac.length ? fac.map(f => `<button type="button" class="pix" data-fac="${esc(f.id)}">${esc(f.name)}</button> `).join('') : '<p class="k">none matched</p>'}
     ${convo.length ? `<h3>What the residents said about it</h3><ul>${convo.map(l => `<li><b>${esc(l.who)}:</b> ${esc(l.line)}</li>`).join('')}</ul>` : ''}
     ${(() => { const co = ((briefing.correlations) || []).filter(c => c.between.includes(h)); const sc = ((briefing.scenarios) || []).find(x => x.story === h); return (co.length ? `<h3>Correlated with</h3><ul>${co.map(c => { const other = c.between.find(x => x !== h); return `<li><b>${esc(other)}</b> · ${esc(c.domains.join(', '))} · ${esc(c.strength)}<div class="k">${esc(c.link)}</div></li>`; }).join('')}</ul>` : '') + (sc ? `<h3>Action, impact, scenarios</h3><p><b>Action now:</b> ${esc(sc.action_now)}</p><p><b>Impact chain:</b> ${esc(sc.impact_chain)}</p><ul>${sc.scenarios.map(x => `<li><b>${esc(x.name)}</b> (${esc(x.likelihood)}): ${esc(x.what)} <span class="k">confirms: ${esc(x.confirms)}</span></li>`).join('')}</ul>` : ''); })()}
+    ${(it.related_cases || []).length ? `<h3>Related cases from the research record</h3><ul>${it.related_cases.map(rc => `<li><b>${esc(rc.name)}</b> <span class="k">(report case ${rc.report_ref})</span><div class="k">${esc(rc.why)}</div></li>`).join('')}</ul><p class="k">Report-sourced cases carry named primary sources; URLs pending. Open the Research tab for the full case.</p>` : ''}
     <h3>Every field of the record</h3>
     <table class="fac-table">${fields}</table>
     <p class="k">STIX: <a href="data/stix.json" target="_blank" rel="noopener">report object in the bundle</a>. Schema: agents/schema.json.</p>`;
@@ -867,6 +890,7 @@ function openFacility(f) {
   const layerRows = ['IT', 'OT', 'PIT'].map(k => `<tr><th>${k}<div class="k">${esc(L[k])}</div></th><td><ul>${(f.layers[k] || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul></td><td><ul>${(f.vulnerabilities[k] || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul></td></tr>`).join('');
   $('fac-body').innerHTML = `
     <div class="fac-vars">${Object.entries(f.variables).map(([k, v]) => `<div><span class="k">${esc(k.replace(/_/g, ' '))}</span><br>${esc(v)}</div>`).join('')}</div>
+    ${f.report_view ? `<div class="verdict"><b>From the research report (subsector table):</b> exposed technology: ${esc(f.report_view.exposed_technology)} · failure mode: ${esc(f.report_view.failure_mode)} · priority defence: ${esc(f.report_view.priority_defense)}</div>` : ''}
     <h3>Technology and vulnerabilities by layer</h3>
     <table class="fac-table"><tr><th>Layer</th><th>What runs here</th><th>Where it breaks</th></tr>${layerRows}</table>
     <h3>Attack types seen against this kind of facility</h3><ul>${f.attacks.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
@@ -874,8 +898,8 @@ function openFacility(f) {
     <details><summary>The generic breach pattern (all facilities) and the Purdue levels it crosses</summary><ol>${sectors.breach_pattern.map(x => `<li>${esc(x)}</li>`).join('')}</ol><p class="k">Purdue reference model: ${esc(sectors.purdue.join(' → '))}</p></details>
     <h3>Live cases from this week's board <span class="k">(verified by the Verifier's cross-check; click Briefing board for the full record)</span></h3>
     ${live.length ? `<ul>${live.map(it => `<li><b>${esc(it.headline)}</b> <span class="badge sev-${esc(it.severity)}">${esc(it.severity)}</span> ${esc(it.ot_impact)}${verdicts[it.headline] ? ` · <i>Verifier: ${esc(verdicts[it.headline].verdict)}</i>` : ''}${srcList(it.sources)}</li>`).join('')}</ul>` : '<p class="k">No item on this week\'s board matched this facility. The absence means the allowlisted feeds reported nothing matching, not that nothing happened.</p>'}
-    <h3>Background cases <span class="k">(historical; from the model\'s general knowledge, not from the feeds; unverified by this system until spot-checked; check where indicated)</span></h3>
-    <ul>${f.background_cases.map(c => `<li><b>${c.year}</b> ${esc(c.case)} <span class="k">Check: ${esc(c.check)}</span>${c.anatomy ? `<details class="anat"><summary>Breach anatomy: attribution, bypass, mechanics, process, layers to add</summary><p><b>Attribution:</b> ${esc(c.anatomy.attribution)}</p><p><b>Bypass:</b> ${esc(c.anatomy.bypass)}</p><p><b>Mechanics:</b> ${esc(c.anatomy.mechanics)}</p><ol>${c.anatomy.process.map(x => `<li>${esc(x)}</li>`).join('')}</ol><p><b>Layers to add:</b></p><ul>${c.anatomy.next_layers.map(x => `<li>${esc(x)}</li>`).join('')}</ul></details>` : ''}</li>`).join('')}</ul>
+    <h3>Historical cases <span class="k">(report-sourced = from the user-provided threat-intelligence report with named primary sources, URLs pending; background = from the model\'s general knowledge; none verified by this system until spot-checked)</span></h3>
+    <ul>${f.background_cases.map(c => `<li><b>${c.year}</b> <span class="badge ${c.status === 'report-sourced' ? 'sev-info' : ''}">${esc(c.status || 'background')}</span> ${esc(c.case)} ${c.case_type ? `<span class="k">· ${esc(c.case_type)} · ${esc(c.ot_reach || '')} · attribution ${esc(c.attribution_tier || '')}</span>` : ''}<span class="k"> Check: ${esc(c.check)}</span>${(c.caveats || []).length ? `<div class="k">Caveats: ${c.caveats.map(esc).join(' · ')}</div>` : ''}${c.anatomy ? `<details class="anat"><summary>Breach anatomy: attribution, bypass, mechanics, process, layers to add</summary><p><b>Attribution:</b> ${esc(c.anatomy.attribution)}</p><p><b>Bypass:</b> ${esc(c.anatomy.bypass)}</p><p><b>Mechanics:</b> ${esc(c.anatomy.mechanics)}</p><ol>${c.anatomy.process.map(x => `<li>${esc(x)}</li>`).join('')}</ol><p><b>Layers to add:</b></p><ul>${c.anatomy.next_layers.map(x => `<li>${esc(x)}</li>`).join('')}</ul></details>` : ''}</li>`).join('')}</ul>
     <details><summary>Methodology, verification and limits of this dossier</summary>
       <p><b>Methodology.</b> The variables are the fields of the intelligence record you specified (subsector, value chain, regulatory trigger, IT-vs-OT impact, asset type). The three layers follow the IT / OT split used throughout, plus PIT, Platform IT, the US DoD term for computing embedded in the asset itself, used here because relays, inverters and safety logic solvers fail differently from servers. The breach pattern is the ICS kill chain (reconnaissance, access, foothold, crossing to OT, learning the process, effect, persistence) mapped onto Purdue levels.</p>
       <p><b>Who verifies.</b> Live cases inherit the Verifier's verdict from the board. Background cases are not yet verified by anyone in this system; they come with a pointer to the primary record, and the playbook makes each scheduled run spot-check two of them against that pointer (rule 21).</p>
@@ -921,7 +945,7 @@ $('btn-look').onclick = () => {
 
 // ---------------------------------------------------------------- boot
 async function boot() {
-  const [p, b, n, src, lk, bl, sc, rt, cl, hs, am, cmd, evd] = await Promise.all([
+  const [p, b, n, src, lk, bl, sc, rt, cl, hs, am, cmd, evd, rsr] = await Promise.all([
     fetch('data/personas.json').then(r => r.json()),
     fetch('data/briefing.json').then(r => r.json()).catch(() => null),
     fetch('data/news.json').then(r => r.json()).catch(() => null),
@@ -935,8 +959,9 @@ async function boot() {
     fetch('data/ai_market.json').then(r => r.json()).catch(() => null),
     fetch('data/cost_model.json').then(r => r.json()).catch(() => null),
     fetch('data/eval.json').then(r => r.json()).catch(() => null),
+    fetch('data/research/energy_cyber_cti_report.json').then(r => r.json()).catch(() => null),
   ]);
-  history = hs; aimarket = am; costModel = cmd; evalData = evd;
+  history = hs; aimarket = am; costModel = cmd; evalData = evd; research = rsr;
   personas = p; briefing = b; news = n; sources = src; lookmap = lk; buildings = bl; sectors = sc; rulesText = rt; cmdlog = cl;
   const openFlags = cmdlog.events.filter(e => e.status === 'open').length; $('btn-command').textContent = `Incident Desk (${openFlags})`;
   if (briefing) {
