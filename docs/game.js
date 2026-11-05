@@ -73,6 +73,7 @@ function drawSprite(kind, x, y) {
   else if (kind === 'datacentre') { P(0, 6, 60, 34, '#2a2f3a'); for (let i = 0; i < 4; i++) { P(4 + i * 14, 10, 10, 26, '#1a1f2a'); P(6 + i * 14, 12, 6, 3, '#4be89a'); P(6 + i * 14, 18, 6, 3, '#4bb3e8'); } P(0, 0, 60, 6, '#9aa3b5'); }
   else if (kind === 'ship') { P(0, 24, 64, 12, '#2c4a8a'); P(8, 20, 48, 4, '#9aa3b5'); P(14, 6, 12, 14, '#e6e9ef'); P(30, 10, 10, 10, '#e6e9ef'); P(44, 10, 10, 10, '#e6e9ef'); P(2, 36, 60, 4, '#4bb3e8'); }
   else if (kind === 'cable') { P(0, 30, 70, 6, '#4bb3e8'); P(10, 10, 16, 20, '#5a5f6b'); P(44, 10, 16, 20, '#5a5f6b'); P(12, 4, 12, 6, '#9aa3b5'); P(46, 4, 12, 6, '#9aa3b5'); P(26, 18, 18, 4, '#e8b04b'); }
+  else if (kind === 'bank') { P(0, 34, 64, 6, '#9aa3b5'); P(4, 12, 56, 22, '#3a3f4a'); for (const dx of [8, 22, 36, 50]) P(dx, 14, 6, 20, '#e6e9ef'); P(0, 6, 64, 6, '#6b7280'); P(28, -2, 8, 8, '#e8d44b'); ctx.fillStyle = '#e8d44b'; ctx.font = '7px "Press Start 2P"'; ctx.textAlign = 'center'; ctx.fillText('$', x + 32, y + 5); }
   else if (kind === 'substation') { rect(455, 330, 50, 40, '#3a3f4a'); rect(460, 318, 6, 12, '#9aa3b5'); rect(494, 318, 6, 12, '#9aa3b5'); rect(466, 312, 28, 6, '#9aa3b5'); ctx.fillStyle = '#e8b04b'; ctx.font = '10px "Press Start 2P"'; ctx.textAlign = 'center'; ctx.fillText('⚡', 480, 356); }
 }
 function drawFacilities() {
@@ -82,6 +83,8 @@ function drawFacilities() {
     else drawSprite('substation', 0, 0);
     ctx.fillStyle = '#05070b'; ctx.fillRect(f.x - 4, f.y + 42, 70, 10); ctx.fillStyle = '#e6e9ef'; ctx.font = '6px "Press Start 2P"'; ctx.textAlign = 'left'; ctx.fillText(f.name.toUpperCase().slice(0, 16), f.x, f.y + 50);
   }
+  // the bank
+  drawSprite('bank', 560, 745); ctx.fillStyle = '#05070b'; ctx.fillRect(556, 787, 70, 10); ctx.fillStyle = '#e8d44b'; ctx.font = '6px "Press Start 2P"'; ctx.textAlign = 'left'; ctx.fillText('BANK', 578, 795);
   // the newsstand
   const n = NEWSSTAND; rect(n.x, n.y + 8, n.w, n.h - 8, '#6b3a1a'); rect(n.x - 4, n.y, n.w + 8, 10, '#e85a4b'); for (let i = 0; i < 4; i++) rect(n.x - 4 + i * 13, n.y, 6, 10, '#f6f6f6');
   rect(n.x + 6, n.y + 14, 14, 18, '#f6f6f6'); rect(n.x + 24, n.y + 14, 14, 18, '#f6f6f6'); rect(n.x + 8, n.y + 17, 10, 2, '#05070b'); rect(n.x + 26, n.y + 17, 10, 2, '#05070b');
@@ -262,7 +265,7 @@ document.getElementById('btn-chatter').onclick = ev => { chatter = !chatter; ev.
 // ---------------------------------------------------------------- interaction
 cv.addEventListener('mousemove', ev => {
   const r = cv.getBoundingClientRect(); const x = (ev.clientX - r.left) * (W / r.width), y = (ev.clientY - r.top) * (H / r.height);
-  const over = agents.some(a => x >= a.x - 6 && x <= a.x + 16 * S + 6 && y >= a.y - 6 && y <= a.y + 24 * S + 14) || BUILDINGS.some(b => x >= b.x - 6 && x <= b.x + b.w + 6 && y >= b.y - 36 && y <= b.y + b.h) || (sectors && sectors.facilities.some(f => x >= f.x - 6 && x <= f.x + 66 && y >= f.y - 10 && y <= f.y + 54)) || (x >= NEWSSTAND.x - 8 && x <= NEWSSTAND.x + NEWSSTAND.w + 8 && y >= NEWSSTAND.y - 4 && y <= NEWSSTAND.y + NEWSSTAND.h + 12);
+  const over = agents.some(a => x >= a.x - 6 && x <= a.x + 16 * S + 6 && y >= a.y - 6 && y <= a.y + 24 * S + 14) || BUILDINGS.some(b => x >= b.x - 6 && x <= b.x + b.w + 6 && y >= b.y - 36 && y <= b.y + b.h) || (sectors && sectors.facilities.some(f => x >= f.x - 6 && x <= f.x + 66 && y >= f.y - 10 && y <= f.y + 54)) || (x >= NEWSSTAND.x - 8 && x <= NEWSSTAND.x + NEWSSTAND.w + 8 && y >= NEWSSTAND.y - 4 && y <= NEWSSTAND.y + NEWSSTAND.h + 12) || (x >= 554 && x <= 630 && y >= 738 && y <= 800);
   cv.style.cursor = over ? 'pointer' : 'default';
 });
 cv.addEventListener('click', ev => {
@@ -272,6 +275,7 @@ cv.addEventListener('click', ev => {
   if (hit) { select(hit); return; }
   const fac = sectors && sectors.facilities.find(f => x >= f.x - 6 && x <= f.x + 66 && y >= f.y - 10 && y <= f.y + 54);
   if (fac) { openFacility(fac); return; }
+  if (x >= 554 && x <= 630 && y >= 738 && y <= 800) { openBank(); return; }
   if (x >= NEWSSTAND.x - 8 && x <= NEWSSTAND.x + NEWSSTAND.w + 8 && y >= NEWSSTAND.y - 4 && y <= NEWSSTAND.y + NEWSSTAND.h + 12) { window.open('gazette.html', '_blank', 'noopener'); return; }
   const bld = BUILDINGS.find(b => x >= b.x - 6 && x <= b.x + b.w + 6 && y >= b.y - 36 && y <= b.y + b.h);
   if (bld) { if (bld.key === 'Cyber Command') openCommand(); else selectBuilding(bld); }
@@ -592,7 +596,26 @@ function renderCost() {
     <h3>Energy</h3><p class="k">${esc(cm.energy.note)}</p>
     <h3>Notes</h3><p class="k">${esc(cm.price_source)} ${esc(cm.cloud_routine_note)} Build cost of this town in the authoring session: about $50 of model usage on 2026-11-04 (one-off). Full sheet: <a href="COST.md" target="_blank" rel="noopener">COST.md</a> · inputs checklist: Compute Exchange building.</p>`;
 }
+function openBank() {
+  const cm = costModel; const runs = (history && history.runs) || []; const P = cm ? cm.prices_per_mtok[$('cost-model').value || 'claude-sonnet-5-5'] : null;
+  const est = cm ? cm.stages.reduce((a, st) => a + ((st.model_calls || 0) * (cm.bundle_tokens + cm.system_tokens + cm.per_call_overhead) - (st.model_calls ? (st.model_calls - 1) * cm.bundle_tokens : 0)) / 1e6 * P.input + (st.model_calls ? (st.model_calls - 1) * cm.bundle_tokens : 0) / 1e6 * P.cache_read + (st.tokens_out || 0) / 1e6 * P.output, 0) : 0;
+  const rows = runs.map(r => { const u = r.usage; const usd = u ? (u.input - (u.cached || 0)) / 1e6 * P.input + (u.cached || 0) / 1e6 * P.cache_read + u.output / 1e6 * P.output : null; return { ...r, usd, kind: u ? 'measured' : (String(r.model).includes('session') ? 'session (billed to the authoring session, est. ≈ $0)' : 'estimate'), shown: usd != null ? usd : (String(r.model).includes('session') ? 0 : est) }; });
+  const total = rows.reduce((a, r) => a + r.shown, 0);
+  let budget = 0; try { budget = +localStorage.getItem('ecs-budget') || 0; } catch {}
+  const perDay = +$('cost-runs').value || 2; const month = est * perDay * 30;
+  const fmt = v => '$' + (v < 0.01 ? v.toFixed(4) : v.toFixed(2));
+  $('bank-body').innerHTML = `
+    <div class="tiles"><div class="tile"><div class="tv">${fmt(total)}</div><div class="tl">spent across ${rows.length} archived run${rows.length === 1 ? '' : 's'} (measured where the API ran)</div></div>
+      <div class="tile"><div class="tv">${fmt(month)}</div><div class="tl">projected month at ${perDay} runs/day on ${esc($('cost-model').value)}</div></div>
+      <div class="tile ${budget && month > budget ? 'warn' : ''}"><div class="tv">${budget ? fmt(budget) : '—'}</div><div class="tl">${budget ? (month > budget ? 'BUDGET EXCEEDED by projection' : 'monthly budget; projection within it') : 'no budget set'}</div></div></div>
+    <label class="k">Monthly budget (USD, stored in this browser): <input id="bank-budget" type="number" min="0" value="${budget || ''}" style="width:120px"></label>
+    <table class="perf-table"><tr><th>Run (UTC)</th><th>Model</th><th>Calls</th><th>Tokens in (cached)</th><th>Tokens out</th><th>Cost</th><th>Basis</th></tr>${rows.map(r => `<tr><td>${esc(r.run.slice(0, 16).replace('T', ' '))}</td><td>${esc(r.model)}</td><td>${r.usage ? r.usage.calls : '—'}</td><td>${r.usage ? (r.usage.input / 1000).toFixed(0) + 'k (' + ((r.usage.cached || 0) / 1000).toFixed(0) + 'k)' : '—'}</td><td>${r.usage ? (r.usage.output / 1000).toFixed(1) + 'k' : '—'}</td><td>${fmt(r.shown)}</td><td class="k">${esc(r.kind)}</td></tr>`).join('') || '<tr><td colspan="7" class="k">no runs archived yet</td></tr>'}</table>
+    <p class="k">Measured rows come from <code>usage</code> written by run_agents.py when the API ran. Session rows were curated by a person with an assistant and are billed to that session, not to this pipeline (the build session cost about $50 on 2026-11-04). Estimates use the cost model; change model and cadence in the Cost &amp; energy tab. Energy is not published by the provider; see that tab for the assumption field.</p>`;
+  $('bank-budget').oninput = ev => { try { localStorage.setItem('ecs-budget', ev.target.value); } catch {} openBank(); };
+  $('dlg-bank').showModal();
+}
 $('btn-cost').onclick = () => { renderCost(); $('dlg-cost').showModal(); };
+$('btn-bank').onclick = openBank;
 ['cost-model', 'cost-runs', 'cost-cache', 'cost-wh'].forEach(id => $(id).addEventListener('input', renderCost));
 
 // history: the append-only archive of every run

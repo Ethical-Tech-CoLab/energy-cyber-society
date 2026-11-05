@@ -76,6 +76,11 @@
       "resident": "technologist",
       "what": "Where the AI market is watched: models, agents, prices, energy and water use, makers and valuations, and the full inputs checklist behind any agent, including this one.",
       "data": "Reads the wide bucket, maker pricing pages, agency energy reports, COST.md and briefing.usage. Writes the AI-market note and keeps agents/ai_market.json."
+    },
+    "Bank": {
+      "resident": null,
+      "what": "Where the money is kept in view. The Bank shows what each archived run cost (measured when the API ran, estimated when a person curated), the running total, the projected month at the chosen model and cadence, and the budget you set. The Economist and the Technologist report here; the Bank itself only counts.",
+      "data": "Reads docs/data/history.json (per-run usage), docs/data/cost_model.json (prices and stage estimates) and this browser's budget setting. Writes nothing; the budget lives in your browser."
     }
   }
 }

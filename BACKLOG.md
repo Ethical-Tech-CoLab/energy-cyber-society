@@ -15,6 +15,7 @@ forgotten; "blocked" means a person must act. Update this file when something sh
 - The Gazette: broadsheet printed from the data, with the ten-threat box
 - Per-layer geopolitical analysis (theatres, IT/OT/PIT, subsectors, absent theatres)
 - AI-market inputs checklist (`agents/ai_market.json`) and the Technologist's note
+- The Bank (building + tab): per-run spend from history, running total, projected month, browser-stored budget with warning
 - Cost & energy tab (interactive: model, runs/day, caching, energy assumption; per stage, per resident, per question ledger); feeds in 9 languages (34 feeds)
 - Breach anatomy layer on every item and on key background cases (attribution hypotheses with reasoning, bypass, mechanics, full process, layers to add)
 - Append-only archive of every run (docs/archive/, ARCHIVE.md, History tab, Gazette ?run=); clickable sources in every view and a Sources & references index; research feeds (arXiv cs.CR, eess.SY), magazine (WIRED), think tank (CSIS), independent (Schneier), vendor research (Kaspersky ICS CERT) added to the allowlist

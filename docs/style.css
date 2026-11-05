@@ -148,3 +148,4 @@ button.link{background:none;border:0;color:var(--accent);cursor:pointer;font-fam
 
 .cost-controls{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px}.cost-controls label{font-size:11px;color:var(--mute);display:flex;flex-direction:column;gap:4px}.cost-controls select,.cost-controls input{background:#0b0e14;border:2px solid var(--line);color:var(--ink);padding:6px;font-family:var(--font);font-size:12px;min-width:140px}
 #cost-body{max-height:64vh}
+#bank-body{max-height:64vh}#bank-body input{background:#0b0e14;border:2px solid var(--line);color:var(--ink);padding:4px;font-family:var(--font)}
