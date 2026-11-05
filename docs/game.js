@@ -7,7 +7,7 @@ const cv = document.getElementById('town');
 const ctx = cv.getContext('2d');
 ctx.imageSmoothingEnabled = false;
 
-let personas, briefing, news, sources, lookmap, buildings;
+let personas, briefing, news, sources, lookmap, buildings, sectors, rulesText, cmdlog, history;
 let agents = [];
 let selected = null;
 let bubbles = [];                      // {agent, text, until}
@@ -25,6 +25,7 @@ const BUILDINGS = [
   { key: "Devil's Advocate",  x: 700, y: 340, w: 160, h: 115, color: '#5a2c2c', roof: '#e85a4b' },
   { key: 'Verification Office', x: 400, y: 440, w: 160, h: 80, color: '#3a3f4a', roof: '#e6e9ef' },
   { key: 'Library',            x: 40,  y: 470, w: 120, h: 70, color: '#4a4420', roof: '#e8d44b' },
+  { key: 'Cyber Command',      x: 700, y: 470, w: 150, h: 70, color: '#1f2a44', roof: '#4bb3e8' },
 ];
 const PLAZA = { x: 380, y: 300, w: 200, h: 120 };
 
@@ -44,16 +45,36 @@ function drawGround() {
   rect(205, 288, 26, 60, '#6b5f4a'); rect(775, 288, 26, 60, '#6b5f4a');
   rect(PLAZA.x, PLAZA.y, PLAZA.w, PLAZA.h, '#7a6c55'); rect(PLAZA.x + PLAZA.w/2 - 13, PLAZA.y + PLAZA.h, 26, 30, '#6b5f4a');
   for (let i = 0; i < 30; i++) rect(PLAZA.x + (i * 37) % PLAZA.w, PLAZA.y + (i * 53) % PLAZA.h, S, S, '#8a7b62');
-  // the substation in the plaza: the town's reason to exist
-  rect(455, 330, 50, 40, '#3a3f4a'); rect(460, 318, 6, 12, '#9aa3b5'); rect(494, 318, 6, 12, '#9aa3b5');
-  rect(466, 312, 28, 6, '#9aa3b5');
-  ctx.fillStyle = '#e8b04b'; ctx.font = '10px "Press Start 2P"'; ctx.textAlign = 'center';
-  ctx.fillText('⚡', 480, 356);
   // power lines
   ctx.strokeStyle = '#9aa3b5'; ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(463, 318); ctx.lineTo(0, 240); ctx.moveTo(497, 318); ctx.lineTo(W, 240); ctx.stroke();
 }
 
+const NEWSSTAND = { x: 300, y: 300, w: 44, h: 40 };
+function drawSprite(kind, x, y) {
+  const P = (cx, cy, w, h, c) => rect(x + cx, y + cy, w, h, c);
+  if (kind === 'nuclear') { P(6, 10, 22, 30, '#9aa3b5'); P(2, 6, 30, 6, '#7a8395'); P(34, 18, 14, 22, '#5a6373'); P(36, 8, 10, 12, '#f6f6f6'); }
+  else if (kind === 'plant') { P(0, 16, 44, 24, '#5a5f6b'); P(6, 0, 8, 20, '#8a8f9b'); P(20, 4, 8, 16, '#8a8f9b'); P(4, -8, 12, 8, '#c9ccd4'); P(18, -4, 12, 6, '#c9ccd4'); }
+  else if (kind === 'wind') { for (const dx of [0, 24]) { P(dx + 6, 10, 4, 30, '#e6e9ef'); P(dx + 2, 8, 12, 4, '#e6e9ef'); P(dx + 6, 0, 4, 10, '#e6e9ef'); } P(44, 28, 20, 12, '#2c4a8a'); P(46, 30, 16, 8, '#4bb3e8'); }
+  else if (kind === 'well') { P(10, 0, 4, 36, '#8a6a3a'); P(0, 36, 24, 4, '#5a4a2c'); P(2, 6, 20, 4, '#8a6a3a'); P(18, 10, 4, 14, '#8a6a3a'); P(28, 24, 20, 16, '#3a3f4a'); }
+  else if (kind === 'pipeline') { P(0, 18, 60, 8, '#8a8f9b'); P(10, 6, 20, 24, '#5a5f6b'); P(14, 0, 12, 8, '#9aa3b5'); P(40, 12, 8, 20, '#6b5f4a'); }
+  else if (kind === 'refinery') { P(0, 14, 24, 26, '#6b6f7b'); P(28, 0, 8, 40, '#8a8f9b'); P(40, 8, 20, 32, '#5a5f6b'); P(44, 12, 12, 10, '#e8b04b'); P(28, -6, 8, 6, '#e85a4b'); }
+  else if (kind === 'battery') { for (const dx of [0, 18, 36]) { P(dx, 8, 14, 30, '#2c4a3e'); P(dx + 2, 10, 10, 10, '#4be89a'); } P(0, 0, 50, 6, '#9aa3b5'); }
+  else if (kind === 'ev') { P(0, 0, 14, 34, '#3a3f4a'); P(2, 2, 10, 8, '#4bb3e8'); P(20, 0, 14, 34, '#3a3f4a'); P(22, 2, 10, 8, '#4bb3e8'); P(0, 34, 40, 6, '#5a5f6b'); ctx.fillStyle = '#e8d44b'; ctx.font = '8px "Press Start 2P"'; ctx.textAlign = 'left'; ctx.fillText('⚡', x + 4, y + 24); }
+  else if (kind === 'substation') { rect(455, 330, 50, 40, '#3a3f4a'); rect(460, 318, 6, 12, '#9aa3b5'); rect(494, 318, 6, 12, '#9aa3b5'); rect(466, 312, 28, 6, '#9aa3b5'); ctx.fillStyle = '#e8b04b'; ctx.font = '10px "Press Start 2P"'; ctx.textAlign = 'center'; ctx.fillText('⚡', 480, 356); }
+}
+function drawFacilities() {
+  if (!sectors) return;
+  for (const f of sectors.facilities) {
+    if (f.sprite !== 'substation') { drawSprite(f.sprite, f.x, f.y); }
+    else drawSprite('substation', 0, 0);
+    ctx.fillStyle = '#05070b'; ctx.fillRect(f.x - 4, f.y + 42, 70, 10); ctx.fillStyle = '#e6e9ef'; ctx.font = '6px "Press Start 2P"'; ctx.textAlign = 'left'; ctx.fillText(f.name.toUpperCase().slice(0, 16), f.x, f.y + 50);
+  }
+  // the newsstand
+  const n = NEWSSTAND; rect(n.x, n.y + 8, n.w, n.h - 8, '#6b3a1a'); rect(n.x - 4, n.y, n.w + 8, 10, '#e85a4b'); for (let i = 0; i < 4; i++) rect(n.x - 4 + i * 13, n.y, 6, 10, '#f6f6f6');
+  rect(n.x + 6, n.y + 14, 14, 18, '#f6f6f6'); rect(n.x + 24, n.y + 14, 14, 18, '#f6f6f6'); rect(n.x + 8, n.y + 17, 10, 2, '#05070b'); rect(n.x + 26, n.y + 17, 10, 2, '#05070b');
+  ctx.fillStyle = '#05070b'; ctx.fillRect(n.x - 6, n.y + n.h + 2, 56, 10); ctx.fillStyle = '#e8b04b'; ctx.font = '6px "Press Start 2P"'; ctx.textAlign = 'left'; ctx.fillText('GAZETTE', n.x - 2, n.y + n.h + 10);
+}
 function drawBuilding(b, lit) {
   rect(b.x, b.y, b.w, b.h, b.color);
   rect(b.x - 6, b.y - 18, b.w + 12, 22, b.roof);
@@ -181,6 +202,7 @@ function render() {
   drawGround();
   // depth sort: buildings then agents by y
   for (const b of BUILDINGS) drawBuilding(b, selected && selected.p.building === b.key);
+  drawFacilities();
   const sorted = [...agents].sort((a, b) => a.y - b.y);
   for (const a of sorted) {
     if (a === selected) { ctx.fillStyle = 'rgba(75,232,154,.25)'; ctx.beginPath(); ctx.ellipse(a.x + 8 * S, a.y + 23 * S, 30, 10, 0, 0, Math.PI * 2); ctx.fill(); }
@@ -226,7 +248,7 @@ document.getElementById('btn-chatter').onclick = ev => { chatter = !chatter; ev.
 // ---------------------------------------------------------------- interaction
 cv.addEventListener('mousemove', ev => {
   const r = cv.getBoundingClientRect(); const x = (ev.clientX - r.left) * (W / r.width), y = (ev.clientY - r.top) * (H / r.height);
-  const over = agents.some(a => x >= a.x - 6 && x <= a.x + 16 * S + 6 && y >= a.y - 6 && y <= a.y + 24 * S + 14) || BUILDINGS.some(b => x >= b.x - 6 && x <= b.x + b.w + 6 && y >= b.y - 36 && y <= b.y + b.h);
+  const over = agents.some(a => x >= a.x - 6 && x <= a.x + 16 * S + 6 && y >= a.y - 6 && y <= a.y + 24 * S + 14) || BUILDINGS.some(b => x >= b.x - 6 && x <= b.x + b.w + 6 && y >= b.y - 36 && y <= b.y + b.h) || (sectors && sectors.facilities.some(f => x >= f.x - 6 && x <= f.x + 66 && y >= f.y - 10 && y <= f.y + 54)) || (x >= NEWSSTAND.x - 8 && x <= NEWSSTAND.x + NEWSSTAND.w + 8 && y >= NEWSSTAND.y - 4 && y <= NEWSSTAND.y + NEWSSTAND.h + 12);
   cv.style.cursor = over ? 'pointer' : 'default';
 });
 cv.addEventListener('click', ev => {
@@ -234,8 +256,11 @@ cv.addEventListener('click', ev => {
   const x = (ev.clientX - r.left) * (W / r.width), y = (ev.clientY - r.top) * (H / r.height);
   const hit = [...agents].reverse().find(a => x >= a.x - 6 && x <= a.x + 16 * S + 6 && y >= a.y - 6 && y <= a.y + 24 * S + 14);
   if (hit) { select(hit); return; }
+  const fac = sectors && sectors.facilities.find(f => x >= f.x - 6 && x <= f.x + 66 && y >= f.y - 10 && y <= f.y + 54);
+  if (fac) { openFacility(fac); return; }
+  if (x >= NEWSSTAND.x - 8 && x <= NEWSSTAND.x + NEWSSTAND.w + 8 && y >= NEWSSTAND.y - 4 && y <= NEWSSTAND.y + NEWSSTAND.h + 12) { window.open('gazette.html', '_blank', 'noopener'); return; }
   const bld = BUILDINGS.find(b => x >= b.x - 6 && x <= b.x + b.w + 6 && y >= b.y - 36 && y <= b.y + b.h);
-  if (bld) selectBuilding(bld);
+  if (bld) { if (bld.key === 'Cyber Command') openCommand(); else selectBuilding(bld); }
 });
 
 const $ = id => document.getElementById(id);
@@ -257,7 +282,7 @@ function select(a) {
   if (briefing && briefing.verification && a.p.id === 'verifier') addMsg('Audit ' + (briefing.verification.run_at || '').slice(0, 16).replace('T', ' ') + ' UTC: ' + briefing.verification.summary, 'sys');
   if (briefing && briefing.model === 'fallback-headlines') addMsg('Headlines-only mode: the daily agent run has not happened yet, so this is the wire, not analysis. Add your key in Settings for a live answer.', 'sys');
   const sg = $('suggest'); sg.innerHTML = '';
-  a.p.questions.forEach(q => { const btn = document.createElement('button'); btn.textContent = q; btn.onclick = () => ask(q); sg.appendChild(btn); });
+  [...a.p.questions, 'Which CVEs on the board are being exploited, and by whom?', 'What novel TTPs appeared this week?', 'Which actors are targeting energy right now?'].forEach(q => { const btn = document.createElement('button'); btn.textContent = q; btn.onclick = () => ask(q); sg.appendChild(btn); });
   updateLiveNote();
 }
 function selectBuilding(b) {
@@ -321,7 +346,9 @@ async function ask(q) {
   if (canned && !isLive()) { setTimeout(() => addMsg(canned, 'them'), 350); return; }
   if (!isLive()) { addMsg('I can only answer the suggested questions until you give the page a model. Open Settings and add an API key or a proxy URL.', 'sys'); return; }
   const wait = addMsg('…', 'them');
-  try { wait.textContent = await callModel(p, q); }
+  try { const ans = await callModel(p, q); wait.textContent = ans;
+    if (!/\([A-Z][^)]{2,}\)/.test(ans) && !/cannot verify/i.test(ans)) sessionFlag('unsourced-claim', p.id, q.slice(0, 80), 'Live answer carried no (Source) citation.');
+    if (/\[(speculation|unverified|inference)\]/i.test(ans)) sessionFlag('labelled-uncertain', p.id, q.slice(0, 80), 'Live answer contained an uncertainty label.'); }
   catch (e) { wait.className = 'msg sys'; wait.textContent = 'Could not reach the model: ' + e.message; if (canned) addMsg(canned, 'them'); }
 }
 $('ask').addEventListener('submit', ev => { ev.preventDefault(); const v = $('ask-input').value.trim(); if (!v) return; $('ask-input').value = ''; ask(v); });
@@ -388,6 +415,185 @@ $('btn-summary').onclick = () => {
   $('dlg-summary').showModal();
 };
 
+// cyber command
+function sessionFlags() { try { return JSON.parse(localStorage.getItem('ecs-flags') || '[]'); } catch { return []; } }
+function sessionFlag(type, agent, item, detail) {
+  const ev = { at: new Date().toISOString(), run: 'browser-session', type, agent, item, detail, severity: 'warn', status: 'open' };
+  const all = sessionFlags(); all.push(ev); try { localStorage.setItem('ecs-flags', JSON.stringify(all.slice(-200))); } catch {}
+  addMsg('⚑ Reported to Cyber Command: ' + detail, 'sys');
+  $('btn-command').textContent = `Cyber Command (${cmdlog.events.filter(e => e.status === 'open').length + all.length})`;
+}
+function allEvents() { return [...(cmdlog ? cmdlog.events : []), ...sessionFlags()].sort((a, b) => b.at.localeCompare(a.at)); }
+function openCommand() {
+  const ev = allEvents(); const open = ev.filter(e => e.status === 'open');
+  const byType = {}; open.forEach(e => (byType[e.type] = byType[e.type] || []).push(e));
+  $('cmd-meta').textContent = `${open.length} open flags · ${ev.length} events in history · log updated ${esc(((cmdlog && cmdlog.updated_at) || '').slice(0, 16).replace('T', ' '))} UTC`;
+  $('cmd-open').innerHTML = Object.entries(byType).sort((a, b) => b[1].length - a[1].length).map(([t, es]) => `<details ${t === 'invented-suspected' || t === 'contradiction' ? 'open' : ''}><summary><span class="badge ${es[0].severity === 'critical' ? 'sev-critical' : es[0].severity === 'info' ? 'sev-info' : 'sev-high'}">${esc(t)}</span> ${es.length}</summary><ul>${es.map(e => `<li><b>${esc(e.agent)}</b> · ${esc(e.item || '(run)')}<br><span class="k">${esc(e.detail)}</span> <button type="button" class="link" data-verify="${esc(e.item)}">verify</button></li>`).join('')}</ul></details>`).join('') || '<p class="k">No open flags.</p>';
+  $('cmd-history').innerHTML = `<table class="perf-table"><tr><th>When (UTC)</th><th>Run</th><th>Agent</th><th>Type</th><th>Item</th><th>Status</th></tr>${ev.map(e => `<tr><td>${esc(e.at.slice(0, 16).replace('T', ' '))}</td><td>${esc(String(e.run).slice(0, 10))}</td><td>${esc(e.agent)}</td><td>${esc(e.type)}</td><td>${esc((e.item || '').slice(0, 70))}</td><td>${esc(e.status)}</td></tr>`).join('')}</table>`;
+  const sel = $('verify-pick'); sel.innerHTML = '<option value="">— pick a board item —</option>' + ((briefing && briefing.items) || []).map(it => `<option>${esc(it.headline)}</option>`).join('');
+  $('verify-out').innerHTML = '';
+  $('cmd-open').querySelectorAll('[data-verify]').forEach(btn => btn.onclick = () => verifyText(btn.dataset.verify));
+  $('dlg-command').showModal();
+}
+function verifyText(q) {
+  q = (q || '').trim(); if (!q) return; const out = $('verify-out'); const ql = q.toLowerCase();
+  const words = ql.match(/[a-z0-9]{4,}/g) || []; const score = t => words.filter(w => t.toLowerCase().includes(w)).length / Math.max(1, words.length);
+  const items = ((briefing && briefing.items) || []).map(it => ({ it, s: score(it.headline + ' ' + it.so_what) })).filter(x => x.s >= 0.3).sort((a, b) => b.s - a.s).slice(0, 3);
+  const stories = (news ? [...news.energy, ...news.wide] : []).map(st => ({ st, s: score(st.title + ' ' + st.summary) })).filter(x => x.s >= 0.3).sort((a, b) => b.s - a.s).slice(0, 5);
+  const V = (briefing && briefing.verification) || {};
+  let html = `<p><b>Checking:</b> ${esc(q)}</p>`;
+  if (!items.length && !stories.length) html += `<p class="sev-critical badge">NOT IN THE BUNDLE</p><p>No fetched story or board item matches this text. If a resident said it, it is either unsourced or invented; it has been reported.</p>`;
+  if (items.length) html += `<h4>Board items</h4>` + items.map(({ it }) => { const v = V.verdicts && V.verdicts[it.headline]; const c = V.crosschecks && V.crosschecks[it.headline]; const r = sources && sources.items && sources.items[it.headline];
+    return `<div class="item"><b>${esc(it.headline)}</b><div class="badges"><span class="badge sev-${esc(it.severity)}">${esc(it.severity)}</span><span class="badge">reliability ${esc(it.source_reliability)} · credibility ${esc(it.info_credibility)} · ${esc(it.claim_vs_confirmed)}</span></div>
+      <div>Sources: ${(it.sources || []).map(s => s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a> ${esc(s.date || '')}` : esc(s.name)).join(' · ')}</div>
+      ${v ? `<div class="verdict"><b>Verifier:</b> ${esc(v.verdict)} — ${esc(v.reason)}</div>` : ''}
+      ${c ? `<div class="xcheck"><b>Cross-check:</b> ${esc(c.verdict)}<br><b>Agree:</b> ${esc(c.agree)}<br><b>Differ:</b> ${esc(c.differ)}</div>` : ''}
+      ${r ? `<details class="direct"><summary>Pulled text (${(r.sources || []).length} outlet, ${(r.primary || []).filter(x => x.excerpts && x.excerpts.length).length} primary)</summary>${[...(r.sources || []), ...(r.primary || [])].filter(x => x.excerpts && x.excerpts.length).map(x => `<div class="pulled"><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name || x.url.slice(0, 60))}</a>${x.excerpts.slice(0, 2).map(e => `<blockquote>${esc(e)}</blockquote>`).join('')}</div>`).join('')}</details>` : ''}
+      ${(it.labels || []).length ? `<div class="lbl">${it.labels.map(esc).join(' · ')}</div>` : ''}</div>`; }).join('');
+  if (stories.length) html += `<h4>Fetched stories</h4><ul>` + stories.map(({ st }) => `<li><a href="${esc(st.link)}" target="_blank" rel="noopener">${esc(st.title)}</a> <span class="k">${esc(st.source_name)} · ${esc((st.published || '').slice(0, 10))}</span></li>`).join('') + `</ul>`;
+  out.innerHTML = html; if (!items.length && !stories.length) sessionFlag('not-in-bundle', 'visitor', q.slice(0, 80), 'Visitor checked a claim that matches nothing in the bundle.');
+}
+$('btn-command').onclick = openCommand;
+$('verify-go').onclick = () => verifyText($('verify-input').value || $('verify-pick').value);
+$('verify-input').addEventListener('keydown', ev => { if (ev.key === 'Enter') { ev.preventDefault(); verifyText($('verify-input').value); } });
+$('verify-pick').addEventListener('change', ev => { $('verify-input').value = ''; verifyText(ev.target.value); });
+
+// collections (threat-intel platform cut)
+const COLLECTIONS = {
+  'Vulnerabilities': it => (it.cves || []).length || /vulnerab|exploitation/.test(it.event_type || ''),
+  'Cyber Attacks': it => /intrusion|ransomware|ddos|information operation|exploitation/.test(it.event_type || ''),
+  'Actors': it => it.actor || !/n\/a|unattributed/.test(it.actor_type || 'n/a'),
+  'Malware': it => !!it.malware,
+  'Indicators': it => (it.indicators || []).length || (it.cves || []).length,
+  'Geopolitical Risks': it => it.geopolitical_link || /policy/.test(it.event_type || ''),
+  'Action Required': it => /patch|hunt/.test(it.recommended_action || ''),
+  'Weekly Sync': null, 'Cyber Bytes': null,
+};
+function renderCollection(name) {
+  const items = (briefing && briefing.items) || []; const body = $('col-body'); const V = (briefing && briefing.verification && briefing.verification.verdicts) || {};
+  document.querySelectorAll('#col-tabs button').forEach(b => b.classList.toggle('on', b.dataset.c === name));
+  if (name === 'Weekly Sync') { const sm = briefing.summary || {}; body.innerHTML = `<p><b>${esc(sm.headline || '')}</b></p><p>${esc(briefing.us_status || '')}</p><ul>${(sm.considerations || []).map(t => `<li>${esc(t)}</li>`).join('')}</ul><p class="k">Full version: Summary tab · printed version: the Gazette.</p>`; return; }
+  if (name === 'Cyber Bytes') { const sm = briefing.summary || {}; body.innerHTML = `<ul>${(sm.bullets || []).map(x => `<li><span class="tag">${esc(x.tag || '')}</span> ${esc(x.text)} <span class="k">${esc((x.sources || []).join(' · '))}</span></li>`).join('')}</ul>`; return; }
+  const sel = items.filter(COLLECTIONS[name]);
+  body.innerHTML = sel.length ? sel.map(it => `<div class="item"><b>${esc(it.headline)}</b>
+    <div class="badges"><span class="badge sev-${esc(it.severity)}">${esc(it.severity)}</span><span class="badge">${esc(it.ot_impact)}</span><span class="badge">${esc(it.country)}</span><span class="badge">${esc(it.recommended_action)}</span></div>
+    ${name === 'Vulnerabilities' || name === 'Indicators' ? `<div><b>CVEs:</b> ${(it.cves || []).map(c => `<a href="https://nvd.nist.gov/vuln/detail/${esc(c)}" target="_blank" rel="noopener">${esc(c)}</a>`).join(', ') || 'none'} · <b>KEV:</b> ${esc(it.kev_listed)} · <b>vendor:</b> ${esc(it.ics_vendor || 'n/a')}</div><div><b>Indicators:</b> ${(it.indicators || []).map(i => `<span class="ttp">${esc(i.type)}: ${esc(i.value)}</span>`).join('') || '<span class="k">none published in the bundle</span>'}</div>` : ''}
+    ${name === 'Actors' ? `<div><b>Actor:</b> ${esc(it.actor || 'none named')} · ${esc(it.actor_type)} · attribution ${esc(it.attribution_confidence)}${it.attributed_by ? ' by ' + esc(it.attributed_by) : ''} · motivation ${esc(it.motivation || 'unknown')}</div>` : ''}
+    ${name === 'Malware' ? `<div><b>Malware:</b> ${esc(it.malware)}</div>` : ''}
+    ${name === 'Geopolitical Risks' ? `<div><b>Link:</b> ${esc(it.geopolitical_link || 'none')} · <b>Regulatory trigger:</b> ${esc(it.regulatory_trigger || 'none')} · <b>Government response:</b> ${esc(it.government_response || 'none')}</div>` : ''}
+    ${name === 'Cyber Attacks' ? `<div><b>Initial access:</b> ${esc(it.initial_access || 'unknown')} · <b>Impact:</b> ${esc(it.operational_impact || '')}</div>` : ''}
+    ${name === 'Action Required' ? `<div><b>Do:</b> ${esc(it.recommended_action)} · ${esc(it.so_what)}</div>` : ''}
+    <div>${(it.ttps || []).map(t => `<span class="ttp" title="${esc(t.name)}">${esc(t.id)} ${esc(t.name.slice(0, 28))}</span>`).join('')}</div>
+    <div class="k">trust: ${esc(it.source_reliability)}${esc(it.info_credibility)} · ${esc(it.claim_vs_confirmed)}${V[it.headline] ? ' · Verifier: ' + esc(V[it.headline].verdict) : ''}</div></div>`).join('') : '<p class="k">Nothing in this collection this run. Empty means the allowlisted feeds reported nothing of this kind, not that nothing happened.</p>';
+}
+$('btn-collections').onclick = () => {
+  const items = (briefing && briefing.items) || [];
+  $('col-tabs').innerHTML = Object.keys(COLLECTIONS).map(c => `<button type="button" data-c="${esc(c)}">${esc(c)}<span class="n">${COLLECTIONS[c] ? items.filter(COLLECTIONS[c]).length : ''}</span></button>`).join('');
+  $('col-tabs').querySelectorAll('button').forEach(b => b.onclick = () => renderCollection(b.dataset.c));
+  renderCollection('Vulnerabilities'); $('dlg-collections').showModal();
+};
+
+// agent register
+$('btn-register').onclick = () => {
+  const el = $('register'); const A = (briefing && briefing.agents) || {}; const ev = allEvents();
+  el.innerHTML = personas.agents.map(a => { const out = A[a.id] || {}; const flags = ev.filter(e => e.agent === a.id);
+    return `<details class="reg"><summary><span style="color:${a.color}">■</span> <b>${esc(a.name)}</b> — ${esc(a.role)} · ${esc(a.building)} <span class="k">${flags.length} flags this history</span></summary>
+      <dl><dt>Job</dt><dd>${esc(a.job)}</dd><dt>Voice</dt><dd>${esc(a.voice)}</dd>
+      <dt>Process</dt><dd><ol>${(a.process || []).map(x => `<li>${esc(x)}</li>`).join('')}</ol></dd>
+      <dt>Where it looks</dt><dd>${esc(a.looks || '')}</dd><dt>How it verifies</dt><dd>${esc(a.verifies || '')}</dd>
+      <dt>Questions</dt><dd>${(a.questions || []).map(esc).join(' · ')}</dd>
+      <dt>Wrote this run</dt><dd>${out.briefing ? `<blockquote>${esc(out.briefing)}</blockquote>` : '<span class="k">nothing yet</span>'}${out.bubble ? `<div class="k">Bubble: “${esc(out.bubble)}”</div>` : ''}</dd>
+      <dt>Flags raised / received</dt><dd>${flags.length ? `<ul>${flags.slice(0, 8).map(f => `<li>${esc(f.type)} · ${esc((f.item || '').slice(0, 60))} <span class="k">${esc(f.at.slice(0, 16).replace('T', ' '))}</span></li>`).join('')}</ul>` : '<span class="k">none</span>'}</dd>
+      <dt>Name</dt><dd class="k">${esc(a.name_note || '')}</dd></dl></details>`; }).join('');
+  $('dlg-register').showModal();
+};
+
+// analytics dashboard (inline SVG, no library)
+function bar(title, counts, color) {
+  const ent = Object.entries(counts || {}).filter(([k]) => k && k !== 'undefined' && k !== 'null').sort((a, b) => b[1] - a[1]); const max = Math.max(1, ...ent.map(e => e[1]));
+  return `<div class="chart"><div class="ct">${esc(title)}</div>${ent.length ? ent.map(([k, v]) => `<div class="bar-row"><span class="bl" title="${esc(k)}">${esc(String(k).slice(0, 26))}</span><span class="bt"><span class="bf" style="width:${(v / max) * 100}%;background:${color}"></span></span><span class="bv">${v}</span></div>`).join('') : '<div class="k">no data</div>'}</div>`;
+}
+function line(title, runs, pick, color) {
+  const vals = runs.map(pick); if (!vals.length) return `<div class="chart"><div class="ct">${esc(title)}</div><div class="k">no runs yet</div></div>`;
+  const W = 300, H = 90, max = Math.max(1, ...vals); const pts = vals.map((v, i) => `${vals.length > 1 ? (i / (vals.length - 1)) * (W - 20) + 10 : W / 2},${H - 10 - (v / max) * (H - 25)}`);
+  return `<div class="chart"><div class="ct">${esc(title)} <span class="k">${vals.length} run${vals.length > 1 ? 's' : ''}</span></div><svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}"><polyline fill="none" stroke="${color}" stroke-width="2" points="${pts.join(' ')}"/>${pts.map((p, i) => `<circle cx="${p.split(',')[0]}" cy="${p.split(',')[1]}" r="3" fill="${color}"/><text x="${p.split(',')[0]}" y="${+p.split(',')[1] - 6}" font-size="9" fill="#e6e9ef" text-anchor="middle">${vals[i]}</text>`).join('')}</svg><div class="k">${runs.map(r => esc(String(r.run).slice(5, 16).replace('T', ' '))).join(' · ')}</div></div>`;
+}
+$('btn-dash').onclick = () => {
+  const items = (briefing && briefing.items) || []; const ev = allEvents(); const runs = (history && history.runs) || [];
+  const C = (f) => items.reduce((m, it) => { const k = f(it); m[k] = (m[k] || 0) + 1; return m; }, {});
+  const ot = items.filter(it => /process|physical|reached/i.test(it.ot_impact || '')).length;
+  const single = items.filter(it => new Set((it.sources || []).map(s => s.name.split(' (')[0])).size <= 1).length;
+  const usage = briefing && briefing.usage;
+  $('dash-meta').textContent = `snapshot ${(briefing.news_generated_at || '').slice(0, 16).replace('T', ' ')} UTC · ${runs.length} run${runs.length === 1 ? '' : 's'} in history`;
+  $('dash').innerHTML = `<div class="tiles">
+      <div class="tile"><div class="tv">${items.length}</div><div class="tl">board items</div></div>
+      <div class="tile"><div class="tv">${briefing.counts.energy}</div><div class="tl">energy-cyber stories fetched</div></div>
+      <div class="tile"><div class="tv">${briefing.counts.wide}</div><div class="tl">wider cyber stories</div></div>
+      <div class="tile ${ot ? 'warn' : ''}"><div class="tv">${ot}</div><div class="tl">items where OT was reached or affected</div></div>
+      <div class="tile"><div class="tv">${items.filter(i => i.severity === 'critical' || i.severity === 'high').length}</div><div class="tl">critical + high</div></div>
+      <div class="tile ${single ? 'warn' : ''}"><div class="tv">${single}</div><div class="tl">single-source items</div></div>
+      <div class="tile"><div class="tv">${ev.filter(e => e.status === 'open').length}</div><div class="tl">open flags in Cyber Command</div></div>
+      <div class="tile"><div class="tv">${news ? news.sources.length - (news.errors || []).length : '?'}/${news ? news.sources.length : '?'}</div><div class="tl">feeds that answered</div></div>
+      <div class="tile"><div class="tv">${usage ? (usage.input / 1000).toFixed(0) + 'k' : 'n/a'}</div><div class="tl">model input tokens this run${usage ? '' : ' (hand-curated run)'}</div></div>
+    </div>
+    <div class="charts">
+      ${bar('Items by severity', C(i => i.severity), '#e85a4b')}
+      ${bar('Items by IT / OT impact', C(i => i.ot_impact), '#e8b04b')}
+      ${bar('Items by energy subsector', C(i => i.subsector), '#4be89a')}
+      ${bar('Items by country / region', C(i => i.country), '#4bb3e8')}
+      ${bar('Items by event type', C(i => i.event_type), '#c94be8')}
+      ${bar('Recommended action', C(i => i.recommended_action), '#e8d44b')}
+      ${bar('Source reliability (Admiralty A–F)', C(i => i.source_reliability), '#9aa3b5')}
+      ${bar('Information credibility (1–6)', C(i => String(i.info_credibility)), '#9aa3b5')}
+      ${bar('Stories per source (energy bucket)', news ? news.energy.reduce((m, s) => { m[s.source_name] = (m[s.source_name] || 0) + 1; return m; }, {}) : {}, '#4bb3e8')}
+      ${bar('Flags by type (all history)', ev.reduce((m, e) => { m[e.type] = (m[e.type] || 0) + 1; return m; }, {}), '#e85a4b')}
+      ${bar('Flags by agent', ev.reduce((m, e) => { m[e.agent] = (m[e.agent] || 0) + 1; return m; }, {}), '#e8b04b')}
+      ${line('Energy-cyber stories per run', runs, r => r.energy, '#4be89a')}
+      ${line('Board items per run', runs, r => r.items, '#e8b04b')}
+      ${line('OT-affected items per run', runs, r => Object.entries(r.ot_impact || {}).filter(([k]) => /process|physical|reached/i.test(k)).reduce((a, [, v]) => a + v, 0), '#e85a4b')}
+      ${line('Flags raised per run', runs, r => Object.values(r.flags || {}).reduce((a, v) => a + v, 0), '#c94be8')}
+    </div>`;
+  $('dlg-dash').showModal();
+};
+
+// facility dossiers
+function openFacility(f) {
+  const L = sectors.layer_definitions; const items = (briefing && briefing.items) || [];
+  const live = items.filter(it => f.live_match.some(k => (it.headline + ' ' + it.subsector + ' ' + (it.supply_chain_entry || '') + ' ' + (it.asset_type || '')).toLowerCase().includes(k.toLowerCase())));
+  const verdicts = (briefing && briefing.verification && briefing.verification.verdicts) || {};
+  const layerRows = ['IT', 'OT', 'PIT'].map(k => `<tr><th>${k}<div class="k">${esc(L[k])}</div></th><td><ul>${(f.layers[k] || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul></td><td><ul>${(f.vulnerabilities[k] || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul></td></tr>`).join('');
+  $('fac-body').innerHTML = `
+    <div class="fac-vars">${Object.entries(f.variables).map(([k, v]) => `<div><span class="k">${esc(k.replace(/_/g, ' '))}</span><br>${esc(v)}</div>`).join('')}</div>
+    <h3>Technology and vulnerabilities by layer</h3>
+    <table class="fac-table"><tr><th>Layer</th><th>What runs here</th><th>Where it breaks</th></tr>${layerRows}</table>
+    <h3>Attack types seen against this kind of facility</h3><ul>${f.attacks.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+    <h3>How a breach happens here</h3><p>${esc(f.how_breach)}</p>
+    <details><summary>The generic breach pattern (all facilities) and the Purdue levels it crosses</summary><ol>${sectors.breach_pattern.map(x => `<li>${esc(x)}</li>`).join('')}</ol><p class="k">Purdue reference model: ${esc(sectors.purdue.join(' → '))}</p></details>
+    <h3>Live cases from this week's board <span class="k">(verified by the Verifier's cross-check; click Briefing board for the full record)</span></h3>
+    ${live.length ? `<ul>${live.map(it => `<li><b>${esc(it.headline)}</b> <span class="badge sev-${esc(it.severity)}">${esc(it.severity)}</span> ${esc(it.ot_impact)}${verdicts[it.headline] ? ` · <i>Verifier: ${esc(verdicts[it.headline].verdict)}</i>` : ''}</li>`).join('')}</ul>` : '<p class="k">No item on this week\'s board matched this facility. The absence means the allowlisted feeds reported nothing matching, not that nothing happened.</p>'}
+    <h3>Background cases <span class="k">(historical; from the model\'s general knowledge, not from the feeds; unverified by this system until spot-checked; check where indicated)</span></h3>
+    <ul>${f.background_cases.map(c => `<li><b>${c.year}</b> ${esc(c.case)} <span class="k">Check: ${esc(c.check)}</span></li>`).join('')}</ul>
+    <details><summary>Methodology, verification and limits of this dossier</summary>
+      <p><b>Methodology.</b> The variables are the fields of the intelligence record you specified (subsector, value chain, regulatory trigger, IT-vs-OT impact, asset type). The three layers follow the IT / OT split used throughout, plus PIT, Platform IT, the US DoD term for computing embedded in the asset itself, used here because relays, inverters and safety logic solvers fail differently from servers. The breach pattern is the ICS kill chain (reconnaissance, access, foothold, crossing to OT, learning the process, effect, persistence) mapped onto Purdue levels.</p>
+      <p><b>Who verifies.</b> Live cases inherit the Verifier's verdict from the board. Background cases are not yet verified by anyone in this system; they come with a pointer to the primary record, and the playbook makes each scheduled run spot-check two of them against that pointer (rule 21).</p>
+      <p><b>Limits.</b> Dossiers are generic to a facility type, not to any real site. Vulnerability lists are typical, not exhaustive, and change with every advisory. The PIT layer is the least observable from public sources. Background cases carry the model's training-cutoff knowledge and can be dated or imprecise; the year and the pointer are there so you can check before citing.</p>
+    </details>`;
+  $('fac-title').textContent = f.name; $('fac-meta').textContent = `${f.subsector} · ${f.value_chain}`;
+  $('dlg-facility').showModal();
+}
+$('btn-rules').onclick = () => {
+  const el = $('rules'); el.innerHTML = '';
+  (rulesText || 'RULES.md not found').split('\n').forEach(line => {
+    let node;
+    if (line.startsWith('# ')) { node = document.createElement('h2'); node.textContent = line.slice(2); }
+    else if (line.startsWith('## ')) { node = document.createElement('h3'); node.textContent = line.slice(3); }
+    else if (/^\d+\. /.test(line)) { node = document.createElement('div'); node.className = 'rule'; node.textContent = line; }
+    else if (line.trim()) { node = document.createElement('p'); node.textContent = line; }
+    if (node) el.appendChild(node);
+  });
+  $('dlg-rules').showModal();
+};
+
 // methodology / where to look / limitations
 $('btn-method').onclick = () => $('dlg-method').showModal();
 $('btn-limits').onclick = () => $('dlg-limits').showModal();
@@ -412,15 +618,21 @@ $('btn-look').onclick = () => {
 
 // ---------------------------------------------------------------- boot
 async function boot() {
-  const [p, b, n, src, lk, bl] = await Promise.all([
+  const [p, b, n, src, lk, bl, sc, rt, cl, hs] = await Promise.all([
     fetch('data/personas.json').then(r => r.json()),
     fetch('data/briefing.json').then(r => r.json()).catch(() => null),
     fetch('data/news.json').then(r => r.json()).catch(() => null),
     fetch('data/sources.json').then(r => r.json()).catch(() => null),
     fetch('data/where_to_look.json').then(r => r.json()).catch(() => null),
     fetch('data/buildings.json').then(r => r.json()).catch(() => null),
+    fetch('data/sectors.json').then(r => r.json()).catch(() => null),
+    fetch('RULES.md').then(r => r.text()).catch(() => ''),
+    fetch('data/command_log.json').then(r => r.json()).catch(() => ({ events: [] })),
+    fetch('data/history.json').then(r => r.json()).catch(() => ({ runs: [] })),
   ]);
-  personas = p; briefing = b; news = n; sources = src; lookmap = lk; buildings = bl;
+  history = hs;
+  personas = p; briefing = b; news = n; sources = src; lookmap = lk; buildings = bl; sectors = sc; rulesText = rt; cmdlog = cl;
+  const openFlags = cmdlog.events.filter(e => e.status === 'open').length; $('btn-command').textContent = `Cyber Command (${openFlags})`;
   if (briefing) {
     const ageH = (Date.now() - Date.parse(briefing.news_generated_at || briefing.generated_at)) / 36e5;
     const age = ageH < 1 ? 'under an hour' : ageH < 48 ? `${Math.round(ageH)}h` : `${Math.round(ageH / 24)} days`;

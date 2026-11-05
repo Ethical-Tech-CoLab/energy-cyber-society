@@ -462,6 +462,27 @@
      "url": "https://www.vulncheck.com/blog/exploitation-targeting-node-red",
      "date": "2026-11-03"
     }
+   ],
+   "indicators": [
+    {
+     "type": "cve",
+     "value": "CVE-2026-58115",
+     "source": "The Hacker News / VulnCheck"
+    }
+   ],
+   "ttps": [
+    {
+     "id": "T0883",
+     "name": "Internet Accessible Device (ICS)"
+    },
+    {
+     "id": "T0886",
+     "name": "Remote Services (ICS)"
+    },
+    {
+     "id": "T0859",
+     "name": "Valid Accounts (ICS) [inference: missing auth]"
+    }
    ]
   },
   {
@@ -521,6 +542,23 @@
      "name": "Zyxel security advisory (vendor, primary)",
      "url": "https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-out-of-bound",
      "date": "2026-11-03"
+    }
+   ],
+   "indicators": [
+    {
+     "type": "cve",
+     "value": "CVE-2026-107441",
+     "source": "BleepingComputer / Zyxel advisory"
+    }
+   ],
+   "ttps": [
+    {
+     "id": "T0866",
+     "name": "Exploitation of Remote Services (ICS)"
+    },
+    {
+     "id": "T1552",
+     "name": "Unsecured Credentials (Enterprise) [inference: config theft]"
     }
    ]
   },
@@ -584,6 +622,21 @@
      "url": "http://presse.efs.sante.fr/actualites/l-efs-confirme-l-incident-de-cybersecurite-impactant-un-de-ces",
      "date": "2026-11-04"
     }
+   ],
+   "indicators": [],
+   "ttps": [
+    {
+     "id": "T0886",
+     "name": "Remote Services (ICS)"
+    },
+    {
+     "id": "T0836",
+     "name": "Modify Parameter (ICS)"
+    },
+    {
+     "id": "T0862",
+     "name": "Supply Chain Compromise (ICS) [inference]"
+    }
    ]
   },
   {
@@ -641,6 +694,21 @@
      "url": "",
      "date": "2026-11-04"
     }
+   ],
+   "indicators": [],
+   "ttps": [
+    {
+     "id": "T0886",
+     "name": "Remote Services (ICS)"
+    },
+    {
+     "id": "T0836",
+     "name": "Modify Parameter (ICS)"
+    },
+    {
+     "id": "T0862",
+     "name": "Supply Chain Compromise (ICS) [inference]"
+    }
    ]
   },
   {
@@ -693,7 +761,9 @@
      "url": "https://www.utilitydive.com/news/electric-utilities-join-industries-urging-renewal-of-cybersecurity-informat/873703/",
      "date": "2026-11-04"
     }
-   ]
+   ],
+   "indicators": [],
+   "ttps": []
   },
   {
    "headline": "CISA launches 2026 Critical Infrastructure Security and Resilience campaign: OT security, continuity, recovery planning",
@@ -743,7 +813,9 @@
      "url": "https://industrialcyber.co/cisa/cisa-urges-critical-infrastructure-owners-to-prioritize-ot-security-operational-continuity-recovery-planning-in-2026-campaign/",
      "date": "2026-11-03"
     }
-   ]
+   ],
+   "indicators": [],
+   "ttps": []
   },
   {
    "headline": "UK NCSC Annual Review warns of AI-assisted ransomware against critical national infrastructure by 2028",
@@ -811,7 +883,9 @@
      "url": "https://www.ncsc.gov.uk/collection/annual-review-2026",
      "date": "2026-11-03"
     }
-   ]
+   ],
+   "indicators": [],
+   "ttps": []
   },
   {
    "headline": "Trump administration ban on foreign grid components raises industry concern over practicality and cost",
@@ -863,7 +937,9 @@
      "url": "https://www.utilitydive.com/news/trump-ban-on-foreign-grid-components-sparks-industry-concern-over-practical/873752/",
      "date": "2026-11-03"
     }
-   ]
+   ],
+   "indicators": [],
+   "ttps": []
   },
   {
    "headline": "Russia and Ukraine report attacks on emergency alert apps during Kherson ceasefire",
@@ -912,6 +988,13 @@
      "name": "The Register",
      "url": "https://www.theregister.com/security/2026/11/02/nuclear-threats-and-street-brawls-russia-ukraine-report-attacks-on-their-emergency-alert-apps/5306901",
      "date": "2026-11-02"
+    }
+   ],
+   "indicators": [],
+   "ttps": [
+    {
+     "id": "T1491",
+     "name": "Defacement / false alerts (Enterprise) [inference]"
     }
    ]
   }

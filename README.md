@@ -79,6 +79,16 @@ item. The board's rubric keeps **importance** (severity) and **correctness** (so
 corroboration, Verifier verdict) as separate columns, so a critical-but-single-source item
 and a confirmed-but-minor one are never confused.
 
+## Views in the page
+
+Summary · Chatter · Methodology · Where to look · Limitations · Rules · Cyber Command ·
+Agent Register · Dashboard · Collections · Briefing board · Today's wire · Settings.
+On the map: seven buildings (click for purpose, data flow and naming), nine energy
+facilities (click for the sector dossier: variables, IT/OT/PIT layers, vulnerabilities,
+attack types, how a breach happens, live and background cases), and the newsstand, which
+opens the Gazette, a broadsheet printed from the same data. `docs/data/stix.json` is a STIX
+2.1 export of the board.
+
 ## Adding a source
 
 Add it to `sources.json` with a `bias_note`. The Media Critic reads those notes; a source

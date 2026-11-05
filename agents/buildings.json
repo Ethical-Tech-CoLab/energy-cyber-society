@@ -2,12 +2,45 @@
   "_comment": "What each building in the town is for. Click a building in the page to read this. Resident names are in personas.json; rename freely, nothing depends on them.",
   "naming_note": "All seven resident names were invented by the assistant that built this town on 2026-11-04. They were chosen to be ordinary, pronounceable and varied in origin (Nigerian, Mexican, Indian, Lebanese, Norwegian, Polish, Nigerian again) so that no two residents look alike on screen and none reads as a stereotype of their job. They carry no hidden meaning and reference no real person. Building names describe the job done inside. Change any of them in agents/personas.json and agents/buildings.json.",
   "buildings": {
-    "Newsroom": {"resident": "reporter", "what": "Where the day's bundle is first read. The Reporter turns the allowlisted feeds into a plain account of what happened, United States first, separating what a victim or vendor confirmed from what an outlet or attacker merely claimed.", "data": "Reads docs/data/news.json (the fetched bundle). Writes the Reporter's briefing and fills the per-item intelligence records on the Briefing board."},
-    "Threat Lab": {"resident": "analyst", "what": "Where incidents are taken apart technically: who the actor likely is and with what confidence, how initial access worked, whether the intrusion stayed in corporate IT or reached operational technology, and what a utility security team should do this week.", "data": "Reads the same bundle plus the Reporter's records. Sets the IT-versus-OT field, CVEs, initial access and recommended action."},
-    "Press Review": {"resident": "critic", "what": "Where the outlets themselves are examined. The Media Critic reads the bias note attached to every source, asks who owns and funds the outlet, whether a vendor's own research is driving the headline, and how US and international coverage frame the same event differently.", "data": "Reads sources.json bias notes and the bundle. Writes the source-reliability and source-type fields and the Critic's briefing."},
-    "Observatory": {"resident": "wideangle", "what": "Where the rest of cyberspace is watched. The Wide-Angle reads the stories that did not match the energy filter, looking for what could spill over: supply-chain compromises, zero-days in common software, ransomware waves, geopolitical moves.", "data": "Reads the 'wide' bucket of news.json, which the energy filter excluded. Writes the geopolitical-link and cascading-effects fields."},
-    "Devil's Advocate": {"resident": "contrarian", "what": "Where every claim is pushed back on. The Contrarian asks who was not affected and why, whether 'critical infrastructure' in a headline means a billing system, where coverage overstates impact, and what the silence in the reporting hides.", "data": "Reads everything the others wrote. Writes us_status (whether any US operator was confirmed breached) and the 'who was not affected' answers."},
-    "Verification Office": {"resident": "verifier", "what": "Where the audit happens, after everyone else. The Verifier re-checks every item on the board: source tier, corroboration count, claim versus confirmed, staleness, and whether the direct source agrees with the outlet. Issues hold, upgrade, downgrade or retire per item and reports what changed since the last run.", "data": "Reads docs/data/sources.json (the pulled direct sources) and the board. Writes verification.verdicts, verification.crosschecks and the audit summary."},
-    "Library": {"resident": "librarian", "what": "Where the map of where to look is kept: which regulator, advisory feed, journal or dataset answers which kind of question, with access limits (paywall, members-only, blocked feed). After each run the Librarian records which sources delivered and which were blocked, and reroutes the next run's questions.", "data": "Reads agents/where_to_look.json and source_performance in sources.json. Writes the Librarian's briefing and the 'Where to look' tab."}
+    "Newsroom": {
+      "resident": "reporter",
+      "what": "Where the day's bundle is first read. The Reporter turns the allowlisted feeds into a plain account of what happened, United States first, separating what a victim or vendor confirmed from what an outlet or attacker merely claimed.",
+      "data": "Reads docs/data/news.json (the fetched bundle). Writes the Reporter's briefing and fills the per-item intelligence records on the Briefing board."
+    },
+    "Threat Lab": {
+      "resident": "analyst",
+      "what": "Where incidents are taken apart technically: who the actor likely is and with what confidence, how initial access worked, whether the intrusion stayed in corporate IT or reached operational technology, and what a utility security team should do this week.",
+      "data": "Reads the same bundle plus the Reporter's records. Sets the IT-versus-OT field, CVEs, initial access and recommended action."
+    },
+    "Press Review": {
+      "resident": "critic",
+      "what": "Where the outlets themselves are examined. The Media Critic reads the bias note attached to every source, asks who owns and funds the outlet, whether a vendor's own research is driving the headline, and how US and international coverage frame the same event differently.",
+      "data": "Reads sources.json bias notes and the bundle. Writes the source-reliability and source-type fields and the Critic's briefing."
+    },
+    "Observatory": {
+      "resident": "wideangle",
+      "what": "Where the rest of cyberspace is watched. The Wide-Angle reads the stories that did not match the energy filter, looking for what could spill over: supply-chain compromises, zero-days in common software, ransomware waves, geopolitical moves.",
+      "data": "Reads the 'wide' bucket of news.json, which the energy filter excluded. Writes the geopolitical-link and cascading-effects fields."
+    },
+    "Devil's Advocate": {
+      "resident": "contrarian",
+      "what": "Where every claim is pushed back on. The Contrarian asks who was not affected and why, whether 'critical infrastructure' in a headline means a billing system, where coverage overstates impact, and what the silence in the reporting hides.",
+      "data": "Reads everything the others wrote. Writes us_status (whether any US operator was confirmed breached) and the 'who was not affected' answers."
+    },
+    "Verification Office": {
+      "resident": "verifier",
+      "what": "Where the audit happens, after everyone else. The Verifier re-checks every item on the board: source tier, corroboration count, claim versus confirmed, staleness, and whether the direct source agrees with the outlet. Issues hold, upgrade, downgrade or retire per item and reports what changed since the last run.",
+      "data": "Reads docs/data/sources.json (the pulled direct sources) and the board. Writes verification.verdicts, verification.crosschecks and the audit summary."
+    },
+    "Library": {
+      "resident": "librarian",
+      "what": "Where the map of where to look is kept: which regulator, advisory feed, journal or dataset answers which kind of question, with access limits (paywall, members-only, blocked feed). After each run the Librarian records which sources delivered and which were blocked, and reroutes the next run's questions.",
+      "data": "Reads agents/where_to_look.json and source_performance in sources.json. Writes the Librarian's briefing and the 'Where to look' tab."
+    },
+    "Cyber Command": {
+      "resident": null,
+      "what": "The incident desk. Every flag raised by a resident or by a check is reported here immediately and kept forever: unsourced sentences, single-source items, outlet-versus-primary contradictions, downgrades, blocked pages, suspected inventions, and live answers without a citation. Also the place to verify any item or claim against the bundle, the pulled text and the verdicts.",
+      "data": "Reads docs/data/command_log.json (written by scripts/command_log.py after each run) plus this browser's session flags. Never deleted; a resolved flag gets a later resolved event."
+    }
   }
 }

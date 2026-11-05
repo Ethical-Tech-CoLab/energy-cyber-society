@@ -21,6 +21,11 @@
     <button id="btn-method" class="pix">Methodology</button>
     <button id="btn-look" class="pix">Where to look</button>
     <button id="btn-limits" class="pix">Limitations</button>
+    <button id="btn-rules" class="pix">Rules</button>
+    <button id="btn-command" class="pix">Cyber Command</button>
+    <button id="btn-register" class="pix">Agent Register</button>
+    <button id="btn-dash" class="pix">Dashboard</button>
+    <button id="btn-collections" class="pix">Collections</button>
     <button id="btn-board" class="pix">Briefing board</button>
     <button id="btn-stories" class="pix">Today's wire</button>
     <button id="btn-settings" class="pix">Settings</button>
@@ -30,7 +35,7 @@
 <main class="stage">
   <div class="town-wrap">
     <canvas id="town" width="960" height="560" aria-label="Pixel town with six residents. Click a resident to talk."></canvas>
-    <div class="hint" id="hint">Click a resident to talk to them, or a building to read what happens inside it. They are discussing today's energy-sector cyber news.</div>
+    <div class="hint" id="hint">Click a resident to talk, a building to read what happens inside, a facility for its sector dossier, or the newsstand for the Gazette. They are discussing today's energy-sector cyber news.</div>
     <div class="log-wrap"><div class="log-head">Overheard in town</div><div id="log" class="log" aria-live="polite"></div></div>
   </div>
 
@@ -92,6 +97,65 @@
     <ul class="sum" id="sum-bullets"></ul>
     <h3>Critical-thought considerations</h3>
     <ul class="sum considerations" id="sum-cons"></ul>
+    <div class="row"><button class="pix">Close</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-collections" class="dlg wide">
+  <form method="dialog">
+    <h2>Collections <small>the same records, cut the way a threat-intel platform cuts them</small></h2>
+    <div class="tabs" id="col-tabs"></div>
+    <div id="col-body" class="prose"></div>
+    <p class="k">Boards: <b>Action Required</b> = items whose recommended action is patch or hunt · <b>Weekly Sync</b> = the Summary tab · <b>Cyber Bytes</b> = the bullets. Export: <a href="data/stix.json" target="_blank" rel="noopener">STIX 2.1 bundle</a> (reports, vulnerabilities, indicators, threat actors, malware, ATT&amp;CK patterns), regenerated every run.</p>
+    <div class="row"><button class="pix">Close</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-register" class="dlg wide">
+  <form method="dialog">
+    <h2>Agent Register <small>how each resident thinks, where it looks, how it verifies, what it wrote this run</small></h2>
+    <div id="register" class="prose"></div>
+    <p class="k">Source files: agents/personas.json (roles, voices, process), agents/where_to_look.json (sources), RULES.md (verification), docs/data/briefing.json (this run's outputs), docs/data/command_log.json (flags). Also exported as docs/REGISTER.md.</p>
+    <div class="row"><button class="pix">Close</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-dash" class="dlg wide">
+  <form method="dialog">
+    <h2>Analytics dashboard <small id="dash-meta"></small></h2>
+    <div id="dash" class="prose"></div>
+    <p class="k">Counts are of this run's board items and the flags in Cyber Command. Trend charts grow one point per scheduled run (docs/data/history.json). No invented totals: a chart with one bar means one run so far.</p>
+    <div class="row"><button class="pix">Close</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-command" class="dlg wide">
+  <form method="dialog">
+    <h2>Cyber Command <small id="cmd-meta"></small></h2>
+    <p class="k">Every flag a resident or a check raises is reported here the moment it is raised: unsourced sentences, single-source items, contradictions between outlet and primary, downgrades, blocked pages, suspected inventions, and live-chat answers without a citation. The log is append-only; nothing is deleted.</p>
+    <h3>Verify anything</h3>
+    <div id="verify-form" class="verify"><select id="verify-pick"></select><input id="verify-input" placeholder="…or paste a claim, a headline, a number"><button class="pix" type="button" id="verify-go">Verify</button></div>
+    <div id="verify-out" class="prose"></div>
+    <h3>Open flags</h3>
+    <div id="cmd-open" class="prose"></div>
+    <h3>History of unusual acts</h3>
+    <div id="cmd-history" class="prose"></div>
+    <div class="row"><button class="pix">Close</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-facility" class="dlg wide">
+  <form method="dialog">
+    <h2><span id="fac-title"></span> <small id="fac-meta"></small></h2>
+    <div id="fac-body" class="prose"></div>
+    <div class="row"><button class="pix">Close</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-rules" class="dlg wide">
+  <form method="dialog">
+    <div id="rules" class="prose rules"></div>
+    <p class="k">Source file: RULES.md in the repository. Edit it there; the page reads it as-is.</p>
     <div class="row"><button class="pix">Close</button></div>
   </form>
 </dialog>

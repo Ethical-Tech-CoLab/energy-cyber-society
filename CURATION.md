@@ -42,5 +42,10 @@ You do not need an Anthropic API key: you are the model. Follow these steps exac
    `docs/data/where_to_look.json`; add any primary host you reached that is missing.
 6. Keep `rubric` in the briefing: importance (severity) and correctness (trust +
    Verifier) are separate columns; never let one stand in for the other.
-7. `python scripts/validate.py` must pass. Then commit `docs/data` with message
+7. Fill `indicators` (IOCs with source) and `ttps` (MITRE ATT&CK for ICS ids) on each item
+   where the bundle supports them; never invent an IOC. Then `python scripts/export_stix.py`.
+7b. `python scripts/validate.py` must pass. Then `python scripts/command_log.py` appends this
+   run's flags to docs/data/command_log.json (append-only; never edit or delete events).
+   Spot-check two background cases from agents/sectors.json against their 'check' pointer
+   with WebFetch and log the result as a `background-check` event (ok / differs / unreachable). Then commit `docs/data` with message
    `briefing: <UTC date and hour>` and push to main.
