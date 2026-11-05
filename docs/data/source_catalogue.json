@@ -1,5 +1,5 @@
 {
- "rated_at": "2026-11-05T19:41:35.518663+00:00",
+ "rated_at": "2026-11-05T19:45:24.073346+00:00",
  "criteria": {
   "primacy": "primary document > wire > vendor/trade > commentary",
   "independence": "no product to sell, no party to the story",
@@ -14,6 +14,32 @@
   "D: context": "<6"
  },
  "sources": [
+  {
+   "id": "CISA ICSA-26-307-01: Subnet Solutions PowerSYSTEM Center",
+   "name": "CISA ICSA-26-307-01: Subnet Solutions PowerSYSTEM Center",
+   "kind": "manual (Where to look)",
+   "type": "reports: context and numbers to verify, not incident evidence",
+   "country": "",
+   "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-307-01",
+   "bias_note": "CVE-2026-63017 and CVE-2026-63774, CVSS 9.0; energy-sector OT software; also relayed by INCIBE-CERT in our bundle [free; CISA feed blocks automation]",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 3,
+    "timeliness": 3,
+    "verifiability": 3
+   },
+   "score": 15,
+   "tier": "A: check first",
+   "best_for": "the primary advisory for an energy-sector OT product flaw",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "from the pasted brief 2026-11-05; INCIBE relay was in our bundle 2026-11-04"
+  },
   {
    "id": "incibe-sci",
    "name": "INCIBE-CERT ICS advisories (Spain)",
@@ -65,6 +91,32 @@
     "pulls_blocked": 0
    },
    "verified": "reviewed 2026-11-05"
+  },
+  {
+   "id": "CERT-UA: UAC-0050 campaign impersonating DTEK (2026-10-29)",
+   "name": "CERT-UA: UAC-0050 campaign impersonating DTEK (2026-10-29)",
+   "kind": "manual (Where to look)",
+   "type": "reports: context and numbers to verify, not incident evidence",
+   "country": "",
+   "url": "https://cert.gov.ua/",
+   "bias_note": "energy-themed phishing against Ukrainian government; impersonation, not a DTEK compromise [free; CERT-UA is an allowlisted feed]",
+   "scores": {
+    "primacy": 3,
+    "independence": 2,
+    "energy_focus": 3,
+    "timeliness": 3,
+    "verifiability": 3
+   },
+   "score": 14,
+   "tier": "A: check first",
+   "best_for": "energy-themed phishing tradecraft; government primary",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "from the pasted brief 2026-11-05; not yet fetched"
   },
   {
    "id": "cisa",
@@ -351,6 +403,84 @@
     "pulls_blocked": 0
    },
    "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "Cybersecurity Dive: the hacking campaign against US water systems (2026-08-20)",
+   "name": "Cybersecurity Dive: the hacking campaign against US water systems (2026-08-20)",
+   "kind": "manual (Where to look)",
+   "type": "reports: context and numbers to verify, not incident evidence",
+   "country": "",
+   "url": "https://www.cybersecuritydive.com/news/what-we-know-so-far-about-the-hacking-campaign-against-us-water-systems/828374/",
+   "bias_note": "well-sourced running account: 12+ states, Minnesota 30+ systems on July 26-27, Rockwell Logix (CVE-2021-22681), Schneider M340, Siemens S7-1200; Iran-linked suspected, APT Iran/CyberAv3ngers claim unverified; CISA/FBI July warning covers water AND energy [free]",
+   "scores": {
+    "primacy": 2,
+    "independence": 3,
+    "energy_focus": 2,
+    "timeliness": 2,
+    "verifiability": 3
+   },
+   "score": 12,
+   "tier": "A: check first",
+   "best_for": "the reference account of the 2026 US water/energy PLC campaign; names CVEs, vendors, states, and keeps claims separate",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "fetched and read 2026-11-05"
+  },
+  {
+   "id": "NJCCIC Energy Sector Threat Analysis Report",
+   "name": "NJCCIC Energy Sector Threat Analysis Report",
+   "kind": "manual (Where to look)",
+   "type": "reports: context and numbers to verify, not incident evidence",
+   "country": "",
+   "url": "https://www.cyber.nj.gov/threat-landscape/sector-threat-analysis-reports/energy-sector-threat-analysis-report",
+   "bias_note": "state government (New Jersey) sector analysis; page returns 403 to automated fetch; read by hand [free; blocks automation]",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 3,
+    "timeliness": 1,
+    "verifiability": 2
+   },
+   "score": 12,
+   "tier": "A: check first",
+   "best_for": "a state-government sector threat analysis; good for US actor and technique overview",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "added by Carolina 2026-11-05; fetch blocked (403), unread by the system"
+  },
+  {
+   "id": "Reuters: energy firms face AI-enhanced cyber attacks amid connectivity push (REEII, 2026-09-01)",
+   "name": "Reuters: energy firms face AI-enhanced cyber attacks amid connectivity push (REEII, 2026-09-01)",
+   "kind": "manual (Where to look)",
+   "type": "reports: context and numbers to verify, not incident evidence",
+   "country": "",
+   "url": "https://www.reuters.com/business/energy/energy-firms-face-ai-enhanced-cyber-attacks-connectivity-push--reeii-2026-09-01/",
+   "bias_note": "wire report from the Reuters Energy Innovation event; Reuters blocks automated fetch so the content is unread here; cite only after reading [free with limit; blocks automation]",
+   "scores": {
+    "primacy": 2,
+    "independence": 3,
+    "energy_focus": 3,
+    "timeliness": 2,
+    "verifiability": 2
+   },
+   "score": 12,
+   "tier": "A: check first",
+   "best_for": "wire coverage of AI-enhanced attacks on energy firms; Reuters is the most independent outlet in the list",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "added by Carolina 2026-11-05; Reuters blocks automated fetch, unread by the system"
   },
   {
    "id": "CISA ICS advisories",
@@ -1549,6 +1679,32 @@
    "verified": "listed for manual reading; rating from section tier"
   },
   {
+   "id": "Industrial Cyber: resilience report on energy and utilities (ransomware, vulnerable OT)",
+   "name": "Industrial Cyber: resilience report on energy and utilities (ransomware, vulnerable OT)",
+   "kind": "manual (Where to look)",
+   "type": "reports: context and numbers to verify, not incident evidence",
+   "country": "",
+   "url": "https://industrialcyber.co/reports/resilience-reports-energy-and-utilities-sector-faces-rising-cyber-exposure-from-ransomware-vulnerable-ot-systems/",
+   "bias_note": "trade-press summary of a vendor resilience report; page returns 403 to automated fetch, read by hand; find the underlying report and cite that [free; blocks automation]",
+   "scores": {
+    "primacy": 1,
+    "independence": 1,
+    "energy_focus": 3,
+    "timeliness": 1,
+    "verifiability": 1
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "a pointer to a vendor resilience report; cite the underlying report",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "added by Carolina 2026-11-05; fetch blocked (403), unread by the system"
+  },
+  {
    "id": "International Journal of Critical Infrastructure Protection (Elsevier)",
    "name": "International Journal of Critical Infrastructure Protection (Elsevier)",
    "kind": "manual (Where to look)",
@@ -1913,6 +2069,32 @@
    "verified": "listed for manual reading; rating from section tier"
   },
   {
+   "id": "Railroad Commission of Texas cyber warning (GovTech, 2026-11-02)",
+   "name": "Railroad Commission of Texas cyber warning (GovTech, 2026-11-02)",
+   "kind": "manual (Where to look)",
+   "type": "reports: context and numbers to verify, not incident evidence",
+   "country": "",
+   "url": "https://www.govtech.com/",
+   "bias_note": "state regulator warning to oil and gas on cyber threats citing attacks involving energy tankers bound for Texas; from the pasted daily brief; find the RRC primary notice [free]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "Sector threat reports (annual or periodic; vendor and government)",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
    "id": "SANS ICS community and ICS Summit talks",
    "name": "SANS ICS community and ICS Summit talks",
    "kind": "manual (Where to look)",
@@ -2249,6 +2431,58 @@
     "pulls_blocked": 0
    },
    "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "SecurityScorecard: Energy Sector Cybersecurity Report (third-party risk)",
+   "name": "SecurityScorecard: Energy Sector Cybersecurity Report (third-party risk)",
+   "kind": "manual (Where to look)",
+   "type": "reports: context and numbers to verify, not incident evidence",
+   "country": "",
+   "url": "https://securityscorecard.com/resources/research/energy-sector/",
+   "bias_note": "vendor research; headline '90% of the largest energy companies had a third-party breach in 12 months' with no sample or method on the page; gated; a ratings vendor selling the fix [gated form]",
+   "scores": {
+    "primacy": 1,
+    "independence": 1,
+    "energy_focus": 3,
+    "timeliness": 1,
+    "verifiability": 0
+   },
+   "score": 6,
+   "tier": "C: discovery only",
+   "best_for": "a vendor's third-party-risk headline (90%); no method on the page; use only with the caveat",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "fetched 2026-11-05: gated, no sample or method stated"
+  },
+  {
+   "id": "IBM X-Force Threat Intelligence Index 2026",
+   "name": "IBM X-Force Threat Intelligence Index 2026",
+   "kind": "manual (Where to look)",
+   "type": "reports: context and numbers to verify, not incident evidence",
+   "country": "",
+   "url": "https://www.ibm.com/reports/threat-intelligence",
+   "bias_note": "vendor annual: public-facing exploitation +44% YoY, 56% of disclosed flaws need no auth, ransomware groups +49%; no energy share stated on the page; method not described; gated [gated]",
+   "scores": {
+    "primacy": 1,
+    "independence": 1,
+    "energy_focus": 1,
+    "timeliness": 1,
+    "verifiability": 1
+   },
+   "score": 5,
+   "tier": "D: context",
+   "best_for": "cross-sector trend numbers (exploitation +44%, ransomware groups +49%); no energy share on the page",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "fetched 2026-11-05: gated, method not described"
   }
  ]
 }

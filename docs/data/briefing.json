@@ -2345,7 +2345,164 @@
      "Treat NTP servers as protection-critical: monitor time drift and management access",
      "SBOM so library flaws map to devices in minutes"
     ]
-   }
+   },
+   "cve_details": []
+  },
+  {
+   "headline": "CISA ICSA-26-307-01: critical flaws (CVE-2026-63017, CVE-2026-63774, CVSS 9.0) in Subnet Solutions PowerSYSTEM Center, energy-sector OT software",
+   "severity": "high",
+   "event_type": "vulnerability disclosure",
+   "event_date": "2026-11-03",
+   "reported_date": "2026-11-03",
+   "victim": null,
+   "country": "US (advisory); global (product)",
+   "continent": "North America",
+   "status": "n/a",
+   "subsector": "electricity",
+   "value_chain": "transmission",
+   "ot_impact": "unknown",
+   "asset_type": "substation automation and data-management software (PowerSYSTEM Center)",
+   "ics_vendor": "Subnet Solutions",
+   "supply_chain_entry": null,
+   "actor": null,
+   "actor_type": "n/a",
+   "attribution_confidence": "n/a",
+   "attributed_by": null,
+   "motivation": null,
+   "cves": [
+    "CVE-2026-63017",
+    "CVE-2026-63774"
+   ],
+   "kev_listed": "false (not in KEV as of 2026-11-05)",
+   "initial_access": "unauthorized access to privileged resources; SQL injection (advisory)",
+   "malware": null,
+   "indicators": [
+    {
+     "type": "cve",
+     "value": "CVE-2026-63017",
+     "source": "CISA"
+    },
+    {
+     "type": "cve",
+     "value": "CVE-2026-63774",
+     "source": "CISA"
+    }
+   ],
+   "ttps": [],
+   "operational_impact": "none reported; public exploitation not established",
+   "physical_safety_impact": null,
+   "customers_affected": null,
+   "data_exposed": null,
+   "cascading": null,
+   "geopolitical_link": null,
+   "regulatory_trigger": "NERC CIP-007 R2 patch evaluation for in-scope installations",
+   "government_response": "CISA ICS advisory; INCIBE-CERT relay",
+   "source_type": "government advisory",
+   "source_reliability": "A",
+   "info_credibility": "2",
+   "corroboration": 2,
+   "claim_vs_confirmed": "confirmed (vendor and CISA published)",
+   "so_what": "A CVSS 9.0 pair in software used to manage substation devices; check versions and patch; not exploited as far as any source says.",
+   "recommended_action": "patch",
+   "trend": "new",
+   "labels": [
+    "[note] surfaced by an external daily brief; INCIBE's relay was in our Nov 4 bundle but was not promoted, a filter miss now logged"
+   ],
+   "confidence": "moderate",
+   "case_type": "advisory (not a case)",
+   "attribution_tier": "n/a",
+   "related_cases": [],
+   "sources": [
+    {
+     "name": "CISA ICSA-26-307-01",
+     "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-307-01",
+     "date": "2026-11-03"
+    },
+    {
+     "name": "INCIBE-CERT ICS advisories (Spain)",
+     "url": "",
+     "date": "2026-11-04"
+    }
+   ],
+   "scoring": {
+    "severity": {
+     "level": "high",
+     "factors": {
+      "ot_impact": "unknown; substation management software",
+      "us_energy_relevance": "US energy product",
+      "actor_capability": "n/a",
+      "scale": "all affected versions",
+      "actionable": "yes: vendor updates"
+     },
+     "rationale": "High: CVSS 9.0 in energy-sector OT software with a CISA advisory; not critical because exploitation is not established."
+    },
+    "reliability_rationale": "A: CISA advisory plus a government relay.",
+    "credibility_rationale": "2: vendor-confirmed; no exploitation claim.",
+    "computed": {
+     "points": 8,
+     "level": "high",
+     "breakdown": {
+      "ot_impact x3": 3,
+      "us_relevance x2": 4,
+      "actor_capability": 0,
+      "scale": 0,
+      "actionable": 1,
+      "exploited": 0
+     },
+     "formula": "critical >=11, high >=7, medium >=4, low >=2, else info"
+    }
+   },
+   "anatomy": {
+    "attribution": null,
+    "bypass": "Disclosure: unauthorized access to privileged resources and SQL injection in the product's web components.",
+    "mechanics": "n/a",
+    "process": [
+     "CISA publishes ICSA-26-307-01",
+     "INCIBE relays next day",
+     "Operators check versions and patch"
+    ],
+    "next_layers": [
+     "Patch per vendor",
+     "Restrict PowerSYSTEM Center's web interface to the engineering VLAN",
+     "Database access logging"
+    ]
+   },
+   "cve_details": [
+    {
+     "id": "CVE-2026-63017",
+     "nvd_found": false,
+     "published": null,
+     "last_modified": null,
+     "status": null,
+     "cvss": null,
+     "description": null,
+     "references": [],
+     "fetched_at": "2026-11-05T19:45:24.863757+00:00",
+     "kev": {
+      "listed": false,
+      "date_added": null,
+      "ransomware_use": null,
+      "required_action": null
+     }
+    },
+    {
+     "id": "CVE-2026-63774",
+     "nvd_found": false,
+     "published": null,
+     "last_modified": null,
+     "status": null,
+     "cvss": null,
+     "description": null,
+     "references": [],
+     "fetched_at": "2026-11-05T19:45:31.005588+00:00",
+     "kev": {
+      "listed": false,
+      "date_added": null,
+      "ransomware_use": null,
+      "required_action": null
+     }
+    }
+   ]
   }
  ],
  "us_status": "No confirmed intrusion at a US electric utility, pipeline, refinery, LNG terminal or nuclear facility appeared in any allowlisted source in the 7-day window ending 2026-11-05. US items are policy and guidance.",
@@ -4706,7 +4863,7 @@
   "window_hours": 36,
   "stories_fetched": 168,
   "energy_cyber": 18,
-  "board_items": 13,
+  "board_items": 14,
   "languages": [
    "English",
    "Spanish",
@@ -4742,5 +4899,48 @@
   "spreadsheet_attached": false,
   "adopted_rules": "33-39",
   "file": "data/research/energy_cyber_cti_report.json"
+ },
+ "external_crosscheck": {
+  "source": "a daily brief pasted by the owner on 2026-11-05 (author unknown; 'my search' suggests an AI assistant with web search)",
+  "as_of": "2026-11-05 14:40 ET",
+  "agreements": [
+   "No newly confirmed attack disrupting a grid or energy facility on Nov 5 (matches our us_status).",
+   "CISA 2015 sunset with utilities lobbying (ours: Utility Dive + Industrial Cyber/OTCC); the brief adds the date December 11 and the count ~36 organizations, both [unverified] here until the statute and the letter are read.",
+   "Foreign grid-equipment restrictions (brief frames it as DOE authority over equipment, software, firmware and remote-access services; ours as an executive order; the instrument is unread by both).",
+   "Node-RED / CVE-2026-58115 exploitation via VulnCheck, with no grid compromise established (ours holds it at C2 for the same reason).",
+   "Zyxel GS1900 CVE-2026-107441, ~1,000 devices, cross-sector (ours adds today's Binarly patch-bypass finding, which the brief lacks).",
+   "European refrigeration attacks as OT disruption outside energy (the brief cites AP: at least six countries).",
+   "UK NCSC AI warning as emerging."
+  ],
+  "items_we_missed": [
+   {
+    "item": "Texas Railroad Commission warns oil and gas operators on escalating cyber threats, citing attacks involving energy tankers bound for Texas (GovTech, 2026-11-02)",
+    "why_missed": "GovTech is not in the allowlist; the RRC has no feed we read",
+    "action": "added to Where to look; Counsel to find the RRC primary notice"
+   },
+   {
+    "item": "CISA ICSA-26-307-01: PowerSYSTEM Center CVE-2026-63017/63774, CVSS 9.0",
+    "why_missed": "CISA's feed blocks us; INCIBE's relay of it WAS in our bundle on Nov 4 but did not become a board item",
+    "action": "promote to the board (added below)"
+   },
+   {
+    "item": "Hitachi Energy advisories: CoreTec transformer monitoring and TRO600 wireless (Oct 29)",
+    "why_missed": "outside the 7-day window at first fetch; Red Tiger Security not in the allowlist",
+    "action": "Hitachi Energy PSIRT added to Where to look pointers; Archivist to log"
+   },
+   {
+    "item": "CERT-UA: UAC-0050 impersonating DTEK with fake electricity-payment notices (Oct 29/30)",
+    "why_missed": "CERT-UA feed was added Nov 5; the item predates it",
+    "action": "added to Where to look; Ukrainian keywords now cover 'ДТЕК' via 'енерг'"
+   }
+  ],
+  "items_the_brief_missed": [
+   "Binarly: Zyxel's first patch does not block the exploit (The Hacker News, Nov 5)",
+   "Phoenix Contact PHP2Shell in industrial switches, routers and NTP servers (INCIBE-CERT, Nov 5)",
+   "OpenAI's 948-exploit pipeline (The Hacker News, Nov 5)",
+   "the Ivanti Connect Secure chain (The Hacker News, Nov 2)",
+   "the French blood-service case as victim-confirmed OT (EFS statement)"
+  ],
+  "method_note": "The brief's closing method (distinguish confirmed attacks, active exploitation, disclosures, suspected actor activity, regulatory developments) matches our case_type field and rules 33-35. Its priority table matches our severity ordering except that we rank the CISA 2015 sunset high rather than 'strategic'."
  }
 }

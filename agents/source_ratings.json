@@ -1,24 +1,168 @@
 {
   "_comment": "Human overrides for scripts/rate_sources.py. Keys are feed ids from sources.json or entry names from where_to_look.json. Any of primacy, independence, energy_focus, timeliness, verifiability (0-3), plus best_for and verified (who checked, when).",
   "ratings": {
-    "cisa": {"energy_focus": 3, "best_for": "ICS advisories and KEV: the authoritative 'is it exploited' answer for US operators", "verified": "Carolina's project notes 2026-11-04; feed blocks automated pulls (403), read the site"},
-    "incibe-sci": {"energy_focus": 3, "timeliness": 3, "best_for": "the same ICS advisories as CISA, a day later, from a feed that works", "verified": "reviewed 2026-11-05: delivered 4 energy items this week incl. Siemens, Welotec, Phoenix Contact"},
-    "certua": {"energy_focus": 3, "independence": 2, "best_for": "the primary source on attacks against Ukrainian energy; a party to the war, attributions to Russia", "verified": "reviewed 2026-11-05"},
-    "certpl": {"energy_focus": 3, "best_for": "Poland 2025 distributed-energy campaign and Russian-linked activity against Poland", "verified": "reviewed 2026-11-05"},
-    "therecord": {"energy_focus": 2, "best_for": "nation-state and ransomware actors; owned by Recorded Future, editorially independent", "verified": "reviewed 2026-11-05"},
-    "industrialcyber": {"energy_focus": 3, "verifiability": 2, "best_for": "regulator and vendor notices for OT, fast; weight vendor announcements accordingly", "verified": "reviewed 2026-11-05: 7 of 18 energy items this week, 3 vendor announcements"},
-    "utilitydive": {"energy_focus": 3, "verifiability": 1, "best_for": "US utility policy and regulation framing (CISA 2015, grid-component order); blocks automated pulls", "verified": "reviewed 2026-11-05: both legal items unverifiable because the page returns 403"},
-    "bleeping": {"best_for": "first and fastest on ransomware and device exploitation (Zyxel); confirm counts elsewhere", "verified": "reviewed 2026-11-05"},
-    "hackernews": {"independence": 1, "best_for": "breadth for the wide bucket; relays vendor research (VulnCheck, Binarly) quickly", "verified": "reviewed 2026-11-05"},
-    "kaspersky-ics": {"independence": 1, "best_for": "deep ICS vulnerability research (Dustman/Bapco); Russian vendor, soft on Russian attribution", "verified": "reviewed 2026-11-05"},
-    "arxiv-cr": {"best_for": "what researchers are probing before journals publish; never a fact source", "verified": "reviewed 2026-11-05"},
-    "mit-tr-climate": {"energy_focus": 3, "best_for": "data-centre load and US energy policy; not a security outlet", "verified": "reviewed 2026-11-05"},
-    "heise": {"energy_focus": 2, "best_for": "German utilities and EU regulation; independently corroborated the Siemens IoT2050 attacks", "verified": "reviewed 2026-11-05"},
-    "NERC Reliability Standards (CIP-002 to CIP-015)": {"best_for": "the enforceable version of every CIP standard with effective dates", "verified": "pointer verified 2026-11-05"},
-    "CISA Known Exploited Vulnerabilities catalog": {"best_for": "exploited yes/no with date; fetched automatically by enrich_cves.py", "verified": "fetched 2026-11-05: 1,768 entries"},
-    "NVD": {"best_for": "CVSS and references per CVE; fetched automatically", "verified": "fetched 2026-11-05"},
-    "Federal Register": {"best_for": "the text of any US rule or executive order; the only answer to 'is it final'", "verified": "pointer verified 2026-11-05"},
-    "SektorCERT (Denmark)": {"best_for": "the Danish 2023 Zyxel campaign report; the model for counting a campaign once", "verified": "cited by the research report"},
-    "CERT Polska incident reports": {"best_for": "Poland December 2025; also an allowlisted feed", "verified": "cited by the research report"}
+    "cisa": {
+      "energy_focus": 3,
+      "best_for": "ICS advisories and KEV: the authoritative 'is it exploited' answer for US operators",
+      "verified": "Carolina's project notes 2026-11-04; feed blocks automated pulls (403), read the site"
+    },
+    "incibe-sci": {
+      "energy_focus": 3,
+      "timeliness": 3,
+      "best_for": "the same ICS advisories as CISA, a day later, from a feed that works",
+      "verified": "reviewed 2026-11-05: delivered 4 energy items this week incl. Siemens, Welotec, Phoenix Contact"
+    },
+    "certua": {
+      "energy_focus": 3,
+      "independence": 2,
+      "best_for": "the primary source on attacks against Ukrainian energy; a party to the war, attributions to Russia",
+      "verified": "reviewed 2026-11-05"
+    },
+    "certpl": {
+      "energy_focus": 3,
+      "best_for": "Poland 2025 distributed-energy campaign and Russian-linked activity against Poland",
+      "verified": "reviewed 2026-11-05"
+    },
+    "therecord": {
+      "energy_focus": 2,
+      "best_for": "nation-state and ransomware actors; owned by Recorded Future, editorially independent",
+      "verified": "reviewed 2026-11-05"
+    },
+    "industrialcyber": {
+      "energy_focus": 3,
+      "verifiability": 2,
+      "best_for": "regulator and vendor notices for OT, fast; weight vendor announcements accordingly",
+      "verified": "reviewed 2026-11-05: 7 of 18 energy items this week, 3 vendor announcements"
+    },
+    "utilitydive": {
+      "energy_focus": 3,
+      "verifiability": 1,
+      "best_for": "US utility policy and regulation framing (CISA 2015, grid-component order); blocks automated pulls",
+      "verified": "reviewed 2026-11-05: both legal items unverifiable because the page returns 403"
+    },
+    "bleeping": {
+      "best_for": "first and fastest on ransomware and device exploitation (Zyxel); confirm counts elsewhere",
+      "verified": "reviewed 2026-11-05"
+    },
+    "hackernews": {
+      "independence": 1,
+      "best_for": "breadth for the wide bucket; relays vendor research (VulnCheck, Binarly) quickly",
+      "verified": "reviewed 2026-11-05"
+    },
+    "kaspersky-ics": {
+      "independence": 1,
+      "best_for": "deep ICS vulnerability research (Dustman/Bapco); Russian vendor, soft on Russian attribution",
+      "verified": "reviewed 2026-11-05"
+    },
+    "arxiv-cr": {
+      "best_for": "what researchers are probing before journals publish; never a fact source",
+      "verified": "reviewed 2026-11-05"
+    },
+    "mit-tr-climate": {
+      "energy_focus": 3,
+      "best_for": "data-centre load and US energy policy; not a security outlet",
+      "verified": "reviewed 2026-11-05"
+    },
+    "heise": {
+      "energy_focus": 2,
+      "best_for": "German utilities and EU regulation; independently corroborated the Siemens IoT2050 attacks",
+      "verified": "reviewed 2026-11-05"
+    },
+    "NERC Reliability Standards (CIP-002 to CIP-015)": {
+      "best_for": "the enforceable version of every CIP standard with effective dates",
+      "verified": "pointer verified 2026-11-05"
+    },
+    "CISA Known Exploited Vulnerabilities catalog": {
+      "best_for": "exploited yes/no with date; fetched automatically by enrich_cves.py",
+      "verified": "fetched 2026-11-05: 1,768 entries"
+    },
+    "NVD": {
+      "best_for": "CVSS and references per CVE; fetched automatically",
+      "verified": "fetched 2026-11-05"
+    },
+    "Federal Register": {
+      "best_for": "the text of any US rule or executive order; the only answer to 'is it final'",
+      "verified": "pointer verified 2026-11-05"
+    },
+    "SektorCERT (Denmark)": {
+      "best_for": "the Danish 2023 Zyxel campaign report; the model for counting a campaign once",
+      "verified": "cited by the research report"
+    },
+    "CERT Polska incident reports": {
+      "best_for": "Poland December 2025; also an allowlisted feed",
+      "verified": "cited by the research report"
+    },
+    "Industrial Cyber: resilience report on energy and utilities (ransomware, vulnerable OT)": {
+      "primacy": 1,
+      "independence": 1,
+      "energy_focus": 3,
+      "timeliness": 1,
+      "verifiability": 1,
+      "best_for": "a pointer to a vendor resilience report; cite the underlying report",
+      "verified": "added by Carolina 2026-11-05; fetch blocked (403), unread by the system"
+    },
+    "Cybersecurity Dive: the hacking campaign against US water systems (2026-08-20)": {
+      "primacy": 2,
+      "independence": 3,
+      "energy_focus": 2,
+      "timeliness": 2,
+      "verifiability": 3,
+      "best_for": "the reference account of the 2026 US water/energy PLC campaign; names CVEs, vendors, states, and keeps claims separate",
+      "verified": "fetched and read 2026-11-05"
+    },
+    "NJCCIC Energy Sector Threat Analysis Report": {
+      "primacy": 3,
+      "independence": 3,
+      "energy_focus": 3,
+      "timeliness": 1,
+      "verifiability": 2,
+      "best_for": "a state-government sector threat analysis; good for US actor and technique overview",
+      "verified": "added by Carolina 2026-11-05; fetch blocked (403), unread by the system"
+    },
+    "SecurityScorecard: Energy Sector Cybersecurity Report (third-party risk)": {
+      "primacy": 1,
+      "independence": 1,
+      "energy_focus": 3,
+      "timeliness": 1,
+      "verifiability": 0,
+      "best_for": "a vendor's third-party-risk headline (90%); no method on the page; use only with the caveat",
+      "verified": "fetched 2026-11-05: gated, no sample or method stated"
+    },
+    "IBM X-Force Threat Intelligence Index 2026": {
+      "primacy": 1,
+      "independence": 1,
+      "energy_focus": 1,
+      "timeliness": 1,
+      "verifiability": 1,
+      "best_for": "cross-sector trend numbers (exploitation +44%, ransomware groups +49%); no energy share on the page",
+      "verified": "fetched 2026-11-05: gated, method not described"
+    },
+    "Reuters: energy firms face AI-enhanced cyber attacks amid connectivity push (REEII, 2026-09-01)": {
+      "primacy": 2,
+      "independence": 3,
+      "energy_focus": 3,
+      "timeliness": 2,
+      "verifiability": 2,
+      "best_for": "wire coverage of AI-enhanced attacks on energy firms; Reuters is the most independent outlet in the list",
+      "verified": "added by Carolina 2026-11-05; Reuters blocks automated fetch, unread by the system"
+    },
+    "CISA ICSA-26-307-01: Subnet Solutions PowerSYSTEM Center": {
+      "primacy": 3,
+      "independence": 3,
+      "energy_focus": 3,
+      "timeliness": 3,
+      "verifiability": 3,
+      "best_for": "the primary advisory for an energy-sector OT product flaw",
+      "verified": "from the pasted brief 2026-11-05; INCIBE relay was in our bundle 2026-11-04"
+    },
+    "CERT-UA: UAC-0050 campaign impersonating DTEK (2026-10-29)": {
+      "primacy": 3,
+      "independence": 2,
+      "energy_focus": 3,
+      "timeliness": 3,
+      "verifiability": 3,
+      "best_for": "energy-themed phishing tradecraft; government primary",
+      "verified": "from the pasted brief 2026-11-05; not yet fetched"
+    }
   }
 }

@@ -1939,7 +1939,17 @@
    "detail": "policy claim on trade press only; the legal instrument and effective date are not in the bundle. Rule 3 applies.",
    "severity": "warn",
    "status": "open"
+  },
+  {
+   "at": "2026-11-05T19:45:24.022222+00:00",
+   "run": "2026-11-05T19:28:05.048372+00:00",
+   "type": "filter-miss",
+   "agent": "reporter",
+   "item": "PowerSYSTEM Center advisory",
+   "detail": "INCIBE relay of CISA ICSA-26-307-01 was in the Nov 4 bundle but not promoted to the board; caught by an external brief cross-check on Nov 5.",
+   "severity": "warn",
+   "status": "open"
   }
  ],
- "updated_at": "2026-11-05T19:29:03.088274+00:00"
+ "updated_at": "2026-11-05T19:46:00.220373+00:00"
 }

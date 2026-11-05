@@ -75,6 +75,8 @@ Nothing here is lost in chat.
 
 | 58 | A list of verified sources, good to check, for evaluating and choosing the most important ones in the library | Scored, tiered, filterable catalogue in the Library with delivery evidence and a human-verified column | Where to look tab; `scripts/rate_sources.py`; `agents/source_ratings.json` |
 
+| 59 | Add these six report/news URLs; and a pasted external daily brief | Catalogued with ratings and fetch status; brief cross-checked against the board in the Summary; missed advisory promoted; filter miss logged to the Incident Desk | Where to look; Summary 'Cross-check'; Incident Desk |
+
 ## Standing decisions made by the assistant without being asked (so you can reverse them)
 
 - Resident names and the town metaphor; the building names; PIT as the third layer (DoD term).

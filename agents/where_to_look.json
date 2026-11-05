@@ -367,6 +367,66 @@
           "access": "free"
         }
       ]
+    },
+    {
+      "question": "Sector threat reports (annual or periodic; vendor and government)",
+      "tier": "reports: context and numbers to verify, not incident evidence",
+      "entries": [
+        {
+          "name": "Industrial Cyber: resilience report on energy and utilities (ransomware, vulnerable OT)",
+          "url": "https://industrialcyber.co/reports/resilience-reports-energy-and-utilities-sector-faces-rising-cyber-exposure-from-ransomware-vulnerable-ot-systems/",
+          "why": "trade-press summary of a vendor resilience report; page returns 403 to automated fetch, read by hand; find the underlying report and cite that",
+          "access": "free; blocks automation"
+        },
+        {
+          "name": "Cybersecurity Dive: the hacking campaign against US water systems (2026-08-20)",
+          "url": "https://www.cybersecuritydive.com/news/what-we-know-so-far-about-the-hacking-campaign-against-us-water-systems/828374/",
+          "why": "well-sourced running account: 12+ states, Minnesota 30+ systems on July 26-27, Rockwell Logix (CVE-2021-22681), Schneider M340, Siemens S7-1200; Iran-linked suspected, APT Iran/CyberAv3ngers claim unverified; CISA/FBI July warning covers water AND energy",
+          "access": "free"
+        },
+        {
+          "name": "NJCCIC Energy Sector Threat Analysis Report",
+          "url": "https://www.cyber.nj.gov/threat-landscape/sector-threat-analysis-reports/energy-sector-threat-analysis-report",
+          "why": "state government (New Jersey) sector analysis; page returns 403 to automated fetch; read by hand",
+          "access": "free; blocks automation"
+        },
+        {
+          "name": "SecurityScorecard: Energy Sector Cybersecurity Report (third-party risk)",
+          "url": "https://securityscorecard.com/resources/research/energy-sector/",
+          "why": "vendor research; headline '90% of the largest energy companies had a third-party breach in 12 months' with no sample or method on the page; gated; a ratings vendor selling the fix",
+          "access": "gated form"
+        },
+        {
+          "name": "IBM X-Force Threat Intelligence Index 2026",
+          "url": "https://www.ibm.com/reports/threat-intelligence",
+          "why": "vendor annual: public-facing exploitation +44% YoY, 56% of disclosed flaws need no auth, ransomware groups +49%; no energy share stated on the page; method not described; gated",
+          "access": "gated"
+        },
+        {
+          "name": "Reuters: energy firms face AI-enhanced cyber attacks amid connectivity push (REEII, 2026-09-01)",
+          "url": "https://www.reuters.com/business/energy/energy-firms-face-ai-enhanced-cyber-attacks-connectivity-push--reeii-2026-09-01/",
+          "why": "wire report from the Reuters Energy Innovation event; Reuters blocks automated fetch so the content is unread here; cite only after reading",
+          "access": "free with limit; blocks automation"
+        },
+        {
+          "name": "Railroad Commission of Texas cyber warning (GovTech, 2026-11-02)",
+          "url": "https://www.govtech.com/",
+          "why": "state regulator warning to oil and gas on cyber threats citing attacks involving energy tankers bound for Texas; from the pasted daily brief; find the RRC primary notice",
+          "access": "free"
+        },
+        {
+          "name": "CISA ICSA-26-307-01: Subnet Solutions PowerSYSTEM Center",
+          "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-307-01",
+          "why": "CVE-2026-63017 and CVE-2026-63774, CVSS 9.0; energy-sector OT software; also relayed by INCIBE-CERT in our bundle",
+          "access": "free; CISA feed blocks automation"
+        },
+        {
+          "name": "CERT-UA: UAC-0050 campaign impersonating DTEK (2026-10-29)",
+          "url": "https://cert.gov.ua/",
+          "why": "energy-themed phishing against Ukrainian government; impersonation, not a DTEK compromise",
+          "access": "free; CERT-UA is an allowlisted feed"
+        }
+      ]
     }
   ]
 }
