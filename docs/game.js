@@ -7,7 +7,7 @@ const cv = document.getElementById('town');
 const ctx = cv.getContext('2d');
 ctx.imageSmoothingEnabled = false;
 
-let personas, briefing, news, sources, lookmap;
+let personas, briefing, news, sources, lookmap, buildings;
 let agents = [];
 let selected = null;
 let bubbles = [];                      // {agent, text, until}
@@ -224,11 +224,18 @@ async function maybeGenerateLive() {
 document.getElementById('btn-chatter').onclick = ev => { chatter = !chatter; ev.target.textContent = chatter ? 'Chatter: on' : 'Chatter: off'; };
 
 // ---------------------------------------------------------------- interaction
+cv.addEventListener('mousemove', ev => {
+  const r = cv.getBoundingClientRect(); const x = (ev.clientX - r.left) * (W / r.width), y = (ev.clientY - r.top) * (H / r.height);
+  const over = agents.some(a => x >= a.x - 6 && x <= a.x + 16 * S + 6 && y >= a.y - 6 && y <= a.y + 24 * S + 14) || BUILDINGS.some(b => x >= b.x - 6 && x <= b.x + b.w + 6 && y >= b.y - 36 && y <= b.y + b.h);
+  cv.style.cursor = over ? 'pointer' : 'default';
+});
 cv.addEventListener('click', ev => {
   const r = cv.getBoundingClientRect();
   const x = (ev.clientX - r.left) * (W / r.width), y = (ev.clientY - r.top) * (H / r.height);
   const hit = [...agents].reverse().find(a => x >= a.x - 6 && x <= a.x + 16 * S + 6 && y >= a.y - 6 && y <= a.y + 24 * S + 14);
-  if (hit) select(hit);
+  if (hit) { select(hit); return; }
+  const bld = BUILDINGS.find(b => x >= b.x - 6 && x <= b.x + b.w + 6 && y >= b.y - 36 && y <= b.y + b.h);
+  if (bld) selectBuilding(bld);
 });
 
 const $ = id => document.getElementById(id);
@@ -240,7 +247,7 @@ function select(a) {
   if (convo && (convo.A === a || convo.B === a)) { convo = null; nextConvoAt = performance.now() + 2000; }
   panel.hidden = false;
   $('p-name').textContent = a.p.name; $('p-role').textContent = a.p.role + ' · ' + a.p.building;
-  $('p-job').textContent = a.p.job;
+  $('p-job').textContent = a.p.job + (a.p.name_note ? ' · Name: ' + a.p.name_note : '');
   const pc = $('portrait').getContext('2d'); pc.imageSmoothingEnabled = false; pc.fillStyle = '#1d2b1f'; pc.fillRect(0, 0, 64, 64);
   drawFigure(pc, 8, 4, 0, 1, a.p, 3);
   chat.innerHTML = '';
@@ -252,6 +259,22 @@ function select(a) {
   const sg = $('suggest'); sg.innerHTML = '';
   a.p.questions.forEach(q => { const btn = document.createElement('button'); btn.textContent = q; btn.onclick = () => ask(q); sg.appendChild(btn); });
   updateLiveNote();
+}
+function selectBuilding(b) {
+  if (selected) { selected.wait = 500; selected = null; }
+  panel.hidden = false;
+  const info = buildings && buildings.buildings[b.key]; const res = info && personas.agents.find(a => a.id === info.resident);
+  $('p-name').textContent = b.key; $('p-role').textContent = res ? `home of ${res.name}, ${res.role}` : 'building';
+  $('p-job').textContent = info ? info.what : '';
+  const pc = $('portrait').getContext('2d'); pc.imageSmoothingEnabled = false; pc.fillStyle = '#1d2b1f'; pc.fillRect(0, 0, 64, 64);
+  pc.fillStyle = b.color; pc.fillRect(8, 22, 48, 36); pc.fillStyle = b.roof; pc.fillRect(4, 16, 56, 8); pc.fillStyle = '#f6e7a1'; [14, 28, 42].forEach(x => pc.fillRect(x, 30, 8, 8)); pc.fillStyle = '#1a1410'; pc.fillRect(28, 44, 8, 14);
+  chat.innerHTML = '';
+  if (info) addMsg('Data flow: ' + info.data, 'sys');
+  if (res) { addMsg(`${res.name} works here. ${res.job}`, 'them'); if (res.name_note) addMsg('About the name: ' + res.name_note, 'sys'); }
+  if (buildings && buildings.naming_note) addMsg('How all the names were chosen: ' + buildings.naming_note, 'sys');
+  const sg = $('suggest'); sg.innerHTML = '';
+  if (res) { const btn = document.createElement('button'); btn.textContent = `Talk to ${res.name.split(' ')[0]}`; btn.onclick = () => select(agents.find(a => a.p.id === res.id)); sg.appendChild(btn); }
+  $('live-note').textContent = 'Click a resident to talk, or a building to read what happens inside it.';
 }
 $('p-close').onclick = () => { if (selected) { selected.wait = 500; } selected = null; panel.hidden = true; };
 
@@ -377,14 +400,15 @@ $('btn-look').onclick = () => {
 
 // ---------------------------------------------------------------- boot
 async function boot() {
-  const [p, b, n, src, lk] = await Promise.all([
+  const [p, b, n, src, lk, bl] = await Promise.all([
     fetch('data/personas.json').then(r => r.json()),
     fetch('data/briefing.json').then(r => r.json()).catch(() => null),
     fetch('data/news.json').then(r => r.json()).catch(() => null),
     fetch('data/sources.json').then(r => r.json()).catch(() => null),
     fetch('data/where_to_look.json').then(r => r.json()).catch(() => null),
+    fetch('data/buildings.json').then(r => r.json()).catch(() => null),
   ]);
-  personas = p; briefing = b; news = n; sources = src; lookmap = lk;
+  personas = p; briefing = b; news = n; sources = src; lookmap = lk; buildings = bl;
   if (briefing) {
     const ageH = (Date.now() - Date.parse(briefing.news_generated_at || briefing.generated_at)) / 36e5;
     const age = ageH < 1 ? 'under an hour' : ageH < 48 ? `${Math.round(ageH)}h` : `${Math.round(ageH / 24)} days`;

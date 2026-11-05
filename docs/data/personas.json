@@ -16,7 +16,8 @@
     "What happened in energy-sector cyber today?",
     "Which US utilities or operators were affected?",
     "What is confirmed and what is still only claimed?"
-   ]
+   ],
+   "name_note": "Dana Okafor: an ordinary Nigerian surname and a short first name, chosen to be quick to read on a pixel name tag. Invented 2026-11-04; rename in agents/personas.json."
   },
   {
    "id": "analyst",
@@ -32,7 +33,8 @@
     "Who is likely behind the main incident and how confident are you?",
     "Did any attack actually reach operational technology?",
     "What should a utility security team do this week?"
-   ]
+   ],
+   "name_note": "Mateo Reyes: a common Mexican name, chosen for variety of origin among the residents; no reference to anyone. Invented 2026-11-04; rename in agents/personas.json."
   },
   {
    "id": "critic",
@@ -48,7 +50,8 @@
     "What is the bias of each source covering today's news?",
     "Is any story being driven by a vendor's own research?",
     "How does the US coverage differ from international coverage?"
-   ]
+   ],
+   "name_note": "Priya Venkataraman: a common South Indian name; long surname picked so the name tag uses the first name only. Invented 2026-11-04; rename in agents/personas.json."
   },
   {
    "id": "wideangle",
@@ -64,7 +67,8 @@
     "What else happened in cyberspace today that could affect energy?",
     "Any new zero-days or ransomware waves energy operators should watch?",
     "Is there a geopolitical angle this week?"
-   ]
+   ],
+   "name_note": "Samir Haddad: a common Lebanese name, chosen so the 'wide-angle' resident is not read as US-centric. Invented 2026-11-04; rename in agents/personas.json."
   },
   {
    "id": "contrarian",
@@ -80,7 +84,8 @@
     "Who was not affected by today's main incident, and why?",
     "Is the impact being overstated anywhere?",
     "What is the coverage not telling us?"
-   ]
+   ],
+   "name_note": "Ingrid Solberg: a Norwegian name, chosen for a calm, cold-climate feel to match the contrarian's voice. Invented 2026-11-04; rename in agents/personas.json."
   },
   {
    "id": "verifier",
@@ -96,7 +101,8 @@
     "Which items on the board rest on a single source?",
     "What changed since the last run?",
     "Which claims are still unconfirmed and what would confirm them?"
-   ]
+   ],
+   "name_note": "Tomasz Nowak: 'Nowak' is the most common Polish surname, chosen to signal 'procedural and unremarkable' for an auditor. Invented 2026-11-04; rename in agents/personas.json."
   },
   {
    "id": "librarian",
@@ -112,7 +118,8 @@
     "Where do I find primary documents on US energy cyber regulation?",
     "Which journals and research outlets cover energy-sector cybersecurity?",
     "Which sources worked and which were blocked in the latest run?"
-   ]
+   ],
+   "name_note": "Aisha Bello: a common Nigerian name; chosen last, to keep the cast varied rather than for any meaning. Invented 2026-11-04; rename in agents/personas.json."
   }
  ],
  "teaching_modes": {
