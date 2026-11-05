@@ -546,10 +546,10 @@
   }
  ],
  "generated_at": "2026-11-05T01:26:12.722123+00:00",
- "news_generated_at": "2026-11-05T01:27:06.925571+00:00",
+ "news_generated_at": "2026-11-05T01:42:42.657501+00:00",
  "model": "curated-by-claude-fable-5.1 (session run, revised)",
  "counts": {
-  "energy": 19,
+  "energy": 21,
   "wide": 150
  },
  "top_stories": [
@@ -697,13 +697,14 @@
    "source_type": "vendor report",
    "source_reliability": "C",
    "info_credibility": "2",
-   "corroboration": 1,
+   "corroboration": 2,
    "claim_vs_confirmed": "claimed",
    "so_what": "An unauthenticated RCE on a gateway that bridges field devices and IT, with exploitation reported by a firm that sells vulnerability intelligence; check for the device and patch regardless.",
    "recommended_action": "patch",
    "trend": "new",
    "labels": [
-    "[inference] exploitation is of Node-RED generally; whether IoT2050 units in energy networks were hit is not stated"
+    "[inference] exploitation is of Node-RED generally; whether IoT2050 units in energy networks were hit is not stated",
+    "[note] heise (DE) independently reports the attacks; VulnCheck remains the origin of the exploitation telemetry"
    ],
    "confidence": "moderate",
    "sources": [
@@ -715,6 +716,11 @@
     {
      "name": "VulnCheck blog (vendor, sells vulnerability intelligence)",
      "url": "https://www.vulncheck.com/blog/exploitation-targeting-node-red",
+     "date": "2026-11-03"
+    },
+    {
+     "name": "heise Security (Germany)",
+     "url": "https://www.heise.de/news/Internet-of-Things-Siemens-Simatic-IoT2050-angegriffen-11509246.html",
      "date": "2026-11-03"
     }
    ],
@@ -752,7 +758,7 @@
      "rationale": "Critical because an unauthenticated remote code execution flaw (CVSS 10) on an OT edge device is reported exploited and a patch exists. It is NOT critical because of confirmed energy victims; none are named. Corroboration is weak, which is why trust is C2 while severity stays critical."
     },
     "reliability_rationale": "C: the exploitation claim originates with VulnCheck, a vulnerability-intelligence vendor, relayed by The Hacker News. No CISA or Siemens notice reached the bundle (CISA feed 403).",
-    "credibility_rationale": "2: probably true; the CVE and CVSS are consistent across the outlet and the vendor blog, the exploitation telemetry is unconfirmed by a second party."
+    "credibility_rationale": "2: probably true; VulnCheck's telemetry now echoed by heise in Germany, still no government notice."
    },
    "continent": "global",
    "anatomy": {
@@ -2248,7 +2254,7 @@
    "Watch the vendor-funded framing: six of sixteen energy items came from one OT trade outlet, three of them company announcements. The UK '2028' headline is one agency press release run by three outlets.",
    "Two US legal items could not be checked against their text because the outlet blocks automated fetching. Treat both as discovery, not fact, until the statute and the executive instrument are read.",
    "Six new residents joined this run (Counsel, Archivist, Ombudsman, Operator, Economist, Geopolitical Analyst); their first briefings are mostly statements of what has not yet been verified, which is the honest starting point.",
-   "Sample size: 25 feeds (23 answered), 7-day window, 169 stories kept, 19 energy-cyber, 12 board items. Small by design, and now with five Latin American and Spanish-language feeds; Africa, the Middle East and Asia still lack regional sources."
+   "Sample size: 34 feeds (32 answered) in 9 languages, 7-day window, 171 stories kept, 21 energy-cyber, 12 board items. Africa, the Middle East and most of Asia still lack regional sources."
   ]
  },
  "geopolitics": {
@@ -2899,8 +2905,8 @@
   "note": "Until this run the allowlist had no Latin American, Spanish or Portuguese source, so 'no reporting' there was a sourcing artefact. Five regional feeds and Spanish/Portuguese keywords were added on 2026-11-04. Africa, the Middle East and most of Asia still have no regional feed; silence there remains an artefact until feeds are added. Sample size is shown under 'Sample' in the Summary.",
   "continents": {
    "North America": "Policy week: the information-sharing law sunset, CISA's resilience campaign, the foreign grid-component ban. No confirmed operator breach.",
-   "Europe": "The OT week: refrigeration setpoint attacks in Belgium, Sweden, Estonia and France; NCSC's AI forecast; wartime alert-app attacks in Ukraine and Russia.",
-   "Asia": "In the wide bucket only: Sogou DNS hijack (China-aligned), Asian airline breaches via Amadeus, North Korea's Binance theft; no energy item.",
+   "Europe": "The OT week: refrigeration setpoint attacks in Belgium, Sweden, Estonia and France; NCSC's AI forecast; wartime alert-app attacks in Ukraine and Russia. Germany's heise independently reported the Siemens IoT2050 attacks; CERT-FR, Le Monde, Security.NL, CERT Polska and CERT-UA joined the allowlist this run.",
+   "Asia": "Japan now has a feed (JPCERT): this window carried a Cisco firewall DoS advisory in its weekly report. China, Korea and India still have no working feed; Sogou DNS hijack, airline breaches via Amadeus and the Binance theft came through international outlets.",
    "Middle East": "No energy-cyber reporting in the allowlisted feeds this window.",
    "Africa": "No energy-cyber reporting in the allowlisted feeds this window.",
    "Oceania": "Australia's CISC updated critical-infrastructure risk guidance (Industrial Cyber); no incident.",
@@ -4042,28 +4048,35 @@
   ]
  },
  "sample": {
-  "feeds": 25,
-  "feeds_ok": 23,
+  "feeds": 34,
+  "feeds_ok": 32,
   "window_hours": 168,
-  "stories_fetched": 169,
-  "energy_cyber": 19,
+  "stories_fetched": 171,
+  "energy_cyber": 21,
   "board_items": 12,
   "languages": [
    "English",
    "Spanish",
-   "Portuguese"
+   "Portuguese",
+   "German",
+   "French",
+   "Dutch",
+   "Polish",
+   "Ukrainian",
+   "Japanese"
   ],
   "continents_with_feeds": [
-   "North America",
-   "Europe",
-   "Latin America (added 2026-11-04)",
+   "North America (US, Canada)",
+   "Europe (UK, Spain, France, Germany, Netherlands, Poland, Ukraine)",
+   "Latin America",
+   "Asia (Japan)",
    "global"
   ],
   "continents_without_feeds": [
    "Africa",
    "Middle East",
-   "Asia (except via international outlets)",
-   "Oceania (except via Industrial Cyber)"
+   "Asia except Japan (no working Korean, Chinese, Hindi feed found)",
+   "Oceania (ACSC feed unreachable)"
   ],
   "note": "This is a small sample by design: an allowlist of credible feeds, not the open web. Board items are the stories that survived the energy-and-cyber filter and were worth a record. Growth comes from adding feeds to sources.json, not from loosening the rules."
  }

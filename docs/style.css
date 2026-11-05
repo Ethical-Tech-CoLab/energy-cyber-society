@@ -145,3 +145,6 @@ button.link{background:none;border:0;color:var(--accent);cursor:pointer;font-fam
 .tl{display:flex;flex-wrap:wrap;gap:2px;margin:8px 0}.tl-year{width:34px;text-align:center;border-top:2px solid var(--line);padding-top:3px}.tl-year.has{border-top-color:var(--warn)}.tl-y{font-size:9px;color:var(--mute)}.tl-dots{min-height:14px}
 .tl-dot{background:none;border:0;color:var(--warn);cursor:pointer;font-size:11px;padding:0 1px}.tl-dot.live{color:var(--accent)}
 .tl-list{font-size:12px;padding-left:18px}.tl-list li{margin-bottom:4px}
+
+.cost-controls{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px}.cost-controls label{font-size:11px;color:var(--mute);display:flex;flex-direction:column;gap:4px}.cost-controls select,.cost-controls input{background:#0b0e14;border:2px solid var(--line);color:var(--ink);padding:6px;font-family:var(--font);font-size:12px;min-width:140px}
+#cost-body{max-height:64vh}

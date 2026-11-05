@@ -1,0 +1,88 @@
+{
+  "reviewed": "2026-11-05",
+  "prices_per_mtok": {
+    "claude-haiku-5-5": {
+      "input": 0.1,
+      "output": 0.5,
+      "cache_read": 0.01
+    },
+    "claude-sonnet-5-5": {
+      "input": 2.0,
+      "output": 10.0,
+      "cache_read": 0.2
+    },
+    "claude-opus-5-5": {
+      "input": 4.0,
+      "output": 20.0,
+      "cache_read": 0.2
+    }
+  },
+  "price_source": "Anthropic first-party rates as recorded by the claude-api reference on 2026-11-04; cache reads ~10% of input price. Check platform.claude.com/pricing before budgeting.",
+  "bundle_tokens": 4600,
+  "system_tokens": 670,
+  "per_call_overhead": 60,
+  "stages": [
+    {
+      "stage": "fetch_news.py",
+      "model_calls": 0,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "seconds": 10,
+      "note": "plain HTTP, 34 feeds"
+    },
+    {
+      "stage": "pull_sources.py",
+      "model_calls": 0,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "seconds": 30,
+      "note": "fetches every source URL and primary links"
+    },
+    {
+      "stage": "run_agents.py: briefings, answers, bubbles (14 residents × 5 calls)",
+      "model_calls": 70,
+      "tokens_out": 11340
+    },
+    {
+      "stage": "run_agents.py: ledger (items)",
+      "model_calls": 1,
+      "tokens_out": 2500
+    },
+    {
+      "stage": "run_agents.py: anatomy",
+      "model_calls": 1,
+      "tokens_out": 4000
+    },
+    {
+      "stage": "run_agents.py: summary, correlations, scenarios, geopolitics",
+      "model_calls": 4,
+      "tokens_out": 5000
+    },
+    {
+      "stage": "run_agents.py: verifier audit",
+      "model_calls": 1,
+      "tokens_out": 1500
+    },
+    {
+      "stage": "run_agents.py: 14 conversations",
+      "model_calls": 14,
+      "tokens_out": 4200
+    },
+    {
+      "stage": "validate / command_log / export_stix / archive",
+      "model_calls": 0,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "seconds": 2
+    }
+  ],
+  "per_agent": {
+    "calls": 5,
+    "tokens_out": 810
+  },
+  "energy": {
+    "per_token_wh": null,
+    "note": "No credible per-token energy figure is published by the provider for these models, and third-party estimates vary by an order of magnitude with hardware, batching and location. The tab lets you enter an assumption and see the implied figure, labelled as your assumption, never as a measurement."
+  },
+  "cloud_routine_note": "The claude.ai scheduled-routine path is billed through the subscription, not per token; expect several hundred thousand tokens per session because the agent reads files and runs scripts interactively."
+}

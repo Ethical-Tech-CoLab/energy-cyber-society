@@ -7,7 +7,7 @@ const cv = document.getElementById('town');
 const ctx = cv.getContext('2d');
 ctx.imageSmoothingEnabled = false;
 
-let personas, briefing, news, sources, lookmap, buildings, sectors, rulesText, cmdlog, history, aimarket;
+let personas, briefing, news, sources, lookmap, buildings, sectors, rulesText, cmdlog, history, aimarket, costModel;
 let agents = [];
 let selected = null;
 let bubbles = [];                      // {agent, text, until}
@@ -364,7 +364,8 @@ async function ask(q) {
   if (canned && !isLive()) { setTimeout(() => addMsg(canned, 'them'), 350); return; }
   if (!isLive()) { addMsg('I can only answer the suggested questions until you give the page a model. Open Settings and add an API key or a proxy URL.', 'sys'); return; }
   const wait = addMsg('…', 'them');
-  try { const ans = await callModel(p, q); wait.textContent = ans;
+  const t0 = performance.now();
+  try { const ans = await callModel(p, q); wait.textContent = ans; ledgerAdd(p.id, q, Math.round((newsContext().length + systemFor(p).length + q.length) / 4), Math.round(ans.length / 4), performance.now() - t0);
     if (!/\([A-Z][^)]{2,}\)/.test(ans) && !/cannot verify/i.test(ans)) sessionFlag('unsourced-claim', p.id, q.slice(0, 80), 'Live answer carried no (Source) citation.');
     if (/\[(speculation|unverified|inference)\]/i.test(ans)) sessionFlag('labelled-uncertain', p.id, q.slice(0, 80), 'Live answer contained an uncertainty label.'); }
   catch (e) { wait.className = 'msg sys'; wait.textContent = 'Could not reach the model: ' + e.message; if (canned) addMsg(canned, 'them'); }
@@ -554,6 +555,45 @@ $('btn-refs').onclick = () => {
   };
   render(''); $('refs-q').oninput = ev => render(ev.target.value); $('dlg-refs').showModal();
 };
+
+// cost & energy
+function ledger() { try { return JSON.parse(localStorage.getItem('ecs-ledger') || '[]'); } catch { return []; } }
+function ledgerAdd(agent, q, tin, tout, ms) { const L = ledger(); L.push({ at: new Date().toISOString(), agent, q: q.slice(0, 80), tin, tout, ms: Math.round(ms), model: (cfg.get().model || 'claude-sonnet-5-5') }); try { localStorage.setItem('ecs-ledger', JSON.stringify(L.slice(-500))); } catch {} }
+function renderCost() {
+  const cm = costModel; if (!cm) { $('cost-body').innerHTML = '<p class="k">cost_model.json missing</p>'; return; }
+  const model = $('cost-model').value, runs = +$('cost-runs').value || 1, cache = $('cost-cache').value === '1', wh = parseFloat($('cost-wh').value);
+  const P = cm.prices_per_mtok[model]; const perCallIn = cm.bundle_tokens + cm.system_tokens + cm.per_call_overhead;
+  const stages = cm.stages.map(st => { const calls = st.model_calls || 0; const tin = st.tokens_in != null ? st.tokens_in : calls * perCallIn; const tout = st.tokens_out || 0;
+    const cached = cache && calls ? (calls - 1) * cm.bundle_tokens : 0; const uncached = tin - cached;
+    const usd = uncached / 1e6 * P.input + cached / 1e6 * P.cache_read + tout / 1e6 * P.output; return { ...st, tin, tout, usd, calls }; });
+  const tot = stages.reduce((a, s0) => ({ tin: a.tin + s0.tin, tout: a.tout + s0.tout, usd: a.usd + s0.usd, calls: a.calls + s0.calls }), { tin: 0, tout: 0, usd: 0, calls: 0 });
+  const agents = personas.agents.map(a => { const tin = cm.per_agent.calls * perCallIn; const cached = cache ? (cm.per_agent.calls) * cm.bundle_tokens : 0; const usd = (tin - cached) / 1e6 * P.input + cached / 1e6 * P.cache_read + cm.per_agent.tokens_out / 1e6 * P.output; return { a, tin, tout: cm.per_agent.tokens_out, usd }; });
+  const maxS = Math.max(...stages.map(s0 => s0.usd), 0.0001);
+  const L = ledger(); const ledgerUsd = L.reduce((a, r) => { const p = cm.prices_per_mtok[r.model] || P; return a + r.tin / 1e6 * p.input + r.tout / 1e6 * p.output; }, 0);
+  const real = briefing && briefing.usage;
+  const fmt = v => '$' + (v < 0.01 ? v.toFixed(4) : v.toFixed(2));
+  const whLine = v => isNaN(wh) ? '<span class="k">energy: not published</span>' : `<span class="k">≈ ${(v / 1000 * wh).toFixed(1)} Wh at your assumption</span>`;
+  $('cost-meta').textContent = `${model} · ${runs} run${runs > 1 ? 's' : ''}/day · caching ${cache ? 'on' : 'off'} · prices per MTok: in $${P.input}, out $${P.output}, cache read $${P.cache_read}`;
+  $('cost-body').innerHTML = `
+    <div class="tiles">
+      <div class="tile"><div class="tv">${fmt(tot.usd)}</div><div class="tl">per run (estimate, ${tot.calls} calls)</div></div>
+      <div class="tile"><div class="tv">${fmt(tot.usd * runs)}</div><div class="tl">per day</div></div>
+      <div class="tile"><div class="tv">${fmt(tot.usd * runs * 30)}</div><div class="tl">per month</div></div>
+      <div class="tile"><div class="tv">${(tot.tin / 1000).toFixed(0)}k / ${(tot.tout / 1000).toFixed(1)}k</div><div class="tl">tokens in / out per run</div></div>
+      <div class="tile ${real ? '' : 'warn'}"><div class="tv">${real ? fmt((real.input - real.cached) / 1e6 * P.input + real.cached / 1e6 * P.cache_read + real.output / 1e6 * P.output) : 'n/a'}</div><div class="tl">${real ? `measured last API run (${real.calls} calls, ${(real.input / 1000).toFixed(0)}k in)` : 'measured: none yet (this briefing was hand-curated in a session)'}</div></div>
+      <div class="tile"><div class="tv">${isNaN(wh) ? '—' : ((tot.tin + tot.tout) / 1000 * wh).toFixed(0) + ' Wh'}</div><div class="tl">energy per run ${isNaN(wh) ? '(enter an assumption above; not published)' : 'at YOUR assumption of ' + wh + ' Wh/1k tokens'}</div></div>
+    </div>
+    <div class="charts">
+      <div class="chart"><div class="ct">Cost by stage, per run</div>${stages.map(s0 => `<div class="bar-row"><span class="bl" title="${esc(s0.stage)}">${esc(s0.stage.slice(0, 26))}</span><span class="bt"><span class="bf" style="width:${(s0.usd / maxS) * 100}%;background:#e8b04b"></span></span><span class="bv">${fmt(s0.usd)}</span></div>`).join('')}<div class="k">Zero-cost stages (fetch, pull, validate, log, export, archive) are plain HTTP and Python: ${cm.stages.filter(s0 => !s0.model_calls).map(s0 => s0.seconds + 's').join(', ')}.</div></div>
+      <div class="chart"><div class="ct">Cost per resident, per run (briefing + 3 answers + bubble)</div>${agents.map(x => `<div class="bar-row"><span class="bl" style="color:${x.a.color}">${esc(x.a.name.split(' ')[0])}</span><span class="bt"><span class="bf" style="width:${(x.usd / Math.max(...agents.map(y => y.usd))) * 100}%;background:${x.a.color}"></span></span><span class="bv">${fmt(x.usd)}</span></div>`).join('')}<div class="k">Each resident reads the same cached bundle; the difference between residents is only output length, so they cost the same. Shared stages (ledger, anatomy, verifier, conversations) are not attributed to one resident.</div></div>
+      <div class="chart"><div class="ct">Compare models, per run and per month</div>${Object.entries(cm.prices_per_mtok).map(([m, pp]) => { const c = tot.tin; const cached = cache ? tot.calls * cm.bundle_tokens : 0; const u = (c - cached) / 1e6 * pp.input + cached / 1e6 * pp.cache_read + tot.tout / 1e6 * pp.output; return `<div class="bar-row"><span class="bl">${esc(m.replace('claude-', ''))}</span><span class="bt"><span class="bf" style="width:${(u / (tot.tin / 1e6 * 4 + tot.tout / 1e6 * 20)) * 100}%;background:#4bb3e8"></span></span><span class="bv">${fmt(u)} / ${fmt(u * runs * 30)}</span></div>`; }).join('')}</div>
+      <div class="chart"><div class="ct">Your questions in this browser (live chat ledger)</div>${L.length ? `<div class="k">${L.length} questions · ≈ ${fmt(ledgerUsd)} total at list prices · tokens estimated as characters ÷ 4</div><table class="perf-table"><tr><th>When</th><th>Resident</th><th>Question</th><th>in</th><th>out</th><th>ms</th><th>$</th></tr>${[...L].reverse().slice(0, 25).map(r => { const p = cm.prices_per_mtok[r.model] || P; return `<tr><td>${esc(r.at.slice(5, 16).replace('T', ' '))}</td><td>${esc(r.agent)}</td><td>${esc(r.q)}</td><td>${r.tin}</td><td>${r.tout}</td><td>${r.ms}</td><td>${fmt(r.tin / 1e6 * p.input + r.tout / 1e6 * p.output)}</td></tr>`; }).join('')}</table>` : '<div class="k">No live questions yet. Suggested questions are answered from the briefing at zero cost; free-text questions with a key or proxy are logged here with their estimated tokens and cost.</div>'}</div>
+    </div>
+    <h3>Energy</h3><p class="k">${esc(cm.energy.note)}</p>
+    <h3>Notes</h3><p class="k">${esc(cm.price_source)} ${esc(cm.cloud_routine_note)} Build cost of this town in the authoring session: about $50 of model usage on 2026-11-04 (one-off). Full sheet: <a href="COST.md" target="_blank" rel="noopener">COST.md</a> · inputs checklist: Compute Exchange building.</p>`;
+}
+$('btn-cost').onclick = () => { renderCost(); $('dlg-cost').showModal(); };
+['cost-model', 'cost-runs', 'cost-cache', 'cost-wh'].forEach(id => $(id).addEventListener('input', renderCost));
 
 // history: the append-only archive of every run
 $('btn-history').onclick = async () => {
@@ -803,7 +843,7 @@ $('btn-look').onclick = () => {
 
 // ---------------------------------------------------------------- boot
 async function boot() {
-  const [p, b, n, src, lk, bl, sc, rt, cl, hs, am] = await Promise.all([
+  const [p, b, n, src, lk, bl, sc, rt, cl, hs, am, cmd] = await Promise.all([
     fetch('data/personas.json').then(r => r.json()),
     fetch('data/briefing.json').then(r => r.json()).catch(() => null),
     fetch('data/news.json').then(r => r.json()).catch(() => null),
@@ -815,8 +855,9 @@ async function boot() {
     fetch('data/command_log.json').then(r => r.json()).catch(() => ({ events: [] })),
     fetch('data/history.json').then(r => r.json()).catch(() => ({ runs: [] })),
     fetch('data/ai_market.json').then(r => r.json()).catch(() => null),
+    fetch('data/cost_model.json').then(r => r.json()).catch(() => null),
   ]);
-  history = hs; aimarket = am;
+  history = hs; aimarket = am; costModel = cmd;
   personas = p; briefing = b; news = n; sources = src; lookmap = lk; buildings = bl; sectors = sc; rulesText = rt; cmdlog = cl;
   const openFlags = cmdlog.events.filter(e => e.status === 'open').length; $('btn-command').textContent = `Cyber Command (${openFlags})`;
   if (briefing) {

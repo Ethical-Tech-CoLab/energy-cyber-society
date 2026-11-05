@@ -19,6 +19,8 @@ def kw_match(k: str, blob: str) -> bool:
     """Whole-word match so 'rail' does not hit 'derail' and 'ics' does not hit 'politics'.
     Keywords ending in a space are prefix matches on a word; accented stems match any suffix."""
     k = k.lower()
+    if any(ord(ch) > 0x2E7F for ch in k) or any(ord(ch) in range(0x0400, 0x0500) for ch in k):
+        return k.strip() in blob  # CJK and Cyrillic: no word boundaries, plain substring
     if k.endswith(" "): return re.search(r"\b" + re.escape(k.strip()) + r"\b", blob) is not None
     if any(ch in k for ch in "áéíóúãçñ") or k.endswith(("ic", "ric", "ól", "ión", "ão")): return re.search(r"\b" + re.escape(k), blob) is not None
     return re.search(r"\b" + re.escape(k) + r"(s|es)?\b", blob) is not None

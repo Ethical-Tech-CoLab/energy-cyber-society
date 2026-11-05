@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-05T01:27:06.925571+00:00",
+ "generated_at": "2026-11-05T01:42:42.657501+00:00",
  "window_hours": 168,
  "sources": [
   {
@@ -201,6 +201,78 @@
    "country": "Latin America",
    "bias_note": "Regional trade outlet; vendor-advertising funded; relays regional incidents and vendor reports in Spanish.",
    "url": "https://www.ciberseguridadlatam.com/feed/"
+  },
+  {
+   "id": "heise",
+   "name": "heise Security (Germany)",
+   "type": "tech press",
+   "country": "Germany",
+   "bias_note": "Germany's main tech press; German; sober, fast, strong on EU regulation and German utilities; Heise Medien.",
+   "url": "https://www.heise.de/security/rss/news-atom.xml"
+  },
+  {
+   "id": "certfr",
+   "name": "CERT-FR advisories (France)",
+   "type": "government",
+   "country": "France",
+   "bias_note": "ANSSI's CERT; French; vulnerability advisories including ICS vendors; institutional, no attribution.",
+   "url": "https://www.cert.ssi.gouv.fr/avis/feed/"
+  },
+  {
+   "id": "lemonde",
+   "name": "Le Monde Pixels (France)",
+   "type": "wire",
+   "country": "France",
+   "bias_note": "National daily's tech desk; French; covered the EFS and supermarket attacks domestically; general audience.",
+   "url": "https://www.lemonde.fr/pixels/rss_full.xml"
+  },
+  {
+   "id": "securitynl",
+   "name": "Security.NL (Netherlands)",
+   "type": "independent",
+   "country": "Netherlands",
+   "bias_note": "Dutch independent security news; terse, high volume; good on Dutch and EU incidents.",
+   "url": "https://www.security.nl/rss/headlines.xml"
+  },
+  {
+   "id": "certpl",
+   "name": "CERT Polska",
+   "type": "government",
+   "country": "Poland",
+   "bias_note": "Poland's national CERT (NASK); Polish; incident reports, strong on Russian-linked activity against Poland.",
+   "url": "https://cert.pl/rss.xml"
+  },
+  {
+   "id": "certua",
+   "name": "CERT-UA (Ukraine)",
+   "type": "government",
+   "country": "Ukraine",
+   "bias_note": "Ukraine's government CERT; Ukrainian; the primary source on attacks against Ukrainian energy and government; a party to the war, attributions are to Russia.",
+   "url": "https://cert.gov.ua/api/articles/rss"
+  },
+  {
+   "id": "jpcert",
+   "name": "JPCERT/CC (Japan)",
+   "type": "government",
+   "country": "Japan",
+   "bias_note": "Japan's coordination CERT; Japanese; vulnerability notes and alerts; institutional.",
+   "url": "https://www.jpcert.or.jp/rss/jpcert.rdf"
+  },
+  {
+   "id": "cccs-en",
+   "name": "Canadian Centre for Cyber Security (alerts, EN)",
+   "type": "government",
+   "country": "Canada",
+   "bias_note": "Canada's national cyber agency; English; alerts and advisories, often mirroring vendor and CISA notices.",
+   "url": "https://www.cyber.gc.ca/api/cccs/rss/v1/get?feed=alerts_advisories&lang=en"
+  },
+  {
+   "id": "cccs-fr",
+   "name": "Centre canadien pour la cybersécurité (alertes, FR)",
+   "type": "government",
+   "country": "Canada",
+   "bias_note": "Same agency in French; duplicates the English feed, counted once by the Verifier.",
+   "url": "https://www.cyber.gc.ca/api/cccs/rss/v1/get?feed=alerts_advisories&lang=fr"
   }
  ],
  "errors": [
@@ -214,6 +286,19 @@
   }
  ],
  "energy": [
+  {
+   "title": "Weekly Report: Cisco Secure Firewall ASAおよびFTD Softwareにサービス運用妨害（DoS）の脆弱性",
+   "summary": "Cisco Secure Firewall ASAおよびFTD Softwareにサービス運用妨害（DoS）の脆弱性",
+   "link": "https://www.jpcert.or.jp/wr/2026/wr261105.html#3",
+   "published": "2026-11-05T05:52:00+00:00",
+   "source": "jpcert",
+   "source_name": "JPCERT/CC (Japan)",
+   "source_type": "government",
+   "source_country": "Japan",
+   "matched": [
+    "firewall"
+   ]
+  },
   {
    "title": "Zyxel fixes zero-day exploited to hack nearly 1,000 network switches",
    "summary": "Zyxel has patched a zero-day vulnerability in its GS1900 series network switches that hackers exploited to compromise nearly 1,000 devices worldwide and steal configuration files and credentials. [...]",
@@ -389,6 +474,19 @@
    ]
   },
   {
+   "title": "IoT: Siemens Simatic-IoT2050-Gateways angegriffen",
+   "summary": "Am Montag wurde bekannt, dass Angreifer Siemens-IoT-Gateways attackieren. Sie wollen Botnet-Malware einschleusen.",
+   "link": "https://www.heise.de/news/Internet-of-Things-Siemens-Simatic-IoT2050-angegriffen-11509246.html",
+   "published": "2026-11-03T16:09:00+00:00",
+   "source": "heise",
+   "source_name": "heise Security (Germany)",
+   "source_type": "tech press",
+   "source_country": "Germany",
+   "matched": [
+    "siemens"
+   ]
+  },
+  {
    "title": "Múltiples vulnerabilidades en REGARD 7000 OPC UA Server de Dräger",
    "summary": "Múltiples vulnerabilidades en REGARD 7000 OPC UA Server de Dräger Mar, 03/11/2026 - 11:48 Aviso SCI Recursos Afectados Dräger REGARD 7000 OPC UA Server. Los dispositivos y el software médicos, así como los productos Dräger Service evaluados, no están afectados al no utilizar PHP. Descripción Dräger ha publicado una evaluación sobre 2 vulnerabilidades de severidad crítica de PHP. REGARD 7000 OPC UA Server es el único producto de seguridad industrial identificado como afectado en dicha evaluación. La explotación de los fallos de PHP podría permitir ejecutar código remoto. Identificador INCIBE-20",
    "link": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/multiples-vulnerabilidades-en-regard-7000-opc-ua-server-de-drager",
@@ -471,6 +569,146 @@
  ],
  "wide": [
   {
+   "title": "Weekly Report: Microsoft Edgeに複数の脆弱性",
+   "summary": "Microsoft Edgeに複数の脆弱性",
+   "link": "https://www.jpcert.or.jp/wr/2026/wr261105.html#1",
+   "published": "2026-11-05T05:52:00+00:00",
+   "source": "jpcert",
+   "source_name": "JPCERT/CC (Japan)",
+   "source_type": "government",
+   "source_country": "Japan"
+  },
+  {
+   "title": "Weekly Report: Sophos UTMに任意のコード実行につながる脆弱性",
+   "summary": "Sophos UTMに任意のコード実行につながる脆弱性",
+   "link": "https://www.jpcert.or.jp/wr/2026/wr261105.html#2",
+   "published": "2026-11-05T05:52:00+00:00",
+   "source": "jpcert",
+   "source_name": "JPCERT/CC (Japan)",
+   "source_type": "government",
+   "source_country": "Japan"
+  },
+  {
+   "title": "Weekly Report: Jenkinsに複数の脆弱性",
+   "summary": "Jenkinsに複数の脆弱性",
+   "link": "https://www.jpcert.or.jp/wr/2026/wr261105.html#4",
+   "published": "2026-11-05T05:52:00+00:00",
+   "source": "jpcert",
+   "source_name": "JPCERT/CC (Japan)",
+   "source_type": "government",
+   "source_country": "Japan"
+  },
+  {
+   "title": "Weekly Report: WordPressに複数の脆弱性",
+   "summary": "WordPressに複数の脆弱性",
+   "link": "https://www.jpcert.or.jp/wr/2026/wr261105.html#5",
+   "published": "2026-11-05T05:52:00+00:00",
+   "source": "jpcert",
+   "source_name": "JPCERT/CC (Japan)",
+   "source_type": "government",
+   "source_country": "Japan"
+  },
+  {
+   "title": "Weekly Report: 複数のAdobe製品に脆弱性",
+   "summary": "複数のAdobe製品に脆弱性",
+   "link": "https://www.jpcert.or.jp/wr/2026/wr261105.html#6",
+   "published": "2026-11-05T05:52:00+00:00",
+   "source": "jpcert",
+   "source_name": "JPCERT/CC (Japan)",
+   "source_type": "government",
+   "source_country": "Japan"
+  },
+  {
+   "title": "Weekly Report: ヤマハ製NWR100に複数の脆弱性",
+   "summary": "ヤマハ製NWR100に複数の脆弱性",
+   "link": "https://www.jpcert.or.jp/wr/2026/wr261105.html#7",
+   "published": "2026-11-05T05:52:00+00:00",
+   "source": "jpcert",
+   "source_name": "JPCERT/CC (Japan)",
+   "source_type": "government",
+   "source_country": "Japan"
+  },
+  {
+   "title": "Weekly Report: 複数のWatchGuard製品に脆弱性",
+   "summary": "複数のWatchGuard製品に脆弱性",
+   "link": "https://www.jpcert.or.jp/wr/2026/wr261105.html#8",
+   "published": "2026-11-05T05:52:00+00:00",
+   "source": "jpcert",
+   "source_name": "JPCERT/CC (Japan)",
+   "source_type": "government",
+   "source_country": "Japan"
+  },
+  {
+   "title": "Weekly Report: 複数のVeeam製品に脆弱性",
+   "summary": "複数のVeeam製品に脆弱性",
+   "link": "https://www.jpcert.or.jp/wr/2026/wr261105.html#9",
+   "published": "2026-11-05T05:52:00+00:00",
+   "source": "jpcert",
+   "source_name": "JPCERT/CC (Japan)",
+   "source_type": "government",
+   "source_country": "Japan"
+  },
+  {
+   "title": "Weekly Report: 複数のMozilla製品に脆弱性",
+   "summary": "複数のMozilla製品に脆弱性",
+   "link": "https://www.jpcert.or.jp/wr/2026/wr261105.html#10",
+   "published": "2026-11-05T05:52:00+00:00",
+   "source": "jpcert",
+   "source_name": "JPCERT/CC (Japan)",
+   "source_type": "government",
+   "source_country": "Japan"
+  },
+  {
+   "title": "Weekly Report: Google Chromeに複数の脆弱性",
+   "summary": "Google Chromeに複数の脆弱性",
+   "link": "https://www.jpcert.or.jp/wr/2026/wr261105.html#11",
+   "published": "2026-11-05T05:52:00+00:00",
+   "source": "jpcert",
+   "source_name": "JPCERT/CC (Japan)",
+   "source_type": "government",
+   "source_country": "Japan"
+  },
+  {
+   "title": "Weekly Report: Joomla!およびWordPress向けの拡張機能YOOtheme Proにリモートコード実行につながる脆弱性",
+   "summary": "Joomla!およびWordPress向けの拡張機能YOOtheme Proにリモートコード実行につながる脆弱性",
+   "link": "https://www.jpcert.or.jp/wr/2026/wr261105.html#12",
+   "published": "2026-11-05T05:52:00+00:00",
+   "source": "jpcert",
+   "source_name": "JPCERT/CC (Japan)",
+   "source_type": "government",
+   "source_country": "Japan"
+  },
+  {
+   "title": "Weekly Report: 複数のApple製品に脆弱性",
+   "summary": "複数のApple製品に脆弱性",
+   "link": "https://www.jpcert.or.jp/wr/2026/wr261105.html#13",
+   "published": "2026-11-05T05:52:00+00:00",
+   "source": "jpcert",
+   "source_name": "JPCERT/CC (Japan)",
+   "source_type": "government",
+   "source_country": "Japan"
+  },
+  {
+   "title": "Weekly Report: Rubyに複数の脆弱性",
+   "summary": "Rubyに複数の脆弱性",
+   "link": "https://www.jpcert.or.jp/wr/2026/wr261105.html#14",
+   "published": "2026-11-05T05:52:00+00:00",
+   "source": "jpcert",
+   "source_name": "JPCERT/CC (Japan)",
+   "source_type": "government",
+   "source_country": "Japan"
+  },
+  {
+   "title": "Weekly Report: BrotliのC言語実装における境界外書き込みの脆弱性（CVE-2026-111497）に関する注意喚起",
+   "summary": "BrotliのC言語実装における境界外書き込みの脆弱性（CVE-2026-111497）に関する注意喚起",
+   "link": "https://www.jpcert.or.jp/wr/2026/wr261105.html#15",
+   "published": "2026-11-05T05:52:00+00:00",
+   "source": "jpcert",
+   "source_name": "JPCERT/CC (Japan)",
+   "source_type": "government",
+   "source_country": "Japan"
+  },
+  {
    "title": "What Democratic control of Congress means for cybersecurity",
    "summary": "There’s a lame-duck session before Dems take over, but the leaders of the homeland security panels are already teeing up their agendas. The post What Democratic control of Congress means for cybersecurity appeared first on CyberScoop .",
    "link": "https://cyberscoop.com/democrats-congress-cybersecurity-cisa-ai-priorities/",
@@ -521,6 +759,36 @@
    "source_country": "US"
   },
   {
+   "title": "Cyberattaque au Crédit mutuel Arkéa : une enquête ouverte après un détournement estimé à près de 100 millions d’euros",
+   "summary": "Les hackers « ont utilisé le compte propre de Crédit mutuel Arkéa pour réaliser des transactions vers d’autres acteurs bancaires », ils ont ensuite « converti cet argent en cryptomonnaie via des plateformes spécialisées », selon un communiqué de la banque.",
+   "link": "https://www.lemonde.fr/pixels/article/2026/11/04/cyberattaque-au-credit-mutuel-arkea-une-enquete-ouverte-apres-un-detournement-estime-a-pres-de-100-millions-d-euros_6806141_4408997.html",
+   "published": "2026-11-05T01:47:47+00:00",
+   "source": "lemonde",
+   "source_name": "Le Monde Pixels (France)",
+   "source_type": "wire",
+   "source_country": "France"
+  },
+  {
+   "title": "Android security advisory – November 2026 monthly rollup (AV26-1128)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/en/alerts-advisories/android-security-advisory-november-2026-monthly-rollup-av26-1128",
+   "published": "2026-11-05T01:03:06+00:00",
+   "source": "cccs-en",
+   "source_name": "Canadian Centre for Cyber Security (alerts, EN)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
+   "title": "Bulletin de sécurité Android – Correctif cumulatif mensuel d'novembre 2026 (AV26-1128)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/fr/alertes-avis/bulletin-securite-android-correctif-cumulatif-mensuel-dnovembre-2026-av26-1128",
+   "published": "2026-11-05T01:02:39+00:00",
+   "source": "cccs-fr",
+   "source_name": "Centre canadien pour la cybersécurité (alertes, FR)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
    "title": "Officials extradite Canadian man to US for alleged cryptomining spree",
    "summary": "Ryan Roach and his alleged co-conspirator, Mathiew Stubbings, are accused of compromising U.S. universities’ computers and taking over processing power to mine for cryptocurrency. The post Officials extradite Canadian man to US for alleged cryptomining spree appeared first on CyberScoop .",
    "link": "https://cyberscoop.com/canadian-extradited-cryptomining-universities/",
@@ -529,6 +797,126 @@
    "source_name": "CyberScoop",
    "source_type": "trade press",
    "source_country": "US"
+  },
+  {
+   "title": "Cisco security advisory (AV26-1127)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/en/alerts-advisories/cisco-security-advisory-av26-1127",
+   "published": "2026-11-05T00:57:39+00:00",
+   "source": "cccs-en",
+   "source_name": "Canadian Centre for Cyber Security (alerts, EN)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
+   "title": "Bulletin de sécurité Cisco (AV26-1127)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/fr/alertes-avis/bulletin-securite-cisco-av26-1127",
+   "published": "2026-11-05T00:54:47+00:00",
+   "source": "cccs-fr",
+   "source_name": "Centre canadien pour la cybersécurité (alertes, FR)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
+   "title": "Bulletin de sécurité GitHub (AV26-1126)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/fr/alertes-avis/bulletin-securite-github-av26-1126",
+   "published": "2026-11-05T00:51:20+00:00",
+   "source": "cccs-fr",
+   "source_name": "Centre canadien pour la cybersécurité (alertes, FR)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
+   "title": "GitHub security advisory (AV26-1126)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/en/alerts-advisories/github-security-advisory-av26-1126",
+   "published": "2026-11-05T00:50:51+00:00",
+   "source": "cccs-en",
+   "source_name": "Canadian Centre for Cyber Security (alerts, EN)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
+   "title": "WatchGuard security advisory (AV26-1125)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/en/alerts-advisories/watchguard-security-advisory-av26-1125",
+   "published": "2026-11-05T00:39:34+00:00",
+   "source": "cccs-en",
+   "source_name": "Canadian Centre for Cyber Security (alerts, EN)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
+   "title": "Bulletin de sécurité WatchGuard (AV26-1125)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/fr/alertes-avis/bulletin-securite-watchguard-av26-1125",
+   "published": "2026-11-05T00:39:05+00:00",
+   "source": "cccs-fr",
+   "source_name": "Centre canadien pour la cybersécurité (alertes, FR)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
+   "title": "SolarWinds security advisory (AV26-1124)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/en/alerts-advisories/solarwinds-security-advisory-av26-1124",
+   "published": "2026-11-05T00:38:21+00:00",
+   "source": "cccs-en",
+   "source_name": "Canadian Centre for Cyber Security (alerts, EN)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
+   "title": "Bulletin de sécurité SolarWinds (AV26-1124)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/fr/alertes-avis/bulletin-securite-solarwinds-av26-1124",
+   "published": "2026-11-05T00:37:50+00:00",
+   "source": "cccs-fr",
+   "source_name": "Centre canadien pour la cybersécurité (alertes, FR)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
+   "title": "Bulletin de sécurité Docker (AV26-1123)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/fr/alertes-avis/bulletin-securite-docker-av26-1123",
+   "published": "2026-11-05T00:36:41+00:00",
+   "source": "cccs-fr",
+   "source_name": "Centre canadien pour la cybersécurité (alertes, FR)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
+   "title": "Docker security advisory (AV26-1123)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/en/alerts-advisories/docker-security-advisory-av26-1123",
+   "published": "2026-11-05T00:36:26+00:00",
+   "source": "cccs-en",
+   "source_name": "Canadian Centre for Cyber Security (alerts, EN)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
+   "title": "Bulletin de sécurité MongoDB (AV26-1122)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/fr/alertes-avis/bulletin-securite-mongodb-av26-1122",
+   "published": "2026-11-05T00:27:10+00:00",
+   "source": "cccs-fr",
+   "source_name": "Centre canadien pour la cybersécurité (alertes, FR)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
+   "title": "MongoDB security advisory (AV26-1122)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/en/alerts-advisories/mongodb-security-advisory-av26-1122",
+   "published": "2026-11-05T00:26:51+00:00",
+   "source": "cccs-en",
+   "source_name": "Canadian Centre for Cyber Security (alerts, EN)",
+   "source_type": "government",
+   "source_country": "Canada"
   },
   {
    "title": "Canadian extradited to US for allegedly hacking schools in at least four states",
@@ -549,6 +937,46 @@
    "source_name": "WIRED Security",
    "source_type": "magazine",
    "source_country": "US"
+  },
+  {
+   "title": "[Systèmes de contrôle] Bulletin de sécurité Phoenix Contact (AV26-1121)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/fr/alertes-avis/systemes-controle-bulletin-securite-phoenix-contact-av26-1121",
+   "published": "2026-11-05T00:15:51+00:00",
+   "source": "cccs-fr",
+   "source_name": "Centre canadien pour la cybersécurité (alertes, FR)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
+   "title": "[Control Systems] Phoenix Contact security advisory (AV26-1121)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/en/alerts-advisories/control-systems-phoenix-contact-security-advisory-av26-1121",
+   "published": "2026-11-05T00:15:29+00:00",
+   "source": "cccs-en",
+   "source_name": "Canadian Centre for Cyber Security (alerts, EN)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
+   "title": "Bulletin de sécurité Tanium (AV26-1120)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/fr/alertes-avis/bulletin-securite-tanium-av26-1120",
+   "published": "2026-11-05T00:13:03+00:00",
+   "source": "cccs-fr",
+   "source_name": "Centre canadien pour la cybersécurité (alertes, FR)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
+   "title": "Tanium security advisory (AV26-1120)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/en/alerts-advisories/tanium-security-advisory-av26-1120",
+   "published": "2026-11-05T00:12:46+00:00",
+   "source": "cccs-en",
+   "source_name": "Canadian Centre for Cyber Security (alerts, EN)",
+   "source_type": "government",
+   "source_country": "Canada"
   },
   {
    "title": "DreamHost confirms data breach exposed FTP logins and webmail sessions",
@@ -621,6 +1049,16 @@
    "source_country": "US"
   },
   {
+   "title": "Avec la cyberattaque au Crédit mutuel Arkéa, les banques européennes prennent conscience de l’ampleur de leur vulnérabilité",
+   "summary": "Les pirates informatiques sont parvenus à dérober une partie des fonds propres d’Arkéa. Une attaque inédite dans la finance européenne.",
+   "link": "https://www.lemonde.fr/economie/article/2026/11/04/avec-la-cyberattaque-au-credit-mutuel-arkea-les-banques-europeennes-prennent-conscience-de-l-ampleur-de-leur-vulnerabilite_6806367_3234.html",
+   "published": "2026-11-04T21:51:29+00:00",
+   "source": "lemonde",
+   "source_name": "Le Monde Pixels (France)",
+   "source_type": "wire",
+   "source_country": "France"
+  },
+  {
    "title": "Trump ban on foreign grid components sparks industry concern over practicality, cost",
    "summary": "Stakeholders applauded the order’s intent to secure the grid, but said restrictions based on geography, rather than function and capability, miss the point and threaten investment.",
    "link": "https://www.utilitydive.com/news/trump-ban-on-foreign-grid-components-sparks-industry-concern-over-practical/873752/",
@@ -681,6 +1119,36 @@
    "source_country": "UK"
   },
   {
+   "title": "Incident wachtwoordmanager mSecure raakt alleen cloudgebruikers",
+   "summary": "Aanvallers zijn erin geslaagd om bij wachtwoordmanager mSecure een database met gegevens van klanten te stelen, wat gebruikers ...",
+   "link": "https://www.security.nl/posting/960416/Incident+wachtwoordmanager+mSecure+raakt+alleen+cloudgebruikers?channel=rss",
+   "published": "2026-11-04T20:14:18+00:00",
+   "source": "securitynl",
+   "source_name": "Security.NL (Netherlands)",
+   "source_type": "independent",
+   "source_country": "Netherlands"
+  },
+  {
+   "title": "Bulletin de sécurité Zyxel (AV26-1114) – Mise à jour 1",
+   "summary": "",
+   "link": "https://cyber.gc.ca/fr/alertes-avis/bulletin-securite-zyxel-av26-1114",
+   "published": "2026-11-04T20:12:11+00:00",
+   "source": "cccs-fr",
+   "source_name": "Centre canadien pour la cybersécurité (alertes, FR)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
+   "title": "Zyxel security advisory (AV26-1114) – Update 1",
+   "summary": "",
+   "link": "https://cyber.gc.ca/en/alerts-advisories/zyxel-security-advisory-av26-1114",
+   "published": "2026-11-04T20:07:31+00:00",
+   "source": "cccs-en",
+   "source_name": "Canadian Centre for Cyber Security (alerts, EN)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
    "title": "Google Calendar phishing campaign hijacks sessions, bypasses MFA",
    "summary": "A phishing campaign used Google Calendar invites, trusted redirects, and fake login pages to hijack corporate Google sessions and bypass MFA protections. Material Security examines how Operation CloudFire tracked the attacks, blocked malicious messages, and helped take down nearly 900 domains used by the attackers. [...]",
    "link": "https://www.bleepingcomputer.com/news/security/google-calendar-phishing-campaign-hijacks-sessions-bypasses-mfa/",
@@ -691,6 +1159,26 @@
    "source_country": "US"
   },
   {
+   "title": "Bulletin de sécurité HPE (AV26-1119)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/fr/alertes-avis/bulletin-securite-hpe-av26-1119",
+   "published": "2026-11-04T19:50:43+00:00",
+   "source": "cccs-fr",
+   "source_name": "Centre canadien pour la cybersécurité (alertes, FR)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
+   "title": "HPE security advisory (AV26-1119)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/en/alerts-advisories/hpe-security-advisory-av26-1119",
+   "published": "2026-11-04T19:50:15+00:00",
+   "source": "cccs-en",
+   "source_name": "Canadian Centre for Cyber Security (alerts, EN)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
    "title": "SonicWall warns of unpatched flaws in end-of-life GMS software",
    "summary": "SonicWall warned customers of two security flaws affecting end-of-life Global Management System (GMS) systems that will not be patched. [...]",
    "link": "https://www.bleepingcomputer.com/news/security/sonicwall-warns-of-unpatched-flaws-in-end-of-life-gms-software/",
@@ -699,6 +1187,26 @@
    "source_name": "BleepingComputer",
    "source_type": "tech press",
    "source_country": "US"
+  },
+  {
+   "title": "Bulletin de sécurité Google (AV26-1118)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/fr/alertes-avis/bulletin-securite-google-av26-1118",
+   "published": "2026-11-04T19:39:20+00:00",
+   "source": "cccs-fr",
+   "source_name": "Centre canadien pour la cybersécurité (alertes, FR)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
+   "title": "Google security advisory (AV26-1118)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/en/alerts-advisories/google-security-advisory-av26-1118",
+   "published": "2026-11-04T19:39:02+00:00",
+   "source": "cccs-en",
+   "source_name": "Canadian Centre for Cyber Security (alerts, EN)",
+   "source_type": "government",
+   "source_country": "Canada"
   },
   {
    "title": "Sysdig Adds Runtime Security and Governance for AI Agents",
@@ -731,6 +1239,16 @@
    "source_country": "US"
   },
   {
+   "title": "SonicWall waarschuwt dat kritiek lek in beheersysteem GMS geen patch krijgt",
+   "summary": "Er zit een kritieke kwetsbaarheid in SonicWall Global Management System (GMS), maar er zal geen patch verschijnen om het ...",
+   "link": "https://www.security.nl/posting/960405/SonicWall+waarschuwt+dat+kritiek+lek+in+beheersysteem+GMS+geen+patch+krijgt?channel=rss",
+   "published": "2026-11-04T19:18:43+00:00",
+   "source": "securitynl",
+   "source_name": "Security.NL (Netherlands)",
+   "source_type": "independent",
+   "source_country": "Netherlands"
+  },
+  {
    "title": "Incidents Move Too Fast for Pen & Paper",
    "summary": "Organizations may not be ready for completely autonomous communication processes, but there are places where automating information updates would alleviate pressure.",
    "link": "https://www.darkreading.com/cybersecurity-operations/incidents-move-fast-pen-paper",
@@ -761,6 +1279,36 @@
    "source_country": "US"
   },
   {
+   "title": "Franse bank getroffen door cyberaanval: '118 miljoen euro gestolen'",
+   "summary": "De Franse bank Crédit Mutuel Arkéa is getroffen door een cyberaanval, waardoor aanvallers frauduleuze transacties konden ...",
+   "link": "https://www.security.nl/posting/960395/Franse+bank+getroffen+door+cyberaanval%3A+%27118+miljoen+euro+gestolen%27?channel=rss",
+   "published": "2026-11-04T18:51:00+00:00",
+   "source": "securitynl",
+   "source_name": "Security.NL (Netherlands)",
+   "source_type": "independent",
+   "source_country": "Netherlands"
+  },
+  {
+   "title": "Des réfrigérateurs de l’Etablissement français du sang à leur tour victimes d’une cyberattaque",
+   "summary": "On ignore pour le moment si cet incident est en lien avec les attaques ayant visé les installations de froid de la grande distribution en France à la mi-octobre et dans de nombreux autres pays européens début novembre.",
+   "link": "https://www.lemonde.fr/pixels/article/2026/11/04/des-frigos-de-l-etablissement-francais-du-sang-a-leur-tour-victimes-d-une-cyberattaque_6806228_4408996.html",
+   "published": "2026-11-04T18:18:16+00:00",
+   "source": "lemonde",
+   "source_name": "Le Monde Pixels (France)",
+   "source_type": "wire",
+   "source_country": "France"
+  },
+  {
+   "title": "Lek in Debian APT package manager laat aanvaller code als root uitvoeren",
+   "summary": "Een kwetsbaarheid in de APT package manager van Debian maakt het mogelijk voor aanvallers, die zich in een man-in-the-middle ...",
+   "link": "https://www.security.nl/posting/960385/Lek+in+Debian+APT+package+manager+laat+aanvaller+code+als+root+uitvoeren?channel=rss",
+   "published": "2026-11-04T18:18:01+00:00",
+   "source": "securitynl",
+   "source_name": "Security.NL (Netherlands)",
+   "source_type": "independent",
+   "source_country": "Netherlands"
+  },
+  {
    "title": "US charges two Canadians accused of hacking US universities",
    "summary": "A federal grand jury indicted two Canadians suspected of hacking multiple US universities and using the compromised systems to mine for cryptocurrency. [...]",
    "link": "https://www.bleepingcomputer.com/news/security/us-charges-two-canadians-accused-of-hacking-us-universities/",
@@ -779,6 +1327,16 @@
    "source_name": "SecurityWeek",
    "source_type": "trade press",
    "source_country": "US"
+  },
+  {
+   "title": "Koelsystemen Franse nationale bloedbank doelwit van cyberaanval",
+   "summary": "Koelsystemen van de Franse nationale bloedbank zijn het doelwit van een cyberaanval geworden, waarbij aanvallers de temperatuur ...",
+   "link": "https://www.security.nl/posting/960372/Koelsystemen+Franse+nationale+bloedbank+doelwit+van+cyberaanval?channel=rss",
+   "published": "2026-11-04T17:42:21+00:00",
+   "source": "securitynl",
+   "source_name": "Security.NL (Netherlands)",
+   "source_type": "independent",
+   "source_country": "Netherlands"
   },
   {
    "title": "Canadian Extradited to US Over Cryptomining Hacks on University Supercomputers",
@@ -811,6 +1369,26 @@
    "source_country": "international"
   },
   {
+   "title": "Erstmals geknackt: Calif.io durchbricht iOS-Blockierungsmodus, überlebt Update",
+   "summary": "Das Security-Team Calif.io hat nach dem ersten Untethered-Jailbreak für iOS 27 nun auch Apples Lockdown-Mode überwunden. Doch das ist nicht alles.",
+   "link": "https://www.heise.de/news/Calif-io-iOS-Angriff-killt-Blockierungsmodus-bleibt-ueber-Update-persistent-11511374.html",
+   "published": "2026-11-04T17:06:00+00:00",
+   "source": "heise",
+   "source_name": "heise Security (Germany)",
+   "source_type": "tech press",
+   "source_country": "Germany"
+  },
+  {
+   "title": "Kühlgeräteangriffe: Bis aufs Blut verwundbar",
+   "summary": "In Frankreich haben Angreifer versucht, die Kühlsteuerung eines Lagers für Blutprodukte zu manipulieren.",
+   "link": "https://www.heise.de/news/Nach-Gefriertruhen-Attacken-Jetzt-Blutbank-Kuehlung-im-Visier-11511444.html",
+   "published": "2026-11-04T17:05:00+00:00",
+   "source": "heise",
+   "source_name": "heise Security (Germany)",
+   "source_type": "tech press",
+   "source_country": "Germany"
+  },
+  {
    "title": "Cyberattack on French plasma stores is enough to make your blood boil",
    "summary": "Attackers reportedly set cold-room controls to 110°C, but safeguards prevented stock losses",
    "link": "https://www.theregister.com/security/2026/11/04/cyberattack-on-french-plasma-stores-is-enough-to-make-your-blood-boil/5307519",
@@ -841,6 +1419,16 @@
    "source_country": "international"
   },
   {
+   "title": "Minister: goed voorstelbaar dat hack vertrouwen in bevolkingsonderzoek aantast",
+   "summary": "Het is goed voorstelbaar dat de hack van Clinical Diagnostics het vertrouwen in het bevolkingsonderzoek baarmoederhalskanker ...",
+   "link": "https://www.security.nl/posting/960360/Minister%3A+goed+voorstelbaar+dat+hack+vertrouwen+in+bevolkingsonderzoek+aantast?channel=rss",
+   "published": "2026-11-04T16:32:40+00:00",
+   "source": "securitynl",
+   "source_name": "Security.NL (Netherlands)",
+   "source_type": "independent",
+   "source_country": "Netherlands"
+  },
+  {
    "title": "China-Aligned Hackers Hijack Sogou Input Method DNS Requests to Deploy DarkVigil Backdoor",
    "summary": "A China-aligned threat actor known as SlippyNunchucks has been attributed to a Domain Name System (DNS) hijacking operation abusing insecure HTTP communications in Windows versions of Sogou Input Method as part of a surveillance campaign designed to deploy an implant called DarkVigil (aka FDMTP). The campaign, observed starting July 1, 2026, is assessed to have targeted organizations and",
    "link": "https://thehackernews.com/2026/11/china-aligned-hackers-hijack-sogou.html",
@@ -851,6 +1439,16 @@
    "source_country": "international"
   },
   {
+   "title": "On a testé… « The Legend of Zelda: Ocarina of Time Remake » : quand un chef-d’œuvre du jeu vidéo s’offre une cure de jouvence",
+   "summary": "Le jeu culte, sorti en 1998 sur Nintendo 64, revient dans une version Switch 2 très fidèle au matériel d’origine : une aventure avec un grand « A » et un « Zelda » avec un grand « Z ».",
+   "link": "https://www.lemonde.fr/pixels/article/2026/11/04/on-a-teste-the-legend-of-zelda-ocarina-of-time-remake-quand-un-chef-d-uvre-du-jeu-video-s-offre-une-cure-de-jouvence_6806148_4408996.html",
+   "published": "2026-11-04T16:00:08+00:00",
+   "source": "lemonde",
+   "source_name": "Le Monde Pixels (France)",
+   "source_type": "wire",
+   "source_country": "France"
+  },
+  {
    "title": "Dispositivos de red empresariales tardan más de un año en recibir parches — mientras los exploits se lanzan en días",
    "summary": "Telemetría de Microsoft revela que el tiempo mediano de parcheo en appliances de red supera los 12 meses, justo cuando el ciclo de explotación se comprimió a 3 días en 2026.",
    "link": "https://ciberseguridadlatam.com/dispositivos-de-red-empresariales-tardan-mas-de-un-ano-en-recibir-parches-mientras-los-exploits-se-lanzan-en-dias/",
@@ -859,6 +1457,16 @@
    "source_name": "Ciberseguridad LATAM",
    "source_type": "trade press",
    "source_country": "Latin America"
+  },
+  {
+   "title": "Cookies en wifi-wachtwoorden van kwetsbare iPhones en Androidtelefoons gestolen",
+   "summary": "Aanvallers maken gebruik van bekende beveiligingslekken om cookies, wifi-wachtwoorden en 'full device data' van kwetsbare ...",
+   "link": "https://www.security.nl/posting/960348/Cookies+en+wifi-wachtwoorden+van+kwetsbare+iPhones+en+Androidtelefoons+gestolen?channel=rss",
+   "published": "2026-11-04T15:58:30+00:00",
+   "source": "securitynl",
+   "source_name": "Security.NL (Netherlands)",
+   "source_type": "independent",
+   "source_country": "Netherlands"
   },
   {
    "title": "Malicious cPGuard Updates Served in OpsShield Supply Chain Attack",
@@ -921,6 +1529,46 @@
    "source_country": "US"
   },
   {
+   "title": "Op wie kun je gederfde inkomsten door het preventief offline halen van een website verhalen?",
+   "summary": "Juridische vraag: Wie is aansprakelijk voor gederfde inkomsten na het dringende advies om een webshop die PHP gebruikt offline ...",
+   "link": "https://www.security.nl/posting/960346/Op+wie+kun+je+gederfde+inkomsten+door+het+preventief+offline+halen+van+een+website+verhalen%3F?channel=rss",
+   "published": "2026-11-04T15:30:00+00:00",
+   "source": "securitynl",
+   "source_name": "Security.NL (Netherlands)",
+   "source_type": "independent",
+   "source_country": "Netherlands"
+  },
+  {
+   "title": "Aerdts: leeftijdsverificatie geen waterdicht systeem, te omzeilen met vpn",
+   "summary": "Online leeftijdsverificatie is geen waterdicht systeem en kan worden omzeild met een vpn, zo stelt staatsecretaris Aerdts voor ...",
+   "link": "https://www.security.nl/posting/960339/Aerdts%3A+leeftijdsverificatie+geen+waterdicht+systeem%2C+te+omzeilen+met+vpn?channel=rss",
+   "published": "2026-11-04T15:12:55+00:00",
+   "source": "securitynl",
+   "source_name": "Security.NL (Netherlands)",
+   "source_type": "independent",
+   "source_country": "Netherlands"
+  },
+  {
+   "title": "Polizei: Selbst Smart-Staubsauger liefern Ermittlern Daten",
+   "summary": "Die Digitalisierung ist für die Polizei Fluch und Segen zugleich. Den Ermittlern liefert sie massenhaft Daten. Zugleich nimmt die Cyberkriminalität stark zu.",
+   "link": "https://www.heise.de/news/Polizei-Selbst-Smart-Staubsauger-liefern-Ermittlern-Daten-11511208.html",
+   "published": "2026-11-04T15:11:00+00:00",
+   "source": "heise",
+   "source_name": "heise Security (Germany)",
+   "source_type": "tech press",
+   "source_country": "Germany"
+  },
+  {
+   "title": "Ahold Delhaize loopt door cyberaanval tot 250 miljoen euro aan omzet mis",
+   "summary": "Door de cyberaanval waar Ahold Delhaize in oktober mee te maken kreeg loopt het moederbedrijf van Albert Heijn in het vierde ...",
+   "link": "https://www.security.nl/posting/960337/Ahold+Delhaize+loopt+door+cyberaanval+tot+250+miljoen+euro+aan+omzet+mis?channel=rss",
+   "published": "2026-11-04T14:49:00+00:00",
+   "source": "securitynl",
+   "source_name": "Security.NL (Netherlands)",
+   "source_type": "independent",
+   "source_country": "Netherlands"
+  },
+  {
    "title": "Hackers use n-day exploits in zero-click attacks on iOS, Android devices",
    "summary": "A large-scale watering hole attack associated with Russian hackers has been targeting iOS and Android users visiting compromised sites or fake ones impersonating legitimate portals. [...]",
    "link": "https://www.bleepingcomputer.com/news/security/hackers-use-n-day-exploits-in-zero-click-attacks-on-ios-android-devices/",
@@ -929,6 +1577,26 @@
    "source_name": "BleepingComputer",
    "source_type": "tech press",
    "source_country": "US"
+  },
+  {
+   "title": "Barracuda: Root-Sicherheitslücke bedroht unter anderem Email Security Gateway",
+   "summary": "Wenn die Voraussetzungen stimmen, können Angreifer etwa Barracuda Email Security Gateway attackieren und sich Root-Rechte verschaffen.",
+   "link": "https://www.heise.de/news/Barracuda-Root-Sicherheitsluecke-bedroht-unter-anderem-Email-Security-Gateway-11511074.html",
+   "published": "2026-11-04T14:28:00+00:00",
+   "source": "heise",
+   "source_name": "heise Security (Germany)",
+   "source_type": "tech press",
+   "source_country": "Germany"
+  },
+  {
+   "title": "Kabinet komt nog niet met nieuwe wetgeving om camerabrillen te verbieden",
+   "summary": "Het kabinet komt vooralsnog niet met nieuwe wetgeving om camerabrillen te verbieden. Er zal eerst worden gewacht op de uitkomst ...",
+   "link": "https://www.security.nl/posting/960332/Kabinet+komt+nog+niet+met+nieuwe+wetgeving+om+camerabrillen+te+verbieden?channel=rss",
+   "published": "2026-11-04T14:27:20+00:00",
+   "source": "securitynl",
+   "source_name": "Security.NL (Netherlands)",
+   "source_type": "independent",
+   "source_country": "Netherlands"
   },
   {
    "title": "North Korea Launches Missiles Toward the Sea as Pyongyang Protests Against US Claims on Binance Hack",
@@ -941,6 +1609,16 @@
    "source_country": "US"
   },
   {
+   "title": "Google publiceert patch voor tweehonderd beveiligingslekken in Chrome",
+   "summary": "Google heeft patches voor Chrome gepubliceerd die ruim tweehonderd beveiligingslekken in de browser verhelpen, waaronder zeven ...",
+   "link": "https://www.security.nl/posting/960329/Google+publiceert+patch+voor+tweehonderd+beveiligingslekken+in+Chrome?channel=rss",
+   "published": "2026-11-04T14:10:00+00:00",
+   "source": "securitynl",
+   "source_name": "Security.NL (Netherlands)",
+   "source_type": "independent",
+   "source_country": "Netherlands"
+  },
+  {
    "title": "ESET uncovers Gorbag cyberespionage campaign targeting Ukraine’s administrations, defense sector, transportation hub",
    "summary": "New research from ESET identified a previously underreported Russia-aligned threat actor, tracked as Gorbag, conducting targeted cyberespionage operations... The post ESET uncovers Gorbag cyberespionage campaign targeting Ukraine’s administrations, defense sector, transportation hub appeared first on Industrial Cyber .",
    "link": "https://industrialcyber.co/ransomware/eset-uncovers-gorbag-cyberespionage-campaign-targeting-ukraines-administrations-defense-sector-transportation-hub/",
@@ -949,6 +1627,36 @@
    "source_name": "Industrial Cyber",
    "source_type": "trade press",
    "source_country": "international"
+  },
+  {
+   "title": "'Aanvaller zoekt op internet naar Linux-servers met kritiek TCP-lek'",
+   "summary": "Een aanvaller lijkt het gehele internet af te scannen op zoek naar Linux-servers met een kritieke TCP-kwetsbaarheid. Dat meldt ...",
+   "link": "https://www.security.nl/posting/960326/%27Aanvaller+zoekt+op+internet+naar+Linux-servers+met+kritiek+TCP-lek%27?channel=rss",
+   "published": "2026-11-04T14:00:54+00:00",
+   "source": "securitynl",
+   "source_name": "Security.NL (Netherlands)",
+   "source_type": "independent",
+   "source_country": "Netherlands"
+  },
+  {
+   "title": "Investitionsbetrug: Bei Europol-Aktion mehr als 100 Server beschlagnahmt",
+   "summary": "In einer von Europol koordinierten Operation haben Strafverfolger am Dienstag mehr als 100 Server beschlagnahmt und Verdächtige verhaftet.",
+   "link": "https://www.heise.de/news/Investitionsbetrug-Bei-Europol-Aktion-mehr-als-100-Server-beschlagnahmt-11510908.html",
+   "published": "2026-11-04T13:39:00+00:00",
+   "source": "heise",
+   "source_name": "heise Security (Germany)",
+   "source_type": "tech press",
+   "source_country": "Germany"
+  },
+  {
+   "title": "Binance: aanvallers kwamen binnen via nepsollicitatie en supplychain-aanval",
+   "summary": "De aanvallers die bij Binance 5,6 miljard euro aan cryptovaluta wisten te stelen kwamen binnen via een nepsollicitatie en ...",
+   "link": "https://www.security.nl/posting/960316/Binance%3A+aanvallers+kwamen+binnen+via+nepsollicitatie+en+supplychain-aanval?channel=rss",
+   "published": "2026-11-04T13:39:00+00:00",
+   "source": "securitynl",
+   "source_name": "Security.NL (Netherlands)",
+   "source_type": "independent",
+   "source_country": "Netherlands"
   },
   {
    "title": "Meta Shares Top Muse Bug Bounty Findings as Payouts Reach $1.2 Million",
@@ -989,6 +1697,26 @@
    "source_name": "The Hacker News",
    "source_type": "tech press",
    "source_country": "international"
+  },
+  {
+   "title": "Rekorddiebstahl bei Binance: Falsches Bewerbungsgespräch als Einfallstor",
+   "summary": "Der milliardenschwere Diebstahl bei Binance wurde nicht nur durch einen kompromittierten Laptop ermöglicht. Die Verantwortlichen haben Monate daran gearbeitet.",
+   "link": "https://www.heise.de/news/Dem-Rekorddiebstahl-bei-Binance-gingen-monatelange-Vorbereitungen-voraus-11510806.html",
+   "published": "2026-11-04T11:57:00+00:00",
+   "source": "heise",
+   "source_name": "heise Security (Germany)",
+   "source_type": "tech press",
+   "source_country": "Germany"
+  },
+  {
+   "title": "Cyberangriffe auf Kühlsysteme: Hersteller in der Kritik",
+   "summary": "Vernetzte Technik kann Angriffsflächen bieten. Ein IT-Experte fordert strengere Prüfungen – was sich aus seiner Sicht ändern muss.",
+   "link": "https://www.heise.de/news/Sabotage-an-Kuehlanlagen-Experte-ruegt-Hersteller-11510792.html",
+   "published": "2026-11-04T10:54:00+00:00",
+   "source": "heise",
+   "source_name": "heise Security (Germany)",
+   "source_type": "tech press",
+   "source_country": "Germany"
   },
   {
    "title": "CISA Confirms Hackers Exploiting WordPress Core Flaw During Software Upgrades",
@@ -1041,6 +1769,146 @@
    "source_country": "US"
   },
   {
+   "title": "Multiples vulnérabilités dans Apache Zookeeper (04 novembre 2026)",
+   "summary": "De multiples vulnérabilités ont été découvertes dans Apache Zookeeper. Elles permettent à un attaquant de provoquer un déni de service à distance et un contournement de la politique de sécurité.",
+   "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1448/",
+   "published": "2026-11-04T05:00:00+00:00",
+   "source": "certfr",
+   "source_name": "CERT-FR advisories (France)",
+   "source_type": "government",
+   "source_country": "France"
+  },
+  {
+   "title": "Multiples vulnérabilités dans les produits Citrix (04 novembre 2026)",
+   "summary": "De multiples vulnérabilités ont été découvertes dans les produits Citrix. Elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance et une élévation de privilèges.",
+   "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1449/",
+   "published": "2026-11-04T05:00:00+00:00",
+   "source": "certfr",
+   "source_name": "CERT-FR advisories (France)",
+   "source_type": "government",
+   "source_country": "France"
+  },
+  {
+   "title": "Multiples vulnérabilités dans Google Chrome (04 novembre 2026)",
+   "summary": "De multiples vulnérabilités ont été découvertes dans Google Chrome. Elles permettent à un attaquant de provoquer un problème de sécurité non spécifié par l'éditeur.",
+   "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1450/",
+   "published": "2026-11-04T05:00:00+00:00",
+   "source": "certfr",
+   "source_name": "CERT-FR advisories (France)",
+   "source_type": "government",
+   "source_country": "France"
+  },
+  {
+   "title": "Multiples vulnérabilités dans les produits HPE Aruba Networking (04 novembre 2026)",
+   "summary": "De multiples vulnérabilités ont été découvertes dans les produits HPE Aruba Networking. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, une élévation de privilèges et un déni de service à distance.",
+   "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1451/",
+   "published": "2026-11-04T05:00:00+00:00",
+   "source": "certfr",
+   "source_name": "CERT-FR advisories (France)",
+   "source_type": "government",
+   "source_country": "France"
+  },
+  {
+   "title": "Multiples vulnérabilités dans Ruby on Rails (04 novembre 2026)",
+   "summary": "De multiples vulnérabilités ont été découvertes dans Ruby on Rails. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, un déni de service à distance et une atteinte à la confidentialité des données.",
+   "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1452/",
+   "published": "2026-11-04T05:00:00+00:00",
+   "source": "certfr",
+   "source_name": "CERT-FR advisories (France)",
+   "source_type": "government",
+   "source_country": "France"
+  },
+  {
+   "title": "Multiples vulnérabilités dans NetApp StorageGRID (04 novembre 2026)",
+   "summary": "De multiples vulnérabilités ont été découvertes dans NetApp StorageGRID. Elles permettent à un attaquant de provoquer une atteinte à la confidentialité des données et une atteinte à l'intégrité des données.",
+   "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1453/",
+   "published": "2026-11-04T05:00:00+00:00",
+   "source": "certfr",
+   "source_name": "CERT-FR advisories (France)",
+   "source_type": "government",
+   "source_country": "France"
+  },
+  {
+   "title": "Vulnérabilité dans MongoDB (04 novembre 2026)",
+   "summary": "Une vulnérabilité a été découverte dans MongoDB. Elle permet à un attaquant de provoquer une atteinte à la confidentialité des données et une atteinte à l'intégrité des données.",
+   "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1454/",
+   "published": "2026-11-04T05:00:00+00:00",
+   "source": "certfr",
+   "source_name": "CERT-FR advisories (France)",
+   "source_type": "government",
+   "source_country": "France"
+  },
+  {
+   "title": "Vulnérabilité dans Mozilla Firefox (04 novembre 2026)",
+   "summary": "Une vulnérabilité a été découverte dans Mozilla Firefox. Elle permet à un attaquant de provoquer un problème de sécurité non spécifié par l'éditeur.",
+   "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1455/",
+   "published": "2026-11-04T05:00:00+00:00",
+   "source": "certfr",
+   "source_name": "CERT-FR advisories (France)",
+   "source_type": "government",
+   "source_country": "France"
+  },
+  {
+   "title": "Multiples vulnérabilités dans les produits SonicWall (04 novembre 2026)",
+   "summary": "De multiples vulnérabilités ont été découvertes dans les produits SonicWall. Elles permettent à un attaquant de provoquer une atteinte à la confidentialité des données et une injection SQL (SQLi).",
+   "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1456/",
+   "published": "2026-11-04T05:00:00+00:00",
+   "source": "certfr",
+   "source_name": "CERT-FR advisories (France)",
+   "source_type": "government",
+   "source_country": "France"
+  },
+  {
+   "title": "Vulnérabilité dans Laravel (04 novembre 2026)",
+   "summary": "Une vulnérabilité a été découverte dans Laravel. Elle permet à un attaquant de provoquer une exécution de code arbitraire à distance.",
+   "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1457/",
+   "published": "2026-11-04T05:00:00+00:00",
+   "source": "certfr",
+   "source_name": "CERT-FR advisories (France)",
+   "source_type": "government",
+   "source_country": "France"
+  },
+  {
+   "title": "Multiples vulnérabilités dans les produits Mattermost (04 novembre 2026)",
+   "summary": "De multiples vulnérabilités ont été découvertes dans les produits Mattermost. Elles permettent à un attaquant de provoquer un problème de sécurité non spécifié par l'éditeur.",
+   "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1458/",
+   "published": "2026-11-04T05:00:00+00:00",
+   "source": "certfr",
+   "source_name": "CERT-FR advisories (France)",
+   "source_type": "government",
+   "source_country": "France"
+  },
+  {
+   "title": "Multiples vulnérabilités dans SolarWinds Dameware (04 novembre 2026)",
+   "summary": "De multiples vulnérabilités ont été découvertes dans SolarWinds Dameware. Elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance et un contournement de la politique de sécurité.",
+   "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1459/",
+   "published": "2026-11-04T05:00:00+00:00",
+   "source": "certfr",
+   "source_name": "CERT-FR advisories (France)",
+   "source_type": "government",
+   "source_country": "France"
+  },
+  {
+   "title": "Multiples vulnérabilités dans les produits Symfony (04 novembre 2026)",
+   "summary": "De multiples vulnérabilités ont été découvertes dans les produits Symfony. Certaines d'entre elles permettent à un attaquant de provoquer un déni de service à distance, une atteinte à la confidentialité des données et un contournement de la politique de sécurité.",
+   "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1460/",
+   "published": "2026-11-04T05:00:00+00:00",
+   "source": "certfr",
+   "source_name": "CERT-FR advisories (France)",
+   "source_type": "government",
+   "source_country": "France"
+  },
+  {
+   "title": "Multiples vulnérabilités dans les produits Elastic (04 novembre 2026)",
+   "summary": "De multiples vulnérabilités ont été découvertes dans les produits Elastic. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, un déni de service à distance et une atteinte à la confidentialité des données.",
+   "link": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1461/",
+   "published": "2026-11-04T05:00:00+00:00",
+   "source": "certfr",
+   "source_name": "CERT-FR advisories (France)",
+   "source_type": "government",
+   "source_country": "France"
+  },
+  {
    "title": "Hackers hijack cPGuard autoupdate to deploy backdoor, steal data",
    "summary": "Attackers have compromised the update infrastructure for the cPGuard web security suite to distribute a backdoor and a data-stealing script. [...]",
    "link": "https://www.bleepingcomputer.com/news/security/hackers-hijack-cpguard-autoupdate-to-deploy-backdoor-steal-data/",
@@ -1081,6 +1949,26 @@
    "source_country": "US"
   },
   {
+   "title": "WordPress security advisory (AV26-1117)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/en/alerts-advisories/wordpress-security-advisory-av26-1117",
+   "published": "2026-11-04T02:36:07+00:00",
+   "source": "cccs-en",
+   "source_name": "Canadian Centre for Cyber Security (alerts, EN)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
+   "title": "Bulletin de sécurité WordPress (AV26-1117)",
+   "summary": "",
+   "link": "https://cyber.gc.ca/fr/alertes-avis/bulletin-securite-wordpress-av26-1117",
+   "published": "2026-11-04T02:35:16+00:00",
+   "source": "cccs-fr",
+   "source_name": "Centre canadien pour la cybersécurité (alertes, FR)",
+   "source_type": "government",
+   "source_country": "Canada"
+  },
+  {
    "title": "WorkOS says attacker used ARTEX AI to breach internal sales app",
    "summary": "Developer platform WorkOS suffered a data breach after a threat actor accessed business contact records and summaries of customer communications. [...]",
    "link": "https://www.bleepingcomputer.com/news/security/workos-says-attacker-used-artex-ai-to-breach-internal-sales-app/",
@@ -1099,6 +1987,16 @@
    "source_name": "BleepingComputer",
    "source_type": "tech press",
    "source_country": "US"
+  },
+  {
+   "title": "Mobilisation sociale : une deuxième influenceuse mise en cause par la justice pour « provocation à commettre un crime ou délit »",
+   "summary": "Comme Manon Delcourt, la créatrice de contenu Osmose a été placée en garde à vue le 22 octobre à la suite d’un signalement concernant l’une de ses publications. Toutes deux font désormais l’objet d’une enquête.",
+   "link": "https://www.lemonde.fr/politique/article/2026/11/03/mobilisation-sociale-une-deuxieme-influenceuse-mise-en-cause-par-la-justice-pour-provocation-a-commettre-un-crime-ou-delit_6805660_823448.html",
+   "published": "2026-11-04T00:42:59+00:00",
+   "source": "lemonde",
+   "source_name": "Le Monde Pixels (France)",
+   "source_type": "wire",
+   "source_country": "France"
   },
   {
    "title": "AI policy wonks declare 'sovereign agents' a threat to civilization",
@@ -1167,806 +2065,6 @@
    "published": "2026-11-03T22:02:27+00:00",
    "source": "cyberscoop",
    "source_name": "CyberScoop",
-   "source_type": "trade press",
-   "source_country": "US"
-  },
-  {
-   "title": "The Senate permitting bill holds promise but needs amendments",
-   "summary": "Targeted changes can minimize the most negative consequences of the permitting bill’s overreaching provisions, writes former FERC Chairman Mark Christie.",
-   "link": "https://www.utilitydive.com/news/senate-permitting-bill-holds-promise-needs-amendments/873419/",
-   "published": "2026-11-03T22:00:00+00:00",
-   "source": "utilitydive",
-   "source_name": "Utility Dive",
-   "source_type": "industry press",
-   "source_country": "US"
-  },
-  {
-   "title": "Binance Reveals How Fake Job Interviews and AI Tool Abuse Led to $6.43 Billion Theft",
-   "summary": "Binance on Tuesday said the record-setting theft of $6.43 billion in assets from the world's largest cryptocurrency exchange was the culmination of a \"sophisticated, multi-stage campaign\" that involved the use of a tampered Homebrew installation and recruitment-themed social engineering attack targeting two of its engineers. \"It was not a single isolated breach or a simple phishing incident,\"",
-   "link": "https://thehackernews.com/2026/11/binance-reveals-how-fake-job-interviews.html",
-   "published": "2026-11-03T21:55:58+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "Caterpillar expands production of engines and turbines to meet data center demand",
-   "summary": "The heavy machinery and power equipment maker saw its order backlog reach $78 billion during the third quarter, almost double what it was a year ago.",
-   "link": "https://www.utilitydive.com/news/caterpillar-posts-highest-sales-quarter-ever-data-centers-q3-2026/873586/",
-   "published": "2026-11-03T21:42:00+00:00",
-   "source": "utilitydive",
-   "source_name": "Utility Dive",
-   "source_type": "industry press",
-   "source_country": "US"
-  },
-  {
-   "title": "Ballot scanner malfunctions, flurry of federal legal actions test election officials on final day of voting",
-   "summary": "Rumors of malfeasance spread on X despite no evidence, as election officials continue to fight off numerous legal challenges from the Trump administration in the last 48 hours. The post Ballot scanner malfunctions, flurry of federal legal actions test election officials on final day of voting appeared first on CyberScoop .",
-   "link": "https://cyberscoop.com/westchester-ballot-scanner-malfunctions-disinformation/",
-   "published": "2026-11-03T21:13:27+00:00",
-   "source": "cyberscoop",
-   "source_name": "CyberScoop",
-   "source_type": "trade press",
-   "source_country": "US"
-  },
-  {
-   "title": "Password manager mSecure tells users to change passwords, won't say why",
-   "summary": "Customers left wondering what's been compromised after vendor advises resetting passwords, 2FA and passkeys",
-   "link": "https://www.theregister.com/security/2026/11/03/password-manager-msecure-tells-users-to-change-passwords-wont-say-why/5307296",
-   "published": "2026-11-03T21:10:00+00:00",
-   "source": "register",
-   "source_name": "The Register Security",
-   "source_type": "tech press",
-   "source_country": "UK"
-  },
-  {
-   "title": "Can ‘BattMan’ secure the US battery manufacturing supply chain?",
-   "summary": "The Energy Department’s Battery Manufacturing Accelerator aims to plug gaps in domestic material and component supplies over the next few years as U.S. battery demand looks set to quadruple.",
-   "link": "https://www.utilitydive.com/news/can-battman-secure-the-us-battery-manufacturing-supply-chain/873599/",
-   "published": "2026-11-03T21:01:22+00:00",
-   "source": "utilitydive",
-   "source_name": "Utility Dive",
-   "source_type": "industry press",
-   "source_country": "US"
-  },
-  {
-   "title": "Barracuda Flaws Could Be Chained to Bypass Authorization and Gain Root Access",
-   "summary": "Barracuda has disclosed details of two vulnerabilities affecting its products that, if chained together, could allow an attacker to bypass authorization controls and gain root access to a susceptible device. The vulnerabilities, a pre-authentication authorization bypass vulnerability and a command injection vulnerability, have been assigned the CVE identifiers CVE-2026-116606 (CVSS score: 9.3)",
-   "link": "https://thehackernews.com/2026/11/barracuda-flaws-could-be-chained-to.html",
-   "published": "2026-11-03T20:59:19+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "CrowdStrike moves to acquire Fiddler and Dreadnode, adding AI observability and testing to its security platform",
-   "summary": "CrowdStrike is extending its platform to watch, test and explain autonomous AI agents, as enterprises face behavior-based risks that conventional security tools cannot catch. The post CrowdStrike moves to acquire Fiddler and Dreadnode, adding AI observability and testing to its security platform appeared first on CyberScoop .",
-   "link": "https://cyberscoop.com/crowdstrike-acquires-fiddler-dreadnode-ai-security/",
-   "published": "2026-11-03T20:44:26+00:00",
-   "source": "cyberscoop",
-   "source_name": "CyberScoop",
-   "source_type": "trade press",
-   "source_country": "US"
-  },
-  {
-   "title": "Google Warns LLMjacking Attacks Are Costing Some Enterprises Up to $1 Million in Cloud Charges",
-   "summary": "Google on Monday warned that threat actors are hijacking enterprise access to Large Language Models (LLMs) to fraudulently leverage expensive computing resources and AI services. The tactic is called LLMjacking, a form of resource hijacking adapted for the LLM era, where an attacker obtains an API key through phishing, source code leaks, misconfigured environments, or exposed client-side code",
-   "link": "https://thehackernews.com/2026/11/google-warns-llmjacking-attacks-are.html",
-   "published": "2026-11-03T20:41:53+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "9 Cyber Awareness Tips That Actually Match Today's Maze of Threats",
-   "summary": "Practical guidance on safer search, stronger login security, better executive protection, and other habits can reduce enterprise risk.",
-   "link": "https://www.darkreading.com/cyber-risk/9-cyber-awareness-tips-todays-maze-threats",
-   "published": "2026-11-03T20:38:20+00:00",
-   "source": "darkreading",
-   "source_name": "Dark Reading",
-   "source_type": "trade press",
-   "source_country": "US"
-  },
-  {
-   "title": "LLMjacking Emerges as Thriving Cybercriminal Enterprise",
-   "summary": "Cybercriminals have turned reselling cloud access to LLMs into a lucrative business model, with some victims paying as much as $1 million in resource consumption before access was revoked.",
-   "link": "https://www.darkreading.com/cloud-security/llmjacking-thriving-cybercriminal-enterprise",
-   "published": "2026-11-03T20:35:50+00:00",
-   "source": "darkreading",
-   "source_name": "Dark Reading",
-   "source_type": "trade press",
-   "source_country": "US"
-  },
-  {
-   "title": "Energy affordability tops voter concerns in election set to shake up Congress",
-   "summary": "“History shows us that energy crises create policy openings, and we think the conditions are probably in place for a window of policymaking,” Hasan Nazar, head of policy at Crux, told Utility Dive.",
-   "link": "https://www.utilitydive.com/news/energy-affordability-voter-election-midterm-congress-energy-policy/873596/",
-   "published": "2026-11-03T20:23:13+00:00",
-   "source": "utilitydive",
-   "source_name": "Utility Dive",
-   "source_type": "industry press",
-   "source_country": "US"
-  },
-  {
-   "title": "cPGuard Update Channel Hijacked to Backdoor Linux Servers and Collect Password Hashes",
-   "summary": "An attacker broke into the update system of the cPGuard security tool on November 2 and used it to send a malicious script to customers' Linux servers. The script installed a backdoor and collected password hashes and other sensitive files from servers that ran it, cPGuard maker OPSSHIELD said in an advisory. In a later disclosure, OPSSHIELD said about 2,950 customer servers ran the script,",
-   "link": "https://thehackernews.com/2026/11/cpguard-update-channel-hijacked-to.html",
-   "published": "2026-11-03T20:16:32+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "PSEG Power plans 200-MW nuclear uprate as company eyes data center deals",
-   "summary": "But one of the units at the Salem plant in New Jersey, which is jointly owned with Constellation Energy, faces an extended outage to deal with degraded equipment, according to federal filings.",
-   "link": "https://www.utilitydive.com/news/pseg-power-nuclear-uprate-salem-data-center-earnings/873587/",
-   "published": "2026-11-03T20:15:54+00:00",
-   "source": "utilitydive",
-   "source_name": "Utility Dive",
-   "source_type": "industry press",
-   "source_country": "US"
-  },
-  {
-   "title": "3AM Affiliate Embraces AI-Like Loops in European School Attack",
-   "summary": "Evidence suggests a model may have generated and revised commands during the ransom gang's breach, though researchers stopped short of claiming full automation.",
-   "link": "https://www.darkreading.com/data-privacy/3am-affiliate-ai-loops-european-school-attack",
-   "published": "2026-11-03T19:00:00+00:00",
-   "source": "darkreading",
-   "source_name": "Dark Reading",
-   "source_type": "trade press",
-   "source_country": "US"
-  },
-  {
-   "title": "BaseRock partners with Radiflow to extend IEC 62443 advisory services with continuous OT risk monitoring",
-   "summary": "BaseRock IT Solutions, a UK specialist in industrial IT and manufacturing cybersecurity, recently announced a partnership with Radiflow,... The post BaseRock partners with Radiflow to extend IEC 62443 advisory services with continuous OT risk monitoring appeared first on Industrial Cyber .",
-   "link": "https://industrialcyber.co/news/baserock-partners-with-radiflow-to-extend-iec-62443-advisory-services-with-continuous-ot-risk-monitoring/",
-   "published": "2026-11-03T18:07:01+00:00",
-   "source": "industrialcyber",
-   "source_name": "Industrial Cyber",
-   "source_type": "trade press",
-   "source_country": "international"
-  },
-  {
-   "title": "GDIT taps AppGate zero trust technology to strengthen federal cyber resilience and secure interagency access",
-   "summary": "General Dynamics Information Technology (GDIT), a business unit of General Dynamics, announced that it has expanded its partnership... The post GDIT taps AppGate zero trust technology to strengthen federal cyber resilience and secure interagency access appeared first on Industrial Cyber .",
-   "link": "https://industrialcyber.co/news/gdit-taps-appgate-zero-trust-technology-to-strengthen-federal-cyber-resilience-and-secure-interagency-access/",
-   "published": "2026-11-03T18:06:34+00:00",
-   "source": "industrialcyber",
-   "source_name": "Industrial Cyber",
-   "source_type": "trade press",
-   "source_country": "international"
-  },
-  {
-   "title": "PJM’s revised data center backstop procurement plan reduces utility risks: ICF",
-   "summary": "The planned procurement could be for as little as 630 MW, down from an initial 6,800-MW target, after utilities in the PJM Interconnection’s footprint lowered their large-load forecasts, Jefferies analysts said.",
-   "link": "https://www.utilitydive.com/news/pjm-revised-data-center-backstop-procurement-ferc/873551/",
-   "published": "2026-11-03T18:00:10+00:00",
-   "source": "utilitydive",
-   "source_name": "Utility Dive",
-   "source_type": "industry press",
-   "source_country": "US"
-  },
-  {
-   "title": "AIs Hacking the Law",
-   "summary": "In both a 2021 essay and my 2022 book, A Hacker’s Mind , I talk about AIs finding vulnerabilities and exploits—hacking—the legal system. Here’s some demonstrations of this from Germany: Legal systems encode the foundations of social order in natural language. Similar to computer systems, the written law can contain vulnerabilities that invite exploitation.1 Courts absorb most exploits through interpretation, and such vulnerabilities rarely surface in the first place. With highly capable AI systems enabling the discovery of vulnerabilities at unprecedented scale, we believe the latter could cha",
-   "link": "https://www.schneier.com/blog/archives/2026/11/ais-hacking-the-law.html",
-   "published": "2026-11-03T17:01:00+00:00",
-   "source": "schneier",
-   "source_name": "Schneier on Security",
-   "source_type": "independent",
-   "source_country": "US"
-  },
-  {
-   "title": "Artificial intelligence and cyber intrusion",
-   "summary": "An NCSC assessment that examines current AI-enabled threat trends and projections of the threat landscape to 2028.",
-   "link": "https://www.ncsc.gov.uk/report/artificial-intelligence-and-cyber-intrusion",
-   "published": "2026-11-03T17:00:00+00:00",
-   "source": "ncsc-uk",
-   "source_name": "UK NCSC News",
-   "source_type": "government",
-   "source_country": "UK"
-  },
-  {
-   "title": "Red Hat Patches 9.8-Rated Linux TCP RCE Flaw While Ubuntu Releases Fixes for Testing",
-   "summary": "Fixed kernels for a use-after-free vulnerability in the Linux kernel's IPv4 TCP code are now available for Red Hat Enterprise Linux 8, 9, and 10, while Ubuntu's fixes for its three newest long-term-support releases remain in its opt-in testing channel with no date for a regular update. The flaw, tracked as CVE-2026-98432, can be reached by a remote, unauthenticated attacker and can",
-   "link": "https://thehackernews.com/2026/11/red-hat-patches-98-rated-linux-tcp-rce.html",
-   "published": "2026-11-03T16:23:53+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "The 4 Elements of Exposure Prioritization and How to Operationalize Them",
-   "summary": "Your team is remediating more vulnerabilities than ever, yet your breach risk has barely changed. You’re spending too much time and effort on exposures attackers may never exploit, while higher-risk exposures sit, waiting in the queue. Gartner®’s report on exposure prioritization states that fewer than 10% of vulnerabilities are exploited, yet most are treated as urgent. The report also argues",
-   "link": "https://thehackernews.com/2026/11/the-4-elements-of-exposure.html",
-   "published": "2026-11-03T16:18:20+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "Russia-Aligned Gorbag Hackers Exploit WinRAR Flaw to Deploy Data-Stealing Malware",
-   "summary": "A Russia-aligned threat actor known as Gorbag has been observed using simple information stealer malware in attacks targeting Ukrainian organizations. \"Active since at least February 2025, the group has focused exclusively on Ukrainian targets, with a clear preference for law enforcement and justice entities, local administrations near the front line, and the defense sector,\" ESET researcher",
-   "link": "https://thehackernews.com/2026/11/russia-aligned-gorbag-hackers-exploit.html",
-   "published": "2026-11-03T16:00:45+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "CISA’s new strategy runs into America’s blind trust problem",
-   "summary": "Persistent credentials and forgotten software approvals leave essential operational networks vulnerable under CISA’s latest cybersecurity roadmap. The post CISA’s new strategy runs into America’s blind trust problem appeared first on CyberScoop .",
-   "link": "https://cyberscoop.com/cisa-2030-strategy-operational-technology-blind-trust-op-ed/",
-   "published": "2026-11-03T16:00:00+00:00",
-   "source": "cyberscoop",
-   "source_name": "CyberScoop",
-   "source_type": "trade press",
-   "source_country": "US"
-  },
-  {
-   "title": "Escritura fuera de límites en productos de Johnson Controls",
-   "summary": "Escritura fuera de límites en productos de Johnson Controls Mar, 03/11/2026 - 11:48 Aviso SCI Recursos Afectados Restaurant System Estimator. Access Control system. Johnson Controls identifica estos productos de la marca Fire como afectados; no publica intervalos de versiones vulnerables. Descripción Johnson Controls ha publicado un aviso sobre una vulnerabilidad de severidad crítica en la biblioteca Brotli utilizada por productos de la marca Fire. Su explotación podría permitir revelar información, provocar una denegación de servicio o ejecutar código remoto. Identificador INCIBE-2026-820 Sol",
-   "link": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/escritura-fuera-de-limites-en-productos-de-johnson-controls",
-   "published": "2026-11-03T15:48:25+00:00",
-   "source": "incibe-sci",
-   "source_name": "INCIBE-CERT ICS advisories (Spain)",
-   "source_type": "government",
-   "source_country": "Spain"
-  },
-  {
-   "title": "Múltiples vulnerabilidades en productos de ABB",
-   "summary": "Múltiples vulnerabilidades en productos de ABB Mar, 03/11/2026 - 11:48 Aviso SCI Recursos Afectados Netcon y NAM: Netcon 100, módulo GW102: 2.00.00–2.12.034. Netcon 200, GWDD-02/GWDD-03/GWDC-06: 2.00.000–3.02.050; GWDD-A03: A103.03.000–A103.03.010. Netcon 500, GW502A: 6.00.000–7.06.001. Netcon Application Manager (NAM): 1.21.00–1.31.000. Familia Arctic: ARG600, ARP600, ARR600 y ARC600: variantes y versiones 3.0.1–3.4.13 o 2.0.10–3.4.13, según el modelo indicado en el boletín 2NGA003224. ARM600: 4.1.2–5.0.3, en las variantes enumeradas por ABB. ARM600 SW: 5.0.1–5.0.3, en las variantes enumerada",
-   "link": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/multiples-vulnerabilidades-en-productos-de-abb-9",
-   "published": "2026-11-03T15:48:24+00:00",
-   "source": "incibe-sci",
-   "source_name": "INCIBE-CERT ICS advisories (Spain)",
-   "source_type": "government",
-   "source_country": "Spain"
-  },
-  {
-   "title": "Múltiples vulnerabilidades en productos de Festo",
-   "summary": "Múltiples vulnerabilidades en productos de Festo Mar, 03/11/2026 - 11:48 Aviso SCI Recursos Afectados FactoryViews: desde 1.0.0 hasta 1.12.1, incluidas. MES4: todas las versiones desplegadas con xampp. Descripción Festo ha publicado un aviso sobre 2 vulnerabilidades de severidad crítica de PHP, integrado en FactoryViews y en instalaciones de MES4 con xampp, que podrían permitir ejecutar código remoto en el sistema anfitrión. Identificador INCIBE-2026-817 Solución Actualizar FactoryViews a 1.13.0. Para MES4 con xampp no hay corrección disponible; aplicar las medidas del fabricante: Para CVE-202",
-   "link": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/multiples-vulnerabilidades-en-productos-de-festo-0",
-   "published": "2026-11-03T15:48:22+00:00",
-   "source": "incibe-sci",
-   "source_name": "INCIBE-CERT ICS advisories (Spain)",
-   "source_type": "government",
-   "source_country": "Spain"
-  },
-  {
-   "title": "Múltiples vulnerabilidades en productos de WAGO",
-   "summary": "Múltiples vulnerabilidades en productos de WAGO Mar, 03/11/2026 - 11:48 Aviso SCI Recursos Afectados Dispositivos con wago_os_linux anterior a 4.10.4 (FW32), servidor web integrado habilitado y una versión vulnerable de PHP: CC100: 0751-9?0?. Edge Controller: 0752-8303-8000-0002. PFC100 G2: 0750-811?-????-????. PFC200 G2: 0750-821?-???-???. PFC300: 0750-8302. TP600: 0762-420?-8000-000?, 0762-430?-8000-000?, 0762-520?-8000-000?, 0762-530?-8000-000?, 0762-620?-8000-000? y 0762-630?-8000-000?. WP400: 0762-340?. Descripción WAGO ha publicado un aviso sobre 2 vulnerabilidades de severidad crítica d",
-   "link": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/multiples-vulnerabilidades-en-productos-de-wago-3",
-   "published": "2026-11-03T15:48:19+00:00",
-   "source": "incibe-sci",
-   "source_name": "INCIBE-CERT ICS advisories (Spain)",
-   "source_type": "government",
-   "source_country": "Spain"
-  },
-  {
-   "title": "Hackers Exploit BTCPay Server Flaw to Steal Bitcoin and Litecoin From Hot Wallets",
-   "summary": "BTCPay Server, a self-hosted, open-source cryptocurrency payment processor, has urged users to install the latest version of its software in response to reports of Bitcoin and Litecoin being stolen from hot wallets on instances running older versions. \"Our investigation found that these attacks targeted servers running BTCPay Server 2.4.1 (released on 23 July 2026) or earlier,\" BTCPay Server",
-   "link": "https://thehackernews.com/2026/11/hackers-exploit-btcpay-server-flaw-to.html",
-   "published": "2026-11-03T13:31:48+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "Synology NAS Devices Targeted in Ransomware Attacks Exploiting Patched DSM Flaw",
-   "summary": "Synology is urging customers to update the DiskStation Manager (DSM) software powering its Network Attached Storage (NAS) devices following ransomware attacks. The Taiwanese vendor said it observed threat actors exploiting a vulnerability patched in December 2024 to target devices running outdated versions of DSM. \"These attacks aim to encrypt data and extort ransom,\" it said in a statement",
-   "link": "https://thehackernews.com/2026/11/synology-nas-devices-targeted-in.html",
-   "published": "2026-11-03T12:43:07+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "New Wave of Refrigeration Cyberattacks Hits Supermarkets Across Europe, Forcing Stores to Pull Food",
-   "summary": "Attackers remotely changed the settings on refrigeration controls at supermarkets in Belgium, Sweden, Estonia and other European countries overnight into Monday, November 2, warming fridges and freezers. No chain reported more than several dozen affected stores, and some had to throw away chilled and frozen food or take it off the shelf. Danfoss, a Danish maker of refrigeration controls,",
-   "link": "https://thehackernews.com/2026/11/second-wave-of-cyberattacks-hits.html",
-   "published": "2026-11-03T12:27:07+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "Cómo definir políticas de acceso para agentes de IA que escriben código — la brecha entre identidad humana y autonomía de máquina",
-   "summary": "El CTO de KloudStax plantea que los agentes de codificación necesitan identidad propia, no credenciales prestadas — y que las primeras diez líneas de una política de comandos pueden frenar filtraciones por instalación de paquetes.",
-   "link": "https://ciberseguridadlatam.com/como-definir-politicas-de-acceso-para-agentes-de-ia-que-escriben-codigo-la-brecha-entre-identidad-humana-y-autonomia-de-maquina/",
-   "published": "2026-11-03T10:58:05+00:00",
-   "source": "ciberlatam",
-   "source_name": "Ciberseguridad LATAM",
-   "source_type": "trade press",
-   "source_country": "Latin America"
-  },
-  {
-   "title": "Equifax eliminó contraseñas para 22.000 usuarios — la identidad como eje de seguridad ante agentes de IA",
-   "summary": "El gigante crediticio completó la transición sin contraseñas en toda su plantilla y ahora la extiende a clientes B2B, mientras los CISO reconocen que los controles tradicionales no fueron diseñados para un entorno donde las máquinas operan a velocidad de máquina.",
-   "link": "https://ciberseguridadlatam.com/equifax-elimino-contrasenas-para-22-000-usuarios-la-identidad-como-eje-de-seguridad-ante-agentes-de-ia/",
-   "published": "2026-11-03T10:53:41+00:00",
-   "source": "ciberlatam",
-   "source_name": "Ciberseguridad LATAM",
-   "source_type": "trade press",
-   "source_country": "Latin America"
-  },
-  {
-   "title": "Los kits de phishing con IA ya dominan la dark web — y las simulaciones corporativas siguen testeando ataques del pasado",
-   "summary": "El 75% de los kits analizados en mercados clandestinos en 2025 publicitaban capacidades de inteligencia artificial, pero los programas de concientización corporativa aún entrenan empleados para detectar errores ortográficos y saludos genéricos que la IA ya eliminó.",
-   "link": "https://ciberseguridadlatam.com/los-kits-de-phishing-con-ia-ya-dominan-la-dark-web-y-las-simulaciones-corporativas-siguen-testeando-ataques-del-pasado/",
-   "published": "2026-11-03T10:52:32+00:00",
-   "source": "ciberlatam",
-   "source_name": "Ciberseguridad LATAM",
-   "source_type": "trade press",
-   "source_country": "Latin America"
-  },
-  {
-   "title": "Google desactiva botnet de 1.3 millones de dispositivos — el fabricante vendía acceso a los hogares de sus clientes",
-   "summary": "Videostrong Technology instaló un backdoor en el firmware de sus set-top boxes Android TV y comercializó el acceso a afiliados criminales.",
-   "link": "https://ciberseguridadlatam.com/google-desactiva-botnet-de-1-3-millones-de-dispositivos-el-fabricante-vendia-acceso-a-los-hogares-de-sus-clientes/",
-   "published": "2026-11-03T10:47:15+00:00",
-   "source": "ciberlatam",
-   "source_name": "Ciberseguridad LATAM",
-   "source_type": "trade press",
-   "source_country": "Latin America"
-  },
-  {
-   "title": "Binance perdió USD 6300 millones por una laptop de DevOps comprometida",
-   "summary": "El FBI atribuyó el robo a TraderTraitor, grupo norcoreano vinculado a Lazarus. La plataforma cubrirá todas las pérdidas con fondos propios y ya reabastece el 95% de los activos.",
-   "link": "https://ciberseguridadlatam.com/binance-perdio-usd-6300-millones-por-una-laptop-de-devops-comprometida/",
-   "published": "2026-11-03T10:39:28+00:00",
-   "source": "ciberlatam",
-   "source_name": "Ciberseguridad LATAM",
-   "source_type": "trade press",
-   "source_country": "Latin America"
-  },
-  {
-   "title": "Attackers Target Unpatched CryptoPayment Gateway Flaw That Can Expose Wallet Credentials",
-   "summary": "Threat actors are attempting to exploit an unpatched maximum-severity security vulnerability in the CryptoPayment Gateway WordPress plugin, according to findings from Defused Cyber. The vulnerability in question is CVE-2026-81648, which carries a CVSS score of 10.0. Successful exploitation of the flaw could permit unauthenticated users to delete arbitrary files on the server and extract",
-   "link": "https://thehackernews.com/2026/11/attackers-target-unpatched.html",
-   "published": "2026-11-03T10:34:37+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "Tech Firms Dismantle Botnet That Turned 1.3M TV Boxes Into Proxies",
-   "summary": "Google said today it worked with industry partners to dismantle a botnet made up of more than 1.3 million Android TV set-top boxes that ship with malicious software which secretly rents the user's Internet connection out to strangers and conducts advertising fraud. Experts involved in the takedown say the action is likely to sever the botnet's access to more than 10 million additional compromised systems, including other Internet of Things (IoT) products such as Android-based healthcare devices and karaoke machines.",
-   "link": "https://krebsonsecurity.com/2026/11/tech-firms-dismantle-botnet-that-turned-1-3m-tv-boxes-into-proxies/",
-   "published": "2026-11-03T07:24:31+00:00",
-   "source": "krebs",
-   "source_name": "Krebs on Security",
-   "source_type": "independent",
-   "source_country": "US"
-  },
-  {
-   "title": "Max-severity bug in widely used OT programming tool exploited to deliver Linux malware",
-   "summary": "Your industrial IoT gateway isn't exposed to the internet, right? RIGHT?!",
-   "link": "https://www.theregister.com/security/2026/11/02/max-severity-bug-in-widely-used-ot-programming-tool-exploited-to-deliver-linux-malware/5307086",
-   "published": "2026-11-03T03:55:17+00:00",
-   "source": "register",
-   "source_name": "The Register Security",
-   "source_type": "tech press",
-   "source_country": "UK"
-  },
-  {
-   "title": "One Compromised Laptop, Billions Lost: The Binance Attack-Path Warning",
-   "summary": "The record theft shows how weak system separation, inadequate controls, and untested attack possibilities can turn one breach into systemic loss.",
-   "link": "https://www.darkreading.com/cyberattacks-data-breaches/binance-hack-test-attack-paths",
-   "published": "2026-11-03T03:27:24+00:00",
-   "source": "darkreading",
-   "source_name": "Dark Reading",
-   "source_type": "trade press",
-   "source_country": "US"
-  },
-  {
-   "title": "Google shuts down global botnet running on certified Android devices",
-   "summary": "Videostrong sold TV set-top boxes and other devices with pre-installed malware. The yearslong operation evaded Google’s security tests and established a botnet for cybercriminals. The post Google shuts down global botnet running on certified Android devices appeared first on CyberScoop .",
-   "link": "https://cyberscoop.com/google-disrupts-xcpe-botnet-videostrong-android-devices/",
-   "published": "2026-11-03T02:58:24+00:00",
-   "source": "cyberscoop",
-   "source_name": "CyberScoop",
-   "source_type": "trade press",
-   "source_country": "US"
-  },
-  {
-   "title": "Business groups mount fresh campaign for long-term renewal of information sharing law",
-   "summary": "Their target for extending CISA 2015 is the annual “must-pass” defense authorization bill, but a more than year-long standoff persists. The post Business groups mount fresh campaign for long-term renewal of information sharing law appeared first on CyberScoop .",
-   "link": "https://cyberscoop.com/business-groups-cisa-2015-renewal-ndaa-cybersecurity/",
-   "published": "2026-11-03T02:04:42+00:00",
-   "source": "cyberscoop",
-   "source_name": "CyberScoop",
-   "source_type": "trade press",
-   "source_country": "US"
-  },
-  {
-   "title": "Anti-Oligarchy Activists Plan to Dox Elon Musk and Hundreds of Billionaire-Linked Homes",
-   "summary": "The Capytistas, a secretive group claiming more than $1.2 million in backing, started with Elon Musk and Tesla’s board. Members argue that those who buy political power deserve the scrutiny they’ll impose.",
-   "link": "https://www.wired.com/story/anti-oligarchy-activists-plan-to-dox-elon-musk-and-hundreds-of-billionaire-linked-homes/",
-   "published": "2026-11-02T22:00:00+00:00",
-   "source": "wired-sec",
-   "source_name": "WIRED Security",
-   "source_type": "magazine",
-   "source_country": "US"
-  },
-  {
-   "title": "⚡ Weekly Recap: Critical CVEs, Linux DDoS Botnet, Device-Code Phishing, Android Spyware and More",
-   "summary": "Some attacks this week didn't need much of a trick. A fake support call, a trusted extension, a shared link, or a device with no password. Small things that people barely think about. Yet each was enough to cause serious trouble. Then there were the bigger messes. Billions stolen, hidden networks of hacked devices, poisoned software, and attackers finding new ways to turn normal tools against",
-   "link": "https://thehackernews.com/2026/11/weekly-recap-critical-cves-linux-ddos.html",
-   "published": "2026-11-02T21:57:56+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "Mitsubishi Electric seeks to expand North American grid foothold",
-   "summary": "In August, the Japanese conglomerate said it would spend $1.4 billion to buy PCI Energy Solutions, whose platform manages about 60% of U.S. power generation.",
-   "link": "https://www.utilitydive.com/news/mitsubishi-electric-seeks-to-expand-north-american-grid-foothold/873463/",
-   "published": "2026-11-02T21:53:56+00:00",
-   "source": "utilitydive",
-   "source_name": "Utility Dive",
-   "source_type": "industry press",
-   "source_country": "US"
-  },
-  {
-   "title": "Thieves pilfer environment variables from Trigger AI workflow tool",
-   "summary": "So, who's ready to clear the dust out of that server closet and move things back on-prem?",
-   "link": "https://www.theregister.com/security/2026/11/02/thieves-pilfer-environment-variables-from-trigger-ai-workflow-tool/5306998",
-   "published": "2026-11-02T21:44:30+00:00",
-   "source": "register",
-   "source_name": "The Register Security",
-   "source_type": "tech press",
-   "source_country": "UK"
-  },
-  {
-   "title": "Token thieves costing companies $100K+ per day in illicit LLM charges",
-   "summary": "Don't let the LLMjackers hit you",
-   "link": "https://www.theregister.com/security/2026/11/02/token-thieves-costing-companies-100k-per-day-in-illicit-llm-charges/5306967",
-   "published": "2026-11-02T21:00:00+00:00",
-   "source": "register",
-   "source_name": "The Register Security",
-   "source_type": "tech press",
-   "source_country": "UK"
-  },
-  {
-   "title": "Google Disrupts 1.3 Million-Device Android Botnet, Says TV Box Maker Sold Criminal Access",
-   "summary": "A botnet of more than 1.3 million Android devices, mostly TV set-top boxes, lost control of its servers in late October in a takedown led by Google. Google says it is highly confident that device maker Videostrong intentionally put a backdoor in the boxes and sold access to criminals. They used the boxes for ad fraud and to pass other people's internet traffic through owners' home",
-   "link": "https://thehackernews.com/2026/11/google-disrupts-13-million-device.html",
-   "published": "2026-11-02T20:50:26+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "Microsoft's AI Risk Report Misses This Key Detail",
-   "summary": "The latest \"Digital Defense Report\" identifies government agencies as prime targets for AI attacks but doesn't mention that they are broadly being targeted through Microsoft bugs.",
-   "link": "https://www.darkreading.com/cyberattacks-data-breaches/microsoft-ai-cyber-risk-report-miss",
-   "published": "2026-11-02T20:00:00+00:00",
-   "source": "darkreading",
-   "source_name": "Dark Reading",
-   "source_type": "trade press",
-   "source_country": "US"
-  },
-  {
-   "title": "DarkBlinders Compromises Israeli Target and Iraqi Kurdish Government Cloud Environment",
-   "summary": "Cybersecurity researchers have disclosed details of a cyber espionage campaign targeting Israel and the Kurdistan Region of Iraq by an Iran state-aligned threat actor between August and October 2026. According to a report published by Dream Research Labs, the campaign has led to the compromise of a high-profile individual in Israel, along with additional compromises affecting a government cloud",
-   "link": "https://thehackernews.com/2026/11/darkblinders-compromises-israeli-target.html",
-   "published": "2026-11-02T19:46:05+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "PapRAT Cyber-Espionage Campaign Leaves a 'Bitter' Taste in South Asia",
-   "summary": "Organizations in the region face growing cyberattacks from the known India-linked threat group, which leverages legitimate Windows functionality in three distinct attack chains.",
-   "link": "https://www.darkreading.com/cyberattacks-data-breaches/paprat-cyberespionage-campaign-bitter-south-asia",
-   "published": "2026-11-02T19:00:00+00:00",
-   "source": "darkreading",
-   "source_name": "Dark Reading",
-   "source_type": "trade press",
-   "source_country": "US"
-  },
-  {
-   "title": "Frozen part II: Hackers remotely defrost produce in Euro supermarkets ... again",
-   "summary": "Let it go (bad): Dozens of stores report mass food wastage as managers start their week in puddles",
-   "link": "https://www.theregister.com/cyber-crime/2026/11/02/frozen-part-ii-hackers-remotely-defrost-produce-in-euro-supermarkets-again/5306924",
-   "published": "2026-11-02T18:15:00+00:00",
-   "source": "register",
-   "source_name": "The Register Security",
-   "source_type": "tech press",
-   "source_country": "UK"
-  },
-  {
-   "title": "AI Vulnerability Finding",
-   "summary": "A comment : 3% of ‘critical’ software security bugs, in all of recorded history, have been found in the last month. This is on pace to find another ~100,000 bugs this year alone, adding ~26% more vulnerabilities to the all time total Do you realize how fucking insane that is? Yes. It is a new world out there.",
-   "link": "https://www.schneier.com/blog/archives/2026/11/ai-vulnerability-finding-2.html",
-   "published": "2026-11-02T17:02:34+00:00",
-   "source": "schneier",
-   "source_name": "Schneier on Security",
-   "source_type": "independent",
-   "source_country": "US"
-  },
-  {
-   "title": "Critical Langflow Flaws Could Let Unauthenticated Attackers Run Code on Servers",
-   "summary": "Two critical flaws in Langflow could let a remote attacker with no account bypass authentication or run arbitrary code, IBM said last week. Langflow is an open-source tool for building AI agents and workflows, and its vulnerability reports go to IBM. Every release from 1.0.0 through 1.12.8 has the flaws, and the only fix is version 1.13.0. Neither flaw is in CISA's Known",
-   "link": "https://thehackernews.com/2026/11/critical-langflow-flaws-could-let.html",
-   "published": "2026-11-02T16:50:00+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "FBI pins $6.3B Binance crypto heist on North Korean hackers",
-   "summary": "Exchange scrambles to replace stolen funds as customers withdraw billions and hackers get busy laundering their haul",
-   "link": "https://www.theregister.com/security/2026/11/02/fbi-pins-63b-binance-crypto-heist-on-north-korean-hackers/5306889",
-   "published": "2026-11-02T16:45:00+00:00",
-   "source": "register",
-   "source_name": "The Register Security",
-   "source_type": "tech press",
-   "source_country": "UK"
-  },
-  {
-   "title": "Is Your SOC Ready for AI Agents? A Maturity Check Before You Deploy",
-   "summary": "Forty percent of security teams now use AI every day, and another 56% are testing it. Only 4% have no plans to adopt it, according to Prophet Security's State of AI in Security Operations 2026 survey of more than 250 CISOs, SOC leaders and practitioners. For the teams still testing, the next decision is whether their own SOC is ready. AI SOC readiness has two parts: whether a SOC has the",
-   "link": "https://thehackernews.com/2026/11/is-your-soc-ready-for-ai-agents.html",
-   "published": "2026-11-02T16:30:00+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "Attackers Pose as IT Support on Microsoft Teams, Abuse AD CS to Steal Company Data",
-   "summary": "Attackers posing as IT support on Microsoft Teams talked employees into giving them remote control of their PCs. They then used insecure Active Directory Certificate Services (AD CS) settings to obtain login certificates for privileged accounts, including one for a domain controller. Microsoft said in a report that it investigated two such intrusions, one of which resulted in company",
-   "link": "https://thehackernews.com/2026/11/attackers-pose-as-it-support-on.html",
-   "published": "2026-11-02T16:08:45+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "My Journey to the Center of America’s Political Spam Text Hell",
-   "summary": "I’ve gotten nearly 2,000 campaign fundraising texts that were meant for someone else. I tried to find out why—and uncovered a labyrinth of politicians, data brokers, and shady tactics.",
-   "link": "https://www.wired.com/story/my-journey-to-the-center-of-americas-political-spam-text-hell/",
-   "published": "2026-11-02T16:00:00+00:00",
-   "source": "wired-sec",
-   "source_name": "WIRED Security",
-   "source_type": "magazine",
-   "source_country": "US"
-  },
-  {
-   "title": "Government Linux Servers Targeted With SysGoRAT and Suspected AI-Generated Scripts",
-   "summary": "Cybersecurity researchers have disclosed details of a cyber espionage campaign specifically targeting Linux infrastructure associated with government entities and state-affiliated infrastructure. The activity, observed by Palo Alto Networks Unit 42 between October 2025 and April 2026, has been tracked under the moniker CL-UNK-1211, where \"CL\" refers to cluster and \"UNK\" stands for unknown",
-   "link": "https://thehackernews.com/2026/11/government-linux-servers-targeted-with.html",
-   "published": "2026-11-02T15:49:59+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "Hundreds of Mundane AI Apps Are Hiding Sexually Abusive Deepfake Features",
-   "summary": "WIRED uncovered some 400 apps and websites linked to Chinese-language developers that look like regular AI tools but had secret features that let users create violent AI-generated images and video.",
-   "link": "https://www.wired.com/story/hundreds-of-mundane-ai-apps-are-hiding-abusive-deepfake-features/",
-   "published": "2026-11-02T15:00:00+00:00",
-   "source": "wired-sec",
-   "source_name": "WIRED Security",
-   "source_type": "magazine",
-   "source_country": "US"
-  },
-  {
-   "title": "New VOLTA Infostealer Uses Claude, Gemini, and Kimi AI to Rank Victims by Financial Value",
-   "summary": "Cybersecurity researchers have discovered a new Windows infostealer malware called VOLTA-AUTODOXER (aka VOLTA) that makes use of a large language model (LLM) to rank a victim's stolen data by their monetization value. Like other typical stealer families, VOLTA is equipped to harvest passwords and cookies from Chromium-based web browsers; data from Outlook profiles and Slack workspaces;",
-   "link": "https://thehackernews.com/2026/11/new-volta-infostealer-uses-claude.html",
-   "published": "2026-11-02T10:51:07+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "CVSS 10.0 LXD, MicroCloud Flaw Lets Attackers Impersonate Trusted Clients Without a Private Key",
-   "summary": "A critical flaw in Canonical's LXD and MicroCloud let an attacker log in as a trusted client without holding that client's private key. To do it, the attacker had to reach their HTTPS API over the network and have the trusted client's public certificate. Once in, the attacker would act as that client, with access to the cluster and its virtual machines. If the impersonated account is",
-   "link": "https://thehackernews.com/2026/11/critical-lxd-and-microcloud-flaw-cvss.html",
-   "published": "2026-11-01T13:51:31+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "Hackers Steal About $2.7 Million From Polymarket Traders via Hijacked DebugBear Script",
-   "summary": "Malicious code on the website of prediction market Polymarket sold some signed-in traders' positions and moved their funds to the hackers on October 29. The code had replaced a page-speed script that the site loaded from an outside company. Polymarket says it is refunding about $2.7 million to 726 affected wallets. Blockchain records show crypto worth about $2.64 million reached",
-   "link": "https://thehackernews.com/2026/11/hackers-steal-about-27-million-from.html",
-   "published": "2026-11-01T12:25:40+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "FBI Links North Korea's TraderTraitor to Record $6.43 Billion Binance Crypto Heist",
-   "summary": "The U.S. Federal Bureau of Investigation (FBI) has officially attributed the theft of more than $6 billion in virtual assets from Binance to TraderTraitor, a North Korea-aligned elite hacking group also tracked as Jade Sleet, Pressure Chollima, PUKCHONG, Slow Pisces, and UNC4899. The FBI, along with the U.S. Secret Service (USSS) and the Internal Revenue Service Criminal Investigation (IRS-CI),",
-   "link": "https://thehackernews.com/2026/11/fbi-links-north-koreas-tradertraitor-to.html",
-   "published": "2026-11-01T12:03:00+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "NetamLoader Malware Targets Government Windows 10 Systems in Asia via .NET Injection",
-   "summary": "Cybersecurity researchers have disclosed details of what has been described as a \"highly sophisticated infection chain\" targeting government organizations in Asia. The activity, detailed by Kaspersky this week, targeted a custom Windows 10 build used exclusively by government entities in Asia and involves the deployment of a previously undocumented .NET assembly-loading framework codenamed",
-   "link": "https://thehackernews.com/2026/11/netamloader-malware-targets-government.html",
-   "published": "2026-11-01T12:02:58+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "Chainalysis Confirms Intrusion Into Internal Tools and Exposure of Customer Identity Data",
-   "summary": "American blockchain analysis firm Chainalysis said it was the target of a cybersecurity incident in which an external actor accessed non-sensitive customer data. However, the company noted that the breach did not result in unauthorized access to its investigation content, authentication credentials, or session tokens. \"This month, Chainalysis detected an external actor using offensive agentic",
-   "link": "https://thehackernews.com/2026/10/chainalysis-confirms-intrusion-into.html",
-   "published": "2026-10-31T17:01:56+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "Spooky New Infostealer Malware Uses AI to ‘Autodox’ Victims",
-   "summary": "Named Volta-Autodoxer, the recently uncovered malware uses AI tools to collect troves of data about victims, from login credentials and credit card numbers to Discord sessions and UberEats receipts.",
-   "link": "https://www.wired.com/story/kernel-panic-volta-autodoxer-ai-infostealer-malware/",
-   "published": "2026-10-31T17:00:00+00:00",
-   "source": "wired-sec",
-   "source_name": "WIRED Security",
-   "source_type": "magazine",
-   "source_country": "US"
-  },
-  {
-   "title": "A Shared ChatGPT Link Could Run Attacker Code in Your Session and Read Private Chats",
-   "summary": "A malicious ChatGPT share link could run an attacker's code in the logged-in session of anyone who opened it, allowing them to read their private conversations, researchers at the security firm Parameter showed. The researchers reported the flaw through OpenAI's bug bounty program on October 18, and OpenAI fixed it eight days later and rated it P1, its most serious category.",
-   "link": "https://thehackernews.com/2026/10/a-shared-chatgpt-link-could-run.html",
-   "published": "2026-10-31T10:33:41+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "Investors Dish on New Startups & What They'd Back Next",
-   "summary": "The cybersecurity market is difficult to predict, but a glimpse into the annual DataTribe Challenge shows what's trending and what's not.",
-   "link": "https://www.darkreading.com/cybersecurity-operations/investors-dish-new-startsup-what-back-next",
-   "published": "2026-10-31T02:08:25+00:00",
-   "source": "darkreading",
-   "source_name": "Dark Reading",
-   "source_type": "trade press",
-   "source_country": "US"
-  },
-  {
-   "title": "Friday Squid Blogging: Bigfin Squid Off California Coast",
-   "summary": "Neat video : The sighting, announced September 2, marks the first time anyone has spotted a live bigfin squid, which belongs to the Magnapinna genus, in the northeastern Pacific Ocean. As usual, you can also use this squid post to talk about the security stories in the news that I haven’t covered. Blog moderation policy.",
-   "link": "https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-bigfin-squid-off-california-coast.html",
-   "published": "2026-10-31T02:04:36+00:00",
-   "source": "schneier",
-   "source_name": "Schneier on Security",
-   "source_type": "independent",
-   "source_country": "US"
-  },
-  {
-   "title": "A Supply Chain Attack Put Malicious Anthropic Claude Extensions on Thousands of Devices",
-   "summary": "Thanks to a lucky break, flawed code in a tainted Claude extension prevented the attacker from fully worming their way into some 5,000 developer machines.",
-   "link": "https://www.wired.com/story/trojan-malware-targets-thousands-of-anthropic-claude-developer-systems/",
-   "published": "2026-10-31T01:38:46+00:00",
-   "source": "wired-sec",
-   "source_name": "WIRED Security",
-   "source_type": "magazine",
-   "source_country": "US"
-  },
-  {
-   "title": "Devs Hit by Trojanized Claude Code Extension for Cursor",
-   "summary": "Two serious security issues hit Cursor on the same day, highlighting the risks for AI-powered integrated development environments (IDEs).",
-   "link": "https://www.darkreading.com/cyberattacks-data-breaches/devs-trojanized-claude-code-extension-cursor",
-   "published": "2026-10-31T01:05:58+00:00",
-   "source": "darkreading",
-   "source_name": "Dark Reading",
-   "source_type": "trade press",
-   "source_country": "US"
-  },
-  {
-   "title": "Behind the Scenes of How Operation Blackout Went Down",
-   "summary": "A recent law enforcement operation to dismantle harmful scam centers was a big success. A threat intelligence expert walks us through what happened and why he wants more of the same.",
-   "link": "https://www.darkreading.com/cybersecurity-operations/behind-the-scenes-how-operation-blackout-went-down",
-   "published": "2026-10-31T00:46:08+00:00",
-   "source": "darkreading",
-   "source_name": "Dark Reading",
-   "source_type": "trade press",
-   "source_country": "US"
-  },
-  {
-   "title": "Crim spent $7K+ on AI services in extortion attacks, then left evidence for all to see",
-   "summary": "n0n-existent security",
-   "link": "https://www.theregister.com/security/2026/10/30/crim-spent-7k-on-ai-services-in-extortion-attacks-then-left-evidence-for-all-to-see/5306754",
-   "published": "2026-10-31T00:37:12+00:00",
-   "source": "register",
-   "source_name": "The Register Security",
-   "source_type": "tech press",
-   "source_country": "UK"
-  },
-  {
-   "title": "GM cracks the petty cash box for multistate driver tracking settlement",
-   "summary": "$220 million? For all of you? Yeah, we can probably dig that up ...",
-   "link": "https://www.theregister.com/security/2026/10/30/gm-cracks-the-petty-cash-box-for-multistate-driver-tracking-settlement/5306721",
-   "published": "2026-10-30T21:48:37+00:00",
-   "source": "register",
-   "source_name": "The Register Security",
-   "source_type": "tech press",
-   "source_country": "UK"
-  },
-  {
-   "title": "Anthropic: That Claude Code extension compromise… couldn't be us",
-   "summary": "Claudeshop fingers 'malicious actor' in targeted supply-chain attack on Cursor",
-   "link": "https://www.theregister.com/cyber-crime/2026/10/30/anthropic-that-claude-code-extension-compromise-couldnt-be-us/5306682",
-   "published": "2026-10-30T21:27:00+00:00",
-   "source": "register",
-   "source_name": "The Register Security",
-   "source_type": "tech press",
-   "source_country": "UK"
-  },
-  {
-   "title": "L’Italia è afflitta da vulnerabilità informatiche, senza una causa chiara",
-   "summary": "I ricercatori non riescono a spiegare del tutto perché le minacce informatiche in Italia siano così diverse rispetto a quelle di qualsiasi altro Paese.",
-   "link": "https://www.darkreading.com/cybersecurity-analytics/cyber-vulnerabilities-besiege-italy-italian",
-   "published": "2026-10-30T20:39:54+00:00",
-   "source": "darkreading",
-   "source_name": "Dark Reading",
-   "source_type": "trade press",
-   "source_country": "US"
-  },
-  {
-   "title": "Bloatware in Aftermarket Auto Parts",
-   "summary": "This story is interesting: One Civic owner purchased a cheap aftermarket head unit off Amazon, and decided to have Claude work its magic on it, like it would a smart TV. What was reportedly discovered isn’t surprising, but is worth knowing about. Among the pre-installed bloatware—­or spyware, if you’re being less charitable­—was a voice assistant equipped with WebView, an Android system component that lets apps display content off the web. This apparently always used about a third of processing power, even while idle, which isn’t great. There were also Baidu location services, a call recorder ",
-   "link": "https://www.schneier.com/blog/archives/2026/10/bloatware-in-aftermarket-auto-parts.html",
-   "published": "2026-10-30T20:20:02+00:00",
-   "source": "schneier",
-   "source_name": "Schneier on Security",
-   "source_type": "independent",
-   "source_country": "US"
-  },
-  {
-   "title": "Energy Department Announces Over $230 Million Funding Opportunity to Strengthen America's Grid Supply Chain and Lower Electricity Costs",
-   "summary": "Funding will boost domestic manufacturing, reduce reliance on foreign suppliers, and advance efforts to secure America's electric grid.",
-   "link": "https://www.energy.gov/articles/energy-department-announces-over-230-million-funding-opportunity-strengthen-americas-grid",
-   "published": "2026-10-30T19:42:15+00:00",
-   "source": "doe-ceser",
-   "source_name": "DOE Newsroom",
-   "source_type": "government",
-   "source_country": "US"
-  },
-  {
-   "title": "Undead Software Projects Continue to Raise Security Risks",
-   "summary": "A security firm patched a decade-old app to prevent the takeover of millions of machines, highlighting that abandoned domains remain a boon to attackers.",
-   "link": "https://www.darkreading.com/application-security/undead-software-projects-raise-security-risks",
-   "published": "2026-10-30T19:10:37+00:00",
-   "source": "darkreading",
-   "source_name": "Dark Reading",
    "source_type": "trade press",
    "source_country": "US"
   }

@@ -1,5 +1,5 @@
 {
- "pulled_at": "2026-11-05T01:26:12.846513+00:00",
+ "pulled_at": "2026-11-05T01:44:08.006256+00:00",
  "items": {
   "Siemens SIMATIC IoT2050 Advanced: CVSS 10 missing-authentication flaw exploited in the wild": {
    "sources": [
@@ -12,6 +12,15 @@
       "Attackers Exploit Critical Siemens IoT2050 Flaw to Plant Remote Command Backdoors --> Attackers Exploit Critical Siemens IoT2050 Flaw to Plant Remote Command Backdoors  Ravie Lakshmanan  Nov 03, 2026 Vulnerability / Cyber Attack A maximum-severity security flaw impacting Siemens SIMATIC IoT2050 Advanced devices has come under active exploitation, VulnCheck has revealed .",
       "\"SIMATIC IoT2050 Advanced devices running Industrial OS with Node-RED installed contain a missing authentication vulnerability in the Node-RED HTTP interface that could allow an unauthenticated remote attacker to create malicious flows and execute arbitrary code on the underlying server with maximum privileges,\" Siemens said in an advisory released back in August 2026.",
       "The vulnerability, tracked as CVE-2026-58115 (CVSS score: 10.0), is a case of missing authentication for a critical function that could be exploited by an unauthenticated remote attacker to run arbitrary code."
+     ]
+    },
+    {
+     "name": "heise Security (Germany)",
+     "url": "https://www.heise.de/news/Internet-of-Things-Siemens-Simatic-IoT2050-angegriffen-11509246.html",
+     "status": 200,
+     "chars": 3345,
+     "excerpts": [
+      "Demnach hat eines der Systeme des Unternehmens am vergangenen Freitag einen Angriffsversuch auf die Schwachstelle CVE-2026-58115 (CVSS 10.0 , Risiko „ kritisch “) protokolliert."
      ]
     }
    ],
@@ -28,6 +37,13 @@
       "Explore VulnCheck, a next-generation Cyber Threat Intelligence platform, which provides exploit and vulnerability intelligence to help you prioritize and remediate vulnerabilities that matter."
      ],
      "found_in": "The Hacker News (relaying VulnCheck)"
+    },
+    {
+     "url": "https://nvd.nist.gov/vuln/detail/cve-2026-58115",
+     "status": 200,
+     "chars": 10,
+     "excerpts": [],
+     "found_in": "heise Security (Germany)"
     }
    ]
   },
@@ -385,7 +401,7 @@
   },
   "CyberScoop": {
    "energy_items": 0,
-   "wide_items": 2,
+   "wide_items": 5,
    "feed": "ok",
    "pulls_ok": 0,
    "pulls_blocked": 0
@@ -399,7 +415,7 @@
   },
   "BleepingComputer": {
    "energy_items": 1,
-   "wide_items": 11,
+   "wide_items": 14,
    "feed": "ok",
    "pulls_ok": 2,
    "pulls_blocked": 0
@@ -448,7 +464,7 @@
   },
   "The Hacker News": {
    "energy_items": 2,
-   "wide_items": 11,
+   "wide_items": 13,
    "feed": "ok",
    "pulls_ok": 3,
    "pulls_blocked": 0
@@ -462,7 +478,7 @@
   },
   "The Register Security": {
    "energy_items": 3,
-   "wide_items": 4,
+   "wide_items": 5,
    "feed": "ok",
    "pulls_ok": 0,
    "pulls_blocked": 0
@@ -504,7 +520,7 @@
   },
   "WIRED Security": {
    "energy_items": 0,
-   "wide_items": 1,
+   "wide_items": 2,
    "feed": "ok",
    "pulls_ok": 0,
    "pulls_blocked": 0
@@ -544,6 +560,76 @@
    "pulls_ok": 0,
    "pulls_blocked": 0
   },
+  "heise Security (Germany)": {
+   "energy_items": 1,
+   "wide_items": 7,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "CERT-FR advisories (France)": {
+   "energy_items": 0,
+   "wide_items": 14,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "Le Monde Pixels (France)": {
+   "energy_items": 0,
+   "wide_items": 5,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "Security.NL (Netherlands)": {
+   "energy_items": 0,
+   "wide_items": 14,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "CERT Polska": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "CERT-UA (Ukraine)": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "JPCERT/CC (Japan)": {
+   "energy_items": 1,
+   "wide_items": 14,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "Canadian Centre for Cyber Security (alerts, EN)": {
+   "energy_items": 0,
+   "wide_items": 13,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "Centre canadien pour la cybersécurité (alertes, FR)": {
+   "energy_items": 0,
+   "wide_items": 13,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "heise Security": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "n/a",
+   "pulls_ok": 1,
+   "pulls_blocked": 0
+  },
   "Zyxel security advisory": {
    "energy_items": 0,
    "wide_items": 0,
@@ -574,6 +660,7 @@
   }
  },
  "primary_hosts_reached": [
+  "nvd.nist.gov",
   "presse.efs.sante.fr",
   "productcert.siemens.com",
   "www.ncsc.gov.uk",
