@@ -7,7 +7,7 @@ const cv = document.getElementById('town');
 const ctx = cv.getContext('2d');
 ctx.imageSmoothingEnabled = false;
 
-let personas, briefing, news, sources, lookmap, buildings, sectors, rulesText, cmdlog, history, aimarket, costModel, evalData, research;
+let personas, briefing, news, sources, lookmap, buildings, sectors, rulesText, cmdlog, history, aimarket, costModel, evalData, research, catalogue;
 let agents = [];
 let selected = null;
 let bubbles = [];                      // {agent, text, until}
@@ -1088,8 +1088,20 @@ $('btn-look').onclick = () => {
     pf.innerHTML = `<table class="perf-table"><tr><th>Source</th><th>Energy items</th><th>Wide</th><th>Feed</th><th>Pulls ok</th><th>Blocked</th></tr>${rows.map(([k, v]) => `<tr><td>${esc(k)}</td><td>${v.energy_items || 0}</td><td>${v.wide_items || 0}</td><td class="${String(v.feed || '').startsWith('error') ? 'bad' : ''}">${esc(v.feed || 'n/a')}</td><td>${v.pulls_ok || 0}</td><td class="${v.pulls_blocked ? 'bad' : ''}">${v.pulls_blocked || 0}</td></tr>`).join('')}</table>
       <p>Primary hosts reached: ${esc((sources.primary_hosts_reached || []).join(', ') || 'none')} · pulled ${esc((sources.pulled_at || '').slice(0, 16).replace('T', ' '))} UTC</p>`;
   }
+  if (!catalogue) catalogue = await tryJson('data/source_catalogue.json');
+  renderCatalogue();
   $('dlg-look').showModal();
 };
+function renderCatalogue() {
+  const C = catalogue; const el = $('catalogue'); if (!C) { el.innerHTML = '<p class="k">source_catalogue.json missing: run scripts/rate_sources.py</p>'; return; }
+  const q = ($('cat-q').value || '').toLowerCase(), tier = $('cat-tier').value, kind = $('cat-kind').value;
+  const rows = C.sources.filter(x => (!tier || x.tier === tier) && (!kind || x.kind === kind) && (!q || (x.name + ' ' + x.type + ' ' + x.country + ' ' + x.best_for + ' ' + x.bias_note).toLowerCase().includes(q)));
+  $('cat-meta').textContent = `${rows.length} of ${C.sources.length} · rated ${(C.rated_at || '').slice(0, 10)} · A ${C.sources.filter(x => x.tier.startsWith('A')).length}, B ${C.sources.filter(x => x.tier.startsWith('B')).length}, C ${C.sources.filter(x => x.tier.startsWith('C')).length}`;
+  const dots = (v) => [0, 1, 2].map(i => `<span class="sc ${i < v ? 'on' : ''}"></span>`).join('');
+  el.innerHTML = `<p class="k">Five criteria, 0-3 each: ${Object.entries(C.criteria).map(([k, v]) => `<b>${esc(k)}</b> (${esc(v)})`).join(' · ')}. Tiers: ${Object.entries(C.tiers).map(([k, v]) => `${esc(k)} ${esc(v)}`).join(' · ')}. Ratings start from the source type and are overridden by a person in agents/source_ratings.json; the 'verified' column says who checked and when. Delivery is measured from this run.</p>
+    <table class="cat-table"><tr><th>Tier</th><th>Source</th><th>Kind · type · country</th><th>Primacy</th><th>Indep.</th><th>Energy</th><th>Timely</th><th>Verif.</th><th>Score</th><th>Best for</th><th>Delivered this run</th><th>Verified</th></tr>${rows.map(x => `<tr><td class="tier-${x.tier[0]}">${esc(x.tier)}</td><td><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a></td><td class="k">${esc(x.kind.split(' ')[0])} · ${esc(x.type)}${x.country ? ' · ' + esc(x.country) : ''}</td><td>${dots(x.scores.primacy)}</td><td>${dots(x.scores.independence)}</td><td>${dots(x.scores.energy_focus)}</td><td>${dots(x.scores.timeliness)}</td><td>${dots(x.scores.verifiability)}</td><td><b>${x.score}</b></td><td>${esc(x.best_for)}<div class="k">${esc(x.bias_note.slice(0, 110))}</div></td><td class="k">${x.kind.startsWith('feed') ? `${x.delivery.energy_items} energy · ${x.delivery.wide_items} wide${x.delivery.pulls_blocked ? ' · <span class="lbl">blocked ' + x.delivery.pulls_blocked + '</span>' : ''}${String(x.delivery.feed).startsWith('error') ? ' · <span class="lbl">feed error</span>' : ''}` : 'manual'}</td><td class="k">${esc(x.verified)}</td></tr>`).join('')}</table>`;
+}
+['cat-q', 'cat-tier', 'cat-kind'].forEach(id => $(id).addEventListener('input', renderCatalogue));
 
 // ---------------------------------------------------------------- boot
 async function boot() {

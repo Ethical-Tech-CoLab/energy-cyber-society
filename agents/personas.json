@@ -166,7 +166,8 @@
       "questions": [
         "Where do I find primary documents on US energy cyber regulation?",
         "Which journals and research outlets cover energy-sector cybersecurity?",
-        "Which sources worked and which were blocked in the latest run?"
+        "Which sources worked and which were blocked in the latest run?",
+        "Which sources should I check first, and why?"
       ],
       "name_note": "Aisha Bello: a common Nigerian name; chosen last, to keep the cast varied rather than for any meaning. Invented 2026-11-04; rename in agents/personas.json.",
       "process": [

@@ -40,6 +40,7 @@ forgotten; "blocked" means a person must act. Update this file when something sh
 
 - Worldwide: WRI Global Power Plant Database layer (4,360 plants ≥300 MW + nuclear, canvas-rendered, CC BY) and GDACS orange/red global disaster alerts with energy-impact lines; US / Worldwide view buttons
 - US grid & weather tab: Leaflet map with live ISO load (ERCOT, CAISO, MISO, NYISO, ISONE), energy-relevant NWS alerts by state, 15 energy hubs with 3-day Open-Meteo stress flags, overlap with board items labelled inference; Grid Status plant map linked (cannot be embedded). OPEN: PJM needs PJM_API_KEY; SPP skipped; EIA-860 plant layer
+- Verified source catalogue in the Library: 86 sources scored on five criteria (primacy, independence, energy focus, timeliness, verifiability), tiered A-D, delivery measured per run, human overrides in agents/source_ratings.json
 - 'How the Gazette is verified' tab: interactive validation topology after neocloud-supply-os (clickable nodes, packets, step list) driven by a real board item's record, verdict, cross-check, pulled text and flags
 - Process topology diagram (docs/topology.svg, Methodology tab, README Mermaid) after neocloud-supply-os Appendix B1; today's news folded in (Zyxel patch bypass, OTCC 10-year CISA 2015 push, Phoenix Contact PHP2Shell, OpenAI exploit pipeline)
 - Regulations tab (Counsel's register of 16 regimes with primary URLs and honest 'unverified' status; this week's regulatory news with energy and cyber-intelligence impact lines); regimes mapped into the Risk check by facility and region

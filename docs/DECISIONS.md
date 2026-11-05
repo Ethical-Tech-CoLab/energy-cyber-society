@@ -73,6 +73,8 @@ Nothing here is lost in chat.
 
 | 57 | See the graphic the way the neocloud repo shows it, with the process of validating the Gazette | Interactive topology in the page (pipeline.js): animated write path per item, every step read from that item's data | How the Gazette is verified tab |
 
+| 58 | A list of verified sources, good to check, for evaluating and choosing the most important ones in the library | Scored, tiered, filterable catalogue in the Library with delivery evidence and a human-verified column | Where to look tab; `scripts/rate_sources.py`; `agents/source_ratings.json` |
+
 ## Standing decisions made by the assistant without being asked (so you can reverse them)
 
 - Resident names and the town metaphor; the building names; PIT as the third layer (DoD term).

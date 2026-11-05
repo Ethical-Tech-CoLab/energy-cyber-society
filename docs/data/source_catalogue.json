@@ -1,0 +1,2254 @@
+{
+ "rated_at": "2026-11-05T19:41:35.518663+00:00",
+ "criteria": {
+  "primacy": "primary document > wire > vendor/trade > commentary",
+  "independence": "no product to sell, no party to the story",
+  "energy_focus": "energy/OT specialist > regular > occasional > general",
+  "timeliness": "same-day > daily > weekly > slow",
+  "verifiability": "links primary documents and names sources"
+ },
+ "tiers": {
+  "A: check first": ">=12 of 15",
+  "B: check daily": "9-11",
+  "C: discovery only": "6-8",
+  "D: context": "<6"
+ },
+ "sources": [
+  {
+   "id": "incibe-sci",
+   "name": "INCIBE-CERT ICS advisories (Spain)",
+   "kind": "feed (read automatically)",
+   "type": "government",
+   "country": "Spain",
+   "url": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/feed",
+   "bias_note": "Spanish government ICS/SCADA advisories, several per week, often mirroring CISA ICS advisories a day later; a workaround for CISA's 403.",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 3,
+    "timeliness": 3,
+    "verifiability": 3
+   },
+   "score": 15,
+   "tier": "A: check first",
+   "best_for": "the same ICS advisories as CISA, a day later, from a feed that works",
+   "delivery": {
+    "energy_items": 2,
+    "wide_items": 2,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "reviewed 2026-11-05: delivered 4 energy items this week incl. Siemens, Welotec, Phoenix Contact"
+  },
+  {
+   "id": "certpl",
+   "name": "CERT Polska",
+   "kind": "feed (read automatically)",
+   "type": "government",
+   "country": "Poland",
+   "url": "https://cert.pl/rss.xml",
+   "bias_note": "Poland's national CERT (NASK); Polish; incident reports, strong on Russian-linked activity against Poland.",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 3,
+    "timeliness": 2,
+    "verifiability": 3
+   },
+   "score": 14,
+   "tier": "A: check first",
+   "best_for": "Poland 2025 distributed-energy campaign and Russian-linked activity against Poland",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "reviewed 2026-11-05"
+  },
+  {
+   "id": "cisa",
+   "name": "CISA Advisories",
+   "kind": "feed (read automatically)",
+   "type": "government",
+   "country": "US",
+   "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
+   "bias_note": "US government body; authoritative on US-facing threats, careful wording, rarely attributes publicly, slow on non-US incidents.",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 3,
+    "timeliness": 2,
+    "verifiability": 3
+   },
+   "score": 14,
+   "tier": "A: check first",
+   "best_for": "ICS advisories and KEV: the authoritative 'is it exploited' answer for US operators",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "error: <unknown>:10:2: mismatched tag",
+    "pulls_blocked": 0
+   },
+   "verified": "Carolina's project notes 2026-11-04; feed blocks automated pulls (403), read the site"
+  },
+  {
+   "id": "certfr",
+   "name": "CERT-FR advisories (France)",
+   "kind": "feed (read automatically)",
+   "type": "government",
+   "country": "France",
+   "url": "https://www.cert.ssi.gouv.fr/avis/feed/",
+   "bias_note": "ANSSI's CERT; French; vulnerability advisories including ICS vendors; institutional, no attribution.",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 2,
+    "timeliness": 2,
+    "verifiability": 3
+   },
+   "score": 13,
+   "tier": "A: check first",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 1,
+    "wide_items": 0,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "certua",
+   "name": "CERT-UA (Ukraine)",
+   "kind": "feed (read automatically)",
+   "type": "government",
+   "country": "Ukraine",
+   "url": "https://cert.gov.ua/api/articles/rss",
+   "bias_note": "Ukraine's government CERT; Ukrainian; the primary source on attacks against Ukrainian energy and government; a party to the war, attributions are to Russia.",
+   "scores": {
+    "primacy": 3,
+    "independence": 2,
+    "energy_focus": 3,
+    "timeliness": 2,
+    "verifiability": 3
+   },
+   "score": 13,
+   "tier": "A: check first",
+   "best_for": "the primary source on attacks against Ukrainian energy; a party to the war, attributions to Russia",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "reviewed 2026-11-05"
+  },
+  {
+   "id": "certbr",
+   "name": "CERT.br (Brazil)",
+   "kind": "feed (read automatically)",
+   "type": "government",
+   "country": "Brazil",
+   "url": "https://www.cert.br/rss/",
+   "bias_note": "Brazil's national CERT (NIC.br); Portuguese; statistics and advisories, rarely names victims.",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 2,
+    "timeliness": 2,
+    "verifiability": 3
+   },
+   "score": 13,
+   "tier": "A: check first",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 1,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "cisa-news",
+   "name": "CISA News",
+   "kind": "feed (read automatically)",
+   "type": "government",
+   "country": "US",
+   "url": "https://www.cisa.gov/news.xml",
+   "bias_note": "Agency press office; frames events around its own programs and successes.",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 2,
+    "timeliness": 2,
+    "verifiability": 3
+   },
+   "score": 13,
+   "tier": "A: check first",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "error: <unknown>:10:2: mismatched tag",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "csirtamericas",
+   "name": "CSIRTAmericas (OAS)",
+   "kind": "feed (read automatically)",
+   "type": "government",
+   "country": "Latin America",
+   "url": "https://www.csirtamericas.org/es/rss.xml",
+   "bias_note": "Organization of American States regional CSIRT network; Spanish; aggregates national CSIRT notices; institutional tone, slow on attribution.",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 2,
+    "timeliness": 2,
+    "verifiability": 3
+   },
+   "score": 13,
+   "tier": "A: check first",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "cccs-en",
+   "name": "Canadian Centre for Cyber Security (alerts, EN)",
+   "kind": "feed (read automatically)",
+   "type": "government",
+   "country": "Canada",
+   "url": "https://www.cyber.gc.ca/api/cccs/rss/v1/get?feed=alerts_advisories&lang=en",
+   "bias_note": "Canada's national cyber agency; English; alerts and advisories, often mirroring vendor and CISA notices.",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 2,
+    "timeliness": 2,
+    "verifiability": 3
+   },
+   "score": 13,
+   "tier": "A: check first",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 2,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "cccs-fr",
+   "name": "Centre canadien pour la cybersécurité (alertes, FR)",
+   "kind": "feed (read automatically)",
+   "type": "government",
+   "country": "Canada",
+   "url": "https://www.cyber.gc.ca/api/cccs/rss/v1/get?feed=alerts_advisories&lang=fr",
+   "bias_note": "Same agency in French; duplicates the English feed, counted once by the Verifier.",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 2,
+    "timeliness": 2,
+    "verifiability": 3
+   },
+   "score": 13,
+   "tier": "A: check first",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 2,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "doe-ceser",
+   "name": "DOE Newsroom",
+   "kind": "feed (read automatically)",
+   "type": "government",
+   "country": "US",
+   "url": "https://www.energy.gov/rss/newsroom.xml",
+   "bias_note": "Department press releases; promotional about federal programs.",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 2,
+    "timeliness": 2,
+    "verifiability": 3
+   },
+   "score": 13,
+   "tier": "A: check first",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "jpcert",
+   "name": "JPCERT/CC (Japan)",
+   "kind": "feed (read automatically)",
+   "type": "government",
+   "country": "Japan",
+   "url": "https://www.jpcert.or.jp/rss/jpcert.rdf",
+   "bias_note": "Japan's coordination CERT; Japanese; vulnerability notes and alerts; institutional.",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 2,
+    "timeliness": 2,
+    "verifiability": 3
+   },
+   "score": 13,
+   "tier": "A: check first",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 1,
+    "wide_items": 0,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "ncsc-uk",
+   "name": "UK NCSC News",
+   "kind": "feed (read automatically)",
+   "type": "government",
+   "country": "UK",
+   "url": "https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml",
+   "bias_note": "UK government agency; aligned with Five Eyes attributions.",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 2,
+    "timeliness": 2,
+    "verifiability": 3
+   },
+   "score": 13,
+   "tier": "A: check first",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "CISA ICS advisories",
+   "name": "CISA ICS advisories",
+   "kind": "manual (Where to look)",
+   "type": "primary",
+   "country": "",
+   "url": "https://www.cisa.gov/news-events/cybersecurity-advisories",
+   "bias_note": "the authoritative US advisory per ICS product, several per week, some tagged 'Used in Energy' [free; RSS returns 403 to many automated clients, read the site]",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 3
+   },
+   "score": 11,
+   "tier": "B: check daily",
+   "best_for": "Is this vulnerability real and is it exploited?",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "CISA Known Exploited Vulnerabilities catalog",
+   "name": "CISA Known Exploited Vulnerabilities catalog",
+   "kind": "manual (Where to look)",
+   "type": "primary",
+   "country": "",
+   "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+   "bias_note": "if a CVE is here, exploitation is confirmed by the US government [free, JSON download]",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 3
+   },
+   "score": 11,
+   "tier": "B: check daily",
+   "best_for": "exploited yes/no with date; fetched automatically by enrich_cves.py",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "fetched 2026-11-05: 1,768 entries"
+  },
+  {
+   "id": "DOE CESER",
+   "name": "DOE CESER",
+   "kind": "manual (Where to look)",
+   "type": "primary",
+   "country": "",
+   "url": "https://www.energy.gov/ceser",
+   "bias_note": "the energy sector risk management agency; programs, leadership, reports [free; RSS at energy.gov/rss/newsroom.xml]",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 3
+   },
+   "score": 11,
+   "tier": "B: check daily",
+   "best_for": "What does the law or regulator actually say? (US)",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "FERC eLibrary and orders",
+   "name": "FERC eLibrary and orders",
+   "kind": "manual (Where to look)",
+   "type": "primary",
+   "country": "",
+   "url": "https://www.ferc.gov/",
+   "bias_note": "approves and directs NERC CIP standards; orders are the primary record [free]",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 3
+   },
+   "score": 11,
+   "tier": "B: check daily",
+   "best_for": "What does the law or regulator actually say? (US)",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "Federal Register",
+   "name": "Federal Register",
+   "kind": "manual (Where to look)",
+   "type": "primary",
+   "country": "",
+   "url": "https://www.federalregister.gov/",
+   "bias_note": "every proposed and final rule, executive order and notice; the controlling text [free]",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 3
+   },
+   "score": 11,
+   "tier": "B: check daily",
+   "best_for": "the text of any US rule or executive order; the only answer to 'is it final'",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "pointer verified 2026-11-05"
+  },
+  {
+   "id": "industrialcyber",
+   "name": "Industrial Cyber",
+   "kind": "feed (read automatically)",
+   "type": "trade press",
+   "country": "international",
+   "url": "https://industrialcyber.co/feed/",
+   "bias_note": "ICS/OT-only trade outlet; vendor-advertising supported, relays vendor reports and regulator notices with little pushback.",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 3,
+    "timeliness": 3,
+    "verifiability": 2
+   },
+   "score": 11,
+   "tier": "B: check daily",
+   "best_for": "regulator and vendor notices for OT, fast; weight vendor announcements accordingly",
+   "delivery": {
+    "energy_items": 6,
+    "wide_items": 2,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "reviewed 2026-11-05: 7 of 18 energy items this week, 3 vendor announcements"
+  },
+  {
+   "id": "lemonde",
+   "name": "Le Monde Pixels (France)",
+   "kind": "feed (read automatically)",
+   "type": "wire",
+   "country": "France",
+   "url": "https://www.lemonde.fr/pixels/rss_full.xml",
+   "bias_note": "National daily's tech desk; French; covered the EFS and supermarket attacks domestically; general audience.",
+   "scores": {
+    "primacy": 2,
+    "independence": 3,
+    "energy_focus": 1,
+    "timeliness": 3,
+    "verifiability": 2
+   },
+   "score": 11,
+   "tier": "B: check daily",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 6,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "NERC Reliability Standards (CIP-002 to CIP-015)",
+   "name": "NERC Reliability Standards (CIP-002 to CIP-015)",
+   "kind": "manual (Where to look)",
+   "type": "primary",
+   "country": "",
+   "url": "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx",
+   "bias_note": "the mandatory bulk-power-system cyber standards, with effective dates [free; news page has no RSS]",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 3
+   },
+   "score": 11,
+   "tier": "B: check daily",
+   "best_for": "the enforceable version of every CIP standard with effective dates",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "pointer verified 2026-11-05"
+  },
+  {
+   "id": "NRC cybersecurity (10 CFR 73.54)",
+   "name": "NRC cybersecurity (10 CFR 73.54)",
+   "kind": "manual (Where to look)",
+   "type": "primary",
+   "country": "",
+   "url": "https://www.nrc.gov/",
+   "bias_note": "nuclear plant cyber rule and inspections [free]",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 3
+   },
+   "score": 11,
+   "tier": "B: check daily",
+   "best_for": "What does the law or regulator actually say? (US)",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "NVD",
+   "name": "NVD",
+   "kind": "manual (Where to look)",
+   "type": "primary",
+   "country": "",
+   "url": "https://nvd.nist.gov/",
+   "bias_note": "CVE record, CVSS, references [free, API]",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 3
+   },
+   "score": 11,
+   "tier": "B: check daily",
+   "best_for": "CVSS and references per CVE; fetched automatically",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "fetched 2026-11-05"
+  },
+  {
+   "id": "TSA pipeline security directives",
+   "name": "TSA pipeline security directives",
+   "kind": "manual (Where to look)",
+   "type": "primary",
+   "country": "",
+   "url": "https://www.tsa.gov/for-industry/surface-transportation-cybersecurity-toolkit",
+   "bias_note": "the oil and gas pipeline cyber regime; check each directive's version and expiry [free]",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 3
+   },
+   "score": 11,
+   "tier": "B: check daily",
+   "best_for": "What does the law or regulator actually say? (US)",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "Vendor PSIRT/ProductCERT pages",
+   "name": "Vendor PSIRT/ProductCERT pages",
+   "kind": "manual (Where to look)",
+   "type": "primary",
+   "country": "",
+   "url": "https://cert-portal.siemens.com/productcert/",
+   "bias_note": "Siemens, Schneider, Rockwell, ABB, Honeywell, Zyxel each publish their own advisories; the vendor advisory outranks any outlet [free]",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 3
+   },
+   "score": 11,
+   "tier": "B: check daily",
+   "best_for": "Is this vulnerability real and is it exploited?",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "congress.gov",
+   "name": "congress.gov",
+   "kind": "manual (Where to look)",
+   "type": "primary",
+   "country": "",
+   "url": "https://www.congress.gov/",
+   "bias_note": "statutes and bills, e.g. the Cybersecurity Information Sharing Act of 2015 sunset and any NDAA extension [free]",
+   "scores": {
+    "primacy": 3,
+    "independence": 3,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 3
+   },
+   "score": 11,
+   "tier": "B: check daily",
+   "best_for": "What does the law or regulator actually say? (US)",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "ciberlatam",
+   "name": "Ciberseguridad LATAM",
+   "kind": "feed (read automatically)",
+   "type": "trade press",
+   "country": "Latin America",
+   "url": "https://www.ciberseguridadlatam.com/feed/",
+   "bias_note": "Regional trade outlet; vendor-advertising funded; relays regional incidents and vendor reports in Spanish.",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 3,
+    "verifiability": 2
+   },
+   "score": 10,
+   "tier": "B: check daily",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 1,
+    "wide_items": 5,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "cyberscoop",
+   "name": "CyberScoop",
+   "kind": "feed (read automatically)",
+   "type": "trade press",
+   "country": "US",
+   "url": "https://cyberscoop.com/feed/",
+   "bias_note": "Washington-focused trade outlet; strong on policy and federal sourcing, sponsor-funded events with vendors.",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 3,
+    "verifiability": 2
+   },
+   "score": 10,
+   "tier": "B: check daily",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 1,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "darkreading",
+   "name": "Dark Reading",
+   "kind": "feed (read automatically)",
+   "type": "trade press",
+   "country": "US",
+   "url": "https://www.darkreading.com/rss.xml",
+   "bias_note": "Informa-owned, heavy vendor sponsorship; analysis-led, can amplify vendor threat reports.",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 3,
+    "verifiability": 2
+   },
+   "score": 10,
+   "tier": "B: check daily",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 1,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "krebs",
+   "name": "Krebs on Security",
+   "kind": "feed (read automatically)",
+   "type": "independent",
+   "country": "US",
+   "url": "https://krebsonsecurity.com/feed/",
+   "bias_note": "Single investigative reporter; deep on cybercrime ecosystems, selective coverage, US-centric.",
+   "scores": {
+    "primacy": 2,
+    "independence": 3,
+    "energy_focus": 1,
+    "timeliness": 2,
+    "verifiability": 2
+   },
+   "score": 10,
+   "tier": "B: check daily",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "schneier",
+   "name": "Schneier on Security",
+   "kind": "feed (read automatically)",
+   "type": "independent",
+   "country": "US",
+   "url": "https://www.schneier.com/feed/atom/",
+   "bias_note": "One academic's commentary and links; strong on policy and crypto, selective, opinionated.",
+   "scores": {
+    "primacy": 2,
+    "independence": 3,
+    "energy_focus": 1,
+    "timeliness": 2,
+    "verifiability": 2
+   },
+   "score": 10,
+   "tier": "B: check daily",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "securitynl",
+   "name": "Security.NL (Netherlands)",
+   "kind": "feed (read automatically)",
+   "type": "independent",
+   "country": "Netherlands",
+   "url": "https://www.security.nl/rss/headlines.xml",
+   "bias_note": "Dutch independent security news; terse, high volume; good on Dutch and EU incidents.",
+   "scores": {
+    "primacy": 2,
+    "independence": 3,
+    "energy_focus": 1,
+    "timeliness": 2,
+    "verifiability": 2
+   },
+   "score": 10,
+   "tier": "B: check daily",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 10,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "securityweek",
+   "name": "SecurityWeek",
+   "kind": "feed (read automatically)",
+   "type": "trade press",
+   "country": "US",
+   "url": "https://www.securityweek.com/feed/",
+   "bias_note": "Vendor-advertising supported; dedicated ICS/OT coverage, sometimes echoes vendor research uncritically.",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 3,
+    "verifiability": 2
+   },
+   "score": 10,
+   "tier": "B: check daily",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 9,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "therecord",
+   "name": "The Record (Recorded Future News)",
+   "kind": "feed (read automatically)",
+   "type": "vendor-owned press",
+   "country": "US",
+   "url": "https://therecord.media/feed",
+   "bias_note": "Editorially independent but owned by threat-intel vendor Recorded Future; strong on nation-state and ransomware actors.",
+   "scores": {
+    "primacy": 2,
+    "independence": 1,
+    "energy_focus": 2,
+    "timeliness": 3,
+    "verifiability": 2
+   },
+   "score": 10,
+   "tier": "B: check daily",
+   "best_for": "nation-state and ransomware actors; owned by Recorded Future, editorially independent",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 1,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "reviewed 2026-11-05"
+  },
+  {
+   "id": "unaaldia",
+   "name": "Una al día (Hispasec)",
+   "kind": "feed (read automatically)",
+   "type": "independent",
+   "country": "Spain",
+   "url": "https://feeds.feedburner.com/Unaaldia",
+   "bias_note": "Daily Spanish-language security news since 1998 from a security firm (Hispasec); concise, vendor-light, Spain and Latin America coverage.",
+   "scores": {
+    "primacy": 2,
+    "independence": 3,
+    "energy_focus": 1,
+    "timeliness": 2,
+    "verifiability": 2
+   },
+   "score": 10,
+   "tier": "B: check daily",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "heise",
+   "name": "heise Security (Germany)",
+   "kind": "feed (read automatically)",
+   "type": "tech press",
+   "country": "Germany",
+   "url": "https://www.heise.de/security/rss/news-atom.xml",
+   "bias_note": "Germany's main tech press; German; sober, fast, strong on EU regulation and German utilities; Heise Medien.",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 3,
+    "verifiability": 2
+   },
+   "score": 10,
+   "tier": "B: check daily",
+   "best_for": "German utilities and EU regulation; independently corroborated the Siemens IoT2050 attacks",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 4,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "reviewed 2026-11-05"
+  },
+  {
+   "id": "bleeping",
+   "name": "BleepingComputer",
+   "kind": "feed (read automatically)",
+   "type": "tech press",
+   "country": "US",
+   "url": "https://www.bleepingcomputer.com/feed/",
+   "bias_note": "Fast, incident-driven, often first with ransomware claims; headlines can run ahead of confirmation.",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 1,
+    "timeliness": 3,
+    "verifiability": 2
+   },
+   "score": 9,
+   "tier": "B: check daily",
+   "best_for": "first and fastest on ransomware and device exploitation (Zyxel); confirm counts elsewhere",
+   "delivery": {
+    "energy_items": 1,
+    "wide_items": 6,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "reviewed 2026-11-05"
+  },
+  {
+   "id": "kaspersky-ics",
+   "name": "Kaspersky ICS CERT",
+   "kind": "feed (read automatically)",
+   "type": "vendor research",
+   "country": "Russia",
+   "url": "https://ics-cert.kaspersky.com/feed/",
+   "bias_note": "Deep ICS vulnerability and threat research from a Russian vendor banned from US federal use (2017) and US sales (2024); technical content is strong, attribution of Russian activity is absent or soft.",
+   "scores": {
+    "primacy": 1,
+    "independence": 1,
+    "energy_focus": 3,
+    "timeliness": 2,
+    "verifiability": 2
+   },
+   "score": 9,
+   "tier": "B: check daily",
+   "best_for": "deep ICS vulnerability research (Dustman/Bapco); Russian vendor, soft on Russian attribution",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 1,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "reviewed 2026-11-05"
+  },
+  {
+   "id": "mit-tr-climate",
+   "name": "MIT Technology Review: climate and energy",
+   "kind": "feed (read automatically)",
+   "type": "magazine",
+   "country": "US",
+   "url": "https://www.technologyreview.com/topic/climate-change/feed",
+   "bias_note": "Same magazine, energy desk: grid, data-centre load, US energy policy; not a security outlet.",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 3,
+    "timeliness": 1,
+    "verifiability": 2
+   },
+   "score": 9,
+   "tier": "B: check daily",
+   "best_for": "data-centre load and US energy policy; not a security outlet",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 1,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "reviewed 2026-11-05"
+  },
+  {
+   "id": "techcrunch-sec",
+   "name": "TechCrunch Security",
+   "kind": "feed (read automatically)",
+   "type": "tech press",
+   "country": "US",
+   "url": "https://techcrunch.com/category/security/feed/",
+   "bias_note": "Startup-and-tech press; strong breach reporting (Zack Whittaker); Yahoo-owned; business framing, little OT.",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 1,
+    "timeliness": 3,
+    "verifiability": 2
+   },
+   "score": 9,
+   "tier": "B: check daily",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 1,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "register",
+   "name": "The Register Security",
+   "kind": "feed (read automatically)",
+   "type": "tech press",
+   "country": "UK",
+   "url": "https://www.theregister.com/security/headlines.atom",
+   "bias_note": "Irreverent UK tech press; sceptical of vendors and governments alike, headline tone can trivialise.",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 1,
+    "timeliness": 3,
+    "verifiability": 2
+   },
+   "score": 9,
+   "tier": "B: check daily",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 7,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "utilitydive",
+   "name": "Utility Dive",
+   "kind": "feed (read automatically)",
+   "type": "industry press",
+   "country": "US",
+   "url": "https://www.utilitydive.com/feeds/news/",
+   "bias_note": "Utility-industry trade outlet; frames security through regulation, cost and reliability; sympathetic to utilities.",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 3,
+    "timeliness": 2,
+    "verifiability": 1
+   },
+   "score": 9,
+   "tier": "B: check daily",
+   "best_for": "US utility policy and regulation framing (CISA 2015, grid-component order); blocks automated pulls",
+   "delivery": {
+    "energy_items": 1,
+    "wide_items": 4,
+    "feed": "ok",
+    "pulls_blocked": 2
+   },
+   "verified": "reviewed 2026-11-05: both legal items unverifiable because the page returns 403"
+  },
+  {
+   "id": "hackernews",
+   "name": "The Hacker News",
+   "kind": "feed (read automatically)",
+   "type": "tech press",
+   "country": "international",
+   "url": "https://feeds.feedburner.com/TheHackersNews",
+   "bias_note": "High volume, sponsored content mixed with news; good for the wide-angle view of what else is happening.",
+   "scores": {
+    "primacy": 1,
+    "independence": 1,
+    "energy_focus": 1,
+    "timeliness": 3,
+    "verifiability": 2
+   },
+   "score": 8,
+   "tier": "C: discovery only",
+   "best_for": "breadth for the wide bucket; relays vendor research (VulnCheck, Binarly) quickly",
+   "delivery": {
+    "energy_items": 2,
+    "wide_items": 6,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "reviewed 2026-11-05"
+  },
+  {
+   "id": "arxiv-cr",
+   "name": "arXiv cs.CR (preprints)",
+   "kind": "feed (read automatically)",
+   "type": "research preprints",
+   "country": "international",
+   "url": "http://export.arxiv.org/rss/cs.CR",
+   "bias_note": "Unreviewed preprints; author claims, not findings; good for what researchers are probing (ICS intrusion detection, grid attacks) before journals publish.",
+   "scores": {
+    "primacy": 0,
+    "independence": 3,
+    "energy_focus": 1,
+    "timeliness": 3,
+    "verifiability": 1
+   },
+   "score": 8,
+   "tier": "C: discovery only",
+   "best_for": "what researchers are probing before journals publish; never a fact source",
+   "delivery": {
+    "energy_items": 3,
+    "wide_items": 37,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "reviewed 2026-11-05"
+  },
+  {
+   "id": "arxiv-sy",
+   "name": "arXiv eess.SY (systems and control preprints)",
+   "kind": "feed (read automatically)",
+   "type": "research preprints",
+   "country": "international",
+   "url": "http://export.arxiv.org/rss/eess.SY",
+   "bias_note": "Control-systems research, including grid and cyber-physical security; unreviewed.",
+   "scores": {
+    "primacy": 0,
+    "independence": 3,
+    "energy_focus": 1,
+    "timeliness": 3,
+    "verifiability": 1
+   },
+   "score": 8,
+   "tier": "C: discovery only",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 39,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "CERT Polska incident reports",
+   "name": "CERT Polska incident reports",
+   "kind": "manual (Where to look)",
+   "type": "curated databases: discovery aids, not final authority",
+   "country": "",
+   "url": "https://cert.pl/",
+   "bias_note": "Poland December 2025 distributed-energy campaign and follow-up; already an allowlisted feed [free]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "Poland December 2025; also an allowlisted feed",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "cited by the research report"
+  },
+  {
+   "id": "CISA ICS-CERT historical advisories and the ICS Advisory Project",
+   "name": "CISA ICS-CERT historical advisories and the ICS Advisory Project",
+   "kind": "manual (Where to look)",
+   "type": "membership and datasets",
+   "country": "",
+   "url": "https://www.icsadvisoryproject.com/",
+   "bias_note": "dashboards over all ICS advisories by sector and vendor [free]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "Sector sharing and incident data",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "csis",
+   "name": "CSIS",
+   "kind": "feed (read automatically)",
+   "type": "think tank",
+   "country": "US",
+   "url": "https://www.csis.org/rss.xml",
+   "bias_note": "Washington think tank; policy analysis with funders across defence and industry; frames through US strategic interest.",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 1,
+    "timeliness": 1,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "Claroty Team82, Nozomi Labs, Forescout Vedere",
+   "name": "Claroty Team82, Nozomi Labs, Forescout Vedere",
+   "kind": "manual (Where to look)",
+   "type": "vendor research (attribute by name, flag as seller)",
+   "country": "",
+   "url": "https://claroty.com/team82",
+   "bias_note": "OT vulnerability research [free]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "Who is the actor and what is the tradecraft?",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "Computers & Security (Elsevier)",
+   "name": "Computers & Security (Elsevier)",
+   "kind": "manual (Where to look)",
+   "type": "journals and standards",
+   "country": "",
+   "url": "https://www.sciencedirect.com/journal/computers-and-security",
+   "bias_note": "ICS intrusion detection and OT security papers [paywalled]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "What is the research and academic view?",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "DOE C2M2",
+   "name": "DOE C2M2",
+   "kind": "manual (Where to look)",
+   "type": "curated databases: discovery aids, not final authority",
+   "country": "",
+   "url": "https://www.energy.gov/ceser/cybersecurity-capability-maturity-model-c2m2",
+   "bias_note": "governance model for the defensive program [free]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "Incident datasets and case registers (discovery, then verify at the primary)",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "DOE OE-417 electric disturbance reports",
+   "name": "DOE OE-417 electric disturbance reports",
+   "kind": "manual (Where to look)",
+   "type": "membership and datasets",
+   "country": "",
+   "url": "https://www.oe.netl.doe.gov/OE417_annual_summary.aspx",
+   "bias_note": "mandatory US outage and disturbance filings, including cyber events [free]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "Sector sharing and incident data",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "Dark Reading / SecurityWeek features",
+   "name": "Dark Reading / SecurityWeek features",
+   "kind": "manual (Where to look)",
+   "type": "magazine / independent",
+   "country": "",
+   "url": "https://www.darkreading.com/",
+   "bias_note": "vendor-sponsored analysis; already in the allowlist [free]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "Magazines, long-form and commentary (context, not confirmation)",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "Dragos (Year in Review, threat group pages)",
+   "name": "Dragos (Year in Review, threat group pages)",
+   "kind": "manual (Where to look)",
+   "type": "vendor research (attribute by name, flag as seller)",
+   "country": "",
+   "url": "https://www.dragos.com/resources/",
+   "bias_note": "deepest public ICS threat-group tracking [free with email gate; no working RSS]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "Who is the actor and what is the tradecraft?",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "E-ISAC",
+   "name": "E-ISAC",
+   "kind": "manual (Where to look)",
+   "type": "membership and datasets",
+   "country": "",
+   "url": "https://www.eisac.com/",
+   "bias_note": "the electricity sector's sharing body; the richest incident data [members only; public output via NERC alerts]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "Sector sharing and incident data",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "EuRepoC (European Repository of Cyber Incidents)",
+   "name": "EuRepoC (European Repository of Cyber Incidents)",
+   "kind": "manual (Where to look)",
+   "type": "curated databases: discovery aids, not final authority",
+   "country": "",
+   "url": "https://eurepoc.eu/",
+   "bias_note": "expert-reviewed dataset; 175 energy-tagged rows in v1.3, most without coded initial access; triangulate, do not cite as final [free]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "Incident datasets and case registers (discovery, then verify at the primary)",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "IEEE Transactions on Smart Grid",
+   "name": "IEEE Transactions on Smart Grid",
+   "kind": "manual (Where to look)",
+   "type": "journals and standards",
+   "country": "",
+   "url": "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=5165411",
+   "bias_note": "grid cyber-physical security research [paywalled; many preprints on arXiv eess.SY / cs.CR]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "What is the research and academic view?",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "ISA/IEC 62443",
+   "name": "ISA/IEC 62443",
+   "kind": "manual (Where to look)",
+   "type": "journals and standards",
+   "country": "",
+   "url": "https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards",
+   "bias_note": "the OT security standard family [paywalled]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "What is the research and academic view?",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "Industrial Cyber",
+   "name": "Industrial Cyber",
+   "kind": "manual (Where to look)",
+   "type": "press (see sources.json for bias notes)",
+   "country": "",
+   "url": "https://industrialcyber.co/",
+   "bias_note": "OT-only trade press, relays regulator and vendor notices [free, vendor-advertising funded]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "What happened today? (daily news, credible)",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "International Journal of Critical Infrastructure Protection (Elsevier)",
+   "name": "International Journal of Critical Infrastructure Protection (Elsevier)",
+   "kind": "manual (Where to look)",
+   "type": "journals and standards",
+   "country": "",
+   "url": "https://www.sciencedirect.com/journal/international-journal-of-critical-infrastructure-protection",
+   "bias_note": "the dedicated CIP journal [paywalled; check author preprints]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "What is the research and academic view?",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "Journal of Cybersecurity (Oxford)",
+   "name": "Journal of Cybersecurity (Oxford)",
+   "kind": "manual (Where to look)",
+   "type": "journals and standards",
+   "country": "",
+   "url": "https://academic.oup.com/cybersecurity",
+   "bias_note": "policy and interdisciplinary cyber research [open access]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "What is the research and academic view?",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "Lawfare",
+   "name": "Lawfare",
+   "kind": "manual (Where to look)",
+   "type": "magazine / independent",
+   "country": "",
+   "url": "https://www.lawfaremedia.org/",
+   "bias_note": "legal analysis of cyber and critical infrastructure; feed blocks automation, read by hand [free]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "Magazines, long-form and commentary (context, not confirmation)",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "Lawfare, Just Security, CSIS, Atlantic Council Cyber Statecraft",
+   "name": "Lawfare, Just Security, CSIS, Atlantic Council Cyber Statecraft",
+   "kind": "manual (Where to look)",
+   "type": "journals and standards",
+   "country": "",
+   "url": "https://www.lawfaremedia.org/",
+   "bias_note": "policy analysis of energy cyber law and geopolitics [free]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "What is the research and academic view?",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "mit-tr",
+   "name": "MIT Technology Review",
+   "kind": "feed (read automatically)",
+   "type": "magazine",
+   "country": "US",
+   "url": "https://www.technologyreview.com/feed/",
+   "bias_note": "MIT-owned magazine; strong on AI, data-centre power and energy policy; narrative, not incident-driven.",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 1,
+    "timeliness": 1,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 2,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "MIT Technology Review",
+   "name": "MIT Technology Review",
+   "kind": "manual (Where to look)",
+   "type": "journals and standards",
+   "country": "",
+   "url": "https://www.technologyreview.com/",
+   "bias_note": "AI and energy reporting, data-centre power; read automatically via feed [metered paywall]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "What is the research and academic view?",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "MITRE ATT&CK for ICS",
+   "name": "MITRE ATT&CK for ICS",
+   "kind": "manual (Where to look)",
+   "type": "vendor research (attribute by name, flag as seller)",
+   "country": "",
+   "url": "https://attack.mitre.org/matrices/ics/",
+   "bias_note": "the shared vocabulary for techniques; use it to compare incidents [free]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "Who is the actor and what is the tradecraft?",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "MITRE ATT&CK for ICS case studies and software pages",
+   "name": "MITRE ATT&CK for ICS case studies and software pages",
+   "kind": "manual (Where to look)",
+   "type": "curated databases: discovery aids, not final authority",
+   "country": "",
+   "url": "https://attack.mitre.org/matrices/ics/",
+   "bias_note": "technical reconstructions (Ukraine 2016, Industroyer, Stuxnet) with evidence limits stated [free]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "Incident datasets and case registers (discovery, then verify at the primary)",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "Mandiant / Google Threat Intelligence",
+   "name": "Mandiant / Google Threat Intelligence",
+   "kind": "manual (Where to look)",
+   "type": "vendor research (attribute by name, flag as seller)",
+   "country": "",
+   "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+   "bias_note": "nation-state attributions, Sandworm and Volt Typhoon reporting [free]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "Who is the actor and what is the tradecraft?",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "Microsoft Threat Intelligence",
+   "name": "Microsoft Threat Intelligence",
+   "kind": "manual (Where to look)",
+   "type": "vendor research (attribute by name, flag as seller)",
+   "country": "",
+   "url": "https://www.microsoft.com/en-us/security/blog/topic/threat-intelligence/",
+   "bias_note": "Volt Typhoon and similar campaigns; large telemetry [free]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "Who is the actor and what is the tradecraft?",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "NERC Lessons Learned and GADS/TADS",
+   "name": "NERC Lessons Learned and GADS/TADS",
+   "kind": "manual (Where to look)",
+   "type": "membership and datasets",
+   "country": "",
+   "url": "https://www.nerc.com/pa/rrm/ea/Pages/Lessons-Learned.aspx",
+   "bias_note": "post-event reports, some cyber-related [free]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "Sector sharing and incident data",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "NIST SP 800-82 Rev. 3",
+   "name": "NIST SP 800-82 Rev. 3",
+   "kind": "manual (Where to look)",
+   "type": "journals and standards",
+   "country": "",
+   "url": "https://csrc.nist.gov/pubs/sp/800/82/r3/final",
+   "bias_note": "the free OT security guide; the substitute for ISA/IEC 62443 [free]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "What is the research and academic view?",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "ONG-ISAC, DNG-ISAC",
+   "name": "ONG-ISAC, DNG-ISAC",
+   "kind": "manual (Where to look)",
+   "type": "membership and datasets",
+   "country": "",
+   "url": "https://ongisac.org/",
+   "bias_note": "oil and gas, downstream gas sharing [members only]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "Sector sharing and incident data",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "Office of the Privacy Commissioner of Canada findings (Nova Scotia Power)",
+   "name": "Office of the Privacy Commissioner of Canada findings (Nova Scotia Power)",
+   "kind": "manual (Where to look)",
+   "type": "curated databases: discovery aids, not final authority",
+   "country": "",
+   "url": "https://www.priv.gc.ca/",
+   "bias_note": "an unusually detailed official incident reconstruction [free]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "Incident datasets and case registers (discovery, then verify at the primary)",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "SANS ICS community and ICS Summit talks",
+   "name": "SANS ICS community and ICS Summit talks",
+   "kind": "manual (Where to look)",
+   "type": "excluded as evidence (rule 7)",
+   "country": "",
+   "url": "https://www.sans.org/industrial-control-systems-security/",
+   "bias_note": "practitioner discussion; cite the published paper or talk, not the thread [free papers]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "Forums and communities (never a source; sometimes a subject)",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "SANS ICS resources and the SANS ICS Summit",
+   "name": "SANS ICS resources and the SANS ICS Summit",
+   "kind": "manual (Where to look)",
+   "type": "journals and standards",
+   "country": "",
+   "url": "https://www.sans.org/industrial-control-systems-security/",
+   "bias_note": "practitioner whitepapers and incident reviews [free papers, paid courses]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "What is the research and academic view?",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "Schneier on Security",
+   "name": "Schneier on Security",
+   "kind": "manual (Where to look)",
+   "type": "magazine / independent",
+   "country": "",
+   "url": "https://www.schneier.com/",
+   "bias_note": "policy and technical commentary; read automatically via feed [free]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "Magazines, long-form and commentary (context, not confirmation)",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "Scite / Google Scholar",
+   "name": "Scite / Google Scholar",
+   "kind": "manual (Where to look)",
+   "type": "journals and standards",
+   "country": "",
+   "url": "https://scite.ai/",
+   "bias_note": "find and check citations; Scite shows whether later papers support or contrast a claim [Scite paid, Scholar free]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "What is the research and academic view?",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "SektorCERT (Denmark)",
+   "name": "SektorCERT (Denmark)",
+   "kind": "manual (Where to look)",
+   "type": "curated databases: discovery aids, not final authority",
+   "country": "",
+   "url": "https://sektorcert.dk/",
+   "bias_note": "the Danish 2023 Zyxel campaign report; model for counting a campaign once [free]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "the Danish 2023 Zyxel campaign report; the model for counting a campaign once",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "cited by the research report"
+  },
+  {
+   "id": "Stanford Cyber Policy Center and Internet Observatory",
+   "name": "Stanford Cyber Policy Center and Internet Observatory",
+   "kind": "manual (Where to look)",
+   "type": "journals and standards",
+   "country": "",
+   "url": "https://cyber.fsi.stanford.edu/",
+   "bias_note": "policy research on critical infrastructure, platform and state cyber behaviour; feeds malformed, read by hand [free]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "What is the research and academic view?",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "Stanford HAI AI Index",
+   "name": "Stanford HAI AI Index",
+   "kind": "manual (Where to look)",
+   "type": "journals and standards",
+   "country": "",
+   "url": "https://aiindex.stanford.edu/",
+   "bias_note": "annual data on AI compute, cost and energy for the Technologist [free]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "What is the research and academic view?",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "berkeley-cltc",
+   "name": "UC Berkeley Center for Long-Term Cybersecurity",
+   "kind": "feed (read automatically)",
+   "type": "academic",
+   "country": "US",
+   "url": "https://cltc.berkeley.edu/feed/",
+   "bias_note": "University research centre; policy and futures work, slow cadence, event announcements mixed with research; funded by foundations and industry.",
+   "scores": {
+    "primacy": 1,
+    "independence": 3,
+    "energy_focus": 1,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "UC Berkeley Center for Long-Term Cybersecurity",
+   "name": "UC Berkeley Center for Long-Term Cybersecurity",
+   "kind": "manual (Where to look)",
+   "type": "journals and standards",
+   "country": "",
+   "url": "https://cltc.berkeley.edu/",
+   "bias_note": "futures and policy research; read automatically via feed [free]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "What is the research and academic view?",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "Utility Dive, E&E News, S&P Global Commodity Insights",
+   "name": "Utility Dive, E&E News, S&P Global Commodity Insights",
+   "kind": "manual (Where to look)",
+   "type": "press (see sources.json for bias notes)",
+   "country": "",
+   "url": "https://www.utilitydive.com/",
+   "bias_note": "energy-industry framing of the same events [Utility Dive blocks automated pulls (403); E&E and S&P paywalled]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "What happened today? (daily news, credible)",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "wired-sec",
+   "name": "WIRED Security",
+   "kind": "feed (read automatically)",
+   "type": "magazine",
+   "country": "US",
+   "url": "https://www.wired.com/feed/category/security/latest/rss",
+   "bias_note": "Narrative long-form; strong investigative pieces on Sandworm and grid attacks; prioritises story over timeliness; Condé Nast.",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 1,
+    "timeliness": 1,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "ok",
+    "pulls_blocked": 0
+   },
+   "verified": "automatic rating from type; not yet reviewed by a person"
+  },
+  {
+   "id": "WIRED Security",
+   "name": "WIRED Security",
+   "kind": "manual (Where to look)",
+   "type": "magazine / independent",
+   "country": "",
+   "url": "https://www.wired.com/category/security/",
+   "bias_note": "narrative investigations (Sandworm, Colonial); read automatically via feed [free with limit]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "Magazines, long-form and commentary (context, not confirmation)",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  },
+  {
+   "id": "arXiv cs.CR and eess.SY",
+   "name": "arXiv cs.CR and eess.SY",
+   "kind": "manual (Where to look)",
+   "type": "journals and standards",
+   "country": "",
+   "url": "https://arxiv.org/list/cs.CR/recent",
+   "bias_note": "free preprints, including grid and ICS security [free]",
+   "scores": {
+    "primacy": 1,
+    "independence": 2,
+    "energy_focus": 2,
+    "timeliness": 0,
+    "verifiability": 2
+   },
+   "score": 7,
+   "tier": "C: discovery only",
+   "best_for": "What is the research and academic view?",
+   "delivery": {
+    "energy_items": 0,
+    "wide_items": 0,
+    "feed": "not a feed",
+    "pulls_blocked": 0
+   },
+   "verified": "listed for manual reading; rating from section tier"
+  }
+ ]
+}
