@@ -5,7 +5,7 @@
    "run": "engineer",
    "type": "engineering",
    "agent": "engineer",
-   "item": "https://github.com/carolina-moron/energy-cyber-society/pull/1",
+   "item": "https://github.com/Ethical-Tech-CoLab/energy-cyber-society/pull/1",
    "detail": "PR #1: group the control bar into five menus; show load failures in the HUD; phone-width fix. Tests green. Awaiting the owner's review.",
    "severity": "info",
    "status": "open"

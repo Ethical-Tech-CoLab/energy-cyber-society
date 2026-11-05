@@ -23,7 +23,7 @@ forgotten; "blocked" means a person must act. Update this file when something sh
 - STIX 2.1 export; per-run history for trend charts; measured cost model (`COST.md`)
 - INTELLIGENCE_ANALYSIS.md (ten-step procedure to IC standards), RULES.md (32 rules), REGISTER.md, source registry, Project instructions file, CURATION.md playbook, validator
 - Twice-daily schedule: GitHub Actions workflow on disk; cloud-routine body in `scripts/routine.json`
-- Repo pushed to github.com/carolina-moron/energy-cyber-society (private)
+- Repo pushed to github.com/Ethical-Tech-CoLab/energy-cyber-society (private)
 
 ## From the peer review (REVIEW.md): status 2026-11-05
 - DONE: dry-run replay; independent Verifier input; ground-truth check + eval tiles; human sample script; relevance classifier script; language-independent excerpting; NVD/KEV enrichment; computed severity + overrides; attribution restriction + validator rule; regional feeds/stories/items counts; CSP + prompt fencing + proxy-first note; STIX stable created; keyboard list view; schema_version; cross-language dedupe; actor aliases; Gazette AI line; Incident Desk rename; LICENSE (MIT, reversible); scripts/test_all.sh
@@ -49,7 +49,7 @@ forgotten; "blocked" means a person must act. Update this file when something sh
 - The Engineer (resident, Workshop, ENGINEERING.md, scripts/ux_audit.py, scripts/engineer_log.py, scripts/routine_engineer.json): autonomous bug-fix/refactor/UX agent that opens PRs daily, never merges
 
 ## Blocked: needs Carolina
-- Review and merge the Engineer's PRs; first: https://github.com/carolina-moron/energy-cyber-society/pull/1
+- Review and merge the Engineer's PRs; first: https://github.com/Ethical-Tech-CoLab/energy-cyber-society/pull/1
 - Make the repo public and enable Pages from `main:/docs` (the assistant's permissions refuse public surfaces)
 - `gh auth refresh -h github.com -s workflow`, then un-ignore and push `.github/workflows/daily.yml`
 - Add the `ANTHROPIC_API_KEY` repository secret (for the Actions path)
