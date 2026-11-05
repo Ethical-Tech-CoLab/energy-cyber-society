@@ -1092,7 +1092,7 @@ $('btn-look').onclick = async () => {
     pf.innerHTML = `<table class="perf-table"><tr><th>Source</th><th>Energy items</th><th>Wide</th><th>Feed</th><th>Pulls ok</th><th>Blocked</th></tr>${rows.map(([k, v]) => `<tr><td>${esc(k)}</td><td>${v.energy_items || 0}</td><td>${v.wide_items || 0}</td><td class="${String(v.feed || '').startsWith('error') ? 'bad' : ''}">${esc(v.feed || 'n/a')}</td><td>${v.pulls_ok || 0}</td><td class="${v.pulls_blocked ? 'bad' : ''}">${v.pulls_blocked || 0}</td></tr>`).join('')}</table>
       <p>Primary hosts reached: ${esc((sources.primary_hosts_reached || []).join(', ') || 'none')} · pulled ${esc((sources.pulled_at || '').slice(0, 16).replace('T', ' '))} UTC</p>`;
   }
-  if (!catalogue) catalogue = await tryJson('data/source_catalogue.json');
+  if (!catalogue) catalogue = await fetch('data/source_catalogue.json').then(r => r.ok ? r.json() : null).catch(() => null);
   renderCatalogue();
   $('dlg-look').showModal();
 };
