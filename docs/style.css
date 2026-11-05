@@ -135,3 +135,9 @@ button.link{background:none;border:0;color:var(--accent);cursor:pointer;font-fam
 .refs-q{width:100%;background:#0b0e14;border:2px solid var(--line);color:var(--ink);padding:8px;font-family:var(--font);font-size:12px;margin-bottom:8px}
 #refs-body{max-height:62vh}#refs-body li{margin-bottom:4px;font-size:12px}
 .anat{margin:4px 0 8px 0;font-size:12px}.anat summary{color:var(--accent);cursor:pointer}.anat ol,.anat ul{margin:4px 0;padding-left:18px}
+
+.panel{max-height:88vh}
+.p-job-wrap{border-bottom:2px solid var(--line)}.p-job-wrap summary,.suggest-wrap summary{cursor:pointer;padding:6px 12px;color:var(--mute);font-size:11px;font-family:var(--font-pix);font-size:8px}
+.suggest-wrap{border-top:2px solid var(--line)}.suggest{padding:6px 12px 10px}
+.chat{min-height:240px}
+.pix.accent{border-color:var(--accent);color:var(--accent)}

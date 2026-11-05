@@ -1,5 +1,5 @@
 {
- "pulled_at": "2026-11-04T23:51:42.246766+00:00",
+ "pulled_at": "2026-11-05T01:26:12.846513+00:00",
  "items": {
   "Siemens SIMATIC IoT2050 Advanced: CVSS 10 missing-authentication flaw exploited in the wild": {
    "sources": [
@@ -107,7 +107,7 @@
      "name": "The Register",
      "url": "https://www.theregister.com/security/2026/11/04/cyberattack-on-french-plasma-stores-is-enough-to-make-your-blood-boil/5307519",
      "status": 200,
-     "chars": 8220,
+     "chars": 7906,
      "excerpts": [
       "According to reports, attackers changed cold-room temperature settings from -30°C to 110°C.",
       "REG AD \"Thus, depending on the circumstances, as soon as the incident occurred, the affected equipment was either brought under control without impacting the products and samples, or neutralized; the products stored in these cold rooms were preventively transferred to other facilities.\" The EFS did not name the supplier publicly.",
@@ -274,7 +274,7 @@
      "name": "The Register",
      "url": "https://www.theregister.com/security/2026/11/02/nuclear-threats-and-street-brawls-russia-ukraine-report-attacks-on-their-emergency-alert-apps/5306901",
      "status": 200,
-     "chars": 8634,
+     "chars": 8285,
      "excerpts": [
       "Ukraine's announcement of the alert app cyberattack came almost simultaneously with the official conclusion of a six-day ceasefire in Kherson.",
       "\"Citizens are alerted through primary channels: regional and municipal alert systems (sirens, loudspeakers), communication networks (SMS messaging), and television and radio broadcasts.",
@@ -285,6 +285,87 @@
     }
    ],
    "primary": []
+  },
+  "INCIBE-CERT relays Siemens advisories: Brotli flaw CVE-2026-111497 in Industrial Edge configurators and RUGGEDCOM APE1808": {
+   "sources": [
+    {
+     "name": "INCIBE-CERT ICS advisories (Spain)",
+     "url": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/multiples-vulnerabilidades-en-productos-de-siemens-1",
+     "status": 200,
+     "chars": 3240,
+     "excerpts": [
+      "RUGGEDCOM APE1808: actualizar PAN-OS según el boletín de Palo Alto Networks y consultar al soporte de Siemens.",
+      "RUGGEDCOM APE1808 con una versión vulnerable de PAN-OS.",
+      "Descripción Siemens ha publicado 3 boletines sobre el impacto de 3 vulnerabilidades de severidad crítica en PHP y Brotli que podrían permitir ejecutar código remoto.",
+      "Solución Industrial Edge Management con aplicaciones de gestión afectadas: desinstalar todas las aplicaciones de gestión y proteger IEM con cortafuegos o WAF.",
+      "Industrial Edge Hub e Industrial Edge Management Cloud han sido corregidos centralmente y no requieren intervención del cliente."
+     ]
+    }
+   ],
+   "primary": [
+    {
+     "url": "https://www.siemens.com/cert/operational-guidelines-industrial-security",
+     "status": 200,
+     "chars": 188309,
+     "excerpts": [],
+     "found_in": "INCIBE-CERT ICS advisories (Spain)"
+    },
+    {
+     "url": "https://productcert.siemens.com/productcert/html/ssa-166980.html",
+     "status": 200,
+     "chars": 12998,
+     "excerpts": [],
+     "found_in": "INCIBE-CERT ICS advisories (Spain)"
+    }
+   ]
+  },
+  "INCIBE-CERT: multiple vulnerabilities in Welotec TK100/TK500 industrial routers (firmware before 3.5.116 / 1.0.124 / 1.0.123)": {
+   "sources": [
+    {
+     "name": "INCIBE-CERT ICS advisories (Spain)",
+     "url": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/multiples-vulnerabilidades-en-productos-de-welotec",
+     "status": 200,
+     "chars": 1946,
+     "excerpts": [
+      "CVE Identificador CVE Severidad Explotación Fabricante CVE-2026-105982 Alta No WELOTEC CVE-2026-105981 Alta No WELOTEC CVE-2026-105980 Alta No WELOTEC CVE-2026-105979 Alta No WELOTEC CVE-2026-105978 Alta No WELOTEC CVE-2026-109161 Media No WELOTEC Listado de referencias Welotec: Multiple vulnerabilities in TK routers Etiquetas Actualización RCE Sistemas de control industrial Vulnerabilidad",
+      "Múltiples vulnerabilidades en productos de Welotec | INCIBE-CERT | INCIBE Pasar al contenido principal Múltiples vulnerabilidades en productos de Welotec Fecha de publicación 04/11/2026 Identificador INCIBE-2026-828 Importancia 4 - Alta Recursos Afectados TK100, modelos TK102L y TK102W, con firmware anterior a 3.5.116.",
+      "Descripción Welotec en coordinación con CERT@VDE ha publicado 6 vulnerabilidades, 5 de severidad alta y 1 media, en las funciones de administración de sus routers TK.",
+      "Solución Actualizar el firmware a las siguientes versiones o posteriores: TK100: 3.5.116."
+     ]
+    }
+   ],
+   "primary": []
+  },
+  "Attackers chain three Ivanti Connect Secure flaws for unauthenticated root on VPN appliances": {
+   "sources": [
+    {
+     "name": "The Hacker News",
+     "url": "https://thehackernews.com/2026/10/attackers-chain-three-ivanti-connect.html",
+     "status": 200,
+     "chars": 7476,
+     "excerpts": [
+      "Attackers Chain Three Ivanti Connect Secure Flaws to Gain Unauthenticated Root Access --> Attackers Chain Three Ivanti Connect Secure Flaws to Gain Unauthenticated Root Access  Ravie Lakshmanan  Oct 31, 2026 Vulnerability / Cyber Attack The U.S.",
+      "Cybersecurity and Infrastructure Security Agency (CISA) on Friday added two security flaws impacting Ivanti Connect Secure (ICS) to its Known Exploited Vulnerabilities ( KEV ) catalog, following active exploitation in the wild.",
+      "\"This exploit chain combined an authentication bypass, a remote code execution (RCE), and a privilege escalation vulnerability to achieve unauthenticated root-level code execution,\" Volexity noted.",
+      "Ivanti said that, around the time the details were published, it was still working on developing fixes for the local privilege escalation (LPE) vulnerability exploited in the attack chain.",
+      "Standing Elevated Privileges: Control Access Without Flooding the Helpdesk  November 2, 2026 Read ➝ Why Root and Jailbreak Detection Alone Cannot Guarantee Mobile App Security  October 26, 2026 Read ➝ Get the Latest News in Your Inbox Get the latest news, expert insights, exclusive resources, and strategies from industry leaders, all for free."
+     ]
+    }
+   ],
+   "primary": [
+    {
+     "url": "https://www.cisa.gov/news-events/alerts/2026/10/30/cisa-adds-two-known-exploited-vulnerabilities-catalog",
+     "status": "error",
+     "error": "HTTP Error 403: Forbidden",
+     "found_in": "The Hacker News"
+    },
+    {
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+     "status": "error",
+     "error": "HTTP Error 403: Forbidden",
+     "found_in": "The Hacker News"
+    }
+   ]
   }
  },
  "source_performance": {
@@ -304,7 +385,7 @@
   },
   "CyberScoop": {
    "energy_items": 0,
-   "wide_items": 4,
+   "wide_items": 2,
    "feed": "ok",
    "pulls_ok": 0,
    "pulls_blocked": 0
@@ -317,8 +398,8 @@
    "pulls_blocked": 0
   },
   "BleepingComputer": {
-   "energy_items": 2,
-   "wide_items": 13,
+   "energy_items": 1,
+   "wide_items": 11,
    "feed": "ok",
    "pulls_ok": 2,
    "pulls_blocked": 0
@@ -346,7 +427,7 @@
   },
   "Utility Dive": {
    "energy_items": 1,
-   "wide_items": 3,
+   "wide_items": 2,
    "feed": "ok",
    "pulls_ok": 0,
    "pulls_blocked": 2
@@ -367,9 +448,9 @@
   },
   "The Hacker News": {
    "energy_items": 2,
-   "wide_items": 14,
+   "wide_items": 11,
    "feed": "ok",
-   "pulls_ok": 2,
+   "pulls_ok": 3,
    "pulls_blocked": 0
   },
   "Industrial Cyber": {
@@ -381,6 +462,83 @@
   },
   "The Register Security": {
    "energy_items": 3,
+   "wide_items": 4,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "arXiv cs.CR (preprints)": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "arXiv eess.SY (systems and control preprints)": {
+   "energy_items": 0,
+   "wide_items": 2,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "Schneier on Security": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "CSIS": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "Kaspersky ICS CERT": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "WIRED Security": {
+   "energy_items": 0,
+   "wide_items": 1,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "CSIRTAmericas (OAS)": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "CERT.br (Brazil)": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "INCIBE-CERT ICS advisories (Spain)": {
+   "energy_items": 3,
+   "wide_items": 1,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "Una al día (Hispasec)": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "Ciberseguridad LATAM": {
+   "energy_items": 1,
    "wide_items": 4,
    "feed": "ok",
    "pulls_ok": 0,
@@ -406,11 +564,20 @@
    "feed": "n/a",
    "pulls_ok": 1,
    "pulls_blocked": 0
+  },
+  "INCIBE-CERT ICS advisories": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "n/a",
+   "pulls_ok": 2,
+   "pulls_blocked": 0
   }
  },
  "primary_hosts_reached": [
   "presse.efs.sante.fr",
+  "productcert.siemens.com",
   "www.ncsc.gov.uk",
+  "www.siemens.com",
   "www.vulncheck.com",
   "www.zyxel.com"
  ]

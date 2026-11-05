@@ -34,7 +34,7 @@ a{color:inherit}
 </head>
 <body>
 <div class="sheet">
-  <div class="ears"><span>Vol. I · Energy Cyber Society</span><span id="price">Price: zero tokens</span></div>
+  <div class="ears"><span>Vol. I · Energy Cyber Society</span><span id="price">Sample: see masthead note</span></div>
   <h1 class="mast">The Energy Cyber Gazette</h1>
   <div class="dateline"><span id="date"></span><span>Cyber intelligence for energy: generation, transport, data centres, connectivity · United States and the world</span><span id="edition"></span></div>
   <div class="stamp" id="stamp"></div>
@@ -56,6 +56,7 @@ const esc = t => String(t == null ? '' : t).replace(/[&<>"]/g, c => ({ '&': '&am
   const sm = b.summary || { headline: 'No summary yet', bullets: [], considerations: [] };
   document.getElementById('lead').textContent = sm.headline;
   document.getElementById('deck').textContent = b.us_status || '';
+  if (b.sample) document.getElementById('price').textContent = `Sample: ${b.sample.feeds} feeds · ${b.sample.window_hours}h · ${b.sample.stories_fetched} stories · ${b.sample.board_items} items`;
   const A = b.agents || {}, names = { reporter: 'Dana Okafor', analyst: 'Mateo Reyes', critic: 'Priya Venkataraman', wideangle: 'Samir Haddad', contrarian: 'Ingrid Solberg', verifier: 'Tomasz Nowak', librarian: 'Aisha Bello' };
   const items = (b.items || []).slice().sort((x, y) => ({ critical: 0, high: 1, medium: 2, low: 3, info: 4 }[x.severity] ?? 9) - ({ critical: 0, high: 1, medium: 2, low: 3, info: 4 }[y.severity] ?? 9));
   const V = (b.verification && b.verification.verdicts) || {};

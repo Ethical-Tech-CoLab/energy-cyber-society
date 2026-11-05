@@ -15,6 +15,14 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "docs" / "data" / "news.json"
 WINDOW_HOURS = int(sys.argv[1]) if len(sys.argv) > 1 else 48
 
+def kw_match(k: str, blob: str) -> bool:
+    """Whole-word match so 'rail' does not hit 'derail' and 'ics' does not hit 'politics'.
+    Keywords ending in a space are prefix matches on a word; accented stems match any suffix."""
+    k = k.lower()
+    if k.endswith(" "): return re.search(r"\b" + re.escape(k.strip()) + r"\b", blob) is not None
+    if any(ch in k for ch in "áéíóúãçñ") or k.endswith(("ic", "ric", "ól", "ión", "ão")): return re.search(r"\b" + re.escape(k), blob) is not None
+    return re.search(r"\b" + re.escape(k) + r"(s|es)?\b", blob) is not None
+
 def clean(s: str) -> str:
     s = re.sub(r"<[^>]+>", " ", s or "")
     return re.sub(r"\s+", " ", html.unescape(s)).strip()
@@ -54,8 +62,8 @@ def main():
                 "source_type": src["type"], "source_country": src["country"],
             }
             blob = f"{title} {summary}".lower()
-            hits = [k for k in kws if k in blob]
-            cyber_hits = [k for k in cyber if k in blob]
+            hits = [k for k in kws if kw_match(k, blob)]
+            cyber_hits = [k for k in cyber if kw_match(k, blob)]
             # the energy bucket needs BOTH an energy and a cyber signal;
             # a coal-plant business story or a generic Linux CVE is not energy-cyber
             if hits and cyber_hits:

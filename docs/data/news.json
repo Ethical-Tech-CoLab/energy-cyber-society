@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-05T01:19:25.809431+00:00",
+ "generated_at": "2026-11-05T01:26:12.683833+00:00",
  "window_hours": 168,
  "sources": [
   {
@@ -161,6 +161,46 @@
    "country": "US",
    "bias_note": "Narrative long-form; strong investigative pieces on Sandworm and grid attacks; prioritises story over timeliness; Condé Nast.",
    "url": "https://www.wired.com/feed/category/security/latest/rss"
+  },
+  {
+   "id": "csirtamericas",
+   "name": "CSIRTAmericas (OAS)",
+   "type": "government",
+   "country": "Latin America",
+   "bias_note": "Organization of American States regional CSIRT network; Spanish; aggregates national CSIRT notices; institutional tone, slow on attribution.",
+   "url": "https://www.csirtamericas.org/es/rss.xml"
+  },
+  {
+   "id": "certbr",
+   "name": "CERT.br (Brazil)",
+   "type": "government",
+   "country": "Brazil",
+   "bias_note": "Brazil's national CERT (NIC.br); Portuguese; statistics and advisories, rarely names victims.",
+   "url": "https://www.cert.br/rss/"
+  },
+  {
+   "id": "incibe-sci",
+   "name": "INCIBE-CERT ICS advisories (Spain)",
+   "type": "government",
+   "country": "Spain",
+   "bias_note": "Spanish government ICS/SCADA advisories, several per week, often mirroring CISA ICS advisories a day later; a workaround for CISA's 403.",
+   "url": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/feed"
+  },
+  {
+   "id": "unaaldia",
+   "name": "Una al día (Hispasec)",
+   "type": "independent",
+   "country": "Spain",
+   "bias_note": "Daily Spanish-language security news since 1998 from a security firm (Hispasec); concise, vendor-light, Spain and Latin America coverage.",
+   "url": "https://feeds.feedburner.com/Unaaldia"
+  },
+  {
+   "id": "ciberlatam",
+   "name": "Ciberseguridad LATAM",
+   "type": "trade press",
+   "country": "Latin America",
+   "bias_note": "Regional trade outlet; vendor-advertising funded; relays regional incidents and vendor reports in Spanish.",
+   "url": "https://www.ciberseguridadlatam.com/feed/"
   }
  ],
  "errors": [
@@ -175,19 +215,6 @@
  ],
  "energy": [
   {
-   "title": "Critical Rails Bug Threatens to Derail Vulnerable Servers",
-   "summary": "An attacker could write arbitrary files and read sensitive files via images uploaded to the Rails Active Storage ImageMagick integration, possibly positioning a threat actor for lateral movement.",
-   "link": "https://www.darkreading.com/application-security/critical-rails-bug-derail-vulnerable-servers",
-   "published": "2026-11-05T02:48:18+00:00",
-   "source": "darkreading",
-   "source_name": "Dark Reading",
-   "source_type": "trade press",
-   "source_country": "US",
-   "matched": [
-    "rail"
-   ]
-  },
-  {
    "title": "Zyxel fixes zero-day exploited to hack nearly 1,000 network switches",
    "summary": "Zyxel has patched a zero-day vulnerability in its GS1900 series network switches that hackers exploited to compromise nearly 1,000 devices worldwide and steal configuration files and credentials. [...]",
    "link": "https://www.bleepingcomputer.com/news/security/zyxel-fixes-zero-day-exploited-to-hack-nearly-1-000-network-switches/",
@@ -198,19 +225,6 @@
    "source_country": "US",
    "matched": [
     "network switch"
-   ]
-  },
-  {
-   "title": "Cyberattack disrupts blood storage refrigeration systems in France",
-   "summary": "France's national blood service has confirmed that a cyberattack targeting a refrigeration equipment provider raised temperature and defrost settings at three of its facilities, threatening stored blood products. [...]",
-   "link": "https://www.bleepingcomputer.com/news/security/cyberattack-disrupts-blood-storage-refrigeration-systems-in-france/",
-   "published": "2026-11-04T23:02:56+00:00",
-   "source": "bleeping",
-   "source_name": "BleepingComputer",
-   "source_type": "tech press",
-   "source_country": "US",
-   "matched": [
-    "refrigeration"
    ]
   },
   {
@@ -228,32 +242,6 @@
    ]
   },
   {
-   "title": "Critical Rails Flaw Lets Attackers Write Server Files via Crafted ImageMagick Uploads",
-   "summary": "A critical flaw in Ruby on Rails could allow an unauthenticated attacker to write arbitrary files on an app's server by uploading a crafted file if the app processes uploads using ImageMagick. The Rails project disclosed the flaw in an advisory and fixed it in versions 8.1.4.1 and 8.0.5.2. The flaw is in Active Storage, the part of Rails that handles file uploads. Some apps store",
-   "link": "https://thehackernews.com/2026/11/critical-rails-flaw-lets-attackers.html",
-   "published": "2026-11-04T17:07:04+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international",
-   "matched": [
-    "rail"
-   ]
-  },
-  {
-   "title": "Cyberattack on French plasma stores is enough to make your blood boil",
-   "summary": "Attackers reportedly set cold-room controls to 110°C, but safeguards prevented stock losses",
-   "link": "https://www.theregister.com/security/2026/11/04/cyberattack-on-french-plasma-stores-is-enough-to-make-your-blood-boil/5307519",
-   "published": "2026-11-04T16:56:54+00:00",
-   "source": "register",
-   "source_name": "The Register Security",
-   "source_type": "tech press",
-   "source_country": "UK",
-   "matched": [
-    "oil"
-   ]
-  },
-  {
    "title": "NCSC Annual Review 2026 warns AI-powered malware could target UK critical infrastructure by 2028",
    "summary": "The U.K.’s critical national infrastructure should prepare for ransomware attacks involving artificial intelligence-powered malware by 2028, according to... The post NCSC Annual Review 2026 warns AI-powered malware could target UK critical infrastructure by 2028 appeared first on Industrial Cyber .",
    "link": "https://industrialcyber.co/critical-infrastructure/ncsc-annual-review-2026-warns-ai-powered-malware-could-target-uk-critical-infrastructure-by-2028/",
@@ -264,6 +252,19 @@
    "source_country": "international",
    "matched": [
     "critical infrastructure"
+   ]
+  },
+  {
+   "title": "Reino Unido anticipa ransomware potenciado por IA contra infraestructura crítica en dos años",
+   "summary": "El NCSC advierte que la adopción de inteligencia artificial por actores hostiles acelerará la explotación de vulnerabilidades acumuladas por años de subinversión en seguridad.",
+   "link": "https://ciberseguridadlatam.com/reino-unido-anticipa-ransomware-potenciado-por-ia-contra-infraestructura-critica-en-dos-anos/",
+   "published": "2026-11-04T15:43:13+00:00",
+   "source": "ciberlatam",
+   "source_name": "Ciberseguridad LATAM",
+   "source_type": "trade press",
+   "source_country": "Latin America",
+   "matched": [
+    "infraestructura crítica"
    ]
   },
   {
@@ -306,6 +307,19 @@
    ]
   },
   {
+   "title": "Múltiples vulnerabilidades en productos de Welotec",
+   "summary": "Múltiples vulnerabilidades en productos de Welotec Mié, 04/11/2026 - 09:25 Aviso SCI Recursos Afectados TK100, modelos TK102L y TK102W, con firmware anterior a 3.5.116. TK500-v2, modelos TK525L-v2, TK525L-W-v2, TK525W-v2 y TK535L1-v2, con firmware anterior a 1.0.124. TK500-v3, modelos TK525L-v3, TK525L-W-G-v3, TK525L-IO-v3, TK525L-W-v3, TK525W-v3 y TK555L-v3, con firmware anterior a 1.0.123. Descripción Welotec en coordinación con CERT@VDE ha publicado 6 vulnerabilidades, 5 de severidad alta y 1 media, en las funciones de administración de sus routers TK. Un atacante remoto con privilegios ele",
+   "link": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/multiples-vulnerabilidades-en-productos-de-welotec",
+   "published": "2026-11-04T13:25:27+00:00",
+   "source": "incibe-sci",
+   "source_name": "INCIBE-CERT ICS advisories (Spain)",
+   "source_type": "government",
+   "source_country": "Spain",
+   "matched": [
+    "router"
+   ]
+  },
+  {
    "title": "Fresh European Fridge Attacks Put Cold-Chain Security in Focus",
    "summary": "Beyond food storage, the same combination of Internet connectivity, remote access, and inadequate security practices can put temperature-controlled infrastructure across other critical sectors at risk.",
    "link": "https://www.darkreading.com/ics-ot-security/fresh-european-fridge-attacks-cold-chain-security",
@@ -330,7 +344,8 @@
    "matched": [
     "operational technology",
     "industrial control",
-    "ot environment"
+    "ot environment",
+    "ics"
    ]
   },
   {
@@ -374,16 +389,31 @@
    ]
   },
   {
-   "title": "New Wave of Refrigeration Cyberattacks Hits Supermarkets Across Europe, Forcing Stores to Pull Food",
-   "summary": "Attackers remotely changed the settings on refrigeration controls at supermarkets in Belgium, Sweden, Estonia and other European countries overnight into Monday, November 2, warming fridges and freezers. No chain reported more than several dozen affected stores, and some had to throw away chilled and frozen food or take it off the shelf. Danfoss, a Danish maker of refrigeration controls,",
-   "link": "https://thehackernews.com/2026/11/second-wave-of-cyberattacks-hits.html",
-   "published": "2026-11-03T12:27:07+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international",
+   "title": "Múltiples vulnerabilidades en REGARD 7000 OPC UA Server de Dräger",
+   "summary": "Múltiples vulnerabilidades en REGARD 7000 OPC UA Server de Dräger Mar, 03/11/2026 - 11:48 Aviso SCI Recursos Afectados Dräger REGARD 7000 OPC UA Server. Los dispositivos y el software médicos, así como los productos Dräger Service evaluados, no están afectados al no utilizar PHP. Descripción Dräger ha publicado una evaluación sobre 2 vulnerabilidades de severidad crítica de PHP. REGARD 7000 OPC UA Server es el único producto de seguridad industrial identificado como afectado en dicha evaluación. La explotación de los fallos de PHP podría permitir ejecutar código remoto. Identificador INCIBE-20",
+   "link": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/multiples-vulnerabilidades-en-regard-7000-opc-ua-server-de-drager",
+   "published": "2026-11-03T15:48:26+00:00",
+   "source": "incibe-sci",
+   "source_name": "INCIBE-CERT ICS advisories (Spain)",
+   "source_type": "government",
+   "source_country": "Spain",
    "matched": [
-    "refrigeration"
+    "opc ua"
+   ]
+  },
+  {
+   "title": "Múltiples vulnerabilidades en productos de Siemens",
+   "summary": "Múltiples vulnerabilidades en productos de Siemens Mar, 03/11/2026 - 11:48 Aviso SCI Recursos Afectados Brotli — CVE-2026-111497 Industrial Edge: todas las versiones de Cloud Connector Configurator, Common Configurator (CC on IEM), Common Configurator on Device (CC on Edge), Data Flow Monitoring, Databus Configurator, Edge OPC UA Server Configurator y Flow Creator Configurator. RUGGEDCOM APE1808 con una versión vulnerable de PAN-OS. PHP — CVE-2026-109618 y CVE-2026-109619 AMIS TS; blueplanet 360 NX3 M6 WM OD IISX y su variante - S; Energy Engage V2.0SP9 y V3.1SP1: todas las versiones. Spectrum",
+   "link": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/multiples-vulnerabilidades-en-productos-de-siemens-1",
+   "published": "2026-11-03T15:48:23+00:00",
+   "source": "incibe-sci",
+   "source_name": "INCIBE-CERT ICS advisories (Spain)",
+   "source_type": "government",
+   "source_country": "Spain",
+   "matched": [
+    "energy",
+    "siemens",
+    "opc ua"
    ]
   },
   {
@@ -426,16 +456,16 @@
    ]
   },
   {
-   "title": "Most Servers on the Planet Are Vulnerable to This Firmware Code-Execution Flaw",
-   "summary": "The critical flaw in UEFI firmware—used by most server vendors and data centers—allows attackers to execute code early in the boot process.",
-   "link": "https://www.wired.com/story/most-servers-on-the-planet-are-vulnerable-to-a-code-execution-flaw-in-uefi-firmware/",
-   "published": "2026-10-29T01:30:00+00:00",
-   "source": "wired-sec",
-   "source_name": "WIRED Security",
-   "source_type": "magazine",
-   "source_country": "US",
+   "title": "Attackers Chain Three Ivanti Connect Secure Flaws to Gain Unauthenticated Root Access",
+   "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Friday added two security flaws impacting Ivanti Connect Secure (ICS) to its Known Exploited Vulnerabilities (KEV) catalog, following active exploitation in the wild. The vulnerabilities are listed below - CVE-2026-111357 (CVSS score: 8.8) - A missing authentication for a critical function vulnerability that could allow a",
+   "link": "https://thehackernews.com/2026/10/attackers-chain-three-ivanti-connect.html",
+   "published": "2026-10-31T13:27:43+00:00",
+   "source": "hackernews",
+   "source_name": "The Hacker News",
+   "source_type": "tech press",
+   "source_country": "international",
    "matched": [
-    "data center"
+    "ics"
    ]
   }
  ],
@@ -459,6 +489,16 @@
    "source_name": "The Register Security",
    "source_type": "tech press",
    "source_country": "UK"
+  },
+  {
+   "title": "Critical Rails Bug Threatens to Derail Vulnerable Servers",
+   "summary": "An attacker could write arbitrary files and read sensitive files via images uploaded to the Rails Active Storage ImageMagick integration, possibly positioning a threat actor for lateral movement.",
+   "link": "https://www.darkreading.com/application-security/critical-rails-bug-derail-vulnerable-servers",
+   "published": "2026-11-05T02:48:18+00:00",
+   "source": "darkreading",
+   "source_name": "Dark Reading",
+   "source_type": "trade press",
+   "source_country": "US"
   },
   {
    "title": "Vercel rolls out new protection against stolen session cookie attacks",
@@ -528,6 +568,16 @@
    "source": "therecord",
    "source_name": "The Record (Recorded Future News)",
    "source_type": "vendor-owned press",
+   "source_country": "US"
+  },
+  {
+   "title": "Cyberattack disrupts blood storage refrigeration systems in France",
+   "summary": "France's national blood service has confirmed that a cyberattack targeting a refrigeration equipment provider raised temperature and defrost settings at three of its facilities, threatening stored blood products. [...]",
+   "link": "https://www.bleepingcomputer.com/news/security/cyberattack-disrupts-blood-storage-refrigeration-systems-in-france/",
+   "published": "2026-11-04T23:02:56+00:00",
+   "source": "bleeping",
+   "source_name": "BleepingComputer",
+   "source_type": "tech press",
    "source_country": "US"
   },
   {
@@ -751,6 +801,26 @@
    "source_country": "US"
   },
   {
+   "title": "Critical Rails Flaw Lets Attackers Write Server Files via Crafted ImageMagick Uploads",
+   "summary": "A critical flaw in Ruby on Rails could allow an unauthenticated attacker to write arbitrary files on an app's server by uploading a crafted file if the app processes uploads using ImageMagick. The Rails project disclosed the flaw in an advisory and fixed it in versions 8.1.4.1 and 8.0.5.2. The flaw is in Active Storage, the part of Rails that handles file uploads. Some apps store",
+   "link": "https://thehackernews.com/2026/11/critical-rails-flaw-lets-attackers.html",
+   "published": "2026-11-04T17:07:04+00:00",
+   "source": "hackernews",
+   "source_name": "The Hacker News",
+   "source_type": "tech press",
+   "source_country": "international"
+  },
+  {
+   "title": "Cyberattack on French plasma stores is enough to make your blood boil",
+   "summary": "Attackers reportedly set cold-room controls to 110°C, but safeguards prevented stock losses",
+   "link": "https://www.theregister.com/security/2026/11/04/cyberattack-on-french-plasma-stores-is-enough-to-make-your-blood-boil/5307519",
+   "published": "2026-11-04T16:56:54+00:00",
+   "source": "register",
+   "source_name": "The Register Security",
+   "source_type": "tech press",
+   "source_country": "UK"
+  },
+  {
    "title": "Xen Hypervisor Flaws Let One Malicious VM Read and Write Any Other VM's Memory",
    "summary": "Two flaws in the Xen hypervisor allow a malicious guest virtual machine (VM) to read and write the memory of other VMs on the same host, including dom0. Dom0 is the VM that, by default, has full permissions and manages the others. Patches are out, and there is no known mitigation, the Xen Project said in an advisory on November 3. All Xen versions from 4.6 onward are vulnerable,",
    "link": "https://thehackernews.com/2026/11/xen-hypervisor-flaws-let-one-malicious.html",
@@ -781,6 +851,16 @@
    "source_country": "international"
   },
   {
+   "title": "Dispositivos de red empresariales tardan más de un año en recibir parches — mientras los exploits se lanzan en días",
+   "summary": "Telemetría de Microsoft revela que el tiempo mediano de parcheo en appliances de red supera los 12 meses, justo cuando el ciclo de explotación se comprimió a 3 días en 2026.",
+   "link": "https://ciberseguridadlatam.com/dispositivos-de-red-empresariales-tardan-mas-de-un-ano-en-recibir-parches-mientras-los-exploits-se-lanzan-en-dias/",
+   "published": "2026-11-04T15:58:42+00:00",
+   "source": "ciberlatam",
+   "source_name": "Ciberseguridad LATAM",
+   "source_type": "trade press",
+   "source_country": "Latin America"
+  },
+  {
    "title": "Malicious cPGuard Updates Served in OpsShield Supply Chain Attack",
    "summary": "Using compromised credentials, the attackers accessed OpsShield’s update servers and poisoned multiple cPGuard versions. The post Malicious cPGuard Updates Served in OpsShield Supply Chain Attack appeared first on SecurityWeek .",
    "link": "https://www.securityweek.com/malicious-cpguard-updates-served-in-opsshield-supply-chain-attack/",
@@ -789,6 +869,36 @@
    "source_name": "SecurityWeek",
    "source_type": "trade press",
    "source_country": "US"
+  },
+  {
+   "title": "Equipos de seguridad bajo presión — la brecha de habilidades en IA agrava la escasez estructural de talento",
+   "summary": "Dos tercios de los líderes de seguridad reportan que sus equipos no logran escalar al ritmo de las necesidades del negocio, mientras la demanda de especialistas en IA duplica la oferta disponible.",
+   "link": "https://ciberseguridadlatam.com/equipos-de-seguridad-bajo-presion-la-brecha-de-habilidades-en-ia-agrava-la-escasez-estructural-de-talento/",
+   "published": "2026-11-04T15:49:25+00:00",
+   "source": "ciberlatam",
+   "source_name": "Ciberseguridad LATAM",
+   "source_type": "trade press",
+   "source_country": "Latin America"
+  },
+  {
+   "title": "Cuatro de los cinco riesgos empresariales más altos son por IA — y dos son nuevos en el ranking",
+   "summary": "Gartner registró el debut de errores de estrategia y desplazamiento competitivo por IA en su ranking trimestral, mientras la brecha de preparación laboral se mantiene en quinto lugar.",
+   "link": "https://ciberseguridadlatam.com/cuatro-de-los-cinco-riesgos-empresariales-mas-altos-son-por-ia-y-dos-son-nuevos-en-el-ranking/",
+   "published": "2026-11-04T15:46:32+00:00",
+   "source": "ciberlatam",
+   "source_name": "Ciberseguridad LATAM",
+   "source_type": "trade press",
+   "source_country": "Latin America"
+  },
+  {
+   "title": "CrowdStrike compra dos empresas de seguridad para IA por USD 495 millones",
+   "summary": "Las adquisiciones de Fiddler AI y Dreadnode apuntan a cerrar la brecha entre agentes autónomos con credenciales válidas y decisiones auditables",
+   "link": "https://ciberseguridadlatam.com/crowdstrike-compra-dos-empresas-de-seguridad-para-ia-por-usd-495-millones/",
+   "published": "2026-11-04T15:41:54+00:00",
+   "source": "ciberlatam",
+   "source_name": "Ciberseguridad LATAM",
+   "source_type": "trade press",
+   "source_country": "Latin America"
   },
   {
    "title": "Chrome 157 Rolls Out With 213 Security Fixes, Seven Rated Critical",
@@ -849,6 +959,16 @@
    "source_name": "SecurityWeek",
    "source_type": "trade press",
    "source_country": "US"
+  },
+  {
+   "title": "Múltiples vulnerabilidades en PowerSYSTEM Center de Subnet Solutions",
+   "summary": "Múltiples vulnerabilidades en PowerSYSTEM Center de Subnet Solutions Mié, 04/11/2026 - 09:25 Aviso SCI Recursos Afectados PowerSYSTEM Center 2020, versiones 5.29.x y anteriores (CVE-2026-63017). PowerSYSTEM Center 2024, versiones 6.0.x a 6.2.x: ambas vulnerabilidades. PowerSYSTEM Center 2026, versiones 7.0.x a 7.1.x: ambas vulnerabilidades. Descripción Chinmay Patel, de Digital Boundary Group, ha informado sobre 2 vulnerabilidades de severidad crítica en PowerSYSTEM Center que podrían permitir a un usuario autenticado acceder a recursos restringidos o ejecutar consultas SQL no autorizadas. Ide",
+   "link": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/multiples-vulnerabilidades-en-powersystem-center-de-subnet-2",
+   "published": "2026-11-04T13:25:28+00:00",
+   "source": "incibe-sci",
+   "source_name": "INCIBE-CERT ICS advisories (Spain)",
+   "source_type": "government",
+   "source_country": "Spain"
   },
   {
    "title": "Russian Police Arrest 3 Suspected VasyGrek Hackers, Dismantle Criminal Infrastructure",
@@ -949,96 +1069,6 @@
    "source_name": "Dark Reading",
    "source_type": "trade press",
    "source_country": "US"
-  },
-  {
-   "title": "Defense and aerospace firm settles with government over allegedly failing to meet cybersecurity contract requirements",
-   "summary": "ILC settled for $13 million, and its parent company said it resolved the issues before settling without an admission of liability. The post Defense and aerospace firm settles with government over allegedly failing to meet cybersecurity contract requirements appeared first on CyberScoop .",
-   "link": "https://cyberscoop.com/ilc-dover-cybersecurity-settlement-false-claims-act/",
-   "published": "2026-11-04T02:49:51+00:00",
-   "source": "cyberscoop",
-   "source_name": "CyberScoop",
-   "source_type": "trade press",
-   "source_country": "US"
-  },
-  {
-   "title": "WorkOS says attacker used ARTEX AI to breach internal sales app",
-   "summary": "Developer platform WorkOS suffered a data breach after a threat actor accessed business contact records and summaries of customer communications. [...]",
-   "link": "https://www.bleepingcomputer.com/news/security/workos-says-attacker-used-artex-ai-to-breach-internal-sales-app/",
-   "published": "2026-11-04T02:28:44+00:00",
-   "source": "bleeping",
-   "source_name": "BleepingComputer",
-   "source_type": "tech press",
-   "source_country": "US"
-  },
-  {
-   "title": "Binance says fake job interview led to $6.3 billion crypto heist",
-   "summary": "Cryptocurrency exchange Binance says North Korean hackers used a fake job interview to trick an employee into installing malware that ultimately let them compromise the company's wallet infrastructure and steal about $6.34 billion in digital assets. [...]",
-   "link": "https://www.bleepingcomputer.com/news/security/binance-says-fake-job-interview-led-to-63-billion-crypto-heist/",
-   "published": "2026-11-04T01:05:50+00:00",
-   "source": "bleeping",
-   "source_name": "BleepingComputer",
-   "source_type": "tech press",
-   "source_country": "US"
-  },
-  {
-   "title": "AI policy wonks declare 'sovereign agents' a threat to civilization",
-   "summary": "These are AI agents that operate outside of human control and 'pursue open-ended, evolving survival'",
-   "link": "https://www.theregister.com/security/2026/11/03/ai-policy-wonks-declare-sovereign-agents-a-threat-to-civilization/5307354",
-   "published": "2026-11-04T00:33:01+00:00",
-   "source": "register",
-   "source_name": "The Register Security",
-   "source_type": "tech press",
-   "source_country": "UK"
-  },
-  {
-   "title": "Binance Says Hackers Used Well-Known Tricks to Carry Out a $6.34 Billion Heist",
-   "summary": "Suspected North Korean attackers duped an engineer with a fake job interview and a malicious download to gain a foothold in the crypto firm’s system and steal billions, according to Binance.",
-   "link": "https://www.wired.com/story/binance-says-hackers-used-well-known-tricks-to-carry-out-a-dollar634-billion-heist/",
-   "published": "2026-11-04T00:04:58+00:00",
-   "source": "wired-sec",
-   "source_name": "WIRED Security",
-   "source_type": "magazine",
-   "source_country": "US"
-  },
-  {
-   "title": "Oklahoma man charged with mailing threats, substances to election officials nationwide",
-   "summary": "Robin Patrick Martin was charged with conveying false or misleading information and hoaxes and mailing threatening communications in an effort to intimidate election officials. The post Oklahoma man charged with mailing threats, substances to election officials nationwide appeared first on CyberScoop .",
-   "link": "https://cyberscoop.com/oklahoma-man-charged-white-powder-letters-election-officials/",
-   "published": "2026-11-03T23:51:23+00:00",
-   "source": "cyberscoop",
-   "source_name": "CyberScoop",
-   "source_type": "trade press",
-   "source_country": "US"
-  },
-  {
-   "title": "Google: LLMjacking attacks rack up $1 million in cloud AI charges",
-   "summary": "Large language model hijacking attacks, also known as LLMjacking, are generating large fraudulent cloud charges, with some organizations losing more than $100,000 per day. [...]",
-   "link": "https://www.bleepingcomputer.com/news/security/google-llmjacking-attacks-rack-up-1-million-in-cloud-ai-charges/",
-   "published": "2026-11-03T23:51:04+00:00",
-   "source": "bleeping",
-   "source_name": "BleepingComputer",
-   "source_type": "tech press",
-   "source_country": "US"
-  },
-  {
-   "title": "mSecure Warns Users to Change Passwords, Reset 2FA and Passkeys After Suspicious Activity",
-   "summary": "Customers of the mSecure password manager are being urged to act now to protect the confidential information they store in it, possibly by changing passwords, resetting two-factor authentication (2FA), and removing passkeys. The warning came in an email sent on November 3 in the name of developer mSeven Software. It says the company recently learned of suspicious activity linked to the app but",
-   "link": "https://thehackernews.com/2026/11/msecure-warns-users-to-change-passwords.html",
-   "published": "2026-11-03T23:46:38+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "Chainstack Reports Production Systems Breach Exposing Customer Data and Password Hashes",
-   "summary": "Blockchain infrastructure provider Chainstack on Tuesday disclosed that it was targeted in a cyber attack that allowed an unauthorized party to gain access to some parts of its infrastructure. The incident is assessed to be part of a large-scale, artificial intelligence (AI)-powered attack campaign that came to light last week. \"An external attacker gained unauthorized access to part of",
-   "link": "https://thehackernews.com/2026/11/chainstack-reports-production-systems.html",
-   "published": "2026-11-03T23:16:19+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
   }
  ]
 }

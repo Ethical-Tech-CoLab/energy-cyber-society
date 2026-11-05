@@ -545,11 +545,11 @@
    ]
   }
  ],
- "generated_at": "2026-11-04T23:07:43.271471+00:00",
- "news_generated_at": "2026-11-04T23:06:01.498260+00:00",
- "model": "curated-by-claude-fable-5.1 (session run)",
+ "generated_at": "2026-11-05T01:26:12.722123+00:00",
+ "news_generated_at": "2026-11-05T01:26:12.683833+00:00",
+ "model": "curated-by-claude-fable-5.1 (session run, revised)",
  "counts": {
-  "energy": 16,
+  "energy": 19,
   "wide": 60
  },
  "top_stories": [
@@ -1607,6 +1607,295 @@
      "Pre-agreed rebuttal channels with regulators and media"
     ]
    }
+  },
+  {
+   "headline": "INCIBE-CERT relays Siemens advisories: Brotli flaw CVE-2026-111497 in Industrial Edge configurators and RUGGEDCOM APE1808",
+   "severity": "medium",
+   "event_type": "vulnerability disclosure",
+   "event_date": "2026-11-03",
+   "reported_date": "2026-11-03",
+   "victim": null,
+   "country": "Spain (advisory); global (products)",
+   "continent": "Europe",
+   "status": "n/a",
+   "subsector": "industrial machinery and OEM equipment",
+   "value_chain": "enabling/cross-cutting",
+   "ot_impact": "unknown",
+   "asset_type": "Industrial Edge configurators; RUGGEDCOM APE1808 application processing engine (used in substations)",
+   "ics_vendor": "Siemens",
+   "supply_chain_entry": "third-party library (Brotli) inside Siemens products",
+   "actor": null,
+   "actor_type": "n/a",
+   "attribution_confidence": "n/a",
+   "attributed_by": null,
+   "motivation": null,
+   "cves": [
+    "CVE-2026-111497"
+   ],
+   "kev_listed": "unknown",
+   "initial_access": null,
+   "malware": null,
+   "indicators": [
+    {
+     "type": "cve",
+     "value": "CVE-2026-111497",
+     "source": "INCIBE-CERT"
+    }
+   ],
+   "ttps": [],
+   "operational_impact": "none reported; disclosure only",
+   "physical_safety_impact": null,
+   "customers_affected": null,
+   "data_exposed": null,
+   "cascading": null,
+   "geopolitical_link": null,
+   "regulatory_trigger": "NERC CIP-007 R2 patch evaluation for RUGGEDCOM in BES environments",
+   "government_response": "Spanish government CERT advisory, mirroring Siemens ProductCERT",
+   "source_type": "government advisory",
+   "source_reliability": "A",
+   "info_credibility": "2",
+   "corroboration": 1,
+   "claim_vs_confirmed": "confirmed (vendor-published)",
+   "so_what": "A library flaw inside substation-grade Siemens gear, published through a Spanish government feed that works where CISA's does not; check RUGGEDCOM APE1808 units.",
+   "recommended_action": "patch",
+   "trend": "recurring",
+   "labels": [
+    "[note] read via INCIBE-CERT because CISA's feed returns 403; the Siemens ProductCERT page is the primary"
+   ],
+   "confidence": "moderate",
+   "sources": [
+    {
+     "name": "INCIBE-CERT ICS advisories (Spain)",
+     "url": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/multiples-vulnerabilidades-en-productos-de-siemens-1",
+     "date": "2026-11-03"
+    }
+   ],
+   "scoring": {
+    "severity": {
+     "level": "medium",
+     "factors": {
+      "ot_impact": "unknown; configurators and an application engine, not controllers",
+      "us_energy_relevance": "RUGGEDCOM is common in North American substations",
+      "actor_capability": "n/a",
+      "scale": "all versions of several products",
+      "actionable": "yes: vendor fixes per advisory"
+     },
+     "rationale": "Medium: a disclosed, not exploited, third-party library flaw in products that sit in substations; would rise to high on exploitation evidence or a CISA KEV listing."
+    },
+    "reliability_rationale": "A: a government CERT relaying the vendor's own advisory.",
+    "credibility_rationale": "2: vendor-confirmed; exploitation not claimed."
+   },
+   "anatomy": {
+    "attribution": null,
+    "bypass": "Disclosure, not an attack: a compression library (Brotli) bundled into Siemens products carries a flaw; exploitation would need crafted input reaching the library.",
+    "mechanics": "n/a (no incident)",
+    "process": [
+     "Library flaw published",
+     "Siemens assesses affected products",
+     "Government CERTs relay",
+     "Operators evaluate under CIP-007 R2 within 35 days"
+    ],
+    "next_layers": [
+     "Software bill of materials for ICS products so library flaws map to assets in minutes",
+     "Subscribe to INCIBE-CERT and Siemens ProductCERT directly, not only CISA",
+     "Patch RUGGEDCOM in a window; restrict management access meanwhile"
+    ]
+   }
+  },
+  {
+   "headline": "INCIBE-CERT: multiple vulnerabilities in Welotec TK100/TK500 industrial routers (firmware before 3.5.116 / 1.0.124 / 1.0.123)",
+   "severity": "medium",
+   "event_type": "vulnerability disclosure",
+   "event_date": "2026-11-04",
+   "reported_date": "2026-11-04",
+   "victim": null,
+   "country": "Spain (advisory); Europe (products)",
+   "continent": "Europe",
+   "status": "n/a",
+   "subsector": "connectivity (routers, firewalls, internet, satellite)",
+   "value_chain": "enabling/cross-cutting",
+   "ot_impact": "unknown",
+   "asset_type": "industrial cellular routers used to connect remote OT sites",
+   "ics_vendor": "Welotec",
+   "supply_chain_entry": null,
+   "actor": null,
+   "actor_type": "n/a",
+   "attribution_confidence": "n/a",
+   "attributed_by": null,
+   "motivation": null,
+   "cves": [],
+   "kev_listed": "unknown",
+   "initial_access": null,
+   "malware": null,
+   "indicators": [],
+   "ttps": [],
+   "operational_impact": "none reported; disclosure only",
+   "physical_safety_impact": null,
+   "customers_affected": null,
+   "data_exposed": null,
+   "cascading": null,
+   "geopolitical_link": null,
+   "regulatory_trigger": null,
+   "government_response": "Spanish government CERT advisory",
+   "source_type": "government advisory",
+   "source_reliability": "A",
+   "info_credibility": "2",
+   "corroboration": 1,
+   "claim_vs_confirmed": "confirmed (vendor-published)",
+   "so_what": "Industrial cellular routers are the link between remote energy sites and the control centre; the Zyxel campaign this week shows what happens when that layer is exploited.",
+   "recommended_action": "patch",
+   "trend": "recurring",
+   "labels": [
+    "[unverified] CVE identifiers not in the summary; read the full advisory"
+   ],
+   "confidence": "moderate",
+   "sources": [
+    {
+     "name": "INCIBE-CERT ICS advisories (Spain)",
+     "url": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/multiples-vulnerabilidades-en-productos-de-welotec",
+     "date": "2026-11-04"
+    }
+   ],
+   "scoring": {
+    "severity": {
+     "level": "medium",
+     "factors": {
+      "ot_impact": "unknown; connectivity layer",
+      "us_energy_relevance": "Welotec is mainly European; the device class is universal",
+      "actor_capability": "n/a",
+      "scale": "several model families",
+      "actionable": "yes: firmware updates named"
+     },
+     "rationale": "Medium: disclosed flaws in the remote-site connectivity layer, no exploitation reported; the Zyxel item shows the class is actively targeted."
+    },
+    "reliability_rationale": "A: government CERT advisory.",
+    "credibility_rationale": "2: vendor-confirmed."
+   },
+   "anatomy": {
+    "attribution": null,
+    "bypass": "n/a (disclosure)",
+    "mechanics": "n/a",
+    "process": [
+     "Flaws published with fixed firmware versions",
+     "Operators inventory TK100/TK500 units at remote sites",
+     "Update in windows; restrict management interfaces"
+    ],
+    "next_layers": [
+     "Management plane of cellular routers only via VPN with MFA",
+     "Inventory of every cellular router at remote sites, with firmware version",
+     "Alert on config changes and new admin sessions"
+    ]
+   }
+  },
+  {
+   "headline": "Attackers chain three Ivanti Connect Secure flaws for unauthenticated root on VPN appliances",
+   "severity": "high",
+   "event_type": "exploitation in the wild",
+   "event_date": null,
+   "reported_date": "2026-11-02",
+   "victim": null,
+   "country": "global",
+   "continent": "global",
+   "status": "ongoing",
+   "subsector": "connectivity (routers, firewalls, internet, satellite)",
+   "value_chain": "enabling/cross-cutting",
+   "ot_impact": "none (IT only)",
+   "asset_type": "VPN appliances (the remote-access front door to IT and often to OT)",
+   "ics_vendor": "Ivanti",
+   "supply_chain_entry": null,
+   "actor": null,
+   "actor_type": "unattributed",
+   "attribution_confidence": "unattributed",
+   "attributed_by": null,
+   "motivation": null,
+   "cves": [],
+   "kev_listed": "unknown",
+   "initial_access": "chained VPN appliance flaws, unauthenticated",
+   "malware": null,
+   "indicators": [],
+   "ttps": [
+    {
+     "id": "T1190",
+     "name": "Exploit Public-Facing Application (Enterprise)"
+    },
+    {
+     "id": "T0886",
+     "name": "Remote Services (ICS) [inference]"
+    }
+   ],
+   "operational_impact": "none reported in energy",
+   "physical_safety_impact": null,
+   "customers_affected": null,
+   "data_exposed": null,
+   "cascading": "VPN appliances are the Colonial and Volt Typhoon entry class",
+   "geopolitical_link": null,
+   "regulatory_trigger": "NERC CIP-005 (remote access), TSA pipeline directives (remote access controls)",
+   "government_response": "[unverified] no CISA KEV entry seen in the bundle",
+   "source_type": "media",
+   "source_reliability": "B",
+   "info_credibility": "2",
+   "corroboration": 1,
+   "claim_vs_confirmed": "claimed (one outlet)",
+   "so_what": "The remote-access appliance class that gave Colonial's attackers their door is being chained for root again; energy operators' OT access often sits behind the same boxes.",
+   "recommended_action": "patch",
+   "trend": "recurring",
+   "labels": [
+    "[unverified] CVE identifiers not in the summary"
+   ],
+   "confidence": "moderate",
+   "sources": [
+    {
+     "name": "The Hacker News",
+     "url": "https://thehackernews.com/2026/10/attackers-chain-three-ivanti-connect.html",
+     "date": "2026-11-02"
+    }
+   ],
+   "scoring": {
+    "severity": {
+     "level": "high",
+     "factors": {
+      "ot_impact": "none directly; VPN appliances front OT remote access",
+      "us_energy_relevance": "Ivanti appliances are common in US enterprises and utilities",
+      "actor_capability": "unattributed",
+      "scale": "all exposed unpatched appliances",
+      "actionable": "yes: patch"
+     },
+     "rationale": "High: active exploitation of the remote-access class that history shows is the usual door into energy networks; not critical because no OT contact and no energy victim is named."
+    },
+    "reliability_rationale": "B: one established outlet; no vendor page pulled this run.",
+    "credibility_rationale": "2: consistent with Ivanti's advisory pattern; single source."
+   },
+   "anatomy": {
+    "attribution": [
+     {
+      "hypothesis": "State-aligned espionage actors, who have repeatedly targeted Ivanti appliances",
+      "why": "The appliance class and the chaining of flaws match prior campaigns attributed by governments to PRC-linked actors (background)",
+      "confidence": "low",
+      "label": "[speculation]"
+     },
+     {
+      "hypothesis": "Criminal initial-access brokers",
+      "why": "Root on a VPN appliance is sellable access",
+      "confidence": "moderate",
+      "label": "[inference]"
+     }
+    ],
+    "bypass": "Three flaws chained so that no credentials are needed to reach root on the appliance itself.",
+    "mechanics": "Unauthenticated requests to the appliance exploit the chain; root gives the attacker the VPN's credentials, sessions and a foothold inside the perimeter.",
+    "process": [
+     "Scan for Connect Secure appliances",
+     "Chain the three flaws for root",
+     "Harvest credentials and sessions",
+     "Enter the internal network as a legitimate user",
+     "Potential: reach OT jump hosts behind the VPN"
+    ],
+    "next_layers": [
+     "Patch; check the vendor's integrity checker",
+     "MFA that does not depend on the appliance alone",
+     "OT remote access through a separate broker, never the corporate VPN directly (Purdue 3.5)",
+     "Alert on appliance configuration changes and new admin accounts"
+    ]
+   }
   }
  ],
  "us_status": "No confirmed intrusion at a US electric utility, pipeline, refinery, LNG terminal or nuclear facility appeared in any allowlisted source in the 7-day window ending 2026-11-05. US items are policy and guidance.",
@@ -1958,7 +2247,8 @@
    "The refrigeration attacks are the energy story in disguise: internet-reachable controllers, a vendor remote-access path, low-skill setpoint tampering. That is the architecture under substations, pump stations and battery sites.",
    "Watch the vendor-funded framing: six of sixteen energy items came from one OT trade outlet, three of them company announcements. The UK '2028' headline is one agency press release run by three outlets.",
    "Two US legal items could not be checked against their text because the outlet blocks automated fetching. Treat both as discovery, not fact, until the statute and the executive instrument are read.",
-   "Six new residents joined this run (Counsel, Archivist, Ombudsman, Operator, Economist, Geopolitical Analyst); their first briefings are mostly statements of what has not yet been verified, which is the honest starting point."
+   "Six new residents joined this run (Counsel, Archivist, Ombudsman, Operator, Economist, Geopolitical Analyst); their first briefings are mostly statements of what has not yet been verified, which is the honest starting point.",
+   "Sample size: 25 feeds, 7-day window, ~190 stories fetched, 20 energy-cyber, 12 board items. Small by design, and now with five Latin American and Spanish-language feeds; Africa, the Middle East and Asia still lack regional sources."
   ]
  },
  "geopolitics": {
@@ -2606,16 +2896,16 @@
   }
  },
  "world_desk": {
-  "note": "Continents with no item mean the allowlisted feeds carried nothing energy-cyber from there in the window; the feeds are English-language and US/UK-heavy, so silence from Africa, South America and Oceania is partly a sourcing artefact.",
+  "note": "Until this run the allowlist had no Latin American, Spanish or Portuguese source, so 'no reporting' there was a sourcing artefact. Five regional feeds and Spanish/Portuguese keywords were added on 2026-11-04. Africa, the Middle East and most of Asia still have no regional feed; silence there remains an artefact until feeds are added. Sample size is shown under 'Sample' in the Summary.",
   "continents": {
    "North America": "Policy week: the information-sharing law sunset, CISA's resilience campaign, the foreign grid-component ban. No confirmed operator breach.",
    "Europe": "The OT week: refrigeration setpoint attacks in Belgium, Sweden, Estonia and France; NCSC's AI forecast; wartime alert-app attacks in Ukraine and Russia.",
    "Asia": "In the wide bucket only: Sogou DNS hijack (China-aligned), Asian airline breaches via Amadeus, North Korea's Binance theft; no energy item.",
    "Middle East": "No energy-cyber reporting in the allowlisted feeds this window.",
    "Africa": "No energy-cyber reporting in the allowlisted feeds this window.",
-   "South America": "No energy-cyber reporting in the allowlisted feeds this window.",
    "Oceania": "Australia's CISC updated critical-infrastructure risk guidance (Industrial Cyber); no incident.",
-   "global": "Siemens IoT2050 exploitation and the Zyxel switch campaign affect devices wherever they sit."
+   "global": "Siemens IoT2050 exploitation and the Zyxel switch campaign affect devices wherever they sit.",
+   "Latin America": "Feeds added this run (CSIRTAmericas, CERT.br, Ciberseguridad LATAM, Una al día). In this window they carried one energy-relevant item: a Spanish-language relay of the UK NCSC forecast (Ciberseguridad LATAM, 2026-11-04). No Latin American energy incident reported in these feeds; Pemex, Petrobras, Ecopetrol, YPF, CFE and the regional grids are now in the keyword list, so a story about them will be caught."
   }
  },
  "references": {
@@ -3750,5 +4040,31 @@
     "context": "State prepositioning in US critical infrastructure (PRC-linked; Volt Typhoon pattern)"
    }
   ]
+ },
+ "sample": {
+  "feeds": 25,
+  "feeds_ok": 23,
+  "window_hours": 168,
+  "stories_fetched": 79,
+  "energy_cyber": 19,
+  "board_items": 12,
+  "languages": [
+   "English",
+   "Spanish",
+   "Portuguese"
+  ],
+  "continents_with_feeds": [
+   "North America",
+   "Europe",
+   "Latin America (added 2026-11-04)",
+   "global"
+  ],
+  "continents_without_feeds": [
+   "Africa",
+   "Middle East",
+   "Asia (except via international outlets)",
+   "Oceania (except via Industrial Cyber)"
+  ],
+  "note": "This is a small sample by design: an allowlist of credible feeds, not the open web. Board items are the stories that survived the energy-and-cyber filter and were worth a record. Growth comes from adding feeds to sources.json, not from loosening the rules."
  }
 }

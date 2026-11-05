@@ -289,7 +289,7 @@ function select(a) {
   $('p-job').textContent = a.p.job + (a.p.name_note ? ' · Name: ' + a.p.name_note : '');
   const pc = $('portrait').getContext('2d'); pc.imageSmoothingEnabled = false; pc.fillStyle = '#1d2b1f'; pc.fillRect(0, 0, 64, 64);
   drawFigure(pc, 8, 4, 0, 1, a.p, 3);
-  chat.innerHTML = '';
+  chat.innerHTML = ''; const sw0 = $('suggest-wrap'); if (sw0) sw0.open = window.innerWidth > 1200;
   const b = briefing && briefing.agents[a.p.id];
   addMsg(b ? b.briefing : 'No briefing yet today.', 'them');
   if (briefing && briefing.us_status && a.p.id === 'contrarian') addMsg('US status: ' + briefing.us_status, 'sys');
@@ -359,7 +359,7 @@ async function callRaw(system, user, max_tokens) {
 
 async function ask(q) {
   if (!selected) return;
-  const p = selected.p; addMsg(q, 'me');
+  const p = selected.p; addMsg(q, 'me'); const sw = $('suggest-wrap'); if (sw) sw.open = false;
   const canned = briefing && briefing.agents[p.id] && briefing.agents[p.id].answers[q];
   if (canned && !isLive()) { setTimeout(() => addMsg(canned, 'them'), 350); return; }
   if (!isLive()) { addMsg('I can only answer the suggested questions until you give the page a model. Open Settings and add an API key or a proxy URL.', 'sys'); return; }
@@ -425,13 +425,13 @@ $('btn-board').onclick = () => {
 // summary: the week in bullet points
 $('btn-summary').onclick = () => {
   const sm = briefing && briefing.summary;
-  $('sum-meta').textContent = briefing ? `${briefing.counts.energy} energy-cyber stories, ${briefing.counts.wide} wider · snapshot ${(briefing.news_generated_at || '').slice(0, 10)}` : '';
+  const sp = briefing && briefing.sample; $('sum-meta').textContent = briefing ? `${briefing.counts.energy} energy-cyber stories, ${briefing.counts.wide} wider · snapshot ${(briefing.news_generated_at || '').slice(0, 10)}` + (sp ? ` · SAMPLE: ${sp.feeds} feeds (${sp.feeds_ok} answered), ${sp.window_hours}h window, ${sp.stories_fetched} stories, ${sp.board_items} board items, ${sp.languages.join('/')}` : '') : '';
   $('sum-head').textContent = sm ? sm.headline : 'No summary yet (headlines-only mode).';
   const ul = $('sum-bullets'); ul.innerHTML = '';
   (sm ? sm.bullets : []).forEach(x => { const li = document.createElement('li'); li.innerHTML = `<span class="tag">${esc(x.tag || '')}</span>${esc(x.text)}<span class="src">${(x.source_urls || []).length ? x.source_urls.map(u => `<a href="${esc(u.url)}" target="_blank" rel="noopener">${esc(u.name)}</a>${u.date ? ' ' + esc(u.date) : ''}`).join(' · ') : (x.sources || []).map(sname => { const u = resolveSource(sname, x.text); return u ? `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(sname)}</a>` : esc(sname); }).join(' · ')}</span>`; ul.appendChild(li); });
   const uc = $('sum-cons'); uc.innerHTML = '';
   (sm ? sm.considerations : []).forEach(t => { const li = document.createElement('li'); li.textContent = t; uc.appendChild(li); });
-  const wd = briefing && briefing.world_desk; const wdEl = $('sum-world'); if (wdEl) wdEl.innerHTML = wd ? `<h3>World desk, by continent</h3><table class="fac-table">${Object.entries(wd.continents).map(([c, t]) => `<tr><th>${esc(c)}</th><td>${esc(t)}</td></tr>`).join('')}</table><p class="k">${esc(wd.note)}</p>` : '';
+  const wd = briefing && briefing.world_desk; const wdEl = $('sum-world'); if (wdEl) wdEl.innerHTML = (sp ? `<h3>Sample</h3><p class="k">${esc(sp.note)} Feeds by continent: ${esc(sp.continents_with_feeds.join(', '))}. No regional feed yet: ${esc(sp.continents_without_feeds.join(', '))}.</p>` : '') + (wd ? `<h3>World desk, by continent</h3><table class="fac-table">${Object.entries(wd.continents).map(([c, t]) => `<tr><th>${esc(c)}</th><td>${esc(t)}</td></tr>`).join('')}</table><p class="k">${esc(wd.note)}</p>` : '');
   $('dlg-summary').showModal();
 };
 
@@ -569,7 +569,7 @@ $('btn-history').onclick = async () => {
 $('btn-exec').onclick = () => {
   const e = briefing && briefing.executive_brief; if (!e) { $('exec-body').innerHTML = '<p class="k">No executive brief this run.</p>'; $('dlg-exec').showModal(); return; }
   $('exec-meta').textContent = `${e.audience} · as of ${(e.as_of || '').slice(0, 10)} · ${e.evaluation.signed ? 'signed by ' + e.evaluation.evaluated_by : 'UNSIGNED: awaiting human evaluation'}`;
-  $('exec-body').innerHTML = `<p>${esc(e.framing)}</p>
+  $('exec-body').innerHTML = `<p class="verdict"><b>This is the final output.</b> Fourteen residents converge here: the wire is fetched (Today's wire) → reduced to records (Briefing board) → pulled and cross-checked (Cyber Command, Verifier) → correlated and framed (Scenarios, Geopolitics, Counsel, Operator, Economist) → reduced again to these ten lines. The Summary is the same week in bullets; the Gazette is the printed form; everything else is the working that stands behind a line here.</p><p>${esc(e.framing)}</p>
     <table class="fac-table exec"><tr><th>#</th><th>Threat</th><th>Why it matters at board level</th><th>Your exposure</th><th>Action</th><th>Confidence · source</th></tr>
     ${e.threats.map(t => `<tr><th><span class="badge sev-${esc(t.sev)}">${t.rank}</span></th><td><b>${esc(t.threat)}</b></td><td>${esc(t.why)}</td><td>${esc(t.exposure)}</td><td>${esc(t.action)}</td><td class="k">${esc(t.confidence)}<br>${(t.source_urls || []).length ? t.source_urls.map(u => `<a href="${esc(u.url)}" target="_blank" rel="noopener">${esc(u.name)}</a>${u.date ? ' ' + esc(u.date) : ''}`).join('<br>') : linkify(t.source, t.threat)}</td></tr>`).join('')}</table>
     <p><b>Not on the list, deliberately:</b> ${esc(e.not_on_the_list)}</p>
