@@ -62,6 +62,7 @@ const esc = t => String(t == null ? '' : t).replace(/[&<>"]/g, c => ({ '&': '&am
     if (i === 1) html += `<div class="box"><h4>In brief</h4><ul>${sm.bullets.slice(0, 6).map(x => `<li>${esc(x.text)} <i>(${esc((x.sources || []).join('; '))})</i></li>`).join('')}</ul></div>`;
     if (i === 3) html += `<div class="box"><h4>Opinion · The Contrarian</h4><p style="font-size:12.5px">${esc((A.contrarian || {}).briefing || '')}</p><div class="byline">— ${names.contrarian}</div></div>`;
     if (i === 5) html += `<div class="box"><h4>Press review</h4><p style="font-size:12.5px">${esc((A.critic || {}).briefing || '')}</p><div class="byline">— ${names.critic}</div></div>`; });
+  if (b.executive_brief) html += `<div class="box"><h4>Ten threats for the boardroom${b.executive_brief.evaluation.signed ? '' : ' · unsigned'}</h4><ol style="font-size:12px;padding-left:18px;margin:0">${b.executive_brief.threats.map(t => `<li><b>${esc(t.threat.split(' (')[0])}</b>: ${esc(t.action)} <i>(${esc(t.confidence)})</i></li>`).join('')}</ol></div>`;
   html += `<div class="box"><h4>Editor's considerations</h4><ul>${sm.considerations.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>`;
   html += `<div class="box"><h4>Elsewhere in cyberspace</h4><p style="font-size:12.5px">${esc((A.wideangle || {}).briefing || '')}</p><div class="byline">— ${names.wideangle}</div></div>`;
   html += `<div class="box"><h4>From the Verification Office</h4><p style="font-size:12.5px">${esc((b.verification || {}).summary || '')}</p><div class="byline">— ${names.verifier}</div></div>`;

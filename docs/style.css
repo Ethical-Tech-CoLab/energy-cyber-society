@@ -129,3 +129,4 @@ button.link{background:none;border:0;color:var(--accent);cursor:pointer;font-fam
 #an-body{max-height:70vh}#dash{max-height:72vh}
 #scen-body,#human-body{max-height:68vh}
 .item h4{margin:0 0 4px}
+.exec th:first-child{width:36px}#exec-body{max-height:70vh}

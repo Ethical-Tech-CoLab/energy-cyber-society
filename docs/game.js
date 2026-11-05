@@ -505,6 +505,18 @@ $('btn-collections').onclick = () => {
   renderCollection('Vulnerabilities'); $('dlg-collections').showModal();
 };
 
+// executive brief: the ten biggest threats, assembled for evaluation
+$('btn-exec').onclick = () => {
+  const e = briefing && briefing.executive_brief; if (!e) { $('exec-body').innerHTML = '<p class="k">No executive brief this run.</p>'; $('dlg-exec').showModal(); return; }
+  $('exec-meta').textContent = `${e.audience} · as of ${(e.as_of || '').slice(0, 10)} · ${e.evaluation.signed ? 'signed by ' + e.evaluation.evaluated_by : 'UNSIGNED: awaiting human evaluation'}`;
+  $('exec-body').innerHTML = `<p>${esc(e.framing)}</p>
+    <table class="fac-table exec"><tr><th>#</th><th>Threat</th><th>Why it matters at board level</th><th>Your exposure</th><th>Action</th><th>Confidence · source</th></tr>
+    ${e.threats.map(t => `<tr><th><span class="badge sev-${esc(t.sev)}">${t.rank}</span></th><td><b>${esc(t.threat)}</b></td><td>${esc(t.why)}</td><td>${esc(t.exposure)}</td><td>${esc(t.action)}</td><td class="k">${esc(t.confidence)}<br>${esc(t.source)}</td></tr>`).join('')}</table>
+    <p><b>Not on the list, deliberately:</b> ${esc(e.not_on_the_list)}</p>
+    <div class="verdict"><b>Evaluation.</b> Assembled by ${esc(e.evaluation.assembled_by)}. ${e.evaluation.signed ? 'Evaluated and signed by ' + esc(e.evaluation.evaluated_by) + '.' : 'Not yet evaluated by a person. The role of the senior analyst here is to assess this assembled picture, not to build it: open each source, check the confidence line, strike what does not hold, then sign in docs/data/briefing.json → executive_brief.evaluation.'}${e.evaluation.evaluator_notes ? '<br>Notes: ' + esc(e.evaluation.evaluator_notes) : ''}</div>`;
+  $('dlg-exec').showModal();
+};
+
 // scenarios & correlations
 $('btn-scenarios').onclick = () => {
   const sc = (briefing && briefing.scenarios) || [], co = (briefing && briefing.correlations) || [];

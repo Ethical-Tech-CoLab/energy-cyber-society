@@ -1883,5 +1883,119 @@
    }
   ],
   "automated": "What is automated: fetching from the allowlist, relevance filtering, writing briefings and records, pulling direct sources, cross-checking outlet against primary, grading, flagging, logging, exporting, scheduling. The agents start the inquiry without being asked; they do not finish it without a person."
+ },
+ "executive_brief": {
+  "as_of": "2026-11-04T23:06:01.498260+00:00",
+  "audience": "energy-sector executives, United States first",
+  "framing": "The residents assembled this picture from the week's allowlisted sources; the executive's job is to evaluate it, not to build it. Each threat carries what it is, why it matters at board level, your exposure, the action, the confidence, and the source. Items marked background rest on the historical record, not on this week's news.",
+  "threats": [
+   {
+    "rank": 1,
+    "threat": "Unauthenticated remote code execution on OT edge gateways (Siemens SIMATIC IoT2050 / Node-RED, CVE-2026-58115, exploited)",
+    "why": "A CVSS 10 flaw on a device that bridges field equipment and IT, reported exploited; a foothold here is a foothold in the process network.",
+    "exposure": "Any site running IoT2050 Advanced with Node-RED; remote sites most exposed.",
+    "action": "Block the Node-RED port tonight; patch in the next window; confirm the firewall is in front of it.",
+    "confidence": "moderate (single vendor source, no CISA notice yet)",
+    "source": "The Hacker News 2026-11-03; VulnCheck",
+    "sev": "critical"
+   },
+   {
+    "rank": 2,
+    "threat": "Vendor remote-access paths into physical controls (European refrigeration wave; French blood service)",
+    "why": "Attackers reached physical setpoints through an equipment supplier; the same architecture sits under substations, battery containers and plant HVAC.",
+    "exposure": "Every third-party-maintained controller with remote access.",
+    "action": "Inventory vendor remote access to controllers; MFA and VPN; alarm on setpoint changes with no logged operator action.",
+    "confidence": "high (victim-confirmed; vendor named)",
+    "source": "BleepingComputer 2026-11-04; The Hacker News 2026-11-03",
+    "sev": "high"
+   },
+   {
+    "rank": 3,
+    "threat": "Network-gear credential theft as reconnaissance (Zyxel GS1900 zero-day, ~1,000 switches)",
+    "why": "Stolen configs and credentials are the map an intruder uses later; the harm is deferred and invisible until it is not.",
+    "exposure": "Small operators and sites using commodity managed switches.",
+    "action": "Patch; rotate every credential in any config you cannot prove untouched.",
+    "confidence": "high on the flaw (vendor advisory), moderate on scale",
+    "source": "BleepingComputer 2026-11-05; Zyxel advisory",
+    "sev": "high"
+   },
+   {
+    "rank": 4,
+    "threat": "Lapse of the Cybersecurity Information Sharing Act of 2015",
+    "why": "Liability protection for sharing threat indicators may expire next month; less sharing means later detection across the sector.",
+    "exposure": "Every US utility that shares with E-ISAC and CISA.",
+    "action": "Ask counsel what sharing continues if it lapses; support renewal through your association.",
+    "confidence": "low until the statute is read (trade press only)",
+    "source": "Utility Dive 2026-11-04",
+    "sev": "high"
+   },
+   {
+    "rank": 5,
+    "threat": "Software supply-chain compromise through trusted updaters and providers (cPGuard autoupdate backdoor; Amadeus provider breach spreading to airlines)",
+    "why": "An update you trust is the easiest way into a network you have hardened; providers breach many clients at once.",
+    "exposure": "Every operator depending on third-party software updates and managed providers.",
+    "action": "Inventory auto-updating software in OT-adjacent networks; require provider breach notification terms.",
+    "confidence": "high on the incidents, moderate on energy transfer",
+    "source": "SecurityWeek; BleepingComputer; The Record (wide bucket)",
+    "sev": "high"
+   },
+   {
+    "rank": 6,
+    "threat": "State prepositioning in US critical infrastructure (PRC-linked; Volt Typhoon pattern)",
+    "why": "Living-off-the-land access placed for disruption in a crisis; no alarm fires until the crisis.",
+    "exposure": "Transmission, pipelines, water-dependent generation.",
+    "action": "Hunt for LOTL behaviour; review logging on edge devices; read CISA AA24-038A.",
+    "confidence": "background: not evidenced in this week's bundle; high in the public record",
+    "source": "CISA AA24-038A (2024, background); UK NCSC 2026-11-03 names China",
+    "sev": "high"
+   },
+   {
+    "rank": 7,
+    "threat": "Grid hardware supply chain and the foreign grid-component ban",
+    "why": "Policy is changing who may supply transmission equipment; cost, lead times and the PIT layer's provenance all move.",
+    "exposure": "Transmission owners with foreign-sourced transformers, inverters and controls.",
+    "action": "Map component origin; engage on the rule once the Counsel has the text.",
+    "confidence": "low on specifics (instrument not read)",
+    "source": "Utility Dive 2026-11-03",
+    "sev": "medium"
+   },
+   {
+    "rank": 8,
+    "threat": "Social-engineering access via fake recruitment (DPRK pattern, Binance ~$6.3B)",
+    "why": "A job interview opened the door to the largest theft of the year; energy companies hire engineers too.",
+    "exposure": "Corporate IT, treasury, engineering staff with privileged access.",
+    "action": "Brief hiring managers and staff; isolate interview-related downloads.",
+    "confidence": "high on the incident, moderate on energy transfer",
+    "source": "BleepingComputer; The Register (wide bucket)",
+    "sev": "medium"
+   },
+   {
+    "rank": 9,
+    "threat": "Mobile zero-click exploits against operator phones (iOS/Android n-day chains; APT29-linked analytics hijack)",
+    "why": "Operators use phones for remote access and MFA; a compromised phone is a compromised control path.",
+    "exposure": "Any remote-access or MFA flow through personal devices.",
+    "action": "Patch mobile fleets; separate MFA devices from browsing devices for OT staff.",
+    "confidence": "moderate",
+    "source": "BleepingComputer; The Hacker News (wide bucket)",
+    "sev": "medium"
+   },
+   {
+    "rank": 10,
+    "threat": "AI-assisted ransomware against critical infrastructure (UK NCSC forecast, by 2028)",
+    "why": "A primary-source forecast that attackers will find and exploit longstanding weaknesses faster; a budget argument more than an incident.",
+    "exposure": "Everyone with unpatched legacy systems, which is everyone.",
+    "action": "Fund the basics; the forecast changes speed, not the fixes.",
+    "confidence": "forecast; high provenance, cannot be confirmed",
+    "source": "UK NCSC 2026-11-03",
+    "sev": "low"
+   }
+  ],
+  "not_on_the_list": "No confirmed intrusion at a US energy operator this week; Iran, the Gulf and the Taiwan Strait are absent from the feeds; no energy incident has a published cost figure.",
+  "evaluation": {
+   "assembled_by": "the residents (scheduled runtime)",
+   "evaluated_by": "pending: the senior human evaluator signs here after reading the sources behind each line",
+   "signed": false,
+   "evaluator_notes": ""
+  }
  }
 }
