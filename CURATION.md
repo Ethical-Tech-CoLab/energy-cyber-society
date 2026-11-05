@@ -75,7 +75,7 @@ follow INTELLIGENCE_ANALYSIS.md for how to evaluate sources, write judgments and
 7d. Attribution: only a named government or firm may be quoted as attributor; everything else
    is 'unattributed' with distinguishing evidence and no state or group named. Then `python scripts/command_log.py` appends this
    run's flags to docs/data/command_log.json (append-only; never edit or delete events).
-   Then `python scripts/archive.py` to file the run in docs/archive/ (append-only).
+   Also `pip install gridstatus` and `python scripts/grid_weather.py` (grid load, NWS alerts, hub forecasts; skip gracefully if a source fails). Then `python scripts/archive.py` to file the run in docs/archive/ (append-only).
    Spot-check two background cases from agents/sectors.json against their 'check' pointer
    with WebFetch and log the result as a `background-check` event (ok / differs / unreachable). Then commit `docs/data` with message
    `briefing: <UTC date and hour>` and push to main.

@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https:; frame-ancestors 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.tile.openstreetmap.org https://cdnjs.cloudflare.com; connect-src 'self' https:; frame-ancestors 'none'">
 <title>Energy Cyber Society</title>
 <meta name="description" content="A virtual town of five LLM agents who read the day's energy-sector cybersecurity news from credible sources and argue about it. Click a resident to talk.">
 <link rel="icon" type="image/svg+xml" href="etc-icon.svg">
 <link rel="icon" type="image/png" href="etc-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,6 +22,7 @@
     <button id="btn-exec" class="pix accent">Final output: Executive brief</button>
     <button id="btn-risk" class="pix accent">Risk check (CIO)</button>
     <button id="btn-regs" class="pix">Regulations</button>
+    <button id="btn-grid" class="pix">US grid &amp; weather</button>
     <button id="btn-summary" class="pix">Summary</button>
     <button id="btn-chatter" class="pix">Chatter: on</button>
     <button id="btn-method" class="pix">Methodology</button>
@@ -160,6 +162,15 @@
     <div id="refs-body" class="prose"></div>
     <p class="k">Everything the system read or cited this run: board-item sources, pulled primary documents, every fetched story in both buckets, the allowlisted feeds with their bias notes, the Where-to-look map, background-case pointers (no URL, by design: check them), and the executive brief's sources. Citations in every resident's text are links where the outlet and date resolve to a fetched URL.</p>
     <div class="row"><button class="pix">Close</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-grid" class="dlg wide">
+  <form method="dialog">
+    <h2>US grid &amp; weather <small id="grid-meta"></small></h2>
+    <div id="gridmap" class="gridmap"></div>
+    <div id="grid-body" class="prose"></div>
+    <div class="row"><a class="pix" href="https://www.gridstatus.io/power-plant-map" target="_blank" rel="noopener">Open Grid Status plant map ↗</a><button class="pix">Close</button></div>
   </form>
 </dialog>
 
@@ -361,6 +372,7 @@
   fifteen agents, one runtime, an allowlist of credible sources ·
   <a href="https://github.com/carolina-moron/energy-cyber-society">source</a>
 </footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="game.js"></script>
 </body>
 </html>

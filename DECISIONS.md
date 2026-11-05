@@ -65,6 +65,8 @@ Nothing here is lost in chat.
 
 | 53 | Add regulations: newest regulations and proposals in the news, and how they impact the energy sector and cyber intelligence | Regulations tab with the register and the week's regulatory news, each with energy-impact and intel-impact lines labelled [inference] where inferred; applicable regimes in the Risk check | Regulations tab; `agents/regulations.json` |
 
+| 54 | Connect the Grid Status power-plant map and weather that might affect facilities and providers; connect the US grid map | Grid Status blocks embedding (X-Frame-Options), so it is linked; built an in-page US map with live ISO load, NWS alerts, hub forecasts and weather-to-item overlap labelled as inference | US grid & weather tab; `scripts/grid_weather.py` |
+
 ## Standing decisions made by the assistant without being asked (so you can reverse them)
 
 - Resident names and the town metaphor; the building names; PIT as the third layer (DoD term).

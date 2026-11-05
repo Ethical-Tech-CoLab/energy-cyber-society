@@ -101,6 +101,13 @@ Git history is the second copy. Nothing is overwritten.
 synthesised from the intelligence cycle, ICD 203 analytic standards, ICD 206 sourcing,
 Admiralty grading, structured analytic techniques and the FBI/CISA advisory format.
 
+## US grid & weather
+
+`scripts/grid_weather.py` pulls live ISO load (gridstatus library), energy-relevant NWS alerts and
+3-day forecasts for energy hubs into `docs/data/grid_weather.json`; the **US grid & weather** tab
+maps them and links Grid Status's plant map (which cannot be embedded). Weather is context, never
+cyber evidence.
+
 ## Risk check for a CIO
 
 The **Risk check (CIO)** tab takes an organization's profile (facilities, products, environment
