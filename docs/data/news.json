@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-04T23:06:01.498260+00:00",
+ "generated_at": "2026-11-05T01:11:55.739235+00:00",
  "window_hours": 168,
  "sources": [
   {
@@ -113,6 +113,19 @@
  ],
  "energy": [
   {
+   "title": "Critical Rails Bug Threatens to Derail Vulnerable Servers",
+   "summary": "An attacker could write arbitrary files and read sensitive files via images uploaded to the Rails Active Storage ImageMagick integration, possibly positioning a threat actor for lateral movement.",
+   "link": "https://www.darkreading.com/application-security/critical-rails-bug-derail-vulnerable-servers",
+   "published": "2026-11-05T02:48:18+00:00",
+   "source": "darkreading",
+   "source_name": "Dark Reading",
+   "source_type": "trade press",
+   "source_country": "US",
+   "matched": [
+    "rail"
+   ]
+  },
+  {
    "title": "Zyxel fixes zero-day exploited to hack nearly 1,000 network switches",
    "summary": "Zyxel has patched a zero-day vulnerability in its GS1900 series network switches that hackers exploited to compromise nearly 1,000 devices worldwide and steal configuration files and credentials. [...]",
    "link": "https://www.bleepingcomputer.com/news/security/zyxel-fixes-zero-day-exploited-to-hack-nearly-1-000-network-switches/",
@@ -150,6 +163,19 @@
    "matched": [
     "utilities",
     "electric"
+   ]
+  },
+  {
+   "title": "Critical Rails Flaw Lets Attackers Write Server Files via Crafted ImageMagick Uploads",
+   "summary": "A critical flaw in Ruby on Rails could allow an unauthenticated attacker to write arbitrary files on an app's server by uploading a crafted file if the app processes uploads using ImageMagick. The Rails project disclosed the flaw in an advisory and fixed it in versions 8.1.4.1 and 8.0.5.2. The flaw is in Active Storage, the part of Rails that handles file uploads. Some apps store",
+   "link": "https://thehackernews.com/2026/11/critical-rails-flaw-lets-attackers.html",
+   "published": "2026-11-04T17:07:04+00:00",
+   "source": "hackernews",
+   "source_name": "The Hacker News",
+   "source_type": "tech press",
+   "source_country": "international",
+   "matched": [
+    "rail"
    ]
   },
   {
@@ -312,6 +338,19 @@
    ]
   },
   {
+   "title": "Cops bust botnet of 1.3M infected Android TV boxes",
+   "summary": "Videostrong accused of shipping devices with a backdoor baked in",
+   "link": "https://www.theregister.com/cyber-crime/2026/11/02/cops-bust-botnet-of-13m-infected-android-tv-boxes/5307045",
+   "published": "2026-11-03T00:03:31+00:00",
+   "source": "register",
+   "source_name": "The Register Security",
+   "source_type": "tech press",
+   "source_country": "UK",
+   "matched": [
+    "shipping"
+   ]
+  },
+  {
    "title": "Nuclear threats and street brawls: Russia, Ukraine report attacks on their emergency alert apps",
    "summary": "Within minutes of a ceasefire lifting in Kherson, Ukraine’s citizens were pummelled with threatening notifications",
    "link": "https://www.theregister.com/security/2026/11/02/nuclear-threats-and-street-brawls-russia-ukraine-report-attacks-on-their-emergency-alert-apps/5306901",
@@ -327,6 +366,16 @@
  ],
  "wide": [
   {
+   "title": "What Democratic control of Congress means for cybersecurity",
+   "summary": "There’s a lame-duck session before Dems take over, but the leaders of the homeland security panels are already teeing up their agendas. The post What Democratic control of Congress means for cybersecurity appeared first on CyberScoop .",
+   "link": "https://cyberscoop.com/democrats-congress-cybersecurity-cisa-ai-priorities/",
+   "published": "2026-11-05T04:05:04+00:00",
+   "source": "cyberscoop",
+   "source_name": "CyberScoop",
+   "source_type": "trade press",
+   "source_country": "US"
+  },
+  {
    "title": "Apple turns iCloud into spy cloud, will start looking at public share links",
    "summary": "Content shared with anyone who has the URL will be scanned for 'harmful content,' though the iMaker hasn't defined that term",
    "link": "https://www.theregister.com/security/2026/11/04/apple-turns-icloud-into-spy-cloud-will-start-looking-at-public-share-links/5307681",
@@ -335,16 +384,6 @@
    "source_name": "The Register Security",
    "source_type": "tech press",
    "source_country": "UK"
-  },
-  {
-   "title": "Critical Rails Bug Threatens to Derail Vulnerable Servers",
-   "summary": "An attacker could write arbitrary files and read sensitive files via images uploaded to the Rails Active Storage ImageMagick integration, possibly positioning a threat actor for lateral movement.",
-   "link": "https://www.darkreading.com/application-security/critical-rails-bug-derail-vulnerable-servers",
-   "published": "2026-11-05T02:48:18+00:00",
-   "source": "darkreading",
-   "source_name": "Dark Reading",
-   "source_type": "trade press",
-   "source_country": "US"
   },
   {
    "title": "Vercel rolls out new protection against stolen session cookie attacks",
@@ -625,16 +664,6 @@
    "source_name": "BleepingComputer",
    "source_type": "tech press",
    "source_country": "US"
-  },
-  {
-   "title": "Critical Rails Flaw Lets Attackers Write Server Files via Crafted ImageMagick Uploads",
-   "summary": "A critical flaw in Ruby on Rails could allow an unauthenticated attacker to write arbitrary files on an app's server by uploading a crafted file if the app processes uploads using ImageMagick. The Rails project disclosed the flaw in an advisory and fixed it in versions 8.1.4.1 and 8.0.5.2. The flaw is in Active Storage, the part of Rails that handles file uploads. Some apps store",
-   "link": "https://thehackernews.com/2026/11/critical-rails-flaw-lets-attackers.html",
-   "published": "2026-11-04T17:07:04+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
   },
   {
    "title": "Xen Hypervisor Flaws Let One Malicious VM Read and Write Any Other VM's Memory",
@@ -925,6 +954,16 @@
    "source_name": "The Hacker News",
    "source_type": "tech press",
    "source_country": "international"
+  },
+  {
+   "title": "Caterpillar expands production of engines and turbines to meet data center demand",
+   "summary": "The heavy machinery and power equipment maker saw its order backlog reach $78 billion during the third quarter, almost double what it was a year ago.",
+   "link": "https://www.utilitydive.com/news/caterpillar-posts-highest-sales-quarter-ever-data-centers-q3-2026/873586/",
+   "published": "2026-11-03T21:42:00+00:00",
+   "source": "utilitydive",
+   "source_name": "Utility Dive",
+   "source_type": "industry press",
+   "source_country": "US"
   }
  ]
 }

@@ -2,7 +2,7 @@
    Data: data/briefing.json (daily agent run) + data/news.json (raw wire) + ../agents/personas.json (voices). */
 (() => {
 const S = 3;                           // pixel scale
-const W = 960, H = 760;
+const W = 960, H = 830;
 const cv = document.getElementById('town');
 const ctx = cv.getContext('2d');
 ctx.imageSmoothingEnabled = false;
@@ -70,6 +70,9 @@ function drawSprite(kind, x, y) {
   else if (kind === 'refinery') { P(0, 14, 24, 26, '#6b6f7b'); P(28, 0, 8, 40, '#8a8f9b'); P(40, 8, 20, 32, '#5a5f6b'); P(44, 12, 12, 10, '#e8b04b'); P(28, -6, 8, 6, '#e85a4b'); }
   else if (kind === 'battery') { for (const dx of [0, 18, 36]) { P(dx, 8, 14, 30, '#2c4a3e'); P(dx + 2, 10, 10, 10, '#4be89a'); } P(0, 0, 50, 6, '#9aa3b5'); }
   else if (kind === 'ev') { P(0, 0, 14, 34, '#3a3f4a'); P(2, 2, 10, 8, '#4bb3e8'); P(20, 0, 14, 34, '#3a3f4a'); P(22, 2, 10, 8, '#4bb3e8'); P(0, 34, 40, 6, '#5a5f6b'); ctx.fillStyle = '#e8d44b'; ctx.font = '8px "Press Start 2P"'; ctx.textAlign = 'left'; ctx.fillText('⚡', x + 4, y + 24); }
+  else if (kind === 'datacentre') { P(0, 6, 60, 34, '#2a2f3a'); for (let i = 0; i < 4; i++) { P(4 + i * 14, 10, 10, 26, '#1a1f2a'); P(6 + i * 14, 12, 6, 3, '#4be89a'); P(6 + i * 14, 18, 6, 3, '#4bb3e8'); } P(0, 0, 60, 6, '#9aa3b5'); }
+  else if (kind === 'ship') { P(0, 24, 64, 12, '#2c4a8a'); P(8, 20, 48, 4, '#9aa3b5'); P(14, 6, 12, 14, '#e6e9ef'); P(30, 10, 10, 10, '#e6e9ef'); P(44, 10, 10, 10, '#e6e9ef'); P(2, 36, 60, 4, '#4bb3e8'); }
+  else if (kind === 'cable') { P(0, 30, 70, 6, '#4bb3e8'); P(10, 10, 16, 20, '#5a5f6b'); P(44, 10, 16, 20, '#5a5f6b'); P(12, 4, 12, 6, '#9aa3b5'); P(46, 4, 12, 6, '#9aa3b5'); P(26, 18, 18, 4, '#e8b04b'); }
   else if (kind === 'substation') { rect(455, 330, 50, 40, '#3a3f4a'); rect(460, 318, 6, 12, '#9aa3b5'); rect(494, 318, 6, 12, '#9aa3b5'); rect(466, 312, 28, 6, '#9aa3b5'); ctx.fillStyle = '#e8b04b'; ctx.font = '10px "Press Start 2P"'; ctx.textAlign = 'center'; ctx.fillText('⚡', 480, 356); }
 }
 function drawFacilities() {
@@ -426,6 +429,7 @@ $('btn-summary').onclick = () => {
   (sm ? sm.bullets : []).forEach(x => { const li = document.createElement('li'); li.innerHTML = `<span class="tag">${esc(x.tag || '')}</span>${esc(x.text)}<span class="src">${esc((x.sources || []).join(' · '))}</span>`; ul.appendChild(li); });
   const uc = $('sum-cons'); uc.innerHTML = '';
   (sm ? sm.considerations : []).forEach(t => { const li = document.createElement('li'); li.textContent = t; uc.appendChild(li); });
+  const wd = briefing && briefing.world_desk; const wdEl = $('sum-world'); if (wdEl) wdEl.innerHTML = wd ? `<h3>World desk, by continent</h3><table class="fac-table">${Object.entries(wd.continents).map(([c, t]) => `<tr><th>${esc(c)}</th><td>${esc(t)}</td></tr>`).join('')}</table><p class="k">${esc(wd.note)}</p>` : '';
   $('dlg-summary').showModal();
 };
 
@@ -557,7 +561,7 @@ function bar(title, counts, color, field) {
   const ent = Object.entries(counts || {}).filter(([k]) => k && k !== 'undefined' && k !== 'null').sort((a, b) => b[1] - a[1]); const max = Math.max(1, ...ent.map(e => e[1]));
   return `<div class="chart"><div class="ct">${esc(title)}${field ? ' <span class="k">click a bar</span>' : ''}</div>${ent.length ? ent.map(([k, v]) => `<div class="bar-row ${field ? 'clickable' : ''}" ${field ? `data-field="${esc(field)}" data-key="${esc(k)}"` : ''}><span class="bl" title="${esc(k)}">${esc(String(k).slice(0, 26))}</span><span class="bt"><span class="bf" style="width:${(v / max) * 100}%;background:${color}"></span></span><span class="bv">${v}</span></div>`).join('') : '<div class="k">no data</div>'}</div>`;
 }
-const FIELD_PICK = { severity: i => i.severity, ot_impact: i => i.ot_impact, subsector: i => i.subsector, country: i => i.country, event_type: i => i.event_type, recommended_action: i => i.recommended_action, source_reliability: i => i.source_reliability, info_credibility: i => String(i.info_credibility), source: i => (i.sources || []).map(s => s.name.split(' (')[0]), ot_hit: i => /process|physical|reached/i.test(i.ot_impact || '') ? 'yes' : 'no', crit_high: i => /critical|high/.test(i.severity) ? 'yes' : 'no', single: i => new Set((i.sources || []).map(s => s.name.split(' (')[0])).size <= 1 ? 'yes' : 'no', all: () => 'all' };
+const FIELD_PICK = { continent: i => i.continent || 'unknown', severity: i => i.severity, ot_impact: i => i.ot_impact, subsector: i => i.subsector, country: i => i.country, event_type: i => i.event_type, recommended_action: i => i.recommended_action, source_reliability: i => i.source_reliability, info_credibility: i => String(i.info_credibility), source: i => (i.sources || []).map(s => s.name.split(' (')[0]), ot_hit: i => /process|physical|reached/i.test(i.ot_impact || '') ? 'yes' : 'no', crit_high: i => /critical|high/.test(i.severity) ? 'yes' : 'no', single: i => new Set((i.sources || []).map(s => s.name.split(' (')[0])).size <= 1 ? 'yes' : 'no', all: () => 'all' };
 function drill(field, key) {
   const items = ((briefing && briefing.items) || []).filter(it => { const v = FIELD_PICK[field] ? FIELD_PICK[field](it) : null; return Array.isArray(v) ? v.includes(key) : v === key; });
   const sc = briefing.rubric || {};
@@ -636,6 +640,7 @@ $('btn-dash').onclick = () => {
       ${bar('Items by IT / OT impact', C(i => i.ot_impact), '#e8b04b', 'ot_impact')}
       ${bar('Items by energy subsector', C(i => i.subsector), '#4be89a', 'subsector')}
       ${bar('Items by country / region', C(i => i.country), '#4bb3e8', 'country')}
+      ${bar('Items by continent', C(i => i.continent || 'unknown'), '#4bb3e8', 'continent')}
       ${bar('Items by event type', C(i => i.event_type), '#c94be8', 'event_type')}
       ${bar('Recommended action', C(i => i.recommended_action), '#e8d44b', 'recommended_action')}
       ${bar('Source reliability (Admiralty A–F)', C(i => i.source_reliability), '#9aa3b5', 'source_reliability')}

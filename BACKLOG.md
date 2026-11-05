@@ -11,7 +11,7 @@ forgotten; "blocked" means a person must act. Update this file when something sh
 - Direct-source puller and outlet-versus-primary cross-check; Verifier verdicts; random spot-checks in the playbook
 - Cyber Command: append-only flag log, verify-anything panel, history of unusual acts; session flags from live chat
 - Tabs: Executive brief, Summary, Methodology, Where to look, Limitations, Rules, Agent Register, Dashboard (clickable drill-down to full analysis), Collections (TI-platform cut), Scenarios (action, impact, scenarios, correlations), Human touch, Briefing board, Today's wire, Settings
-- Nine energy facilities with sector dossiers (variables, IT/OT/PIT, vulnerabilities, attacks, how a breach happens, live and background cases)
+- Twelve energy facilities with sector dossiers (incl. data centre, LNG terminal and tanker, interconnector and subsea cable); energy scope widened to transport, compute and connectivity; continent tag and world desk by continent in Summary and Gazette (variables, IT/OT/PIT, vulnerabilities, attacks, how a breach happens, live and background cases)
 - The Gazette: broadsheet printed from the data, with the ten-threat box
 - Per-layer geopolitical analysis (theatres, IT/OT/PIT, subsectors, absent theatres)
 - AI-market inputs checklist (`agents/ai_market.json`) and the Technologist's note

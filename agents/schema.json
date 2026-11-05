@@ -19,7 +19,15 @@
       "grid technology",
       "critical minerals",
       "cross-sector",
-      "non-energy (spillover)"
+      "non-energy (spillover)",
+      "data centres (compute load)",
+      "connectivity (routers, firewalls, internet, satellite)",
+      "industrial machinery and OEM equipment",
+      "energy transport: pipelines",
+      "energy transport: LNG and tanker shipping",
+      "energy transport: rail and road fuel",
+      "energy transport: interconnectors and subsea cables",
+      "energy transport: transmission lines"
     ],
     "value_chain": [
       "upstream",
@@ -108,7 +116,18 @@
       "Malware": "items with malware named",
       "Indicators": "items with indicators or cves",
       "Geopolitical Risks": "items with geopolitical_link or event_type policy/regulatory change"
-    }
+    },
+    "continent": [
+      "North America",
+      "South America",
+      "Europe",
+      "Africa",
+      "Middle East",
+      "Asia",
+      "Oceania",
+      "global",
+      "unknown"
+    ]
   },
   "item": {
     "headline": "string",
@@ -192,6 +211,7 @@
       },
       "reliability_rationale": "why this letter",
       "credibility_rationale": "why this number"
-    }
+    },
+    "continent": "continent"
   }
 }

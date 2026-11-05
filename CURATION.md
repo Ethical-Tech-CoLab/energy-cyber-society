@@ -28,6 +28,10 @@ follow INTELLIGENCE_ANALYSIS.md for how to evaluate sources, write judgments and
    - `executive_brief`: ten ranked threats for energy executives (threat, why, exposure, action,
      confidence, source, sev), `not_on_the_list`, and `evaluation` with signed=false; never set
      signed=true yourself. Carry forward evaluator_notes from the previous run.
+   - every item carries `continent`; write `world_desk` with one line per continent, saying
+     'No energy-cyber reporting in the allowlisted feeds this window' where that is true.
+     Energy scope includes data centres, connectivity hardware, industrial machinery and energy
+     transport (pipelines, LNG and tanker shipping, rail and road fuel, interconnectors, subsea cables).
    - `us_status`: one or two sentences on whether any US energy operator was confirmed breached.
    - `conversations`: five or six pairwise dialogues of 6 lines each, residents disagreeing.
    - `verification`: `run_at`, `verdicts` keyed by item headline with `verdict` and `reason`,

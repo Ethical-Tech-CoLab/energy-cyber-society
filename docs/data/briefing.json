@@ -753,7 +753,8 @@
     },
     "reliability_rationale": "C: the exploitation claim originates with VulnCheck, a vulnerability-intelligence vendor, relayed by The Hacker News. No CISA or Siemens notice reached the bundle (CISA feed 403).",
     "credibility_rationale": "2: probably true; the CVE and CVSS are consistent across the outlet and the vendor blog, the exploitation telemetry is unconfirmed by a second party."
-   }
+   },
+   "continent": "global"
   },
   {
    "headline": "Zyxel GS1900 switch zero-day used to compromise nearly 1,000 devices and steal configs and credentials",
@@ -764,7 +765,7 @@
    "victim": "~1,000 Zyxel GS1900 owners worldwide",
    "country": "global",
    "status": "contained (patched)",
-   "subsector": "cross-sector",
+   "subsector": "connectivity (routers, firewalls, internet, satellite)",
    "value_chain": "enabling/cross-cutting",
    "ot_impact": "none (IT only)",
    "asset_type": "managed network switch",
@@ -845,7 +846,8 @@
     },
     "reliability_rationale": "A after the pull: the Zyxel security advisory was fetched and confirms the flaw; the device count remains the outlet's.",
     "credibility_rationale": "2: the flaw is confirmed; the scale is single-source."
-   }
+   },
+   "continent": "global"
   },
   {
    "headline": "Cyberattack via refrigeration-equipment provider changed temperature settings at three French blood-service facilities",
@@ -937,7 +939,8 @@
     },
     "reliability_rationale": "A: victim statement (EFS) plus two outlets.",
     "credibility_rationale": "1: confirmed independently; only the 110°C figure is unconfirmed and labelled."
-   }
+   },
+   "continent": "Europe"
   },
   {
    "headline": "Overnight wave of refrigeration setpoint attacks on supermarkets in Belgium, Sweden, Estonia and elsewhere",
@@ -1024,7 +1027,8 @@
     },
     "reliability_rationale": "B: one outlet quoting three named companies on record.",
     "credibility_rationale": "2: probably true; vendor and contractors quoted by name, no official statement."
-   }
+   },
+   "continent": "Europe"
   },
   {
    "headline": "Electric utilities urge Congress to renew the Cybersecurity Information Sharing Act of 2015 before it expires next month",
@@ -1093,7 +1097,8 @@
     },
     "reliability_rationale": "B: Utility Dive, utility-industry trade press; the article blocked the puller (403).",
     "credibility_rationale": "3: possibly true as stated; sunset date and extension status unverified."
-   }
+   },
+   "continent": "North America"
   },
   {
    "headline": "CISA launches 2026 Critical Infrastructure Security and Resilience campaign: OT security, continuity, recovery planning",
@@ -1160,7 +1165,8 @@
     },
     "reliability_rationale": "B: one trade outlet relaying a CISA campaign; CISA's own page unreachable (feed 403).",
     "credibility_rationale": "2: probably true, low stakes."
-   }
+   },
+   "continent": "North America"
   },
   {
    "headline": "UK NCSC Annual Review warns of AI-assisted ransomware against critical national infrastructure by 2028",
@@ -1245,7 +1251,8 @@
     },
     "reliability_rationale": "A: the agency's own annual review and news release, both fetched.",
     "credibility_rationale": "3: a forecast cannot be confirmed; the primary carries 'highly likely'."
-   }
+   },
+   "continent": "Europe"
   },
   {
    "headline": "Trump administration ban on foreign grid components raises industry concern over practicality and cost",
@@ -1256,7 +1263,7 @@
    "victim": null,
    "country": "US",
    "status": "ongoing",
-   "subsector": "electricity",
+   "subsector": "energy transport: transmission lines",
    "value_chain": "transmission",
    "ot_impact": "none (IT only)",
    "asset_type": "grid equipment supply chain",
@@ -1314,7 +1321,8 @@
     },
     "reliability_rationale": "B: trade press only; blocked the puller (403).",
     "credibility_rationale": "3: instrument and effective date unverified."
-   }
+   },
+   "continent": "North America"
   },
   {
    "headline": "Russia and Ukraine report attacks on emergency alert apps during Kherson ceasefire",
@@ -1386,7 +1394,8 @@
     },
     "reliability_rationale": "B: one outlet using public statements and social media.",
     "credibility_rationale": "3: each side's claim about the other, unconfirmed."
-   }
+   },
+   "continent": "Europe"
   }
  ],
  "us_status": "No confirmed intrusion at a US electric utility, pipeline, refinery, LNG terminal or nuclear facility appeared in any allowlisted source in the 7-day window ending 2026-11-05. US items are policy and guidance.",
@@ -2037,6 +2046,19 @@
    "evaluated_by": "pending: the senior human evaluator signs here after reading the sources behind each line",
    "signed": false,
    "evaluator_notes": ""
+  }
+ },
+ "world_desk": {
+  "note": "Continents with no item mean the allowlisted feeds carried nothing energy-cyber from there in the window; the feeds are English-language and US/UK-heavy, so silence from Africa, South America and Oceania is partly a sourcing artefact.",
+  "continents": {
+   "North America": "Policy week: the information-sharing law sunset, CISA's resilience campaign, the foreign grid-component ban. No confirmed operator breach.",
+   "Europe": "The OT week: refrigeration setpoint attacks in Belgium, Sweden, Estonia and France; NCSC's AI forecast; wartime alert-app attacks in Ukraine and Russia.",
+   "Asia": "In the wide bucket only: Sogou DNS hijack (China-aligned), Asian airline breaches via Amadeus, North Korea's Binance theft; no energy item.",
+   "Middle East": "No energy-cyber reporting in the allowlisted feeds this window.",
+   "Africa": "No energy-cyber reporting in the allowlisted feeds this window.",
+   "South America": "No energy-cyber reporting in the allowlisted feeds this window.",
+   "Oceania": "Australia's CISC updated critical-infrastructure risk guidance (Industrial Cyber); no incident.",
+   "global": "Siemens IoT2050 exploitation and the Zyxel switch campaign affect devices wherever they sit."
   }
  }
 }

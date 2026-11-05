@@ -168,7 +168,39 @@
     "ot threat",
     "ot security",
     "ot environment",
-    "network switch"
+    "network switch",
+    "data center",
+    "data centre",
+    "datacenter",
+    "hyperscale",
+    "firewall",
+    "router",
+    "vpn appliance",
+    "satellite",
+    "starlink",
+    "viasat",
+    "subsea cable",
+    "undersea cable",
+    "interconnector",
+    "tanker",
+    "lng carrier",
+    "shipping",
+    "port terminal",
+    "rail",
+    "locomotive",
+    "fuel truck",
+    "compressor",
+    "transformer",
+    "industrial machinery",
+    "plc",
+    "hmi",
+    "modbus",
+    "dnp3",
+    "iec 61850",
+    "opc ua",
+    "servo",
+    "robot",
+    "oem"
   ],
   "_feed_note": "CISA feeds return 403 to some clients (Akamai); they may work from GitHub Actions. NERC, Reuters, ENISA and Dragos have no working public RSS as of 2026-11-04.",
   "cyber_keywords": [
@@ -200,5 +232,6 @@
     "nerc cip",
     "cisa",
     "cybersecurity"
-  ]
+  ],
+  "_scope_note": "Energy here includes everything that produces, moves and consumes it at scale: generation, transmission, distribution, pipelines, LNG and tanker shipping, rail and road fuel, interconnectors and subsea cables, data centres, connectivity hardware (routers, firewalls, satellite), industrial machinery and OEM equipment."
 }
