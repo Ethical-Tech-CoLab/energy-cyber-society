@@ -57,6 +57,8 @@ Nothing here is lost in chat.
 
 | 49 | Add this research (Global Energy Cyber Threat Intelligence Report PDF) | Transcribed to structured data; 20 cases into dossiers and timeline as 'report-sourced'; its counting and attribution rules adopted as rules 33-39; Research tab; items linked to related cases; spreadsheet not attached, URLs pending | Research tab; `agents/research/`; `RULES.md` §4a |
 
+| 50 | More complexity per industry: supply chain, products, machinery, electricity dependence, sensors, compute, storage, everything exploitable; and the cases that happened | Nine-layer dependency stack per facility with cases linked to the report, the history and this week's items; global supply-chain map | facility dossiers; Research tab; `agents/sectors.json` |
+
 ## Standing decisions made by the assistant without being asked (so you can reverse them)
 
 - Resident names and the town metaphor; the building names; PIT as the third layer (DoD term).
