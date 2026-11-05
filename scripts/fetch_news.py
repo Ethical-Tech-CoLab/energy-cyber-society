@@ -79,7 +79,7 @@ def main():
         "sources": [{k: s[k] for k in ("id", "name", "type", "country", "bias_note", "url")} for s in cfg["sources"]],
         "errors": errors,
         "energy": energy[:40],
-        "wide": wide[:60],
+        "wide": wide[:150],
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(out, indent=1, ensure_ascii=False))

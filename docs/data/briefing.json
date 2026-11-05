@@ -546,11 +546,11 @@
   }
  ],
  "generated_at": "2026-11-05T01:26:12.722123+00:00",
- "news_generated_at": "2026-11-05T01:26:12.683833+00:00",
+ "news_generated_at": "2026-11-05T01:27:06.925571+00:00",
  "model": "curated-by-claude-fable-5.1 (session run, revised)",
  "counts": {
   "energy": 19,
-  "wide": 60
+  "wide": 150
  },
  "top_stories": [
   {
@@ -2248,7 +2248,7 @@
    "Watch the vendor-funded framing: six of sixteen energy items came from one OT trade outlet, three of them company announcements. The UK '2028' headline is one agency press release run by three outlets.",
    "Two US legal items could not be checked against their text because the outlet blocks automated fetching. Treat both as discovery, not fact, until the statute and the executive instrument are read.",
    "Six new residents joined this run (Counsel, Archivist, Ombudsman, Operator, Economist, Geopolitical Analyst); their first briefings are mostly statements of what has not yet been verified, which is the honest starting point.",
-   "Sample size: 25 feeds, 7-day window, ~190 stories fetched, 20 energy-cyber, 12 board items. Small by design, and now with five Latin American and Spanish-language feeds; Africa, the Middle East and Asia still lack regional sources."
+   "Sample size: 25 feeds (23 answered), 7-day window, 169 stories kept, 19 energy-cyber, 12 board items. Small by design, and now with five Latin American and Spanish-language feeds; Africa, the Middle East and Asia still lack regional sources."
   ]
  },
  "geopolitics": {
@@ -4045,7 +4045,7 @@
   "feeds": 25,
   "feeds_ok": 23,
   "window_hours": 168,
-  "stories_fetched": 79,
+  "stories_fetched": 169,
   "energy_cyber": 19,
   "board_items": 12,
   "languages": [
