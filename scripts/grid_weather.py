@@ -68,7 +68,7 @@ try:
         lvl = g("gdacs:alertlevel"); ev = g("gdacs:eventtype"); cty = g("gdacs:country"); title = re.sub(r"<.*?>", "", g("title"))
         lat = g("geo:lat") or g("geo:Point>\s*<geo:lat"); lon = g("geo:long")
         if lvl in ("Orange", "Red"):
-            try: gd.append({"level": lvl, "type": {"FL": "flood", "TC": "tropical cyclone", "EQ": "earthquake", "WF": "wildfire", "VO": "volcano", "DR": "drought"}.get(ev, ev), "country": cty, "title": title[:120], "lat": float(lat), "lon": float(lon), "link": g("link"), "why": {"FL": "substations, pump stations, hydro spillways", "TC": "transmission, offshore wind, ports and LNG", "EQ": "pipelines, refineries, nuclear safety shutdowns", "WF": "transmission corridors, de-energisation", "VO": "ash on insulators and turbines, aviation fuel", "DR": "hydro and thermal cooling water"}.get(ev, "")})
+            try: gd.append({"level": lvl, "type": {"FL": "flood", "TC": "tropical cyclone", "EQ": "earthquake", "WF": "wildfire", "VO": "volcano", "DR": "drought"}.get(ev, ev), "country": cty.replace("&amp;", "&"), "title": title[:120], "lat": float(lat), "lon": float(lon), "link": g("link"), "why": {"FL": "substations, pump stations, hydro spillways", "TC": "transmission, offshore wind, ports and LNG", "EQ": "pipelines, refineries, nuclear safety shutdowns", "WF": "transmission corridors, de-energisation", "VO": "ash on insulators and turbines, aviation fuel", "DR": "hydro and thermal cooling water"}.get(ev, "")})
             except ValueError: pass
     out["gdacs"] = {"orange_red": gd, "total_items": len(items), "source": "https://www.gdacs.org/"}
 except Exception as e: out["errors"].append(f"GDACS: {type(e).__name__}")

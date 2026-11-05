@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-05T04:05:58.793368+00:00",
+ "generated_at": "2026-11-05T04:07:13.490221+00:00",
  "isos": [
   {
    "iso": "ERCOT",
@@ -27,8 +27,8 @@
   },
   {
    "iso": "ISONE",
-   "time": "2026-11-04 23:00:00",
-   "load_mw": 10896,
+   "time": "2026-11-04 23:05:00",
+   "load_mw": 10819,
    "peak_today_mw": 14546
   }
  ],
@@ -427,13 +427,13 @@
  },
  "note": "Grid Status's map cannot be embedded (X-Frame-Options); it opens in a new tab. Load and weather are context for which assets are stressed, not evidence of any cyber event. Correlation with the board is keyword-based and labelled.",
  "ercot_fuel_mix_mw": {
-  "Coal and Lignite": 5578,
-  "Hydro": 62,
+  "Coal and Lignite": 5540,
+  "Hydro": 30,
   "Nuclear": 3835,
-  "Power Storage": -903,
+  "Power Storage": -928,
   "Solar": 0,
-  "Wind": 19034,
-  "Natural Gas": 23667,
+  "Wind": 19112,
+  "Natural Gas": 23617,
   "Other": 0
  },
  "gdacs": {
@@ -471,7 +471,7 @@
    {
     "level": "Orange",
     "type": "drought",
-    "country": "Andorra, Albania, Austria, Bosnia &amp; Herzegovina, Belgium, Bulgaria, Belarus, Switzerland, Czech Republic, Germany, Denmark, Spain, France, Croatia, Hungary, Ireland, Italy, Liechtenstein, Luxembourg, Moldova, Montenegro, Netherlands, Poland, Romania, Serbia, Sweden, Slovenia, Slovakia, Ukraine,",
+    "country": "Andorra, Albania, Austria, Bosnia & Herzegovina, Belgium, Bulgaria, Belarus, Switzerland, Czech Republic, Germany, Denmark, Spain, France, Croatia, Hungary, Ireland, Italy, Liechtenstein, Luxembourg, Moldova, Montenegro, Netherlands, Poland, Romania, Serbia, Sweden, Slovenia, Slovakia, Ukraine,",
     "title": "Drought is on going in Andorra, Albania, Austria, Bosnia &amp; Herzegovina, Belgium, Bulgaria, Belarus, Switzerland, Cze",
     "lat": 48.127,
     "lon": 12.876,
