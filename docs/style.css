@@ -182,3 +182,6 @@ button.link{background:none;border:0;color:var(--accent);cursor:pointer;font-fam
 .viewer{width:100%;height:72vh;border:2px solid var(--line);background:#f1e9d6}
 .fw-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}.fw-tabs .pix.on{border-color:var(--accent);color:var(--accent)}.fw-pane[hidden]{display:none}.cycle li{margin-bottom:8px}.cycle{padding-left:20px;font-size:13px}
 .vdet{font-size:11px;color:var(--mute);margin-top:4px}.vdet b{color:var(--warn)}.vnode{min-height:140px}
+.topo-svg .node .sub{font-size:9.5px}
+.vwrap2{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(280px,1fr);gap:12px}@media(max-width:900px){.vwrap2{grid-template-columns:1fr}}.vsteps.wide{max-height:none;columns:2;column-gap:24px;margin-top:10px}@media(max-width:900px){.vsteps.wide{columns:1}}.vsteps.wide li{break-inside:avoid}
+.topo-svg .node.quar rect{stroke:#e85a4b}.topo-svg .node.on rect{stroke:#4be89a;stroke-width:2.5}
