@@ -37,6 +37,7 @@ forgotten; "blocked" means a person must act. Update this file when something sh
 - Economist fills loss figures only where filings exist; Technologist records model releases and prices from makers' pages
 
 ## Pending: product ideas raised but not yet built
+- 26-year backfill: an Archivist job that walks sources with archives (CISA ICS advisories 2010+, SEC 8-Ks, SANS/E-ISAC reports, DOJ indictments, court records) and adds one verified case per run; today the historical timeline holds ~25 background cases
 - Random-interval verification (cloud cron minimum is 1 hour; spot-checks approximate it)
 - Live monitoring (by design this is a snapshot; a push feed would need a server)
 - Comments or annotations by the human evaluator inside the page (currently edits go in the JSON)

@@ -714,6 +714,20 @@ $('btn-dash').onclick = () => {
       ${line('OT-affected items per run', runs, r => Object.entries(r.ot_impact || {}).filter(([k]) => /process|physical|reached/i.test(k)).reduce((a, [, v]) => a + v, 0), '#e85a4b')}
       ${line('Flags raised per run', runs, r => Object.values(r.flags || {}).reduce((a, v) => a + v, 0), '#c94be8')}
     </div>
+    <h3>Timeline: what this snapshot covers</h3>
+    ${(() => { const st = news ? [...news.energy, ...news.wide].filter(x => x.published) : []; if (!st.length) return '<p class="k">no dated stories</p>';
+      const days = {}; st.forEach(x => { const d = x.published.slice(0, 10); days[d] = days[d] || { e: 0, w: 0 }; (news.energy.includes(x) ? days[d].e++ : days[d].w++); });
+      const keys = Object.keys(days).sort(); const max = Math.max(...keys.map(k => days[k].e + days[k].w));
+      return `<p>Live coverage: <b>${esc(keys[0])}</b> to <b>${esc(keys[keys.length - 1])}</b> (${keys.length} days with stories, ${news.window_hours}-hour window, fetched ${esc((news.generated_at || '').slice(0, 16).replace('T', ' '))} UTC). The feeds are RSS: they carry the last days or weeks, never an archive, so this bar cannot reach further back. Older ground is covered by the historical cases below and by the archive, one run at a time.</p>
+      <div class="chart"><div class="ct">Stories per day (energy-cyber in green, wider in grey) · click a day</div>${keys.map(k => `<div class="bar-row clickable" data-day="${esc(k)}"><span class="bl">${esc(k)}</span><span class="bt"><span class="bf" style="width:${(days[k].e / max) * 100}%;background:#4be89a;display:inline-block"></span><span class="bf" style="width:${(days[k].w / max) * 100}%;background:#3a4252;display:inline-block"></span></span><span class="bv">${days[k].e}/${days[k].w}</span></div>`).join('')}</div>`; })()}
+    <h3>Timeline: the historical record, 2000 to today</h3>
+    ${(() => { if (!sectors) return ''; const cases = []; sectors.facilities.forEach(f => (f.background_cases || []).forEach(c => cases.push({ ...c, fac: f }))); ((briefing && briefing.items) || []).forEach(it => cases.push({ year: +((it.event_date || it.reported_date || '').slice(0, 4)), case: it.headline, live: true, fac: null }));
+      const byYear = {}; cases.forEach(c => { if (c.year) (byYear[c.year] = byYear[c.year] || []).push(c); }); const years = []; for (let y = 2000; y <= new Date().getFullYear(); y++) years.push(y);
+      return `<p class="k">${cases.filter(c => !c.live).length} historical cases from the facility dossiers (background: from the model's general knowledge, with a pointer to check; unverified until the Archivist's spot-checks) plus this run's ${cases.filter(c => c.live).length} live items. Years with no mark mean no case is recorded here, not that nothing happened; the Archivist adds cases as they are verified.</p>
+      <div class="tl">${years.map(y => { const cs = byYear[y] || []; return `<div class="tl-year ${cs.length ? 'has' : ''}"><div class="tl-y">${y}</div><div class="tl-dots">${cs.map(c => `<button type="button" class="tl-dot ${c.live ? 'live' : ''}" title="${esc(c.case)}" data-fac="${c.fac ? esc(c.fac.id) : ''}" data-an="${c.live ? esc(c.case) : ''}">${c.live ? '●' : '○'}</button>`).join('')}</div></div>`; }).join('')}</div>
+      <ul class="tl-list">${years.filter(y => byYear[y]).map(y => `<li><b>${y}</b> ${byYear[y].map(c => c.live ? `<button type="button" class="link" data-an="${esc(c.case)}">${esc(c.case.slice(0, 80))}</button> <span class="k">(live)</span>` : `<button type="button" class="link" data-fac="${esc(c.fac.id)}">${esc(c.case.slice(0, 80))}</button> <span class="k">(${esc(c.fac.name)}; check: ${esc(c.check)})</span>`).join('<br>')}</li>`).join('')}</ul>`; })()}
+    <h3>Timeline: archived runs</h3>
+    <p class="k">${(history && history.runs ? history.runs.length : 0)} run${history && history.runs && history.runs.length === 1 ? '' : 's'} so far; the History tab lists each with its Gazette. Twice-daily runs add two points a day; a year of operation is about 730 editions.</p>
     <h3>Scoring criteria</h3>
     <table class="fac-table"><tr><th>Severity</th><td>${Object.entries((briefing.rubric || {}).severity_scale || {}).map(([k, v]) => `<div><span class="badge sev-${esc(k)}">${esc(k)}</span> ${esc(v)}</div>`).join('')}<div class="k">Factors: ${esc(((briefing.rubric || {}).severity_factors || []).join(' · '))}</div></td></tr>
     <tr><th>Reliability</th><td>${Object.entries((briefing.rubric || {}).reliability_scale || {}).map(([k, v]) => `<b>${esc(k)}</b> ${esc(v)}`).join(' · ')}</td></tr>
@@ -721,6 +735,9 @@ $('btn-dash').onclick = () => {
     <tr><th>Rule</th><td>${esc((briefing.rubric || {}).rule || '')}</td></tr></table>
     <div id="drill" class="drill"><div class="k">Click a tile or a bar above to see the cases behind it.</div></div>`;
   $('dash').querySelectorAll('[data-field]').forEach(el => el.onclick = () => drill(el.dataset.field, el.dataset.key));
+  $('dash').querySelectorAll('[data-day]').forEach(el => el.onclick = () => { const d = el.dataset.day; const st = [...news.energy, ...news.wide].filter(x => (x.published || '').startsWith(d)); $('drill').innerHTML = `<div class="ct">${esc(d)} · ${st.length} stories</div><ul>${st.map(x => `<li><a href="${esc(x.link)}" target="_blank" rel="noopener">${esc(x.title)}</a> <span class="k">${esc(x.source_name)}${news.energy.includes(x) ? ' · energy-cyber' : ''}</span></li>`).join('')}</ul>`; $('drill').scrollIntoView({ block: 'nearest' }); });
+  $('dash').querySelectorAll('[data-fac]').forEach(el => { if (el.dataset.fac) el.onclick = () => { const f = sectors.facilities.find(x => x.id === el.dataset.fac); $('dlg-dash').close(); openFacility(f); }; });
+  $('dash').querySelectorAll('[data-an]').forEach(el => { if (el.dataset.an) el.onclick = () => openAnalysis(el.dataset.an); });
   $('dlg-dash').showModal();
 };
 

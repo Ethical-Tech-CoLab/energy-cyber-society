@@ -141,3 +141,7 @@ button.link{background:none;border:0;color:var(--accent);cursor:pointer;font-fam
 .suggest-wrap{border-top:2px solid var(--line)}.suggest{padding:6px 12px 10px}
 .chat{min-height:240px}
 .pix.accent{border-color:var(--accent);color:var(--accent)}
+
+.tl{display:flex;flex-wrap:wrap;gap:2px;margin:8px 0}.tl-year{width:34px;text-align:center;border-top:2px solid var(--line);padding-top:3px}.tl-year.has{border-top-color:var(--warn)}.tl-y{font-size:9px;color:var(--mute)}.tl-dots{min-height:14px}
+.tl-dot{background:none;border:0;color:var(--warn);cursor:pointer;font-size:11px;padding:0 1px}.tl-dot.live{color:var(--accent)}
+.tl-list{font-size:12px;padding-left:18px}.tl-list li{margin-bottom:4px}
