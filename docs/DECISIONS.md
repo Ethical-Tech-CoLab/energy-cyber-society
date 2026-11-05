@@ -59,6 +59,8 @@ Nothing here is lost in chat.
 
 | 50 | More complexity per industry: supply chain, products, machinery, electricity dependence, sensors, compute, storage, everything exploitable; and the cases that happened | Nine-layer dependency stack per facility with cases linked to the report, the history and this week's items; global supply-chain map | facility dossiers; Research tab; `agents/sectors.json` |
 
+| 51 | Add an autonomous agent that fixes bugs, refactors, opens PRs, improves UX, and actually does it | The Engineer resident with ENGINEERING.md, a UX audit script, an Incident Desk log, a daily routine body; first PR opened by hand following the playbook | Workshop; `ENGINEERING.md`; `scripts/ux_audit.py`; open PRs |
+
 ## Standing decisions made by the assistant without being asked (so you can reverse them)
 
 - Resident names and the town metaphor; the building names; PIT as the third layer (DoD term).

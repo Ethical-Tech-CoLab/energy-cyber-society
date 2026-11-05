@@ -38,7 +38,10 @@ forgotten; "blocked" means a person must act. Update this file when something sh
 - Dependency stack on all 12 facilities (nine layers: supply chain, machinery, electricity, sensors, compute, storage, comms, software, people), each with exploitable point, signs and the cases that happened; global supply-chain map in the Research tab
 - Research report integrated (2026-11-05): 20 report-sourced cases in the dossiers and timeline, rules 33-39, Research tab, related cases on items. OPEN: resolve the report's cited URLs (Archivist); obtain the 95-record spreadsheet from Carolina and import it
 
+- The Engineer (resident, Workshop, ENGINEERING.md, scripts/ux_audit.py, scripts/engineer_log.py, scripts/routine_engineer.json): autonomous bug-fix/refactor/UX agent that opens PRs daily, never merges
+
 ## Blocked: needs Carolina
+- Create the Engineer routine from scripts/routine_engineer.json (RemoteTrigger) once the repo is reachable to routines; review and merge its PRs
 - Make the repo public and enable Pages from `main:/docs` (the assistant's permissions refuse public surfaces)
 - `gh auth refresh -h github.com -s workflow`, then un-ignore and push `.github/workflows/daily.yml`
 - Add the `ANTHROPIC_API_KEY` repository secret (for the Actions path)

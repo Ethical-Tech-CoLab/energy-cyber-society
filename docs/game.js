@@ -33,6 +33,7 @@ const BUILDINGS = [
   { key: 'Exchange',           x: 558, y: 640, w: 108, h: 70, color: '#1f3f3d', roof: '#4bd1c5' },
   { key: 'Situation Room',     x: 684, y: 640, w: 118, h: 70, color: '#4a1f33', roof: '#d94b8a' },
   { key: 'Compute Exchange',   x: 820, y: 640, w: 126, h: 70, color: '#2a1f4a', roof: '#7c4dff' },
+  { key: 'Workshop',           x: 880, y: 745, w: 70,  h: 50, color: '#4a2a1a', roof: '#ff7f50' },
 ];
 const PLAZA = { x: 380, y: 300, w: 200, h: 120 };
 
@@ -317,6 +318,7 @@ function selectBuilding(b) {
   if (info) addMsg('Data flow: ' + info.data, 'sys');
   if (res) { addMsg(`${res.name} works here. ${res.job}`, 'them'); if (res.name_note) addMsg('About the name: ' + res.name_note, 'sys'); }
   if (buildings && buildings.naming_note) addMsg('How all the names were chosen: ' + buildings.naming_note, 'sys');
+  if (b.key === 'Workshop') { fetch('data/ux_audit.json').then(r => r.json()).then(u => { const m = addMsg(`UX audit ${(u.audited_at || '').slice(0, 16).replace('T', ' ')} UTC: ${u.findings.length} findings (${u.counts.high} high, ${u.counts.medium} medium, ${u.counts.low} low)`, 'them'); m.innerHTML += `<ul>${u.findings.map(x => `<li><b>${esc(x.severity)}</b> ${esc(x.finding)} <span class="k">→ ${esc(x.fix)} (${esc(x.where)})</span></li>`).join('')}</ul>`; }).catch(() => addMsg('UX audit not found.', 'sys')); const eng = allEvents().filter(e => e.agent === 'engineer'); addMsg(eng.length ? 'Engineering log: ' + eng.map(e => `${e.at.slice(0, 10)} ${e.type}: ${e.detail} ${e.item.startsWith('http') ? e.item : ''}`).join(' · ') : 'Engineering log: no pull requests yet.', 'sys'); addMsg('Playbook: ENGINEERING.md. The Engineer runs as a daily scheduled agent (scripts/routine_engineer.json), opens pull requests, never merges.', 'sys'); }
   if (b.key === 'Compute Exchange' && aimarket) { aimarket.inputs.forEach(l => addMsg(`${l.layer}: ${l.items.join('; ')}\nTrack: ${l.track}\nEnergy relevance: ${l.energy_relevance}`, 'them')); addMsg('This society: ' + Object.entries(aimarket.this_society).map(([k, v]) => k.replace(/_/g, ' ') + ' — ' + v).join(' · '), 'sys'); }
   if (b.key === 'Situation Room' && briefing && briefing.geopolitics) { briefing.geopolitics.theatres.forEach(t => { const m = addMsg(`${t.conflict}\nIT: ${t.layers.IT}\nOT: ${t.layers.OT}\nPIT: ${t.layers.PIT}\nSubsectors: ${t.subsectors.join(', ')} · US relevance: ${t.us_relevance} · confidence ${t.confidence}`, 'them'); m.innerHTML += srcList(t.source_urls); }); addMsg('Absent from this week\'s feeds: ' + briefing.geopolitics.absent_this_week.join('; ') + '. ' + briefing.geopolitics.note, 'sys'); }
   const sg = $('suggest'); sg.innerHTML = '';

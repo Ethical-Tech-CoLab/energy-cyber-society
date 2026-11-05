@@ -1,0 +1,58 @@
+{
+ "audited_at": "2026-11-05T03:27:32.074748+00:00",
+ "findings": [
+  {
+   "severity": "high",
+   "finding": "21 top-level buttons in the control bar",
+   "fix": "group into menus: Read (brief, summary, gazette), Analyse (board, dashboard, collections, scenarios, research), Verify (incident desk, references, history), About (methodology, rules, limitations, register, human touch, cost, bank), Settings",
+   "where": "docs/index.html .hud-actions"
+  },
+  {
+   "severity": "low",
+   "finding": "dialog dlg-rules has no heading in its first 400 chars",
+   "fix": "add an <h2>",
+   "where": "docs/index.html"
+  },
+  {
+   "severity": "medium",
+   "finding": "53 innerHTML assignments in one file",
+   "fix": "render helpers; keep esc() on every interpolation",
+   "where": "docs/game.js"
+  },
+  {
+   "severity": "low",
+   "finding": "no light-mode support; page is dark only",
+   "fix": "acceptable by design; document it, or add tokens for light mode",
+   "where": "docs/style.css"
+  },
+  {
+   "severity": "medium",
+   "finding": "no narrow-screen media query beyond the grid breakpoint",
+   "fix": "test at 390px; collapse the control bar into a menu button",
+   "where": "docs/style.css"
+  },
+  {
+   "severity": "medium",
+   "finding": "data loads fail silently (catch(() => null)); the page shows empty panels with no message",
+   "fix": "show a visible 'could not load X' line in the HUD when a fetch fails",
+   "where": "docs/game.js boot()"
+  },
+  {
+   "severity": "low",
+   "finding": "pixel font used in many places",
+   "fix": "keep it to the title, button labels and tags; paragraphs in the mono font",
+   "where": "docs/style.css"
+  },
+  {
+   "severity": "low",
+   "finding": "canvas objects are not focusable; the list view exists but is hidden in a <details>",
+   "fix": "open the list view by default on narrow screens",
+   "where": "docs/index.html #listview"
+  }
+ ],
+ "counts": {
+  "high": 1,
+  "medium": 3,
+  "low": 4
+ }
+}

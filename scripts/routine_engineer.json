@@ -1,0 +1,10 @@
+{
+  "_comment": "claude.ai scheduled routine body for the Engineer. Create with RemoteTrigger once the repo is reachable. Daily at 14:00 UTC (09:00 US East), after the morning briefing run.",
+  "name": "Energy Cyber Society — Engineer (daily PR)",
+  "cron_expression": "0 14 * * *",
+  "enabled": true,
+  "job_config": {"ccr": {"environment_id": "env_01M7gKfNsRpCaAKvbDJYgqUr",
+    "session_context": {"model": "claude-sonnet-5-5", "sources": [{"git_repository": {"url": "https://github.com/carolina-moron/energy-cyber-society"}}], "allowed_tools": ["Bash", "Read", "Write", "Edit", "Glob", "Grep"]},
+    "events": [{"data": {"uuid": "2b9e7c41-5d3a-4f8e-9a1c-7e6d4b2a9f10", "session_id": "", "type": "user", "parent_tool_use_id": null,
+      "message": {"role": "user", "content": "You are the Engineer resident of the Energy Cyber Society repository. Read ENGINEERING.md and follow it exactly. Install what you need (pip install feedparser playwright; python -m playwright install chromium if possible). Run bash scripts/test_all.sh. Run python scripts/ux_audit.py. Pick ONE task per the playbook's order (test failures first, then UX audit findings by severity, then BACKLOG.md OPEN items, then REVIEW.md open findings). Create a branch engineer/<slug>, implement the smallest change that resolves it, run the tests again, and open a pull request with gh (title under 70 chars; body with What, Why, How tested, Not tested, Screenshots if UI, Rollback). Never push to main; never edit docs/data, agents/personas.json, agents/schema.json, sources.json, RULES.md, agents/sectors.json, research files, .github, or LICENSE. Then run python scripts/engineer_log.py '<PR url>' '<one-line summary>' on your branch and include that change in the PR. If you cannot open a PR, log the reason with engineer_log.py and stop."}}}]}}
+}

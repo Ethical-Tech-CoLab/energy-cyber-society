@@ -125,6 +125,15 @@
     "What are all the inputs an AI agent like this one needs?": "Nine layers, in agents/ai_market.json: compute hardware (accelerators, CPUs, HBM, interconnect, storage), data centre and plant (site, grid interconnection or on-site generation, cooling and water, backup, building OT), electricity and fuel, the software stack (weights, frameworks, inference servers, orchestration, agent tooling, observability), data, people, capital and market (funding, valuations, pricing), regulation (export controls, AI rules, permitting), and the security of the agent itself. For this society specifically: a hosted model at published per-token prices, a browser, GitHub Pages, and the allowlisted feeds; its hardware and energy per run are not disclosed by the provider."
    },
    "bubble": "No model release in the feeds. No number from memory."
+  },
+  "engineer": {
+   "briefing": "First day in the Workshop. The test suite is green on main (scripts/test_all.sh). The UX audit finds eight things: one high, the control bar has twenty-one top-level buttons, which no first-time visitor can scan; three medium, data loads fail silently, no narrow-screen layout, and one 1,400-line script file; four low. My first pull request groups the buttons into five menus and adds a visible 'could not load' line when a data file fails, with no change to behaviour behind the buttons. I never merge; the owner does.",
+   "answers": {
+    "What would you fix first, and why?": "The twenty-one buttons. It is the first thing a visitor sees and the audit's only high finding. Grouping them into Read, Analyse, Verify, About and Settings removes the friction without touching any logic, because every button keeps its id.",
+    "What did the last UX audit find?": "Eight findings: 21 top-level buttons (high); silent fetch failures, no narrow-screen layout, one very large script file (medium); a dialog without a heading, dark-only theme, pixel font overuse, and canvas objects not focusable except through the list view (low). Open the Workshop for the list with fixes.",
+    "Which pull requests are open and what do they change?": "See the Engineering log in the Workshop panel; each entry carries the pull request URL. The first one is the menu grouping and the load-failure message."
+   },
+   "bubble": "Twenty-one buttons. I will group them."
   }
  },
  "conversations": [

@@ -101,6 +101,12 @@ Git history is the second copy. Nothing is overwritten.
 synthesised from the intelligence cycle, ICD 203 analytic standards, ICD 206 sourcing,
 Admiralty grading, structured analytic techniques and the FBI/CISA advisory format.
 
+## The Engineer
+
+A fifteenth resident works on this codebase: `ENGINEERING.md` is the playbook, `scripts/ux_audit.py`
+finds UX and accessibility work, `scripts/routine_engineer.json` is the daily cloud routine. It opens
+pull requests and never merges; the owner reviews.
+
 ## Research
 
 `agents/research/` holds user-provided research transcribed to data. The Global Energy Cyber

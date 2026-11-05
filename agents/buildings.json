@@ -81,6 +81,11 @@
       "resident": null,
       "what": "Where the money is kept in view. The Bank shows what each archived run cost (measured when the API ran, estimated when a person curated), the running total, the projected month at the chosen model and cadence, and the budget you set. The Economist and the Technologist report here; the Bank itself only counts.",
       "data": "Reads docs/data/history.json (per-run usage), docs/data/cost_model.json (prices and stage estimates) and this browser's budget setting. Writes nothing; the budget lives in your browser."
+    },
+    "Workshop": {
+      "resident": "engineer",
+      "what": "Where the society repairs itself. The Engineer reads the backlog, the review, the flags and the UX audit, fixes one thing at a time on a branch, and opens a pull request for the human owner to merge. UX counts as much as bugs.",
+      "data": "Reads the repository, docs/data/ux_audit.json and open PRs. Writes branches and pull requests, never main, never data."
     }
   }
 }
