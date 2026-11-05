@@ -64,6 +64,7 @@ follow INTELLIGENCE_ANALYSIS.md for how to evaluate sources, write judgments and
    where the bundle supports them; never invent an IOC. Then `python scripts/export_stix.py`.
 7b. `python scripts/validate.py` must pass. Then `python scripts/command_log.py` appends this
    run's flags to docs/data/command_log.json (append-only; never edit or delete events).
+   Then `python scripts/archive.py` to file the run in docs/archive/ (append-only).
    Spot-check two background cases from agents/sectors.json against their 'check' pointer
    with WebFetch and log the result as a `background-check` event (ok / differs / unreachable). Then commit `docs/data` with message
    `briefing: <UTC date and hour>` and push to main.

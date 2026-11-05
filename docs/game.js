@@ -293,6 +293,8 @@ function select(a) {
   const b = briefing && briefing.agents[a.p.id];
   addMsg(b ? b.briefing : 'No briefing yet today.', 'them');
   if (briefing && briefing.us_status && a.p.id === 'contrarian') addMsg('US status: ' + briefing.us_status, 'sys');
+  if (briefing && briefing.verification && a.p.id === 'verifier') { const V = briefing.verification.verdicts || {}; const m = addMsg('Verdicts this run:', 'them'); m.innerHTML += `<ul>${Object.entries(V).map(([h, v]) => { const it = (briefing.items || []).find(i => i.headline === h); return `<li><b>${esc(v.verdict)}</b> — ${esc(h.slice(0, 70))}${it ? srcList(it.sources) : ''}</li>`; }).join('')}</ul>`; }
+  if (a.p.id === 'librarian' && sources && sources.source_performance) { const m = addMsg('Sources this run (what delivered, what was blocked):', 'them'); const feeds = (news && news.sources) || []; m.innerHTML += `<ul>${Object.entries(sources.source_performance).map(([k, v]) => { const f = feeds.find(x => x.name === k); return `<li>${f && f.url ? `<a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(k)}</a>` : esc(k)} · ${v.energy_items || 0} energy, ${v.wide_items || 0} wide · ${esc(v.feed || '')}${v.pulls_blocked ? ' · <span class="lbl">blocked ' + v.pulls_blocked + '</span>' : ''}</li>`; }).join('')}</ul>`; }
   if (briefing && briefing.verification && a.p.id === 'verifier') addMsg('Audit ' + (briefing.verification.run_at || '').slice(0, 16).replace('T', ' ') + ' UTC: ' + briefing.verification.summary, 'sys');
   if (briefing && briefing.model === 'fallback-headlines') addMsg('Headlines-only mode: the daily agent run has not happened yet, so this is the wire, not analysis. Add your key in Settings for a live answer.', 'sys');
   const sg = $('suggest'); sg.innerHTML = '';
@@ -446,7 +448,7 @@ function openCommand() {
   const ev = allEvents(); const open = ev.filter(e => e.status === 'open');
   const byType = {}; open.forEach(e => (byType[e.type] = byType[e.type] || []).push(e));
   $('cmd-meta').textContent = `${open.length} open flags · ${ev.length} events in history · log updated ${esc(((cmdlog && cmdlog.updated_at) || '').slice(0, 16).replace('T', ' '))} UTC`;
-  $('cmd-open').innerHTML = Object.entries(byType).sort((a, b) => b[1].length - a[1].length).map(([t, es]) => `<details ${t === 'invented-suspected' || t === 'contradiction' ? 'open' : ''}><summary><span class="badge ${es[0].severity === 'critical' ? 'sev-critical' : es[0].severity === 'info' ? 'sev-info' : 'sev-high'}">${esc(t)}</span> ${es.length}</summary><ul>${es.map(e => `<li><b>${esc(e.agent)}</b> · ${esc(e.item || '(run)')}<br><span class="k">${esc(e.detail)}</span> <button type="button" class="link" data-verify="${esc(e.item)}">verify</button></li>`).join('')}</ul></details>`).join('') || '<p class="k">No open flags.</p>';
+  $('cmd-open').innerHTML = Object.entries(byType).sort((a, b) => b[1].length - a[1].length).map(([t, es]) => `<details ${t === 'invented-suspected' || t === 'contradiction' ? 'open' : ''}><summary><span class="badge ${es[0].severity === 'critical' ? 'sev-critical' : es[0].severity === 'info' ? 'sev-info' : 'sev-high'}">${esc(t)}</span> ${es.length}</summary><ul>${es.map(e => `<li><b>${esc(e.agent)}</b> · ${esc(e.item || '(run)')}<br><span class="k">${esc(e.detail)}</span> <button type="button" class="link" data-verify="${esc(e.item)}">verify</button>${(() => { const it = ((briefing && briefing.items) || []).find(i => i.headline === e.item); return it ? srcList(it.sources) : ''; })()}</li>`).join('')}</ul></details>`).join('') || '<p class="k">No open flags.</p>';
   $('cmd-history').innerHTML = `<table class="perf-table"><tr><th>When (UTC)</th><th>Run</th><th>Agent</th><th>Type</th><th>Item</th><th>Status</th></tr>${ev.map(e => `<tr><td>${esc(e.at.slice(0, 16).replace('T', ' '))}</td><td>${esc(String(e.run).slice(0, 10))}</td><td>${esc(e.agent)}</td><td>${esc(e.type)}</td><td>${esc((e.item || '').slice(0, 70))}</td><td>${esc(e.status)}</td></tr>`).join('')}</table>`;
   const sel = $('verify-pick'); sel.innerHTML = '<option value="">— pick a board item —</option>' + ((briefing && briefing.items) || []).map(it => `<option>${esc(it.headline)}</option>`).join('');
   $('verify-out').innerHTML = '';
@@ -553,6 +555,16 @@ $('btn-refs').onclick = () => {
   render(''); $('refs-q').oninput = ev => render(ev.target.value); $('dlg-refs').showModal();
 };
 
+// history: the append-only archive of every run
+$('btn-history').onclick = async () => {
+  let idx = { runs: [] }; try { idx = await fetch('archive/index.json').then(r => r.json()); } catch {}
+  const runs = [...idx.runs].reverse();
+  $('hist-meta').textContent = `${runs.length} archived run${runs.length === 1 ? '' : 's'} · nothing is overwritten or deleted`;
+  $('hist-body').innerHTML = (runs.length ? `<table class="perf-table"><tr><th>Run (UTC)</th><th>Model</th><th>Items</th><th>Stories</th><th>Flags</th><th>Headline</th><th>Open</th></tr>${runs.map(r => `<tr><td>${esc(r.run)}</td><td>${esc(r.model)}</td><td>${r.items}</td><td>${r.energy}/${r.wide}</td><td>${r.flags}</td><td>${esc(r.headline.slice(0, 90))}</td><td><a href="gazette.html?run=${esc(r.run)}" target="_blank" rel="noopener">Gazette</a> · <a href="archive/${esc(r.run)}/briefing.json" target="_blank" rel="noopener">briefing</a> · <a href="archive/${esc(r.run)}/news.json" target="_blank" rel="noopener">wire</a> · <a href="archive/${esc(r.run)}/command_log.json" target="_blank" rel="noopener">flags</a> · <a href="archive/${esc(r.run)}/stix.json" target="_blank" rel="noopener">STIX</a></td></tr>`).join('')}</table>` : '<p class="k">No archived runs yet.</p>') +
+    `<p class="k">Each folder holds the complete published data set (briefing, wire, pulled sources, flag log, STIX, personas, dossiers, map) plus the rules, procedure, playbook and cost sheet in force at the time. Index: <a href="ARCHIVE.md" target="_blank" rel="noopener">ARCHIVE.md</a>. The git history of the repository is the second copy.</p>`;
+  $('dlg-history').showModal();
+};
+
 // executive brief: the ten biggest threats, assembled for evaluation
 $('btn-exec').onclick = () => {
   const e = briefing && briefing.executive_brief; if (!e) { $('exec-body').innerHTML = '<p class="k">No executive brief this run.</p>'; $('dlg-exec').showModal(); return; }
@@ -579,7 +591,7 @@ $('btn-scenarios').onclick = () => {
 };
 $('btn-human').onclick = () => {
   const h = (briefing && briefing.human_touch) || { items: [] };
-  $('human-body').innerHTML = `<p>${esc(h.intro || '')}</p><table class="fac-table"><tr><th>Needs a person</th><th>Why it cannot be automated here</th></tr>${h.items.map(x => `<tr><th>${esc(x.what)}</th><td>${esc(x.why)}</td></tr>`).join('')}</table><p class="k">${esc(h.automated || '')}</p><p><b>Owner:</b> ${esc((personas && personas.human_owner) || '')}</p>`;
+  $('human-body').innerHTML = `<p>${esc(h.intro || '')}</p><table class="fac-table"><tr><th>Needs a person</th><th>Why it cannot be automated here</th></tr>${h.items.map(x => `<tr><th>${esc(x.what)}</th><td>${esc(x.why)}</td></tr>`).join('')}</table><p class="k">${esc(h.automated || '')}</p><p><b>Owner:</b> ${esc((personas && personas.human_owner) || '')}</p><p class="k">See <a href="RULES.md" target="_blank" rel="noopener">RULES.md</a> §7 and <a href="BACKLOG.md" target="_blank" rel="noopener">BACKLOG.md</a> (blocked on a person).</p>`;
   $('dlg-human').showModal();
 };
 

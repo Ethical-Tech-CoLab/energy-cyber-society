@@ -89,6 +89,12 @@ attack types, how a breach happens, live and background cases), and the newsstan
 opens the Gazette, a broadsheet printed from the same data. `docs/data/stix.json` is a STIX
 2.1 export of the board.
 
+## Archive
+
+`docs/archive/<run>/` keeps every run's complete data set, rules and playbook as published;
+`docs/ARCHIVE.md` is the index; the History tab and `gazette.html?run=<run>` open past editions.
+Git history is the second copy. Nothing is overwritten.
+
 ## Analysis procedure
 
 `INTELLIGENCE_ANALYSIS.md`: the ten-step procedure an investigative agent follows here,

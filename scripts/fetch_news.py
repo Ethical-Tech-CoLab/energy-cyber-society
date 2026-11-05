@@ -68,7 +68,7 @@ def main():
     out = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "window_hours": WINDOW_HOURS,
-        "sources": [{k: s[k] for k in ("id", "name", "type", "country", "bias_note")} for s in cfg["sources"]],
+        "sources": [{k: s[k] for k in ("id", "name", "type", "country", "bias_note", "url")} for s in cfg["sources"]],
         "errors": errors,
         "energy": energy[:40],
         "wide": wide[:60],

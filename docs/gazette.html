@@ -46,7 +46,9 @@ a{color:inherit}
 <script>
 const esc = t => String(t == null ? '' : t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 (async () => {
-  const [b, n] = await Promise.all([fetch('data/briefing.json').then(r => r.json()), fetch('data/news.json').then(r => r.json()).catch(() => null)]);
+  const run = new URLSearchParams(location.search).get('run'); const base = run ? `archive/${run}/` : 'data/';
+  const [b, n] = await Promise.all([fetch(base + 'briefing.json').then(r => r.json()), fetch(base + 'news.json').then(r => r.json()).catch(() => null)]);
+  if (run) document.getElementById('edition').textContent = 'Archived edition ' + run;
   const d = new Date(b.news_generated_at || b.generated_at);
   document.getElementById('date').textContent = d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
   document.getElementById('edition').textContent = (b.model || '').includes('session') ? 'Hand-set edition' : 'Morning edition';

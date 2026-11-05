@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-05T01:11:55.739235+00:00",
+ "generated_at": "2026-11-05T01:19:25.809431+00:00",
  "window_hours": 168,
  "sources": [
   {
@@ -7,98 +7,160 @@
    "name": "CISA Advisories",
    "type": "government",
    "country": "US",
-   "bias_note": "US government body; authoritative on US-facing threats, careful wording, rarely attributes publicly, slow on non-US incidents."
+   "bias_note": "US government body; authoritative on US-facing threats, careful wording, rarely attributes publicly, slow on non-US incidents.",
+   "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml"
   },
   {
    "id": "cisa-news",
    "name": "CISA News",
    "type": "government",
    "country": "US",
-   "bias_note": "Agency press office; frames events around its own programs and successes."
+   "bias_note": "Agency press office; frames events around its own programs and successes.",
+   "url": "https://www.cisa.gov/news.xml"
   },
   {
    "id": "cyberscoop",
    "name": "CyberScoop",
    "type": "trade press",
    "country": "US",
-   "bias_note": "Washington-focused trade outlet; strong on policy and federal sourcing, sponsor-funded events with vendors."
+   "bias_note": "Washington-focused trade outlet; strong on policy and federal sourcing, sponsor-funded events with vendors.",
+   "url": "https://cyberscoop.com/feed/"
   },
   {
    "id": "therecord",
    "name": "The Record (Recorded Future News)",
    "type": "vendor-owned press",
    "country": "US",
-   "bias_note": "Editorially independent but owned by threat-intel vendor Recorded Future; strong on nation-state and ransomware actors."
+   "bias_note": "Editorially independent but owned by threat-intel vendor Recorded Future; strong on nation-state and ransomware actors.",
+   "url": "https://therecord.media/feed"
   },
   {
    "id": "bleeping",
    "name": "BleepingComputer",
    "type": "tech press",
    "country": "US",
-   "bias_note": "Fast, incident-driven, often first with ransomware claims; headlines can run ahead of confirmation."
+   "bias_note": "Fast, incident-driven, often first with ransomware claims; headlines can run ahead of confirmation.",
+   "url": "https://www.bleepingcomputer.com/feed/"
   },
   {
    "id": "securityweek",
    "name": "SecurityWeek",
    "type": "trade press",
    "country": "US",
-   "bias_note": "Vendor-advertising supported; dedicated ICS/OT coverage, sometimes echoes vendor research uncritically."
+   "bias_note": "Vendor-advertising supported; dedicated ICS/OT coverage, sometimes echoes vendor research uncritically.",
+   "url": "https://www.securityweek.com/feed/"
   },
   {
    "id": "darkreading",
    "name": "Dark Reading",
    "type": "trade press",
    "country": "US",
-   "bias_note": "Informa-owned, heavy vendor sponsorship; analysis-led, can amplify vendor threat reports."
+   "bias_note": "Informa-owned, heavy vendor sponsorship; analysis-led, can amplify vendor threat reports.",
+   "url": "https://www.darkreading.com/rss.xml"
   },
   {
    "id": "krebs",
    "name": "Krebs on Security",
    "type": "independent",
    "country": "US",
-   "bias_note": "Single investigative reporter; deep on cybercrime ecosystems, selective coverage, US-centric."
+   "bias_note": "Single investigative reporter; deep on cybercrime ecosystems, selective coverage, US-centric.",
+   "url": "https://krebsonsecurity.com/feed/"
   },
   {
    "id": "utilitydive",
    "name": "Utility Dive",
    "type": "industry press",
    "country": "US",
-   "bias_note": "Utility-industry trade outlet; frames security through regulation, cost and reliability; sympathetic to utilities."
+   "bias_note": "Utility-industry trade outlet; frames security through regulation, cost and reliability; sympathetic to utilities.",
+   "url": "https://www.utilitydive.com/feeds/news/"
   },
   {
    "id": "doe-ceser",
    "name": "DOE Newsroom",
    "type": "government",
    "country": "US",
-   "bias_note": "Department press releases; promotional about federal programs."
+   "bias_note": "Department press releases; promotional about federal programs.",
+   "url": "https://www.energy.gov/rss/newsroom.xml"
   },
   {
    "id": "ncsc-uk",
    "name": "UK NCSC News",
    "type": "government",
    "country": "UK",
-   "bias_note": "UK government agency; aligned with Five Eyes attributions."
+   "bias_note": "UK government agency; aligned with Five Eyes attributions.",
+   "url": "https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml"
   },
   {
    "id": "hackernews",
    "name": "The Hacker News",
    "type": "tech press",
    "country": "international",
-   "bias_note": "High volume, sponsored content mixed with news; good for the wide-angle view of what else is happening."
+   "bias_note": "High volume, sponsored content mixed with news; good for the wide-angle view of what else is happening.",
+   "url": "https://feeds.feedburner.com/TheHackersNews"
   },
   {
    "id": "industrialcyber",
    "name": "Industrial Cyber",
    "type": "trade press",
    "country": "international",
-   "bias_note": "ICS/OT-only trade outlet; vendor-advertising supported, relays vendor reports and regulator notices with little pushback."
+   "bias_note": "ICS/OT-only trade outlet; vendor-advertising supported, relays vendor reports and regulator notices with little pushback.",
+   "url": "https://industrialcyber.co/feed/"
   },
   {
    "id": "register",
    "name": "The Register Security",
    "type": "tech press",
    "country": "UK",
-   "bias_note": "Irreverent UK tech press; sceptical of vendors and governments alike, headline tone can trivialise."
+   "bias_note": "Irreverent UK tech press; sceptical of vendors and governments alike, headline tone can trivialise.",
+   "url": "https://www.theregister.com/security/headlines.atom"
+  },
+  {
+   "id": "arxiv-cr",
+   "name": "arXiv cs.CR (preprints)",
+   "type": "research preprints",
+   "country": "international",
+   "bias_note": "Unreviewed preprints; author claims, not findings; good for what researchers are probing (ICS intrusion detection, grid attacks) before journals publish.",
+   "url": "http://export.arxiv.org/rss/cs.CR"
+  },
+  {
+   "id": "arxiv-sy",
+   "name": "arXiv eess.SY (systems and control preprints)",
+   "type": "research preprints",
+   "country": "international",
+   "bias_note": "Control-systems research, including grid and cyber-physical security; unreviewed.",
+   "url": "http://export.arxiv.org/rss/eess.SY"
+  },
+  {
+   "id": "schneier",
+   "name": "Schneier on Security",
+   "type": "independent",
+   "country": "US",
+   "bias_note": "One academic's commentary and links; strong on policy and crypto, selective, opinionated.",
+   "url": "https://www.schneier.com/feed/atom/"
+  },
+  {
+   "id": "csis",
+   "name": "CSIS",
+   "type": "think tank",
+   "country": "US",
+   "bias_note": "Washington think tank; policy analysis with funders across defence and industry; frames through US strategic interest.",
+   "url": "https://www.csis.org/rss.xml"
+  },
+  {
+   "id": "kaspersky-ics",
+   "name": "Kaspersky ICS CERT",
+   "type": "vendor research",
+   "country": "Russia",
+   "bias_note": "Deep ICS vulnerability and threat research from a Russian vendor banned from US federal use (2017) and US sales (2024); technical content is strong, attribution of Russian activity is absent or soft.",
+   "url": "https://ics-cert.kaspersky.com/feed/"
+  },
+  {
+   "id": "wired-sec",
+   "name": "WIRED Security",
+   "type": "magazine",
+   "country": "US",
+   "bias_note": "Narrative long-form; strong investigative pieces on Sandworm and grid attacks; prioritises story over timeliness; Condé Nast.",
+   "url": "https://www.wired.com/feed/category/security/latest/rss"
   }
  ],
  "errors": [
@@ -362,6 +424,19 @@
    "matched": [
     "nuclear"
    ]
+  },
+  {
+   "title": "Most Servers on the Planet Are Vulnerable to This Firmware Code-Execution Flaw",
+   "summary": "The critical flaw in UEFI firmware—used by most server vendors and data centers—allows attackers to execute code early in the boot process.",
+   "link": "https://www.wired.com/story/most-servers-on-the-planet-are-vulnerable-to-a-code-execution-flaw-in-uefi-firmware/",
+   "published": "2026-10-29T01:30:00+00:00",
+   "source": "wired-sec",
+   "source_name": "WIRED Security",
+   "source_type": "magazine",
+   "source_country": "US",
+   "matched": [
+    "data center"
+   ]
   }
  ],
  "wide": [
@@ -423,6 +498,16 @@
    "source": "therecord",
    "source_name": "The Record (Recorded Future News)",
    "source_type": "vendor-owned press",
+   "source_country": "US"
+  },
+  {
+   "title": "Hugging Face’s CEO Says His P(Doom) Is ‘Close to Zero’",
+   "summary": "“Most of the risk is actually created by a couple of players building behind closed doors,” Clément Delangue said of the need for open source AI.",
+   "link": "https://www.wired.com/story/wired-world-fair-2026-clement-delangue-hugging-face/",
+   "published": "2026-11-05T00:16:25+00:00",
+   "source": "wired-sec",
+   "source_name": "WIRED Security",
+   "source_type": "magazine",
    "source_country": "US"
   },
   {
@@ -796,6 +881,26 @@
    "source_country": "international"
   },
   {
+   "title": "Reliability-based lifetime fatigue damage assessment of offshore composite wind turbine blades",
+   "summary": "arXiv:2404.10021v2 Announce Type: replace Abstract: This paper presents a method for stochastic deterioration modelling and fatigue damage assessment for composite wind turbine blades operating in offshore environments. The fatigue damage of the composite blades is analysed and assessed based on the estimates for the applied loads along the blade span, stress analysis, fatigue crack evolution, and lifetime probability of fatigue failure. The complex stress states of the blade are mainly caused by the aerodynamic loads generated by corrected blade element momentum theory, gravity loads and cent",
+   "link": "https://arxiv.org/abs/2404.10021",
+   "published": "2026-11-04T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
+   "title": "Methods for Accelerating and Stabilizing Nonlinear Magnetic Equivalent-Circuit Analysis",
+   "summary": "arXiv:2406.08375v4 Announce Type: replace Abstract: Design and optimization of electromagnetic devices require models that converge reliably and quickly and can represent intense localized magnetic saturation. This paper presents a parameterized 2D nonlinear magnetic equivalent circuit (MEC) and proposes solution methods for it: an approximate Jacobian that is symmetric positive definite, so each Newton-Raphson iteration can use sparse Cholesky factorization with fill-reducing reordering, and Anderson mixing as step control. These methods are compared with alternative nonlinear iterations, lin",
+   "link": "https://arxiv.org/abs/2406.08375",
+   "published": "2026-11-04T10:00:00+00:00",
+   "source": "arxiv-sy",
+   "source_name": "arXiv eess.SY (systems and control preprints)",
+   "source_type": "research preprints",
+   "source_country": "international"
+  },
+  {
    "title": "Philippine Migrant Worker Data Likely Leaked in 69GB Government Breach",
    "summary": "An unknown operator appears to have exfiltrated SQL Server backups from the Philippine Overseas Employment Administration in under a half hour.",
    "link": "https://www.darkreading.com/cyberattacks-data-breaches/philippine-migrant-worker-data-69gb-government-breach",
@@ -886,6 +991,16 @@
    "source_country": "UK"
   },
   {
+   "title": "Binance Says Hackers Used Well-Known Tricks to Carry Out a $6.34 Billion Heist",
+   "summary": "Suspected North Korean attackers duped an engineer with a fake job interview and a malicious download to gain a foothold in the crypto firm’s system and steal billions, according to Binance.",
+   "link": "https://www.wired.com/story/binance-says-hackers-used-well-known-tricks-to-carry-out-a-dollar634-billion-heist/",
+   "published": "2026-11-04T00:04:58+00:00",
+   "source": "wired-sec",
+   "source_name": "WIRED Security",
+   "source_type": "magazine",
+   "source_country": "US"
+  },
+  {
    "title": "Oklahoma man charged with mailing threats, substances to election officials nationwide",
    "summary": "Robin Patrick Martin was charged with conveying false or misleading information and hoaxes and mailing threatening communications in an effort to intimidate election officials. The post Oklahoma man charged with mailing threats, substances to election officials nationwide appeared first on CyberScoop .",
    "link": "https://cyberscoop.com/oklahoma-man-charged-white-powder-letters-election-officials/",
@@ -924,46 +1039,6 @@
    "source_name": "The Hacker News",
    "source_type": "tech press",
    "source_country": "international"
-  },
-  {
-   "title": "Europol dismantles investment scheme that impacted potential victims in 50 countries",
-   "summary": "Authorities seized more than 100 servers and searched locations linked to the alleged operation across 17 countries. The post Europol dismantles investment scheme that impacted potential victims in 50 countries appeared first on CyberScoop .",
-   "link": "https://cyberscoop.com/europol-investment-scam-takedown/",
-   "published": "2026-11-03T22:02:27+00:00",
-   "source": "cyberscoop",
-   "source_name": "CyberScoop",
-   "source_type": "trade press",
-   "source_country": "US"
-  },
-  {
-   "title": "The Senate permitting bill holds promise but needs amendments",
-   "summary": "Targeted changes can minimize the most negative consequences of the permitting bill’s overreaching provisions, writes former FERC Chairman Mark Christie.",
-   "link": "https://www.utilitydive.com/news/senate-permitting-bill-holds-promise-needs-amendments/873419/",
-   "published": "2026-11-03T22:00:00+00:00",
-   "source": "utilitydive",
-   "source_name": "Utility Dive",
-   "source_type": "industry press",
-   "source_country": "US"
-  },
-  {
-   "title": "Binance Reveals How Fake Job Interviews and AI Tool Abuse Led to $6.43 Billion Theft",
-   "summary": "Binance on Tuesday said the record-setting theft of $6.43 billion in assets from the world's largest cryptocurrency exchange was the culmination of a \"sophisticated, multi-stage campaign\" that involved the use of a tampered Homebrew installation and recruitment-themed social engineering attack targeting two of its engineers. \"It was not a single isolated breach or a simple phishing incident,\"",
-   "link": "https://thehackernews.com/2026/11/binance-reveals-how-fake-job-interviews.html",
-   "published": "2026-11-03T21:55:58+00:00",
-   "source": "hackernews",
-   "source_name": "The Hacker News",
-   "source_type": "tech press",
-   "source_country": "international"
-  },
-  {
-   "title": "Caterpillar expands production of engines and turbines to meet data center demand",
-   "summary": "The heavy machinery and power equipment maker saw its order backlog reach $78 billion during the third quarter, almost double what it was a year ago.",
-   "link": "https://www.utilitydive.com/news/caterpillar-posts-highest-sales-quarter-ever-data-centers-q3-2026/873586/",
-   "published": "2026-11-03T21:42:00+00:00",
-   "source": "utilitydive",
-   "source_name": "Utility Dive",
-   "source_type": "industry press",
-   "source_country": "US"
   }
  ]
 }

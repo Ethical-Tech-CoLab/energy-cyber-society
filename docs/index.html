@@ -32,6 +32,7 @@
     <button id="btn-board" class="pix">Briefing board</button>
     <button id="btn-stories" class="pix">Today's wire</button>
     <button id="btn-refs" class="pix">Sources &amp; references</button>
+    <button id="btn-history" class="pix">History</button>
     <button id="btn-settings" class="pix">Settings</button>
   </div>
 </header>
@@ -102,6 +103,14 @@
     <h3>Critical-thought considerations</h3>
     <ul class="sum considerations" id="sum-cons"></ul>
     <div id="sum-world"></div>
+    <div class="row"><button class="pix">Close</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-history" class="dlg wide">
+  <form method="dialog">
+    <h2>History <small id="hist-meta"></small></h2>
+    <div id="hist-body" class="prose"></div>
     <div class="row"><button class="pix">Close</button></div>
   </form>
 </dialog>
@@ -242,6 +251,8 @@
       <p>One run on the Claude API is about 44 calls, roughly 234,000 input tokens and 10,500 output tokens. Because every call reads the same bundle, the bundle is sent as a cached system block, which cuts the input cost by about 90%. At Anthropic's first-party rates (cached): Sonnet 5.5 about $0.22 per run, $0.44 per day, $13 per month; Opus 5.5 about $0.40 per run, $24 per month; Haiku 5.5 about $0.01 per run, under $1 per month. Uncached, multiply by about 2.5. The run itself takes 3 to 6 minutes. The alternative, a claude.ai scheduled routine that does the curation as an agent session, uses more tokens (it reads files and runs scripts interactively) and is billed through the subscription rather than per token. The actual counts are written to <code>usage</code> in the briefing on every API run, so the estimate is checked against reality daily.</p>
       <h3>How certain is it, and can it invent news?</h3>
       <p>The model never fetches; the fetcher does, from a fixed list, and writes a file. The model only reads that file. So an invented story would have to be invented against a bundle that does not contain it, which the Verifier's cross-check catches because every claim must trace to a source line. The remaining risk is misreading, not inventing: compressing a hedge, over-weighting a vivid number, mislabelling IT as OT. That is what the direct-source pull and the agree/differ cross-check exist for, and it is why the trust line, the corroboration count and the Verifier's verdict sit next to every item. Certainty is stated per item, never for the briefing as a whole. The limitations tab lists what the system cannot know at all.</p>
+      <h3>References for this methodology</h3>
+      <p><a href="INTELLIGENCE_ANALYSIS.md" target="_blank" rel="noopener">INTELLIGENCE_ANALYSIS.md</a> (the ten-step procedure) · <a href="RULES.md" target="_blank" rel="noopener">RULES.md</a> · <a href="REGISTER.md" target="_blank" rel="noopener">REGISTER.md</a> · <a href="energy-cyber-source-registry.md" target="_blank" rel="noopener">source registry</a> · <a href="ARCHIVE.md" target="_blank" rel="noopener">archive index</a> · <a href="https://www.dni.gov/files/documents/ICD/ICD-203.pdf" target="_blank" rel="noopener">ICD 203 Analytic Standards</a> · <a href="https://www.dni.gov/files/documents/ICD/ICD-206.pdf" target="_blank" rel="noopener">ICD 206 Sourcing</a> · <a href="https://attack.mitre.org/matrices/ics/" target="_blank" rel="noopener">MITRE ATT&amp;CK for ICS</a> · <a href="https://csrc.nist.gov/pubs/sp/800/82/r3/final" target="_blank" rel="noopener">NIST SP 800-82r3</a> · <a href="https://oasis-open.github.io/cti-documentation/stix/intro" target="_blank" rel="noopener">STIX 2.1</a></p>
       <h3>Where the pieces live</h3>
       <p>Allowlist: <code>sources.json</code>. Residents and rules: <code>agents/personas.json</code>. Record schema and taxonomy: <code>agents/schema.json</code>. Scripts: <code>fetch_news.py</code>, <code>run_agents.py</code>, <code>pull_sources.py</code>, <code>validate.py</code>. Playbook for the scheduled agent: <code>CURATION.md</code>. The page is static; it only reads <code>docs/data/*.json</code>.</p>
     </div>
@@ -275,6 +286,7 @@
         <li><b>No private or member-only data.</b> E-ISAC, ONG-ISAC and paywalled journals are listed in Where to look but never read.</li>
         <li><b>It does not predict.</b> Severity ranks what is known; it is not a forecast of what will be attacked.</li>
       </ul>
+      <p class="k">See also: <a href="BACKLOG.md" target="_blank" rel="noopener">BACKLOG.md</a> for what is not built, <a href="energy-cyber-source-registry.md" target="_blank" rel="noopener">the source registry</a> for what is and is not read, and the Human touch tab.</p>
     </div>
     <div class="row"><button class="pix">Close</button></div>
   </form>

@@ -1,0 +1,34 @@
+{
+ "runs": [
+  {
+   "run": "2026-11-04T23-07",
+   "generated_at": "2026-11-04T23:07:43.271471+00:00",
+   "news_generated_at": "2026-11-04T23:06:01.498260+00:00",
+   "model": "curated-by-claude-fable-5.1 (session run)",
+   "items": 9,
+   "energy": 16,
+   "wide": 60,
+   "headline": "Quiet week for US energy operators on the record; loud week for exposed OT controls in Europe and for two exploited device flaws.",
+   "us_status": "No confirmed intrusion at a US electric utility, pipeline, refinery, LNG terminal or nuclear facility appeared in any allowlisted source in the 7-day window ending 2026-11-05. US items are policy and guidance.",
+   "files": [
+    "briefing.json",
+    "news.json",
+    "sources.json",
+    "command_log.json",
+    "stix.json",
+    "history.json",
+    "personas.json",
+    "sectors.json",
+    "where_to_look.json",
+    "buildings.json",
+    "ai_market.json",
+    "repo_RULES.md",
+    "repo_INTELLIGENCE_ANALYSIS.md",
+    "repo_CURATION.md",
+    "repo_COST.md",
+    "repo_sources.json"
+   ],
+   "flags": 42
+  }
+ ]
+}
