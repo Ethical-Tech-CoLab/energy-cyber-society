@@ -1,5 +1,5 @@
 {
- "pulled_at": "2026-11-05T02:15:42.598797+00:00",
+ "pulled_at": "2026-11-05T02:16:15.543769+00:00",
  "items": {
   "Siemens SIMATIC IoT2050 Advanced: CVSS 10 missing-authentication flaw exploited in the wild": {
    "sources": [
@@ -373,11 +373,11 @@
     {
      "url": "https://www.siemens.com/cert/operational-guidelines-industrial-security",
      "status": 200,
-     "chars": 188309,
+     "chars": 197513,
      "excerpts": [
-      "�H��V|�s�\u0006ZI��Rf�VS���\u001byI�(\u0003UX�\u0000\u0011 x�\u0007\u0004�z��G$T��\\U�0A\u0018�7 �# x�\u0001�/Ǿ)��m�:taN� �w~����\u000eN\u0007���^hV�Lr\u0006�\u000eF\u000fZ�\u000e0?",
-      "��{�Z�%\u0004��\u0013Ԋϻ\u0018\u00149 X|�F\u0012�K;��\u0000��e�ĬA��S�bW\u0007�J�*��@��=N �8�|v�{�4���\u0019�E5+E'�O� F����=�������v���^T�`�m\u0003\u0018 \u0006:��k9M�� y`���k��\u0003��Л�̇ \u0018�������^�)\u001b`�#\u0017U*8Sչ�Ke�^��I5��[:�|�A J��͒_F��Z۝�~��g�\u0010���;\u0010R�F\u0004!",
-      "�K��F\u0011�H�;�5��K|�''�ɭ�\u0000���$\u0005�\u000f\u0018A��W\u0007\u0013G�ZG��� �\u0018q�����+�`w�\u000fN���%i�."
+      "ç­HíùV|îs\u0006ZIêìRf°VS»¡­\u001byIÆ(\u0003UXÿ\u0000\u0011 xÅ\u0007\u0004zâ G$Tæ\\U¬0A\u0018º7 ï# x«\u0001ê/Ç¾)ÜÓm³:taNê ×w~¯¨òà\u000eN\u0007©âÕ^hVáLr\u0006Ú\u000eF\u000fZ\u000e0?",
+      "é{óZ%\u0004 \u0013ÔÏ»\u0018\u00149 X|­F\u0012K;»ÿ\u0000Üe³Ä¬AäûSábW\u0007·J­*þò­@ =N ï8Ï|v¬{î4Ðé\u0019ûE5+E'§Oé F°¹Ýß=ª¦«¨ÙÞév¶Öö^T`³m\u0003\u0018 \u0006:æµõk9MÝ y`àòkà\u0003ÛÐÐÌ \u0018©ÅÝÁ½^·)\u001b`Ë#\u0017U*8SÕ¹íKe©^èÓI5[:í|®A JÕÓÍ_F×èZÛÀ~ gê·\u0010ý¦ê;\u0010RÎF\u0004!",
+      "¥Kë«ÙF\u0011H ;þ5ÊK|Ù''É­×\u0000ñõ$\u0005®\u000f\u0018AúW\u0007\u0013GÃZGöòº ì\u0018qü«·²ð¿+¸`w®\u000fN¹»Ó%i¬."
      ],
      "found_in": "INCIBE-CERT ICS advisories (Spain)"
     },

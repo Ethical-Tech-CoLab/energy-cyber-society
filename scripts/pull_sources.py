@@ -21,7 +21,15 @@ UA = {"User-Agent": "Mozilla/5.0 (energy-cyber-society source puller)"}
 def fetch(url, limit=400_000):
     req = urllib.request.Request(url, headers=UA)
     with urllib.request.urlopen(req, timeout=20) as r:
-        return r.read(limit).decode("utf-8", "replace"), r.status
+        raw = r.read(limit); ctype = r.headers.get("Content-Type", "")
+        m = re.search(r"charset=([\w\-]+)", ctype, re.I); enc = m.group(1) if m else None
+        if not enc:
+            m2 = re.search(rb'charset=["\']?([\w\-]+)', raw[:4000], re.I); enc = m2.group(1).decode() if m2 else "utf-8"
+        try: txt = raw.decode(enc, "strict")
+        except (UnicodeDecodeError, LookupError):
+            try: txt = raw.decode("utf-8", "strict")
+            except UnicodeDecodeError: txt = raw.decode("latin-1")
+        return txt.replace("\ufffd", ""), r.status
 
 def text_of(page):
     page = re.sub(r"<(script|style|nav|footer|header|aside)[^>]*>.*?</\1>", " ", page, flags=re.S | re.I)
