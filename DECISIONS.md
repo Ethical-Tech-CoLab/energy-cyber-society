@@ -61,6 +61,8 @@ Nothing here is lost in chat.
 
 | 51 | Add an autonomous agent that fixes bugs, refactors, opens PRs, improves UX, and actually does it | The Engineer resident with ENGINEERING.md, a UX audit script, an Incident Desk log, a daily routine body; first PR opened by hand following the playbook | Workshop; `ENGINEERING.md`; `scripts/ux_audit.py`; open PRs |
 
+| 52 | A CIO should be able to determine if their organization is at risk and prioritize security efforts across all parts of the energy sector | Risk check (CIO) tab: tick facilities, products and environment patterns; scored 45/35/20 from patterns, live items and historical cases; ranked actions with evidence; export | Risk check (CIO); `agents/risk_model.json` |
+
 ## Standing decisions made by the assistant without being asked (so you can reverse them)
 
 - Resident names and the town metaphor; the building names; PIT as the third layer (DoD term).

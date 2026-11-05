@@ -19,6 +19,7 @@
   <div class="hud-actions">
     <button id="btn-notify" class="pix bell" title="What happened while you were away">🔔 <span id="notify-count">0</span></button>
     <button id="btn-exec" class="pix accent">Final output: Executive brief</button>
+    <button id="btn-risk" class="pix accent">Risk check (CIO)</button>
     <button id="btn-summary" class="pix">Summary</button>
     <button id="btn-chatter" class="pix">Chatter: on</button>
     <button id="btn-method" class="pix">Methodology</button>
@@ -158,6 +159,15 @@
     <div id="refs-body" class="prose"></div>
     <p class="k">Everything the system read or cited this run: board-item sources, pulled primary documents, every fetched story in both buckets, the allowlisted feeds with their bias notes, the Where-to-look map, background-case pointers (no URL, by design: check them), and the executive brief's sources. Citations in every resident's text are links where the outlet and date resolve to a fetched URL.</p>
     <div class="row"><button class="pix">Close</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-risk" class="dlg wide">
+  <form method="dialog">
+    <h2>Risk check for a CIO <small>describe the organization; the society scores exposure from this week's evidence and the historical record, then ranks what to do first</small></h2>
+    <div id="risk-form" class="prose"></div>
+    <div id="risk-out" class="prose"></div>
+    <div class="row"><button class="pix ghost" type="button" id="risk-export">Export as Markdown</button><button class="pix ghost" type="button" id="risk-clear">Clear profile</button><button class="pix">Close</button></div>
   </form>
 </dialog>
 

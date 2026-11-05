@@ -101,6 +101,13 @@ Git history is the second copy. Nothing is overwritten.
 synthesised from the intelligence cycle, ICD 203 analytic standards, ICD 206 sourcing,
 Admiralty grading, structured analytic techniques and the FBI/CISA advisory format.
 
+## Risk check for a CIO
+
+The **Risk check (CIO)** tab takes an organization's profile (facilities, products, environment
+patterns, size, region) and scores exposure from this week's board, the facility dependency
+stacks and the research record, then ranks what to do first with the evidence behind each line.
+The profile stays in the browser; the result exports as Markdown. A ranking aid, not an audit.
+
 ## The Engineer
 
 A fifteenth resident works on this codebase: `ENGINEERING.md` is the playbook, `scripts/ux_audit.py`

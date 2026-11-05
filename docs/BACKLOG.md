@@ -38,6 +38,7 @@ forgotten; "blocked" means a person must act. Update this file when something sh
 - Dependency stack on all 12 facilities (nine layers: supply chain, machinery, electricity, sensors, compute, storage, comms, software, people), each with exploitable point, signs and the cases that happened; global supply-chain map in the Research tab
 - Research report integrated (2026-11-05): 20 report-sourced cases in the dossiers and timeline, rules 33-39, Research tab, related cases on items. OPEN: resolve the report's cited URLs (Archivist); obtain the 95-record spreadsheet from Carolina and import it
 
+- Risk check (CIO) tab: profile of facilities, products, environment patterns, size and region → exposure score from this week's board, dependency stacks and the research record; ranked priorities with evidence; Markdown export; profile stays in the browser
 - The Engineer (resident, Workshop, ENGINEERING.md, scripts/ux_audit.py, scripts/engineer_log.py, scripts/routine_engineer.json): autonomous bug-fix/refactor/UX agent that opens PRs daily, never merges
 
 ## Blocked: needs Carolina

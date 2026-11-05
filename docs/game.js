@@ -682,6 +682,70 @@ $('btn-history').onclick = async () => {
   $('dlg-history').showModal();
 };
 
+// risk check for a CIO: exposure from evidence, priorities with the evidence behind them
+let riskModel = null;
+function riskProfile() { try { return JSON.parse(localStorage.getItem('ecs-risk') || '{}'); } catch { return {}; } }
+function saveRiskProfile(pf) { try { localStorage.setItem('ecs-risk', JSON.stringify(pf)); } catch {} }
+async function openRisk() {
+  if (!riskModel) riskModel = await fetch('data/risk_model.json').then(r => r.json()).catch(() => null);
+  if (!riskModel || !sectors) { $('risk-form').innerHTML = '<p class="k">risk model or sectors missing</p>'; $('dlg-risk').showModal(); return; }
+  const pf = riskProfile();
+  const chk = (name, id, label, on) => `<label><input type="checkbox" data-g="${name}" value="${esc(id)}" ${on ? 'checked' : ''}> ${esc(label)}</label>`;
+  $('risk-form').innerHTML = `<p class="k">Nothing you enter leaves this browser. The score is a ranking aid built from this week's board, the dependency stacks and the research record; it is not an audit and it cannot see your network.</p>
+    <h4>1. Which parts of the energy sector do you operate?</h4><div class="riskgrid">${sectors.facilities.map(f => chk('fac', f.id, f.name, (pf.fac || []).includes(f.id))).join('')}</div>
+    <h4>2. Which products or technologies are in your environment?</h4><div class="riskgrid">${riskModel.products.map(p => chk('prod', p.id, p.label, (pf.prod || []).includes(p.id))).join('')}</div>
+    <h4>3. Which of these describe your environment today?</h4><div class="riskgrid">${riskModel.patterns.map(p => chk('pat', p.id, p.label, (pf.pat || []).includes(p.id))).join('')}</div>
+    <h4>4. Size and region</h4><div class="riskgrid">${Object.entries(riskModel.sizes).map(([k, v]) => `<label><input type="radio" name="size" value="${k}" ${(pf.size || 'mid') === k ? 'checked' : ''}> ${esc(v)}</label>`).join('')}</div>
+    <div class="riskgrid">${['North America', 'Europe', 'Latin America', 'Asia', 'Middle East', 'Africa', 'Oceania'].map(c => `<label><input type="radio" name="region" value="${c}" ${(pf.region || 'North America') === c ? 'checked' : ''}> ${esc(c)}</label>`).join('')}</div>
+    <button type="button" class="pix accent" id="risk-run">Score my exposure</button>`;
+  $('risk-run').onclick = () => { const g = n => [...document.querySelectorAll(`#risk-form [data-g="${n}"]:checked`)].map(e => e.value); const p2 = { fac: g('fac'), prod: g('prod'), pat: g('pat'), size: (document.querySelector('#risk-form [name=size]:checked') || {}).value || 'mid', region: (document.querySelector('#risk-form [name=region]:checked') || {}).value || 'North America' }; saveRiskProfile(p2); renderRisk(p2); };
+  if ((pf.fac || []).length) renderRisk(pf); else $('risk-out').innerHTML = '';
+  $('dlg-risk').showModal();
+}
+function renderRisk(pf) {
+  const items = (briefing && briefing.items) || []; const R = research; const names = R ? Object.fromEntries(R.cases.map(c => [c.n, c])) : {};
+  const facs = sectors.facilities.filter(f => pf.fac.includes(f.id));
+  const prods = riskModel.products.filter(p => pf.prod.includes(p.id)); const pats = riskModel.patterns.filter(p => pf.pat.includes(p.id));
+  const sev = { critical: 4, high: 3, medium: 2, low: 1, info: 0 };
+  // live hits: items that match a product or pattern key, weighted by severity, KEV and OT impact
+  const hits = [];
+  items.forEach(it => { const keys = [...prods.flatMap(p => p.item_keys), ...pats.flatMap(p => p.item_keys)]; const k = keys.find(k => it.headline.includes(k)); if (k) hits.push({ it, why: `matches "${k}"`, pts: sev[it.severity] + (it.kev_listed === 'true' ? 2 : 0) + (/process|physical|reached/i.test(it.ot_impact) ? 2 : 0) + (it.continent === pf.region || it.continent === 'global' ? 1 : 0) }); });
+  // subsector hits: items in the same subsector family as a chosen facility
+  facs.forEach(f => items.forEach(it => { if (!hits.some(h => h.it === it) && it.subsector && f.subsector && (it.subsector.split(' ')[0] === f.subsector.split(' ')[0] || (f.live_match || []).some(k => (it.headline + ' ' + it.subsector).toLowerCase().includes(k)))) hits.push({ it, why: `same subsector as ${f.name}`, pts: sev[it.severity] }); }));
+  hits.sort((a, b) => b.pts - a.pts);
+  // layer exposure per facility: patterns light up layers; cases attach
+  const layerScore = {}; facs.forEach(f => Object.entries(f.dependency_stack || {}).forEach(([layer, v]) => { let pts = 0; const why = []; pats.forEach(p => { if (p.layers.includes(layer)) { pts += p.weight; why.push(p.label); } }); if ((v.cases || []).length) pts += Math.min(2, v.cases.length); layerScore[f.id + '|' + layer] = { f, layer, v, pts, why }; }));
+  const layers = Object.values(layerScore).sort((a, b) => b.pts - a.pts);
+  // historical cases relevant to products + patterns + facilities
+  const caseIds = new Set([...prods.flatMap(p => p.cases), ...pats.flatMap(p => p.cases)]); facs.forEach(f => (f.background_cases || []).forEach(c => { if (c.report_ref) caseIds.add(c.report_ref); }));
+  const cases = [...caseIds].map(n => names[n]).filter(Boolean);
+  const patPts = pats.reduce((a, p) => a + p.weight, 0), maxPat = riskModel.patterns.reduce((a, p) => a + p.weight, 0);
+  const livePts = hits.slice(0, 6).reduce((a, h) => a + h.pts, 0);
+  const score = Math.min(100, Math.round(45 * patPts / maxPat + 35 * Math.min(1, livePts / 24) + 20 * Math.min(1, cases.length / 10)));
+  const band = score >= 70 ? 'HIGH' : score >= 40 ? 'ELEVATED' : score >= 15 ? 'MODERATE' : 'LOW';
+  // priorities: from patterns (controls) + live items (actions) + report defensive program
+  const prios = [];
+  pats.sort((a, b) => b.weight - a.weight).forEach(p => prios.push({ title: `Close: ${p.label}`, why: `Pattern behind ${p.cases.map(n => names[n] ? names[n].name.split(',')[0] : '').filter(Boolean).join(', ') || 'the record'}${p.item_keys.length ? ' and this week\'s ' + p.item_keys.join(', ') : ''}.`, action: ({ vendor_remote: 'Inventory every vendor path; named accounts, MFA, time-boxed, recorded; alarm on setpoint changes without an operator action.', internet_ot: 'Remove internet exposure of controllers and gateways; put them behind a broker with MFA; scan your own ranges monthly.', vpn_nomfa: 'Phishing-resistant MFA on every remote path; kill dormant accounts; patch VPN appliances within days.', apn: 'Audit the APN: no peer-to-peer between sites; per-site credentials; monitor for lateral traffic.', flat: 'Separate engineering workstations from corporate IT; no dual-homed hosts; jump hosts for engineering.', no_ot_monitoring: 'Protocol-aware monitoring on control networks; alert on commands from unexpected hosts and on logic or setting changes.', backups_online: 'Immutable, offline backups of identity, historian, HMI and engineering projects; restoration tested.', single_link: 'Second telemetry path (cellular or leased line); know which sites go blind and for how long you can run blind.', shared_creds: 'Unique credentials on field devices; remove defaults; rotate after any config theft.', no_manual: 'Tested manual operation and dispatch without SCADA or billing; the Colonial lesson.', sharing_dependence: 'Ask counsel what sharing continues if the 2015 law lapses; keep E-ISAC participation.' })[p.id], pts: p.weight * 3, evidence: p.cases.map(n => names[n]).filter(Boolean).map(c => ({ kind: 'report', name: c.name, n: c.n })) }));
+  hits.slice(0, 5).forEach(h => prios.push({ title: `Act on this week's item: ${h.it.headline.slice(0, 90)}`, why: `${h.why}; severity ${h.it.severity}; ${h.it.ot_impact}; ${h.it.kev_listed === 'true' ? 'listed in CISA KEV as exploited' : 'KEV: ' + h.it.kev_listed}.`, action: `${h.it.recommended_action}: ${(h.it.anatomy && h.it.anatomy.next_layers || []).slice(0, 2).join(' ') || h.it.so_what}`, pts: h.pts * 2, evidence: [{ kind: 'item', name: h.it.headline }] }));
+  prios.sort((a, b) => b.pts - a.pts);
+  const sizeNote = { coop: 'For a small utility: prefer compensating controls you can apply tonight (firewall rules, credential rotation, vendor calls) and schedule patches in windows; use your association and E-ISAC for monitoring you cannot run yourself.', mid: 'For a mid-size operator: the vendor-access inventory and OT monitoring are the two programmes that cover most of the record.', large: 'For a large operator: fund protocol-aware OT monitoring, a vendor-access broker, immutable backups and a tested manual-operation drill; measure against DOE C2M2.' }[pf.size];
+  $('risk-out').innerHTML = `<h3>Exposure: <span class="badge sev-${band === 'HIGH' ? 'critical' : band === 'ELEVATED' ? 'high' : band === 'MODERATE' ? 'medium' : 'low'}">${band}</span> <span class="gauge"><span style="width:${score}%;background:${band === 'HIGH' ? '#e85a4b' : band === 'ELEVATED' ? '#e8b04b' : '#4be89a'}"></span></span> ${score}/100</h3>
+    <p class="k">45% from the environment patterns you ticked (${patPts}/${maxPat}), 35% from matching items on this week's board (${hits.length} matches), 20% from historical cases that fit your products and facilities (${cases.length}). A ranking aid, not a measurement of your network.</p>
+    <h4>What to do first (${Math.min(8, prios.length)} of ${prios.length})</h4>${prios.slice(0, 8).map((p, i) => `<div class="prio"><span class="n">${i + 1}</span><b>${esc(p.title)}</b><div class="k">${esc(p.why)}</div><div><b>Action:</b> ${esc(p.action)}</div><div class="k">Evidence: ${p.evidence.map(e => e.kind === 'item' ? `<button type="button" class="link" data-an="${esc(e.name)}">${esc(e.name.slice(0, 60))}</button>` : `<button type="button" class="link" data-rcase="${e.n}">${esc(e.name.split(',')[0])}</button>`).join(' · ') || 'architecture (analytical)'}</div></div>`).join('')}
+    <p>${esc(sizeNote)}</p>
+    <h4>Most exposed layers of your facilities</h4><table class="fac-table"><tr><th>Facility</th><th>Layer</th><th>Why</th><th>Cases</th></tr>${layers.slice(0, 10).map(l => `<tr><th>${esc(l.f.name)}</th><td>${esc(l.layer)}</td><td>${esc(l.why.join('; ') || 'exposure by architecture')}<div class="k">${esc(l.v.exploit)}</div></td><td>${(l.v.cases || []).map(c => c.kind === 'report' ? `<button type="button" class="link" data-rcase="${c.ref}">${esc(c.name.split(',')[0].slice(0, 30))}</button>` : c.kind === 'item' ? `<button type="button" class="link" data-an="${esc(c.ref)}">${esc(c.name.slice(0, 30))}</button>` : `<span class="k">${esc(c.name.slice(0, 30))}</span>`).join('<br>') || '<span class="k">none recorded</span>'}</td></tr>`).join('')}</table>
+    <h4>This week's items that touch you</h4>${hits.length ? `<ul>${hits.slice(0, 8).map(h => `<li><button type="button" class="link" data-an="${esc(h.it.headline)}">${esc(h.it.headline)}</button> <span class="k">${esc(h.why)} · ${esc(h.it.severity)} · ${esc(h.it.ot_impact)}</span></li>`).join('')}</ul>` : '<p class="k">No item on this week\'s board matches your products or subsectors. That is what the allowlisted feeds reported, not a guarantee.</p>'}
+    <h4>Who was NOT affected, and what it means for you</h4><p>${esc((briefing && briefing.us_status) || '')} ${pf.region !== 'North America' ? `Your region: ${esc(((briefing && briefing.world_desk && briefing.world_desk.continents) || {})[pf.region] || 'no regional line this week')}` : ''}</p>
+    <h4>Historical cases that fit your profile (${cases.length})</h4><ul>${cases.map(c => `<li><button type="button" class="link" data-rcase="${c.n}">${esc(c.name)}</button> <span class="k">${esc(c.case_type)} · ${esc(c.ot_reach)} · attribution ${esc(c.attribution.tier)}</span></li>`).join('') || '<li class="k">none in the research record for these choices</li>'}</ul>
+    <p class="k">Programme reference: ${esc(riskModel.defensive_program_ref)}. Regulatory: NERC CIP for US bulk-power entities, TSA directives for pipelines, NIS2 in the EU; the Counsel's items this week are on the board.</p>`;
+  $('risk-out').querySelectorAll('[data-an]').forEach(b => b.onclick = () => openAnalysis(b.dataset.an));
+  $('risk-out').querySelectorAll('[data-rcase]').forEach(b => b.onclick = () => { $('dlg-risk').close(); $('btn-research').click(); setTimeout(() => { const d = [...document.querySelectorAll('#research-body details')][+b.dataset.rcase - 1]; if (d) { d.open = true; d.scrollIntoView(); } }, 50); });
+  window.__riskLast = { pf, score, band, prios: prios.slice(0, 8), hits: hits.slice(0, 8), cases };
+}
+$('btn-risk').onclick = openRisk;
+$('risk-clear').onclick = () => { try { localStorage.removeItem('ecs-risk'); } catch {} openRisk(); };
+$('risk-export').onclick = () => { const r = window.__riskLast; if (!r) return; const md = `# Energy cyber risk check\n\nSnapshot: ${(briefing.news_generated_at || '').slice(0, 16)} UTC · exposure ${r.band} (${r.score}/100)\n\nProfile: facilities ${r.pf.fac.join(', ')}; products ${r.pf.prod.join(', ')}; patterns ${r.pf.pat.join(', ')}; size ${r.pf.size}; region ${r.pf.region}\n\n## Priorities\n${r.prios.map((p, i) => `${i + 1}. **${p.title}** — ${p.why}\n   Action: ${p.action}`).join('\n')}\n\n## This week's items that touch you\n${r.hits.map(h => `- ${h.it.headline} (${h.it.severity}; ${h.it.ot_impact}) — ${(h.it.sources || []).map(s => s.url || s.name).join(', ')}`).join('\n') || '- none'}\n\n## Historical cases that fit\n${r.cases.map(c => `- ${c.name} (${c.case_type}; ${c.ot_reach}; attribution ${c.attribution.tier})`).join('\n')}\n\nGenerated by the Energy Cyber Society; a ranking aid from public evidence, not an audit.\n`; const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([md], { type: 'text/markdown' })); a.download = 'energy-cyber-risk-check.md'; a.click(); };
+
 // executive brief: the ten biggest threats, assembled for evaluation
 $('btn-exec').onclick = () => {
   const e = briefing && briefing.executive_brief; if (!e) { $('exec-body').innerHTML = '<p class="k">No executive brief this run.</p>'; $('dlg-exec').showModal(); return; }
