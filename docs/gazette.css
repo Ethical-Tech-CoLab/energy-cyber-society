@@ -1,0 +1,24 @@
+:root{--paper:#f1e9d6;--ink:#1b1711;--rule:#6b6150}
+body{margin:0;background:#3a342a;font-family:'Libre Baskerville',Georgia,serif;color:var(--ink)}
+.sheet{max-width:1100px;margin:16px auto;background:var(--paper);padding:28px 36px 48px;box-shadow:0 10px 40px rgba(0,0,0,.5);background-image:radial-gradient(rgba(0,0,0,.04) 1px,transparent 1px);background-size:4px 4px}
+.ears{display:flex;justify-content:space-between;font-size:11px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--rule);padding-bottom:4px}
+h1.mast{font-family:'UnifrakturMaguntia',serif;font-size:64px;text-align:center;margin:8px 0 2px;letter-spacing:1px}
+.dateline{display:flex;justify-content:space-between;font-size:12px;border-top:3px double var(--rule);border-bottom:3px double var(--rule);padding:4px 0;margin-bottom:14px;text-transform:uppercase;letter-spacing:1px}
+h2.lead{font-family:'Playfair Display',serif;font-weight:900;font-size:38px;line-height:1.05;margin:0 0 6px;text-align:center}
+.deck{text-align:center;font-style:italic;font-size:15px;margin-bottom:14px}
+.cols{column-count:3;column-gap:22px;column-rule:1px solid var(--rule);font-size:13.5px;line-height:1.45;text-align:justify}
+@media(max-width:800px){.cols{column-count:1}}
+.story{break-inside:avoid;margin-bottom:14px}
+.story h3{font-family:'Playfair Display',serif;font-size:19px;line-height:1.15;margin:0 0 4px;text-align:left}
+.story .kicker{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#5a2c2c}
+.story p{margin:0 0 4px}.story p::first-letter{font-family:'Playfair Display',serif;font-size:1.6em;font-weight:700}
+.byline{font-size:11px;font-style:italic;color:#4a4238}
+.box{border:2px solid var(--ink);padding:8px 10px;margin:10px 0;break-inside:avoid}
+.box h4{margin:0 0 6px;font-family:'Playfair Display',serif;font-size:14px;letter-spacing:1px;text-transform:uppercase;text-align:center;border-bottom:1px solid var(--ink)}
+.box ul{margin:0;padding-left:16px;font-size:12.5px}
+.foot{border-top:3px double var(--rule);margin-top:18px;padding-top:6px;font-size:11px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.classified{font-size:11px;column-count:2;column-gap:18px}
+.classified div{margin-bottom:4px}
+a{color:inherit}
+.stamp{position:absolute;transform:rotate(-8deg);border:3px solid #8a1a1a;color:#8a1a1a;font-family:'Playfair Display',serif;font-weight:900;padding:2px 8px;font-size:14px;opacity:.75;right:60px;top:120px}
+.sheet{position:relative}

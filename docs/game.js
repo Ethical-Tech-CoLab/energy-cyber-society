@@ -277,7 +277,7 @@ cv.addEventListener('click', ev => {
   const fac = sectors && sectors.facilities.find(f => x >= f.x - 6 && x <= f.x + 66 && y >= f.y - 10 && y <= f.y + 54);
   if (fac) { openFacility(fac); return; }
   if (x >= 554 && x <= 630 && y >= 738 && y <= 800) { openBank(); return; }
-  if (x >= NEWSSTAND.x - 8 && x <= NEWSSTAND.x + NEWSSTAND.w + 8 && y >= NEWSSTAND.y - 4 && y <= NEWSSTAND.y + NEWSSTAND.h + 12) { window.open('gazette.html', '_blank', 'noopener'); return; }
+  if (x >= NEWSSTAND.x - 8 && x <= NEWSSTAND.x + NEWSSTAND.w + 8 && y >= NEWSSTAND.y - 4 && y <= NEWSSTAND.y + NEWSSTAND.h + 12) { if (!window.open('gazette.html', '_blank', 'noopener')) location.href = 'gazette.html'; return; }
   const bld = BUILDINGS.find(b => x >= b.x - 6 && x <= b.x + b.w + 6 && y >= b.y - 36 && y <= b.y + b.h);
   if (bld) { if (bld.key === 'Cyber Command' || bld.key === 'Incident Desk') openCommand(); else selectBuilding(bld); }
 });
@@ -1115,7 +1115,7 @@ async function boot() {
     lv.querySelectorAll('[data-res]').forEach(b => b.onclick = () => select(agents[+b.dataset.res]));
     lv.querySelectorAll('[data-bld]').forEach(b => b.onclick = () => { const bl = BUILDINGS.find(x => x.key === b.dataset.bld); if (bl.key === 'Incident Desk') openCommand(); else selectBuilding(bl); });
     lv.querySelectorAll('[data-facl]').forEach(b => b.onclick = () => openFacility(sectors.facilities.find(x => x.id === b.dataset.facl)));
-    lv.querySelectorAll('[data-place]').forEach(b => b.onclick = () => b.dataset.place === 'gazette' ? window.open('gazette.html', '_blank', 'noopener') : openBank());
+    lv.querySelectorAll('[data-place]').forEach(b => b.onclick = () => b.dataset.place === 'gazette' ? (window.open('gazette.html', '_blank', 'noopener') || (location.href = 'gazette.html')) : openBank());
   }
   setTimeout(toastAway, 800);       // small debug hook, also handy for tests
   await document.fonts.ready;
