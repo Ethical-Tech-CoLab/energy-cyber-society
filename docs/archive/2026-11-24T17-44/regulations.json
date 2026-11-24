@@ -1,0 +1,464 @@
+{
+  "_comment": "The Counsel's register. 'status' is the last confirmed status known to the model when written (2026-11-05) unless 'verified' says otherwise; rule 3 applies: a legal claim needs the primary text. Each entry carries the primary URL to read. 'applies_to' uses facility ids and regions so the Risk check can map regimes to a profile.",
+  "reviewed": "2026-11-05",
+  "regimes": [
+    {
+      "id": "nerc_cip",
+      "name": "NERC CIP Reliability Standards (CIP-002 to CIP-015)",
+      "jurisdiction": "US and Canada bulk electric system",
+      "regulator": "NERC under FERC oversight",
+      "applies_to": [
+        "substation",
+        "thermal",
+        "interconnector",
+        "renewables",
+        "storage",
+        "nuclear"
+      ],
+      "regions": [
+        "North America"
+      ],
+      "status": "in force; versions change; CIP-015 (internal network security monitoring) approved by FERC in 2025 with phased effective dates; the enforceable version of each standard must be checked on nerc.com",
+      "verified": "model knowledge, unverified by this system",
+      "primary": "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx",
+      "energy_impact": "the mandatory cyber baseline for the grid; patching (CIP-007), change management (CIP-010), remote access (CIP-005), monitoring (CIP-015) are the clauses this week's Siemens, Zyxel and Ivanti items land on",
+      "intel_impact": "CIP-008 incident reporting to E-ISAC feeds the sector's shared intelligence"
+    },
+    {
+      "id": "ferc_887",
+      "name": "FERC Order 887 (internal network security monitoring) and supply-chain orders",
+      "jurisdiction": "US bulk electric system",
+      "regulator": "FERC",
+      "applies_to": [
+        "substation",
+        "thermal",
+        "interconnector"
+      ],
+      "regions": [
+        "North America"
+      ],
+      "status": "Order 887 (2023) directed NERC to develop INSM requirements; resulting standard CIP-015",
+      "verified": "model knowledge, unverified",
+      "primary": "https://www.ferc.gov/",
+      "energy_impact": "makes protocol-aware monitoring inside control networks a requirement, the control the Industroyer and MicroSCADA cases argue for",
+      "intel_impact": "more internal telemetry means more detection data to share"
+    },
+    {
+      "id": "tsa_pipeline",
+      "name": "TSA Pipeline Security Directives (SD Pipeline-2021-01 and 02 series) and the proposed surface cyber rule",
+      "jurisdiction": "US pipelines and LNG facilities designated by TSA",
+      "regulator": "TSA",
+      "applies_to": [
+        "pipeline",
+        "lngport"
+      ],
+      "regions": [
+        "North America"
+      ],
+      "status": "directives in force and reissued periodically; a notice of proposed rulemaking (Enhancing Surface Cyber Risk Management, 2024) would codify them; final rule status unverified; the paste says one secondary source lists SD Pipeline-2021-02F expiring 2 May 2026, so a reissued version probably exists",
+      "verified": "model knowledge plus the project's own notes, unverified",
+      "primary": "https://www.tsa.gov/for-industry/surface-transportation-cybersecurity-toolkit",
+      "energy_impact": "post-Colonial regime: segmentation, access control, monitoring, incident reporting to CISA within 24 hours, assessment plans",
+      "intel_impact": "mandatory reporting is a collection source for CISA; the directive's indicator-sharing clauses depend on CISA 2015 protections"
+    },
+    {
+      "id": "cisa2015",
+      "name": "Cybersecurity Information Sharing Act of 2015 (sunset)",
+      "jurisdiction": "US",
+      "regulator": "Congress / DHS",
+      "applies_to": [
+        "substation",
+        "thermal",
+        "pipeline",
+        "refinery",
+        "wellhead",
+        "renewables",
+        "storage",
+        "evcharging",
+        "datacentre",
+        "lngport",
+        "interconnector",
+        "nuclear"
+      ],
+      "regions": [
+        "North America"
+      ],
+      "status": "liability protections for sharing threat indicators; sunset extended into late 2026 per the project's notes; Utility Dive reports expiry 'next month' (December 2026) and utilities urging renewal; NDAA extension pending [unverified]",
+      "verified": "trade press only (Utility Dive 2026-11-04); statute text not read",
+      "primary": "https://www.congress.gov/",
+      "energy_impact": "if it lapses, lawyers advise less sharing; detection across the sector slows",
+      "intel_impact": "the legal basis of E-ISAC and CISA indicator exchange; the single biggest cyber-intelligence policy item this week",
+      "news_url": "https://www.utilitydive.com/news/electric-utilities-join-industries-urging-renewal-of-cybersecurity-informat/873703/"
+    },
+    {
+      "id": "circia",
+      "name": "CIRCIA (Cyber Incident Reporting for Critical Infrastructure Act) reporting rule",
+      "jurisdiction": "US critical infrastructure",
+      "regulator": "CISA",
+      "applies_to": [
+        "substation",
+        "thermal",
+        "pipeline",
+        "refinery",
+        "wellhead",
+        "renewables",
+        "storage",
+        "evcharging",
+        "datacentre",
+        "lngport",
+        "interconnector",
+        "nuclear"
+      ],
+      "regions": [
+        "North America"
+      ],
+      "status": "law 2022; CISA's final reporting rule (72-hour incident, 24-hour ransom payment) expected 2025-2026; final status unverified",
+      "verified": "model knowledge, unverified",
+      "primary": "https://www.cisa.gov/topics/cyber-threats-and-advisories/information-sharing/cyber-incident-reporting-critical-infrastructure-act-2022-circia",
+      "energy_impact": "mandatory incident reporting for covered energy entities once final",
+      "intel_impact": "would give CISA a near-real-time picture of energy incidents, the dataset this society lacks"
+    },
+    {
+      "id": "sec_cyber",
+      "name": "SEC cybersecurity disclosure rule (Form 8-K Item 1.05, Regulation S-K Item 106)",
+      "jurisdiction": "US public companies",
+      "regulator": "SEC",
+      "applies_to": [
+        "thermal",
+        "pipeline",
+        "refinery",
+        "wellhead",
+        "renewables",
+        "datacentre",
+        "lngport"
+      ],
+      "regions": [
+        "North America"
+      ],
+      "status": "in force since December 2023: material incidents disclosed within four business days of materiality determination",
+      "verified": "model knowledge, unverified",
+      "primary": "https://www.sec.gov/",
+      "energy_impact": "Halliburton 2024 and similar disclosures come from this rule",
+      "intel_impact": "8-K filings are a primary-source stream the Economist and Archivist read"
+    },
+    {
+      "id": "nrc_7354",
+      "name": "NRC 10 CFR 73.54 (cyber security for nuclear power reactors)",
+      "jurisdiction": "US nuclear plants",
+      "regulator": "NRC",
+      "applies_to": [
+        "nuclear"
+      ],
+      "regions": [
+        "North America"
+      ],
+      "status": "in force; inspections ongoing",
+      "verified": "model knowledge, unverified",
+      "primary": "https://www.nrc.gov/reading-rm/doc-collections/cfr/part073/part073-0054.html",
+      "energy_impact": "separation of safety and security systems; the reason Kudankulam-style IT infections do not reach control",
+      "intel_impact": "reporting to NRC, not CISA; a separate channel"
+    },
+    {
+      "id": "uscg_mtsa",
+      "name": "US Coast Guard maritime cybersecurity rule (MTSA facilities and vessels)",
+      "jurisdiction": "US ports, terminals, vessels",
+      "regulator": "US Coast Guard",
+      "applies_to": [
+        "lngport"
+      ],
+      "regions": [
+        "North America"
+      ],
+      "status": "final rule published January 2025, effective July 2025, phased requirements",
+      "verified": "model knowledge, unverified",
+      "primary": "https://www.federalregister.gov/",
+      "energy_impact": "LNG terminals and tankers get cyber plans, training, incident reporting",
+      "intel_impact": "reports flow to the Coast Guard and CISA"
+    },
+    {
+      "id": "grid_component_order",
+      "name": "Executive order restricting foreign grid components (2026)",
+      "jurisdiction": "US bulk power system equipment",
+      "regulator": "White House / DOE",
+      "applies_to": [
+        "substation",
+        "interconnector",
+        "renewables",
+        "storage"
+      ],
+      "regions": [
+        "North America"
+      ],
+      "status": "reported 2026-11-03: an order restricting foreign-sourced grid components; industry says geography-based restrictions miss function and capability and threaten investment; instrument and effective date not read [unverified]; lineage: EO 13920 (2020) on bulk-power-system equipment",
+      "verified": "trade press only (Utility Dive); Federal Register text not read",
+      "primary": "https://www.federalregister.gov/",
+      "energy_impact": "changes who may supply transformers, inverters, controls; lead times and cost; the PIT layer's provenance",
+      "intel_impact": "supply-chain security by policy; makes component provenance a reportable fact",
+      "news_url": "https://www.utilitydive.com/news/trump-ban-on-foreign-grid-components-sparks-industry-concern-over-practical/873752/"
+    },
+    {
+      "id": "eu_nis2",
+      "name": "EU NIS2 Directive (2022/2555)",
+      "jurisdiction": "EU member states",
+      "regulator": "national authorities; ENISA",
+      "applies_to": [
+        "substation",
+        "thermal",
+        "pipeline",
+        "refinery",
+        "renewables",
+        "storage",
+        "evcharging",
+        "datacentre",
+        "lngport",
+        "interconnector",
+        "nuclear"
+      ],
+      "regions": [
+        "Europe"
+      ],
+      "status": "in force; transposition deadline October 2024, uneven across states; energy is a 'highly critical' sector; 24-hour early warning, 72-hour notification",
+      "verified": "model knowledge, unverified",
+      "primary": "https://eur-lex.europa.eu/eli/dir/2022/2555",
+      "energy_impact": "management liability, supply-chain duties, incident reporting for energy entities including small ones",
+      "intel_impact": "national CSIRTs receive early warnings; the French blood-service and supermarket cases fall under its reporting regime"
+    },
+    {
+      "id": "eu_nccs",
+      "name": "EU Network Code on Cybersecurity for the electricity sector (Regulation 2024/1366)",
+      "jurisdiction": "EU cross-border electricity",
+      "regulator": "ENTSO-E, EU DSO entity, ACER",
+      "applies_to": [
+        "substation",
+        "interconnector",
+        "thermal",
+        "renewables"
+      ],
+      "regions": [
+        "Europe"
+      ],
+      "status": "in force 2024 with phased implementation",
+      "verified": "model knowledge, unverified",
+      "primary": "https://eur-lex.europa.eu/eli/reg_del/2024/1366",
+      "energy_impact": "risk assessments and minimum controls for cross-border electricity flows; interconnectors",
+      "intel_impact": "creates an EU-level cyber risk picture for electricity"
+    },
+    {
+      "id": "eu_cra",
+      "name": "EU Cyber Resilience Act (Regulation 2024/2847)",
+      "jurisdiction": "products with digital elements sold in the EU",
+      "regulator": "market surveillance authorities; ENISA",
+      "applies_to": [
+        "substation",
+        "renewables",
+        "storage",
+        "evcharging",
+        "datacentre",
+        "pipeline"
+      ],
+      "regions": [
+        "Europe",
+        "global"
+      ],
+      "status": "in force December 2024; vulnerability-reporting obligations from September 2026; main obligations December 2027",
+      "verified": "model knowledge, unverified",
+      "primary": "https://eur-lex.europa.eu/eli/reg/2024/2847",
+      "energy_impact": "inverters, routers, controllers sold in the EU must ship with secure defaults and vulnerability handling; the Zyxel, Welotec and Siemens items are the product class",
+      "intel_impact": "manufacturers must report actively exploited vulnerabilities to ENISA within 24 hours, a new intelligence stream"
+    },
+    {
+      "id": "uk_csr",
+      "name": "UK Cyber Security and Resilience Bill and NIS Regulations 2018",
+      "jurisdiction": "UK",
+      "regulator": "Ofgem (energy), NCSC",
+      "applies_to": [
+        "substation",
+        "thermal",
+        "pipeline",
+        "renewables",
+        "storage",
+        "datacentre",
+        "interconnector",
+        "nuclear"
+      ],
+      "regions": [
+        "Europe"
+      ],
+      "status": "NIS Regulations in force; the Bill introduced 2025 to widen scope and reporting; passage status unverified",
+      "verified": "model knowledge, unverified",
+      "primary": "https://www.gov.uk/",
+      "energy_impact": "broader coverage of suppliers and data centres",
+      "intel_impact": "NCSC's annual review (this week) is the policy signal behind it"
+    },
+    {
+      "id": "au_soci",
+      "name": "Australia SOCI Act and Critical Infrastructure Risk Management Program rules",
+      "jurisdiction": "Australia",
+      "regulator": "Critical Infrastructure Security Centre (CISC)",
+      "applies_to": [
+        "substation",
+        "thermal",
+        "pipeline",
+        "renewables",
+        "storage",
+        "datacentre",
+        "lngport",
+        "wellhead"
+      ],
+      "regions": [
+        "Oceania"
+      ],
+      "status": "in force; updated CIRMP guidance published, urging stronger cyber and supply-chain controls (Industrial Cyber, 2026-11-04)",
+      "verified": "trade press for the update; statute from model knowledge",
+      "primary": "https://www.cisc.gov.au/",
+      "energy_impact": "risk management programmes with supply-chain duties for energy operators",
+      "intel_impact": "CISC guidance is a primary source the allowlist cannot fetch directly (ACSC feed unreachable)",
+      "news_url": "https://industrialcyber.co/critical-infrastructure/australias-cisc-sharpens-critical-infrastructure-risk-guidance-urges-stronger-cyber-and-supply-chain-controls/"
+    },
+    {
+      "id": "ca_c8",
+      "name": "Canada Bill C-8 (Critical Cyber Systems Protection Act, successor to C-26)",
+      "jurisdiction": "Canada federally regulated sectors including energy",
+      "regulator": "Canadian Centre for Cyber Security; regulators",
+      "applies_to": [
+        "substation",
+        "pipeline",
+        "nuclear",
+        "thermal"
+      ],
+      "regions": [
+        "North America"
+      ],
+      "status": "before Parliament; passage status unverified",
+      "verified": "model knowledge, unverified",
+      "primary": "https://www.parl.ca/",
+      "energy_impact": "mandatory programmes and reporting for pipelines and interprovincial power; Nova Scotia Power 2025 is the reference case",
+      "intel_impact": "reporting to the Cyber Centre"
+    },
+    {
+      "id": "jp_acd",
+      "name": "Japan Active Cyber Defense law (2025)",
+      "jurisdiction": "Japan",
+      "regulator": "NISC / government",
+      "applies_to": [
+        "substation",
+        "thermal",
+        "nuclear",
+        "datacentre"
+      ],
+      "regions": [
+        "Asia"
+      ],
+      "status": "enacted 2025; implementation phased",
+      "verified": "model knowledge, unverified",
+      "primary": "https://www.nisc.go.jp/",
+      "energy_impact": "critical-infrastructure operators report incidents; government may act against attacking infrastructure",
+      "intel_impact": "a state intelligence posture change in Asia; JPCERT is now in the allowlist"
+    }
+  ],
+  "news_this_week": [
+    {
+      "headline": "US midterm elections: Democrats take control of both the House and the Senate (per MIT Technology Review); a lame-duck session precedes the change",
+      "sources": [
+        {
+          "name": "MIT Technology Review, 2026-11-04",
+          "url": "https://www.technologyreview.com/2026/11/04/1148022/us-energy-midterm/"
+        },
+        {
+          "name": "CyberScoop, 2026-11-05",
+          "url": "https://cyberscoop.com/democrats-congress-cybersecurity-cisa-ai-priorities/"
+        }
+      ],
+      "what": "CyberScoop reports the incoming leaders of the homeland security panels are setting cyber agendas, with CISA and AI among the priorities named in its URL; MIT Technology Review asks what changes in US energy policy.",
+      "energy_impact": "[inference] the direction of federal energy policy (permitting, grid investment, data-centre load, foreign-component rules) changes with the majority; the specifics are not in the summaries and the Counsel has not read the agendas.",
+      "intel_impact": "[inference] CISA's funding, authorities and leadership direction, and whether the CISA 2015 sunset is fixed in the lame-duck session, are the two levers for cyber intelligence; both are decided in the next weeks.",
+      "confidence": "moderate on the fact of the result (two outlets); low on implications",
+      "status": "news; no instrument yet"
+    },
+    {
+      "headline": "Cybersecurity Information Sharing Act of 2015 expiring next month; electric utilities join industries urging renewal",
+      "sources": [
+        {
+          "name": "Utility Dive, 2026-11-04",
+          "url": "https://www.utilitydive.com/news/electric-utilities-join-industries-urging-renewal-of-cybersecurity-informat/873703/"
+        }
+      ],
+      "what": "Liability protection for sharing threat indicators among companies and with federal agencies is weeks from sunset; renewal is being lobbied.",
+      "energy_impact": "Utilities share less if counsel sees liability; E-ISAC and CISA exchange thins.",
+      "intel_impact": "This society's own collection depends on operators disclosing; a lapse makes the US 'quiet week' structurally quieter. The single most important item on the register this week.",
+      "confidence": "moderate (trade press; statute not read)",
+      "status": "sunset pending; extension [unverified]"
+    },
+    {
+      "headline": "Executive order restricting foreign grid components; industry objects to geography-based restrictions",
+      "sources": [
+        {
+          "name": "Utility Dive, 2026-11-04",
+          "url": "https://www.utilitydive.com/news/trump-ban-on-foreign-grid-components-sparks-industry-concern-over-practical/873752/"
+        }
+      ],
+      "what": "Stakeholders applauded the intent but said restrictions by country of origin rather than by function and capability miss the point and threaten investment.",
+      "energy_impact": "Transformer and inverter sourcing, lead times and cost; the PIT layer of substations and renewables.",
+      "intel_impact": "Makes component provenance a security fact to track; shifts the supply-chain map in the Research tab.",
+      "confidence": "moderate (trade press; order not read)",
+      "status": "order reported; text [unverified]"
+    },
+    {
+      "headline": "Texas data-centre buildout may stall after the state's election results (MIT Technology Review)",
+      "sources": [
+        {
+          "name": "MIT Technology Review, 2026-11-04",
+          "url": "https://www.technologyreview.com/2026/11/04/1148043/texas-was-the-new-epicenter-of-the-ai-data-center-buildout-that-might-be-kaput/"
+        }
+      ],
+      "what": "Texas is the fastest-growing US data-centre market; the article argues the state's election results may jeopardise that position.",
+      "energy_impact": "[inference] data-centre siting decides where gigawatts of new load and the cooling OT that comes with it appear; a shift away from Texas moves grid stress elsewhere.",
+      "intel_impact": "[inference] the Technologist's beat: load as a security variable; where compute goes, the attack surface follows.",
+      "confidence": "low on implications",
+      "status": "analysis, not regulation"
+    },
+    {
+      "headline": "Australia's CISC publishes updated Critical Infrastructure Risk Management Program guidance",
+      "sources": [
+        {
+          "name": "Industrial Cyber, 2026-11-04",
+          "url": "https://industrialcyber.co/critical-infrastructure/australias-cisc-sharpens-critical-infrastructure-risk-guidance-urges-stronger-cyber-and-supply-chain-controls/"
+        }
+      ],
+      "what": "Updated guidance urging stronger cyber and supply-chain controls under the SOCI Act.",
+      "energy_impact": "Australian energy operators tighten supply-chain duties.",
+      "intel_impact": "Another regulator naming supply chain as the control; convergent with the US order and the EU CRA.",
+      "confidence": "moderate",
+      "status": "guidance in force"
+    },
+    {
+      "headline": "White House-backed Project Lifeline 250: secure remote access for rural hospitals (Dispel joins)",
+      "sources": [
+        {
+          "name": "Industrial Cyber, 2026-11-04",
+          "url": "https://industrialcyber.co/news/dispel-joins-white-house-backed-project-lifeline-250-to-secure-remote-access-at-rural-hospitals/"
+        }
+      ],
+      "what": "A federal programme with vendors to secure OT remote access at rural hospitals.",
+      "energy_impact": "[inference] the same remote-access problem at rural cooperatives has no equivalent programme yet; a model to copy.",
+      "intel_impact": "low",
+      "confidence": "moderate (vendor announcement)",
+      "status": "programme, not regulation"
+    },
+    {
+      "headline": "UK NCSC Annual Review: AI-assisted ransomware against critical national infrastructure by 2028",
+      "sources": [
+        {
+          "name": "UK NCSC, 2026-11-03",
+          "url": "https://www.ncsc.gov.uk/news/cyber-chief-uk-facing-ai-powered-attacks-on-critical-infrastructure-in-two-years"
+        }
+      ],
+      "what": "Agency forecast and investment case; the policy signal behind the UK Cyber Security and Resilience Bill.",
+      "energy_impact": "CNI operators told to fund basics.",
+      "intel_impact": "Names China as best positioned; a primary-source assessment of capability.",
+      "confidence": "high provenance; forecast",
+      "status": "assessment, not regulation"
+    }
+  ],
+  "counsel_note": "I have read none of the instruments above this run; every status line is the last confirmed status with its date, and the Risk check shows regimes as 'applies, unverified'. Primary URLs are attached so a person or the next scheduled run can read them. Rule 3."
+}

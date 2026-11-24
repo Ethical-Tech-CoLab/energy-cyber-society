@@ -1,0 +1,650 @@
+{
+ "pulled_at": "2026-11-24T17:51:42.827734+00:00",
+ "items": {
+  "Peninsula Energy halts ASX trading after a cyber incident breaches the 'operating system' at its Lance uranium project in Wyoming; administrative systems unaffected": {
+   "sources": [
+    {
+     "name": "SecurityWeek (quoting the ASX filing)",
+     "url": "https://www.securityweek.com/peninsula-energy-halts-trading-after-cyber-incident-hits-us-uranium-mine/",
+     "status": 200,
+     "chars": 7286,
+     "excerpts": [
+      "Australian uranium company Peninsula Energy (ASX: PEN; OTCQB: PENMF) has requested a trading halt after a cybersecurity incident hit its uranium mine in the United States.",
+      "The incident, the company told the Australian Securities Exchange (ASX), occurred on Friday night and impacted the Lance Project in Wyoming, US.",
+      "Peninsula Energy Halts Trading After Cyber Incident Hits US Uranium Mine - SecurityWeek SECURITYWEEK NETWORK: Cybersecurity News Webcasts Virtual Events Podcast ICS: ICS Cybersecurity Conference Connect with us Hi, what are you looking for?",
+      "“The company is undertaking a preliminary investigation of the incident and an assessment of the timing and impact, which will temporarily affect its operations,” Peninsula Energy said in a Monday filing .",
+      "The wholly owned Lance Project, located in Crook County, relies on in situ recovery to extract uranium, which is then processed into yellowcake, which can be turned into nuclear fuel."
+     ]
+    }
+   ],
+   "primary": []
+  },
+  "KEPCO, South Korea's state power company, confirms a breach of its billing portal and procurement system exposing about 1.5 million customer, representative and employee records": {
+   "sources": [
+    {
+     "name": "BleepingComputer",
+     "url": "https://www.bleepingcomputer.com/news/security/south-koreas-power-giant-kepco-confirms-data-breach-impacting-15-million/",
+     "status": 200,
+     "chars": 5355,
+     "excerpts": [
+      "“On Friday, November 20, Korea Electric Power Corporation (hereafter KEPCO), led by President Kim Dong-cheol, confirmed that some customer information held in its IT systems had been exposed,” the power company states .",
+      "KEPCO is South Korea’s main electric power company and a state-controlled, major operator of the country’s critical infrastructure.",
+      "Noiem claiming the attack at KEPCO Source: dailysecu South Korea’s Personal Information Protection Commission separately confirmed that KEPCO received an email from a hacker claiming data theft on November 19.",
+      "The organization detected the attack on November 20, when it confirmed unauthorized access to its KEPCO ON electricity billing platform and its electronic procurement system (SRM).",
+      "A threat actor using the “Noiem” alias has  claimed the attack  and advertised the breach on a hacker forum on November 19, saying that they had KEPCO user data, supplier records, and bidding and contract documents."
+     ]
+    },
+    {
+     "name": "SecurityWeek",
+     "url": "https://www.securityweek.com/1-5-million-impacted-by-data-breach-at-south-korean-electric-company-kepco/",
+     "status": 200,
+     "chars": 7238,
+     "excerpts": [
+      "South Korean state-owned electric company Korea Electric Power Corporation (KEPCO, KRX: 015760, NYSE: KEP) has disclosed a data breach impacting approximately 1.5 million people.",
+      "South Korea’s Personal Information Protection Commission (PIPC) has launched an investigation into the incident, noting that KEPCO received an email from the hacker, verified sample data received from the sender, and confirmed a dark web posting.",
+      "The incident, the company says , involved KEPCO ON, its integrated customer service portal, and the supplier relationship management (SRM) platform, which handles procurement and service contracts.",
+      "Additionally, the information of 869,761 individuals was stolen from the SRM systems: the names, unique ID numbers, email addresses, and company addresses of 426,827; and the names, affiliation, employee IDs, email addresses, phone numbers, and company phone numbers of 442,934 (including KEPCO staff and partners’ employees).",
+      "KEPCO Data Breach Affects 1.5 Million Customers - SecurityWeek SECURITYWEEK NETWORK: Cybersecurity News Webcasts Virtual Events Podcast ICS: ICS Cybersecurity Conference Connect with us Hi, what are you looking for?"
+     ]
+    }
+   ],
+   "primary": []
+  },
+  "Norway's NSM links cyberattacks on two major energy companies to a critical Azure API Management (Classic tier) flaw; Equinor and Skagerak Energi named among affected organizations": {
+   "sources": [
+    {
+     "name": "The Register",
+     "url": "https://www.theregister.com/security/2026/11/23/norway-links-energy-firm-cyberattacks-to-critical-azure-api-management-flaw/5311598",
+     "status": 200,
+     "chars": 8495,
+     "excerpts": [
+      "According to a nonpublic advisory, seen by The Register , Microsoft said the attacks, which have already affected two major energy companies , only impact customers on Azure API Management Classic tiers, not Azure API Management v2.",
+      "\"What they can reach depends on the credential's permissions and whether it is still valid.\" Norway's National Security Authority (NSM) urged organizations using APIM to assume their secrets and named values had been exposed and rotate all tokens and secrets.",
+      "It named gas giant Equinor and hydropower company Skagerak Energi among the affected organizations.",
+      "The advisory lists potentially exposed secrets, including named values, client secrets associated with identity providers and OpenID Connect providers, subscription keys, and tokens used to call direct management APIs.",
+      "NSM credited Norway's energy sector with first detecting the vulnerability last week."
+     ]
+    }
+   ],
+   "primary": []
+  },
+  "Osaki Electric ransomware attack disrupts smart-meter production in Japan; OT-ISAC flags supplier-continuity risk across Asia-Pacific": {
+   "sources": [
+    {
+     "name": "Industrial Cyber (relaying OT-ISAC)",
+     "url": "https://industrialcyber.co/threats-attacks/osaki-electric-ransomware-attack-disrupts-smart-meter-production-raising-supplier-continuity-concerns-across-asia-pacific/",
+     "status": 200,
+     "chars": 9906,
+     "excerpts": [
+      "Within the first 24 to 72 hours, procurement and operations teams should verify whether outstanding orders or spare-parts flows rely on Osaki Electric’s affected Japanese facilities and confirm supplier status through established channels, while security teams verify any payment or delivery changes via known contacts and watch for impersonation, unusual remote sessions, and credential changes.",
+      "OT-ISAC said that the incident raises concerns about potential delays in smart meter deliveries, equipment replacements, new installations and technical support for utilities dependent on Osaki’s manufacturing operations and regional business network.",
+      "The first report identified three Osaki Electric facilities affected by the production shutdown.",
+      "The affected sites include its Saitama R&D and Manufacturing Center, Iwate Osaki Electric and Osaki Platech.",
+      "Iwate Osaki Electric manufactures product assembly equipment, while Osaki Platech manufactures meter components."
+     ]
+    }
+   ],
+   "primary": []
+  },
+  "Danfoss AK-SM 8xxA refrigeration controllers: CISA ICSA-26-328-03 stack-based buffer overflow CVE-2026-129713 (CVSS 9.8) and INCIBE advisory on default credentials in AK-SC 355 / AK-SM 800": {
+   "sources": [
+    {
+     "name": "CISA Advisories",
+     "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-328-03",
+     "status": 200,
+     "chars": 5091,
+     "excerpts": [
+      "Additional Metrics Relevant CWE: CWE-121 Stack-based Buffer Overflow CVSS Version Base Score Base Severity Vector String 3.1 9.8 CRITICAL CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H 4.0 9.3 CRITICAL CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N View CVE Details Acknowledgments Carlo Meijer of Midnight Blue reported CVE-2026-129713 to CISA.",
+      "Related Advisories Nov 24, 2026 ICS Advisory | ICSA-26-328-01 AutomationDirect C-More EA9 Programming Software Nov 24, 2026 ICS Advisory | ICSA-26-328-02 Schneider Electric EcoStruxure Power Build Rapsody software Nov 19, 2026 ICS Advisory | ICSA-26-323-03 libumqtt Nov 19, 2026 ICS Advisory | ICSA-26-323-02 Elecbrakes EB2, VM1, ELBC2000",
+      "Danfoss AK-SM 8xxA Series | CISA Skip to main content Official websites use .gov A .gov website belongs to an official government organization in the United States.",
+      "Read More 1 Affected Product Danfoss AK-SM8xxA <=5.4.0 Product Status: known_affected Remediations Mitigation This vulnerability will be addressed in an upcoming Danfoss AK-SM 800A Series software release (version 5.5.x).",
+      "CISA also recommends users take the following measures to protect themselves from social engineering attacks: Do not click web links or open attachments in unsolicited email messages."
+     ]
+    },
+    {
+     "name": "INCIBE-CERT ICS advisories (Spain)",
+     "url": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/uso-de-credenciales-predeterminadas-en-controladores-de-refrigeracion-de-danfoss",
+     "status": "error",
+     "error": "The read operation timed out",
+     "excerpts": []
+    },
+    {
+     "name": "Security.NL",
+     "url": "https://www.security.nl/posting/962992/Danfoss-koelsystemen+via+kritiek+lek+op+afstand+over+te+nemen?channel=rss",
+     "status": 200,
+     "chars": 6385,
+     "excerpts": [
+      "Danfoss meldt in het beveiligingsbulletin van CVE-2026-129713 dat het via de aankomende update ook de mogelijkheid voor klanten verwijdert om de 'Strict mode' van de controller uit te schakelen, die extra beveiliging moet bieden.",
+      "De kwetsbaarheid wordt aangeduid als CVE-2026-129713 en betreft een stack-based buffer overflow.",
+      "Vandaag waarschuwt het Cybersecurity and Infrastructure Security Agency (CISA) van het Amerikaanse ministerie van Homeland Security voor een kritiek lek in de Danfoss AK-SM 800A-controller, gevonden door onderzoeker Carlo Meijer van Midnight Blue.",
+      "Het CISA en Danfoss stellen dat het probleem in een aankomende firmwareversie (5.5.x) zal zijn verholpen.",
+      "Danfoss-controllers worden onder andere gebruikt voor het beheren van koelsystemen van supermarkten."
+     ]
+    }
+   ],
+   "primary": [
+    {
+     "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01",
+     "status": 200,
+     "chars": 5575,
+     "excerpts": [
+      "Control System Internet Accessibility | CISA Skip to main content Official websites use .gov A .gov website belongs to an official government organization in the United States.",
+      "Search   Menu Share: Opens in a new window Opens in a new window Opens in a new window Archived Content In an effort to keep CISA.gov current, the archive contains outdated information that may not reflect current policy or programs.",
+      "The ICS‑CERT has also published an Advisory “ICSA-10-228-01 - Vendor Admin Accounts Warning,” that discusses the importance of owner/operator awareness and control of administrator level accounts installed on control systems by third-party vendors.",
+      "Monitoring the creation of administrator level accounts by third-party vendors (ICSA-10-228-01)."
+     ],
+     "found_in": "CISA Advisories"
+    },
+    {
+     "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices",
+     "status": 200,
+     "chars": 1691,
+     "excerpts": [
+      "ICS Recommended Practices | CISA Skip to main content Official websites use .gov A .gov website belongs to an official government organization in the United States."
+     ],
+     "found_in": "CISA Advisories"
+    },
+    {
+     "url": "https://www.cisa.gov/topics/industrial-control-systems",
+     "status": 200,
+     "chars": 4092,
+     "excerpts": [
+      "CISA Unveils New Initiative to Fortify America’s Critical Infrastructure MAY 05, 2026 | PRESS RELEASE ​​Barriers to Secure OT Communication: Why Johnny Can’t Authenticate​ FEB 10, 2026 | PUBLICATION This guidance provides insights into vulnerabilities and offers practical recommendations to help organizations strengthen the security of their OT environments.",
+      "Industrial Control Systems | Cybersecurity and Infrastructure Security Agency CISA Skip to main content Official websites use .gov A .gov website belongs to an official government organization in the United States.",
+      "CISA provides guidance based on emerging threats, as well as services and tools to help secure ICS/OT.",
+      "News and Alerts Check out the latest blogs, press releases, and alerts and advisories from CISA.",
+      "More Critical Infrastructure News Considerations for Critical Infrastructure Operators Working With Third-Party ICS Integrators SEP 23, 2026 | FACT SHEET This fact sheet describes how critical infrastructure operators can work with third-party industrial control systems (ICS) integrators to help ensure secure practices and frameworks are in place to protect the operational environment."
+     ],
+     "found_in": "CISA Advisories"
+    },
+    {
+     "url": "https://www.cisa.gov/news-events/news/targeted-cyber-intrusion-detection-and-mitigation-strategies-update-b",
+     "status": 200,
+     "chars": 20919,
+     "excerpts": [
+      "Related Articles Oct 27, 2026 Blog CISA Publishes Significant Updates to ScubaGear and ScubaGoggles Aug 11, 2026 Blog Cyber Storm X: 20 Years of Readiness, Resilience, and Real‑World Impact Jul 09, 2026 Blog Lessons from CISA’s Cyber Incident Jun 22, 2026 Blog Five Eyes Cyber Security Agencies Statement",
+      "Recommended Practice: Creating Cyber Forensics Plans for Control Systems (2008), https://www.cisa.gov/sites/default/files/2023-01/Forensics_RP.pdf , Web site last accessed January 22, 2013.",
+      "Recommended Practice for Patch management of Control Systems, https://www.cisa.gov/sites/default/files/recommended_practices/RP_Patch_Management_S508C.pdf , Web site last accessed January 22, 2013.",
+      "Developing an ICS Cybersecurity Incident Response plan, https://www.cisa.gov/sites/default/files/recommended_practices/final-RP_ics_cybersecurity_incident_response_100609.pdf , Web site last accessed January 22, 2013.",
+      "Targeted Cyber Intrusion Detection and Mitigation Strategies (Update B) | CISA Skip to main content Official websites use .gov A .gov website belongs to an official government organization in the United States."
+     ],
+     "found_in": "CISA Advisories"
+    }
+   ]
+  },
+  "GL.iNet GoodCloud remote-management flaw exploited to install malware on customer routers and KVM devices": {
+   "sources": [
+    {
+     "name": "The Hacker News",
+     "url": "https://thehackernews.com/2026/11/hackers-exploited-glinet-cloud-flaw-to.html",
+     "status": 200,
+     "chars": 11479,
+     "excerpts": [
+      "What the Update Does and Does Not Remove GL.iNet listed stable security firmware for its router and KVM lines in the security notice it updated today, which now says the update \"removes the malware identified in this incident without requiring a factory reset,\" with settings kept.",
+      "The cloud-side fix does not remove malware from devices that were already infected, so owners still need to check their hardware and install the security firmware listed today.",
+      "A KVM is a small device used to control a computer remotely as if sitting in front of it.",
+      "The company is still investigating whether computers attached to infected KVMs were affected.",
+      "It has not said how many devices were infected, when the attacks began, or how its cloud service was breached."
+     ]
+    },
+    {
+     "name": "Ciberseguridad LATAM",
+     "url": "https://ciberseguridadlatam.com/compromiso-de-goodcloud-expone-routers-gl-inet-backdoors-previos-amplian-el-alcance/",
+     "status": 200,
+     "chars": 8580,
+     "excerpts": [
+      "Compromiso de GoodCloud expone routers GL.iNet — backdoors previos amplían el alcance – CiberSeguridad Latam Ir al contenido Compromiso de GoodCloud expone routers GL.iNet — backdoors previos amplían el alcance Atacantes usaron el servicio de gestión remota de la empresa china para instalar malware en routers y dispositivos KVM, mientras la investigación revela puertas traseras más antiguas.",
+      "GoodCloud, el servicio de gestión remota en la nube de GL.iNet, fue comprometido por atacantes que lograron instalar malware en routers y dispositivos KVM conectados a la plataforma.",
+      "Redacción CSL noviembre 24, 2026 5:46 am No Comments Alerta Atacantes usaron el servicio de gestión remota de la empresa china para instalar malware en routers y dispositivos KVM, mientras la investigación revela puertas traseras más antiguas.",
+      "Cómo un servicio de gestión centralizada se convirtió en vector de ataque masivo GoodCloud funciona como punto único de administración para los dispositivos GL.iNet desplegados en campo.",
+      "Los backdoors previos que la investigación de RTH puso en evidencia RemoteToHome Consulting, en su análisis como partner de servicios de GL.iNet, identificó la presencia de backdoors más antiguos en dispositivos afectados por el compromiso de GoodCloud."
+     ]
+    }
+   ],
+   "primary": []
+  },
+  "SonicWall tells customers to retire Generation 6 firewalls now: no patches even for critical flaws, AI-assisted attackers expected to exploit internet-facing units": {
+   "sources": [
+    {
+     "name": "The Hacker News",
+     "url": "https://thehackernews.com/2026/11/sonicwall-warns-gen-6-firewalls-wont.html",
+     "status": 200,
+     "chars": 8217,
+     "excerpts": [
+      "\"Because these assets provide critical inspection of data ingress and egress points, they grant significant visibility and permissions to those who gain access to them.\" Cisco Talos' 2025 Year in Review report has also found that 23% of CVEs discovered in the year directly impact network devices like VPN appliances, next-generation firewalls (NGFWs), load balancers, routers, and others.",
+      "\"Attackers now use automation and AI to find and exploit unsupported edge devices faster than ever,\" SonicWall said .",
+      "Replace them with a Gen 8 firewall running SonicOS 8 Contact an authorized SonicWall partner to plan the migration Until the firewall is replaced, it's advised to take the below actions to minimize exposure - Disable WAN management (HTTPS, SSH, and SNMP on WAN interfaces).",
+      "\"The risk to an unsupported firewall grows every day it stays online,\" SonicWall said.",
+      "\"We expect internet-facing Gen 6 firewalls to be actively targeted."
+     ]
+    }
+   ],
+   "primary": []
+  },
+  "OpenPLC Runtime <= 4.2.4: unauthenticated attacker can create an admin account during initial setup (CISA advisory; INCIBE relay); patch to 4.3": {
+   "sources": [
+    {
+     "name": "CISA Advisories",
+     "url": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/condicion-de-carrera-en-openplc-runtime-de-autonomy-logic",
+     "status": 200,
+     "chars": 1292,
+     "excerpts": [
+      "Condición de carrera en OpenPLC Runtime de Autonomy Logic | INCIBE-CERT | INCIBE Pasar al contenido principal Condición de carrera en OpenPLC Runtime de Autonomy Logic Fecha de publicación 20/11/2026 Identificador INCIBE-2026-924 Importancia 5 - Crítica Recursos Afectados OpenPLC Runtime, versión 4.2.4 y anteriores.",
+      "CVE Identificador CVE Severidad Explotación Fabricante CVE-2026-126088 Crítica No AUTONOMY LOGIC Listado de referencias ICSA-26-323-01 - Autonomy Logic OpenPLC Runtime Etiquetas Acceso no autorizado Actualización Autenticación Control de acceso + PLC Sistemas de control industrial Vulnerabilidad -",
+      "Descripción Noureddin Lutfi ha informado sobre 1 vulnerabilidad de severidad crítica en OpenPLC Runtime.",
+      "Solución Actualizar OpenPLC Runtime a la versión 4.3.0 o posterior, disponible en el repositorio del fabricante ."
+     ]
+    }
+   ],
+   "primary": [
+    {
+     "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-323-01",
+     "status": 200,
+     "chars": 5072,
+     "excerpts": [
+      "Autonomy Logic OpenPLC Runtime | CISA Skip to main content Official websites use .gov A .gov website belongs to an official government organization in the United States.",
+      "Read More 1 Affected Product Autonomy Logic OpenPLC Runtime <=4.2.4 Product Status: known_affected Remediations Vendor fix Update to OpenPLC Runtime version 4.3.0 or later.",
+      "Recommended Practices CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities.",
+      "CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.",
+      "CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics ."
+     ],
+     "found_in": "CISA Advisories"
+    }
+   ]
+  },
+  "Siemens Industrial Edge and EcoStruxure Power Build Rapsody: new remote-code-execution and memory-corruption advisories (CERT-FR, CISA) in substation and plant engineering software": {
+   "sources": [
+    {
+     "name": "CERT-FR advisories (France)",
+     "url": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1590/",
+     "status": 200,
+     "chars": 2195,
+     "excerpts": [
+      "Résumé De multiples vulnérabilités ont été découvertes dans Siemens Industrial Edge."
+     ]
+    },
+    {
+     "name": "CISA Advisories",
+     "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-328-02",
+     "status": 200,
+     "chars": 9972,
+     "excerpts": [
+      "Schneider Electric EcoStruxure Power Build Rapsody software | CISA Skip to main content Official websites use .gov A .gov website belongs to an official government organization in the United States.",
+      "The EcoStruxure™ Power Build Rapsody is used to enter or import the single line diagram, to get the extensive bill of material of your switchboard, including all devices, connection items, and mounting components.",
+      "Revision History Initial Release Date: 2026-11-10 Date Revision Summary 2026-11-10 1 Original Release 2026-11-24 2 Initial CISA Republication of Schneider Electric CPCERT SEVD-2026-314-01 advisory Legal Notice and Terms of Use This product is provided subject to this  Notification  and this  Privacy & Use  policy.",
+      "Vendor Schneider Electric Tags Sector : Commercial Facilities Sector , Critical Manufacturing Sector , Energy Sector Topics : Industrial Control System Vulnerabilities , Industrial Control Systems Please share your thoughts We recently updated our anonymous product survey ; we welcome your feedback.",
+      "Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies ."
+     ]
+    }
+   ],
+   "primary": [
+    {
+     "url": "https://www.cisa.gov/uscert/ics/alerts/ICS-ALERT-10-301-01",
+     "status": 200,
+     "chars": 5575,
+     "excerpts": [
+      "Control System Internet Accessibility | CISA Skip to main content Official websites use .gov A .gov website belongs to an official government organization in the United States.",
+      "Search   Menu Share: Opens in a new window Opens in a new window Opens in a new window Archived Content In an effort to keep CISA.gov current, the archive contains outdated information that may not reflect current policy or programs.",
+      "That CSAR is currently available only through the US‑CERT secure portal (Control Systems Center/Library/ICS-CERT/ICS-CERT Advisories and Reports/…).",
+      "ICS-CERT is working with asset owners/operators, Information Sharing and Analysis Centers (ISACS), vendors, and integrators to notify users of those systems about their specific issues; however, due to an increase in reporting of these types of incidents, ICS-CERT is producing a more general alert regarding these issues.",
+      "In most cases, the affected control system interfaces were designed to provide remote access for monitoring system status and/or certain asset management features (i.e., configuration adjustments)."
+     ],
+     "found_in": "CISA Advisories"
+    },
+    {
+     "url": "https://www.cisa.gov/resources-tools/resources/ics-recommended-practices",
+     "status": 200,
+     "chars": 1691,
+     "excerpts": [
+      "ICS Recommended Practices | CISA Skip to main content Official websites use .gov A .gov website belongs to an official government organization in the United States.",
+      "Search   Menu Share: Opens in a new window Opens in a new window Opens in a new window ICS Recommended Practices This page provides documents detailing a wide variety of industrial control systems (ICS) topics associated with cyber vulnerabilities and their mitigation."
+     ],
+     "found_in": "CISA Advisories"
+    },
+    {
+     "url": "https://www.cisa.gov/topics/industrial-control-systems",
+     "status": 200,
+     "chars": 4092,
+     "excerpts": [
+      "Industrial Control Systems | Cybersecurity and Infrastructure Security Agency CISA Skip to main content Official websites use .gov A .gov website belongs to an official government organization in the United States.",
+      "News and Alerts Check out the latest blogs, press releases, and alerts and advisories from CISA.",
+      "Search   Menu Share: Opens in a new window Opens in a new window Opens in a new window Industrial Control Systems Practical tools, guidance, and up-to-date information to support asset owners and cyber defenders Industrial control systems (ICS) and operational technology (OT) are the systems and devices that interact with the physical environment.",
+      "CISA provides guidance based on emerging threats, as well as services and tools to help secure ICS/OT.",
+      "More Critical Infrastructure News Considerations for Critical Infrastructure Operators Working With Third-Party ICS Integrators SEP 23, 2026 | FACT SHEET This fact sheet describes how critical infrastructure operators can work with third-party industrial control systems (ICS) integrators to help ensure secure practices and frameworks are in place to protect the operational environment."
+     ],
+     "found_in": "CISA Advisories"
+    },
+    {
+     "url": "https://www.cisa.gov/news-events/news/targeted-cyber-intrusion-detection-and-mitigation-strategies-update-b",
+     "status": 200,
+     "chars": 20919,
+     "excerpts": [
+      "Targeted Cyber Intrusion Detection and Mitigation Strategies (Update B) | CISA Skip to main content Official websites use .gov A .gov website belongs to an official government organization in the United States.",
+      "Search   Menu Share: Opens in a new window Opens in a new window Opens in a new window Archived Content In an effort to keep CISA.gov current, the archive contains outdated information that may not reflect current policy or programs.",
+      "Blog Targeted Cyber Intrusion Detection and Mitigation Strategies (Update B) Released February 06, 2013 Related topics: Cybersecurity Best Practices Overview Sophisticated and targeted cyber intrusions have increased in recent months against owners and operators of industrial control systems across multiple critical infrastructure sectors.",
+      "Additional Recommended Practices ICS-CERT recommends that users take the following standard measures to protect themselves from social engineering attacks.",
+      "Recommended Practice: Creating Cyber Forensics Plans for Control Systems (2008), https://www.cisa.gov/sites/default/files/2023-01/Forensics_RP.pdf , Web site last accessed January 22, 2013."
+     ],
+     "found_in": "CISA Advisories"
+    }
+   ]
+  },
+  "US national cyber director Sean Cairncross leaves office; AI security and critical-infrastructure protection decisions were in his remit": {
+   "sources": [
+    {
+     "name": "CyberScoop",
+     "url": "https://cyberscoop.com/sean-cairncross-out-national-cyber-director/",
+     "status": 200,
+     "chars": 6556,
+     "excerpts": [
+      "Sean Cairncross out as national cyber director | CyberScoop Skip to main content Advertisement Advertise Search Close Search for: Search Advertisement Get our latest cybersecurity news first on Google.",
+      "Close Sean Cairncross is leaving his post as national cyber director, CyberScoop has learned.",
+      "Cairncross led the Office of the National Cyber Director, which coordinates cybersecurity policy and strategy across the federal government.",
+      "A source close to the White House told CyberScoop that President Donald Trump fully supported firing Cairncross from his position as he lacked the strong cyber credentials to perform the job.",
+      "His office nevertheless became involved in key administration decisions on AI security and the protection of critical infrastructure."
+     ]
+    }
+   ],
+   "primary": []
+  }
+ },
+ "source_performance": {
+  "CISA Advisories": {
+   "energy_items": 5,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 3,
+   "pulls_blocked": 0
+  },
+  "CISA News": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "CyberScoop": {
+   "energy_items": 2,
+   "wide_items": 5,
+   "feed": "ok",
+   "pulls_ok": 1,
+   "pulls_blocked": 0
+  },
+  "The Record (Recorded Future News)": {
+   "energy_items": 0,
+   "wide_items": 5,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "BleepingComputer": {
+   "energy_items": 1,
+   "wide_items": 13,
+   "feed": "ok",
+   "pulls_ok": 1,
+   "pulls_blocked": 0
+  },
+  "SecurityWeek": {
+   "energy_items": 2,
+   "wide_items": 7,
+   "feed": "ok",
+   "pulls_ok": 2,
+   "pulls_blocked": 0
+  },
+  "Dark Reading": {
+   "energy_items": 0,
+   "wide_items": 5,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "Krebs on Security": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "Utility Dive": {
+   "energy_items": 0,
+   "wide_items": 8,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "DOE Newsroom": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "UK NCSC News": {
+   "energy_items": 0,
+   "wide_items": 2,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "The Hacker News": {
+   "energy_items": 3,
+   "wide_items": 11,
+   "feed": "ok",
+   "pulls_ok": 2,
+   "pulls_blocked": 0
+  },
+  "Industrial Cyber": {
+   "energy_items": 3,
+   "wide_items": 4,
+   "feed": "ok",
+   "pulls_ok": 1,
+   "pulls_blocked": 0
+  },
+  "The Register Security": {
+   "energy_items": 1,
+   "wide_items": 10,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "arXiv cs.CR (preprints)": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "arXiv eess.SY (systems and control preprints)": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "Schneier on Security": {
+   "energy_items": 0,
+   "wide_items": 1,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "CSIS": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "Kaspersky ICS CERT": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "WIRED Security": {
+   "energy_items": 0,
+   "wide_items": 1,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "CSIRTAmericas (OAS)": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "CERT.br (Brazil)": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "INCIBE-CERT ICS advisories (Spain)": {
+   "energy_items": 2,
+   "wide_items": 2,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "Una al día (Hispasec)": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "Ciberseguridad LATAM": {
+   "energy_items": 2,
+   "wide_items": 4,
+   "feed": "ok",
+   "pulls_ok": 1,
+   "pulls_blocked": 0
+  },
+  "heise Security (Germany)": {
+   "energy_items": 0,
+   "wide_items": 7,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "CERT-FR advisories (France)": {
+   "energy_items": 1,
+   "wide_items": 7,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "Le Monde Pixels (France)": {
+   "energy_items": 0,
+   "wide_items": 8,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "Security.NL (Netherlands)": {
+   "energy_items": 0,
+   "wide_items": 16,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "CERT Polska": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "CERT-UA (Ukraine)": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "JPCERT/CC (Japan)": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "Canadian Centre for Cyber Security (alerts, EN)": {
+   "energy_items": 0,
+   "wide_items": 14,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "Centre canadien pour la cybersécurité (alertes, FR)": {
+   "energy_items": 0,
+   "wide_items": 13,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "TechCrunch Security": {
+   "energy_items": 0,
+   "wide_items": 2,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "UC Berkeley Center for Long-Term Cybersecurity": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "MIT Technology Review": {
+   "energy_items": 0,
+   "wide_items": 4,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "MIT Technology Review: climate and energy": {
+   "energy_items": 0,
+   "wide_items": 1,
+   "feed": "ok",
+   "pulls_ok": 0,
+   "pulls_blocked": 0
+  },
+  "The Register": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "n/a",
+   "pulls_ok": 1,
+   "pulls_blocked": 0
+  },
+  "INCIBE-CERT ICS advisories": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "n/a",
+   "pulls_ok": 0,
+   "pulls_blocked": 1
+  },
+  "Security.NL": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "n/a",
+   "pulls_ok": 1,
+   "pulls_blocked": 0
+  },
+  "CERT-FR advisories": {
+   "energy_items": 0,
+   "wide_items": 0,
+   "feed": "n/a",
+   "pulls_ok": 1,
+   "pulls_blocked": 0
+  }
+ },
+ "primary_hosts_reached": [
+  "www.cisa.gov"
+ ]
+}

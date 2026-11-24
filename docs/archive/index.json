@@ -123,6 +123,41 @@
     "repo_sources.json"
    ],
    "flags": 54
+  },
+  {
+   "run": "2026-11-24T17-44",
+   "generated_at": "2026-11-24T17:44:23.420879+00:00",
+   "news_generated_at": "2026-11-24T17:40:39.861780+00:00",
+   "model": "curated-by-claude-fable-5.1 (session run, 2026-11-24)",
+   "items": 10,
+   "energy": 22,
+   "wide": 150,
+   "headline": "Four confirmed energy incidents in a week: a US uranium mine's operating systems, KEPCO's 1.5 million records, two Norwegian majors through an Azure flaw, and a smart-meter maker's lines; plus the refrigeration controllers' flaws finally published.",
+   "us_status": "One confirmed cyber incident at a US energy production asset this window: Peninsula Energy's Lance uranium project in Wyoming, where the company's own exchange filing says operating systems were breached and operations temporarily affected, with administrative systems unaffected; what was hit and whether output stopped are not yet public (SecurityWeek, 2026-11-24). No confirmed incident at a US grid operator, pipeline or refinery.",
+   "files": [
+    "briefing.json",
+    "news.json",
+    "sources.json",
+    "command_log.json",
+    "stix.json",
+    "history.json",
+    "personas.json",
+    "sectors.json",
+    "where_to_look.json",
+    "buildings.json",
+    "ai_market.json",
+    "grid_weather.json",
+    "plants.json",
+    "source_catalogue.json",
+    "regulations.json",
+    "risk_model.json",
+    "repo_RULES.md",
+    "repo_INTELLIGENCE_ANALYSIS.md",
+    "repo_CURATION.md",
+    "repo_COST.md",
+    "repo_sources.json"
+   ],
+   "flags": 44
   }
  ]
 }

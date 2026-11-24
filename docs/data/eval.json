@@ -159,6 +159,491 @@
    "agree": 10,
    "rate": 1.0,
    "mismatches": []
+  },
+  {
+   "at": "2026-11-24T17:51:35.380032+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "facts": 10,
+   "agree": 0,
+   "rate": 0.0,
+   "mismatches": [
+    {
+     "match": "CVE-2026-58115",
+     "field": "cvss",
+     "expect": 10.0,
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-58115",
+     "field": "kev_listed",
+     "expect": "false",
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-107441",
+     "field": "cvss",
+     "expect": 8.8,
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-107441",
+     "field": "ics_vendor",
+     "expect": "Zyxel",
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-111497",
+     "field": "kev_listed",
+     "expect": "true",
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-111497",
+     "field": "event_type",
+     "expect": "exploitation in the wild",
+     "actual": null
+    },
+    {
+     "match": "blood",
+     "field": "country",
+     "expect": "France",
+     "actual": null
+    },
+    {
+     "match": "blood",
+     "field": "ot_impact",
+     "expect": "OT process affected",
+     "actual": null
+    },
+    {
+     "match": "NCSC",
+     "field": "source_reliability",
+     "expect": "A",
+     "actual": null
+    },
+    {
+     "match": "Information Sharing",
+     "field": "claim_vs_confirmed",
+     "expect": "claimed",
+     "actual": null
+    }
+   ]
+  },
+  {
+   "at": "2026-11-24T17:52:54.133920+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "facts": 10,
+   "agree": 0,
+   "rate": 0.0,
+   "mismatches": [
+    {
+     "match": "CVE-2026-58115",
+     "field": "cvss",
+     "expect": 10.0,
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-58115",
+     "field": "kev_listed",
+     "expect": "false",
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-107441",
+     "field": "cvss",
+     "expect": 8.8,
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-107441",
+     "field": "ics_vendor",
+     "expect": "Zyxel",
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-111497",
+     "field": "kev_listed",
+     "expect": "true",
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-111497",
+     "field": "event_type",
+     "expect": "exploitation in the wild",
+     "actual": null
+    },
+    {
+     "match": "blood",
+     "field": "country",
+     "expect": "France",
+     "actual": null
+    },
+    {
+     "match": "blood",
+     "field": "ot_impact",
+     "expect": "OT process affected",
+     "actual": null
+    },
+    {
+     "match": "NCSC",
+     "field": "source_reliability",
+     "expect": "A",
+     "actual": null
+    },
+    {
+     "match": "Information Sharing",
+     "field": "claim_vs_confirmed",
+     "expect": "claimed",
+     "actual": null
+    }
+   ]
+  },
+  {
+   "at": "2026-11-24T17:52:54.780134+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "facts": 10,
+   "agree": 0,
+   "rate": 0.0,
+   "mismatches": [
+    {
+     "match": "CVE-2026-58115",
+     "field": "cvss",
+     "expect": 10.0,
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-58115",
+     "field": "kev_listed",
+     "expect": "false",
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-107441",
+     "field": "cvss",
+     "expect": 8.8,
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-107441",
+     "field": "ics_vendor",
+     "expect": "Zyxel",
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-111497",
+     "field": "kev_listed",
+     "expect": "true",
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-111497",
+     "field": "event_type",
+     "expect": "exploitation in the wild",
+     "actual": null
+    },
+    {
+     "match": "blood",
+     "field": "country",
+     "expect": "France",
+     "actual": null
+    },
+    {
+     "match": "blood",
+     "field": "ot_impact",
+     "expect": "OT process affected",
+     "actual": null
+    },
+    {
+     "match": "NCSC",
+     "field": "source_reliability",
+     "expect": "A",
+     "actual": null
+    },
+    {
+     "match": "Information Sharing",
+     "field": "claim_vs_confirmed",
+     "expect": "claimed",
+     "actual": null
+    }
+   ]
+  },
+  {
+   "at": "2026-11-24T17:53:03.493534+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "facts": 10,
+   "agree": 0,
+   "rate": 0.0,
+   "mismatches": [
+    {
+     "match": "CVE-2026-58115",
+     "field": "cvss",
+     "expect": 10.0,
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-58115",
+     "field": "kev_listed",
+     "expect": "false",
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-107441",
+     "field": "cvss",
+     "expect": 8.8,
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-107441",
+     "field": "ics_vendor",
+     "expect": "Zyxel",
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-111497",
+     "field": "kev_listed",
+     "expect": "true",
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-111497",
+     "field": "event_type",
+     "expect": "exploitation in the wild",
+     "actual": null
+    },
+    {
+     "match": "blood",
+     "field": "country",
+     "expect": "France",
+     "actual": null
+    },
+    {
+     "match": "blood",
+     "field": "ot_impact",
+     "expect": "OT process affected",
+     "actual": null
+    },
+    {
+     "match": "NCSC",
+     "field": "source_reliability",
+     "expect": "A",
+     "actual": null
+    },
+    {
+     "match": "Information Sharing",
+     "field": "claim_vs_confirmed",
+     "expect": "claimed",
+     "actual": null
+    }
+   ]
+  },
+  {
+   "at": "2026-11-24T17:53:03.880793+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "facts": 10,
+   "agree": 0,
+   "rate": 0.0,
+   "mismatches": [
+    {
+     "match": "CVE-2026-58115",
+     "field": "cvss",
+     "expect": 10.0,
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-58115",
+     "field": "kev_listed",
+     "expect": "false",
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-107441",
+     "field": "cvss",
+     "expect": 8.8,
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-107441",
+     "field": "ics_vendor",
+     "expect": "Zyxel",
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-111497",
+     "field": "kev_listed",
+     "expect": "true",
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-111497",
+     "field": "event_type",
+     "expect": "exploitation in the wild",
+     "actual": null
+    },
+    {
+     "match": "blood",
+     "field": "country",
+     "expect": "France",
+     "actual": null
+    },
+    {
+     "match": "blood",
+     "field": "ot_impact",
+     "expect": "OT process affected",
+     "actual": null
+    },
+    {
+     "match": "NCSC",
+     "field": "source_reliability",
+     "expect": "A",
+     "actual": null
+    },
+    {
+     "match": "Information Sharing",
+     "field": "claim_vs_confirmed",
+     "expect": "claimed",
+     "actual": null
+    }
+   ]
+  },
+  {
+   "at": "2026-11-24T17:53:33.078159+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "facts": 6,
+   "retired": 10,
+   "agree": 6,
+   "rate": 1.0,
+   "mismatches": [
+    {
+     "match": "CVE-2026-58115",
+     "field": "cvss",
+     "expect": 10.0,
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-58115",
+     "field": "kev_listed",
+     "expect": "false",
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-107441",
+     "field": "cvss",
+     "expect": 8.8,
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-107441",
+     "field": "ics_vendor",
+     "expect": "Zyxel",
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-111497",
+     "field": "kev_listed",
+     "expect": "true",
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-111497",
+     "field": "event_type",
+     "expect": "exploitation in the wild",
+     "actual": null
+    },
+    {
+     "match": "blood",
+     "field": "country",
+     "expect": "France",
+     "actual": null
+    },
+    {
+     "match": "blood",
+     "field": "ot_impact",
+     "expect": "OT process affected",
+     "actual": null
+    },
+    {
+     "match": "NCSC",
+     "field": "source_reliability",
+     "expect": "A",
+     "actual": null
+    },
+    {
+     "match": "Information Sharing",
+     "field": "claim_vs_confirmed",
+     "expect": "claimed",
+     "actual": null
+    }
+   ]
+  },
+  {
+   "at": "2026-11-24T17:53:44.314137+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "facts": 6,
+   "retired": 10,
+   "agree": 6,
+   "rate": 1.0,
+   "mismatches": [
+    {
+     "match": "CVE-2026-58115",
+     "field": "cvss",
+     "expect": 10.0,
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-58115",
+     "field": "kev_listed",
+     "expect": "false",
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-107441",
+     "field": "cvss",
+     "expect": 8.8,
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-107441",
+     "field": "ics_vendor",
+     "expect": "Zyxel",
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-111497",
+     "field": "kev_listed",
+     "expect": "true",
+     "actual": null
+    },
+    {
+     "match": "CVE-2026-111497",
+     "field": "event_type",
+     "expect": "exploitation in the wild",
+     "actual": null
+    },
+    {
+     "match": "blood",
+     "field": "country",
+     "expect": "France",
+     "actual": null
+    },
+    {
+     "match": "blood",
+     "field": "ot_impact",
+     "expect": "OT process affected",
+     "actual": null
+    },
+    {
+     "match": "NCSC",
+     "field": "source_reliability",
+     "expect": "A",
+     "actual": null
+    },
+    {
+     "match": "Information Sharing",
+     "field": "claim_vs_confirmed",
+     "expect": "claimed",
+     "actual": null
+    }
+   ]
   }
  ],
  "human_samples": []

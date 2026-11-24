@@ -1,23 +1,23 @@
 {
- "drawn_at": "2026-11-05T02:13:27.896770+00:00",
- "run": "2026-11-05T02:11:45.749987+00:00",
+ "drawn_at": "2026-11-24T17:52:54.438364+00:00",
+ "run": "2026-11-24T17:44:23.420879+00:00",
  "instructions": "For each item open the sources, then answer each check with true/false and a note. Leave null if you cannot tell. Save the file; the dashboard reads it.",
  "items": [
   {
-   "headline": "Electric utilities urge Congress to renew the Cybersecurity Information Sharing Act of 2015 before it expires next month",
+   "headline": "Norway's NSM links cyberattacks on two major energy companies to a critical Azure API Management (Classic tier) flaw; Equinor and Skagerak Energi named among affected organizations",
    "sources": [
     {
-     "name": "Utility Dive",
-     "url": "https://www.utilitydive.com/news/electric-utilities-join-industries-urging-renewal-of-cybersecurity-informat/873703/",
-     "date": "2026-11-04"
+     "name": "The Register",
+     "url": "https://www.theregister.com/security/2026/11/23/norway-links-energy-firm-cyberattacks-to-critical-azure-api-management-flaw/5311598",
+     "date": "2026-11-23"
     }
    ],
    "system": {
     "severity": "high",
     "ot_impact": "none (IT only)",
-    "reliability": "B",
+    "reliability": "A",
     "credibility": "2",
-    "claim_vs_confirmed": "claimed (trade press; primary statute text not fetched)"
+    "claim_vs_confirmed": "confirmed (NSM, Microsoft advisory seen by the outlet)"
    },
    "human": {
     "facts_match_sources": null,
@@ -29,20 +29,45 @@
    }
   },
   {
-   "headline": "Attackers chain three Ivanti Connect Secure flaws for unauthenticated root on VPN appliances",
+   "headline": "Peninsula Energy halts ASX trading after a cyber incident breaches the 'operating system' at its Lance uranium project in Wyoming; administrative systems unaffected",
+   "sources": [
+    {
+     "name": "SecurityWeek (quoting the ASX filing)",
+     "url": "https://www.securityweek.com/peninsula-energy-halts-trading-after-cyber-incident-hits-us-uranium-mine/",
+     "date": "2026-11-24"
+    }
+   ],
+   "system": {
+    "severity": "critical",
+    "ot_impact": "OT reached, no process effect",
+    "reliability": "A",
+    "credibility": "2",
+    "claim_vs_confirmed": "confirmed (company filing); scope unconfirmed"
+   },
+   "human": {
+    "facts_match_sources": null,
+    "ot_impact_correct": null,
+    "severity_reasonable": null,
+    "trust_grades_reasonable": null,
+    "nothing_invented": null,
+    "note": ""
+   }
+  },
+  {
+   "headline": "SonicWall tells customers to retire Generation 6 firewalls now: no patches even for critical flaws, AI-assisted attackers expected to exploit internet-facing units",
    "sources": [
     {
      "name": "The Hacker News",
-     "url": "https://thehackernews.com/2026/10/attackers-chain-three-ivanti-connect.html",
-     "date": "2026-11-02"
+     "url": "https://thehackernews.com/2026/11/sonicwall-warns-gen-6-firewalls-wont.html",
+     "date": "2026-11-20"
     }
    ],
    "system": {
-    "severity": "high",
-    "ot_impact": "none (IT only)",
+    "severity": "medium",
+    "ot_impact": "unknown",
     "reliability": "B",
     "credibility": "2",
-    "claim_vs_confirmed": "claimed (one outlet)"
+    "claim_vs_confirmed": "confirmed (vendor statement)"
    },
    "human": {
     "facts_match_sources": null,
@@ -54,45 +79,25 @@
    }
   },
   {
-   "headline": "CISA launches 2026 Critical Infrastructure Security and Resilience campaign: OT security, continuity, recovery planning",
+   "headline": "GL.iNet GoodCloud remote-management flaw exploited to install malware on customer routers and KVM devices",
    "sources": [
     {
-     "name": "Industrial Cyber",
-     "url": "https://industrialcyber.co/cisa/cisa-urges-critical-infrastructure-owners-to-prioritize-ot-security-operational-continuity-recovery-planning-in-2026-campaign/",
-     "date": "2026-11-03"
-    }
-   ],
-   "system": {
-    "severity": "info",
-    "ot_impact": "none (IT only)",
-    "reliability": "B",
-    "credibility": "2",
-    "claim_vs_confirmed": "claimed (CISA primary page not fetched; CISA feed returned 403)"
-   },
-   "human": {
-    "facts_match_sources": null,
-    "ot_impact_correct": null,
-    "severity_reasonable": null,
-    "trust_grades_reasonable": null,
-    "nothing_invented": null,
-    "note": ""
-   }
-  },
-  {
-   "headline": "Trump administration ban on foreign grid components raises industry concern over practicality and cost",
-   "sources": [
+     "name": "The Hacker News",
+     "url": "https://thehackernews.com/2026/11/hackers-exploited-glinet-cloud-flaw-to.html",
+     "date": "2026-11-23"
+    },
     {
-     "name": "Utility Dive",
-     "url": "https://www.utilitydive.com/news/trump-ban-on-foreign-grid-components-sparks-industry-concern-over-practical/873752/",
-     "date": "2026-11-03"
+     "name": "Ciberseguridad LATAM",
+     "url": "https://ciberseguridadlatam.com/compromiso-de-goodcloud-expone-routers-gl-inet-backdoors-previos-amplian-el-alcance/",
+     "date": "2026-11-24"
     }
    ],
    "system": {
     "severity": "medium",
     "ot_impact": "none (IT only)",
-    "reliability": "B",
+    "reliability": "A",
     "credibility": "2",
-    "claim_vs_confirmed": "claimed (trade press)"
+    "claim_vs_confirmed": "confirmed (vendor notice)"
    },
    "human": {
     "facts_match_sources": null,
@@ -104,35 +109,20 @@
    }
   },
   {
-   "headline": "UK NCSC Annual Review warns of AI-assisted ransomware against critical national infrastructure by 2028",
+   "headline": "Osaki Electric ransomware attack disrupts smart-meter production in Japan; OT-ISAC flags supplier-continuity risk across Asia-Pacific",
    "sources": [
     {
-     "name": "UK NCSC News",
-     "url": "https://www.ncsc.gov.uk/news/cyber-chief-uk-facing-ai-powered-attacks-on-critical-infrastructure-in-two-years",
-     "date": "2026-11-03"
-    },
-    {
-     "name": "The Register",
-     "url": "",
-     "date": "2026-11-03"
-    },
-    {
-     "name": "Industrial Cyber",
-     "url": "https://industrialcyber.co/critical-infrastructure/ncsc-annual-review-2026-warns-ai-powered-malware-could-target-uk-critical-infrastructure-by-2028/",
-     "date": "2026-11-04"
-    },
-    {
-     "name": "NCSC Annual Review 2026 (primary)",
-     "url": "https://www.ncsc.gov.uk/collection/annual-review-2026",
-     "date": "2026-11-03"
+     "name": "Industrial Cyber (relaying OT-ISAC)",
+     "url": "https://industrialcyber.co/threats-attacks/osaki-electric-ransomware-attack-disrupts-smart-meter-production-raising-supplier-continuity-concerns-across-asia-pacific/",
+     "date": "2026-11-24"
     }
    ],
    "system": {
-    "severity": "low",
-    "ot_impact": "unknown",
-    "reliability": "A",
-    "credibility": "3",
-    "claim_vs_confirmed": "forecast"
+    "severity": "high",
+    "ot_impact": "OT process affected",
+    "reliability": "B",
+    "credibility": "2",
+    "claim_vs_confirmed": "confirmed (OT-ISAC report); details not read (page blocks fetch)"
    },
    "human": {
     "facts_match_sources": null,
@@ -144,30 +134,25 @@
    }
   },
   {
-   "headline": "Cyberattack via refrigeration-equipment provider changed temperature settings at three French blood-service facilities",
+   "headline": "KEPCO, South Korea's state power company, confirms a breach of its billing portal and procurement system exposing about 1.5 million customer, representative and employee records",
    "sources": [
     {
      "name": "BleepingComputer",
-     "url": "https://www.bleepingcomputer.com/news/security/cyberattack-disrupts-blood-storage-refrigeration-systems-in-france/",
-     "date": "2026-11-04"
+     "url": "https://www.bleepingcomputer.com/news/security/south-koreas-power-giant-kepco-confirms-data-breach-impacting-15-million/",
+     "date": "2026-11-23"
     },
     {
-     "name": "The Register",
-     "url": "https://www.theregister.com/security/2026/11/04/cyberattack-on-french-plasma-stores-is-enough-to-make-your-blood-boil/5307519",
-     "date": "2026-11-04"
-    },
-    {
-     "name": "EFS press statement (victim, primary, French)",
-     "url": "http://presse.efs.sante.fr/actualites/l-efs-confirme-l-incident-de-cybersecurite-impactant-un-de-ces",
-     "date": "2026-11-04"
+     "name": "SecurityWeek",
+     "url": "https://www.securityweek.com/1-5-million-impacted-by-data-breach-at-south-korean-electric-company-kepco/",
+     "date": "2026-11-24"
     }
    ],
    "system": {
     "severity": "high",
-    "ot_impact": "OT process affected",
+    "ot_impact": "none (IT only)",
     "reliability": "A",
     "credibility": "1",
-    "claim_vs_confirmed": "confirmed"
+    "claim_vs_confirmed": "confirmed (company newsroom + regulator)"
    },
    "human": {
     "facts_match_sources": null,
@@ -179,58 +164,23 @@
    }
   },
   {
-   "headline": "INCIBE-CERT relays Siemens advisories: Brotli flaw CVE-2026-111497 in Industrial Edge configurators and RUGGEDCOM APE1808",
+   "headline": "Siemens Industrial Edge and EcoStruxure Power Build Rapsody: new remote-code-execution and memory-corruption advisories (CERT-FR, CISA) in substation and plant engineering software",
    "sources": [
     {
-     "name": "INCIBE-CERT ICS advisories (Spain)",
-     "url": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/multiples-vulnerabilidades-en-productos-de-siemens-1",
-     "date": "2026-11-03"
+     "name": "CERT-FR advisories (France)",
+     "url": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1590/",
+     "date": "2026-11-20"
     },
     {
-     "name": "CISA Known Exploited Vulnerabilities catalog",
-     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
-     "date": "2026-11-05"
-    },
-    {
-     "name": "NVD CVE-2026-111497",
-     "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111497",
-     "date": "2026-10-22"
-    }
-   ],
-   "system": {
-    "severity": "high",
-    "ot_impact": "unknown",
-    "reliability": "A",
-    "credibility": "1",
-    "claim_vs_confirmed": "confirmed (CISA KEV)"
-   },
-   "human": {
-    "facts_match_sources": null,
-    "ot_impact_correct": null,
-    "severity_reasonable": null,
-    "trust_grades_reasonable": null,
-    "nothing_invented": null,
-    "note": ""
-   }
-  },
-  {
-   "headline": "Overnight wave of refrigeration setpoint attacks on supermarkets in Belgium, Sweden, Estonia and elsewhere",
-   "sources": [
-    {
-     "name": "The Hacker News",
-     "url": "https://thehackernews.com/2026/11/second-wave-of-cyberattacks-hits.html",
-     "date": "2026-11-03"
-    },
-    {
-     "name": "Dark Reading",
-     "url": "",
-     "date": "2026-11-04"
+     "name": "CISA Advisories",
+     "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-328-02",
+     "date": "2026-11-24"
     }
    ],
    "system": {
     "severity": "medium",
-    "ot_impact": "OT process affected",
-    "reliability": "B",
+    "ot_impact": "unknown",
+    "reliability": "A",
     "credibility": "2",
     "claim_vs_confirmed": "confirmed"
    },
@@ -244,45 +194,85 @@
    }
   },
   {
-   "headline": "Russia and Ukraine report attacks on emergency alert apps during Kherson ceasefire",
+   "headline": "OpenPLC Runtime <= 4.2.4: unauthenticated attacker can create an admin account during initial setup (CISA advisory; INCIBE relay); patch to 4.3",
    "sources": [
     {
-     "name": "The Register",
-     "url": "https://www.theregister.com/security/2026/11/02/nuclear-threats-and-street-brawls-russia-ukraine-report-attacks-on-their-emergency-alert-apps/5306901",
-     "date": "2026-11-02"
+     "name": "CISA Advisories",
+     "url": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/condicion-de-carrera-en-openplc-runtime-de-autonomy-logic",
+     "date": "2026-11-19"
+    },
+    {
+     "name": "INCIBE-CERT ICS advisories (Spain)",
+     "url": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/condicion-de-carrera-en-openplc-runtime-de-autonomy-logic",
+     "date": "2026-11-20"
+    }
+   ],
+   "system": {
+    "severity": "medium",
+    "ot_impact": "unknown",
+    "reliability": "A",
+    "credibility": "2",
+    "claim_vs_confirmed": "confirmed"
+   },
+   "human": {
+    "facts_match_sources": null,
+    "ot_impact_correct": null,
+    "severity_reasonable": null,
+    "trust_grades_reasonable": null,
+    "nothing_invented": null,
+    "note": ""
+   }
+  },
+  {
+   "headline": "Danfoss AK-SM 8xxA refrigeration controllers: CISA ICSA-26-328-03 stack-based buffer overflow CVE-2026-129713 (CVSS 9.8) and INCIBE advisory on default credentials in AK-SC 355 / AK-SM 800",
+   "sources": [
+    {
+     "name": "CISA Advisories",
+     "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-328-03",
+     "date": "2026-11-24"
+    },
+    {
+     "name": "INCIBE-CERT ICS advisories (Spain)",
+     "url": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/uso-de-credenciales-predeterminadas-en-controladores-de-refrigeracion-de-danfoss",
+     "date": "2026-11-23"
+    },
+    {
+     "name": "Security.NL",
+     "url": "https://www.security.nl/posting/962992/Danfoss-koelsystemen+via+kritiek+lek+op+afstand+over+te+nemen?channel=rss",
+     "date": "2026-11-24"
+    }
+   ],
+   "system": {
+    "severity": "high",
+    "ot_impact": "unknown",
+    "reliability": "A",
+    "credibility": "2",
+    "claim_vs_confirmed": "confirmed (vendor and CISA published)"
+   },
+   "human": {
+    "facts_match_sources": null,
+    "ot_impact_correct": null,
+    "severity_reasonable": null,
+    "trust_grades_reasonable": null,
+    "nothing_invented": null,
+    "note": ""
+   }
+  },
+  {
+   "headline": "US national cyber director Sean Cairncross leaves office; AI security and critical-infrastructure protection decisions were in his remit",
+   "sources": [
+    {
+     "name": "CyberScoop",
+     "url": "https://cyberscoop.com/sean-cairncross-out-national-cyber-director/",
+     "date": "2026-11-20"
     }
    ],
    "system": {
     "severity": "low",
     "ot_impact": "none (IT only)",
     "reliability": "B",
-    "credibility": "3",
-    "claim_vs_confirmed": "claimed"
-   },
-   "human": {
-    "facts_match_sources": null,
-    "ot_impact_correct": null,
-    "severity_reasonable": null,
-    "trust_grades_reasonable": null,
-    "nothing_invented": null,
-    "note": ""
-   }
-  },
-  {
-   "headline": "INCIBE-CERT: multiple vulnerabilities in Welotec TK100/TK500 industrial routers (firmware before 3.5.116 / 1.0.124 / 1.0.123)",
-   "sources": [
-    {
-     "name": "INCIBE-CERT ICS advisories (Spain)",
-     "url": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/multiples-vulnerabilidades-en-productos-de-welotec",
-     "date": "2026-11-04"
-    }
-   ],
-   "system": {
-    "severity": "medium",
-    "ot_impact": "unknown",
-    "reliability": "A",
     "credibility": "2",
-    "claim_vs_confirmed": "confirmed (vendor-published)"
+    "claim_vs_confirmed": "confirmed (reported departure)"
    },
    "human": {
     "facts_match_sources": null,

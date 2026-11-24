@@ -1,0 +1,114 @@
+{
+  "_comment": "The Technologist's reference: every input an AI agent needs, and what to track for each. Figures are only entered with a source and a date; blanks mean not published.",
+  "reviewed": "2026-11-04",
+  "inputs": [
+    {
+      "layer": "Compute hardware",
+      "items": [
+        "GPUs / accelerators (NVIDIA Blackwell/Rubin class, AMD Instinct, Google TPU, AWS Trainium, custom ASICs)",
+        "CPUs for orchestration and data loading",
+        "High-bandwidth memory (HBM3E/HBM4) and its supply (SK hynix, Samsung, Micron)",
+        "Interconnect (NVLink, InfiniBand, Ethernet fabrics) and optics",
+        "Storage for datasets and checkpoints"
+      ],
+      "track": "unit price, lead time, export controls, supplier concentration (TSMC CoWoS packaging)",
+      "energy_relevance": "rack power density (tens of kW per rack and rising) drives data-centre siting and interconnection requests"
+    },
+    {
+      "layer": "Data centre and physical plant",
+      "items": [
+        "Site and land, often near cheap or available power",
+        "Grid interconnection (queue time measured in years) or on-site generation (gas turbines, fuel cells, nuclear PPAs and SMR proposals)",
+        "Cooling (air, liquid, immersion) and water consumption",
+        "Backup power and UPS",
+        "Physical security and OT for the building (BMS, cooling controllers: the same class attacked in Europe this week)"
+      ],
+      "track": "MW contracted, PUE, WUE, water permits, interconnection agreements, power purchase agreements",
+      "energy_relevance": "direct: data centres are the fastest-growing load class in several US regions; their cooling controllers are OT"
+    },
+    {
+      "layer": "Electricity and fuel",
+      "items": [
+        "Firm power for training runs (hundreds of MW for frontier runs)",
+        "Inference load, which follows usage and is geographically distributed",
+        "Tariffs and demand charges; curtailment agreements",
+        "Carbon accounting and renewable certificates"
+      ],
+      "track": "IEA, EPRI and utility filings for load forecasts; company sustainability reports for consumption; interconnection queues",
+      "energy_relevance": "the core reason this resident exists"
+    },
+    {
+      "layer": "Software stack",
+      "items": [
+        "Model weights and architecture",
+        "Training frameworks (PyTorch, JAX) and inference servers (vLLM, TensorRT-LLM, maker-hosted APIs)",
+        "Orchestration (Kubernetes, schedulers), agent frameworks, tool and MCP servers",
+        "Observability, evaluation and safety classifiers",
+        "Dependencies and their supply chain (the cPGuard autoupdate case shows the risk class)"
+      ],
+      "track": "versions, licences, CVEs in inference stacks, supply-chain attestations",
+      "energy_relevance": "efficiency of the inference stack changes energy per token by multiples"
+    },
+    {
+      "layer": "Data",
+      "items": [
+        "Pretraining corpora and licences",
+        "Fine-tuning and evaluation sets",
+        "Retrieval sources (for this society: the allowlisted feeds)",
+        "Privacy, copyright and provenance obligations"
+      ],
+      "track": "licence disputes, data-provenance rules",
+      "energy_relevance": "indirect"
+    },
+    {
+      "layer": "People",
+      "items": [
+        "Research, infrastructure and safety engineers",
+        "Annotators and evaluators",
+        "Operators and on-call",
+        "Lawyers and compliance"
+      ],
+      "track": "headcount, hiring signals, compensation",
+      "energy_relevance": "indirect"
+    },
+    {
+      "layer": "Capital and market",
+      "items": [
+        "Funding rounds and valuations of makers and agent companies",
+        "Model pricing (per million tokens input/output; per seat; per task)",
+        "Cloud credits and compute deals",
+        "Insurance and liability"
+      ],
+      "track": "announcements via the allowlist with amount, investors, date; maker pricing pages",
+      "energy_relevance": "capital decides where the next gigawatt of load appears"
+    },
+    {
+      "layer": "Regulation and policy",
+      "items": [
+        "Export controls on chips",
+        "AI safety and transparency rules (EU AI Act, US executive actions, state laws)",
+        "Energy permitting and interconnection reform",
+        "Water rights"
+      ],
+      "track": "primary documents via the Counsel",
+      "energy_relevance": "permitting and interconnection reform is where AI and energy policy meet"
+    },
+    {
+      "layer": "Security of the agent itself",
+      "items": [
+        "Prompt injection through retrieved content",
+        "Tool and credential exposure",
+        "Agent runtime security (the Sysdig, WorkOS/ARTEX and Sentra items this week)",
+        "Model and weight theft"
+      ],
+      "track": "incidents and products in the wide bucket",
+      "energy_relevance": "an agent with access to OT tooling is an OT risk"
+    }
+  ],
+  "this_society": {
+    "model_pricing_source": "Anthropic first-party rates as recorded in COST.md on 2026-11-04 (Sonnet 5.5 $2/$10 per MTok; Opus 5.5 $4/$20; Haiku 5.5 $0.10/$0.50)",
+    "per_run_tokens": "~234k input, ~10.5k output per API run (measured estimate, COST.md)",
+    "energy_per_run": "not published by the provider; no credible per-token energy figure exists for these models, so none is given",
+    "hardware": "not disclosed by the provider for hosted inference; this page itself runs on the viewer's browser and GitHub Pages"
+  }
+}

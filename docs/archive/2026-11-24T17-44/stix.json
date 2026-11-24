@@ -1,0 +1,478 @@
+{
+ "type": "bundle",
+ "id": "bundle--fb63f92d-c3bf-5aeb-8cf7-2b720f408867",
+ "objects": [
+  {
+   "type": "identity",
+   "spec_version": "2.1",
+   "id": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
+   "created": "2026-11-05T02:15:29.000Z",
+   "modified": "2026-11-24T17:52:54.000Z",
+   "name": "Energy Cyber Society",
+   "identity_class": "system",
+   "description": "Seven LLM residents curating energy-sector cyber news from an allowlist of credible sources. Confidence per object follows the item's Admiralty grading."
+  },
+  {
+   "type": "report",
+   "spec_version": "2.1",
+   "id": "report--734f5213-c4b9-5892-9cfa-d52f27332943",
+   "created": "2026-11-24T17:52:54.000Z",
+   "modified": "2026-11-24T17:52:54.000Z",
+   "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
+   "name": "Peninsula Energy halts ASX trading after a cyber incident breaches the 'operating system' at its Lance uranium project in Wyoming; administrative systems unaffected",
+   "report_types": [
+    "threat-report"
+   ],
+   "published": "2026-11-24T17:52:54.000Z",
+   "description": "The first confirmed cyber incident at a US energy production site on the board: a uranium mine's operating systems, by the company's own filing, with administrative IT explicitly unaffected, which points at OT. What was hit and whether output stopped are not public.",
+   "confidence": 70,
+   "labels": [
+    "critical",
+    "nuclear",
+    "OT reached, no process effect",
+    "intrusion"
+   ],
+   "external_references": [
+    {
+     "source_name": "SecurityWeek (quoting the ASX filing)",
+     "url": "https://www.securityweek.com/peninsula-energy-halts-trading-after-cyber-incident-hits-us-uranium-mine/"
+    }
+   ],
+   "object_refs": [
+    "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec"
+   ],
+   "x_ecs": {
+    "source_reliability": "A",
+    "info_credibility": "2",
+    "claim_vs_confirmed": "confirmed (company filing); scope unconfirmed",
+    "labels": [
+     "[unverified] which systems; whether uranium production was interrupted; attacker",
+     "[note] 'operating system' is the filing's term; the Analyst reads it as OT, the Contrarian as possibly a plant IT server"
+    ],
+    "value_chain": "upstream",
+    "recommended_action": "hunt"
+   }
+  },
+  {
+   "type": "threat-actor",
+   "spec_version": "2.1",
+   "id": "threat-actor--f65b85f4-d720-5367-94ba-a578abb0c9b3",
+   "created": "2026-11-24T17:52:54.000Z",
+   "modified": "2026-11-24T17:52:54.000Z",
+   "name": "'Noiem' (claimed, per DailySecu)",
+   "threat_actor_types": [
+    "unattributed"
+   ],
+   "description": "Attribution suspected by nobody named."
+  },
+  {
+   "type": "report",
+   "spec_version": "2.1",
+   "id": "report--130b967f-6ddf-5f25-a32a-7224b384d82a",
+   "created": "2026-11-24T17:52:54.000Z",
+   "modified": "2026-11-24T17:52:54.000Z",
+   "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
+   "name": "KEPCO, South Korea's state power company, confirms a breach of its billing portal and procurement system exposing about 1.5 million customer, representative and employee records",
+   "report_types": [
+    "threat-report"
+   ],
+   "published": "2026-11-24T17:52:54.000Z",
+   "description": "A national utility's customer and supplier systems emptied of 1.5 million records, with the regulator confirming an extortion email; no OT contact. The supplier-relationship system is the part that matters for the sector: contractor data is a map of who touches the grid.",
+   "confidence": 90,
+   "labels": [
+    "high",
+    "electricity",
+    "none (IT only)",
+    "data breach"
+   ],
+   "external_references": [
+    {
+     "source_name": "BleepingComputer",
+     "url": "https://www.bleepingcomputer.com/news/security/south-koreas-power-giant-kepco-confirms-data-breach-impacting-15-million/"
+    },
+    {
+     "source_name": "SecurityWeek",
+     "url": "https://www.securityweek.com/1-5-million-impacted-by-data-breach-at-south-korean-electric-company-kepco/"
+    }
+   ],
+   "object_refs": [
+    "threat-actor--f65b85f4-d720-5367-94ba-a578abb0c9b3"
+   ],
+   "x_ecs": {
+    "source_reliability": "A",
+    "info_credibility": "1",
+    "claim_vs_confirmed": "confirmed (company newsroom + regulator)",
+    "labels": [
+     "[unverified] initial access ('advanced technologies such as AI' per the company, no detail); attribution to 'Noiem' unconfirmed; whether the three figures overlap"
+    ],
+    "value_chain": "utility (combined)",
+    "recommended_action": "awareness only"
+   }
+  },
+  {
+   "type": "report",
+   "spec_version": "2.1",
+   "id": "report--1daa52ba-daab-57ac-8a83-7a2199e56f67",
+   "created": "2026-11-24T17:52:54.000Z",
+   "modified": "2026-11-24T17:52:54.000Z",
+   "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
+   "name": "Norway's NSM links cyberattacks on two major energy companies to a critical Azure API Management (Classic tier) flaw; Equinor and Skagerak Energi named among affected organizations",
+   "report_types": [
+    "threat-report"
+   ],
+   "published": "2026-11-24T17:52:54.000Z",
+   "description": "A cloud-platform flaw became an energy-sector incident: API gateways at two major Norwegian energy companies leaked the secrets that front their integrations. Any operator with APIM Classic should assume exposure and rotate.",
+   "confidence": 70,
+   "labels": [
+    "high",
+    "oil",
+    "none (IT only)",
+    "exploitation in the wild"
+   ],
+   "external_references": [
+    {
+     "source_name": "The Register",
+     "url": "https://www.theregister.com/security/2026/11/23/norway-links-energy-firm-cyberattacks-to-critical-azure-api-management-flaw/5311598"
+    }
+   ],
+   "object_refs": [
+    "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec"
+   ],
+   "x_ecs": {
+    "source_reliability": "A",
+    "info_credibility": "2",
+    "claim_vs_confirmed": "confirmed (NSM, Microsoft advisory seen by the outlet)",
+    "labels": [
+     "[unverified] which company lost what; extent of exploitation 'unclear'; Microsoft's advisory is non-public"
+    ],
+    "value_chain": "utility (combined)",
+    "recommended_action": "hunt"
+   }
+  },
+  {
+   "type": "report",
+   "spec_version": "2.1",
+   "id": "report--80b5a6c0-8841-56d9-8188-73fa3eb1049a",
+   "created": "2026-11-24T17:52:54.000Z",
+   "modified": "2026-11-24T17:52:54.000Z",
+   "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
+   "name": "Osaki Electric ransomware attack disrupts smart-meter production in Japan; OT-ISAC flags supplier-continuity risk across Asia-Pacific",
+   "report_types": [
+    "threat-report"
+   ],
+   "published": "2026-11-24T17:52:54.000Z",
+   "description": "A ransomware attack on the maker of the meters, not on a utility: the supply-chain path into the grid's edge. OT-ISAC calls out continuity for utilities that depend on one supplier.",
+   "confidence": 70,
+   "labels": [
+    "high",
+    "industrial machinery and OEM equipment",
+    "OT process affected",
+    "ransomware"
+   ],
+   "external_references": [
+    {
+     "source_name": "Industrial Cyber (relaying OT-ISAC)",
+     "url": "https://industrialcyber.co/threats-attacks/osaki-electric-ransomware-attack-disrupts-smart-meter-production-raising-supplier-continuity-concerns-across-asia-pacific/"
+    }
+   ],
+   "object_refs": [
+    "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec"
+   ],
+   "x_ecs": {
+    "source_reliability": "B",
+    "info_credibility": "2",
+    "claim_vs_confirmed": "confirmed (OT-ISAC report); details not read (page blocks fetch)",
+    "labels": [
+     "[unverified] attacker, entry, duration; Industrial Cyber blocks the puller (403) so the OT-ISAC report was not read"
+    ],
+    "value_chain": "enabling/cross-cutting",
+    "recommended_action": "monitor"
+   }
+  },
+  {
+   "type": "vulnerability",
+   "spec_version": "2.1",
+   "id": "vulnerability--a364babf-2857-5b66-98ad-c8e43dbda968",
+   "created": "2026-11-24T17:52:54.000Z",
+   "modified": "2026-11-24T17:52:54.000Z",
+   "name": "CVE-2026-129713",
+   "external_references": [
+    {
+     "source_name": "cve",
+     "external_id": "CVE-2026-129713"
+    }
+   ]
+  },
+  {
+   "type": "indicator",
+   "spec_version": "2.1",
+   "id": "indicator--49b5c875-34cb-5081-9355-05e96fb12aa2",
+   "created": "2026-11-24T17:52:54.000Z",
+   "modified": "2026-11-24T17:52:54.000Z",
+   "name": "Exploitation of CVE-2026-129713",
+   "pattern": "[vulnerability:name = 'CVE-2026-129713']",
+   "pattern_type": "stix",
+   "valid_from": "2026-11-24T17:52:54.000Z",
+   "indicator_types": [
+    "malicious-activity"
+   ]
+  },
+  {
+   "type": "report",
+   "spec_version": "2.1",
+   "id": "report--acd0d2d3-e00e-55f2-b0d3-3658d2a7dbed",
+   "created": "2026-11-24T17:52:54.000Z",
+   "modified": "2026-11-24T17:52:54.000Z",
+   "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
+   "name": "Danfoss AK-SM 8xxA refrigeration controllers: CISA ICSA-26-328-03 stack-based buffer overflow CVE-2026-129713 (CVSS 9.8) and INCIBE advisory on default credentials in AK-SC 355 / AK-SM 800",
+   "report_types": [
+    "threat-report"
+   ],
+   "published": "2026-11-24T17:52:54.000Z",
+   "description": "This closes the loop on October-November's refrigeration attacks: the controller family Danfoss said was involved now has a public critical RCE and an advisory on default credentials. Data centres, battery containers and substation HVAC run this class.",
+   "confidence": 70,
+   "labels": [
+    "high",
+    "data centres (compute load)",
+    "unknown",
+    "vulnerability disclosure"
+   ],
+   "external_references": [
+    {
+     "source_name": "CISA Advisories",
+     "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-328-03"
+    },
+    {
+     "source_name": "INCIBE-CERT ICS advisories (Spain)",
+     "url": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/uso-de-credenciales-predeterminadas-en-controladores-de-refrigeracion-de-danfoss"
+    },
+    {
+     "source_name": "Security.NL",
+     "url": "https://www.security.nl/posting/962992/Danfoss-koelsystemen+via+kritiek+lek+op+afstand+over+te+nemen?channel=rss"
+    }
+   ],
+   "object_refs": [
+    "vulnerability--a364babf-2857-5b66-98ad-c8e43dbda968",
+    "indicator--49b5c875-34cb-5081-9355-05e96fb12aa2"
+   ],
+   "x_ecs": {
+    "source_reliability": "A",
+    "info_credibility": "2",
+    "claim_vs_confirmed": "confirmed (vendor and CISA published)",
+    "labels": [
+     "[inference] the link to the European attacks is by product family; the advisories do not say these flaws were the ones exploited"
+    ],
+    "value_chain": "enabling/cross-cutting",
+    "recommended_action": "patch"
+   }
+  },
+  {
+   "type": "report",
+   "spec_version": "2.1",
+   "id": "report--e0fc959e-e989-54fc-aeb6-9b0bea1588a3",
+   "created": "2026-11-24T17:52:54.000Z",
+   "modified": "2026-11-24T17:52:54.000Z",
+   "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
+   "name": "GL.iNet GoodCloud remote-management flaw exploited to install malware on customer routers and KVM devices",
+   "report_types": [
+    "threat-report"
+   ],
+   "published": "2026-11-24T17:52:54.000Z",
+   "description": "The vendor-cloud takeover pattern the inverter and BESS dossiers warn about, demonstrated on routers and KVMs: one cloud flaw, many devices. Remote-access KVMs sit in plenty of small OT sites.",
+   "confidence": 70,
+   "labels": [
+    "medium",
+    "connectivity (routers, firewalls, internet, satellite)",
+    "none (IT only)",
+    "exploitation in the wild"
+   ],
+   "external_references": [
+    {
+     "source_name": "The Hacker News",
+     "url": "https://thehackernews.com/2026/11/hackers-exploited-glinet-cloud-flaw-to.html"
+    },
+    {
+     "source_name": "Ciberseguridad LATAM",
+     "url": "https://ciberseguridadlatam.com/compromiso-de-goodcloud-expone-routers-gl-inet-backdoors-previos-amplian-el-alcance/"
+    }
+   ],
+   "object_refs": [
+    "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec"
+   ],
+   "x_ecs": {
+    "source_reliability": "A",
+    "info_credibility": "2",
+    "claim_vs_confirmed": "confirmed (vendor notice)",
+    "labels": [
+     "[unverified] number of devices; whether any energy site used them"
+    ],
+    "value_chain": "enabling/cross-cutting",
+    "recommended_action": "hunt"
+   }
+  },
+  {
+   "type": "report",
+   "spec_version": "2.1",
+   "id": "report--d4525e6f-f862-5dbc-9217-6062683976ac",
+   "created": "2026-11-24T17:52:54.000Z",
+   "modified": "2026-11-24T17:52:54.000Z",
+   "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
+   "name": "SonicWall tells customers to retire Generation 6 firewalls now: no patches even for critical flaws, AI-assisted attackers expected to exploit internet-facing units",
+   "report_types": [
+    "threat-report"
+   ],
+   "published": "2026-11-24T17:52:54.000Z",
+   "description": "End-of-life edge firewalls are the record's most exploited class (Denmark 2023, sPower 2019, Poland 2025); the vendor itself now says to pull them off the internet. Small utilities run these.",
+   "confidence": 70,
+   "labels": [
+    "medium",
+    "connectivity (routers, firewalls, internet, satellite)",
+    "unknown",
+    "advisory"
+   ],
+   "external_references": [
+    {
+     "source_name": "The Hacker News",
+     "url": "https://thehackernews.com/2026/11/sonicwall-warns-gen-6-firewalls-wont.html"
+    }
+   ],
+   "object_refs": [
+    "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec"
+   ],
+   "x_ecs": {
+    "source_reliability": "B",
+    "info_credibility": "2",
+    "claim_vs_confirmed": "confirmed (vendor statement)",
+    "labels": [],
+    "value_chain": "enabling/cross-cutting",
+    "recommended_action": "patch"
+   }
+  },
+  {
+   "type": "report",
+   "spec_version": "2.1",
+   "id": "report--be009867-7bc9-5b57-9e57-7ff325bc0b38",
+   "created": "2026-11-24T17:52:54.000Z",
+   "modified": "2026-11-24T17:52:54.000Z",
+   "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
+   "name": "OpenPLC Runtime <= 4.2.4: unauthenticated attacker can create an admin account during initial setup (CISA advisory; INCIBE relay); patch to 4.3",
+   "report_types": [
+    "threat-report"
+   ],
+   "published": "2026-11-24T17:52:54.000Z",
+   "description": "A race condition that hands an unauthenticated attacker the PLC runtime; OpenPLC is common in training and pilot sites that later go into production.",
+   "confidence": 70,
+   "labels": [
+    "medium",
+    "industrial machinery and OEM equipment",
+    "unknown",
+    "vulnerability disclosure"
+   ],
+   "external_references": [
+    {
+     "source_name": "CISA Advisories",
+     "url": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/condicion-de-carrera-en-openplc-runtime-de-autonomy-logic"
+    },
+    {
+     "source_name": "INCIBE-CERT ICS advisories (Spain)",
+     "url": "https://www.incibe.es/incibe-cert/alerta-temprana/avisos-sci/condicion-de-carrera-en-openplc-runtime-de-autonomy-logic"
+    }
+   ],
+   "object_refs": [
+    "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec"
+   ],
+   "x_ecs": {
+    "source_reliability": "A",
+    "info_credibility": "2",
+    "claim_vs_confirmed": "confirmed",
+    "labels": [],
+    "value_chain": "enabling/cross-cutting",
+    "recommended_action": "patch"
+   }
+  },
+  {
+   "type": "report",
+   "spec_version": "2.1",
+   "id": "report--5c6c7bd9-acdf-5b86-98e0-ed5e6d0540cc",
+   "created": "2026-11-24T17:52:54.000Z",
+   "modified": "2026-11-24T17:52:54.000Z",
+   "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
+   "name": "Siemens Industrial Edge and EcoStruxure Power Build Rapsody: new remote-code-execution and memory-corruption advisories (CERT-FR, CISA) in substation and plant engineering software",
+   "report_types": [
+    "threat-report"
+   ],
+   "published": "2026-11-24T17:52:54.000Z",
+   "description": "Routine but relevant: engineering and edge software in the substation and plant toolchain with RCE-class flaws; Industrial Edge recurs from the Nov 3 Brotli item.",
+   "confidence": 70,
+   "labels": [
+    "medium",
+    "electricity",
+    "unknown",
+    "vulnerability disclosure"
+   ],
+   "external_references": [
+    {
+     "source_name": "CERT-FR advisories (France)",
+     "url": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1590/"
+    },
+    {
+     "source_name": "CISA Advisories",
+     "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-328-02"
+    }
+   ],
+   "object_refs": [
+    "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec"
+   ],
+   "x_ecs": {
+    "source_reliability": "A",
+    "info_credibility": "2",
+    "claim_vs_confirmed": "confirmed",
+    "labels": [
+     "[unverified] CVE identifiers not in the summaries"
+    ],
+    "value_chain": "transmission",
+    "recommended_action": "patch"
+   }
+  },
+  {
+   "type": "report",
+   "spec_version": "2.1",
+   "id": "report--704e043b-1283-52aa-89a8-aa93ee84f770",
+   "created": "2026-11-24T17:52:54.000Z",
+   "modified": "2026-11-24T17:52:54.000Z",
+   "created_by_ref": "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec",
+   "name": "US national cyber director Sean Cairncross leaves office; AI security and critical-infrastructure protection decisions were in his remit",
+   "report_types": [
+    "threat-report"
+   ],
+   "published": "2026-11-24T17:52:54.000Z",
+   "description": "A leadership gap at the White House cyber office during the lame-duck session that decides the CISA 2015 sunset (Dec 11 per earlier reporting, unverified).",
+   "confidence": 70,
+   "labels": [
+    "low",
+    "cross-sector",
+    "none (IT only)",
+    "policy/regulatory change"
+   ],
+   "external_references": [
+    {
+     "source_name": "CyberScoop",
+     "url": "https://cyberscoop.com/sean-cairncross-out-national-cyber-director/"
+    }
+   ],
+   "object_refs": [
+    "identity--37abcfd9-219e-5fbc-ba22-b794a7b250ec"
+   ],
+   "x_ecs": {
+    "source_reliability": "B",
+    "info_credibility": "2",
+    "claim_vs_confirmed": "confirmed (reported departure)",
+    "labels": [
+     "[unverified] successor; effect on the CISA 2015 reauthorization"
+    ],
+    "value_chain": "n/a",
+    "recommended_action": "policy watch"
+   }
+  }
+ ]
+}

@@ -1,0 +1,318 @@
+{
+  "_comment": "Products and patterns a CIO can tick. Each maps to board-item keywords, report cases and dependency layers so exposure is computed from evidence, not from a questionnaire alone.",
+  "products": [
+    {
+      "id": "siemens_ics",
+      "label": "Siemens industrial gear (SIMATIC, Industrial Edge, RUGGEDCOM, IoT2050)",
+      "item_keys": [
+        "Siemens",
+        "CVE-2026-111497"
+      ],
+      "cases": [
+        2,
+        13
+      ]
+    },
+    {
+      "id": "zyxel",
+      "label": "Zyxel switches or firewalls",
+      "item_keys": [
+        "Zyxel"
+      ],
+      "cases": [
+        8
+      ]
+    },
+    {
+      "id": "ivanti",
+      "label": "Ivanti Connect Secure or similar VPN appliances",
+      "item_keys": [
+        "Ivanti"
+      ],
+      "cases": [
+        5,
+        16
+      ]
+    },
+    {
+      "id": "fortinet",
+      "label": "Fortinet or other edge firewalls at remote sites",
+      "item_keys": [],
+      "cases": [
+        12,
+        8,
+        18
+      ]
+    },
+    {
+      "id": "welotec",
+      "label": "Industrial cellular routers (Welotec, Moxa, Teltonika, Sierra)",
+      "item_keys": [
+        "Welotec"
+      ],
+      "cases": [
+        12,
+        8
+      ]
+    },
+    {
+      "id": "danfoss",
+      "label": "Danfoss or other networked cooling / refrigeration / HVAC controllers",
+      "item_keys": [
+        "blood",
+        "supermarkets"
+      ],
+      "cases": [
+        9,
+        20
+      ]
+    },
+    {
+      "id": "triconex",
+      "label": "Safety instrumented systems (Triconex, HIMA)",
+      "item_keys": [],
+      "cases": [
+        3
+      ]
+    },
+    {
+      "id": "microscada",
+      "label": "ABB/Hitachi MicroSCADA or similar SCADA servers",
+      "item_keys": [],
+      "cases": [
+        19,
+        2
+      ]
+    },
+    {
+      "id": "unitronics",
+      "label": "Small PLC/HMI units at remote sites (Unitronics, Mikronika, ENCO)",
+      "item_keys": [],
+      "cases": [
+        20,
+        12,
+        9
+      ]
+    },
+    {
+      "id": "viasat",
+      "label": "Satellite links for telemetry (Viasat, Inmarsat, Starlink)",
+      "item_keys": [],
+      "cases": [
+        6
+      ]
+    },
+    {
+      "id": "inverter_cloud",
+      "label": "Inverters or BESS managed through a vendor cloud",
+      "item_keys": [
+        "foreign grid"
+      ],
+      "cases": [
+        18,
+        12
+      ]
+    },
+    {
+      "id": "sap_billing",
+      "label": "SAP or similar billing/dispatch that operations depend on",
+      "item_keys": [
+        "Information Sharing"
+      ],
+      "cases": [
+        17,
+        5,
+        11
+      ]
+    },
+    {
+      "id": "nodered",
+      "label": "Node-RED, PHP or other open-source components inside OT products",
+      "item_keys": [
+        "Siemens SIMATIC",
+        "CVE-2026-111497"
+      ],
+      "cases": []
+    },
+    {
+      "id": "windows_eol",
+      "label": "End-of-life Windows on HMIs or engineering workstations",
+      "item_keys": [],
+      "cases": [
+        1,
+        14,
+        16
+      ]
+    }
+  ],
+  "patterns": [
+    {
+      "id": "vendor_remote",
+      "label": "Vendors or contractors have remote access to controllers",
+      "layers": [
+        "people",
+        "comms"
+      ],
+      "cases": [
+        12,
+        3,
+        9
+      ],
+      "item_keys": [
+        "blood",
+        "supermarkets"
+      ],
+      "weight": 3
+    },
+    {
+      "id": "internet_ot",
+      "label": "Any controller, HMI or gateway reachable from the internet",
+      "layers": [
+        "compute",
+        "comms"
+      ],
+      "cases": [
+        9,
+        20,
+        18
+      ],
+      "item_keys": [
+        "Siemens SIMATIC",
+        "supermarkets"
+      ],
+      "weight": 3
+    },
+    {
+      "id": "vpn_nomfa",
+      "label": "Remote access without phishing-resistant MFA, or dormant accounts",
+      "layers": [
+        "people",
+        "software"
+      ],
+      "cases": [
+        5,
+        1
+      ],
+      "item_keys": [
+        "Ivanti"
+      ],
+      "weight": 3
+    },
+    {
+      "id": "apn",
+      "label": "Private cellular APN connecting remote sites",
+      "layers": [
+        "comms"
+      ],
+      "cases": [
+        12
+      ],
+      "item_keys": [],
+      "weight": 2
+    },
+    {
+      "id": "flat",
+      "label": "Engineering workstations reachable from corporate IT (flat or dual-homed)",
+      "layers": [
+        "compute"
+      ],
+      "cases": [
+        3,
+        1,
+        19
+      ],
+      "item_keys": [],
+      "weight": 3
+    },
+    {
+      "id": "no_ot_monitoring",
+      "label": "No protocol-aware monitoring on control networks",
+      "layers": [
+        "sensors",
+        "compute"
+      ],
+      "cases": [
+        2,
+        19
+      ],
+      "item_keys": [],
+      "weight": 2
+    },
+    {
+      "id": "backups_online",
+      "label": "Backups reachable from the domain (not immutable/offline)",
+      "layers": [
+        "storage"
+      ],
+      "cases": [
+        11,
+        14
+      ],
+      "item_keys": [],
+      "weight": 2
+    },
+    {
+      "id": "single_link",
+      "label": "Single communications path to remote assets",
+      "layers": [
+        "comms"
+      ],
+      "cases": [
+        6,
+        18,
+        8
+      ],
+      "item_keys": [],
+      "weight": 2
+    },
+    {
+      "id": "shared_creds",
+      "label": "Shared or default credentials on field devices",
+      "layers": [
+        "people",
+        "software"
+      ],
+      "cases": [
+        20,
+        12
+      ],
+      "item_keys": [
+        "Zyxel"
+      ],
+      "weight": 3
+    },
+    {
+      "id": "no_manual",
+      "label": "No tested manual operation if IT or SCADA is lost",
+      "layers": [
+        "machinery",
+        "electricity"
+      ],
+      "cases": [
+        5,
+        17,
+        11
+      ],
+      "item_keys": [],
+      "weight": 2
+    },
+    {
+      "id": "sharing_dependence",
+      "label": "Threat-indicator sharing depends on US liability protection (CISA 2015)",
+      "layers": [
+        "people"
+      ],
+      "cases": [],
+      "item_keys": [
+        "Information Sharing"
+      ],
+      "weight": 1
+    }
+  ],
+  "sizes": {
+    "coop": "small utility or cooperative (few IT/OT staff; truck rolls for remote sites)",
+    "mid": "mid-size operator (dedicated OT team, vendor-heavy)",
+    "large": "large IOU, major or national operator (SOC, OT monitoring, regulatory programme)"
+  },
+  "defensive_program_ref": "Prioritised defensive program from the Global Energy Cyber Threat Intelligence Report (Research tab), steps 1-6"
+}

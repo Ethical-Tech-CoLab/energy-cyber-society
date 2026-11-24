@@ -370,6 +370,77 @@
    "feeds_ok": 36,
    "feeds_err": 2,
    "usage": null
+  },
+  {
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "model": "curated-by-claude-fable-5.1 (session run, 2026-11-24)",
+   "energy": 22,
+   "wide": 150,
+   "items": 10,
+   "severity": {
+    "critical": 1,
+    "high": 4,
+    "medium": 4,
+    "low": 1
+   },
+   "ot_impact": {
+    "OT reached, no process effect": 1,
+    "none (IT only)": 4,
+    "OT process affected": 1,
+    "unknown": 4
+   },
+   "subsector": {
+    "nuclear": 1,
+    "electricity": 2,
+    "oil": 1,
+    "industrial machinery and OEM equipment": 2,
+    "data centres (compute load)": 1,
+    "connectivity (routers, firewalls, internet, satellite)": 2,
+    "cross-sector": 1
+   },
+   "country": {
+    "United States": 2,
+    "South Korea": 1,
+    "Norway": 1,
+    "Japan": 1,
+    "Denmark (vendor); worldwide": 1,
+    "global": 4
+   },
+   "event_type": {
+    "intrusion": 1,
+    "data breach": 1,
+    "exploitation in the wild": 2,
+    "ransomware": 1,
+    "vulnerability disclosure": 3,
+    "advisory": 1,
+    "policy/regulatory change": 1
+   },
+   "action": {
+    "hunt": 3,
+    "awareness only": 1,
+    "monitor": 1,
+    "patch": 4,
+    "policy watch": 1
+   },
+   "reliability": {
+    "A": 7,
+    "B": 3
+   },
+   "credibility": {
+    "2": 9,
+    "1": 1
+   },
+   "single_source": 5,
+   "flags": {
+    "hand-curated": 1,
+    "unsourced-claim": 26,
+    "single-source": 5,
+    "unverifiable": 8,
+    "contradiction": 4
+   },
+   "feeds_ok": 38,
+   "feeds_err": 0,
+   "usage": null
   }
  ]
 }

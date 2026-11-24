@@ -1,5 +1,5 @@
 {
- "rated_at": "2026-11-05T19:45:24.073346+00:00",
+ "rated_at": "2026-11-24T17:52:32.774632+00:00",
  "criteria": {
   "primacy": "primary document > wire > vendor/trade > commentary",
   "independence": "no product to sell, no party to the story",
@@ -137,9 +137,9 @@
    "tier": "A: check first",
    "best_for": "ICS advisories and KEV: the authoritative 'is it exploited' answer for US operators",
    "delivery": {
-    "energy_items": 0,
+    "energy_items": 5,
     "wide_items": 0,
-    "feed": "error: <unknown>:10:2: mismatched tag",
+    "feed": "ok",
     "pulls_blocked": 0
    },
    "verified": "Carolina's project notes 2026-11-04; feed blocks automated pulls (403), read the site"
@@ -164,7 +164,7 @@
    "best_for": "",
    "delivery": {
     "energy_items": 1,
-    "wide_items": 0,
+    "wide_items": 7,
     "feed": "ok",
     "pulls_blocked": 0
    },
@@ -216,7 +216,7 @@
    "best_for": "",
    "delivery": {
     "energy_items": 0,
-    "wide_items": 1,
+    "wide_items": 0,
     "feed": "ok",
     "pulls_blocked": 0
    },
@@ -243,7 +243,7 @@
    "delivery": {
     "energy_items": 0,
     "wide_items": 0,
-    "feed": "error: <unknown>:10:2: mismatched tag",
+    "feed": "ok",
     "pulls_blocked": 0
    },
    "verified": "automatic rating from type; not yet reviewed by a person"
@@ -294,7 +294,7 @@
    "best_for": "",
    "delivery": {
     "energy_items": 0,
-    "wide_items": 2,
+    "wide_items": 14,
     "feed": "ok",
     "pulls_blocked": 0
    },
@@ -320,7 +320,7 @@
    "best_for": "",
    "delivery": {
     "energy_items": 0,
-    "wide_items": 2,
+    "wide_items": 13,
     "feed": "ok",
     "pulls_blocked": 0
    },
@@ -371,7 +371,7 @@
    "tier": "A: check first",
    "best_for": "",
    "delivery": {
-    "energy_items": 1,
+    "energy_items": 0,
     "wide_items": 0,
     "feed": "ok",
     "pulls_blocked": 0
@@ -398,7 +398,7 @@
    "best_for": "",
    "delivery": {
     "energy_items": 0,
-    "wide_items": 0,
+    "wide_items": 2,
     "feed": "ok",
     "pulls_blocked": 0
    },
@@ -631,8 +631,8 @@
    "tier": "B: check daily",
    "best_for": "regulator and vendor notices for OT, fast; weight vendor announcements accordingly",
    "delivery": {
-    "energy_items": 6,
-    "wide_items": 2,
+    "energy_items": 3,
+    "wide_items": 4,
     "feed": "ok",
     "pulls_blocked": 0
    },
@@ -658,7 +658,7 @@
    "best_for": "",
    "delivery": {
     "energy_items": 0,
-    "wide_items": 6,
+    "wide_items": 8,
     "feed": "ok",
     "pulls_blocked": 0
    },
@@ -839,8 +839,8 @@
    "tier": "B: check daily",
    "best_for": "",
    "delivery": {
-    "energy_items": 1,
-    "wide_items": 5,
+    "energy_items": 2,
+    "wide_items": 4,
     "feed": "ok",
     "pulls_blocked": 0
    },
@@ -865,8 +865,8 @@
    "tier": "B: check daily",
    "best_for": "",
    "delivery": {
-    "energy_items": 0,
-    "wide_items": 1,
+    "energy_items": 2,
+    "wide_items": 5,
     "feed": "ok",
     "pulls_blocked": 0
    },
@@ -892,7 +892,7 @@
    "best_for": "",
    "delivery": {
     "energy_items": 0,
-    "wide_items": 1,
+    "wide_items": 5,
     "feed": "ok",
     "pulls_blocked": 0
    },
@@ -944,7 +944,7 @@
    "best_for": "",
    "delivery": {
     "energy_items": 0,
-    "wide_items": 0,
+    "wide_items": 1,
     "feed": "ok",
     "pulls_blocked": 0
    },
@@ -970,7 +970,7 @@
    "best_for": "",
    "delivery": {
     "energy_items": 0,
-    "wide_items": 10,
+    "wide_items": 16,
     "feed": "ok",
     "pulls_blocked": 0
    },
@@ -995,8 +995,8 @@
    "tier": "B: check daily",
    "best_for": "",
    "delivery": {
-    "energy_items": 0,
-    "wide_items": 9,
+    "energy_items": 2,
+    "wide_items": 7,
     "feed": "ok",
     "pulls_blocked": 0
    },
@@ -1022,7 +1022,7 @@
    "best_for": "nation-state and ransomware actors; owned by Recorded Future, editorially independent",
    "delivery": {
     "energy_items": 0,
-    "wide_items": 1,
+    "wide_items": 5,
     "feed": "ok",
     "pulls_blocked": 0
    },
@@ -1074,7 +1074,7 @@
    "best_for": "German utilities and EU regulation; independently corroborated the Siemens IoT2050 attacks",
    "delivery": {
     "energy_items": 0,
-    "wide_items": 4,
+    "wide_items": 7,
     "feed": "ok",
     "pulls_blocked": 0
    },
@@ -1100,7 +1100,7 @@
    "best_for": "first and fastest on ransomware and device exploitation (Zyxel); confirm counts elsewhere",
    "delivery": {
     "energy_items": 1,
-    "wide_items": 6,
+    "wide_items": 13,
     "feed": "ok",
     "pulls_blocked": 0
    },
@@ -1126,7 +1126,7 @@
    "best_for": "deep ICS vulnerability research (Dustman/Bapco); Russian vendor, soft on Russian attribution",
    "delivery": {
     "energy_items": 0,
-    "wide_items": 1,
+    "wide_items": 0,
     "feed": "ok",
     "pulls_blocked": 0
    },
@@ -1178,7 +1178,7 @@
    "best_for": "",
    "delivery": {
     "energy_items": 0,
-    "wide_items": 1,
+    "wide_items": 2,
     "feed": "ok",
     "pulls_blocked": 0
    },
@@ -1203,8 +1203,8 @@
    "tier": "B: check daily",
    "best_for": "",
    "delivery": {
-    "energy_items": 0,
-    "wide_items": 7,
+    "energy_items": 1,
+    "wide_items": 10,
     "feed": "ok",
     "pulls_blocked": 0
    },
@@ -1229,10 +1229,10 @@
    "tier": "B: check daily",
    "best_for": "US utility policy and regulation framing (CISA 2015, grid-component order); blocks automated pulls",
    "delivery": {
-    "energy_items": 1,
-    "wide_items": 4,
+    "energy_items": 0,
+    "wide_items": 8,
     "feed": "ok",
-    "pulls_blocked": 2
+    "pulls_blocked": 0
    },
    "verified": "reviewed 2026-11-05: both legal items unverifiable because the page returns 403"
   },
@@ -1255,8 +1255,8 @@
    "tier": "C: discovery only",
    "best_for": "breadth for the wide bucket; relays vendor research (VulnCheck, Binarly) quickly",
    "delivery": {
-    "energy_items": 2,
-    "wide_items": 6,
+    "energy_items": 3,
+    "wide_items": 11,
     "feed": "ok",
     "pulls_blocked": 0
    },
@@ -1281,8 +1281,8 @@
    "tier": "C: discovery only",
    "best_for": "what researchers are probing before journals publish; never a fact source",
    "delivery": {
-    "energy_items": 3,
-    "wide_items": 37,
+    "energy_items": 0,
+    "wide_items": 0,
     "feed": "ok",
     "pulls_blocked": 0
    },
@@ -1308,7 +1308,7 @@
    "best_for": "",
    "delivery": {
     "energy_items": 0,
-    "wide_items": 39,
+    "wide_items": 0,
     "feed": "ok",
     "pulls_blocked": 0
    },
@@ -1828,7 +1828,7 @@
    "best_for": "",
    "delivery": {
     "energy_items": 0,
-    "wide_items": 2,
+    "wide_items": 4,
     "feed": "ok",
     "pulls_blocked": 0
    },
@@ -2374,7 +2374,7 @@
    "best_for": "",
    "delivery": {
     "energy_items": 0,
-    "wide_items": 0,
+    "wide_items": 1,
     "feed": "ok",
     "pulls_blocked": 0
    },

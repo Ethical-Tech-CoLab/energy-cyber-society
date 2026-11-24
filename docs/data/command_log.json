@@ -2529,7 +2529,447 @@
    "detail": "policy claim on trade press only; the legal instrument and effective date are not in the bundle. Rule 3 applies.",
    "severity": "warn",
    "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "hand-curated",
+   "agent": "system",
+   "item": "",
+   "detail": "Briefing curated in a live session (curated-by-claude-fable-5.1 (session run, 2026-11-24)), not by the scheduled run.",
+   "severity": "info",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "reporter",
+   "item": "Three confirmed incidents at energy companies this week, which is three more than the last",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "analyst",
+   "item": "I hold attribution at unknown and confidence moderate until the Nov 25 announcement.",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "contrarian",
+   "item": "Who was not affected: every US grid operator, pipeline and refinery, in a week when the se",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "contrarian",
+   "item": "What the coverage is not telling us: whether any of the hundreds of APIM Classic users in ",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "verifier",
+   "item": "Verdicts: Peninsula A2 (victim filing, scope unstated); KEPCO A1 (victim plus regulator); ",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "verifier",
+   "item": "Changed since the last run: the Zyxel, Siemens IoT2050 and Ivanti items have aged out of t",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "librarian",
+   "item": "The map changed this run: CISA's advisory feed answered with zero errors, so the most auth",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "librarian",
+   "item": "Worked best: CISA, SecurityWeek, BleepingComputer, The Register, INCIBE-CERT, Security.NL,",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "librarian",
+   "item": "Blocked for the puller: Industrial Cyber (403), which held the only account of the Osaki a",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "librarian",
+   "item": "Where to ask next: the ASX announcements platform for Peninsula's Nov 25 filing; KEPCO's n",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "counsel",
+   "item": "Danfoss: the EU Cyber Resilience Act's vulnerability-reporting duty has applied since Sept",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "archivist",
+   "item": "Peninsula resembles Halliburton 2024 in form, a filing-driven disclosure that withholds sc",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "archivist",
+   "item": "KEPCO resembles Nova Scotia Power 2025: utility IT and billing breached, physical delivery",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "archivist",
+   "item": "Norway's platform flaw resembles Viasat 2022: a shared service, energy companies as named ",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "archivist",
+   "item": "The Danfoss advisories close a loop the archive has been tracking since Nov 3: the refrige",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "archivist",
+   "item": "Verified background cases: still zero; the spot-check was not run in this session.",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "ombudsman",
+   "item": "The run is nineteen days late because the scheduled runtime cannot reach the feeds from it",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "ombudsman",
+   "item": "On the run itself: rule 4 citations are present on fact claims; the Analyst's and Archivis",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "ombudsman",
+   "item": "Rule 26: the Contrarian challenged the 'OT' reading of Peninsula's filing and the Analyst ",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "ombudsman",
+   "item": "Bias watch: the first US item in three weeks is also the board's only critical item; I che",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "ombudsman",
+   "item": "Proposals: fix the routine's network access, which the owner alone can do; read Peninsula'",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "economist",
+   "item": "Cost of acting: APIM rotation is staff hours; Danfoss patches are windows; SonicWall repla",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "geopolitics",
+   "item": "Absent from the bundle: Russia-Ukraine energy strikes, Iran, China-attributed activity, th",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "technologist",
+   "item": "For energy that means the embedded Linux inside gateways, routers and HMIs is now cheap to",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "engineer",
+   "item": "No engineering run this session; the daily routine fires at 14:00 UTC but cannot install P",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unsourced-claim",
+   "agent": "engineer",
+   "item": "Open PRs: #1 and #2 on the old mirror (menu grouping, duplicates); none yet on the ETC rep",
+   "detail": "Sentence in a briefing with no (Source) citation.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "single-source",
+   "agent": "reporter",
+   "item": "Peninsula Energy halts ASX trading after a cyber incident breaches the 'operating system' at its Lance uranium project in Wyoming; administrative systems unaffected",
+   "detail": "Item rests on a single outlet.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unverifiable",
+   "agent": "verifier",
+   "item": "Peninsula Energy halts ASX trading after a cyber incident breaches the 'operating system' at its Lance uranium project in Wyoming; administrative systems unaffected",
+   "detail": "[unverified] which systems; whether uranium production was interrupted; attacker",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unverifiable",
+   "agent": "verifier",
+   "item": "KEPCO, South Korea's state power company, confirms a breach of its billing portal and procurement system exposing about 1.5 million customer, representative and employee records",
+   "detail": "[unverified] initial access ('advanced technologies such as AI' per the company, no detail); attribution to 'Noiem' unconfirmed; whether the three figures overlap",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "single-source",
+   "agent": "reporter",
+   "item": "Norway's NSM links cyberattacks on two major energy companies to a critical Azure API Management (Classic tier) flaw; Equinor and Skagerak Energi named among affected organizations",
+   "detail": "Item rests on a single outlet.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unverifiable",
+   "agent": "verifier",
+   "item": "Norway's NSM links cyberattacks on two major energy companies to a critical Azure API Management (Classic tier) flaw; Equinor and Skagerak Energi named among affected organizations",
+   "detail": "[unverified] which company lost what; extent of exploitation 'unclear'; Microsoft's advisory is non-public",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "single-source",
+   "agent": "reporter",
+   "item": "Osaki Electric ransomware attack disrupts smart-meter production in Japan; OT-ISAC flags supplier-continuity risk across Asia-Pacific",
+   "detail": "Item rests on a single outlet.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unverifiable",
+   "agent": "verifier",
+   "item": "Osaki Electric ransomware attack disrupts smart-meter production in Japan; OT-ISAC flags supplier-continuity risk across Asia-Pacific",
+   "detail": "[unverified] attacker, entry, duration; Industrial Cyber blocks the puller (403) so the OT-ISAC report was not read",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unverifiable",
+   "agent": "verifier",
+   "item": "GL.iNet GoodCloud remote-management flaw exploited to install malware on customer routers and KVM devices",
+   "detail": "[unverified] number of devices; whether any energy site used them",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "single-source",
+   "agent": "reporter",
+   "item": "SonicWall tells customers to retire Generation 6 firewalls now: no patches even for critical flaws, AI-assisted attackers expected to exploit internet-facing units",
+   "detail": "Item rests on a single outlet.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unverifiable",
+   "agent": "verifier",
+   "item": "Siemens Industrial Edge and EcoStruxure Power Build Rapsody: new remote-code-execution and memory-corruption advisories (CERT-FR, CISA) in substation and plant engineering software",
+   "detail": "[unverified] CVE identifiers not in the summaries",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "single-source",
+   "agent": "reporter",
+   "item": "US national cyber director Sean Cairncross leaves office; AI security and critical-infrastructure protection decisions were in his remit",
+   "detail": "Item rests on a single outlet.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unverifiable",
+   "agent": "verifier",
+   "item": "US national cyber director Sean Cairncross leaves office; AI security and critical-infrastructure protection decisions were in his remit",
+   "detail": "[unverified] successor; effect on the CISA 2015 reauthorization",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "unverifiable",
+   "agent": "librarian",
+   "item": "Danfoss AK-SM 8xxA refrigeration controllers: CISA ICSA-26-328-03 stack-based buffer overflow CVE-2026-129713 (CVSS 9.8) and INCIBE advisory on default credentials in AK-SC 355 / AK-SM 800",
+   "detail": "Source page blocked or failed: INCIBE-CERT ICS advisories (Spain) (error).",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "contradiction",
+   "agent": "verifier",
+   "item": "Peninsula Energy halts ASX trading after a cyber incident breaches the 'operating system' at its Lance uranium project in Wyoming; administrative systems unaffected",
+   "detail": "Cross-check: the filing was not fetched; the outlet's paraphrase stands in for it.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "contradiction",
+   "agent": "verifier",
+   "item": "KEPCO, South Korea's state power company, confirms a breach of its billing portal and procurement system exposing about 1.5 million customer, representative and employee records",
+   "detail": "Cross-check: whether the three groups overlap is not stated; attacker 'Noiem' is a Korean-outlet claim.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "contradiction",
+   "agent": "verifier",
+   "item": "Norway's NSM links cyberattacks on two major energy companies to a critical Azure API Management (Classic tier) flaw; Equinor and Skagerak Energi named among affected organizations",
+   "detail": "Cross-check: 'two major energy companies affected' is not the same as two breached; Microsoft's advisory is non-public.",
+   "severity": "warn",
+   "status": "open"
+  },
+  {
+   "at": "2026-11-24T17:52:54.163249+00:00",
+   "run": "2026-11-24T17:44:23.420879+00:00",
+   "type": "contradiction",
+   "agent": "verifier",
+   "item": "Osaki Electric ransomware attack disrupts smart-meter production in Japan; OT-ISAC flags supplier-continuity risk across Asia-Pacific",
+   "detail": "Cross-check: page returns 403; the OT-ISAC report was not read.",
+   "severity": "warn",
+   "status": "open"
   }
  ],
- "updated_at": "2026-11-05T21:23:32.711633+00:00"
+ "updated_at": "2026-11-24T17:52:54.163249+00:00"
 }
