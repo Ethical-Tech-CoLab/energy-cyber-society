@@ -1,49 +1,72 @@
 # Energy Cyber Society
 
-A virtual town of five LLM agents who read the day's cybersecurity news about the
-energy sector, worldwide with a focus on the United States, and argue about it.
-Walk around, overhear them, click one to talk.
+A virtual town of **fifteen LLM agents** who read the day's cybersecurity news about the
+energy sector, worldwide with a focus on the United States, verify it against primary
+sources, and argue about it. Walk around, overhear them, click one to talk, and read the
+result as a ten-line executive brief, a broadsheet, or a risk check for your own organization.
 
-**Live demo:** https://carolina-moron.github.io/energy-cyber-society/ 
+**Live site:** https://ethical-tech-colab.github.io/energy-cyber-society/ (GitHub Pages, `main:/docs`)
+· upstream: [Ethical-Tech-CoLab/energy-cyber-society](https://github.com/Ethical-Tech-CoLab/energy-cyber-society)
+· fork: [carolina-moron/energy-cyber-society](https://github.com/carolina-moron/energy-cyber-society)
 
-## The residents
+[![The town](docs/screenshots/town.png)](https://ethical-tech-colab.github.io/energy-cyber-society/)
 
-All five run in the same runtime over the same news bundle. Each has one job,
-which is why they disagree.
+New here? Press **How the society works** in the top bar first: the intelligence framework,
+animated on a real story from today's board, and the intelligence cycle.
 
-| Resident | Role | Job |
-|---|---|---|
-| Dana Okafor | The Reporter | Gathers and summarizes the day's energy-cyber stories, US first. Separates confirmed from claimed. |
-| Mateo Reyes | The Analyst | Actors, tradecraft, IT-versus-OT impact, attribution confidence. |
-| Priya Venkataraman | The Media Critic | What is the bias or incentive of each source? Who owns it, what does it overplay? |
-| Samir Haddad | The Wide-Angle | What else happened in cyberspace at the same time that could spill into energy? |
-| Ingrid Solberg | The Contrarian | Who was *not* affected, and why? Where is the coverage overstating impact? |
+## The residents (version 15)
+
+All fifteen run in the same runtime over the same news bundle. Fourteen analyse; one works on
+the code. Each has one job, which is why they disagree. Names are invented and carry no meaning
+(`name_note` in `agents/personas.json`); rename freely.
+
+| Resident | Role | Building | Job |
+|---|---|---|---|
+| Dana Okafor | The Reporter | Newsroom | Gathers and summarizes the day's energy-sector cyber stories, United States first, then the rest of the world. |
+| Mateo Reyes | The Analyst | Threat Lab | Goes deeper on the technical and actor side: who the threat actors likely are, how the intrusion worked, which OT or IT systems were involved, and what it means for grid reliability. |
+| Priya Venkataraman | The Media Critic | Press Review | For every story, asks what the outlet's bias or incentive is: who owns or funds it, what it tends to overplay or ignore, whether a vendor report is driving the headline, and how the same event is framed differently across sources. |
+| Samir Haddad | The Wide-Angle | Observatory | Watches the rest of cyberspace that same day, outside energy, and flags what could spill over: ransomware waves, zero-days in widely used software, geopolitical moves, law enforcement takedowns, policy changes. |
+| Ingrid Solberg | The Contrarian | Devil's Advocate | Asks who was NOT affected and why. |
+| Tomasz Nowak | The Verifier | Verification Office | Runs after the others, twice a day. |
+| Aisha Bello | The Librarian | Library | Keeps the map of where to look: which regulator, advisory feed, journal, dataset or vendor report answers which kind of question, and how to reach the primary document. |
+| Rosa Almeida | The Counsel | Counsel's Chambers | Owns law and regulation. |
+| Kenji Watanabe | The Archivist | Archive | Keeps the case history. |
+| Nadia Haddad-Lévy | The Ombudsman | Ombudsman's Office | Audits the residents, not the news. |
+| Earl Jackson | The Operator | Control Room | Speaks for the defender. |
+| Lin Zhao | The Economist | Exchange | Owns the financial-impact variables: ransom demanded and paid, recovery cost, lost output, insurance, market and price effects, regulatory fines, and the cost of the recommended actions. |
+| Yusuf Demir | The Geopolitical Analyst | Situation Room | Tracks every conflict, sanction, election and diplomatic rupture that could reach the energy sector, and analyses the impact per subsector and per layer (IT, OT, PIT). |
+| Amara Osei | The Technologist | Compute Exchange | Follows the AI models and the market around them as they bear on energy: new models and agents, what they cost to buy and to run, how much electricity and water they consume, who builds them and at what valuation, and the complete list of inputs behind an AI agent: chips, memory, interconnect, data centres, power, cooling, software stack, data, people, capital, regulation and supply chain. |
+| Mika Lindqvist | The Engineer | Workshop | Works on the society's own codebase. |
+
+How each one thinks, where it looks and how it verifies: `docs/REGISTER.md` and the **Agent Register** tab.
 
 ## How it works
 
-1. `scripts/fetch_news.py` reads only the feeds in `sources.json` (the credible-source
-   allowlist, each with a bias note) and keeps stories that have both an energy and a
-   cyber signal. Everything else from the same window goes in a "wide" bucket.
-2. `scripts/run_agents.py` runs the five personas in `agents/personas.json` on the Claude
-   API: a briefing each, canned answers to their suggested questions, a speech-bubble line,
-   and five pairwise conversations. Output: `docs/data/briefing.json`.
-   Without `ANTHROPIC_API_KEY` it writes an honest headlines-only fallback.
-3. Unattended runs, twice a day (06:00 and 18:00 US East), either way:
-   - `.github/workflows/daily.yml` runs both scripts on the Claude API (needs an
-     `ANTHROPIC_API_KEY` secret), or
-   - a claude.ai scheduled routine (`scripts/routine.json`) clones the repo and does the
-     curation itself following `CURATION.md`; no API key needed, the agent is the model.
-   The sixth resident, the Verifier, audits every item on each run: source tier,
-   corroboration, claim-versus-confirmed, staleness, and what changed since last time.
-4. `docs/` is the GitHub Pages site: a canvas pixel town, no framework, no build step.
+1. **Collect.** `scripts/fetch_news.py` reads only the feeds in `sources.json` (38 feeds in nine
+   languages, each with a bias note), keeps stories with both an energy signal and a cyber
+   signal, collapses cross-language duplicates, and parks the rest in a "wide" bucket.
+2. **Read in quarantine.** Fetched text is fenced as data in every prompt. `scripts/pull_sources.py`
+   fetches the direct source and any primary document behind every item;
+   `scripts/enrich_cves.py` asks NVD and CISA's KEV catalog whether each CVE is exploited.
+3. **Analyse.** The fourteen analytic residents write typed records against `agents/schema.json`:
+   subsector, IT/OT/PIT impact, actor and attribution tier, CVE, impact, geopolitics, regulation,
+   two separate grades (importance and trust), scoring with rationale, breach anatomy, related
+   historical cases, correlations, scenarios, costs.
+4. **Verify independently.** The Verifier sees only the stripped facts and the pulled text,
+   never the author's reasoning, and issues hold / upgrade / downgrade / retire per item with the
+   rule applied. A ground-truth file measures its agreement rate.
+5. **Enforce policy in code.** `RULES.md` (39 rules) and `scripts/validate.py` reject an unsourced
+   bullet, an off-taxonomy value, a severity that disagrees with the computed score without an
+   override reason, or an attribution without a named attributor. Every breach goes to the
+   Incident Desk, append-only.
+6. **Reduce and publish.** The executive brief (ten lines, unsigned until a person signs), the
+   Summary, the Gazette, the Risk check, STIX. Every run is archived in full under `docs/archive/`.
+7. **Run unattended.** Two claude.ai routines clone this repo: curation twice a day and the
+   Engineer once a day (opens pull requests, never merges). `docs/` is the GitHub Pages site:
+   a canvas pixel town, no framework, no build step.
 
-### Live chat
-
-By default residents answer their suggested questions from the day's briefing. To ask
-anything, open **Settings** in the page and add either an Anthropic API key (sent straight
-from the browser to Anthropic) or an OpenAI-compatible proxy URL such as
-[pages-ai-proxy](https://github.com/Ethical-Tech-CoLab/pages-ai-proxy). Settings live in
-your browser's localStorage only.
+The pipeline can be exercised without a key: `python scripts/run_agents.py --dry-run` replays
+recorded model outputs through every parser; `bash scripts/test_all.sh` runs every check.
 
 ## Run locally
 
@@ -107,16 +130,10 @@ Admiralty grading, structured analytic techniques and the FBI/CISA advisory form
 
 ## Grid & weather, US and worldwide
 
-`scripts/build_plants.py` compacts the WRI Global Power Plant Database (CC BY 4.0) into
+`scripts/grid_weather.py` pulls live ISO load (gridstatus library), energy-relevant NWS alerts, GDACS
+global alerts and 3-day forecasts for energy hubs; `scripts/build_plants.py` compacts the WRI Global Power Plant Database (CC BY 4.0) into
 `docs/data/plants.json`; the tab draws 4,360 plants worldwide with live US ISO load, NWS alerts,
 GDACS global alerts and hub forecasts.
-
-## US grid & weather
-
-`scripts/grid_weather.py` pulls live ISO load (gridstatus library), energy-relevant NWS alerts and
-3-day forecasts for energy hubs into `docs/data/grid_weather.json`; the **US grid & weather** tab
-maps them and links Grid Status's plant map (which cannot be embedded). Weather is context, never
-cyber evidence.
 
 ## Risk check for a CIO
 
@@ -142,7 +159,7 @@ The town runs the Conductor–desks–Auditor–Policy Engine–Ledger–Envoy�
 | Conductor | the scheduled runtime following `CURATION.md`, twice a day | 29 |
 | Envoy | `scripts/fetch_news.py` over the allowlist (38 feeds, 9 languages) | 1 |
 | Reader (quarantined) | `news.json`, `pull_sources.py`, `enrich_cves.py`; fetched text fenced as data | 7, 25 |
-| Desks | 14 analytic residents + the Engineer; typed records against `agents/schema.json` | 13–15 |
+| Desks | 14 analytic residents + the Engineer (15 in all); typed records against `agents/schema.json` | 13–15 |
 | Auditor | the Verifier, on stripped records and pulled text only | 16–21 |
 | Policy Engine | `RULES.md`, `validate.py`, computed severity, the attribution rule, the flag logger | 30 |
 | Ledger | `briefing.json`, `docs/archive/<run>/`, history, STIX, engineering log; append-only | — |
@@ -200,6 +217,8 @@ sound. `PRESENTATION.md` is a timed ten-minute spoken walkthrough for someone wh
 seen the project, with a guideline for presenters.
 
 ## Operating it
+
+- Version: 15 residents, 39 rules, 38 feeds, 12 facility dossiers, 16 regimes in the regulations register; see `DECISIONS.md` for every change requested and `BACKLOG.md` for status.
 
 - Scheduled runs: two claude.ai routines (curation at 11:00 and 23:00 UTC; the Engineer at
   14:00 UTC) clone this repo. The curation routine aborts, correctly, while the cloud sandbox
